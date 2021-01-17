@@ -2,12 +2,10 @@
 
 This unit's contact time is made up of two workshops per week:
 
-  * Tuesdays, 9am-11am.
-  * Fridays, 11am-1pm.
+  * Mondays, 2pm-4pm.
+  * Thursdays, 1pm-3pm.
 
 The workshops will take place online in Microsoft Teams. If you are a student on this unit, the Team for this unit will appear when you log in to Teams with your university account, either on the desktop client or on [https://teams.microsoft.com/](https://teams.microsoft.com/).
-
-Attending the workshops in teaching weeks (see below) is mandatory, TAs take attendance, and you need to be present in 75% of the workshops to meet the hurdle for this unit.
 
 # Topics and Weeks
 
