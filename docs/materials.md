@@ -13,7 +13,7 @@ the moment) to access the raw mp4 files. You can download them for offline watch
 you may not share them with non-students or reupload them anywhere else online: it is _not_ your
 intellectual property.
 
-## Weeks 13 and 14 - and introduction to POSIX and Git
+## Weeks 13 and 14: Itroduction to POSIX and Git
 
 Here you will learn how to administer a Linux/POSIX system. We will be using Alpine linux.
 

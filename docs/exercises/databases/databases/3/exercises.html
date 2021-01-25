@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Exercises - COMS10012 Databases Exercises</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../../favicon.png">
+        
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../databases/1/sql-introduction.html"><strong aria-hidden="true">1.</strong> SQL introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/1/setup.html"><strong aria-hidden="true">1.1.</strong> Set up the database</a></li><li class="chapter-item expanded "><a href="../../databases/1/er-diagram.html"><strong aria-hidden="true">1.2.</strong> ER diagram</a></li></ol></li><li class="chapter-item expanded "><a href="../../databases/2/sql-beginners.html"><strong aria-hidden="true">2.</strong> SQL for beginners</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/2/explore-database.html"><strong aria-hidden="true">2.1.</strong> Explore the database</a></li><li class="chapter-item expanded "><a href="../../databases/2/elections.html"><strong aria-hidden="true">2.2.</strong> Bristol elections</a></li><li class="chapter-item expanded "><a href="../../databases/2/census.html"><strong aria-hidden="true">2.3.</strong> The UK census</a></li></ol></li><li class="chapter-item expanded "><a href="../../databases/3/sql-intermediate.html"><strong aria-hidden="true">3.</strong> Intermediate SQL</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/3/exercises.html" class="active"><strong aria-hidden="true">3.1.</strong> Exercises</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">COMS10012 Databases Exercises</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#census-and-elections-exercises" id="census-and-elections-exercises">Census and elections exercises</a></h1>
+<p>Here are some more advanced exercises based on the census and elections schemas from the last activity.</p>
+<p>Your answer to each question should be a single SQL query, that is one semicolon at the end. JOINs, subqueries, WITH clauses etc. are allowed of course.
+Where an identifier is given in the question you may use it, e.g. when I say &quot;the Cabot ward (E05001979)&quot; you can use the ward id directly and do not need to join on the ward table to look up the name, but if I say &quot;the Green party&quot; then you do need to join on the party table to look up the name instead of hard-coding the party id.</p>
+<h2><a class="header" href="#elections" id="elections">Elections</a></h2>
+<p><img src="../img/elections.png" alt="elections ER diagram" /></p>
+<ol>
+<li>How many votes were cast in all of Bristol in the 2014 elections?</li>
+<li>How many votes were cast in the 'Windmill Hill' ward and what percentage of the electorate in this ward does this represent? Your statement should produce a table with one row and two columns called 'votes' and 'percentage'.</li>
+<li>List the names, parties and <em>percentage</em> of votes obtained for all candidates in the Southville ward. Order the candidates by percentage of votes obtained descending.</li>
+<li>How successful (in % of votes cast) was the Conservative party in each ward?</li>
+<li>Which rank did Labour end up in the 'Whitchurch Park' ward? Your statement should produce a table with a single row and column containing the answer as a number. You can assume no ties.</li>
+<li>What is the total number of votes that each party got in the elections? Your result should be a table with two columns party, votes.</li>
+<li>Find all wards where the Green party beat Labour and create a table with two columns ward, difference where the difference column is the number of Green votes minus the number of Labour votes. Your table should be ordered by difference, with the highest one first.</li>
+</ol>
+<h2><a class="header" href="#census" id="census">Census</a></h2>
+<p><img src="../img/census.png" alt="census ER diagram" /></p>
+<ol>
+<li>How many <em>women</em> work in sales and customer service occupations and live in the Cabot ward of Bristol (E05001979)?</li>
+<li>How many <em>people</em> work in sales and customer service occupations and live in the Cabot ward of Bristol (E05001979)?</li>
+<li>How many people work in caring, leisure and other service occupations (occupation class 6) in all of the City of Bristol CLU (E06000023)? </li>
+<li>In the Cabot ward (E05001979), produce a table listing the names of the 9 occupation classes and the number of people in each of the classes in this ward.</li>
+<li>Find the working population, ward name and CLU name for the smallest ward (by working population) in the 2011 census.</li>
+<li>The same as the last question, but now produce a table with two rows, one for the smallest and one for the largest ward. There's no quicker way than repeating the last query twice, the question is how to stick the two &quot;copies&quot; together.</li>
+<li>Find the average size of a ward's working population in the London (E12000007) region.</li>
+<li>The same as the last question but now for every region - your query should produce a table with one row per region. The intention here is <em>not</em> to repeat the above query 9 times.</li>
+<li>Produce a table that lists, for each of the 9 regions of England, the percentage of people in managerial (class 1) occupations who are women.</li>
+<li>For all CLUs in the London (E12000007) region, produce a table with three columns called <code>CLU</code>, <code>occupation</code> and <code>count</code> such that:
+<ul>
+<li><code>CLU</code> is the CLU name.</li>
+<li><code>count</code> is the number of people of the occupation class in question in the given CLU.</li>
+<li><code>occupation</code> is the name of the occupation class.</li>
+<li>Only rows with <code>count &gt;= 10000</code> appear in the table.</li>
+<li>The table is sorted by <code>count</code> ascending.</li>
+</ul>
+</li>
+<li>Create a table with three columns <code>occupation</code>, <code>women</code> and <code>men</code> and one row per occupation class. The <code>occupation</code> column should list the occupation class names. The <code>women</code> and <code>men</code> columns in each row should list the total number of women resp. men in the row's occupation class in the whole dataset. The intention here is not to have to copy-paste a subquery 9 times.</li>
+<li>The same as question 9, but now with a 10th row in the table listing the value for all of England. You can use the string <code>'England'</code> for the region column.</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../databases/3/sql-intermediate.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../databases/3/sql-intermediate.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

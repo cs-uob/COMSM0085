@@ -1,0 +1,385 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Secure shell - Exercises</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../act1/index.html"><strong aria-hidden="true">1.</strong> Activity 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../act1/ssh.html" class="active"><strong aria-hidden="true">1.1.</strong> Secure shell</a></li><li class="chapter-item expanded "><a href="../act1/install.html"><strong aria-hidden="true">1.2.</strong> Installing vagrant and alpine linux</a></li><li class="chapter-item expanded "><a href="../act1/admin.html"><strong aria-hidden="true">1.3.</strong> Alpine linux system administration</a></li><li class="chapter-item expanded "><a href="../act1/git1.html"><strong aria-hidden="true">1.4.</strong> Git, part 1</a></li></ol></li><li class="chapter-item expanded "><a href="../act2/index.html"><strong aria-hidden="true">2.</strong> Activity 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../act2/permissions.html"><strong aria-hidden="true">2.1.</strong> File permissions</a></li><li class="chapter-item expanded "><a href="../act2/git2.html"><strong aria-hidden="true">2.2.</strong> Git, part 2</a></li><li class="chapter-item expanded "><a href="../act2/pipes.html"><strong aria-hidden="true">2.3.</strong> Pipes</a></li></ol></li><li class="chapter-item expanded "><a href="../act3/index.html"><strong aria-hidden="true">3.</strong> Activity 3</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../act3/git3.html"><strong aria-hidden="true">3.1.</strong> Git, part 3</a></li><li class="chapter-item expanded "><a href="../act3/stat.html"><strong aria-hidden="true">3.2.</strong> inodes and system calls</a></li><li class="chapter-item expanded "><a href="../act3/script.html"><strong aria-hidden="true">3.3.</strong> shell scripting</a></li></ol></li><li class="chapter-item expanded "><a href="../act4/index.html"><strong aria-hidden="true">4.</strong> Activity 4</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../act4/concurrent.html"><strong aria-hidden="true">4.1.</strong> Concurrent programming in POSIX</a></li><li class="chapter-item expanded "><a href="../act4/cpipe.html"><strong aria-hidden="true">4.2.</strong> Pipes in C</a></li><li class="chapter-item expanded "><a href="../act4/c_io.html"><strong aria-hidden="true">4.3.</strong> Input/Output in C</a></li><li class="chapter-item expanded "><a href="../act4/posix_io.html"><strong aria-hidden="true">4.4.</strong> Input/Output in POSIX</a></li><li class="chapter-item expanded "><a href="../act4/final.html"><strong aria-hidden="true">4.5.</strong> The final challenge</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Exercises</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#secure-shell" id="secure-shell">Secure shell</a></h1>
+<p>Secure shell (SSH) is a protocol to allow you to remotely log in to another computer, such as a lab machine. Everyone I know of who uses SSH uses the free OpenSSH implementation, which is standard on every linux distribution that I know of and is also available for Windows and Mac - and even for the mobile operating systems iOS and Android.</p>
+<p>We will see in more detail how SSH manages connections later on, but for now imagine that it opens a network connection between your own machine, and a shell running on a different machine. When you type something, SSH encrypts this and sends it to the other machine which decrypts it and passes it to the shell (or any other program you're running); when the shell replies then SSH encrypts that and sends it back to you. For this to work, (Open)SSH is actually two programs:</p>
+<ul>
+<li><code>ssh</code> is the client, which you run on your machine to connect to another machine.</li>
+<li><code>sshd</code> is the server, or <em>daemon</em> in UNIX-speak. It runs in the background on the machine you want to connect to, and needs to be installed by the system administrator.</li>
+</ul>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>SSH uses TCP port 22 by default.</p>
+</div>
+</div>
+<h2><a class="header" href="#check-your-client" id="check-your-client">Check your client</a></h2>
+<p>First of all, let's check that the ssh client is working.</p>
+<ul>
+<li>Open a terminal on your own machine: linux, mac OS and windows subsystem for linux should be fine. Windows 10 CMD might work too if you have the windows version of openssh installed (for example if you have git installed which uses ssh behind the scenes).</li>
+<li>Type <code>ssh localhost</code> and press ENTER. Several different things could happen:
+<ul>
+<li>If it asks for a password, then the ssh client is working, and a ssh server is running on your current machine. The password would be your user account password, but we don't actually want to log in again so cancel with Control+C.</li>
+<li>If it succeeds without a password, then the client is working and a ssh server is running on your machine and either you do not have a password, or you already have a key set up. Type <code>exit</code> and press ENTER to get back to your previous shell.</li>
+<li>If it shows &quot;connection refused&quot;, then you have the ssh client correctly working but no server running on your own machine. This is not a problem, as we're trying to log in to the lab machines, so we need a client on our machine and a server on the lab machine.</li>
+<li>If it shows an error that ssh is not found, then you don't have (Open)SSH installed which is very unusual except on windows CMD - in which case please switch to using the windows subsystem for linux.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#connect-to-the-lab" id="connect-to-the-lab">Connect to the lab</a></h2>
+<p>The lab machines have names <code>it######.wks.bris.ac.uk</code> where the hashes represent a number from 075637 up to 075912. However, not all of them will be working at any one time, if everyone connects to the same machine then it will quickly get overloaded, and for security reasons the lab machines are not directly accessible from the internet. Instead, we will use two other machines to connect:</p>
+<ul>
+<li>The bastion host <code>seis.bris.ac.uk</code>. This is reachable over SSH from the internet, and is on a university network that lets you connect further to the lab machines. You should not attempt to do any work on seis itself, as most of the software you would like to use (like compilers) is not installed there. However, you do have a home directory on seis for storing things like SSH keys.</li>
+<li>The load balancer <code>rd-mvb-linuxlab.bristol.ac.uk</code>. This connects you to a lab machine that is currently running and ensures that if everyone uses this method to connect, then they will be more or less equally distributed among the running machines.</li>
+</ul>
+<p>Try the following:</p>
+<ul>
+<li>On your terminal, type <code>ssh USERNAME@seis.bris.ac.uk</code> where you replace USERNAME with your university username, e.g. <code>aa20123</code>. Obviously, you will need a working internet connection for this.</li>
+<li>If it asks you whether you are sure, type <code>yes</code> and press ENTER. SSH will only do this the first time you connect to a machine that you have never used before.</li>
+<li>When prompted, enter your university password and press ENTER.</li>
+<li>You should now see the prompt on seis, which looks something like <code>-bash-4.2$</code>. Try the command <code>uname -a</code> to print information about the system (uname on its own prints the operating system name, <code>-a</code> shows &quot;all&quot; information). The reply line should start <code>Linux seis-shell</code>, which is the operating system and host name.</li>
+<li>On the seis prompt, type <code>ssh rd-mvb-linuxlab.bristol.ac.uk</code>. This might take a few seconds; say yes if it asks you if you're sure, then enter your password again when prompted. We didn't have to give a username again because you are already logged in to seis with your university username (<code>whoami</code> shows this) and when you ssh without giving a username, it uses the one you are currently logged in as.</li>
+<li>You should now be connected to a lab machine, with a prompt of the form <code>USERNAME@it######:~$</code>. </li>
+<li>Try <code>whoami</code> and <code>uname -a</code> to check who you are logged in as, and where; also try <code>hostname</code> which just prints the machine name.</li>
+<li>Type <code>exit</code> twice to get back to your own machine. (Once gets you back to seis, twice closes the ssh connection completely.)</li>
+</ul>
+<p>Connecting to one machine through another machine (in this case seis) as a proxy is such a common use case that ssh in fact has an option for it. Note however that this will not normally work from a windows CMD terminal, although it does work on Windows Subsystem for Linux (and on Mac and Linux).</p>
+<pre><code>ssh -J USERNAME@seis.bris.ac.uk USERNAME@rd-mvb-linuxlab.bristol.ac.uk
+</code></pre>
+<p>The <code>-J</code> for &quot;jump through this host&quot; even accepts a comma-separated list of hosts if you need to connect through more than one. However, you need to repeat your username for every machine.</p>
+<p>You now know how to log in to a lab machine, but in both methods you had to type your password twice - let's make that easier. The answer is not to store your password in a file, but to use keys instead.</p>
+<h2><a class="header" href="#setting-up-ssh-keys" id="setting-up-ssh-keys">Setting up ssh keys</a></h2>
+<p>When you connect to a machine, the client on your computer and the daemon on the machine you're logging in to run a cryptographic protocol to exchange keys and set up a shared secret key for the session, so that what one side encrypts the other side can decrypt again. It also authenticates you to the server using one of several methods. </p>
+<p>You might have heard from a security source that there are three main authentication factors: something you know (password or PIN), something you have (physical key, digital key, ID card, passport) and something you are (biometrics). An authentication method that requires two of these is called two-factor authentication and this is considered good security practice. For ssh, this means:</p>
+<ul>
+<li>You can log in with a username and password, that is &quot;something you know&quot;. This is the default, but not the most secure.</li>
+<li>You can log in with a (digital) key, that is &quot;something you have&quot;. This is more secure, as long as your key (which is just a file) doesn't get into the wrong hands, and also the most convenient as you can log into a lab machine or copy files without having to type your password.</li>
+<li>You can log in with a key file that is itself protected with a password. This gets you two-factor authentication.</li>
+</ul>
+<p>The keys that SSH uses implement digital signatures. Each key comes as a pair of files:</p>
+<ul>
+<li>A private key (also known as secret key) in a file normally named <code>id_CIPHER</code> where CIPHER is the cipher in use. You need to keep this secure and only store it in places that only you have access to.</li>
+<li>A public key in a file normally named <code>id_CIPHER.pub</code>. You can share this with the world, and you will need to store a copy of it on any machine or with any service that you want to log in to (for the lab, because the lab machines all share a file system, you only need to store it once - but seis has a separate file system so you need a separate copy there).</li>
+</ul>
+<p>Let's create a key pair:</p>
+<ul>
+<li>Type the command <code>ssh-keygen -t ed25519</code>. (If you get an &quot;unknown key type&quot; error, then you are using an outdated version of OpenSSH and for security reasons you should upgrade immediately.)</li>
+<li>When it asks you where to save the file, just press ENTER to accept the default, but make a note of the path - normally it's a folder <code>.ssh</code> in your home directory.</li>
+<li>If it asks you &quot;Overwrite (y/n)&quot;, say no (n, then ENTER) as it means you already have a key for something else - either ssh directly or something that uses it, like github. Restart key generation but pick a different file name.</li>
+<li>When it asks you for a password, I recommend that you just press ENTER which doesn't set a password (good security, maximum convenience). If you do set a password, it will ask you to type it twice and then you will need the password and the key file to use this key (maximum security, less convenient).</li>
+</ul>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>The <code>-t</code> parameter selects the cryptographic algorithm to use, in this case <code>ed25519</code>, which is modern, peer-reviewed, and generally considered one of the most secure public-key algorithms available. However some older ssh versions don't accept ed25519.</p>
+<p>If you ever need to use SSH keys to a machine that doesn't like ed25519, then use the key type &quot;rsa&quot; instead. I would personally avoid the alternatives &quot;dsa&quot; and &quot;ecdsa&quot; if at all possible as there is speculation among cryptographers that there may be a flaw in the design.</p>
+<p>For example, although seis supports ed25519, the old cs bastion host <code>snowy.cs.bris.ac.uk</code> still uses an older version of SSH, so you would need to generate a rsa key to connect to that.</p>
+</div>
+</div>
+<p>Have a look at the folder where your keys are stored. <code>ls -l ~/.ssh</code> will do this, unless you chose somewhere else to store them when you created them:</p>
+<pre><code>-rw-------. 1 vagrant vagrant  411 Oct  7 10:50 id_ed25519
+-rw-r--r--. 1 vagrant vagrant   98 Oct  7 10:50 id_ed25519.pub
+-rw-r--r--. 1 vagrant vagrant 1597 Oct  7 11:54 known_hosts
+</code></pre>
+<p>Note the permissions on these files in my example. The private key (first line) has a permissions line at the start of <code>(-)(rw-)(---)(---)</code> where I've added brackets to make clearer what is going on. The first bracket only applies to special file types (e.g. <code>d</code> for directory). Next, the owner permissions which are in this case read and write (the third one would be <code>x</code> if the file were an executable program). The last two brackets are the permissions for the group and for everyone else, and these are all off so no-one except yourself (and root) can read your key file. OpenSSH is picky about this and will refuse to use a private key that other people have access to.</p>
+<p>The public key permissionas are <code>(-)(rw-)(r--)(r--)</code> which means that the owner can read and write, and the group and everyone else (assuming they have access to the folder) can read the public key, which is fine. It's a public key after all.</p>
+<p><code>known_hosts</code> is where SSH stores the public keys of computers you've already connected to: every time you answer yes to an &quot;Are you sure you want to connect?&quot; question when you connect to a new computer for the first time, it stores the result in this file and won't ask you again the next time. The file format is one key per line and you can edit the file yourself if you want to.</p>
+<h2><a class="header" href="#set-up-key-access-on-seis" id="set-up-key-access-on-seis">Set up key access on seis</a></h2>
+<p>First, we need to upload our public key to seis. The command for this is <code>scp</code> for secure copy, which works like <code>cp</code> but allows you to include remote hosts and does the copy over SSH:</p>
+<pre><code>scp ~/.ssh/id_ed25519.pub &quot;USERNAME@seis.bris.ac.uk:~/.ssh&quot;
+</code></pre>
+<p>Obviously, replace USERNAME with your university username. This will ask for your password again. Note two things here: first, to set up access on seis, we are uploading the public key - not the private key! - and secondly, that we put double quotes around the destination. This is because the <code>~</code> character meaning home directory is handled by our shell, but we don't want our local shell to expand it, instead we want the shell on seis launched by scp to expand it to our home directory on that machine.</p>
+<p>The general syntax of scp is <code>scp source destination</code> and source or destination  may be of the form <code>[USERNAME@]HOSTNAME:PATH</code> - if it contains a colon (<code>:</code>), then it refers to a file on a different machine.</p>
+<p>Now log in to seis over ssh and type your password one last time. Then run the following:</p>
+<pre><code>cd .ssh
+cat id_ed25519.pub &gt;&gt; authorized_keys
+chmod 600 authorized_keys
+</code></pre>
+<p>SSH will accept a public key if it is listed in the file <code>authorized_keys</code> in the user's <code>.ssh</code> folder, the format is one line per key. Instead of just copying <code>id_ed25519.pub</code> to <code>authorized_keys</code>, which would overwrite the latter file if it already existed, we use the construction <code>cat SOURCE &gt;&gt; DEST</code> to have our shell append the source file to the destination.</p>
+<p>However, if the authorised keys file didn't exist already, then it has now been created with default permissions and SSH won't accept that for security reasons. <code>chmod</code> means change permissions (also known as &quot;mod bits&quot;) and 600 is the bit pattern we want in base 8, because that is how permissions work for historical reasons. Permissions are a bitfield of 9 bits, the first three are read/write/execute for the owner, the next three the same for the group, and then for everyone else. If you <code>ls -l</code> you will see this in a slightly more human-readable format, namely <code>rw-------</code> where a minus means that a bit is turned off.</p>
+<p>Now type <code>exit</code> to get back to your own machine, and then <code>ssh USERNAME@seis.bris.ac.uk</code> to log back in to seis. It should log you in without asking for a password, and you have now set up key-based SSH authentication for seis.</p>
+<p>Note: if you set a password on your SSH key earlier, then it will ask you for a password, and it will expect the key password not your uni password. You know not to ever reuse your uni password for anything else, right?</p>
+<p>If for some reason something doesn't work with ssh, the first thing to try is to add the <code>-v</code> switch enable debugging information (you can even do <code>-vv</code> or <code>-vvv</code> to see even more detail, but we don't need that). If there is a problem with the permissions on your private key file for example, then you will see SSH complain in the debugging information.</p>
+<h2><a class="header" href="#setting-up-keys-for-lab-machines" id="setting-up-keys-for-lab-machines">Setting up keys for lab machines</a></h2>
+<p>You can now get into seis with a key, but you want to be on a lab machine to get work done.</p>
+<p>To connect from your machine to seis, you need a private key on your machine and a public key on seis. To connect from seis to a lab machine, it would seem like you need a public key on the lab machine and a private key on seis. You do not want to upload your private key to seis though for security reasons, so instead we are going to use a SSH feature called <em>agent forwarding</em> which means that if you SSH into one machine, then when you try and SSH further into another machine SSH will reuse the same key. The way to do this is to use the <code>-A</code> command line flag.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>The point of key-based authentication is that your private key never leaves your own machine, so even university administrators never get to see it, which would not be guaranteed if you stored a copy on a university machine.</p>
+<p>Logging in to a machine does not send the key to that machine. Instead, the machine sends you a challenge - a long random number - and SSH digitally signs that with the private key on your own machine, and sends the signature back which the remote machine can verify with the public key. Seeing a signature like this does not let the machine create further signatures on your behalf, and it definitely does not reveal the key.</p>
+<p>What agent forwarding does is it allows challenges and signatures to be forwarded across multiple connections, but the key never leaves your own machine.</p>
+<p>This way, you can create one SSH key and use it for university, github and anything else that you access over SSH, and even if one service is breached then this does not give the attacker access to your accounts on the other services.</p>
+</div>
+</div>
+<ul>
+<li>Log in to seis with <code>ssh USERNAME@seis.bris.ac.uk</code>. You should not need a password anymore.</li>
+<li>Copy your public key file to the lab machines with <code>scp ~/.ssh/id_ed25519.pub &quot;rd-mvb-linuxlab.bristol.ac.uk:~/.ssh&quot;</code>. </li>
+</ul>
+<p>This step is necessary because your home directory on seis is not the same as on the lab machines. Note the double quotes again, and because you run this command on seis you don't need to repeat your username as it is the same for both machines involved. This command will ask for your password.</p>
+<ul>
+<li>Log in to a lab machine with <code>ssh rd-mvb-linuxlab.bristol.ac.uk</code> and enter your password one last time. On the lab machine, install the public key with the following:</li>
+</ul>
+<pre><code>cd .ssh
+cat id_ed25519.pub &gt;&gt; authorized_keys
+chmod 600 authorized_keys
+</code></pre>
+<p>Everything should be set up now: do <code>exit</code> twice to get back to your own machine, and try logging in to a lab machine with</p>
+<pre><code>ssh -A -J USERNAME@seis.bris.ac.uk USERNAME@rd-mvb-linuxlab.bristol.ac.uk
+</code></pre>
+<p>This should now work directly, and without passwords.</p>
+<h2><a class="header" href="#setting-up-a-configuration-file" id="setting-up-a-configuration-file">Setting up a configuration file</a></h2>
+<p>You now have a log in command that works, but you still have to type a lot, and you need to type your username twice. We can improve this by using a configuration file.</p>
+<p>SSH reads two configuration files: one for all users at <code>/etc/ssh/ssh_config</code> (<code>/etc</code> is where POSIX programs typically store global settings) and a per-user one at <code>~/.ssh/config</code>. The site <a href="https://www.ssh.com/ssh/config/">https://www.ssh.com/ssh/config/</a> or just <code>man ssh_config | less</code> on a terminal contain the documentation (<code>man</code> means manual page, and <code>less</code> is a program that shows a file on page at a time and lets you scroll and search).</p>
+<p>Create a file called simply <code>config</code> in your <code>.ssh</code> directory on your own machine. You can do this for example with <code>touch config</code> (make sure you're in the <code>.ssh</code> directory first, <code>cd ~/.ssh</code> gets you there), and then editing it in your favourite text editor. Add the following lines, replacing USERNAME with your username twice:</p>
+<pre><code>Host seis
+  HostName seis.bris.ac.uk
+  User USERNAME
+
+Host lab
+  HostName rd-mvb-linuxlab.bristol.ac.uk
+  ProxyJump seis
+  User USERNAME
+</code></pre>
+<p>This now lets you use simply <code>ssh lab</code> to log in to a lab machine via seis (agent forwarding is implied when you use <code>ProxyJump</code>), or <code>ssh seis</code> if you want to access seis directly for example to update your keys there.</p>
+<ul>
+<li>Try <code>ssh lab</code> from your own machine. This will be your main way to log in to a lab machine from now onwards.</li>
+</ul>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>If you want to learn another useful skill as you go along, here is one way to edit files on the command line. Many linux distributions have an editor called <code>nano</code> built in which runs in the terminal, so <code>nano config</code> edits the file called config (creating it if it doesn't exist, when you save for the first time). It is fairly self-explanatory, the command Control+X quits as you can see on the command bar at the bottom of the screen in nano and if you quit with unsaved changes, it will ask you if you want to save.</p>
+<p>Nano is installed on seis and on the lab machines, so you can use it to edit a file remotely.</p>
+<p>However, nano is not installed by default on alpine linux which we will be using for a lot of this unit - you can install it yourself with <code>sudo apk add nano</code>. </p>
+</div>
+</div>
+<h2><a class="header" href="#using-different-keys" id="using-different-keys">Using different keys</a></h2>
+<p>You do not need this for the lab, but if you are ever managing different systems and accounts then you might use a different key file for each one. In this case, ssh on the command line lets you do <code>-i FILENAME</code> to select a private key file, and in the configuration file you can select a file for a particular host with the <code>IdentityFile FILENAME</code> line. By default, ssh will search for files in <code>.ssh</code> with names <code>id_CIPHER</code>, as you can see if you launch a connection with the <code>-vv</code> parameter which shows detailed debugging information.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../act1/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../act1/install.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../act1/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../act1/install.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
