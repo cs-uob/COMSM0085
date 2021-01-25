@@ -1,7 +1,7 @@
 # Course materials
 
 The contents of this course are hosted as a git repository on GitHub, at
-[github.com/cs-uob/COMSM008](https://github.com/cs-uob/COMSM0085). 
+[github.com/cs-uob/COMSM0085](https://github.com/cs-uob/COMSM0085). 
 
 You can ```git clone``` the repository (you'll learn what this means in week 13) to obtain an
 offline copy. Following that, you can ```git pull``` (you'll learn this too) to see if there have
