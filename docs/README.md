@@ -1,6 +1,11 @@
 # COMSM0085 Overview of Software Tools
 
-Welcome to the website for the COMSM0085 Overview of Software Tools unit (TB2, 2021). This unit will run entirely online.
+Welcome to the website for the COMSM0085 Overview of Software Tools unit (TB2, 2021).
+
+
+## Teams
+
+The course will take place on Microsoft Teams. Find the team ```grp-COMSM0085```. Alternatively, use the team code ```jr65q0z```.
 
 ## Links
 
