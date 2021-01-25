@@ -5,6 +5,7 @@ Welcome to the website for the COMSM0085 Overview of Software Tools unit (TB2, 2
 ## Links
 
   - [Schedule](schedule.md)
+  - [Course materials](materials.md)
   - [Assessment](assessment.md)
 
 ## Unit Organisation
