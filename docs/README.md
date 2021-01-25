@@ -5,7 +5,7 @@ Welcome to the website for the COMSM0085 Overview of Software Tools unit (TB2, 2
 
 ## Teams
 
-The course will take place on Microsoft Teams. Find the team ```grp-COMSM0085```. Alternatively, use the team code ```jr65q0z```.
+The course will take place on Microsoft Teams. Find the team [grp-COMSM0085](https://teams.microsoft.com/l/team/19%3a80aa16430c4049e5a15b1a76a8afa128%40thread.tacv2/conversations?groupId=a2f0a2bd-4214-4ddb-8c68-f20723d0bd4c&tenantId=b2e47f30-cd7d-4a4e-a5da-b18cf1a4151b).
 
 ## Links
 
