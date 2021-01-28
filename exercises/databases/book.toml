@@ -1,0 +1,9 @@
+[book]
+authors = ["David"]
+language = "en"
+multilingual = false
+src = "src"
+title = "COMS10012 Databases Exercises"
+
+[preprocessor.python]
+command = "python preprocessor.py"
