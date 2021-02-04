@@ -1,0 +1,462 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>JDBC - COMS10012 Databases Exercises</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../../favicon.png">
+        
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../databases/1/sql-introduction.html"><strong aria-hidden="true">1.</strong> SQL introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/1/setup.html"><strong aria-hidden="true">1.1.</strong> Set up the database</a></li><li class="chapter-item expanded "><a href="../../databases/1/er-diagram.html"><strong aria-hidden="true">1.2.</strong> ER diagram</a></li><li class="chapter-item expanded "><a href="../../databases/1/er2.html"><strong aria-hidden="true">1.3.</strong> More modelling</a></li></ol></li><li class="chapter-item expanded "><a href="../../databases/2/sql-beginners.html"><strong aria-hidden="true">2.</strong> SQL for beginners</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/2/explore-database.html"><strong aria-hidden="true">2.1.</strong> Explore the database</a></li><li class="chapter-item expanded "><a href="../../databases/2/elections.html"><strong aria-hidden="true">2.2.</strong> Bristol elections</a></li><li class="chapter-item expanded "><a href="../../databases/2/census.html"><strong aria-hidden="true">2.3.</strong> The UK census</a></li><li class="chapter-item expanded "><a href="../../databases/2/normalforms.html"><strong aria-hidden="true">2.4.</strong> Normal forms</a></li></ol></li><li class="chapter-item expanded "><a href="../../databases/3/sql-intermediate.html"><strong aria-hidden="true">3.</strong> Intermediate SQL</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/3/exercises.html"><strong aria-hidden="true">3.1.</strong> Exercises</a></li></ol></li><li class="chapter-item expanded "><a href="../../databases/4/sql-java.html"><strong aria-hidden="true">4.</strong> SQL and Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/4/jdbc.html" class="active"><strong aria-hidden="true">4.1.</strong> JDBC</a></li><li class="chapter-item expanded "><a href="../../databases/4/hibernate.html"><strong aria-hidden="true">4.2.</strong> Hibernate</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">COMS10012 Databases Exercises</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#jdbc" id="jdbc">JDBC</a></h1>
+<p>In this activity you will learn to connect to a SQL database using Java and the JDBC classes.
+JDBC (Java DataBase Connectivity) is a low-level, not particularly object-oriented mechanism for accessing a database, on top of which other systems (e.g. Hibernate ORM) can be built.</p>
+<h2><a class="header" href="#jdbc-interfaces" id="jdbc-interfaces">JDBC Interfaces</a></h2>
+<p>The JDBC classes live in the <code>java.sql</code> package. Most methods on these classes can throw a <code>SQLException</code> which is a checked exception, meaning your code won't compile if you don't handle it. For simple programs, this means wrapping in a <code>RuntimeException</code> to terminate the program if something goes wrong:</p>
+<pre><code class="language-java">try {
+    // do stuff with JDBC
+} catch (SQLException e) {
+    throw new RuntimeException(e);
+}
+</code></pre>
+<p>Two comments on this pattern:</p>
+<ol>
+<li>In a real program e.g. web server, you of course do not want to take the server down whenever an individual method causes an error. Here you need to do something like log the error, and display an error message to that particular caller (e.g. HTTP 500 Internal Server Error) while keeping the rest of the server running. How you achieve this depends on which libraries or frameworks you are using.</li>
+<li>Most JDBC work will actually take place in try-with-resources blocks, which work the same as far as exception handling is concerned but have an extra bracketed term immediately after the <code>try</code>.</li>
+</ol>
+<h2><a class="header" href="#try-with-resources" id="try-with-resources">Try-with-resources</a></h2>
+<p>A resource is something that you need to close exactly once when you are done with it, but only if it got properly opened in the first place. For example, in C heap memory is a resource: you acquire (open) it with <code>malloc</code>, and when you are done you must call <code>free</code> exactly once on the memory, except if <code>malloc</code> returned NULL in the first place (allocation failed) in which case calling <code>free</code> is an error. (You do check your <code>malloc</code> return value for NULL, don't you?) It is also an error to call <code>free</code> twice on the same memory, and it is a memory leak not to call it at all.</p>
+<p>In Java, we don't have to manage memory by hand, but there are other kinds of resources:</p>
+<ul>
+<li>Files.</li>
+<li>Network connections.</li>
+<li>Graphics objects in some drawing/window systems.</li>
+<li>Database connections.</li>
+</ul>
+<p>To help manage these, Java provides an interface <code>java.lang.AutoCloseable</code> with a single method <code>void close()</code> and the try-with-resources construction:</p>
+<pre><code class="language-java">try (Resource r = ...) {
+    // do things with r here
+}
+</code></pre>
+<p>As long as the resource implements <code>AutoCloseable</code> (it's a syntax error to use this pattern otherwise), this pattern guarantees that </p>
+<ol>
+<li>If the initialisation statement (in the round brackets) fails, either by returning null or throwing an exception, then the block will never be executed.</li>
+<li>If the initialisation succeeds, then when the block exits, <code>r.close()</code> will be called exactly once, whether the block reached its end, exited early (e.g. return statement) or threw an exception.</li>
+</ol>
+<p>A try-with-resources block can, but does not have to, include one or more <code>catch</code> statements, in which case they apply to the block, the initialisation statement and the implied <code>close()</code>.</p>
+<p>You can also include more than one resource in the try statement by separating them with semicolons inside the bracketed term.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>Earlier versions of java used the <code>finally</code> keyword to achieve something similar, but it was more challenging to get right especially if the close function could also throw an exception. Since Java 7, try-with-resources is the correct pattern to use and you should almost never need a <code>finally</code> block. You can implement <code>AutoCloseable</code> on your own classes to support this.</p>
+</div>
+</div>
+<h2><a class="header" href="#opening-a-connection" id="opening-a-connection">Opening a connection</a></h2>
+<p>You open a connection by calling</p>
+<pre><code class="language-java">try(Connection c = DriverManager.getConnection(connection_string)) {
+    // do stuff with connection
+} catch (SQLException e) {
+    // handle exception, for example by wrapping in RuntimeException
+}
+</code></pre>
+<p>The connection string is a string containing a URL such as </p>
+<pre><code>jdbc:mariadb://localhost:3306/DATABASE?user=USER&amp;localSocket=/var/run/mysqld/mysqld.sock
+</code></pre>
+<p>When you try and open a connection, Java looks for a driver on your classpath that implements the addressing scheme (e.g. <code>mariadb</code>) that you have requested. This makes setting up the classpath a bit tricky, but we have maven to manage that for us.</p>
+<p>However, we need to understand a bit about networking and security to make sense of that URL.</p>
+<p>In a traditional database set-up, the database lives on its own machine (or cluster of machines) and applications connect to it over the network. To do this, by default, databases listen on TCP port 3306.</p>
+<p>For security reasons, a competent adminstrator will set things up so that there is a firewall preventing access to the database from any machines except those of applications (and possibly developers and administrators), the database machine will certainly not be available directly from the internet. Then, applications will also need a username and password to connect to the database. Since these passwords are used by applications, and do not need to be remembered by humans, there is absolutely no excuse for choosing weak ones: the absolute minimum is something with 128 bits of entropy. Computers have no problems remembering something this long! In this case you add the extra <code>pass=</code> argument to the connection string, and to prevent passwords being sent unencrypted over the network (even if it's your internal network) you can also set up TLS or a similar tunneling technology.</p>
+<p>On our Alpine machine, when we set up mariadb by default, the database server and client are both running on the same machine, so you can gain both security and performance by not using a network connection at all - instead when you type <code>mysql</code> it connects over a POSIX socket, another special type of file (type <code>s</code> in <code>ls -l</code>), in this case <code>/var/run/mysqld/mysqld.sock</code>. A POSIX socket is like a pair of pipes in that it allows bidirectional, concurrent communication between different processes, but with an API closer to that of a network (TCP) socket.</p>
+<p>The point of all this discussion is that for your alpine machine, your connection string will look like this (all on one line with no newlines):</p>
+<pre><code>jdbc:mariadb://localhost:3306/DATABASE?user=USER&amp;localSocket=/var/run/mysqld/mysqld.sock
+</code></pre>
+<p>The <code>localSocket</code> option overrides the host/port at the start. For this to work, you need the mariadb driver and a library called JNA (Java Native Access) on your classpath, and of course your system needs to support sockets.</p>
+<p>The more standard connection string for a TCP connection would look like this:</p>
+<pre><code>jdbc:mariadb://localhost:3306/DATABASE?user=USER
+</code></pre>
+<p>Which really does connect to TCP port 3306 on localhost.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>You can configure this on your Alpine machine if you wanted to: the main mariadb configuration file is <code>/etc/my.cnf</code> which in our case just contains a statement to include all files in the <code>/etc/my.cnf.d/</code> folder; in there we have <code>mariadb-server.cnf</code> which contains the lines</p>
+<pre><code>[mysqld]
+skip-networking
+</code></pre>
+<p>Remove the last line and restart the server (<code>rc-service mariadb restart</code>) and then your mariadb server (<code>mysqld</code>) will really be listening on port 3306.</p>
+<p>We didn't notice this with the console client <code>mysql</code> because that by default tries the socket first, and then port 3306 if the socket doesn't exist. However the JDBC driver will only try exactly the options you give, and if you don't tell it to use the socket, it will try port 3306 and throw and exception if nothing is listening there.</p>
+</div>
+</div>
+<h2><a class="header" href="#pom-file" id="pom-file">POM file</a></h2>
+<p>Under <a href="../resources/jdbc-example.tar">resources/jdbc/jdbc-example.tar</a> you can find a minimal JDBC application that uses the <code>elections</code> database. Download this to your Alpine VM with <code>wget</code> (or get it from the unit repository, if you have cloned it there) and extract it to an otherwise empty folder (<code>tar xvf jdbc-example.tar</code>). It contains a file <code>pom.xml</code> and a file <code>src/main/java/org/example/Example.java</code>.</p>
+<p>In the POM file, we note the following dependencies:</p>
+<pre><code class="language-xml">&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.mariadb.jdbc&lt;/groupId&gt;
+        &lt;artifactId&gt;mariadb-java-client&lt;/artifactId&gt;
+        &lt;version&gt;2.7.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;net.java.dev.jna&lt;/groupId&gt;
+        &lt;artifactId&gt;jna&lt;/artifactId&gt;
+        &lt;version&gt;5.6.0&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;net.java.dev.jna&lt;/groupId&gt;
+        &lt;artifactId&gt;jna-platform&lt;/artifactId&gt;
+        &lt;version&gt;5.6.0&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<p>The first one is the mariadb JDBC driver. When maven runs a program, it automatically puts the dependencies on the classpath; if you left this off then creating the <code>Connection</code> would throw an exception.</p>
+<p>The other two are the JNA (Java Native Access) libraries for your platform, that the driver uses to connect to a POSIX socket. If you left these off, the driver would ignore the <code>localSocket</code> option, try to connect to port 3306, and throw an exception because there is nothing listening there (unless you have configured it).</p>
+<ul>
+<li>Run <code>mvn compile</code> in the folder with the POM file to download the dependencies and compile the example program.</li>
+<li>Run <code>mvn exec:java</code> to run the program. This uses the <code>exec-maven-plugin</code> configured later in the POM file to launch the program with the main class <code>org.example.Example</code> and the correct classpath. It should print out a list of parties.</li>
+<li>If you want, you can use <code>mvn package</code> to build two JAR files in <code>target</code>: one is just the compiled example class, but the more interesting one has <code>jar-with-dependencies</code> in its name and contains the compiled class and all dependencies, namely the JDBC mariadb driver and JNA (and all their dependencies). You can run this jar with <code>java -cp jdbc-example-0.1-jar-with-dependencies.jar org.example.Example</code> without using maven if you want to. This file is built by the <code>maven-assembly-plugin</code> which we have also configured in the POM file.</li>
+</ul>
+<h2><a class="header" href="#sql-from-java" id="sql-from-java">SQL from Java</a></h2>
+<p>In the <code>Example.java</code> class, we can see an example of JDBC in action:</p>
+<pre><code class="language-java">private void readData(Connection c) {
+    String SQL = &quot;SELECT id, name FROM Party&quot;;
+    try (PreparedStatement s = c.prepareStatement(SQL)) {
+        ResultSet r = s.executeQuery();
+        while (r.next()) {
+            int id = r.getInt(&quot;id&quot;);
+            String name = r.getString(&quot;name&quot;);
+            System.out.println(&quot;Party #&quot; + id + &quot; is: &quot; + name);
+        }
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+}
+</code></pre>
+<ul>
+<li>The SQL command goes in a string. If we wanted to add parameters for a prepared statement, we put question marks here.</li>
+<li>We create a <code>PreparedStatement</code> in another try-with-resources block: we need to close statements as soon as we are done with them, but it's ok for a program to keep the database connection open for as long as it runs.</li>
+<li>In this case, we have no parameters to pass, so we execute the query to get a <code>ResultSet</code>, a &quot;cursor&quot; (a kind of iterator) on the results. (A <code>ResultSet</code> is also a resource, but it closes automatically when its statement closes, so we don't have to handle this ourselves.)</li>
+<li>We iterate over the rows of the result and do something with them, in this case printing to standard output.</li>
+<li>All these operations can throw an <code>SQLException</code>, so we catch it at the end, and because this is just a small example program, we handle it by throwing an exception to terminate the whole program.</li>
+</ul>
+<h2><a class="header" href="#result-sets" id="result-sets">Result Sets</a></h2>
+<p>Java is an object-oriented language with a compile-time type system: if you declare that a <code>class Person</code> has a field <code>int age</code>, then the compiler will stop you from ever trying to put a string in there. JDBC cannot offer you this level protection because when you compile your Java program, you don't know what tables and fields exist in the database (even if you do know, someone could change them after the program has been compiled).
+So you have to fall back to some more C-like patterns for using the database.</p>
+<p>A result set can either be pointing at a row in the database or not. If it is pointing at a row, you can read values with the <code>get...</code> methods. If the result set is not pointing at a row, then trying to read anything throws an SQLException. The rules here are:</p>
+<ul>
+<li>When you get the result set back, it starts out pointing <em>before the first row</em>, so reading immediately would throw an error.</li>
+<li>Calling <code>boolean next()</code> tries to advance a row. If this returns true, then you have got a new row and can read from it; if you get false then you have stepped beyond the last row and it would be an error to read. (If there are no rows in your result at all, then the first call to <code>next()</code> will already return false.)</li>
+</ul>
+<p>The correct pattern to use the result set is normally a while loop, as each time you land in the loop body you're guaranteed to have found a row:</p>
+<pre><code class="language-java">while (r.next()) {
+    // we have a row, do something with it
+}
+</code></pre>
+<p>There are however a couple of exceptions to this pattern. First, some statements like <code>select count(...)</code> will always return exactly one row - maybe the value in the row will be zero, but that's not the same thing as no row at all - so in this case you can do</p>
+<pre><code class="language-java">if (r.next()) {
+    // this should always happen    
+} else {
+    // this should never happen
+    // throw an exception or something
+}
+</code></pre>
+<p>It would still be an error to access the one row before calling <code>next()</code>, and we are not the kind of people who ignore return values from API calls.</p>
+<p>Another special case is if you want to do something special with the first row:</p>
+<pre><code class="language-java">if (r.next()) {
+    // if we get here then there was at least one row
+    // we're on the first row and can do something special with it
+    do {
+        // this block will be called exactly once for every row
+        // including the first one
+    } while (r.next())
+} else {
+    // if we get here then there were no rows at all
+}
+</code></pre>
+<p>The <code>do-while</code> loop lets us write a block that is called exactly once for every row, while still letting us do something special with the first row without needing an ugly <code>boolean isFirstRow</code> flag or something like that.</p>
+<p>Inside a result set, as long as we're sure we're on a row, we can read values from columns by declaring their name and type:</p>
+<pre><code class="language-java">int id = r.getInt(&quot;id&quot;);
+</code></pre>
+<p>This tells JDBC that there is a column named <code>id</code> of type <code>int</code>, and to get its value. (You get an exception if the name or type are wrong.) Other methods include <code>getString</code>, <code>getDouble</code> etc.</p>
+<p>For this reason, in your SQL statement, you want to be clear about the names and order of the colums you're fetching:</p>
+<ul>
+<li>If a column is something more complicated than a field, then give it an alias, e.g. <code>SELECT COUNT(1) AS c</code> then you can do <code>getInt(&quot;c&quot;)</code>.</li>
+<li>Never do <code>SELECT *</code> from JDBC, always list exactly the columns you need. This both fixes the order you get them in, and is more efficient if you don't need all of them.</li>
+</ul>
+<h2><a class="header" href="#exercise-1" id="exercise-1">Exercise 1</a></h2>
+<p>Modify the example program so it takes a party ID as a parameter, and displays only that party's name, or the string &quot;No party with this ID.&quot; if there isn't one in the database.</p>
+<p>To do this you will have to change the following:</p>
+<ul>
+<li><code>main</code> reads a parameter off <code>args</code>, or prints an error message if you didn't pass an argument.</li>
+<li><code>main</code> passes the parameter as an extra int argument to <code>readData</code>.</li>
+<li>Set the parameter as a question mark in the prepared statement, and then bind the parameter to the statement. </li>
+</ul>
+<p>The command for binding a parameter is <code>s.setInt(pos, value)</code> where <code>pos</code> is the index of the parameter (question mark) in the string, <em>starting the count at 1 not 0</em>. So you simply want <code>s.setInt(1, value)</code>. Of course there are also <code>setString</code> etc. and these methods on the statement take a second parameter of the appropriate type.</p>
+<p>The easiest way to run your command with a parameter is to build a jar with dependencies and then to call <code>java -cp JARFILE MAINCLASS PARAMETERS</code>, any further command line parameters to Java after the main class get passed as arguments to this class.</p>
+<h2><a class="header" href="#exercise-2" id="exercise-2">Exercise 2</a></h2>
+<p>A service is a piece of code that can be called by other code and typically accesses resources for them. This exercise is about writing a <code>DataService</code> that abstracts away the JDBC access for the rest of your program.</p>
+<p>Create the following classes in their own files (you can use private fields with public constructors/getters/setters if you prefer):</p>
+<pre><code class="language-java">public class Party {
+    public int id;
+    public String name;
+}
+
+public class Ward {
+    public int id;
+    public String name;
+    public int electorate;
+}
+
+public class Candidate {
+    public int id;
+    public String name;
+    public Party party;
+    public Ward ward;
+    public int votes;
+}
+</code></pre>
+<p>Now, write a class <code>DataService</code> with the following description:</p>
+<ul>
+<li>DataService implements <code>AutoCloseable</code>. It has one public constructor that takes a connection string and creates a <code>Connection</code> using this string, which it stores in a private field. The <code>close()</code> method closes the connection.</li>
+<li>A method <code>public List&lt;Party&gt; getParties()</code> that returns a list of all parties in the database, by using JDBC on the provided connection.</li>
+<li>A method <code>public Party getParty(int id)</code> that returns the party for this id, if there is one, otherwise null.</li>
+</ul>
+<p>These methods should handle all possible cases (e.g. <code>getWards</code> must still work if there are no wards in the database). but they should not throw an SQLException. Instead, make your own exception class called something like <code>DataServiceException</code> derived from <code>RuntimeException</code> (this can be an inner class of <code>DataService</code> if you want) and wrap the <code>SQLException</code> in that.</p>
+<p><em>This is not an excuse for sloppy programmers to ignore the exceptions, by the way!</em></p>
+<p>Now, adapt the <code>Example</code> program so that</p>
+<ul>
+<li>The main program uses the <code>DataService</code> and the domain classes (e.g. <code>Party</code>) and doesn't know about JDBC directly.</li>
+<li>If you pass an id as a parameter, it fetches the party with this id (if there is one) and displays party information from the <code>Party</code> instance.</li>
+<li>If you don't pass an id, it displays the list of all parties.</li>
+</ul>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>The <code>DataService</code> class is a resource, and it opens a connection in its constructor and closes it when you close the instance. This is a standard pattern and works perfectly if the programmer using it uses it in a try-with-resources block.</p>
+<p>However, someone could create an instance, close it manually, and then try to continue using it, which would cause a <code>SQLException</code> on the connection. To handle this case by programming defensively, you could:</p>
+<ol>
+<li>In the close method, set the connection field to null after closing it as a sign that this instance has been closed.</li>
+<li>In all other methods, check that the connection field is not null first thing in the method and throw and exception if it is (you can write your own private method for this). According to Java conventions, the correct exception to throw in this case is a <code>java.lang.IllegalStateException</code> which means roughly <em>you are calling a method at the wrong time</em> - in this case after closing the resource in question.</li>
+</ol>
+</div>
+</div>
+<h2><a class="header" href="#exercise-3" id="exercise-3">Exercise 3</a></h2>
+<p>Implement a <code>Candidate getCandidate(int id)</code> method on the data service too. This will require you to use a JOIN in your SQL and to create instances of all three domain classes.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../databases/4/sql-java.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../databases/4/hibernate.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../databases/4/sql-java.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../../databases/4/hibernate.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
