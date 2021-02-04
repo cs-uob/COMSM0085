@@ -18,9 +18,13 @@ Note that, as you can see on the last entry of each line, most files here are li
   will act like whatever it was invoked as.
   (from `busybox --help`)
 
-Busybox is a distribution of the many common POSIX commands (you can see which ones with `busybox --help`) packed into a single program. This means that you can run for example `busybox ls` to run the ls command. However, when you call `ls` directly, your shell runs the `/bin/ls` command, which is just a link to busybox. How does it know which command you want?
+Busybox is a distribution of the many common POSIX commands (you can see which ones with `busybox --help`) packed into a single program. This means that you can run for example `busybox ls` to run the ls command. However, when you call `ls` directly, your shell runs the `/bin/ls` command, which is just a link to busybox. 
+
+|||advanced
+How does busybox know which command you want?
 
 Remember that in C, each program's main function can take an argument vector `char **argv` and that `argv[0]` is the name of the file that was used to call the program - this is what busybox looks at when you call `ls` or any of the other linked programs in `/bin`.
+|||
 
 Busybox is used in alpine linux because alpine is a minimal linux distribution and busybox is a minimal implementation of lots of common commands. As a result, the alpine/busybox version of say ls might not have as many options as the ls on the lab machines.
 

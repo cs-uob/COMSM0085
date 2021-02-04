@@ -67,7 +67,7 @@ The keys that SSH uses implement digital signatures. Each key comes as a pair of
 
 Let's create a key pair:
 
-  * Type the command `ssh-keygen -t ed25519`. (If you get an "unknown key type" error, then you are using an outdated version of OpenSSH and for security reasons you should upgrade immediately.)
+  * Type the command `ssh-keygen -t ed25519`. (If you get an "unknown key type" error, then you are using an outdated version of OpenSSH and for security reasons you should upgrade immediately.) _Note: type `ed25519` directly, do not replace this with your username. It stands for the "Edwards curve over the prime `2^255-19`" cryptographic group, if you want to know._
   * When it asks you where to save the file, just press ENTER to accept the default, but make a note of the path - normally it's a folder `.ssh` in your home directory.
   * If it asks you "Overwrite (y/n)", say no (n, then ENTER) as it means you already have a key for something else - either ssh directly or something that uses it, like github. Restart key generation but pick a different file name.
   * When it asks you for a password, I recommend that you just press ENTER which doesn't set a password (good security, maximum convenience). If you do set a password, it will ask you to type it twice and then you will need the password and the key file to use this key (maximum security, less convenient).
@@ -90,16 +90,22 @@ Have a look at the folder where your keys are stored. `ls -l ~/.ssh` will do thi
 
 Note the permissions on these files in my example. The private key (first line) has a permissions line at the start of `(-)(rw-)(---)(---)` where I've added brackets to make clearer what is going on. The first bracket only applies to special file types (e.g. `d` for directory). Next, the owner permissions which are in this case read and write (the third one would be `x` if the file were an executable program). The last two brackets are the permissions for the group and for everyone else, and these are all off so no-one except yourself (and root) can read your key file. OpenSSH is picky about this and will refuse to use a private key that other people have access to.
 
-The public key permissionas are `(-)(rw-)(r--)(r--)` which means that the owner can read and write, and the group and everyone else (assuming they have access to the folder) can read the public key, which is fine. It's a public key after all.
+The public key permissions are `(-)(rw-)(r--)(r--)` which means that the owner can read and write, and the group and everyone else (assuming they have access to the folder) can read the public key, which is fine. It's a public key after all.
 
 `known_hosts` is where SSH stores the public keys of computers you've already connected to: every time you answer yes to an "Are you sure you want to connect?" question when you connect to a new computer for the first time, it stores the result in this file and won't ask you again the next time. The file format is one key per line and you can edit the file yourself if you want to.
 
 ## Set up key access on seis
 
-First, we need to upload our public key to seis. The command for this is `scp` for secure copy, which works like `cp` but allows you to include remote hosts and does the copy over SSH:
+First, we need to upload our public key to the `~/.ssh` directory on seis. Even before this, we need to make sure the directory exists though:
+
+  - Log in to seis with ssh and your password.
+  - Try `ls -al ~/.ssh`. If it complains the folder doesn't exist, create it with `mkdir ~/.ssh`.
+  - Log out of seis again with `exit`.
+
+The command for copying a file is `scp` for secure copy, which works like `cp` but allows you to include remote hosts and does the copy over SSH. Run this from your own machine:
 
 ```
-scp ~/.ssh/id_ed25519.pub "USERNAME@seis.bris.ac.uk:~/.ssh"
+scp ~/.ssh/id_ed25519.pub "USERNAME@seis.bris.ac.uk:~/.ssh/"
 ```
 
 Obviously, replace USERNAME with your university username. This will ask for your password again. Note two things here: first, to set up access on seis, we are uploading the public key - not the private key! - and secondly, that we put double quotes around the destination. This is because the `~` character meaning home directory is handled by our shell, but we don't want our local shell to expand it, instead we want the shell on seis launched by scp to expand it to our home directory on that machine.
@@ -141,10 +147,8 @@ This way, you can create one SSH key and use it for university, github and anyth
 |||
 
   * Log in to seis with `ssh USERNAME@seis.bris.ac.uk`. You should not need a password anymore.
-  * Copy your public key file to the lab machines with `scp ~/.ssh/id_ed25519.pub "rd-mvb-linuxlab.bristol.ac.uk:~/.ssh"`. 
-  
- This step is necessary because your home directory on seis is not the same as on the lab machines. Note the double quotes again, and because you run this command on seis you don't need to repeat your username as it is the same for both machines involved. This command will ask for your password.
-
+  * Log in to the lab machines with `ssh rd-mvb-linuxlab.bristol.ac.uk` and enter your password. Check that the `~/.ssh` folder exists and create it if it doesn't, as you did before on seis, then `exit` again to seis.
+  * Copy your public key file from seis to the lab machines with `scp ~/.ssh/id_ed25519.pub "rd-mvb-linuxlab.bristol.ac.uk:~/.ssh/"`. This will ask for your password again.
   * Log in to a lab machine with `ssh rd-mvb-linuxlab.bristol.ac.uk` and enter your password one last time. On the lab machine, install the public key with the following:
 
 ```
@@ -153,13 +157,17 @@ cat id_ed25519.pub >> authorized_keys
 chmod 600 authorized_keys
 ```
 
-Everything should be set up now: do `exit` twice to get back to your own machine, and try logging in to a lab machine with
+  - Log out of the lab machine and seis again by typing `exit` twice.
+
+The steps above were necessary because your home directory on seis is not the same as on the lab machines. However, your home directory is the same across all lab machines, so you don't need to install the key on each one separately. You might have noticed that when copying or `ssh`-ing from seis to the lab machines, you don't have to repeat your username: this is because it is the same on all these machines.
+
+From now on, from you own machine, you should be able to get directly into a lab machine with the following command, which should not ask for your password at all:
 
 ```
 ssh -A -J USERNAME@seis.bris.ac.uk USERNAME@rd-mvb-linuxlab.bristol.ac.uk
 ```
 
-This should now work directly, and without passwords.
+_Unfortunately, `-J` will not work on a windows CMD terminal, although it should work on Windows Subsystem for Linux. Once we have set up a configuration file, there will be a way to work around this problem. Mac and linux users should be fine though, as should anyone running these commands from an Alpine VM on their own machine, whatever their host OS._
 
 ## Setting up a configuration file
 
@@ -190,6 +198,25 @@ If you want to learn another useful skill as you go along, here is one way to ed
 Nano is installed on seis and on the lab machines, so you can use it to edit a file remotely.
 
 However, nano is not installed by default on alpine linux which we will be using for a lot of this unit - you can install it yourself with `sudo apk add nano`. 
+
+And something for Windows users:
+
+If you are on Windows and are using OpenSSH through a CMD terminal, a bug in OpenSSH prevents the `-J` option from working. However, you can write your file like this instead:
+
+```
+# ~/.ssh/config file for WINDOWS CMD users only
+
+Host seis
+  HostName seis.bris.ac.uk
+  User USERNAME
+
+Host lab
+  HostName rd-mvb-linuxlab.bristol.ac.uk
+  ProxyCommand ssh.exe -W %h:%p seis
+  User USERNAME
+```
+
+This should get `ssh lab` to work for you as well.
 |||
 
 ## Using different keys

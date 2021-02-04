@@ -4,6 +4,7 @@
   - [Secure shell](./act1/ssh.md)
   - [Installing vagrant and alpine linux](./act1/install.md)
   - [Alpine linux system administration](./act1/admin.md)
+  - [Shell expansion](./act1/shell.md)
   - [Git, part 1](./act1/git1.md)
 - [Activity 2](./act2/index.md)
   - [File permissions](./act2/permissions.md)

@@ -100,7 +100,7 @@ Let's go through this step by step.
   * A pipe is a pair of file descriptors for reading and writing, implemented as an array of length 2. The second typedef is C syntax for defining `Pipe` with a capital P to be `fd[2]` We use a capital P because lowercase `pipe` is already in use for the function that sets up a pipe.
   * The functions `Reader` and `Writer` are just for convenience.
   * In main, we declare a variable of type `Pipe` and open it with `pipe()`. Like all POSIX functions this returns a negative number in case of errors, and we have to check for this: it's not safe to use the pipe if it was not opened correctly. The pipe does not need a name as it's local to our program, but you can print the value of the integers if you like, it should be something like (3, 4) as 0-2 are already in use for standard input, output and error.
-  * In this example we want to use a pipe for writing to, so we close the reding end first. This is important when sharing a pipe between two processes: only one process should have each end open. (There are scenarios where you might want both ends of a pipe open in the same process, but they are more advanced than what we are doing here.)
+  * In this example we want to use a pipe for writing to, so we close the reading end first. This is important when sharing a pipe between two processes: only one process should have each end open. (There are scenarios where you might want both ends of a pipe open in the same process, but they are more advanced than what we are doing here.)
   * In the line where the comment is, we can write to the pipe - you will see how soon.
   * Finally, before returning, we close the writing end of the pipe to ensure the process on the other end knows we're done: if we don't do this, they could get a "broken pipe" (EPIPE) error.
 
@@ -119,7 +119,7 @@ This is absolutely fine except if we want to debug the function being called, as
 
 Of course, if you want to use line-based features of debuggers like breakpoints a lot, you might even want to put the check on a separate line.
 
-You might have wondered if the all-in-one pattern is because it "swallows" the return value. That is not a problem: we could adapt check to return its first parameter as the return value if it's not an error, then where you do need the value you can do things like
+You might have wondered if the problem with the all-in-one pattern is that it "swallows" the return value. That is not a problem: we could adapt `check` to return its first parameter as the return value if it's not an error, then where you do need the value you can do things like
 
 ```C
 int pid = check(fork(), "trying to fork");

@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="databases/1/sql-introduction.html"><strong aria-hidden="true">1.</strong> SQL introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="databases/1/setup.html"><strong aria-hidden="true">1.1.</strong> Set up the database</a></li><li class="chapter-item expanded "><a href="databases/1/er-diagram.html"><strong aria-hidden="true">1.2.</strong> ER diagram</a></li><li class="chapter-item expanded "><a href="databases/1/er2.html"><strong aria-hidden="true">1.3.</strong> More modelling</a></li></ol></li><li class="chapter-item expanded "><a href="databases/2/sql-beginners.html"><strong aria-hidden="true">2.</strong> SQL for beginners</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="databases/2/explore-database.html"><strong aria-hidden="true">2.1.</strong> Explore the database</a></li><li class="chapter-item expanded "><a href="databases/2/elections.html"><strong aria-hidden="true">2.2.</strong> Bristol elections</a></li><li class="chapter-item expanded "><a href="databases/2/census.html"><strong aria-hidden="true">2.3.</strong> The UK census</a></li><li class="chapter-item expanded "><a href="databases/2/normalforms.html"><strong aria-hidden="true">2.4.</strong> Normal forms</a></li></ol></li><li class="chapter-item expanded "><a href="databases/3/sql-intermediate.html"><strong aria-hidden="true">3.</strong> Intermediate SQL</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="databases/3/exercises.html"><strong aria-hidden="true">3.1.</strong> Exercises</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="databases/1/sql-introduction.html"><strong aria-hidden="true">1.</strong> SQL introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="databases/1/setup.html"><strong aria-hidden="true">1.1.</strong> Set up the database</a></li><li class="chapter-item expanded "><a href="databases/1/er-diagram.html"><strong aria-hidden="true">1.2.</strong> ER diagram</a></li><li class="chapter-item expanded "><a href="databases/1/er2.html"><strong aria-hidden="true">1.3.</strong> More modelling</a></li></ol></li><li class="chapter-item expanded "><a href="databases/2/sql-beginners.html"><strong aria-hidden="true">2.</strong> SQL for beginners</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="databases/2/explore-database.html"><strong aria-hidden="true">2.1.</strong> Explore the database</a></li><li class="chapter-item expanded "><a href="databases/2/elections.html"><strong aria-hidden="true">2.2.</strong> Bristol elections</a></li><li class="chapter-item expanded "><a href="databases/2/census.html"><strong aria-hidden="true">2.3.</strong> The UK census</a></li><li class="chapter-item expanded "><a href="databases/2/normalforms.html"><strong aria-hidden="true">2.4.</strong> Normal forms</a></li></ol></li><li class="chapter-item expanded "><a href="databases/3/sql-intermediate.html"><strong aria-hidden="true">3.</strong> Intermediate SQL</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="databases/3/exercises.html"><strong aria-hidden="true">3.1.</strong> Exercises</a></li></ol></li><li class="chapter-item expanded "><a href="databases/4/sql-java.html"><strong aria-hidden="true">4.</strong> SQL and Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="databases/4/jdbc.html"><strong aria-hidden="true">4.1.</strong> JDBC</a></li><li class="chapter-item expanded "><a href="databases/4/hibernate.html"><strong aria-hidden="true">4.2.</strong> Hibernate</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -573,6 +573,496 @@ Where an identifier is given in the question you may use it, e.g. when I say &qu
 <li>Create a table with three columns <code>occupation</code>, <code>women</code> and <code>men</code> and one row per occupation class. The <code>occupation</code> column should list the occupation class names. The <code>women</code> and <code>men</code> columns in each row should list the total number of women resp. men in the row's occupation class in the whole dataset. The intention here is not to have to copy-paste a subquery 9 times.</li>
 <li>The same as question 9, but now with a 10th row in the table listing the value for all of England. You can use the string <code>'England'</code> for the region column.</li>
 </ol>
+<h1><a class="header" href="#sql-and-java" id="sql-and-java">SQL and Java</a></h1>
+<p>In this activity you will learn how to connect to an SQL database from a Java program using the JDBC interface and the Hibernate ORM.</p>
+<h2><a class="header" href="#videos-3" id="videos-3">Videos</a></h2>
+<p>The videos for this activity are:</p>
+<table><thead><tr><th>Video</th><th align="right">Length</th><th>Mediasite Link</th></tr></thead><tbody>
+</tbody></table>
+<h2><a class="header" href="#exercises-5" id="exercises-5">Exercises</a></h2>
+<p>The exercises for this activity are:</p>
+<ul>
+<li><a href="databases/4/./jdbc.html">JDBC</a></li>
+<li><a href="databases/4/./hibernate.html">Hibernate</a></li>
+</ul>
+<h1><a class="header" href="#jdbc" id="jdbc">JDBC</a></h1>
+<p>In this activity you will learn to connect to a SQL database using Java and the JDBC classes.
+JDBC (Java DataBase Connectivity) is a low-level, not particularly object-oriented mechanism for accessing a database, on top of which other systems (e.g. Hibernate ORM) can be built.</p>
+<h2><a class="header" href="#jdbc-interfaces" id="jdbc-interfaces">JDBC Interfaces</a></h2>
+<p>The JDBC classes live in the <code>java.sql</code> package. Most methods on these classes can throw a <code>SQLException</code> which is a checked exception, meaning your code won't compile if you don't handle it. For simple programs, this means wrapping in a <code>RuntimeException</code> to terminate the program if something goes wrong:</p>
+<pre><code class="language-java">try {
+    // do stuff with JDBC
+} catch (SQLException e) {
+    throw new RuntimeException(e);
+}
+</code></pre>
+<p>Two comments on this pattern:</p>
+<ol>
+<li>In a real program e.g. web server, you of course do not want to take the server down whenever an individual method causes an error. Here you need to do something like log the error, and display an error message to that particular caller (e.g. HTTP 500 Internal Server Error) while keeping the rest of the server running. How you achieve this depends on which libraries or frameworks you are using.</li>
+<li>Most JDBC work will actually take place in try-with-resources blocks, which work the same as far as exception handling is concerned but have an extra bracketed term immediately after the <code>try</code>.</li>
+</ol>
+<h2><a class="header" href="#try-with-resources" id="try-with-resources">Try-with-resources</a></h2>
+<p>A resource is something that you need to close exactly once when you are done with it, but only if it got properly opened in the first place. For example, in C heap memory is a resource: you acquire (open) it with <code>malloc</code>, and when you are done you must call <code>free</code> exactly once on the memory, except if <code>malloc</code> returned NULL in the first place (allocation failed) in which case calling <code>free</code> is an error. (You do check your <code>malloc</code> return value for NULL, don't you?) It is also an error to call <code>free</code> twice on the same memory, and it is a memory leak not to call it at all.</p>
+<p>In Java, we don't have to manage memory by hand, but there are other kinds of resources:</p>
+<ul>
+<li>Files.</li>
+<li>Network connections.</li>
+<li>Graphics objects in some drawing/window systems.</li>
+<li>Database connections.</li>
+</ul>
+<p>To help manage these, Java provides an interface <code>java.lang.AutoCloseable</code> with a single method <code>void close()</code> and the try-with-resources construction:</p>
+<pre><code class="language-java">try (Resource r = ...) {
+    // do things with r here
+}
+</code></pre>
+<p>As long as the resource implements <code>AutoCloseable</code> (it's a syntax error to use this pattern otherwise), this pattern guarantees that </p>
+<ol>
+<li>If the initialisation statement (in the round brackets) fails, either by returning null or throwing an exception, then the block will never be executed.</li>
+<li>If the initialisation succeeds, then when the block exits, <code>r.close()</code> will be called exactly once, whether the block reached its end, exited early (e.g. return statement) or threw an exception.</li>
+</ol>
+<p>A try-with-resources block can, but does not have to, include one or more <code>catch</code> statements, in which case they apply to the block, the initialisation statement and the implied <code>close()</code>.</p>
+<p>You can also include more than one resource in the try statement by separating them with semicolons inside the bracketed term.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>Earlier versions of java used the <code>finally</code> keyword to achieve something similar, but it was more challenging to get right especially if the close function could also throw an exception. Since Java 7, try-with-resources is the correct pattern to use and you should almost never need a <code>finally</code> block. You can implement <code>AutoCloseable</code> on your own classes to support this.</p>
+</div>
+</div>
+<h2><a class="header" href="#opening-a-connection" id="opening-a-connection">Opening a connection</a></h2>
+<p>You open a connection by calling</p>
+<pre><code class="language-java">try(Connection c = DriverManager.getConnection(connection_string)) {
+    // do stuff with connection
+} catch (SQLException e) {
+    // handle exception, for example by wrapping in RuntimeException
+}
+</code></pre>
+<p>The connection string is a string containing a URL such as </p>
+<pre><code>jdbc:mariadb://localhost:3306/DATABASE?user=USER&amp;localSocket=/var/run/mysqld/mysqld.sock
+</code></pre>
+<p>When you try and open a connection, Java looks for a driver on your classpath that implements the addressing scheme (e.g. <code>mariadb</code>) that you have requested. This makes setting up the classpath a bit tricky, but we have maven to manage that for us.</p>
+<p>However, we need to understand a bit about networking and security to make sense of that URL.</p>
+<p>In a traditional database set-up, the database lives on its own machine (or cluster of machines) and applications connect to it over the network. To do this, by default, databases listen on TCP port 3306.</p>
+<p>For security reasons, a competent adminstrator will set things up so that there is a firewall preventing access to the database from any machines except those of applications (and possibly developers and administrators), the database machine will certainly not be available directly from the internet. Then, applications will also need a username and password to connect to the database. Since these passwords are used by applications, and do not need to be remembered by humans, there is absolutely no excuse for choosing weak ones: the absolute minimum is something with 128 bits of entropy. Computers have no problems remembering something this long! In this case you add the extra <code>pass=</code> argument to the connection string, and to prevent passwords being sent unencrypted over the network (even if it's your internal network) you can also set up TLS or a similar tunneling technology.</p>
+<p>On our Alpine machine, when we set up mariadb by default, the database server and client are both running on the same machine, so you can gain both security and performance by not using a network connection at all - instead when you type <code>mysql</code> it connects over a POSIX socket, another special type of file (type <code>s</code> in <code>ls -l</code>), in this case <code>/var/run/mysqld/mysqld.sock</code>. A POSIX socket is like a pair of pipes in that it allows bidirectional, concurrent communication between different processes, but with an API closer to that of a network (TCP) socket.</p>
+<p>The point of all this discussion is that for your alpine machine, your connection string will look like this (all on one line with no newlines):</p>
+<pre><code>jdbc:mariadb://localhost:3306/DATABASE?user=USER&amp;localSocket=/var/run/mysqld/mysqld.sock
+</code></pre>
+<p>The <code>localSocket</code> option overrides the host/port at the start. For this to work, you need the mariadb driver and a library called JNA (Java Native Access) on your classpath, and of course your system needs to support sockets.</p>
+<p>The more standard connection string for a TCP connection would look like this:</p>
+<pre><code>jdbc:mariadb://localhost:3306/DATABASE?user=USER
+</code></pre>
+<p>Which really does connect to TCP port 3306 on localhost.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>You can configure this on your Alpine machine if you wanted to: the main mariadb configuration file is <code>/etc/my.cnf</code> which in our case just contains a statement to include all files in the <code>/etc/my.cnf.d/</code> folder; in there we have <code>mariadb-server.cnf</code> which contains the lines</p>
+<pre><code>[mysqld]
+skip-networking
+</code></pre>
+<p>Remove the last line and restart the server (<code>rc-service mariadb restart</code>) and then your mariadb server (<code>mysqld</code>) will really be listening on port 3306.</p>
+<p>We didn't notice this with the console client <code>mysql</code> because that by default tries the socket first, and then port 3306 if the socket doesn't exist. However the JDBC driver will only try exactly the options you give, and if you don't tell it to use the socket, it will try port 3306 and throw and exception if nothing is listening there.</p>
+</div>
+</div>
+<h2><a class="header" href="#pom-file" id="pom-file">POM file</a></h2>
+<p>Under <a href="databases/4/../resources/jdbc-example.tar">resources/jdbc/jdbc-example.tar</a> you can find a minimal JDBC application that uses the <code>elections</code> database. Download this to your Alpine VM with <code>wget</code> (or get it from the unit repository, if you have cloned it there) and extract it to an otherwise empty folder (<code>tar xvf jdbc-example.tar</code>). It contains a file <code>pom.xml</code> and a file <code>src/main/java/org/example/Example.java</code>.</p>
+<p>In the POM file, we note the following dependencies:</p>
+<pre><code class="language-xml">&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.mariadb.jdbc&lt;/groupId&gt;
+        &lt;artifactId&gt;mariadb-java-client&lt;/artifactId&gt;
+        &lt;version&gt;2.7.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;net.java.dev.jna&lt;/groupId&gt;
+        &lt;artifactId&gt;jna&lt;/artifactId&gt;
+        &lt;version&gt;5.6.0&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;net.java.dev.jna&lt;/groupId&gt;
+        &lt;artifactId&gt;jna-platform&lt;/artifactId&gt;
+        &lt;version&gt;5.6.0&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<p>The first one is the mariadb JDBC driver. When maven runs a program, it automatically puts the dependencies on the classpath; if you left this off then creating the <code>Connection</code> would throw an exception.</p>
+<p>The other two are the JNA (Java Native Access) libraries for your platform, that the driver uses to connect to a POSIX socket. If you left these off, the driver would ignore the <code>localSocket</code> option, try to connect to port 3306, and throw an exception because there is nothing listening there (unless you have configured it).</p>
+<ul>
+<li>Run <code>mvn compile</code> in the folder with the POM file to download the dependencies and compile the example program.</li>
+<li>Run <code>mvn exec:java</code> to run the program. This uses the <code>exec-maven-plugin</code> configured later in the POM file to launch the program with the main class <code>org.example.Example</code> and the correct classpath. It should print out a list of parties.</li>
+<li>If you want, you can use <code>mvn package</code> to build two JAR files in <code>target</code>: one is just the compiled example class, but the more interesting one has <code>jar-with-dependencies</code> in its name and contains the compiled class and all dependencies, namely the JDBC mariadb driver and JNA (and all their dependencies). You can run this jar with <code>java -cp jdbc-example-0.1-jar-with-dependencies.jar org.example.Example</code> without using maven if you want to. This file is built by the <code>maven-assembly-plugin</code> which we have also configured in the POM file.</li>
+</ul>
+<h2><a class="header" href="#sql-from-java" id="sql-from-java">SQL from Java</a></h2>
+<p>In the <code>Example.java</code> class, we can see an example of JDBC in action:</p>
+<pre><code class="language-java">private void readData(Connection c) {
+    String SQL = &quot;SELECT id, name FROM Party&quot;;
+    try (PreparedStatement s = c.prepareStatement(SQL)) {
+        ResultSet r = s.executeQuery();
+        while (r.next()) {
+            int id = r.getInt(&quot;id&quot;);
+            String name = r.getString(&quot;name&quot;);
+            System.out.println(&quot;Party #&quot; + id + &quot; is: &quot; + name);
+        }
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+}
+</code></pre>
+<ul>
+<li>The SQL command goes in a string. If we wanted to add parameters for a prepared statement, we put question marks here.</li>
+<li>We create a <code>PreparedStatement</code> in another try-with-resources block: we need to close statements as soon as we are done with them, but it's ok for a program to keep the database connection open for as long as it runs.</li>
+<li>In this case, we have no parameters to pass, so we execute the query to get a <code>ResultSet</code>, a &quot;cursor&quot; (a kind of iterator) on the results. (A <code>ResultSet</code> is also a resource, but it closes automatically when its statement closes, so we don't have to handle this ourselves.)</li>
+<li>We iterate over the rows of the result and do something with them, in this case printing to standard output.</li>
+<li>All these operations can throw an <code>SQLException</code>, so we catch it at the end, and because this is just a small example program, we handle it by throwing an exception to terminate the whole program.</li>
+</ul>
+<h2><a class="header" href="#result-sets" id="result-sets">Result Sets</a></h2>
+<p>Java is an object-oriented language with a compile-time type system: if you declare that a <code>class Person</code> has a field <code>int age</code>, then the compiler will stop you from ever trying to put a string in there. JDBC cannot offer you this level protection because when you compile your Java program, you don't know what tables and fields exist in the database (even if you do know, someone could change them after the program has been compiled).
+So you have to fall back to some more C-like patterns for using the database.</p>
+<p>A result set can either be pointing at a row in the database or not. If it is pointing at a row, you can read values with the <code>get...</code> methods. If the result set is not pointing at a row, then trying to read anything throws an SQLException. The rules here are:</p>
+<ul>
+<li>When you get the result set back, it starts out pointing <em>before the first row</em>, so reading immediately would throw an error.</li>
+<li>Calling <code>boolean next()</code> tries to advance a row. If this returns true, then you have got a new row and can read from it; if you get false then you have stepped beyond the last row and it would be an error to read. (If there are no rows in your result at all, then the first call to <code>next()</code> will already return false.)</li>
+</ul>
+<p>The correct pattern to use the result set is normally a while loop, as each time you land in the loop body you're guaranteed to have found a row:</p>
+<pre><code class="language-java">while (r.next()) {
+    // we have a row, do something with it
+}
+</code></pre>
+<p>There are however a couple of exceptions to this pattern. First, some statements like <code>select count(...)</code> will always return exactly one row - maybe the value in the row will be zero, but that's not the same thing as no row at all - so in this case you can do</p>
+<pre><code class="language-java">if (r.next()) {
+    // this should always happen    
+} else {
+    // this should never happen
+    // throw an exception or something
+}
+</code></pre>
+<p>It would still be an error to access the one row before calling <code>next()</code>, and we are not the kind of people who ignore return values from API calls.</p>
+<p>Another special case is if you want to do something special with the first row:</p>
+<pre><code class="language-java">if (r.next()) {
+    // if we get here then there was at least one row
+    // we're on the first row and can do something special with it
+    do {
+        // this block will be called exactly once for every row
+        // including the first one
+    } while (r.next())
+} else {
+    // if we get here then there were no rows at all
+}
+</code></pre>
+<p>The <code>do-while</code> loop lets us write a block that is called exactly once for every row, while still letting us do something special with the first row without needing an ugly <code>boolean isFirstRow</code> flag or something like that.</p>
+<p>Inside a result set, as long as we're sure we're on a row, we can read values from columns by declaring their name and type:</p>
+<pre><code class="language-java">int id = r.getInt(&quot;id&quot;);
+</code></pre>
+<p>This tells JDBC that there is a column named <code>id</code> of type <code>int</code>, and to get its value. (You get an exception if the name or type are wrong.) Other methods include <code>getString</code>, <code>getDouble</code> etc.</p>
+<p>For this reason, in your SQL statement, you want to be clear about the names and order of the colums you're fetching:</p>
+<ul>
+<li>If a column is something more complicated than a field, then give it an alias, e.g. <code>SELECT COUNT(1) AS c</code> then you can do <code>getInt(&quot;c&quot;)</code>.</li>
+<li>Never do <code>SELECT *</code> from JDBC, always list exactly the columns you need. This both fixes the order you get them in, and is more efficient if you don't need all of them.</li>
+</ul>
+<h2><a class="header" href="#exercise-1" id="exercise-1">Exercise 1</a></h2>
+<p>Modify the example program so it takes a party ID as a parameter, and displays only that party's name, or the string &quot;No party with this ID.&quot; if there isn't one in the database.</p>
+<p>To do this you will have to change the following:</p>
+<ul>
+<li><code>main</code> reads a parameter off <code>args</code>, or prints an error message if you didn't pass an argument.</li>
+<li><code>main</code> passes the parameter as an extra int argument to <code>readData</code>.</li>
+<li>Set the parameter as a question mark in the prepared statement, and then bind the parameter to the statement. </li>
+</ul>
+<p>The command for binding a parameter is <code>s.setInt(pos, value)</code> where <code>pos</code> is the index of the parameter (question mark) in the string, <em>starting the count at 1 not 0</em>. So you simply want <code>s.setInt(1, value)</code>. Of course there are also <code>setString</code> etc. and these methods on the statement take a second parameter of the appropriate type.</p>
+<p>The easiest way to run your command with a parameter is to build a jar with dependencies and then to call <code>java -cp JARFILE MAINCLASS PARAMETERS</code>, any further command line parameters to Java after the main class get passed as arguments to this class.</p>
+<h2><a class="header" href="#exercise-2" id="exercise-2">Exercise 2</a></h2>
+<p>A service is a piece of code that can be called by other code and typically accesses resources for them. This exercise is about writing a <code>DataService</code> that abstracts away the JDBC access for the rest of your program.</p>
+<p>Create the following classes in their own files (you can use private fields with public constructors/getters/setters if you prefer):</p>
+<pre><code class="language-java">public class Party {
+    public int id;
+    public String name;
+}
+
+public class Ward {
+    public int id;
+    public String name;
+    public int electorate;
+}
+
+public class Candidate {
+    public int id;
+    public String name;
+    public Party party;
+    public Ward ward;
+    public int votes;
+}
+</code></pre>
+<p>Now, write a class <code>DataService</code> with the following description:</p>
+<ul>
+<li>DataService implements <code>AutoCloseable</code>. It has one public constructor that takes a connection string and creates a <code>Connection</code> using this string, which it stores in a private field. The <code>close()</code> method closes the connection.</li>
+<li>A method <code>public List&lt;Party&gt; getParties()</code> that returns a list of all parties in the database, by using JDBC on the provided connection.</li>
+<li>A method <code>public Party getParty(int id)</code> that returns the party for this id, if there is one, otherwise null.</li>
+</ul>
+<p>These methods should handle all possible cases (e.g. <code>getWards</code> must still work if there are no wards in the database). but they should not throw an SQLException. Instead, make your own exception class called something like <code>DataServiceException</code> derived from <code>RuntimeException</code> (this can be an inner class of <code>DataService</code> if you want) and wrap the <code>SQLException</code> in that.</p>
+<p><em>This is not an excuse for sloppy programmers to ignore the exceptions, by the way!</em></p>
+<p>Now, adapt the <code>Example</code> program so that</p>
+<ul>
+<li>The main program uses the <code>DataService</code> and the domain classes (e.g. <code>Party</code>) and doesn't know about JDBC directly.</li>
+<li>If you pass an id as a parameter, it fetches the party with this id (if there is one) and displays party information from the <code>Party</code> instance.</li>
+<li>If you don't pass an id, it displays the list of all parties.</li>
+</ul>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>The <code>DataService</code> class is a resource, and it opens a connection in its constructor and closes it when you close the instance. This is a standard pattern and works perfectly if the programmer using it uses it in a try-with-resources block.</p>
+<p>However, someone could create an instance, close it manually, and then try to continue using it, which would cause a <code>SQLException</code> on the connection. To handle this case by programming defensively, you could:</p>
+<ol>
+<li>In the close method, set the connection field to null after closing it as a sign that this instance has been closed.</li>
+<li>In all other methods, check that the connection field is not null first thing in the method and throw and exception if it is (you can write your own private method for this). According to Java conventions, the correct exception to throw in this case is a <code>java.lang.IllegalStateException</code> which means roughly <em>you are calling a method at the wrong time</em> - in this case after closing the resource in question.</li>
+</ol>
+</div>
+</div>
+<h2><a class="header" href="#exercise-3" id="exercise-3">Exercise 3</a></h2>
+<p>Implement a <code>Candidate getCandidate(int id)</code> method on the data service too. This will require you to use a JOIN in your SQL and to create instances of all three domain classes.</p>
+<h1><a class="header" href="#hibernate" id="hibernate">Hibernate</a></h1>
+<p>JDBC lets us connect to a database and pull out data, but we have to do a lot of manual coding to check and convert types, deal with result sets and exceptions etc. We can abstract away most of this into a service class like the <code>DataService</code> at the end of the last page, but we still have to write the data service - even though it is a lot of boilerplate code that we almost need to copy-paste from a template for each new class. We could write a script that given an ER diagram in some machine-readable format, automatically generates a data service for this class to automate all this - or we could use Hibernate to do this for us.</p>
+<p>Hibernate is an object-relational mapping (ORM) framework, that is to say it automatically generates an advanced form of data service at runtime which includes many extra features such as sessions, transactions, caches and connection pools. It implements the Java Persistence Api (JPA), an API that in turn builds on JDBC for the purpose of implementing ORMs. Actually Hibernate has its own features that go beyond JPA, such as its own query language.</p>
+<p>In a real application, you will be using an ORM most of the time, but you can fall back to SQL for more advanced queries that the ORM cannot support easily.</p>
+<h2><a class="header" href="#example-application---set-up" id="example-application---set-up">Example application - set-up</a></h2>
+<p>There is an example application in <a href="databases/4/../resources/jdbc-example.tar">resources/orm/orm.tar</a> which you can download and extract in your VM.</p>
+<p>The POM file simply has an extra dependency on Hibernate:</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.hibernate&lt;/groupId&gt;
+    &lt;artifactId&gt;hibernate-core&lt;/artifactId&gt;
+    &lt;version&gt;5.4.27.Final&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>Hibernate's configuration lives in <code>src/main/resources/hibernate.cfg.xml</code>. Hibernate uses a <em>Session Factory</em> to create sessions, in which you can make queries:</p>
+<pre><code class="language-xml">&lt;?xml version = &quot;1.0&quot; encoding = &quot;utf-8&quot;?&gt;
+&lt;!DOCTYPE hibernate-configuration SYSTEM 
+&quot;http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd&quot;&gt;
+&lt;hibernate-configuration&gt;
+  &lt;session-factory&gt;
+    
+    &lt;!-- These properties set up the database connection. --&gt;
+    &lt;property name=&quot;dialect&quot;&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt;
+    &lt;property name=&quot;connection.url&quot;&gt;jdbc:mariadb://localhost/elections?localSocket=/var/run/mysqld/mysqld.sock&lt;/property&gt;
+    &lt;property name=&quot;connection.username&quot;&gt;vagrant&lt;/property&gt;
+    
+    &lt;!-- Don't use this in production, use a connection pool instead. --&gt;
+    &lt;property name=&quot;current_session_context_class&quot;&gt;thread&lt;/property&gt;
+
+    &lt;!-- Display generated SQL on the console. --&gt;
+    &lt;property name=&quot;show_sql&quot;&gt;true&lt;/property&gt;
+
+    &lt;!-- The classes to map to database tables. --&gt;
+    &lt;mapping class=&quot;org.example.Candidate&quot; /&gt;
+    &lt;mapping class=&quot;org.example.Party&quot; /&gt;
+    &lt;mapping class=&quot;org.example.Ward&quot; /&gt;
+    
+  &lt;/session-factory&gt;
+&lt;/hibernate-configuration&gt;
+</code></pre>
+<ul>
+<li>The <em>dialect</em> selects the SQL dialect to speak to the database, in this case <em>MySQL</em> (there's no separate MariaDB one because the two are for all practical purposes identical).</li>
+<li>The connection string lives in <code>connection.url</code>, minus the username/password because there are separate properties for these. Note though that we have included the socket option here.</li>
+<li>Username and, if you need it, password go in separate properties.</li>
+<li>The connection pool is really important for performance in real applications, but we don't bother with that here and just say one connection per thread (we don't use multiple threads in our program so it doesn't matter as much).</li>
+<li><code>show_sql</code> is a debuging property that prints all generated SQL to standard output. This is useful to know about when debugging your own applications.</li>
+<li>Finally, we list all the classes we want Hibernate to take care of. In SPE, you are going to use the Spring Framework which takes care of this automatically, but for now we're listing them all.</li>
+</ul>
+<p>The classes themselves are standard Java value classes (private fields, public getter/setter) decorated with JPA annotations to explain to Hibernate how they work:</p>
+<pre><code class="language-java">import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Party {
+    @Id private int id;
+    private String name;
+    
+    public Party() {}
+    
+    public int getId()      { return id; }
+    public String getName() { return name; }
+
+    public void setId(int id)         { this.id = id; }
+    public void setName(String name)  { this.name = name; }
+}
+</code></pre>
+<ul>
+<li><code>@Entity</code> means this is something that maps to a table in the database. By default, Hibernate guesses the table name from the class name, but you could change this with a parameter e.g. <code>@Entity(name=&quot;Parties&quot;)</code>.</li>
+<li><code>@Id</code> indicates the primary key.</li>
+</ul>
+<p>The candidate class is a bit more interesting as it has foreign keys:</p>
+<pre><code class="language-java">@ManyToOne 
+@JoinColumn(name = &quot;party&quot;)
+private Party party;
+</code></pre>
+<ul>
+<li><code>@ManyToOne</code> tells Hibernate that this is a foreign key for a many-to-one relationship (there is also <code>@ManyToMany</code>).</li>
+<li><code>@JoinColumn</code> sets the name of the foreign key column, as the default here would be <code>party_id</code>.</li>
+</ul>
+<h2><a class="header" href="#example-application---querying" id="example-application---querying">Example application - querying</a></h2>
+<p>Let's look at the main class (Example.java). First, Hibernate uses a session factory to manage its own database connections and sessions:</p>
+<pre><code class="language-java">import org.hibernate.SessionFactory;
+import org.hibernate.Session;
+import org.hibernate.cfg.Configuration;
+
+public class Example implements AutoCloseable {
+
+  SessionFactory sessionFactory;
+
+  public Example() {
+    sessionFactory = new Configuration().configure().buildSessionFactory();
+  }
+
+  public void close() {
+    sessionFactory.close();
+  }
+
+  // ...
+}
+</code></pre>
+<p>You get one from the global <code>Configuration</code> class, to which you could pass parameters to override the ones in the XML file if you wanted to (this would let you change settings in response to command line arguments, for example). A session factory is a resource, so we make our own example class a resource too which lets us run it like this:</p>
+<pre><code class="language-java">public static void main(String[] args) {
+    try (Example example = new Example()) {
+        example.run();
+    }
+  System.out.println(&quot;Done.&quot;);
+  System.exit(0);
+}
+</code></pre>
+<p>The exit command at the end makes sure the program exits even if Hibernate still has a background thread running.</p>
+<p>In the <code>run()</code> method, we use a Hibernate session, which manages a database connection:</p>
+<pre><code class="language-java">try (Session session = sessionFactory.openSession()) {
+    // code
+}
+</code></pre>
+<p>We then have three examples of using Hibernate.</p>
+<h3><a class="header" href="#loading-an-entity-by-id" id="loading-an-entity-by-id">Loading an entity by ID</a></h3>
+<pre><code class="language-java">Party p1 = session.get(Party.class, 1);
+System.out.println(&quot;    The party with id=1 is: &quot; + p1.getName());
+</code></pre>
+<p>To fetch an instance by id, we just call <code>get</code> on the session with the class we want and the id. Passing the class both tells Hibernate which table to load from, and it tells the compiler what type of object to return - the way Java generics work, this lets us assign the result to a <code>Party</code> variable directly without having to do a cast.</p>
+<h3><a class="header" href="#loading-with-a-query" id="loading-with-a-query">Loading with a query</a></h3>
+<pre><code class="language-java">TypedQuery&lt;Ward&gt; query = session.createQuery(&quot;FROM Ward&quot;, Ward.class);
+List&lt;Ward&gt; wards = query.getResultList();
+System.out.println(&quot;  Wards:&quot;);
+for (Ward ward : wards) {
+    System.out.println(&quot;    &quot; + ward.getName());
+}
+</code></pre>
+<p>A <code>TypedQuery</code> object takes a string in HQL, Hibernate's own query language (based on SQL) and the class of the object to return - this is so that the Java compiler can figure out the return type. <code>getResultList</code> returns all results as a list.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>The <code>TypedQuery</code> interface is part of JPA and is declared roughly as follows:</p>
+<pre><code class="language-java">interface TypedQuery&lt;T&gt; {
+  // ...
+  List&lt;T&gt; getResultList();
+}
+</code></pre>
+<p>This use of generics allows the compiler to be sure that the return type matches the type parameter you gave when you created the query. Of course, you don't create it directly but you ask for a query object from the Hibernate session, but behind the scenes there's an <a href="https://docs.jboss.org/hibernate/orm/5.2/javadocs/org/hibernate/query/internal/QueryImpl.html">org.hibernate.query.internal.QueryImpl<T></a> as well as many other Hibernate-related implementation classes.</p>
+<p>These classes could take the type parameter as an argument to their constructor, but if you <a href="https://github.com/hibernate/hibernate-orm/blob/master/hibernate-core/src/main/java/org/hibernate/query/internal/QueryImpl.java">look at the sources</a>, they don't: it seems that Hibernate does a cast internally to get the types right, which is safe as long as the Hibernate developers know what they're doing.</p>
+</div>
+</div>
+<h3><a class="header" href="#queries-with-joins-and-parameters" id="queries-with-joins-and-parameters">Queries with joins and parameters</a></h3>
+<p>For a more involved example, we look at the following:</p>
+<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery(&quot;FROM Candidate c WHERE c.party.name = :name&quot;, Candidate.class);
+q.setParameter(&quot;name&quot;, &quot;Labour&quot;);
+List&lt;Candidate&gt; candidates = q.getResultList();
+System.out.println(&quot;  Labour Candidates:&quot;);
+for (Candidate c : candidates) {
+    System.out.println(&quot;    &quot; + c.getName() + &quot; (&quot; + c.getWard().getName() + &quot;)&quot;);
+}
+</code></pre>
+<p>HQL, like SQL, allows a WHERE clause to filter results. It also allows prepared statements, but goes one better than JDBC in that parameters can have names. You declare a parameter with a colon in the query string (<code>:name</code>) and then use <code>setParameter(name, value)</code> to bind it - this method is written so that it can take a value of any type, presumably with a combination of overloading for int/float types and <code>Object</code> for everything else.</p>
+<p>Hibernate will automatically do the JOINs necessary to fetch the party associated with each Candidate, the SQL it runs for this query looks like this on my machine:</p>
+<pre><code class="language-SQL">select party0_.id as id1_1_0_, party0_.name as name2_1_0_ from Party party0_ 
+where party0_.id=?
+
+select candidate0_.id as id1_0_, candidate0_.name as name2_0_, 
+candidate0_.party as party4_0_, candidate0_.votes as votes3_0_, 
+candidate0_.ward as ward5_0_ from Candidate candidate0_ 
+cross join Party party1_ where candidate0_.party=party1_.id and party1_.name=?
+</code></pre>
+<p>Hibernate has decided to do two queries here (maybe in parallel, so the order the statements are printed on the terminal may not be accurate). The first one is because if there is no party with the supplied name, then Hibernate can stop and return an empty list; if there is then it continues with the second query to join the two tables.</p>
+<h2><a class="header" href="#the-n1-problem" id="the-n1-problem">The N+1 problem</a></h2>
+<p>Note that in the queries above, Hibernate does not fetch the ward names. It doesn't matter here because they are already in Hibernate's cache from the previous query. However, if you comment out the first two queries and leave only the third one (lines 41-50 in Example.java), something horrible happens:</p>
+<pre><code class="language-SQL">select candidate0_.id as id1_0_, candidate0_.name as name2_0_, candidate0_.party as party4_0_, candidate0_.votes as votes3_0_, candidate0_.ward as ward5_0_ from Candidate candidate0_ cross join Party party1_ where candidate0_.party=party1_.id and party1_.name=?
+select party0_.id as id1_1_0_, party0_.name as name2_1_0_ from Party party0_ where party0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+</code></pre>
+<p>Hibernate is firing off one query per ward! This is called the N+1 problem, because one HQL query that returns N results ends up producing N+1 SQL queries, which is horribly inefficient expecialy for large N.</p>
+<p>Looking at the loop structure:</p>
+<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery(&quot;FROM Candidate c WHERE c.party.name = :name&quot;, Candidate.class);
+q.setParameter(&quot;name&quot;, &quot;Labour&quot;);
+List&lt;Candidate&gt; candidates = q.getResultList();
+System.out.println(&quot;  Labour Candidates:&quot;);
+for (Candidate c : candidates) {
+    System.out.println(&quot;    &quot; + c.getName() + &quot; (&quot; + c.getWard().getName() + &quot;)&quot;);
+}
+</code></pre>
+<p>From the query itself, it is not clear to Hibernate whether ward names will be needed or not, so Hibernate does not JOIN them by default which would be more efficient if you don't actually need them. In the for loop at the bottom however, you do access the names, so on every pass through the loop, Hibernate is forced to run a new query to get the name of the relevant ward.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>How does Hibernate trigger a query off a simple <code>.getWard().getName()</code>, that you have implemented yourself in the Candidate and Ward classes?</p>
+<p>The answer is that instead of actual Candidate objects, Hibernate creates a proxy subclass of Candidate at runtime and returns instances of this instead. These proxy objects have <code>getWard()</code> overridden to fire off another query if, and only if, they are actually called.</p>
+</div>
+</div>
+<p>The solution here is to tell Hibernate at query time that you'll need the wards:</p>
+<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery(&quot;FROM Candidate c JOIN FETCH c.ward WHERE c.party.name = :name&quot;, Candidate.class);
+</code></pre>
+<p>This is HQL for &quot;I'm going to use the wards, so please do a JOIN to load them too&quot;. And Hibernate now uses a single query for the Candidates again:</p>
+<pre><code class="language-SQL">select party0_.id as id1_1_0_, party0_.name as name2_1_0_ from Party party0_ where party0_.id=?
+
+select candidate0_.id as id1_0_0_, ward1_.id as id1_2_1_, candidate0_.name as name2_0_0_,
+candidate0_.party as party4_0_0_, candidate0_.votes as votes3_0_0_,
+candidate0_.ward as ward5_0_0_, ward1_.electorate as electora2_2_1_,
+ward1_.name as name3_2_1_
+from Candidate candidate0_
+inner join Ward ward1_ on candidate0_.ward=ward1_.id
+cross join Party party2_
+where candidate0_.party=party2_.id and party2_.name=?
+</code></pre>
+<p>There is another way to solve this problem: if every time you load a Candidate, you want the ward name to be loaded as well, then you can declare this on the JPA annotation:</p>
+<pre><code class="language-java">@ManyToOne(fetch = FetchType.EAGER)
+</code></pre>
+<h2><a class="header" href="#exercise-1-1" id="exercise-1-1">Exercise 1</a></h2>
+<p>Implement a JPA/Hibernate example application for the census database using the Country, Region, County and Ward tables (ignore Statistic/Occupation for this exercise). You could implement the following in your main program for example:</p>
+<ul>
+<li>Given a ward code, load the ward and print out all related information (ward name, county name etc.).</li>
+<li>Given a ward name, print out all the counties that have a ward with that name.</li>
+</ul>
+<p>Pay attention to avoiding the N+1 problem in the second case.</p>
+<h2><a class="header" href="#exercise-2-1" id="exercise-2-1">Exercise 2</a></h2>
+<p>What you have learnt so far will allow you to navigate upwards in the hierarchy, e.g. given a ward you can find its associated county. This exercise is about the other way round: given a county object, you want to find all wards in it.</p>
+<p>To do this, add the following property to your County class:</p>
+<pre><code class="language-java">@OneToMany(mappedBy = &quot;county&quot;)
+private List&lt;Ward&gt; wards;
+</code></pre>
+<p>The argument to <code>mappedBy</code> must be the field name of the field in the Ward class that contains the county reference - you might have called it <code>parent</code> or something else in your class.</p>
+<p>Then, add a getter and setter for this list property.</p>
+<p>You have now created what is called a <em>bidirectional association</em>: a ward contains a county property, and a county contains a list of wards. You can navigate in both directions in your Java code.</p>
+<p>Write a query that loads the City of Bristol county (E06000023) and prints a list of all its ward names with a Java for loop starting from the county object. Make sure you write your HQL query so that you don't cause an N+1 problem here.</p>
+<p>This example also helps to explain why we don't make everything eager fetched by default: if you did that with bidirectional associations, then loading any object at all would load the entire database into memory!</p>
 
                     </main>
 

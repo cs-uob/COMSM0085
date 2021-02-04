@@ -110,7 +110,7 @@ Have you answered the questions in bold above before reading on?
 Next, we are going to experiment with the terminal in fully raw mode:
 
   * `stty -g` prints the current terminal setting in a format that you can save and load again. Take a look, then store them with the shell command `state=$(stty -g)`.
-  * Execute `stty raw`, then run your program again. **The terminal looks a bit "messed up" - can you tell what is happening?** Try another command like `ls` in raw mode too it that helps.
+  * Execute `stty raw`, then run your program again. **The terminal looks a bit "messed up" - can you tell what is happening?** Try another command like `ls` in raw mode too if that helps.
   * Restore your terminal settings with `stty $state`, reading them back from the variable where you stored them. You can then reset the window with `^L`.
 
 There is an important warning here if you are ever benchmarking a program that produces (standard) output - the total running time will be the sum of the program's running time and the connected terminal's running time to process the output. For example, printing a sequence of newline characters is typically slower than printing a sequence of 'a's, even if both programs are doing `putc` in a loop, because the terminal has extra work to do on each newline.

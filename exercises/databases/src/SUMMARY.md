@@ -13,3 +13,7 @@
 
 - [Intermediate SQL](./databases/3/sql-intermediate.md)
   - [Exercises](./databases/3/exercises.md)
+
+- [SQL and Java](./databases/4/sql-java.md)
+  - [JDBC](./databases/4/jdbc.md)
+  - [Hibernate](./databases/4/hibernate.md)
