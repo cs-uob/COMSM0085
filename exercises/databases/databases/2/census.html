@@ -1,0 +1,281 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The UK census - COMS10012 Databases Exercises</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../../favicon.png">
+        
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../databases/1/sql-introduction.html"><strong aria-hidden="true">1.</strong> SQL introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/1/setup.html"><strong aria-hidden="true">1.1.</strong> Set up the database</a></li><li class="chapter-item expanded "><a href="../../databases/1/er-diagram.html"><strong aria-hidden="true">1.2.</strong> ER diagram</a></li><li class="chapter-item expanded "><a href="../../databases/1/er2.html"><strong aria-hidden="true">1.3.</strong> More modelling</a></li></ol></li><li class="chapter-item expanded "><a href="../../databases/2/sql-beginners.html"><strong aria-hidden="true">2.</strong> SQL for beginners</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/2/explore-database.html"><strong aria-hidden="true">2.1.</strong> Explore the database</a></li><li class="chapter-item expanded "><a href="../../databases/2/elections.html"><strong aria-hidden="true">2.2.</strong> Bristol elections</a></li><li class="chapter-item expanded "><a href="../../databases/2/census.html" class="active"><strong aria-hidden="true">2.3.</strong> The UK census</a></li><li class="chapter-item expanded "><a href="../../databases/2/normalforms.html"><strong aria-hidden="true">2.4.</strong> Normal forms</a></li></ol></li><li class="chapter-item expanded "><a href="../../databases/3/sql-intermediate.html"><strong aria-hidden="true">3.</strong> Intermediate SQL</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/3/exercises.html"><strong aria-hidden="true">3.1.</strong> Exercises</a></li></ol></li><li class="chapter-item expanded "><a href="../../databases/4/sql-java.html"><strong aria-hidden="true">4.</strong> SQL and Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/4/jdbc.html"><strong aria-hidden="true">4.1.</strong> JDBC</a></li><li class="chapter-item expanded "><a href="../../databases/4/hibernate.html"><strong aria-hidden="true">4.2.</strong> Hibernate</a></li><li class="chapter-item expanded "><a href="../../databases/4/sqlite.html"><strong aria-hidden="true">4.3.</strong> SQLite</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">COMS10012 Databases Exercises</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#the-2011-uk-census" id="the-2011-uk-census">The 2011 UK Census</a></h1>
+<p>In 2011, the UK took a census of all households. We will look at the data for one particular question: &quot;KS608 Occupation&quot;.</p>
+<h2><a class="header" href="#background-uk-geography" id="background-uk-geography">Background: UK Geography</a></h2>
+<p>The United Kingdom of Great Britain and Northern Ireland (UK) is a country that contains the individual countries England, Wales, Scotland (at the time of writing) and Northern Ireland (but not the Republic of Ireland). The census data for this question comes from the Office of National Statistics (ONS) which is for England and Wales only. Scotland and Northern Ireland have separate statistical offices.</p>
+<p>England itself can be divided into 9 regions: </p>
+<ul>
+<li>The North West</li>
+<li>Yorkshire and The Humber</li>
+<li>The North East</li>
+<li>The West Midlands</li>
+<li>The East Midlands</li>
+<li>The South West</li>
+<li>The East</li>
+<li>The South East</li>
+<li>London</li>
+</ul>
+<p>The UK used to be further divided into counties but these are much less important nowadays. In fact there is a mix of counties, unitary authorities and boroughs - 152 in total. These are all called &quot;county-level units&quot; (CLUs).</p>
+<p>The smallest relevant unit for political and statistical purposes is the electoral ward, often simply called ward. Wards elect their own councillors (as we have seen) and national statistics are available at a ward level. There were 8570 wards at the time of the 2011 census. For example, the City of Bristol unitary authority contained 35 wards, of which the University of Bristol was in the Cabot ward.</p>
+<p>Each statistical unit (ward, county, unitary authority etc.) is assigned a 9-character code by the ONS of the form <code>Xaabbbbbb</code> where X is E for England and W for Wales. The first two digits <code>aa</code> identify the type of unit: 05 is a ward, 06 a unitary authority; in England only E12 is a region, E08 is a borough (metropolitan), E09 is a borough of London and E10 is a county. The last 6 digits identify the individual unit. Finally, the codes for all of England and Wales are E92000001 and W92000004. </p>
+<p>An interactive online map of the statistical units of the UK is available online at <a href="http://ukdataexplorer.com/census/">UK data explorer</a> or <a href="https://datashine.org.uk">DataShine</a>. All census data for individual questions is publicly available. (The most interesting data - correlations between questions - is not all openly available due to privacy issues. Researchers can apply to the ONS to get access to particular data sets.)</p>
+<h2><a class="header" href="#data-format" id="data-format">Data format</a></h2>
+<p>The <code>census</code> database has the following schema.</p>
+<p><img src="../img/census.png" alt="census ER diagram" /></p>
+<p>For wards in England, the <code>parent</code> FK points at the county table and identifies the CLU (county-level unit) to which the ward belongs. For wards in Wales, the <code>Ward.parent</code> column is <code>NULL</code> which you need to take into account when working out a JOIN strategy.</p>
+<h2><a class="header" href="#ks608-occupation" id="ks608-occupation">KS608: Occupation</a></h2>
+<p>Question KS608 on the 2011 census asked all UK citizens in employment and between the ages of 16 and 74 to classify themselves as one of 9 occupation classes.</p>
+<ul>
+<li>Have a look at the <code>Occupation</code> table in the <code>census</code> database to see the 9 occupation classes.</li>
+</ul>
+<p>The answers to the question are recorded in the <code>Statistic</code> table in the following format. Gender is 1 for women an 0 for men; in the 2011 census these where the only gender options.</p>
+<pre><code>+-----------+-------+--------+------+
+| wardId    | occId | gender | data |
++-----------+-------+--------+------+
+| E05000001 |     1 |      1 |   54 |
++-----------+-------+--------+------+
+</code></pre>
+<p>This row records that in ward <code>E05000001</code> (Aldersgate), 54 women (gender=1) said that they worked as &quot;Managers, directors and senior officials&quot; (occId=1).</p>
+<p>Note how (in the ER diagram) the primary key of the Statistic table is a composite of three columns (wardId, occId, gender). This is exactly what you would expect in a table that has one data value per ward, occupation class and gender.</p>
+<h2><a class="header" href="#exercises" id="exercises">Exercises</a></h2>
+<ol>
+<li>The university of Bristol is situated in the <code>Cabot</code> ward (ward names are not always distinct, but this one is). Find the names and codes of the CLU, region and country containing the Cabot ward (CLU = county level unit = &quot;row in County table&quot;).</li>
+<li>If you used multiple SQL queries for the last question, do it in one single query now. (In other words, find a join strategy for the tables you need.)</li>
+<li>Find the number of women in occupation class 1 (managers etc.) in the Cabot ward. You may use ward code for Cabot that you found in the first query and the occupation id 1 directly - you do not need any JOINs for this query.</li>
+<li>For the Stoke Bishop ward (E05002003), list the 9 occupation class names and the number of men in each occupation. Your table should have two columns called <code>name</code> and <code>number</code>. You can use the provided ward code, you do not need to join on the ward name.</li>
+</ol>
+<p>We will soon be able to do more interesting statistical queries on the census data but for that we need SQL's statistical functions which we will learn next week.</p>
+<p>Here's a slightly more tricky question to finish off with. It can be done with only the techniques that we have learnt so far.</p>
+<ul>
+<li>Find all ward names that are not unique, and print them in alphabetical order (only once each).</li>
+</ul>
+<p><em>There are 400 distinct such names in total (for example, there are 21 wards called 'Abbey') so your query will produce quite a long table. Your query might also take a while to execute, there are faster ways to do this but not with the material we've learnt so far. The table starts &quot;Abbey, Alexandra, All Saints&quot; and ends &quot;Worsley, Wyke, Yarborough&quot;.</em></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../databases/2/elections.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../databases/2/normalforms.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../databases/2/elections.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../../databases/2/normalforms.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

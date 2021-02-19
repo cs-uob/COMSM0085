@@ -1,0 +1,476 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Hibernate - COMS10012 Databases Exercises</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../../favicon.png">
+        
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../databases/1/sql-introduction.html"><strong aria-hidden="true">1.</strong> SQL introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/1/setup.html"><strong aria-hidden="true">1.1.</strong> Set up the database</a></li><li class="chapter-item expanded "><a href="../../databases/1/er-diagram.html"><strong aria-hidden="true">1.2.</strong> ER diagram</a></li><li class="chapter-item expanded "><a href="../../databases/1/er2.html"><strong aria-hidden="true">1.3.</strong> More modelling</a></li></ol></li><li class="chapter-item expanded "><a href="../../databases/2/sql-beginners.html"><strong aria-hidden="true">2.</strong> SQL for beginners</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/2/explore-database.html"><strong aria-hidden="true">2.1.</strong> Explore the database</a></li><li class="chapter-item expanded "><a href="../../databases/2/elections.html"><strong aria-hidden="true">2.2.</strong> Bristol elections</a></li><li class="chapter-item expanded "><a href="../../databases/2/census.html"><strong aria-hidden="true">2.3.</strong> The UK census</a></li><li class="chapter-item expanded "><a href="../../databases/2/normalforms.html"><strong aria-hidden="true">2.4.</strong> Normal forms</a></li></ol></li><li class="chapter-item expanded "><a href="../../databases/3/sql-intermediate.html"><strong aria-hidden="true">3.</strong> Intermediate SQL</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/3/exercises.html"><strong aria-hidden="true">3.1.</strong> Exercises</a></li></ol></li><li class="chapter-item expanded "><a href="../../databases/4/sql-java.html"><strong aria-hidden="true">4.</strong> SQL and Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/4/jdbc.html"><strong aria-hidden="true">4.1.</strong> JDBC</a></li><li class="chapter-item expanded "><a href="../../databases/4/hibernate.html" class="active"><strong aria-hidden="true">4.2.</strong> Hibernate</a></li><li class="chapter-item expanded "><a href="../../databases/4/sqlite.html"><strong aria-hidden="true">4.3.</strong> SQLite</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">COMS10012 Databases Exercises</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#hibernate" id="hibernate">Hibernate</a></h1>
+<p>JDBC lets us connect to a database and pull out data, but we have to do a lot of manual coding to check and convert types, deal with result sets and exceptions etc. We can abstract away most of this into a service class like the <code>DataService</code> at the end of the last page, but we still have to write the data service - even though it is a lot of boilerplate code that we almost need to copy-paste from a template for each new class. We could write a script that given an ER diagram in some machine-readable format, automatically generates a data service for this class to automate all this - or we could use Hibernate to do this for us.</p>
+<p>Hibernate is an object-relational mapping (ORM) framework, that is to say it automatically generates an advanced form of data service at runtime which includes many extra features such as sessions, transactions, caches and connection pools. It implements the Java Persistence Api (JPA), an API that in turn builds on JDBC for the purpose of implementing ORMs. Actually Hibernate has its own features that go beyond JPA, such as its own query language.</p>
+<p>In a real application, you will be using an ORM most of the time, but you can fall back to SQL for more advanced queries that the ORM cannot support easily.</p>
+<h2><a class="header" href="#example-application---set-up" id="example-application---set-up">Example application - set-up</a></h2>
+<p>There is an example application in <a href="../resources/jdbc-example.tar">resources/orm/orm.tar</a> which you can download and extract in your VM.</p>
+<p>The POM file simply has an extra dependency on Hibernate:</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.hibernate&lt;/groupId&gt;
+    &lt;artifactId&gt;hibernate-core&lt;/artifactId&gt;
+    &lt;version&gt;5.4.27.Final&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>Hibernate's configuration lives in <code>src/main/resources/hibernate.cfg.xml</code>. Hibernate uses a <em>Session Factory</em> to create sessions, in which you can make queries:</p>
+<pre><code class="language-xml">&lt;?xml version = &quot;1.0&quot; encoding = &quot;utf-8&quot;?&gt;
+&lt;!DOCTYPE hibernate-configuration SYSTEM 
+&quot;http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd&quot;&gt;
+&lt;hibernate-configuration&gt;
+  &lt;session-factory&gt;
+    
+    &lt;!-- These properties set up the database connection. --&gt;
+    &lt;property name=&quot;dialect&quot;&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt;
+    &lt;property name=&quot;connection.url&quot;&gt;jdbc:mariadb://localhost/elections?localSocket=/var/run/mysqld/mysqld.sock&lt;/property&gt;
+    &lt;property name=&quot;connection.username&quot;&gt;vagrant&lt;/property&gt;
+    
+    &lt;!-- Don't use this in production, use a connection pool instead. --&gt;
+    &lt;property name=&quot;current_session_context_class&quot;&gt;thread&lt;/property&gt;
+
+    &lt;!-- Display generated SQL on the console. --&gt;
+    &lt;property name=&quot;show_sql&quot;&gt;true&lt;/property&gt;
+
+    &lt;!-- The classes to map to database tables. --&gt;
+    &lt;mapping class=&quot;org.example.Candidate&quot; /&gt;
+    &lt;mapping class=&quot;org.example.Party&quot; /&gt;
+    &lt;mapping class=&quot;org.example.Ward&quot; /&gt;
+    
+  &lt;/session-factory&gt;
+&lt;/hibernate-configuration&gt;
+</code></pre>
+<ul>
+<li>The <em>dialect</em> selects the SQL dialect to speak to the database, in this case <em>MySQL</em> (there's no separate MariaDB one because the two are for all practical purposes identical).</li>
+<li>The connection string lives in <code>connection.url</code>, minus the username/password because there are separate properties for these. Note though that we have included the socket option here.</li>
+<li>Username and, if you need it, password go in separate properties.</li>
+<li>The connection pool is really important for performance in real applications, but we don't bother with that here and just say one connection per thread (we don't use multiple threads in our program so it doesn't matter as much).</li>
+<li><code>show_sql</code> is a debuging property that prints all generated SQL to standard output. This is useful to know about when debugging your own applications.</li>
+<li>Finally, we list all the classes we want Hibernate to take care of. In SPE, you are going to use the Spring Framework which takes care of this automatically, but for now we're listing them all.</li>
+</ul>
+<p>The classes themselves are standard Java value classes (private fields, public getter/setter) decorated with JPA annotations to explain to Hibernate how they work:</p>
+<pre><code class="language-java">import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Party {
+    @Id private int id;
+    private String name;
+    
+    public Party() {}
+    
+    public int getId()      { return id; }
+    public String getName() { return name; }
+
+    public void setId(int id)         { this.id = id; }
+    public void setName(String name)  { this.name = name; }
+}
+</code></pre>
+<ul>
+<li><code>@Entity</code> means this is something that maps to a table in the database. By default, Hibernate guesses the table name from the class name, but you could change this with a parameter e.g. <code>@Entity(name=&quot;Parties&quot;)</code>.</li>
+<li><code>@Id</code> indicates the primary key.</li>
+</ul>
+<p>The candidate class is a bit more interesting as it has foreign keys:</p>
+<pre><code class="language-java">@ManyToOne 
+@JoinColumn(name = &quot;party&quot;)
+private Party party;
+</code></pre>
+<ul>
+<li><code>@ManyToOne</code> tells Hibernate that this is a foreign key for a many-to-one relationship (there is also <code>@ManyToMany</code>).</li>
+<li><code>@JoinColumn</code> sets the name of the foreign key column, as the default here would be <code>party_id</code>.</li>
+</ul>
+<h2><a class="header" href="#example-application---querying" id="example-application---querying">Example application - querying</a></h2>
+<p>Let's look at the main class (Example.java). First, Hibernate uses a session factory to manage its own database connections and sessions:</p>
+<pre><code class="language-java">import org.hibernate.SessionFactory;
+import org.hibernate.Session;
+import org.hibernate.cfg.Configuration;
+
+public class Example implements AutoCloseable {
+
+  SessionFactory sessionFactory;
+
+  public Example() {
+    sessionFactory = new Configuration().configure().buildSessionFactory();
+  }
+
+  public void close() {
+    sessionFactory.close();
+  }
+
+  // ...
+}
+</code></pre>
+<p>You get one from the global <code>Configuration</code> class, to which you could pass parameters to override the ones in the XML file if you wanted to (this would let you change settings in response to command line arguments, for example). A session factory is a resource, so we make our own example class a resource too which lets us run it like this:</p>
+<pre><code class="language-java">public static void main(String[] args) {
+    try (Example example = new Example()) {
+        example.run();
+    }
+  System.out.println(&quot;Done.&quot;);
+  System.exit(0);
+}
+</code></pre>
+<p>The exit command at the end makes sure the program exits even if Hibernate still has a background thread running.</p>
+<p>In the <code>run()</code> method, we use a Hibernate session, which manages a database connection:</p>
+<pre><code class="language-java">try (Session session = sessionFactory.openSession()) {
+    // code
+}
+</code></pre>
+<p>We then have three examples of using Hibernate.</p>
+<h3><a class="header" href="#loading-an-entity-by-id" id="loading-an-entity-by-id">Loading an entity by ID</a></h3>
+<pre><code class="language-java">Party p1 = session.get(Party.class, 1);
+System.out.println(&quot;    The party with id=1 is: &quot; + p1.getName());
+</code></pre>
+<p>To fetch an instance by id, we just call <code>get</code> on the session with the class we want and the id. Passing the class both tells Hibernate which table to load from, and it tells the compiler what type of object to return - the way Java generics work, this lets us assign the result to a <code>Party</code> variable directly without having to do a cast.</p>
+<h3><a class="header" href="#loading-with-a-query" id="loading-with-a-query">Loading with a query</a></h3>
+<pre><code class="language-java">TypedQuery&lt;Ward&gt; query = session.createQuery(&quot;FROM Ward&quot;, Ward.class);
+List&lt;Ward&gt; wards = query.getResultList();
+System.out.println(&quot;  Wards:&quot;);
+for (Ward ward : wards) {
+    System.out.println(&quot;    &quot; + ward.getName());
+}
+</code></pre>
+<p>A <code>TypedQuery</code> object takes a string in HQL, Hibernate's own query language (based on SQL) and the class of the object to return - this is so that the Java compiler can figure out the return type. <code>getResultList</code> returns all results as a list.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>The <code>TypedQuery</code> interface is part of JPA and is declared roughly as follows:</p>
+<pre><code class="language-java">interface TypedQuery&lt;T&gt; {
+  // ...
+  List&lt;T&gt; getResultList();
+}
+</code></pre>
+<p>This use of generics allows the compiler to be sure that the return type matches the type parameter you gave when you created the query. Of course, you don't create it directly but you ask for a query object from the Hibernate session, but behind the scenes there's an <a href="https://docs.jboss.org/hibernate/orm/5.2/javadocs/org/hibernate/query/internal/QueryImpl.html">org.hibernate.query.internal.QueryImpl<T></a> as well as many other Hibernate-related implementation classes.</p>
+<p>These classes could take the type parameter as an argument to their constructor, but if you <a href="https://github.com/hibernate/hibernate-orm/blob/master/hibernate-core/src/main/java/org/hibernate/query/internal/QueryImpl.java">look at the sources</a>, they don't: it seems that Hibernate does a cast internally to get the types right, which is safe as long as the Hibernate developers know what they're doing.</p>
+</div>
+</div>
+<h3><a class="header" href="#queries-with-joins-and-parameters" id="queries-with-joins-and-parameters">Queries with joins and parameters</a></h3>
+<p>For a more involved example, we look at the following:</p>
+<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery(&quot;FROM Candidate c WHERE c.party.name = :name&quot;, Candidate.class);
+q.setParameter(&quot;name&quot;, &quot;Labour&quot;);
+List&lt;Candidate&gt; candidates = q.getResultList();
+System.out.println(&quot;  Labour Candidates:&quot;);
+for (Candidate c : candidates) {
+    System.out.println(&quot;    &quot; + c.getName() + &quot; (&quot; + c.getWard().getName() + &quot;)&quot;);
+}
+</code></pre>
+<p>HQL, like SQL, allows a WHERE clause to filter results. It also allows prepared statements, but goes one better than JDBC in that parameters can have names. You declare a parameter with a colon in the query string (<code>:name</code>) and then use <code>setParameter(name, value)</code> to bind it - this method is written so that it can take a value of any type, presumably with a combination of overloading for int/float types and <code>Object</code> for everything else.</p>
+<p>Hibernate will automatically do the JOINs necessary to fetch the party associated with each Candidate, the SQL it runs for this query looks like this on my machine:</p>
+<pre><code class="language-SQL">select party0_.id as id1_1_0_, party0_.name as name2_1_0_ from Party party0_ 
+where party0_.id=?
+
+select candidate0_.id as id1_0_, candidate0_.name as name2_0_, 
+candidate0_.party as party4_0_, candidate0_.votes as votes3_0_, 
+candidate0_.ward as ward5_0_ from Candidate candidate0_ 
+cross join Party party1_ where candidate0_.party=party1_.id and party1_.name=?
+</code></pre>
+<p>Hibernate has decided to do two queries here (maybe in parallel, so the order the statements are printed on the terminal may not be accurate). The first one is because if there is no party with the supplied name, then Hibernate can stop and return an empty list; if there is then it continues with the second query to join the two tables.</p>
+<h2><a class="header" href="#the-n1-problem" id="the-n1-problem">The N+1 problem</a></h2>
+<p>Note that in the queries above, Hibernate does not fetch the ward names. It doesn't matter here because they are already in Hibernate's cache from the previous query. However, if you comment out the first two queries and leave only the third one (lines 41-50 in Example.java), something horrible happens:</p>
+<pre><code class="language-SQL">select candidate0_.id as id1_0_, candidate0_.name as name2_0_, candidate0_.party as party4_0_, candidate0_.votes as votes3_0_, candidate0_.ward as ward5_0_ from Candidate candidate0_ cross join Party party1_ where candidate0_.party=party1_.id and party1_.name=?
+select party0_.id as id1_1_0_, party0_.name as name2_1_0_ from Party party0_ where party0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name as name3_2_0_ from Ward ward0_ where ward0_.id=?
+</code></pre>
+<p>Hibernate is firing off one query per ward! This is called the N+1 problem, because one HQL query that returns N results ends up producing N+1 SQL queries, which is horribly inefficient expecialy for large N.</p>
+<p>Looking at the loop structure:</p>
+<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery(&quot;FROM Candidate c WHERE c.party.name = :name&quot;, Candidate.class);
+q.setParameter(&quot;name&quot;, &quot;Labour&quot;);
+List&lt;Candidate&gt; candidates = q.getResultList();
+System.out.println(&quot;  Labour Candidates:&quot;);
+for (Candidate c : candidates) {
+    System.out.println(&quot;    &quot; + c.getName() + &quot; (&quot; + c.getWard().getName() + &quot;)&quot;);
+}
+</code></pre>
+<p>From the query itself, it is not clear to Hibernate whether ward names will be needed or not, so Hibernate does not JOIN them by default which would be more efficient if you don't actually need them. In the for loop at the bottom however, you do access the names, so on every pass through the loop, Hibernate is forced to run a new query to get the name of the relevant ward.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>How does Hibernate trigger a query off a simple <code>.getWard().getName()</code>, that you have implemented yourself in the Candidate and Ward classes?</p>
+<p>The answer is that instead of actual Candidate objects, Hibernate creates a proxy subclass of Candidate at runtime and returns instances of this instead. These proxy objects have <code>getWard()</code> overridden to fire off another query if, and only if, they are actually called.</p>
+</div>
+</div>
+<p>The solution here is to tell Hibernate at query time that you'll need the wards:</p>
+<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery(&quot;FROM Candidate c JOIN FETCH c.ward WHERE c.party.name = :name&quot;, Candidate.class);
+</code></pre>
+<p>This is HQL for &quot;I'm going to use the wards, so please do a JOIN to load them too&quot;. And Hibernate now uses a single query for the Candidates again:</p>
+<pre><code class="language-SQL">select party0_.id as id1_1_0_, party0_.name as name2_1_0_ from Party party0_ where party0_.id=?
+
+select candidate0_.id as id1_0_0_, ward1_.id as id1_2_1_, candidate0_.name as name2_0_0_,
+candidate0_.party as party4_0_0_, candidate0_.votes as votes3_0_0_,
+candidate0_.ward as ward5_0_0_, ward1_.electorate as electora2_2_1_,
+ward1_.name as name3_2_1_
+from Candidate candidate0_
+inner join Ward ward1_ on candidate0_.ward=ward1_.id
+cross join Party party2_
+where candidate0_.party=party2_.id and party2_.name=?
+</code></pre>
+<p>There is another way to solve this problem: if every time you load a Candidate, you want the ward name to be loaded as well, then you can declare this on the JPA annotation:</p>
+<pre><code class="language-java">@ManyToOne(fetch = FetchType.EAGER)
+</code></pre>
+<h2><a class="header" href="#exercise-1" id="exercise-1">Exercise 1</a></h2>
+<p>Implement a JPA/Hibernate example application for the census database using the Country, Region, County and Ward tables (ignore Statistic/Occupation for this exercise). You could implement the following in your main program for example:</p>
+<ul>
+<li>Given a ward code, load the ward and print out all related information (ward name, county name etc.).</li>
+<li>Given a ward name, print out all the counties that have a ward with that name.</li>
+</ul>
+<p>Pay attention to avoiding the N+1 problem in the second case.</p>
+<h2><a class="header" href="#exercise-2" id="exercise-2">Exercise 2</a></h2>
+<p>What you have learnt so far will allow you to navigate upwards in the hierarchy, e.g. given a ward you can find its associated county. This exercise is about the other way round: given a county object, you want to find all wards in it.</p>
+<p>To do this, add the following property to your County class:</p>
+<pre><code class="language-java">@OneToMany(mappedBy = &quot;county&quot;)
+private List&lt;Ward&gt; wards;
+</code></pre>
+<p>The argument to <code>mappedBy</code> must be the field name of the field in the Ward class that contains the county reference - you might have called it <code>parent</code> or something else in your class.</p>
+<p>Then, add a getter and setter for this list property.</p>
+<p>You have now created what is called a <em>bidirectional association</em>: a ward contains a county property, and a county contains a list of wards. You can navigate in both directions in your Java code.</p>
+<p>Write a query that loads the City of Bristol county (E06000023) and prints a list of all its ward names with a Java for loop starting from the county object. Make sure you write your HQL query so that you don't cause an N+1 problem here.</p>
+<p>This example also helps to explain why we don't make everything eager fetched by default: if you did that with bidirectional associations, then loading any object at all would load the entire database into memory!</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../databases/4/jdbc.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../databases/4/sqlite.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../databases/4/jdbc.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../../databases/4/sqlite.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>File permissions - Exercises</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../act1/index.html"><strong aria-hidden="true">1.</strong> Activity 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../act1/ssh.html"><strong aria-hidden="true">1.1.</strong> Secure shell</a></li><li class="chapter-item expanded "><a href="../act1/install.html"><strong aria-hidden="true">1.2.</strong> Installing vagrant and alpine linux</a></li><li class="chapter-item expanded "><a href="../act1/admin.html"><strong aria-hidden="true">1.3.</strong> Alpine linux system administration</a></li><li class="chapter-item expanded "><a href="../act1/shell.html"><strong aria-hidden="true">1.4.</strong> Shell expansion</a></li><li class="chapter-item expanded "><a href="../act1/git1.html"><strong aria-hidden="true">1.5.</strong> Git, part 1</a></li></ol></li><li class="chapter-item expanded "><a href="../act2/index.html"><strong aria-hidden="true">2.</strong> Activity 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../act2/permissions.html" class="active"><strong aria-hidden="true">2.1.</strong> File permissions</a></li><li class="chapter-item expanded "><a href="../act2/git2.html"><strong aria-hidden="true">2.2.</strong> Git, part 2</a></li><li class="chapter-item expanded "><a href="../act2/pipes.html"><strong aria-hidden="true">2.3.</strong> Pipes</a></li></ol></li><li class="chapter-item expanded "><a href="../act3/index.html"><strong aria-hidden="true">3.</strong> Activity 3</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../act3/git3.html"><strong aria-hidden="true">3.1.</strong> Git, part 3</a></li><li class="chapter-item expanded "><a href="../act3/stat.html"><strong aria-hidden="true">3.2.</strong> inodes and system calls</a></li><li class="chapter-item expanded "><a href="../act3/script.html"><strong aria-hidden="true">3.3.</strong> shell scripting</a></li></ol></li><li class="chapter-item expanded "><a href="../act4/index.html"><strong aria-hidden="true">4.</strong> Activity 4</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../act4/concurrent.html"><strong aria-hidden="true">4.1.</strong> Concurrent programming in POSIX</a></li><li class="chapter-item expanded "><a href="../act4/cpipe.html"><strong aria-hidden="true">4.2.</strong> Pipes in C</a></li><li class="chapter-item expanded "><a href="../act4/c_io.html"><strong aria-hidden="true">4.3.</strong> Input/Output in C</a></li><li class="chapter-item expanded "><a href="../act4/posix_io.html"><strong aria-hidden="true">4.4.</strong> Input/Output in POSIX</a></li><li class="chapter-item expanded "><a href="../act4/final.html"><strong aria-hidden="true">4.5.</strong> The final challenge</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Exercises</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#file-permissions" id="file-permissions">File permissions</a></h1>
+<p>Log in to your vagrant VM for the following exercises.</p>
+<h2><a class="header" href="#show-the-current-user" id="show-the-current-user">Show the current user</a></h2>
+<p>First, use the command <code>whoami</code> to see the current user name: it should be <code>vagrant</code>.</p>
+<p>For this exercise it will be useful to display the user in the prompt, so do <code>sudo nano /etc/profile</code>. This file is a configuration file that is read by the shell when it starts up. Notice the lines:</p>
+<pre><code>export CHARSET=UTF-8
+export LANG=C.UTF-8
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export PAGER=less
+export PS1='\h:\w\$ '
+umask 022
+</code></pre>
+<p>The <code>export</code> ones set environment variables, for example the default <code>PATH</code> where the shell looks for programs. The <code>PAGER</code> is what programs such as the manual page viewer (<code>man</code>) use to display information one page at a time.</p>
+<p>The <code>PS1</code> (prompt level 1) controls your shell prompt. Here <code>\h</code> means the hostname, <code>\w</code> the working directory and <code>\$</code> is the appropriate prompt symbol (<code>$</code> for normal users, <code>#</code> for root). This gets you a default prompt that looks like <code>alpine310:~$ </code> (note the space after the dollar sign, which is also in the PS1). Let's add the username: change the line to <code>export PS1='\u@\h:\w\$ '</code>. When you log out and in again, your prompt will now be <code>vagrant@alpine310:~$ </code>.</p>
+<p>While you're here, you can <code>export EDITOR=nano</code> so that every user gets nano instead of vi as their default editor. Then save the file (Control+X in nano).</p>
+<ul>
+<li>Research online what <code>umask 022</code> does, note that the number is in base 8.</li>
+</ul>
+<h2><a class="header" href="#create-a-user-and-a-group" id="create-a-user-and-a-group">Create a user and a group</a></h2>
+<p>Create a new user with <code>sudo adduser NAME</code> - I'm going to be using <code>fred</code> as an example name in these notes. When it asks for a password, you can just use <code>fred</code> or something; it will complain about the password being too short but it will create the user anyway.</p>
+<p>Check the user and group files with <code>tail /etc/passwd</code> and <code>tail /etc/group</code> to check that the new user has been created - <code>tail</code> displays the last 10 lines of a file by default; <code>tail -n N FILE</code> would display the last N lines. Your new user <code>fred</code> (or whatever you called them) should appear in both files. Also check with <code>ls -l /home</code> that the home directory for Fred exists and is set to the correct user and group.</p>
+<p>Time to change user: <code>su fred</code> and enter the password. Notice that the prompt has changed to <code>fred@alpine310:/home/vagrant$</code> (at least if you started off in that folder). So the user has changed, and because <code>/home/vagrant</code> is no longer the current user's home directory, it gets written out in full. Run <code>cd</code> to go home followed by <code>pwd</code> and check that you are now in <code>/home/fred</code> or whatever you called your new user.</p>
+<p>Next, create a user <code>george</code> (or some other name) add both your two new users, but not <code>vagrant</code>, to the group <code>users</code> (which already exists) as described in the video. Note: <code>fred</code> cannot use sudo, so you have to exit his terminal to get back to one running as vagrant for this.</p>
+<h2><a class="header" href="#explore-file-permissions" id="explore-file-permissions">Explore file permissions</a></h2>
+<p>As user <code>fred</code> (or whatever you called your first new user), set up your home directory using what you learnt in the videos so that</p>
+<ul>
+<li>You can do everything (rwx).</li>
+<li>Members of the <code>users</code> group can list files and change to your home directory, but not add/remove files. You will need to change the group of your home directory to <code>users</code> for this, as described in the videos.</li>
+<li>Everyone else cannot do anything with your home directory.</li>
+</ul>
+<p>Create a file in your home directory, e.g. <code>nano readme.txt</code> then add some content.</p>
+<p>Check, by using <code>su USERNAME</code> to log in as the different users, that:</p>
+<ul>
+<li><code>george</code> can view Fred's home directory but not create files there; </li>
+<li><code>george</code> can view but not edit Fred's readme file; </li>
+<li><code>vagrant</code> cannot list files in or enter Fred's home directory at all. What happens when you try?</li>
+</ul>
+<p><em>Of course, vagrant can use sudo to get around all these restrictions. Permissions do not protect you from anyone who can become root.</em></p>
+<p>Also as <code>fred</code>, make a <code>private</code> subdirectory in your home folder that no-one but you can access (read, write or execute). Create a file <code>secret.txt</code> in there with <code>nano private/secret.txt</code> as user <code>fred</code> from Fred's home directory, and put something in it. Do not change any permissions on <code>secret.txt</code> itself.</p>
+<p>Check as George that you can see the folder itself, but not cd into it nor list the file. Check that even knowing the file name (<code>cat /home/fred/private/secret.txt</code>) as George doesn't work.</p>
+<p>Using <code>ls -l</code> as Fred in both <code>~</code> and <code>~/private</code>, compare the entries for the files <code>~/readme.txt</code>, <code>~/private/secret.txt</code> and the folder <code>~/private</code>. Why do the groups of the two files differ?</p>
+<p>Note that, even though the secret file has read permissions for everyone by default, George cannot read it. The rule is that you need permissions on the whole path from <code>/</code> to a file to be able to access it.</p>
+<p><em>This is another reminder that if you want to store coursework on a lab machine, then put it in a folder that is only accessible to you. Other students can read your home directory by default, and they would be able to steal your work and submit it as their own otherwise: this has happened in the past.</em></p>
+<p><em>Altenatively you could remove permissions from everyone else on your home directory there, but this prevents you from being able to share files in specific folders that you do want to share with other students.</em></p>
+<h2><a class="header" href="#setuid" id="setuid">Setuid</a></h2>
+<p>We are going to create a file to let George (and others in the users group) send Fred messages which go in a file in his home directory.</p>
+<p>As Fred, create a file <code>message-fred.c</code> in your home directory and add the following lines:</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+const char *filename =&quot;/home/fred/messages.txt&quot;;
+
+int main(int argc, char **argv) {
+  if (argc != 2) {
+    puts(&quot;Usage: message-fred MESSAGE&quot;);
+    return 1;
+  }
+  FILE *file = fopen(filename, &quot;a&quot;);
+  if (file == NULL) {
+    puts(&quot;Error opening file&quot;);
+    return 2;
+  }
+  int r = fputs(argv[1], file);
+  if (r == EOF) {
+    puts(&quot;Error writing message&quot;);
+    return 2;
+  }
+  r = fputc('\n', file);
+  if (r == EOF) {
+    puts(&quot;Error writing newline&quot;);
+    return 2;
+  }
+  fclose(file);
+  return 0;
+}
+</code></pre>
+<p>Compile it with <code>gcc -Wall message-fred.c -o message-fred</code> (you should not get any warnings) and check with <code>ls -l</code>, you will see a line like</p>
+<pre><code>-rwxr-xr-x    1 fred     fred         19984 Oct 28 13:26 message-fred
+</code></pre>
+<p>These are the default permissions for a newly created executable file; note that gcc has set the three <code>+x</code> bits for you. Still as Fred, run <code>chmod u+s message-fred</code> and check the file again: you should now see <code>-rwsr-xr-x</code> for the file permissions. The <code>s</code> is the setuid bit.</p>
+<p>As George (<code>su george</code>), go into Fred's home directory and run <code>./message-fred &quot;Hi from George!&quot;</code>. The quotes are needed here because the program accepts only a single argument.</p>
+<p>Now run <code>ls -l</code> and notice that a <code>messages.txt</code> has appeared with owner and group <code>fred</code>. Check the contents with <code>cat messages.txt</code>. Although George cannot create and edit files in Fred's home directory himself (he can't edit <code>messages.txt</code> for example, although he can read it), the program <code>message-fred</code> ran as Fred, which let it create the file. George can send another message like this (<code>./message-fred &quot;Hi again!&quot;</code>), which gets appended to the file: try this out.</p>
+<p>This shows how setuid programs can be used to allow other users to selectively perform specific tasks under a different user account.</p>
+<p><strong>Warning</strong>: writing your own setuid programs is extremely dangerous if you don't know the basics of secure coding and hacking C programs, because a bug in such a program could let someone take over your user account. The absolute minimum you should know is the contents of our security units up to and including 4th year.</p>
+<p>A general task for a security analyst might be finding all files with the setuid bit set on a system. You can try this yourself, but return to a vagrant shell first so that you're allowed to use sudo:</p>
+<pre><code>sudo find / -perm /4000
+</code></pre>
+<p>You might get some errors relating to <code>/proc</code> files, which you can ignore: these are subprocesses that find uses to look at individual files.</p>
+<p>Apart from <code>message-fred</code>, on alpine there are four such files by default: <code>sudo</code>, <code>mount</code>, <code>umount</code> and <code>bbsuid</code>. The first one you already know; look up what the next two do and think about why they are setuid. Specifically, what kinds of (un)mounting are non-root users allowed to do according to the manual pages?</p>
+<p>The last one is busybox' general-purpose setuid helper. For example,</p>
+<pre><code>ls -l /bin | grep bbsuid
+</code></pre>
+<p>shows that <code>/bin/su</code> is in fact a link to bbsuid on this system (a symlink to a setuid program inherits the setuid property). <code>grep STRING</code> here filters its input and only returns lines containing the string (or regular expression).</p>
+<p>Have a look at the output of the following:</p>
+<pre><code>ls -l /usr/bin | grep bbsuid
+</code></pre>
+<p>Look up what these programs do and think about why they have to be setuid root.</p>
+<p>Also have a look at the <a href="https://github.com/alpinelinux/aports/blob/master/main/busybox/bbsuid.c">source code of bbsuid</a>: it's only around 100 lines of C and all it does is check that you're calling it from an approved filename, then launch busybox (still as root) to handle the command. The check is important because anyone can make a symlink to bbsuid and call it say <code>rm</code>, and if bbsuid didn't check for this then it would allow anyone to remove any file on the system as root.</p>
+<h2><a class="header" href="#sudo" id="sudo">Sudo</a></h2>
+<p>Make sure your terminal is running as <code>fred</code> and try a <code>sudo ls</code>. You will see a general message, you will be asked for your password, and then you will get the error <code>fred is not in the sudoers file.  This incident will be reported.</code> (This means that an entry has been logged in <code>/var/log/messages</code>.)</p>
+<p>So, <code>fred</code> can currently not use sudo. Switch back to <code>vagrant</code> and run the command <code>sudo cat /etc/sudoers</code>. Everything is commented out except <code>root ALL=(ALL) ALL</code> and the last line <code>#includedir /etc/sudoers.d</code> (this is not a comment!) which contains a single file <code>vagrant</code> with the line <code>vagrant ALL=(ALL) NOPASSWD: ALL</code> which is why vagrant can use sudo in the first place.</p>
+<p>However, note the commented lines such as</p>
+<pre><code># %wheel ALL=(ALL) NOPASSWD: ALL
+# %sudo ALL=(ALL) ALL
+</code></pre>
+<p>If uncommented, the first one would let everyone in group wheel run commands using sudo (this is the default on some other linux distributions), whereas the second one would allow everyone in the group <code>sudo</code> to do this, but would prompt for their own password beforehand.</p>
+<p>Let's allow people in the users group to reboot the machine. Open a root shell with <code>sudo su</code> as vagrant; this is so we don't get locked out if we break sudo.</p>
+<p>Edit the sudoers file with <code>nano /etc/sudoers</code> as root, and add the following line:</p>
+<pre><code>%users ALL=(ALL) /sbin/reboot
+</code></pre>
+<p>and save the sudoers file.</p>
+<p>If you read the comment at the top of the file, it suggests using <code>visudo</code> to edit the file. Since we don't want to use vi, we can instead check the syntax with <code>visudo -c</code> and check that we get &quot;parsed OK&quot;; if not then we edit the file again to fix it (this is why we opened a root shell: if there's a syntax error in the file, sudo would refuse to run at all).</p>
+<p>You can now switch back to <code>fred</code> (check the prompt to make sure you are Fred) and do <code>sudo reboot</code>. After asking for Fred's password, the virtual machine will now reboot, which you notice because you get kicked out of your ssh connection. Another <code>vagrant ssh</code> after a few seconds will get you back in again.</p>
+<h2><a class="header" href="#mounting" id="mounting">Mounting</a></h2>
+<p>However, your <code>/vagrant</code> folder will now not work properly, because when vagrant starts the VM it will run some commands as root automatically, but when you manually reboot then they don't get run again. Specifically, in the Vagrantfile:</p>
+<pre><code>config.vm.provision :shell, run: 'always', inline: &lt;&lt;-SHELL
+    umount /vagrant
+    /sbin/mount.vboxsf -o uid=1000 -o gid=1000 vagrant /vagrant
+    chmod go+rx /vagrant
+SHELL
+</code></pre>
+<p>This is a workaround for a bug in the interface between virtualbox (that vagrant uses to run the VM) and alpine linux: although the shared folder is mounted automatically, it gets the wrong permissions and only root can use it.</p>
+<p>To fix this, you can either run the three commands as root (with sudo) or you can leave the VM and do <code>vagrant halt</code> followed by <code>vagrant up</code>, which will have vagrant reboot the machine again and re-run the commands indicated as <code>run: 'always'</code> in the Vagrantfile. (Commands without this flag only run when a VM is set up for the first time.)</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../act2/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../act2/git2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../act2/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../act2/git2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Concurrent programming in POSIX - Exercises</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../act1/index.html"><strong aria-hidden="true">1.</strong> Activity 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../act1/ssh.html"><strong aria-hidden="true">1.1.</strong> Secure shell</a></li><li class="chapter-item expanded "><a href="../act1/install.html"><strong aria-hidden="true">1.2.</strong> Installing vagrant and alpine linux</a></li><li class="chapter-item expanded "><a href="../act1/admin.html"><strong aria-hidden="true">1.3.</strong> Alpine linux system administration</a></li><li class="chapter-item expanded "><a href="../act1/shell.html"><strong aria-hidden="true">1.4.</strong> Shell expansion</a></li><li class="chapter-item expanded "><a href="../act1/git1.html"><strong aria-hidden="true">1.5.</strong> Git, part 1</a></li></ol></li><li class="chapter-item expanded "><a href="../act2/index.html"><strong aria-hidden="true">2.</strong> Activity 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../act2/permissions.html"><strong aria-hidden="true">2.1.</strong> File permissions</a></li><li class="chapter-item expanded "><a href="../act2/git2.html"><strong aria-hidden="true">2.2.</strong> Git, part 2</a></li><li class="chapter-item expanded "><a href="../act2/pipes.html"><strong aria-hidden="true">2.3.</strong> Pipes</a></li></ol></li><li class="chapter-item expanded "><a href="../act3/index.html"><strong aria-hidden="true">3.</strong> Activity 3</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../act3/git3.html"><strong aria-hidden="true">3.1.</strong> Git, part 3</a></li><li class="chapter-item expanded "><a href="../act3/stat.html"><strong aria-hidden="true">3.2.</strong> inodes and system calls</a></li><li class="chapter-item expanded "><a href="../act3/script.html"><strong aria-hidden="true">3.3.</strong> shell scripting</a></li></ol></li><li class="chapter-item expanded "><a href="../act4/index.html"><strong aria-hidden="true">4.</strong> Activity 4</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../act4/concurrent.html" class="active"><strong aria-hidden="true">4.1.</strong> Concurrent programming in POSIX</a></li><li class="chapter-item expanded "><a href="../act4/cpipe.html"><strong aria-hidden="true">4.2.</strong> Pipes in C</a></li><li class="chapter-item expanded "><a href="../act4/c_io.html"><strong aria-hidden="true">4.3.</strong> Input/Output in C</a></li><li class="chapter-item expanded "><a href="../act4/posix_io.html"><strong aria-hidden="true">4.4.</strong> Input/Output in POSIX</a></li><li class="chapter-item expanded "><a href="../act4/final.html"><strong aria-hidden="true">4.5.</strong> The final challenge</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Exercises</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#concurrent-programming-in-posix" id="concurrent-programming-in-posix">Concurrent programming in POSIX</a></h1>
+<p>In your second year, you will study concurrent programming using the go programming language, which provides an abstraction called <em>channels</em> that different <em>actors</em> can use to talk to each other. In the case of go, the actors are threads, but the same principle applies to a concurrent system with different processes, in which case channels are a kind of <em>inter-process communication (IPC)</em>. In POSIX, pipes are a kind of channel.</p>
+<ul>
+<li>If one process reads from a pipe, then this blocks the process until another process writes to it.</li>
+<li>If one process writes to a pipe, then this blocks the process until another process reads from it.</li>
+<li>If one process reads from a pipe and another process writes to it (it does not matter who goes first) then the data is transferred from the reader to the writer, and both processes continue.</li>
+</ul>
+<p>For example, when you to a command like <code>cat logfile | grep Error | wc -l</code> to count the number of lines containing the word &quot;Error&quot;, then there are three processes (not counting the terminal) and two pipes involved:</p>
+<p><img src="../resources/pipe1.png" alt="pipe diagram" /></p>
+<p><em>In this diagram, green boxes are processes with standard input on the left and standard output (top) and standard error (bottom) on the right. The little squares all represent file descriptors; a pipe has two of them, one each for reading and writing.</em></p>
+<p>This is not yet a fully concurrent system though, as data is only flowing in one direction: there are no loops.</p>
+<p>As a little example of something that does have a loop, we are going to use the <code>bc</code> calculator program, which reads a line from standard input, evaluates it as a formula, and writes the result to standard output:</p>
+<pre><code>alpine$ bc
+(you type ) 2+3
+(bc prints) 5
+(you type ) 1+1
+(bc prints) 2
+</code></pre>
+<p><code>bc</code> reads in a loop, so type <code>^D</code> to close its standard input, then you get back to the terminal.</p>
+<p>As a diagram, the interaction with bc looks like this:</p>
+<p><img src="../resources/pipe2.png" alt="pipe diagram of terminal interaction" /></p>
+<p><em>Here the terminal's right file descriptor is the one that the terminal reads, and the left one is where the terminal writes your keyboard input. But there's still a human in the loop here.</em></p>
+<p>We are going to write a program that can talk to <code>bc</code>. This means we have two processes, our program and <code>bc</code>, and they need to communicate with each other. We will use pipes for this, giving the following diagram where we call the pipes <em>up</em> and <em>down</em>:</p>
+<p><img src="../resources/pipe3.png" alt="pipe digram for a program controlling bc" /></p>
+<p><em>In this diagram, data flows through pipes from left to right, but logically the &quot;down&quot; pipe is for data flowing from our program downwards to bc, and the &quot;up&quot; pipe is for data flowing back up again. Standard error is not shown (it still goes to the terminal).</em></p>
+<p>The <code>bc</code> program does not need to know about any of this: it still reads expressions from its standard input, evaluates them, and writes them to standard output.</p>
+<p>Notice that when we used a pipe character <code>|</code> in the shell, it automatically set up the pipes for us so each pipe had one reader and one writer. When we set the pipes up ourselves, we will have to take care of this ourselves too.</p>
+<h2><a class="header" href="#the-first-program" id="the-first-program">The first program</a></h2>
+<p>Study the following program. It tries to add the numbers from 1 to 10 by writing the sums (1+2 etc.) to standard output, and reading the result back from standard input. You can compile it with <code>gcc -std=c99 -Wall ipc1.c -o ipc1</code> and then run it yourself: it prints <code>1+2</code> and if you reply <code>3</code>, it follows up with <code>3+3</code> and so on. After ten steps, it prints the result and exits.</p>
+<pre><code class="language-c">/* ipc1.c */
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;stdlib.h&gt;
+
+void check(int ok, char *where) {
+  if (ok &lt; 0) {
+    fprintf(stderr, &quot;Error in %s: %s\n&quot;, where, strerror(errno));
+    exit(1);
+  }
+}
+
+int evaluate(char *buffer, int len) {
+  fprintf(stderr, &quot;&gt; %s&quot;, buffer);
+
+  int ok = printf(&quot;%s&quot;, buffer);
+  if (ok &lt; 0) {
+    return -1;
+  }
+  char* p = fgets(buffer, len, stdin);
+  if (p == NULL) {
+    return -1;
+  }
+  fprintf(stderr, &quot;&lt; %s&quot;, buffer);
+  return 0;
+}
+
+int main() {
+  char buffer[100];
+  int ok;
+
+  setbuf(stdout, NULL);
+  setbuf(stdin, NULL);
+
+  strcpy(buffer, &quot;1+2\n&quot;);
+
+  ok = evaluate(buffer, sizeof(buffer));
+  check(ok, &quot;I/O&quot;);
+  
+  for (int i = 3; i &lt;= 10; i++) {
+    sprintf(buffer + strlen(buffer) - 1, &quot;+%u\n&quot;, i);
+    ok = evaluate(buffer, sizeof(buffer));
+    check(ok, &quot;I/O&quot;);
+  }
+  fprintf(stderr, &quot;The result is %s&quot;, buffer);
+  return 0;
+}
+</code></pre>
+<p>The program also prints a copy of all its input and output to standard error so you can see what data is being transferred. The transfer happens in <code>evaluate</code>:</p>
+<ol>
+<li>First, it prints the buffer to standard error.</li>
+<li>Then, it prints the buffer to standard output with printf. Checking the return value of printf is extremely paranoid, but we're about to use the program in a situation where standard output is not the terminal, so it could potentially fail.</li>
+<li>Next, it reads a line from standard input with fgets. Checking the return value here is good practice even if you're not paranoid.</li>
+<li>Finally, it prints the received value to standard error - note that if <code>fgets</code> had returned NULL, then it would not be safe to access the buffer.</li>
+</ol>
+<p>Once you are familiar with how the program works, you can comment out the lines that print to standard error if you like and run it again to see exactly what happens on standard input/output and nothing else. Then, uncomment the lines again.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>You could also use another trick to disambiguate standard output/error (for programs that don't, like this one, indicate which is which: the lines starting <code>&gt;</code> or <code>&lt;</code> are standard error).</p>
+<pre><code class="language-sh">escape=$(printf '\033')
+./ipc 2&gt; &gt;(sed -e &quot;s/\(.*\)/${escape}[32m\1${escape}[0m/&quot;)
+</code></pre>
+<p>This might mess up the last line on your terminal a bit, but you can reset it with Control+L.
+The first command sets a shell variable to the ANSI escape character. The second line redirects standard error (<code>2&gt;</code>) to a subprocess (<code>&gt;(...)</code>) which calls the stream editor <code>sed</code> to replace each line with the line surrounded by <code>\e[32m</code> (set colour to green) and <code>\e[0m</code> (reset colour). This will make the standard error lines appear in green. </p>
+<p>Incidentally, some versions of sed support the <code>\e</code> escape sequence directly, or at least the version <code>\x1b</code> that creates a character from its ASCII code in hexadecimal, but alpine's sed does not so you need the shell variable trick with a fall back to octal (033) notation!</p>
+</div>
+</div>
+<p>And now for the interesting part:</p>
+<ul>
+<li>Make two named pipes (FIFOs) with <code>mkfifo up</code> and <code>mkfifo down</code>.</li>
+<li>You will need two terminals open for the following. Either ssh into your alpine machine a second time or, better still, use tmux (<code>Control+B, %</code> opens a second terminal beside the first one; you can use <code>Control+B, Left</code> and <code>Control+B, Right</code> to switch between them).</li>
+<li>Run the program with <code>./ipc1 &gt; down &lt; up</code> to redirect standard input and output to the pipes. This blocks (exercise: which statement is it currently blocking on?).</li>
+<li>In the second terminal, run <code>bc &lt; down &gt; up</code>.</li>
+</ul>
+<p>Both processes should now terminate, and although you won't see the pipes directly, standard error of your program is printing a copy to the terminal, where <code>&gt;</code> is data sent to down pipe and <code>&lt;</code> is data received on the up pipe:</p>
+<pre><code>&gt; 1+2
+&lt; 3
+&gt; 3+3
+&lt; 6
+&gt; 6+4
+&lt; 10
+...
+&gt; 45+10
+&lt; 55
+The result is 55
+</code></pre>
+<p>Note that the program printed the &quot;The result is ...&quot; line to standard error too, otherwise you would not see it here.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../act4/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../act4/cpipe.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../act4/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../act4/cpipe.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>SQLite - COMS10012 Databases Exercises</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../../favicon.png">
+        
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../databases/1/sql-introduction.html"><strong aria-hidden="true">1.</strong> SQL introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/1/setup.html"><strong aria-hidden="true">1.1.</strong> Set up the database</a></li><li class="chapter-item expanded "><a href="../../databases/1/er-diagram.html"><strong aria-hidden="true">1.2.</strong> ER diagram</a></li><li class="chapter-item expanded "><a href="../../databases/1/er2.html"><strong aria-hidden="true">1.3.</strong> More modelling</a></li></ol></li><li class="chapter-item expanded "><a href="../../databases/2/sql-beginners.html"><strong aria-hidden="true">2.</strong> SQL for beginners</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/2/explore-database.html"><strong aria-hidden="true">2.1.</strong> Explore the database</a></li><li class="chapter-item expanded "><a href="../../databases/2/elections.html"><strong aria-hidden="true">2.2.</strong> Bristol elections</a></li><li class="chapter-item expanded "><a href="../../databases/2/census.html"><strong aria-hidden="true">2.3.</strong> The UK census</a></li><li class="chapter-item expanded "><a href="../../databases/2/normalforms.html"><strong aria-hidden="true">2.4.</strong> Normal forms</a></li></ol></li><li class="chapter-item expanded "><a href="../../databases/3/sql-intermediate.html"><strong aria-hidden="true">3.</strong> Intermediate SQL</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/3/exercises.html"><strong aria-hidden="true">3.1.</strong> Exercises</a></li></ol></li><li class="chapter-item expanded "><a href="../../databases/4/sql-java.html"><strong aria-hidden="true">4.</strong> SQL and Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../databases/4/jdbc.html"><strong aria-hidden="true">4.1.</strong> JDBC</a></li><li class="chapter-item expanded "><a href="../../databases/4/hibernate.html"><strong aria-hidden="true">4.2.</strong> Hibernate</a></li><li class="chapter-item expanded "><a href="../../databases/4/sqlite.html" class="active"><strong aria-hidden="true">4.3.</strong> SQLite</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">COMS10012 Databases Exercises</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#sqlite" id="sqlite">SQLite</a></h1>
+<p><a href="https://sqlite.org/index.html">SQLite</a> is a really good tool for &quot;just getting stuff done&quot;, especially when you hit the limits of Microsoft Excel (or other spreadsheet software).</p>
+<p>According to <a href="https://sqlite.org/index.html">its authors</a>, SQLite is used in some form in every single Windows 10, Mac, Android and iOS device as well as built into the Firefox, Chrome (including Edge) and Safari browsers: the browsers store their browsing history and cookies in SQLite-format databases and you can manually edit these with the command line tool if you like.</p>
+<p>Currently in version 3.34.1, the command-line program is called <code>sqlite3</code> and exists for all major operating systems, you should be able to download it as a single file executable, put in in any folder you like and just run it. On Alpine, you can install the <code>sqlite</code> package with <code>apk</code>.</p>
+<p>SQLite is an embedded database, which means there is no separate server process. Databases are simply files. When you run the command line tool, the tool fulfils both the client and server roles at once; when you use SQLite from a program, the SQLite driver also acts as the &quot;server&quot;.</p>
+<h2><a class="header" href="#census-exercise" id="census-exercise">Census exercise</a></h2>
+<p>You will need the census files from databases activity 1: make a folder with the <code>setup.sql</code> file and the census csv files. </p>
+<p>Download or install sqlite and run <code>sqlite3 census.db</code> to create a database file.</p>
+<p>To create the tables, the command <code>.read setup.sql</code> reads and executes the commands in a file (similar to <code>source</code> on the shell). SQLite system commands start with a dot and do not take a semicolon at the end - see <code>.help</code> for a list. (Don't run the <code>import.sql</code> file, that's MariaDB-specific.)</p>
+<p>Use <code>.tables</code> to show the tables and check that they have been created. With <code>.schema Ward</code> for example you can show the create statement for a single table.</p>
+<p>The source data is in simple CSV files, for example if (back on the shell) you did a <code>head -n 5 County.csv</code> you would see this:</p>
+<pre><code>E09000001,&quot;City of London&quot;,E12000007,E92000001
+E09000002,&quot;Barking and Dagenham&quot;,E12000007,E92000001
+E09000003,Barnet,E12000007,E92000001
+E09000004,Bexley,E12000007,E92000001
+E09000005,Brent,E12000007,E92000001
+</code></pre>
+<p>which matches the following, from the setup script:</p>
+<pre><code>CREATE TABLE County (
+    code VARCHAR(10) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    parent VARCHAR(10),
+    country VARCHAR(10),
+
+    FOREIGN KEY (parent) REFERENCES Region(code),
+    FOREIGN KEY (country) REFERENCES Country(code)
+);
+</code></pre>
+<p>To import the data, run the following on the SQLite prompt:</p>
+<pre><code>.mode csv
+.header off
+.import Country.csv Country
+.import Region.csv Region
+.import County.csv County
+.import Ward.csv Ward
+.import Occupation.csv Occupation
+.import Statistic.csv Statistic
+</code></pre>
+<p>You should now have all the data imported and you could try any SQL queries from the previous exercises in this database. The SQL dialect of SQLite is not entirely the same as MariaDB: for example, SQLite can do INNER and LEFT OUTER JOIN (and CROSS JOIN) but it cannot do RIGHT OUTER or FULL OUTER JOIN.</p>
+<p>SQLite is also extremely forgiving when it comes to data types: it treats types more or less as comments, so it will let you store a string in an integer column if you try. You can also write a CREATE TABLE statement and just leave out the types, SQLite will not mind. SQLite also <em>does not enforce your FOREIGN KEY constraints by default</em>, though you can <a href="https://sqlite.org/foreignkeys.html">turn this on</a> if you want to. These are all design choices made by the SQLite developers that might or might not be the best ones for any particular use case.</p>
+<h2><a class="header" href="#modes-and-file-output" id="modes-and-file-output">Modes and file output</a></h2>
+<p>SQLite has different ways of displaying a table of data. Try <code>.mode csv</code>, <code>.header on</code> then <code>SELECT * FROM Region;</code> to see the regions as a CSV file with headers (mode and header settings apply until you change them or quit SQLite). If you want to actually produce a CSV file, <code>.once FILENAME</code> tells SQLite to send the result of the following query only to a file, so you can work on a query until it does what you want, then run the <code>.once</code> command and re-run the query (SQLite supports readline on most platforms so the UP key gets the last line back) to send it to a file.</p>
+<p>The default mode, <code>list</code>, shows columns separated by bar characters. You can also try <code>.mode column</code> which is a bit more human-readable, printing in lined-up columns with spaces in between. Or, if you want to include a table in a HTML page, <code>.mode html</code> prints the table with HTML tags. If you are on your host OS (not the alpine VM) and you have Excel installed, <code>.excel</code> opens the result of the following query in Excel.</p>
+<p>You have now learned an extremely powerful way to analyze data that is presented to you in one or more CSV files - or any data format that you can easily export to CSV (for example most Excel files).</p>
+<h2><a class="header" href="#sqlite-from-java" id="sqlite-from-java">SQLite from Java</a></h2>
+<p>You can access a SQLite database from a Java program by using the JDBC driver. In Maven, declare the following dependency:</p>
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.xerial&lt;/groupId&gt;
+  &lt;artifactId&gt;sqlite-jdbc&lt;/artifactId&gt;
+  &lt;version&gt;3.34.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>The connection string takes the format <code>jdbc:sqlite:FILEPATH</code>. An absolute path to a file should always work (you have to spell it out and not use the <code>~</code> shortcut though), or if you are running a JAR file from the same folder as the database file then just giving the file name with no path should work too.</p>
+<p>Exercise: write a minimal Maven/Java application that prints the region names from the sqlite database you just created.</p>
+<h2><a class="header" href="#sqlite-from-python" id="sqlite-from-python">SQLite from Python</a></h2>
+<p>Python is a great language for Data Science, and if you ever need to connect to a SQLite database from Python then here is how:</p>
+<pre><code class="language-python"># you may have to 'pip install sqlite3'
+import sqlite3
+with sqlite3.connect('FILENAME') as connection:
+    cursor = connection.cursor()
+    for row in cursor.execute('SELECT * FROM Ward WHERE name LIKE ?', WARDNAME):
+        # do something with row
+        print(row)
+</code></pre>
+<ul>
+<li>The <code>with</code> statement is the equivalent to Java's try-with-resources.</li>
+<li>The <code>execute</code> statement executes a prepared statement. You put the statement itself in the first arguments, then the values to replace the placeholders as additional arguments.</li>
+<li>The <code>execute</code> command returns an iterator that you can loop over, the rows themselves are python tuples (you can also do <code>.fetchall()</code> to get them in a list).</li>
+</ul>
+<p>See <a href="https://docs.python.org/3/library/sqlite3.html">the Python sqlite documentation</a> for more information.</p>
+<p>One important warning here: if you write any data to the database, you have to call <code>connection.commit()</code> afterwards otherwise the data will not actually be written to disk.</p>
+<h2><a class="header" href="#sqlite-from-c" id="sqlite-from-c">SQLite from C</a></h2>
+<p>The final exercise here is to write a C program, following the instructions in the slides, that reads your SQLite <code>census.db</code>, iterates over the regions table and prints &quot;Region NAME is code CODE&quot;, where NAME/CODE are replaced with the region's name and code.</p>
+<p>Of course you need to handle potential errors from the <code>sqlite3_</code> functions: it's only safe to continue if they return <code>SQLITE_OK</code>.</p>
+<p>You will need to install the <code>sqlite-dev</code> package which contains the <code>sqlite3.h</code> header file, and link against the library with <code>-lsqlite3</code> in your <code>gcc</code> command.</p>
+<p>If you are using <code>sqlite3_exec</code> with a callback function, the callback must return 0 on success and nonzero if it encountered an error, which will in turn cause <code>sqlite_exec</code> to return an error too.</p>
+<p>For other methods, see <a href="https://www.sqlite.org/cintro.html">the SQLite C API</a>. For example <code>sqlite3_step</code> lets you iterate over the rows of a SQL result without using a callback function.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../databases/4/hibernate.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../databases/4/hibernate.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
