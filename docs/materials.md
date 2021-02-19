@@ -30,7 +30,7 @@ This material will be consolidated in Week 15.
 
 We will learn the basics of relational databases. We will be using MariaDB.
 
-The material for these weeks is hosted on [exercises/databases](./exercises/databses). This includes both video links and workshop content.
+The material for these weeks is hosted on [exercises/databases](./exercises/databases). This includes both video links and workshop content.
 
   * [Activity 1](./exercises/databases/act1/index.html) is for the Monday workshop in Week 16 (22 February)
   * [Activity 2](./exercises/databases/act2/index.html) is for the Thursday workshop in Week 16 (25 February)
