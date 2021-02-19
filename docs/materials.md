@@ -32,10 +32,10 @@ We will learn the basics of relational databases. We will be using MariaDB.
 
 The material for these weeks is hosted on [exercises/databases](./exercises/databases). This includes both video links and workshop content.
 
-  * [Activity 1](./exercises/databases/act1/index.html) is for the Monday workshop in Week 16 (22 February)
-  * [Activity 2](./exercises/databases/act2/index.html) is for the Thursday workshop in Week 16 (25 February)
+  * [Activity 1](./exercises/databases/databases/1/sql-introduction.html) is for the Monday workshop in Week 16 (22 February)
+  * [Activity 2](./exercises/databases/databases/2/sql-beginners.html) is for the Thursday workshop in Week 16 (25 February)
 
 This is then interrupted by the reading week (Week 17, 1 March - 5 March), during which you should consolidate this material.
 
-  * [Activity 3](./exercises/databases/act3/index.html) is for the Monday workshop in Week 18 (8 March).
-  * [Activity 4](./exercises/databases/act4/index.html) is for the Thursday workshop in Week 18 (11 March).
+  * [Activity 3](./exercises/databases/databases/3/sql-intermediate.html) is for the Monday workshop in Week 18 (8 March).
+  * [Activity 4](./exercises/databases/databases/4/sql-java.html) is for the Thursday workshop in Week 18 (11 March).
