@@ -86,9 +86,9 @@ I have prepared some sample data that we will be using in this and the following
 First, download the following three files and place them in the same folder as your Vagrantfile. You can do this for example with `wget ADDRESS` in Alpine linux; `wget` is a download program.
 
 ```
-https://cs-uob.github.io/COMS10012/resources/databases/sample-data.sql
-https://cs-uob.github.io/COMS10012/resources/databases/secure-setup.sql
-https://cs-uob.github.io/COMS10012/resources/databases/sampledata.tar
+https://cs-uob.github.io/COMSM0085/resources/databases/sample-data.sql
+https://cs-uob.github.io/COMSM0085/resources/databases/secure-setup.sql
+https://cs-uob.github.io/COMSM0085/resources/databases/sampledata.tar
 ```
 
 If you are using a local copy of this repository, you can find the files under `/resources/databases`.
