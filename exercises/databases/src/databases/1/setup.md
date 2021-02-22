@@ -59,7 +59,7 @@ https://cs-uob.github.io/COMSM0085/resources/databases/secure-setup.sql
 ```
 
   * Run `mysql -u root`. This should log you in as root without any authentication, which explains why I am making such a fuss about security! Quit again by typing Control+D.
-  * Run `mysql -u root -e 'source /vagrant/secure-setup.sql`. The `-e` command means "run the following command line argument as a script", as you know already from sed and several other tools; `source` means "load a file and run it" and the file in question is part of the lab package I have prepared for you.
+  * Run `mysql -u root -e 'source /vagrant/secure-setup.sql'`. The `-e` command means "run the following command line argument as a script", as you know already from sed and several other tools; `source` means "load a file and run it" and the file in question is part of the lab package I have prepared for you.
   * Run `mysql -u root` again. This time, it will not let you in, which is what we want.
 
 The secure-setup script is as follows:
