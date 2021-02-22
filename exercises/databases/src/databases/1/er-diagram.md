@@ -46,7 +46,7 @@ USE data;
 
 to select the (initially empty) database called `data`, on which you have read and write permissions. Note that there is a semicolon at the end.
 
-As long as you started your MariaDB session in the folder with your script, you can now run the command `\. SCRTIPNAME.SQL`, that is a backslash, a period, a space and then the name of the script. As this is a command directly for the MariaDB client rather than a command to be run on the server, it does not take a semicolon.
+As long as you started your MariaDB session in the folder with your script, you can now run the command `\. SCRIPTNAME.SQL`, that is a backslash, a period, a space and then the name of the script. As this is a command directly for the MariaDB client rather than a command to be run on the server, it does not take a semicolon.
 
 If you get any errors, then `SHOW ERRORS;` will display more information. If not, check with `SHOW TABLES;` that your tables exist.
 
