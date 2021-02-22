@@ -297,7 +297,7 @@ mysql -u root -e 'source /vagrant/secure-setup.sql'
 <p>The committee consists of some of the members, each of which has a unique committee role. We assume that committee roles do not change during the year and that each committee role must be filled every year.</p>
 <p>An event has a date, a name, a location, an optional description and an organiser who must be a society member (not necessarily a committee member). An event is attended by a set of members. There is never more than one event at the same location on the same date but event names are not unique.</p>
 </blockquote>
-<p>You can draw the diagram with pen and paper or you can use a free modelling tool like <a href="databases/1/draw.io">draw.io</a>. </p>
+<p>You can draw the diagram with pen and paper or you can use a free modelling tool like <a href="https://draw.io">draw.io</a>. </p>
 <ul>
 <li>For draw.io, open the &quot;Entity Relation&quot; section in the menu on the left and use the &quot;Table&quot; (first item) object for tables. Clicking on it adds a table to your diagram.</li>
 <li>To add a row to a table, select an existing row and press Control-D (duplicate item). To delete a row, press the delete key.</li>
@@ -315,7 +315,7 @@ mysql -u root -e 'source /vagrant/secure-setup.sql'
 <pre><code>USE data;
 </code></pre>
 <p>to select the (initially empty) database called <code>data</code>, on which you have read and write permissions. Note that there is a semicolon at the end.</p>
-<p>As long as you started your MariaDB session in the folder with your script, you can now run the command <code>\. SCRTIPNAME.SQL</code>, that is a backslash, a period, a space and then the name of the script. As this is a command directly for the MariaDB client rather than a command to be run on the server, it does not take a semicolon.</p>
+<p>As long as you started your MariaDB session in the folder with your script, you can now run the command <code>\. SCRIPTNAME.SQL</code>, that is a backslash, a period, a space and then the name of the script. As this is a command directly for the MariaDB client rather than a command to be run on the server, it does not take a semicolon.</p>
 <p>If you get any errors, then <code>SHOW ERRORS;</code> will display more information. If not, check with <code>SHOW TABLES;</code> that your tables exist.</p>
 <p>Now, run the script a second time. If the order of all commands is correct, then it should run through again without errors.</p>
 <h1><a class="header" href="#more-modelling" id="more-modelling">More modelling</a></h1>
