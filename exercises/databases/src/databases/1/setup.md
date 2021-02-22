@@ -52,7 +52,7 @@ You now have a running database and you can log in with `mysql`. However, the da
 
 Most distributions come with a `mysql_secure_installation` script that prompts you for a database root password and sets up accounts. We are going to do a similar thing, but with a custom setup for our purposes.
 
-The setup file is located at the address given below. You can download it for example with `wget ADDRESS` in Alpine linux; `wget` is a download program.
+The setup file is located at the address given below. You can download it for example with `wget ADDRESS` in Alpine linux; `wget` is a download program. Place it in the same folder as your Vagrantfile.
 
 ```
 https://cs-uob.github.io/COMSM0085/resources/databases/secure-setup.sql
