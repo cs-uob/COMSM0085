@@ -190,9 +190,12 @@
 <h2><a class="header" href="#security" id="security">Security</a></h2>
 <p>You now have a running database and you can log in with <code>mysql</code>. However, the database will allow anyone to log in and change anything, which is not what you want - especially not on a production machine.</p>
 <p>Most distributions come with a <code>mysql_secure_installation</code> script that prompts you for a database root password and sets up accounts. We are going to do a similar thing, but with a custom setup for our purposes.</p>
+<p>The setup file is located at the address given below. You can download it for example with <code>wget ADDRESS</code> in Alpine linux; <code>wget</code> is a download program. Place it in the same folder as your Vagrantfile.</p>
+<pre><code>https://cs-uob.github.io/COMSM0085/resources/databases/secure-setup.sql
+</code></pre>
 <ul>
 <li>Run <code>mysql -u root</code>. This should log you in as root without any authentication, which explains why I am making such a fuss about security! Quit again by typing Control+D.</li>
-<li>Run <code>mysql -u root -e 'source /vagrant/secure-setup.sql</code>. The <code>-e</code> command means &quot;run the following command line argument as a script&quot;, as you know already from sed and several other tools; <code>source</code> means &quot;load a file and run it&quot; and the file in question is part of the lab package I have prepared for you.</li>
+<li>Run <code>mysql -u root -e 'source /vagrant/secure-setup.sql'</code>. The <code>-e</code> command means &quot;run the following command line argument as a script&quot;, as you know already from sed and several other tools; <code>source</code> means &quot;load a file and run it&quot; and the file in question is part of the lab package I have prepared for you.</li>
 <li>Run <code>mysql -u root</code> again. This time, it will not let you in, which is what we want.</li>
 </ul>
 <p>The secure-setup script is as follows:</p>
@@ -213,9 +216,8 @@ FLUSH PRIVILEGES;
 <p>Note: what happens when you install the mariadb package (or install it from a ZIP file) depends on the distribution. For some distributions, installing the package automatically creates a database, and adds the server to the default runlevel. Alpine will not do any of these things for you - you have to configure it itself, which is a good opportunity to learn what's going on behind the scenes in other distributions. Most distributions will not, however, configure the security settings automatically - some of them prompt for a root password at installation, but typically leave the test database and let root login remotely. Wherever you install mariadb or mysql, please check this yourself - an unsecured database is something that hackers will be keeping an eye out for.</p>
 <h2><a class="header" href="#importing-sample-data" id="importing-sample-data">Importing sample data</a></h2>
 <p>I have prepared some sample data that we will be using in this and the following weeks.</p>
-<p>First, download the following three files and place them in the same folder as your Vagrantfile. You can do this for example with <code>wget ADDRESS</code> in Alpine linux; <code>wget</code> is a download program.</p>
+<p>First, download the following two files and place them in the same folder as your Vagrantfile. You can do this the same way as you did before with the secure setup file.</p>
 <pre><code>https://cs-uob.github.io/COMSM0085/resources/databases/sample-data.sql
-https://cs-uob.github.io/COMSM0085/resources/databases/secure-setup.sql
 https://cs-uob.github.io/COMSM0085/resources/databases/sampledata.tar
 </code></pre>
 <p>If you are using a local copy of this repository, you can find the files under <code>/resources/databases</code>.</p>
