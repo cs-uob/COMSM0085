@@ -3,7 +3,7 @@ authors = ["David"]
 language = "en"
 multilingual = false
 src = "src"
-title = "COMS10012 Databases Exercises"
+title = "COMSM0085 Databases Exercises"
 
 [preprocessor.python]
 command = "python preprocessor.py"

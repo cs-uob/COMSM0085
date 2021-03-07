@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Set up the database - COMS10012 Databases Exercises</title>
+        <title>Set up the database - COMSM0085 Databases Exercises</title>
         
         
 
@@ -127,7 +127,7 @@
                         
                     </div>
 
-                    <h1 class="menu-title">COMS10012 Databases Exercises</h1>
+                    <h1 class="menu-title">COMSM0085 Databases Exercises</h1>
 
                     <div class="right-buttons">
                         
@@ -190,8 +190,8 @@
 <h2><a class="header" href="#security" id="security">Security</a></h2>
 <p>You now have a running database and you can log in with <code>mysql</code>. However, the database will allow anyone to log in and change anything, which is not what you want - especially not on a production machine.</p>
 <p>Most distributions come with a <code>mysql_secure_installation</code> script that prompts you for a database root password and sets up accounts. We are going to do a similar thing, but with a custom setup for our purposes.</p>
-<p>The setup file is located at the address given below. You can download it for example with <code>wget ADDRESS</code> in Alpine linux; <code>wget</code> is a download program. Place it in the same folder as your Vagrantfile.</p>
-<pre><code>https://cs-uob.github.io/COMSM0085/resources/databases/secure-setup.sql
+<p>The setup file is located at the address given below. You can download it for example with <code>wget ADDRESS</code> in Alpine linux; <code>wget</code> is a download program. Place it in the same folder as your Vagrantfile (in <code>/vagrant</code>, if you're doing the download from within Alpine).</p>
+<pre><code>https://cs-uob.github.io/COMS10012/resources/databases/secure-setup.sql
 </code></pre>
 <ul>
 <li>Run <code>mysql -u root</code>. This should log you in as root without any authentication, which explains why I am making such a fuss about security! Quit again by typing Control+D.</li>
@@ -217,10 +217,10 @@ FLUSH PRIVILEGES;
 <h2><a class="header" href="#importing-sample-data" id="importing-sample-data">Importing sample data</a></h2>
 <p>I have prepared some sample data that we will be using in this and the following weeks.</p>
 <p>First, download the following two files and place them in the same folder as your Vagrantfile. You can do this the same way as you did before with the secure setup file.</p>
-<pre><code>https://cs-uob.github.io/COMSM0085/resources/databases/sample-data.sql
-https://cs-uob.github.io/COMSM0085/resources/databases/sampledata.tar
+<pre><code>https://cs-uob.github.io/COMS10012/resources/databases/sample-data.sql
+https://cs-uob.github.io/COMS10012/resources/databases/sampledata.tar
 </code></pre>
-<p>If you are using a local copy of this repository, you can find the files under <code>/resources/databases</code>.</p>
+<p>If you are using a local copy of this repository, you can also find the files under <code>/resources/databases</code>.</p>
 <p>The <code>tar</code> file is a <em>tape archive</em>: a file that contains further files and folders, as if it were a folder itself. Extract it by going to <code>/vagrant</code> in Alpine and run</p>
 <pre><code>tar xvf sampledata.tar
 </code></pre>

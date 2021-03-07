@@ -103,7 +103,7 @@ We didn't notice this with the console client `mysql` because that by default tr
 
 ## POM file
 
-Under [resources/jdbc/jdbc-example.tar](../resources/jdbc-example.tar) you can find a minimal JDBC application that uses the `elections` database. Download this to your Alpine VM with `wget` (or get it from the unit repository, if you have cloned it there) and extract it to an otherwise empty folder (`tar xvf jdbc-example.tar`). It contains a file `pom.xml` and a file `src/main/java/org/example/Example.java`.
+Under [resources/jdbc/jdbc-example.tar](/COMS10012/resources/jdbc/jdbc-example.tar) you can find a minimal JDBC application that uses the `elections` database. Download this to your Alpine VM with `wget` (or get it from the unit repository, if you have cloned it there) and extract it to an otherwise empty folder (`tar xvf jdbc-example.tar`). It contains a file `pom.xml` and a file `src/main/java/org/example/Example.java`.
 
 In the POM file, we note the following dependencies:
 
