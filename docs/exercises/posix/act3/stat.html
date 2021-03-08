@@ -1,0 +1,394 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>inodes and system calls - Exercises</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../act1/index.html"><strong aria-hidden="true">1.</strong> Activity 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../act1/ssh.html"><strong aria-hidden="true">1.1.</strong> Secure shell</a></li><li class="chapter-item expanded "><a href="../act1/install.html"><strong aria-hidden="true">1.2.</strong> Installing vagrant and alpine linux</a></li><li class="chapter-item expanded "><a href="../act1/admin.html"><strong aria-hidden="true">1.3.</strong> Alpine linux system administration</a></li><li class="chapter-item expanded "><a href="../act1/shell.html"><strong aria-hidden="true">1.4.</strong> Shell expansion</a></li><li class="chapter-item expanded "><a href="../act1/git1.html"><strong aria-hidden="true">1.5.</strong> Git, part 1</a></li></ol></li><li class="chapter-item expanded "><a href="../act2/index.html"><strong aria-hidden="true">2.</strong> Activity 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../act2/permissions.html"><strong aria-hidden="true">2.1.</strong> File permissions</a></li><li class="chapter-item expanded "><a href="../act2/git2.html"><strong aria-hidden="true">2.2.</strong> Git, part 2</a></li><li class="chapter-item expanded "><a href="../act2/pipes.html"><strong aria-hidden="true">2.3.</strong> Pipes</a></li></ol></li><li class="chapter-item expanded "><a href="../act3/index.html"><strong aria-hidden="true">3.</strong> Activity 3</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../act3/git3.html"><strong aria-hidden="true">3.1.</strong> Git, part 3</a></li><li class="chapter-item expanded "><a href="../act3/stat.html" class="active"><strong aria-hidden="true">3.2.</strong> inodes and system calls</a></li><li class="chapter-item expanded "><a href="../act3/script.html"><strong aria-hidden="true">3.3.</strong> shell scripting</a></li></ol></li><li class="chapter-item expanded "><a href="../act4/index.html"><strong aria-hidden="true">4.</strong> Activity 4</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../act4/concurrent.html"><strong aria-hidden="true">4.1.</strong> Concurrent programming in POSIX</a></li><li class="chapter-item expanded "><a href="../act4/cpipe.html"><strong aria-hidden="true">4.2.</strong> Pipes in C</a></li><li class="chapter-item expanded "><a href="../act4/c_io.html"><strong aria-hidden="true">4.3.</strong> Input/Output in C</a></li><li class="chapter-item expanded "><a href="../act4/posix_io.html"><strong aria-hidden="true">4.4.</strong> Input/Output in POSIX</a></li><li class="chapter-item expanded "><a href="../act4/final.html"><strong aria-hidden="true">4.5.</strong> The final challenge</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Exercises</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#inodes-and-system-calls" id="inodes-and-system-calls">Inodes and System Calls</a></h1>
+<p>In this exercise we will look under the hood of the <code>stat</code> system call, which returns information about an inode.</p>
+<p><em>Note: for this exercise it's even more important than usual that you are using Alpine linux in the emulator, as you will get different results if you try it on Windows Subsystem for Linux or on a Mac for example.</em></p>
+<p>A system call is a way for a linux user or program to interact with the kernel, and there are usually at least three ways of calling each one:</p>
+<ol>
+<li>Execute the system call directly in assembly.</li>
+<li>Use the wrapper function provided by your C library.</li>
+<li>Use a command-line program provided by your distribution.</li>
+</ol>
+<h2><a class="header" href="#preparation" id="preparation">Preparation</a></h2>
+<p>Install the <code>musl-dev</code> package, which provides the header files for the C library, as well as <code>gcc</code> if you have not installed that yet.</p>
+<p>Have a look at the manual page <code>man stat</code> for the <code>stat</code> system call. The abbreviated headers are:</p>
+<pre><code class="language-C">#include &lt;sys/stat.h&gt;
+
+int stat(const char *pathname, struct stat *statbuf);
+int fstat(int fd, struct stat *statbuf);
+int lstat(const char *pathname, struct stat *statbuf);
+</code></pre>
+<p><code>stat</code> is the main system call: you give it a pathname and it fills a <code>struct stat</code> for you with information about the inode associated with this pathname, however if the pathname is a symbolic link then it follows the link and returns information about the target inode. If you do not want this behaviour, you can use <code>lstat</code> instead.</p>
+<p><code>fstat</code> takes an open file descriptor instead of a file name: this is fine for getting the inode information (in the kernel, a file descriptor contains an inode number) but you will not be able to get a file name back from this - remember, <em>files don't have names; names have files</em>.</p>
+<p>Later in the manual page, it explains the <code>struct stat</code> contents. Let's have a look at the sources directly though:</p>
+<ul>
+<li><code>nano /usr/include/sys/stat.h</code> shows you the header file and the function definitions, including the bitmasks for the mode bits e.g. <code>#define S_IRUSR 0400</code> is the &quot;user can read&quot; bit and the file type bits e.g. <code>#define S_IFDIR 0040000</code>. Note, in C, numbers with a leading 0 are octal!</li>
+<li>The definition of the <code>struct stat</code> is in another file included from <code>sys/stat.h</code>, namely <code>bits/stat.h</code>; open that in your editor too and have a look at it.</li>
+<li>The types of the fields in the structure (<code>dev_t</code>) etc. are yet in another file - <code>bits/alltypes.h</code> if you're curious - but eventually they get defined as <code>long</code>, through intermediate definitions of <code>_Int64</code> etc. Basically, on a 64-bit machine, most of these fields are 64 bits.</li>
+</ul>
+<p>Run the following short C program to check the size of your <code>struct stat</code>; I get 144 bytes but note down if you get something different:</p>
+<pre><code class="language-C">#include &lt;sys/stat.h&gt;
+#include &lt;stdio.h&gt;
+int main() {
+    printf(&quot;Size: %lu bytes\n&quot;, sizeof(struct stat));
+    return 0;
+}
+</code></pre>
+<h2><a class="header" href="#the-assembly-level" id="the-assembly-level">The assembly level</a></h2>
+<p>Create a file with the following content - the convention for assembly files is usually to end in <code>.s</code>, so I've called mine <code>dostat.s</code>:</p>
+<pre><code class="language-asm">.section .text
+.global  _start
+
+_start:
+    mov $6,  %rax
+    lea str, %rdi
+    lea buf, %rsi
+    syscall
+
+    mov $60, %rax
+    mov $0,  %rdi
+    syscall
+
+str: .asciz &quot;/dev/stdin&quot;
+
+.section .data
+buf: .skip 144
+</code></pre>
+<p>Change the 144 in the last line if you got a different size for your structure.</p>
+<p>Let's see what's going on here:</p>
+<ol>
+<li><code>.section .text</code> is an assembly directive to say <em>the following is code</em>, more precisely <em>it goes in the code section (which we named 'text' for obscure historical reasons)</em>.</li>
+<li><code>.global _start</code> says to export the label <code>_start</code> to the linker, which is the assembly version of <code>main</code>: in fact, C programs really start at <code>_start</code> too as you can check by setting a breakpoint on this label in a debugger, this function is part of the C library and it sets a few things up and then calls <code>main</code>. When you return from <code>main</code>, then <code>_start</code> does some cleanup and exits the program cleanly with the correct return value.</li>
+<li>The way you invoke a system call is you put the system call number in the <code>rax</code> register, and parameters according to the platform convention - on Intel/AMD 64 bit, the first parameter goes in the <code>rdi</code> register, the second one in the <code>rsi</code> register. System calls and their parameters are documented <a href="https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/">in this table</a> for example. Return values from system calls end up in the <code>rax</code> register again. Looking ahead a bit in our assembly code, system call 60 is <code>sys_exit</code> and takes an exit code in <code>rdi</code>, so the lines <code>mov $60, %rax; mov $0,  %rdi; syscall</code> are the equivalent of <code>return 0;</code> in a main function of a C program or <code>exit(0);</code> anywhere else (indeed, that is the last thing the C library <code>_start</code> will do when <code>main</code> returns to it).</li>
+<li>System call 6 is <code>sys_lstat</code>, so the lines <code>mov $6,  %rax; lea str, %rdi; lea buf, %rsi; syscall</code> call <code>sys_lstat(str, buf)</code> where both <code>str</code> and <code>buf</code> are pointers. (<code>lea</code> stands for <em>load effective address</em> and is similar to the <code>&amp;var</code> address-of operator in C).</li>
+<li><code>syscall</code> is an assembly instruction that hands control over to the operating system. It is comparable to a software interrupt as you might have learnt in Computer Architecture, but it is an optimised version (since many programs do a lot of system calls) that doesn't have the full overhead of the older interrupt mechanism on x86.</li>
+<li><code>.asciz</code> is a zero-terminated string in C style (which is what the kernel expects). <code>.section .data</code> says <em>the following goes in the data section</em>, which we need because the buffer variable needs to be written to and the code section is read-only when a program is running. <code>.skip</code> reserves a block of the given size in bytes, similar to <code>byte buf[144];</code> in C (you can read <code>char</code> for <code>byte</code> if you want).</li>
+</ol>
+<p>Assemble the program with</p>
+<ul>
+<li><code>as dostat.s -g -o dostat.o</code></li>
+<li><code>ld dostat.o -o dostat</code></li>
+</ul>
+<p>The first command is the assembler itself, which produces and object file (C compilers usually do this too, but you don't see it unless you ask for it). <code>-g</code> is the same as for gcc, it includes debug information. <code>ld</code> is the linker which produces an executable.</p>
+<p>You can run the program with <code>./dostat</code>, but it will simply exit with status 0. What we want to do is debug it with <code>gdb dostat</code> (install <code>gdb</code> with <code>apk</code> if you don't have it installed already), then do the following:</p>
+<ul>
+<li><code>break _start</code> to set a breakpoint.</li>
+<li><code>run</code> to start running (and hit the breakpoint).</li>
+<li><code>si</code> steps a single assembly instruction. Do this until you have passed the first <code>syscall</code> and land on the line <code>mov $60, %rax</code>.</li>
+<li>The memory at <code>buf</code> now contains filled-in <code>struct stat</code> for <code>/dev/stdin</code>, the standard input file. Look at this with <code>x/40xb &amp;buf</code> (memory dump, show 40 hex bytes starting at the buffer).</li>
+</ul>
+<p>Based on what you know about the <code>struct stat</code> memory layout, what is the inode number and mode of <code>/dev/stdin</code>? Note down the inode number in decimal, and the low 16 bits of the mode word in binary. Note that the memory layout is most likely little-endian, and you are working with 64-bit long integers.</p>
+<p>From this information, and the bit patterns in <code>/usr/include/sys/stat.h</code>, decode the file type and permissions of <code>/dev/stdin</code>.</p>
+<p>You can then quit gdb with <code>q</code>, and answer yes when it askes whether you want to terminate the program.</p>
+<h2><a class="header" href="#the-c-level" id="the-c-level">The C level</a></h2>
+<p>We will now do the same in C. Create this program, I've called it <code>exstat.c</code>, then compile and run it:</p>
+<pre><code class="language-C">#include &lt;sys/stat.h&gt;
+#include &lt;stdio.h&gt;
+
+int main() {
+    struct stat buf;
+    char *str = &quot;/dev/stdin&quot;;
+    int r = lstat(str, &amp;buf);
+    if (r != 0) {
+        puts(&quot;An error occurred.&quot;);
+        return 1;
+    }
+    printf(&quot;The inode number is %lu.\n&quot;, buf.st_ino);
+    if (S_ISDIR(buf.st_mode)) { puts(&quot;It's a directory.&quot;);}
+    if (S_ISCHR(buf.st_mode)) { puts(&quot;It's a character device.&quot;);}
+    if (S_ISBLK(buf.st_mode)) { puts(&quot;It's a block device.&quot;);}
+    if (S_ISREG(buf.st_mode)) { puts(&quot;It's a regular file.&quot;);}
+    if (S_ISFIFO(buf.st_mode)) { puts(&quot;It's a FIFO.&quot;);}
+    if (S_ISLNK(buf.st_mode)) { puts(&quot;It's a soft link.&quot;);}
+    if (S_ISSOCK(buf.st_mode)) { puts(&quot;It's a socket.&quot;);}
+
+    return 0;
+}
+</code></pre>
+<p>Here we can see that we:</p>
+<ol>
+<li>Set up the buffer structure and execute the system call.</li>
+<li>Check the return value! If it's not 0, then an error occurred - the file <code>/usr/include/bits/errno.h</code> contains a table of error codes, although the system call will return the negative error code in register <code>rax</code>. The <code>man stat</code> manual page explains the meaning of each error code for this particular system call.</li>
+<li>Print the inode number (in decimal) and the file type.</li>
+</ol>
+<p>Check that you get the same inode number and file type as you did with the assembly version.</p>
+<h2><a class="header" href="#symbolic-links" id="symbolic-links">Symbolic links</a></h2>
+<p>The point of checking the file type is that <code>/dev/stdin</code> is a symbolic link. To find out where it points, you can use this function:</p>
+<pre><code class="language-C">#include &lt;unistd.h&gt;
+ssize_t readlink(const char *pathname, char *buf, size_t bufsiz)
+</code></pre>
+<p>This is another system call wrapper (readlink is system call 89) which takes the pathname of a symbolic link and writes its contents (e.g. the file it points at) in a buffer. However, be aware of the following:</p>
+<ul>
+<li><code>readlink</code> does not zero-terminate its buffer! That is your responsibility as caller.</li>
+<li>The returned value (yet another unsigned long) indicates what happened:
+<ul>
+<li>A positive value indicates the number of bytes written, so you know where to put the zero byte at the end.</li>
+<li>If the return value is equal to the buffer size, then your buffer was too short, and the buffer may contain a truncated string.</li>
+<li>If the return value was negative, then an error occurred.</li>
+</ul>
+</li>
+</ul>
+<p>In the assembly version, the negative error code would land directly in <code>rax</code>. This is why system calls return negative error codes, to distinguish them from successful return values as a successful call will never write a negative number of bytes.</p>
+<p>However, the C wrapper is different as you can read in <code>man readlink</code>: it always returns -1 on error, but puts the error code (this time positive again) in a global variable called <code>errno</code>. You can match this against the codes in <code>errno.h</code> as before, and then check the manual page for an explanation of each one for this particular system call.</p>
+<p><strong>Exercise</strong>: write a C program that, starting with a filename you pass in <code>argv[1]</code>:</p>
+<ol>
+<li><code>lstat</code>s the file and prints the inode number and file type of the file.</li>
+<li>If the file is a symbolic link, calls <code>readlink</code> to get the link target and repeats from 1. for the target file.</li>
+</ol>
+<p>Since this is systems programming, make sure you check the return value of system calls, and correctly zero-terminate strings. If a system call fails, your program should print an error message and exit, and <em>never</em> look at the buffer or string the system call wrote to, as it might not contain valid data.</p>
+<p>Call your program for <code>/dev/stdin</code> and <code>/dev/stdout</code> to follow the chain of soft links for these files. Also try it on a few standard files and directories (including soft links).</p>
+<h2><a class="header" href="#on-the-command-line" id="on-the-command-line">On the command line</a></h2>
+<p>To check the results of your program, the <code>stat</code> command line program (<code>/bin/stat</code>, in fact yet another soft link to busybox) calls stat and prints the output to the terminal. You can see with <code>stat --help</code> that it offers lots of custom formats.</p>
+<p>Note that the <code>stat</code> command line tool calls the <code>lstat</code> system call by default, e.g. it does not follow soft links. <code>stat -L</code> gets you the link-following version.</p>
+<p>To see how the command line version works, we are going to have a look at its sources.</p>
+<p>Clone the busybox repository with <code>git clone git://busybox.net/busybox.git</code> (if that doesn't work for some reason, try the https version). Inside the cloned folder, the source file is <code>coreutils/stat.c</code> - open that and have a look:</p>
+<ul>
+<li>The comments at the start are read by a custom build tool. The <code>//applet</code> line (currently line 38) says to build a command called <code>stat</code>.</li>
+<li><code>file_type</code> (line 123 at the time of writing) is the code for turning mode bits into strings, note there are lots of <code>#ifdef</code>s depending on what options you compile busybox with. Also, if you <code>stat</code> a file that does not match any known type, you get the string &quot;weird file&quot;.</li>
+<li>Most of the source file is the kind of &quot;plumbing&quot; that you need in any real C program. The interesting part is <code>do_stat</code> (line 588 at the time of writing):</li>
+</ul>
+<p>First, it allocates a <code>struct stat</code> buffer like we did before. </p>
+<p>The key line is currently line 605 and following:</p>
+<pre><code class="language-C">if ((option_mask32 &amp; OPT_DEREFERENCE ? stat : lstat) (filename, &amp;statbuf) != 0) {
+    bb_perror_msg(&quot;can't stat '%s'&quot;, filename);
+    return 0;
+}
+</code></pre>
+<p>Based on the value of <code>OPT_DEREFERENCE</code> (the <code>-L</code> command line flag), we call either the <code>stat</code> or <code>lstat</code> system call wrapper in the C library, and complain and exit if we don't get a success return value - remember, in case of errors, <code>struct stat statbuf</code> could be corrupted so we shouldn't look at it.</p>
+<p>The rest of the function is basically setting up one giant <code>printf</code> statement to output the results in the correct format. Note here that the <code>struct stat</code> still doesn't know anything about the file's name, as that's not in the inode, but the command-line program does because you gave the name as an argument. </p>
+<p>If the file is a soft link, then we call a version of readlink - currently <code>xmalloc_readlink_or_warn</code> in line 713 - to display the link target. This function is implemented in <code>libbb/xreadlink.c</code> where it currently delegates to <code>xmalloc_readlink</code> on line 20, which calls <code>readlink</code> in a loop with increasing buffer sizes until it finds one that is big enough for the target - have a look at how this is implemented.</p>
+<p>The main function for this utility is <code>stat_main</code>, currently on line 757. All this does is parse the command line arguments with <code>getopt32</code>, call the <code>do_stat</code> function in a loop for each command line argument (lines 787 and following in the current version) and then return success if all files were successfully processed, otherwise failure.</p>
+<p>If nothing else, the learning point of this activity is that system programming in C and calling syscalls directly is a lot more involved than you may think! Please don't be that kind of programmer who <a href="https://rachelbythebay.com/w/2014/08/19/fork/">ignores system call error values, and makes terrible things happen</a>.</p>
+<p>If you want to explore this code further, you can build your own busybox - install <code>ncurses</code> and <code>linux-headers</code>, then run <code>make menuconfig</code> to bring up a configuration menu (this is the part that uses ncurses, which is the menu system) and just select exit (with TAB then ENTER). Then you can <code>make</code> the whole thing.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../act3/git3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../act3/script.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../act3/git3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../act3/script.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
