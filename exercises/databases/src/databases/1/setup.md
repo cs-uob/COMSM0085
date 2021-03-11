@@ -52,8 +52,14 @@ You now have a running database and you can log in with `mysql`. However, the da
 
 Most distributions come with a `mysql_secure_installation` script that prompts you for a database root password and sets up accounts. We are going to do a similar thing, but with a custom setup for our purposes.
 
+The setup file is located at the address given below. You can download it for example with `wget ADDRESS` in Alpine linux; `wget` is a download program. Place it in the same folder as your Vagrantfile (in `/vagrant`, if you're doing the download from within Alpine).
+
+```
+https://cs-uob.github.io/COMS10012/resources/databases/secure-setup.sql
+```
+
   * Run `mysql -u root`. This should log you in as root without any authentication, which explains why I am making such a fuss about security! Quit again by typing Control+D.
-  * Run `mysql -u root -e 'source /vagrant/secure-setup.sql`. The `-e` command means "run the following command line argument as a script", as you know already from sed and several other tools; `source` means "load a file and run it" and the file in question is part of the lab package I have prepared for you.
+  * Run `mysql -u root -e 'source /vagrant/secure-setup.sql'`. The `-e` command means "run the following command line argument as a script", as you know already from sed and several other tools; `source` means "load a file and run it" and the file in question is part of the lab package I have prepared for you.
   * Run `mysql -u root` again. This time, it will not let you in, which is what we want.
 
 The secure-setup script is as follows:
@@ -83,15 +89,14 @@ Note: what happens when you install the mariadb package (or install it from a ZI
 
 I have prepared some sample data that we will be using in this and the following weeks.
 
-First, download the following three files and place them in the same folder as your Vagrantfile. You can do this for example with `wget ADDRESS` in Alpine linux; `wget` is a download program.
+First, download the following two files and place them in the same folder as your Vagrantfile. You can do this the same way as you did before with the secure setup file.
 
 ```
-https://cs-uob.github.io/COMSM0085/resources/databases/sample-data.sql
-https://cs-uob.github.io/COMSM0085/resources/databases/secure-setup.sql
-https://cs-uob.github.io/COMSM0085/resources/databases/sampledata.tar
+https://cs-uob.github.io/COMS10012/resources/databases/sample-data.sql
+https://cs-uob.github.io/COMS10012/resources/databases/sampledata.tar
 ```
 
-If you are using a local copy of this repository, you can find the files under `/resources/databases`.
+If you are using a local copy of this repository, you can also find the files under `/resources/databases`.
 
 The `tar` file is a _tape archive_: a file that contains further files and folders, as if it were a folder itself. Extract it by going to `/vagrant` in Alpine and run
 

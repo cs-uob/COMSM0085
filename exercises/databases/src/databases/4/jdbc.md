@@ -101,8 +101,10 @@ Remove the last line and restart the server (`rc-service mariadb restart`) and t
 We didn't notice this with the console client `mysql` because that by default tries the socket first, and then port 3306 if the socket doesn't exist. However the JDBC driver will only try exactly the options you give, and if you don't tell it to use the socket, it will try port 3306 and throw and exception if nothing is listening there.
 |||
 
+
 ## Setting up the Java project
-Under [resources/jdbc/jdbc-example.tar](../resources/jdbc-example.tar) you can find a minimal JDBC application that uses the `elections` database. Download this to your Alpine VM with `wget` (or get it from the unit repository, if you have cloned it there) and extract it to an otherwise empty folder (`tar xvf jdbc-example.tar`). It contains a file `pom.xml` and a file `src/main/java/org/example/Example.java`.
+Under [resources/jdbc/jdbc-example.tar](/COMS10012/resources/jdbc/jdbc-example.tar) you can find a minimal JDBC application that uses the `elections` database. Download this to your Alpine VM with `wget` (or get it from the unit repository, if you have cloned it there) and extract it to an otherwise empty folder (`tar xvf jdbc-example.tar`). It contains a file `pom.xml` and a file `src/main/java/org/example/Example.java`.
+
 
 This Java project is using a build tool called `maven` which we will go into more detail in a later week. Essentially maven uses a file called `pom.xml` which details how to build and run the project as well as any libaries that need to be downloaded. You may need to install maven using `sudo apk add maven`.
 
