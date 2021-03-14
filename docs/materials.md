@@ -39,3 +39,30 @@ This is then interrupted by the reading week (Week 17, 1 March - 5 March), durin
 
   * [Activity 3](./exercises/databases/databases/3/sql-intermediate.html) is for the Monday workshop in Week 18 (8 March).
   * [Activity 4](./exercises/databases/databases/4/sql-java.html) is for the Thursday workshop in Week 18 (11 March).
+
+
+## Week 19: Databases consolidation
+
+During Week 19 we will revisit the activities of Weeks 16 and 18.
+
+* On Monday we will spend some time completing Activity 4.
+
+* On Thursday we will revise the more complicated of SQL queries of Activity 3.
+## Week 20: Build tools
+
+Please watch the following videos:
+
+  * [Build Tools (Part 1)](https://ams-hsta-ims-ond.mediasite.com/MediasiteDeliver/vol01/bristoluniversity/MP4Video/e4cdcf68-e1e3-4e01-8eba-bf22a48a2f5f.mp4/QualityLevels(698000)) (25 minutes) [slides](https://cs-uob.github.io/COMS10012/slides/Build%20Tools%201.pdf)
+  * [Build Tools (Part 2)](https://ams-hsta-ims-ond.mediasite.com/MediasiteDeliver/vol01/bristoluniversity/MP4Video/7aa9e7bf-de38-42bf-8fef-11585ca85f72.mp4/QualityLevels(698000)) (18 minutes) [slides](https://cs-uob.github.io/COMS10012/slides/Build%20Tools%202.pdf)
+
+During the Monday activity, we will learn the basics of
+  * the GNU tool [make](./buildtools/c.html)
+  * [Maven](./buildtools/java.html)
+
+Optionally and in your own time, you may also consider learning a bit about
+
+  * the Python tool [pip](./buildtools/python.md)
+  * [debugging](https://web.microsoftstream.com/video/b920571e-e55c-4dbc-b29c-162c5a565486?list=studio). There 
+    are also some exercises here:
+     * Text: [text.c](/COMS10012/resources/debugging/text.c) and [text.h](/COMS10012/resources/debugging/text.h). Compile with `gcc -Dtest_text -g text.c -o text`.
+     * Stackcalc: [stackcalc.c](/COMS10012/resources/debugging/stackcalc.c) and [stackcalc.txt](/COMS10012/resources/debugging/stackcalc.txt). You need to `sudo apk add readline-dev` then compile with `gcc -g stackcalc.c -o stackcalc -l readline`.

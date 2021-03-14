@@ -51,4 +51,4 @@ This should build an executable `sqlite3` that you can run (use `.q` to quit aga
 
 _If you want to, you can now type `sudo make install` to copy the executable to `/usr/local/bin`._
 
-[Onwards to: Python](python.md)
+[Onwards to: Java](java.md)

@@ -1,4 +1,4 @@
-# Build tools: Python
+# Build tools: Python (optional)
 
 Install Python and pip on Alpine with `sudo apk add python3 py3-pip`. You can now run it with `python3` and Control+D quits again.
 
@@ -58,6 +58,4 @@ This should print an array of five values that are not too far off 200 (to be pr
 
 You might want to install python and scipy on your host OS as well, as it's a really easy language to code in and you can use your favourite editor and even make graphical plots - you will probably learn about this in second year, and maybe again in third year if you take Machine Learning. In this case, if your host OS is Windows or Mac, I recommend that you install the [miniconda](https://docs.conda.io/en/latest/miniconda.html) distribution (obviously the Python 3 version, not the Python 2 one) so that you can easily install scipy. This gets you two package managers: `conda install scipy` uses the conda one (which can handle the required C library) and `pip` for everything else. For Linux, you can install conda too, or just use the scipy packaged with your distribution.
 
-[Back to: C](c.md)
-
-[Onwards to: Java](java.md)
+[Back to: java](java.md)

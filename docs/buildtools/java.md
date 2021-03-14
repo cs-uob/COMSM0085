@@ -229,6 +229,6 @@ public class Unit {
 
 _You will still need one single `setVariable` call, and in the template the syntax `[(${unit.name})]` should translate into a call to the getter._
 
-[Back to: python](python.md)
+[Back to: c](c.md)
 
-[Onwards to: spring](spring.md)
+[Onwards to: python](python.md)
