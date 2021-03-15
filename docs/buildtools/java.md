@@ -43,7 +43,7 @@ _If you get a "not found" error, then most likely the maven `bin` folder is not 
 
 The first time you run it, maven will download a lot of libraries.
 
-Maven will first show a list of all archetypes known to humankind (2885 at the time of counting) but you can just press ENTER to use the default, 1744 ("quickstart"). Maven now asks you for the version to use, press ENTER again.
+Maven will first show a list of all archetypes known to humankind (2885 at the time of counting) but you can just press ENTER to use the default, 1755 on my machine ("quickstart"). Maven now asks you for the version to use, press ENTER again.
 
 You now have to enter the triple of (groupId, artifactId, version) for your project - it doesn't really matter but I suggest the following:
 
