@@ -47,13 +47,13 @@ You can in fact use pip without sudo, by passing the <code>--user</code> option 
 
 ## Scipy
 
-In Maths B, we will be using `scipy` for statistics, so you may as well install that too. Unfortunately, `pip` will not help you here because scipy depends on a C library for fast linear algebra, and this doesn't exist for Alpine linux in the `pip` repositories. It does exist in the Alpine repos though, so `sudo apk add py3-scipy` will install it.
+Many scientists use `scipy` for statistics, so you may as well install that too. Unfortunately, `pip` will not help you here because scipy depends on a C library for fast linear algebra, and this doesn't exist for Alpine linux in the `pip` repositories. It does exist in the Alpine repos though, so `sudo apk add py3-scipy` will install it.
 
 The following commands show if it is correctly installed, by sampling 5 times from a Normal distribution with mean 200 and standard deviation 10:
 
     from scipy.stats import norm
     norm(loc=200, scale=10).rvs(5)
 
-This should print an array of five values that are not too far off 200 (to be precise, with about 95% confidence they will be between 180 and 220 - more on this in Maths B later on).
+This should print an array of five values that are not too far off 200 (to be precise, with about 95% confidence they will be between 180 and 220).
 
 You might want to install python and scipy on your host OS as well, as it's a really easy language to code in and you can use your favourite editor and even make graphical plots - you will probably learn about this in second year, and maybe again in third year if you take Machine Learning. In this case, if your host OS is Windows or Mac, I recommend that you install the [miniconda](https://docs.conda.io/en/latest/miniconda.html) distribution (obviously the Python 3 version, not the Python 2 one) so that you can easily install scipy. This gets you two package managers: `conda install scipy` uses the conda one (which can handle the required C library) and `pip` for everything else. For Linux, you can install conda too, or just use the scipy packaged with your distribution.
