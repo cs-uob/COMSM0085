@@ -46,8 +46,7 @@ This is then interrupted by the reading week (Week 17, 1 March - 5 March), durin
 During Week 19 we will revisit the activities of Weeks 16 and 18.
 
 * On Monday we will spend some time completing Activity 4.
-
-* On Thursday we will revise the more complicated of SQL queries of Activity 3.
+* On Thursday we will revise the SQL queries of Activity 3.
 ## Week 20: Build tools
 
 Please watch the following videos:
