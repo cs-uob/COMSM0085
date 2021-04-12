@@ -1,0 +1,82 @@
+{
+  "pets": [
+    {
+      "type": "fish",
+      "pets": [
+        {
+          "name": {
+            "first": "Nemo",
+            "last": "Finding"
+          },
+          "colours": ["orange", "white"]
+        },
+        {
+          "name": {
+            "first": "Michael",
+            "last": "Thomas"
+          },
+          "colours": ["yellow"]
+        },
+        {
+          "name": {
+            "first": "Dory",
+            "last": "Grubber"
+          },
+          "colours": ["blue", "yellow", "black"]
+        }
+      ]
+    },
+    {
+      "type": "cat",
+      "pets": [
+        {
+          "name": {
+            "first": "Squid",
+            "last": "Johnson"
+          },
+          "colours": ["black"]
+        },
+        {
+          "name": {
+            "first": "Peanut",
+            "last": "Day"
+          },
+          "colours": ["black", "brown"]
+        },
+        {
+          "name": {
+            "first": "Marley",
+            "last": "Day"
+          },
+          "colours": ["black", "brown"]
+        },
+        {
+          "name": {
+            "first": "Bear",
+            "last": "Blue"
+          },
+          "colours": ["gray"]
+        }
+      ]
+    },
+    {
+      "type": "dog",
+      "pets": [
+        {
+          "name": {
+            "first": "Rin",
+            "last": "Tin Tin"
+          },
+          "colours": ["black"]
+        },
+        {
+          "name": {
+            "first": "Sharik",
+            "last": "Gajos"
+          },
+          "colours": ["black", "brown"]
+        }
+      ]
+    }
+  ]
+}

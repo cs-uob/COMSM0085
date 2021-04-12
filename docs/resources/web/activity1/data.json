@@ -1,0 +1,20 @@
+{
+  "pets": [
+    {
+      "name": "Scooby",
+      "breed": "Labrador"
+    },
+    {
+      "name": "Lassie",
+      "breed": "Collie"
+    },
+    {
+      "name": "Toto",
+      "breed": "Terrier"
+    },
+    {
+      "name": "Rin Tin Tin",
+      "breed": "German Shepard"
+    }
+  ]
+}
