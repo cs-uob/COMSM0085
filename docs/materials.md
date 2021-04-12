@@ -65,3 +65,9 @@ Optionally and in your own time, you may also consider
     are also some exercises here:
      * Text: [text.c](/COMS10012/resources/debugging/text.c) and [text.h](/COMS10012/resources/debugging/text.h). Compile with `gcc -Dtest_text -g text.c -o text`.
      * Stackcalc: [stackcalc.c](/COMS10012/resources/debugging/stackcalc.c) and [stackcalc.txt](/COMS10012/resources/debugging/stackcalc.txt). You need to `sudo apk add readline-dev` then compile with `gcc -g stackcalc.c -o stackcalc -l readline`.
+
+## Weeks 21-22: Web Technologies
+
+We will cover the basics of standard web technologies, including HTTP, HTML, CSS, JavaScript, and web frameworks.
+
+Please [follow this link to the course materials](./web/web.md).
