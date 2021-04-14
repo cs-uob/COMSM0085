@@ -3,6 +3,8 @@
 Build a static web page to display the data provided in the data.json file. The data can be embedded
 directly into the HTML file.
 
+Here is the [`data.json`](../resources/web/activity1/data.json) file.
+
 **Complete these steps:**
 
 1. Watch the [walkthrough video](https://web.microsoftstream.com/video/142696cd-fbae-4bc8-8c81-d8db6961a997).
