@@ -2,11 +2,7 @@
 
 Adapt your web page to display the data provided in a given JSON file.
 
-Here are the files from the walkthrough video, as well as the JSON file in question:
-- [`index.html`](../resources/web/activity2/index.html)
-- [`style.css`](../resources/web/activity2/style.css)
-- [`script.js`](../resources/web/activity2/script.js)
-- [`activity_2_data.json`](../resources/web/activity2/activity_2_data.json)
+Here is the JSON file from the walkthrough video: [`activity_2_data.json`](../resources/web/activity2/activity_2_data.json).
 
 **Complete these steps:**
 1.	Watch the [walkthrough video](https://web.microsoftstream.com/video/d36e5e74-e8d5-4982-836d-b2a99732a9f8).
