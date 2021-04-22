@@ -54,7 +54,7 @@ Hibernate's configuration lives in `src/main/resources/hibernate.cfg.xml`. Hiber
   - Username and, if you need it, password go in separate properties.
   - The connection pool is really important for performance in real applications, but we don't bother with that here and just say one connection per thread (we don't use multiple threads in our program so it doesn't matter as much).
   - `show_sql` is a debuging property that prints all generated SQL to standard output. This is useful to know about when debugging your own applications.
-  - Finally, we list all the classes we want Hibernate to take care of.
+  - Finally, we list all the classes we want Hibernate to take care of. In SPE, you are going to use the Spring Framework which takes care of this automatically, but for now we're listing them all.
 
 The classes themselves are standard Java value classes (private fields, public getter/setter) decorated with JPA annotations to explain to Hibernate how they work:
 
