@@ -43,6 +43,8 @@ the ways suggested.
 
 ### Essential resources
 
+The slides for the web part of the course can be found [here](../resources/web/webtech.pdf).
+
 The following are essential references, and should be read by everyone.
 
 * [Mozilla Developer Network: Overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview)
