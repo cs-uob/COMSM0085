@@ -71,3 +71,24 @@ Optionally and in your own time, you may also consider
 We will cover the basics of standard web technologies, including HTTP, HTML, CSS, JavaScript, and web frameworks.
 
 Please [follow this link to the course materials](./web/web.md).
+
+## Week 23: The Cloud (optional)
+
+We have selected a subset of lectures from a unit on _Cloud Computing_ to give you an introduction to the topic.
+
+Watching these lectures is optional, but highly recommended.
+
+  - [Introduction](https://mediasite.bris.ac.uk/Mediasite/Play/0ad3ecd639aa4f67a9b0d1d162c5f7a21d) (19 minutes)
+  - [Economics](https://mediasite.bris.ac.uk/Mediasite/Play/135444aa12ff4c26b8a9c7ad693e1fa61d) (16 minutes)
+  - [As A Service](https://mediasite.bris.ac.uk/Mediasite/Play/ff04fe5695bf4604bf478405fc9266f81d) (6 minutes)
+  - [Amazon Web Services examples](https://mediasite.bris.ac.uk/Mediasite/Play/3d1ac0e5b012470f9be58c40e000c7c01d) (7 minutes)
+  - [Amazon Web Services: IaaS](https://mediasite.bris.ac.uk/Mediasite/Play/ea34704392794239b5ecc9517de691771d) (10 minutes)
+  - [Google App Engine / PaaS](https://mediasite.bris.ac.uk/Mediasite/Play/7874354926e846ec8cbfb206d6c6047f1d) (8 minutes)
+  - [Other providers](https://mediasite.bris.ac.uk/Mediasite/Play/c4eb1e2b73c544d7bed5a6df828de4281d) (6 minutes)
+
+  - [Introduction](https://mediasite.bris.ac.uk/Mediasite/Play/06ceda3dd34c49b9b802a6f2e8cb9a6c1d) (10 minutes)
+  - [Key-Value Databases](https://mediasite.bris.ac.uk/Mediasite/Play/9b125a5499554316be6cb73449e7aaf71d) (16 minutes)
+  - [Document Databases](https://mediasite.bris.ac.uk/Mediasite/Play/4a9cece0618a429295d6d5254202c8f61d)  (7 minutes)
+  - [Column-Family Databases](https://mediasite.bris.ac.uk/Mediasite/Play/785791610bb54851b7b3a347b448f4181d) (9 minutes)
+  - [Graph Databases](https://mediasite.bris.ac.uk/Mediasite/Play/cf8bf402b10546e9af85ea1b502929811d) (13 minutes)
+  - [Choosing a Database](https://mediasite.bris.ac.uk/Mediasite/Play/2f523af23cdf470c8a612ca8277985011d) (9 minutes) 
