@@ -60,4 +60,10 @@ Below the final question there is a button called _Save and Submit_ on the botto
 
 There will be no long answer or essay type questions.
 
-There will be no numerical questions, or any need to use the terminal. 
+There will be no numerical questions, or any need to use the terminal.
+
+You may encounter the following types of questions:
+* Multiple choice: you need to pick exactly one answer from a list.
+* Multiple answer: you are given a list of options and need to mark each one as true or false. There can be any number of true options, including none.
+* Type one or more values: you will be shown a question with some text/number boxes (HTML `<input>` fields), and instructions on how to complete them. **You must follow these instructions exactly, as the automarker just does a string comparison - if I say “no spaces” and you put a space on the end, this counts as a mistake (and I will not give you the marks during the manual checking either).**
+* Pick one or more values from dropdown boxes, for example to complete a command for a given task.
