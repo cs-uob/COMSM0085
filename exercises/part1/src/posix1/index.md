@@ -18,4 +18,3 @@ Before this activity, you should watch the following videos - most of them are q
   - [Installing vagrant and alpine linux](./install.md)
   - [Alpine linux system administration](./admin.md)
   - [Shell expansion](./shell.md)
-  - [Git, part 1](./git1.md)
