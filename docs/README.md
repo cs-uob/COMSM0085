@@ -10,6 +10,10 @@ Please see the following pages for more details:
   - [Syllabus](syllabus.md)
   - [About this repository](repository.md)
   
+The unit materials are available at the following locations:
+
+  - [Part 1, weeks 13-17](exercises/part1/)
+  
 <footer>
   <p> 
     "RETRO COMPUTER AND MICROSOFT WINDOWS 3.1" by ▓▒░ TORLEY ░▒▓ is licensed with CC BY-SA 2.0.'

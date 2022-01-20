@@ -4,19 +4,19 @@
 
 # POSIX
 
-- [Posix Activity 1](./posix1/index.md)
+- [POSIX Activity 1](./posix1/index.md)
   - [Secure shell](./posix1/ssh.md)
   - [Installing vagrant and alpine linux](./posix1/install.md)
   - [Alpine linux system administration](./posix1/admin.md)
   - [Shell expansion](./posix1/shell.md)
-- [Posix Activity 2](./posix2/index.md)
+- [POSIX Activity 2](./posix2/index.md)
   - [File permissions](./posix2/permissions.md)
   - [Pipes](./posix2/pipes.md)
 - [Git](./git/index.md)
   - [Git, part 1](./git/git1.md)
   - [Git, part 2](./git/git2.md)
   - [Git, part 3](./git/git3.md)
-- [Posix Activity 3](./posix3/index.md)
+- [POSIX Activity 3](./posix3/index.md)
   - [inodes and system calls](./posix3/stat.md)
   - [shell scripting](./posix3/script.md)
 
