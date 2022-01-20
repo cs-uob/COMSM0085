@@ -12,6 +12,6 @@ Please see the following pages for more details:
   
 <footer>
   <p> 
-    "RETRO COMPUTER AND MICROSOFT WINDOWS 3.1" by ▓▒░ TORLEY ░▒▓ is licensed with CC BY-SA 2.0.
+    "RETRO COMPUTER AND MICROSOFT WINDOWS 3.1" by ▓▒░ TORLEY ░▒▓ is licensed with CC BY-SA 2.0.'
   </p>
-<footer>
+</footer>
