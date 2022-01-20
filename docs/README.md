@@ -1,4 +1,4 @@
-# COMS10012 Software Tools
+# COMSM0085 Software Tools
 
 ![OST banner](/assets/images/OST.jpg)
 
