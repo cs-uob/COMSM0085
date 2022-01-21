@@ -19,13 +19,8 @@ During the aforementioned hours you may ask anyone not taking this unit to leave
 the room if you need a seat/computer.
 
 **Pending further instructions, please wear a mask at all times in the lab.**
-The virus that causes COVID-19, i.e. SARS-CoV-2, spreads very efficiently
-through [sharing
-air](https://www.who.int/news-room/questions-and-answers/item/coronavirus-disease-covid-19-how-is-it-transmitted).
-This is to say that breathing in the same room as someone else without masks and
-efficient ventilation will, in fact, cause transmission. Thankfully, good
-quality masks [prevent
-infection](https://www.mpg.de/17916867/coronavirus-masks-risk-protection).
+
+The virus that causes COVID-19, i.e. SARS-CoV-2, spreads very efficiently through [sharing air](https://www.who.int/news-room/questions-and-answers/item/coronavirus-disease-covid-19-how-is-it-transmitted). This is to say that breathing in the same room as someone else without masks and efficient ventilation will transmit the virus with overwhelming probability. Thankfully, good quality masks [prevent infection](https://www.mpg.de/17916867/coronavirus-masks-risk-protection).
 
 Please **do not come to the in-person sessions if you are experiencing [any of the following symptoms](https://joinzoe.com/learn/omicron-symptoms)**:
 - fatigue (even a little)
