@@ -1,37 +1,59 @@
 # Unit Organisation
 
-## Timetable
+We will hold workshops on Fridays, 10am-1pm.
 
-We will be meeting every Friday 10am--1pm in Computer Lab 2.11, Merchant
-Venturers Building.
+This unit will run in a **hybrid form**. This means that you can attend either in-person, or online---or both!
+
+That is to say, for each workshop:
+* You may come in and work on lab computers; we will be in the [Merchant Venturers Building](https://goo.gl/maps/zJV2YH6k28G36TEp8), Computer Lab 2.11.
+* You may attend online through Teams, and log into lab computers remotely.
+
+The reason is to accommodate amongst others the following circumstances:
+* students who cannot physically be in Bristol
+* students self-isolating
+* students who do not want to be taught in-person
+
+## Timetable
 
 This applies all weeks except Week 18 (reading week). In Week 24, we still have
 the lab booked but there is no new material (revision week), we'll just hold a
 drop-in. 
 
-During these booked hours you may ask anyone not taking this unit to leave the
-room if you need a seat/computer.
+## In-person sessions
 
-The unit will have a Teams page, where we hold parallel online sessions for the
-workshops for anyone not in Bristol, self-isolating, or who does not want to
-come to the in-person ones. 
+During the aforementioned hours you may ask anyone not taking this unit to leave
+the room if you need a seat/computer.
 
-Teams will also be the place to ask questions about the unit. *Please do not
-e-mail us*; if you ask on Teams then we can reply once, and everyone else can
-benefit from the answer.
+**Pending further instructions, please wear a mask at all times in the lab.**
+The virus that causes COVID-19, i.e. SARS-CoV-2, spreads very efficiently
+through [sharing
+air](https://www.who.int/news-room/questions-and-answers/item/coronavirus-disease-covid-19-how-is-it-transmitted).
+This is to say that breathing in the same room as someone else without masks and
+efficient ventilation will, in fact, cause transmission. Thankfully, good
+quality masks [prevent
+infection](https://www.mpg.de/17916867/coronavirus-masks-risk-protection).
 
+## Online support through Teams
 
-## Materials
+The unit may be running in-person, but **we recommend that you use Teams to ask questions**. There are multiple benefits to this practice:
 
-The unit materials for [part 1](exercises/part1) are stable in the sense that there should be at most minor bug fixes. The schedule of workshops is therefore:
+1. You can obtain a better thought-out, written answer.
+2. Other students who have the same question (they always do) will benefit from seeing the answer.
+3. You will be able to refer to your question and the answer when revising (if only to remember how hard it was the first time).
 
-| Week | Tuesday | Thursday |
-|------|---------|----------|
-| 13   | Posix 1 | Posix 2  |
-| 14   | Posix 3 | Posix 4  |
-| 15   | Build Tools 1 | Build Tools 2 |
-| 16   | Databases 1 | Databases 2 |
-| 17   | Databases 3 | Databases 4 |
+The lecturers and TAs will of course answer questions in-person, but may ask you to repeat your question on Teams. If you do not wish to do, they might post it anonymously, along with the answer.
+
+## Schedule
+
+The schedule for [part 1](exercises/part1) of the unit is as follows:
+
+| Week | Activities         |
+|------|--------------------|
+| 13   | POSIX 1 & 2        |
+| 14   | POSIX 3 & Git      |
+| 15   | Build Tools 1 & 2  |
+| 16   | Databases 1 & 2    |
+| 17   | Databases 3 & 4    | 
 
 These correspond to activities 1-10 on the [part 1 exercises](exercises/part1) page.
 
@@ -44,10 +66,6 @@ The materials for part 2 are still in a draft stage and not all complete yet. Yo
 ## Coronavirus
 
 We will hold our workshops in person, pandemic-permitting.
-
-**Please wear a mask at all times in the lab. SARS-CoV-2 spreads through
-[sharing air](https://www.mpg.de/17916867/coronavirus-masks-risk-protection).**
-
 
 ## Assessment
 
