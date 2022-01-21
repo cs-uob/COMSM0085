@@ -1,9 +1,0 @@
-[book]
-authors = ["David"]
-language = "en"
-multilingual = false
-src = "src"
-title = "COMSM0085 Databases Exercises"
-
-[preprocessor.python]
-command = "python preprocessor.py"
