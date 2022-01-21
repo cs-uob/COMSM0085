@@ -28,11 +28,14 @@ quality masks [prevent
 infection](https://www.mpg.de/17916867/coronavirus-masks-risk-protection).
 
 Please **do not come to the in-person sessions if you are experiencing [any of the following symptoms](https://joinzoe.com/learn/omicron-symptoms)**:
-- runny nose
-- headache
 - fatigue (even a little)
 - sore throat (even a tickle)
+- cough (even a little)
+- headache
+- runny nose
 - sneezing
+- fever
+- loss of sense of smell or taste
 
 If you have even extremely mild symptoms, it is common courtesy to assume you have COVID-19. If you bring it into the lab you will cause disruption with mathematical certainty. Please isolate until your symptoms go away.
 
@@ -47,7 +50,7 @@ The unit may be running in-person, but **we recommend that you use Teams to ask 
 
 The lecturers and TAs will of course answer questions in-person, but may ask you to repeat your question on Teams. If you do not wish to do, they might post it anonymously, along with the answer.
 
-# How to learn in this unit
+## How to learn in this unit
 
 This unit comes with
 * lectures, and
