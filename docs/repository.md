@@ -1,4 +1,4 @@
-# About this repository
+# About this repository -- by David Bernhard
 
 Some behind-the-scenes information on how this unit page is set up, in case you ever need something similar for a project of your own.
 
@@ -19,4 +19,4 @@ This workflow means that whenever I make a change to the exercises, I have to re
 
 If you want to use a copy of the unit exercises pages on your own computer, for example when you don't have an internet connection, you can just open the copy in `docs/exercises/part1` starting with the file `index.html`. You just need a browser to view it, no extra markdown tools.
 
-The one thing not hosted on github are the lecture videos and their slides, for bandwidth reasons. The videos are hosted on Microsoft Streams (which is licensed by the university). You will need your university single sign-on to watch the videos, but if you click a video link when you're not logged in you should be redirected to a log-in page rather than just hitting an error as happened with blackboard videos for Maths A. The slides links also take you to a Sharepoint folder that requires a university log-in, they're all in [this folder](https://uob.sharepoint.com/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Forms/AllItems.aspx?id=%2Fteams%2FUnitTeams-COMS10012-2021-22-TB-2-A%2FShared%20Documents%2FDocuments) and they're just PDF exports of the slides - with that folder link you should be able to download a ZIP of all of them at once if you want.
+The one thing not hosted on github are the lecture videos and their slides, for bandwidth reasons. The videos are hosted on Microsoft Streams (which is licensed by the university). You will need your university single sign-on to watch the videos, but if you click a video link when you're not logged in you should be redirected to a log-in page rather than just hitting an error. 
