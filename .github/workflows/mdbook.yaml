@@ -1,0 +1,28 @@
+name: Build and deploy mdbook
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Get mdbook
+        uses: peaceiris/actions-mdbook@v1.1.13
+        with:
+          mdbook-version: 'latest'
+      - name: Build the books and deploy
+        run: |
+          for f in exercises/*; do
+            cd $f
+            mdbook build
+            cp -r book ../../docs/$f
+            cd ../..
+          done
+
+
+
