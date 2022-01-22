@@ -180,13 +180,18 @@ div.container {
     background-color: #efefef;
 }
 
+div.advanced {
+    color: #1d1b1e;
+}
+
 div.advanced header {
     background-color: lightskyblue;
     padding-left: 0.5ex;
 }
 
 span.advanced-title::before {
-    content: "Advanced note"
+    content: "Advanced note";
+    font-weight: bold;
 }
 
 div.container-content {
