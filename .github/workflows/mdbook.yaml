@@ -23,6 +23,8 @@ jobs:
             cp -r book ../../docs/$f
             cd ../..
           done
-
-
-
+      - name: Commit
+        uses: actions-x/commit@v4
+        with:
+          message: "Build mbbooks"
+          files: "docs/exercises/*"
