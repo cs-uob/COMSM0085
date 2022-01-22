@@ -20,7 +20,7 @@ jobs:
           for f in exercises/*; do
             cd $f
             mdbook build
-            cp -r book ../../docs/$f
+            cp -r book/* ../../docs/$f
             cd ../..
           done
       - name: Commit
