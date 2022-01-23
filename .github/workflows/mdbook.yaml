@@ -20,6 +20,7 @@ jobs:
           for f in exercises/*; do
             cd $f
             mdbook build
+            mkdir -p ../../docs/$f
             cp -r book/* ../../docs/$f
             cd ../..
           done
