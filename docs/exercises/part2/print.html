@@ -1,0 +1,1276 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Exercises</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">The web</li><li class="chapter-item expanded "><a href="http/index.html"><strong aria-hidden="true">1.</strong> HTTP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="http/setup.html"><strong aria-hidden="true">1.1.</strong> Setup</a></li><li class="chapter-item expanded "><a href="http/explore.html"><strong aria-hidden="true">1.2.</strong> Exploring HTTP</a></li><li class="chapter-item expanded "><a href="http/research.html"><strong aria-hidden="true">1.3.</strong> Research online exercise</a></li><li class="chapter-item expanded "><a href="http/server.html"><strong aria-hidden="true">1.4.</strong> A server in Java</a></li></ol></li><li class="chapter-item expanded "><a href="html5/index.html"><strong aria-hidden="true">2.</strong> HTML5</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="html5/basic.html"><strong aria-hidden="true">2.1.</strong> Basic HTML5</a></li><li class="chapter-item expanded "><a href="html5/templates.html"><strong aria-hidden="true">2.2.</strong> Templates</a></li></ol></li><li class="chapter-item expanded "><a href="css/index.html"><strong aria-hidden="true">3.</strong> CSS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="css/text.html"><strong aria-hidden="true">3.1.</strong> Styling Text</a></li><li class="chapter-item expanded "><a href="css/framework.html"><strong aria-hidden="true">3.2.</strong> Frameworks</a></li></ol></li><li class="chapter-item expanded "><a href="cssgrid/index.html"><strong aria-hidden="true">4.</strong> CSS grids</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cssgrid/intro.html"><strong aria-hidden="true">4.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="cssgrid/curriculum.html"><strong aria-hidden="true">4.2.</strong> Curriculum exercise</a></li><li class="chapter-item expanded "><a href="cssgrid/trees.html"><strong aria-hidden="true">4.3.</strong> Trees exercise (responsive layout)</a></li></ol></li><li class="chapter-item expanded "><a href="js/index.html"><strong aria-hidden="true">5.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="react/index.html"><strong aria-hidden="true">6.</strong> React</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="react/installing.html"><strong aria-hidden="true">6.1.</strong> Installing React</a></li><li class="chapter-item expanded "><a href="react/hello.html"><strong aria-hidden="true">6.2.</strong> Hello World in React</a></li><li class="chapter-item expanded "><a href="react/character.html"><strong aria-hidden="true">6.3.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="app1/index.html"><strong aria-hidden="true">7.</strong> A complete application, part 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="app1/setup.html"><strong aria-hidden="true">7.1.</strong> Setting Things Up</a></li><li class="chapter-item expanded "><a href="app1/walkthrough.html"><strong aria-hidden="true">7.2.</strong> Walkthrough</a></li><li class="chapter-item expanded "><a href="app1/lifecycle.html"><strong aria-hidden="true">7.3.</strong> React Lifecycles</a></li><li class="chapter-item expanded "><a href="app1/extent.html"><strong aria-hidden="true">7.4.</strong> The Extent Problem</a></li><li class="chapter-item expanded "><a href="app1/ex.html"><strong aria-hidden="true">7.5.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="app2/index.html"><strong aria-hidden="true">8.</strong> A complete application, part 2</a></li><li class="chapter-item expanded "><a href="cloud/cloud1.html"><strong aria-hidden="true">9.</strong> The Cloud, Part 1</a></li><li class="chapter-item expanded "><a href="cloud/cloud2.html"><strong aria-hidden="true">10.</strong> The Cloud, Part 2</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Exercises</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="overview"><a class="header" href="#overview">Overview</a></h1>
+<p>This page contains the exercises for part 2 (the last 5 weeks) of COMS10012 Software Tools, namely &quot;the web&quot;.</p>
+<p>Each week contains two activities, and each activity has videos to watch (on the main site for each activity) and a set of practical exercises supported by a lab class (on this site) just like part 1.</p>
+<p>The structure of this part is:</p>
+<ul>
+<li>HTTP</li>
+<li>HTML5</li>
+<li>CSS</li>
+<li>CSS grids</li>
+<li>JavaScript</li>
+<li>React</li>
+<li>Spring (server side)</li>
+<li>A complete application</li>
+<li>Cloud 1 (lectures but no new exercises)</li>
+<li>Cloud 2 (lectures but no new exercises)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="http"><a class="header" href="#http">HTTP</a></h1>
+<p>HTTP, or HyperText Transfer Protocol, is one of the basic protocols that make up the internet - and usually the lowest level that a web developer needs to concern themselves with frequently.</p>
+<h2 id="videos"><a class="header" href="#videos">Videos</a></h2>
+<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<tr><td><a href="https://web.microsoftstream.com/video/70642ec0-ed1b-4fc6-a5ef-26213128c2e7?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">The internet</a></td><td style="text-align: right">22 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/The%20internet.pdf">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/1895a219-f515-41b7-a1e9-562b48945b59?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">HTTP</a></td><td style="text-align: right">24 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/HTTP.pdf">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/3d3409a0-0295-416f-9f98-020c720761d1?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">URLs</a></td><td style="text-align: right">15 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/URLs.pdf">slides</a></td></tr>
+</tbody></table>
+<h2 id="optional"><a class="header" href="#optional">Optional</a></h2>
+<p>If you want to, you can read further about HTTP (including the new HTTP/2 standard) on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP">Mozilla Developer Network</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="set-up"><a class="header" href="#set-up">Set-up</a></h1>
+<p>From this point on we will be running web servers on our development environment, and connecting to them with web browsers. To get this to work we need to set some things up first, so please follow the instructions for your environment:</p>
+<h2 id="lab-machine-native"><a class="header" href="#lab-machine-native">Lab machine, native</a></h2>
+<p>These instructions apply if you are working directly on a lab machine (not using a Vagrant VM).</p>
+<p>You do not need to set up anything special. As you are not root, you can only serve from TCP ports 1024 or above, but that is not a problem - we will use port 8000 by default.</p>
+<p>Proceed directly to <a href="http/explore.html">exploring HTTP</a>.</p>
+<h2 id="lab-machine-with-vagrant"><a class="header" href="#lab-machine-with-vagrant">Lab machine, with vagrant</a></h2>
+<p>If you want to run a server inside a vagrant VM and connect to it with a browser directly on the lab machine (outside the VM), then you will need to tell vagrant which ports within the VM to make available outside the VM. Open your vagrantfile and add the line</p>
+<pre><code>config.vm.network &quot;forwarded_port&quot;, guest: 8000, host: 8000
+</code></pre>
+<p>in the main block (just before the <code>config.vm.provision</code> line will do), then restart your VM if it is already running. This tells vagrant to open a server on port 8000 on the host (the lab machine), and forward any traffic it receives to port 8000 on the VM.</p>
+<p>You can now start the VM, run a server inside the VM, and connect to it from the browser on the lab machine.</p>
+<p>Proceed to <a href="http/explore.html">exploring HTTP</a> and run the server (the <code>nc</code> command) inside the VM, but use the browser on the lab machine directly. Note that the <code>http-response</code> file mentioned on that page needs to go in the correct folder inside the VM, where you started the server.</p>
+<h2 id="your-own-machine-without-vagrant"><a class="header" href="#your-own-machine-without-vagrant">Your own machine, without vagrant</a></h2>
+<p>If you have a system that supports the <code>nc</code> and <code>wget</code> commands (Mac OS, Linux or WSL should all offer the option to install them) then you can proceed directly to <a href="http/explore.html">exploring HTTP</a>.</p>
+<p>You might get one or more firewall warning pop-ups, which you will have to &quot;allow&quot;.</p>
+<h2 id="your-own-machine-with-vagrant"><a class="header" href="#your-own-machine-with-vagrant">Your own machine, with vagrant</a></h2>
+<p>Configure vagrant as in the section &quot;Lab machine, with vagrant&quot; above, that is add the line</p>
+<pre><code>config.vm.network &quot;forwarded_port&quot;, guest: 8000, host: 8000
+</code></pre>
+<p>to the vagrantfile and restart vagrant. You can now run servers in the VM and clients (such as your favourite browser) on your own machine.</p>
+<p>You might get firewall warning pop-ups, which you will have to &quot;allow&quot;.</p>
+<p>Proceed to <a href="http/explore.html">exploring HTTP</a>. If you don't have <code>wget</code> on your own machine, you can open a second terminal and log in to the VM from there, then run both <code>wget</code> and the server inside the VM that way - then later on, when you're using a browser instead of <code>wget</code> for the client, you can just open the browser on your own machine.</p>
+<h2 id="over-ssh"><a class="header" href="#over-ssh">Over SSH</a></h2>
+<p>For security reasons, you will not be able to run a web server on a lab machine (whether in a VM or not) and connect to it from your local web browser. If you have no other option than to use a remote connection, you should use <a href="https://wiki.x2go.org/doku.php/download:start">x2go</a> to connect to a lab machine with a graphical user interface, and run both the server and browser through that. This software uses ssh internally so you need to connect to <code>rd-mvb-linuxlab.bristol.ac.uk</code> using <code>seis.bris.ac.uk</code> as the proxy server.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="exploring-http"><a class="header" href="#exploring-http">Exploring HTTP</a></h1>
+<h2 id="before-you-start"><a class="header" href="#before-you-start">Before you start</a></h2>
+<p>To avoid an annoying problem, before we run our own server we are going to check that no-one else is already using the TCP port we want.</p>
+<p>Run the command </p>
+<pre><code>wget localhost:8000
+</code></pre>
+<p>on the machine where you want to run the <em>server</em>. It should time out after a couple of seconds (or instantly) with &quot;failed&quot; and some error message.</p>
+<p>If it succeeds (shows &quot;Connected&quot; or &quot;200 OK&quot; anywhere), then someone or something else is using port 8000.</p>
+<p>Next, run</p>
+<pre><code>netstat -tan
+</code></pre>
+<p>and check that there is no line with the value &quot;8000&quot; under Local Address and a state of LISTEN or ESTABLISHED. If you get a lot of lines, <code>netstat -tan | grep 8000</code> will help. It does not matter if 8000 appears in the Foreign Address column, but there must be no-one using port 8000 under Local Address.</p>
+<p><code>netstat</code> should work on every OS including Windows (Microsoft has written their own version), but <code>wget</code> doesn't exist by default on Windows machines although it can be downloaded for free.</p>
+<p>If either <code>wget</code> or <code>netstat</code> suggests port 8000 is in use,</p>
+<ul>
+<li>If you are on a lab machine, it could be that another student is using port 8000 (maybe they are logged in via SSH).</li>
+<li>You might have other software (such as a web development package) already using that port.</li>
+</ul>
+<p>You can try port numbers 8001, 8002 etc until you get one that is definitely not being used and then replace 8000 with that in all further exercises today, or (on your own machine) you can stop whatever program is using the port first.</p>
+<p>Note: if you have vagrant running and set up as described on the last page, and you run <code>wget localhost:8000</code> on your own machine (not the VM), then vagrant will be using port 8000 and <code>wget</code> might block waiting for a reply. This is the correct behaviour, and this is why I asked you to run <code>wget</code> on the machine where you want to run your <em>server</em>, not the <em>client</em>. If you want to do the following exercises with both server and client on your own machine, then you need to stop the vagrant VM first or remove the 8000 line from your vagrantfile.</p>
+<h2 id="a-basic-http-server-and-client"><a class="header" href="#a-basic-http-server-and-client">A basic HTTP server and client</a></h2>
+<p>Open a terminal on the machine where you want to run the server, and download the file <a href="http/../resources/http-response">http-response</a> to the folder where your terminal is open (for example with <code>wget</code>). Then run the command</p>
+<pre><code>nc -l -p 8000 &lt; http-response
+</code></pre>
+<p>This calls the tool <code>nc</code> (&quot;network cat&quot;) and tells it to listen on TCP port 8000 (<code>-l -p 8000</code>), e.g. to run a server there. When a client connects, <code>nc</code> will by default read from its standard input and write this to the client, so we use a shell redirect to make it read from a file instead. The file contains some standard HTTP:</p>
+<pre><code>HTTP/1.1 200 OK
+Content-type: text/plain
+Content-length: 18
+Connection: close
+
+Hello over HTTP!
+</code></pre>
+<p>(If you want to type this out yourself or copy-paste, you <strong>must</strong> save the file with CRLF line endings and put two newlines after the hello message.)</p>
+<p><code>nc</code> will block until you connect a client. Open another terminal on the machine you want to run your client and run</p>
+<pre><code>wget -q -S -O - localhost:8000
+</code></pre>
+<p>You have now made a HTTP connection from the wget client to the nc server. The server terminal should print out the HTTP request it got from the client (this is built into wget) and the client should print out the response from the server (which comes from the file).</p>
+<h2 id="connecting-with-a-web-browser"><a class="header" href="#connecting-with-a-web-browser">Connecting with a web browser</a></h2>
+<p>Run <code>nc -l -p 8000 &lt; http-response</code> again on your server machine (kill the old one with <code>Control+C</code> first if it hasn't terminated already).</p>
+<p>Open a web browser on your client machine (e.g. your own PC/laptop, or a lab machine). If you're using chrome/edge or firefox, open the debug tools (<code>F12</code>) and go to the network tab before you open the page.</p>
+<p>Navigate to <code>localhost:8000</code>. You should see the line &quot;Hello over HTTP!&quot; and <code>nc</code> will print the HTTP request from your browser. You can then close it with <code>Control+C</code> if it doesn't terminate by itself. In your browser's debug tools, on the network tab you should see a file <code>localhost</code>, click this and then select <em>Headers</em> in the details that appear.</p>
+<p>This details page shows you the HTTP request details, including the response code (<code>200 OK</code> in this case) and all the headers sent in both directions. This screen is one of the first places you should look at when something web-based that you've coded is not working correctly or at all, as HTTP is normally the lowest layer you need to care about.</p>
+<p>In particular, the <code>Content-type</code> header is a common source of mistakes: if you want to serve e.g. a script or a stylesheet but you don't set the correct type header, your browser may download the file just fine but won't do anything with it. Similarly, whether you send <code>text/plain</code> or <code>text/html</code> determines whether the browser will interpret a file you navigate to as HTML or not.</p>
+<h2 id="a-web-server-in-c"><a class="header" href="#a-web-server-in-c">A web server in C</a></h2>
+<p>On your server machine, clone the repository <code>https://github.com/emikulic/darkhttpd</code> which contains a single-file web server in just under 3000 lines of C. You do not need to understand this code, and in 2nd year Computer Systems A you will be able to write a web server in around 10 lines of golang instead and understand the concurrency principles behind it.</p>
+<p>Compile the program either with <code>make</code> or simply <code>gcc darkhttpd.c -o darkhttpd</code>. Its job is to serve files within a folder, so make a subfolder called <code>web</code> and then run it with <code>./darkhttpd web --port 8000</code>. You can stop it again at the end of the exercise with <code>Control+C</code>.</p>
+<p>You can now experiment with the following:</p>
+<ul>
+<li>Create some files (plain text, HTML, image etc.) in <code>web/</code>.</li>
+<li>Access them from your browser with <code>localhost:8000/FILENAME</code>, for example <code>web/hello.txt</code> would become <code>localhost:8000/hello.txt</code>.</li>
+<li>Observe the HTTP headers in your browser's developer tools, and the server logs printed in the server terminal.</li>
+</ul>
+<p>This particular server is written so that if you try and access a folder instead of a file, for example just <code>localhost:8000</code> which has the implicit path <code>/</code> which maps to the <code>web</code> folder, then it shows a list of files in this folder as clickable links.</p>
+<p>Pay particular attention to how the <code>Content-type</code> header is sent depending on the file extension. From the browser's point of view, that header is what counts: if you send a file with <code>.html</code> extension but set <code>Content-type: text/plain</code>, the browser would not interpret it as HTML. This makes it possible to serve URLs with no &quot;extension&quot; at all like <code>/students</code> for a database application, and still have the browser understand what to do.</p>
+<p>From the server's point of view, this server (like most other servers that simply serve files from a folder) has chosen to use a file's extension to determine what <code>Content-type</code> to send; this is implemented in the <code>default_extension_map</code> starting at line 320 of the source file.</p>
+<p>You can try this out for yourself if you want: make a HTML file called <code>one.html5</code> in the web directory and access it with the browser. (<code>.html5</code> is not an official extension, it's something I just made up. The correct one to use for proper websites is <code>.html</code>.) The server won't send a <code>Content-type</code> header at all, since it doesn't know this extension, so the browser will either display it as a plain text file or download the file instead of showing it.</p>
+<p>Edit the map in the source file and change the entry for <code>text/html</code> to read <code>&quot; html htm html5&quot;</code>, keeping the space at the start of the string. Recompile the server.</p>
+<p>Rename the file to <code>two.html5</code> (I'll explain why in a second) and restart the server and try and open the file in the browser. This time, the file will display as a HTML page.</p>
+<p>Why did you have to rename the file? Because the browser will otherwise try and be clever if it thinks you're trying to access a file that you've just downloaded already. The server sends a <code>Last-modified</code> header, and if the browser notices you're asking for a file you have just downloaded, with the same timestamp as the HTTP header indicates, then your browser might ignore the rest of the request and not see that another header has changed - I get this behaviour on Edge/Win10. Changing the file name forces the browser to look again as it thinks it's a different file now. Deleting the downloaded file, or editing the file on the server, would both have the same effect.</p>
+<p>There is a moral here: if you're doing web development, and you are trying to find out why a change you made isn't showing in the browser (even if you refresh the page), it might be a cache problem. On the network tab of the developer tools window, there should be a checkbox to &quot;disable cache&quot; which you might want to turn on in this case and reload the page again, to exclude the cache as the possible source of the problem.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="httpurl-research-exercises"><a class="header" href="#httpurl-research-exercises">HTTP/URL research exercises</a></h1>
+<p>Research online what the following are and what they do:</p>
+<ul>
+<li>The <em>fragment</em> part of an URL.</li>
+<li>The <code>Accept</code> header sent by the HTTP client.</li>
+<li>The <code>User-agent</code> header sent by the HTTP client. What does your browser send?</li>
+<li>How do you encode a path that contains a space in an URL? (The link to the slides PDF for the first video called &quot;The internet&quot; for this week contains an example. If you hover over the link, it will display the target filename as <code>The internet.pdf</code>, but how is it written in the HTML file?) Which other characters are &quot;special&quot; and need to be treated this way in paths?</li>
+<li>Which web server is the University of Bristol using for <code>www.bristol.ac.uk</code>, according to the headers? Read up online on this server and the organisation of the same name that maintains it.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="a-server-in-java"><a class="header" href="#a-server-in-java">A server in Java</a></h1>
+<p>From now on, we will be using the Java language and the spring boot framework to run real web servers, as that is what you will be doing in your 2nd year software project (COMS20006).</p>
+<h2 id="compile-and-run"><a class="header" href="#compile-and-run">Compile and run</a></h2>
+<p>Make sure you have java and maven installed as we did earlier in the unit. On alpine, you need to do the following if you have not done so already:</p>
+<ul>
+<li>Install the packages <code>openjdk8</code> and <code>maven</code>.</li>
+<li>Add the line <code>export PATH=&quot;$PATH:/usr/lib/jvm/java-1.8-openjdk/bin/&quot;</code> to your <code>~/.profile</code> file.</li>
+<li>Run <code>source ~/.profile</code>.</li>
+</ul>
+<p>Clone the repository <code>git@github.com:cs-uob/COMS10012</code> if you have not done so already, and navigate to the folder <code>code/server01</code>. In this folder, run <code>mvn spring-boot:run</code> to compile and run the sample application. The first time you do this, it might download lots of files.</p>
+<p>This runs a web server on port 8000.</p>
+<h2 id="explore-the-application"><a class="header" href="#explore-the-application">Explore the application</a></h2>
+<p>The <code>pom.xml</code> file tells maven that this is a spring boot project, and what the project is called (<code>softwaretools.server01</code>).</p>
+<p>Under <code>src/main/resources</code> you find two files. First, <code>application.properties</code> which is a spring file configured to run on port 8000 (the default would otherwise be 8080). Secondly, a HTML file that the application can serve.</p>
+<p>Under <code>src/main/java</code> is the source code. This is only two files, but of course the whole spring framework is active when the application runs. <code>Server01Application</code> is the main class, but this just contains boilerplate code for now.</p>
+<p><code>Controller.java</code> is the interesting one: in application development, <em>Model - View - Controller</em> is one of several patterns to structure an application, where a <em>Controller</em> is a piece of code that does the heavy lifting part, for example replying to a HTTP request.</p>
+<p>Spring works with annotations, special classes whose name begins with an <code>@</code> sign. When the server starts, spring scans all files for annotations and sets up code to deal with them. Here we can see:</p>
+<ul>
+<li><code>@SpringBootApplication</code> (on the <code>Server01Application</code> class) tells spring that this is the main file to run.</li>
+<li><code>@RestController</code> tells spring that this class contains methods to deal with HTTP requests. It is so named because spring has libraries to make implementing the REST principles particularly easy.</li>
+<li><code>@AutoWired</code> on a field tells spring that this field is spring's responsibility to set up when the application starts. The <code>ResourceLoader</code> is part of spring and lets you access files in <code>src/main/resources</code>.</li>
+<li><code>@GetMapping(PATH)</code> tells spring that this method should be called to reply to a HTTP GET request for the provided path (there is of course also a <code>@PostMapping</code> and so on).</li>
+</ul>
+<p>The <code>mainPage</code> method, which is called when you load <code>localhost:8000</code>, shows the basic way to reply to a HTTP request: set up any headers you need - in this case the content type - and return a <code>ResponseEntity</code> taking three parameters: the HTTP body of the response to return (this will be shown in your browser), the HTTP headers to set, and the response code which is 200 (OK) here.</p>
+<p>The <code>htmlPage</code> method replies to requests for <code>localhost:8000/html</code>. Here we want to serve a file, so we use the resource loader to get it from the classpath which includes the <code>src/main/resources</code> folder (or rather, the version of it that ends up in the compiled JAR file). It also shows a second way to create a <code>ResponseEntity</code> using the <em>builder</em> pattern.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<ul>
+<li>Compile and run the application, and test both <code>localhost:8000</code> an <code>localhost:8000/html</code> in your browser. Observe both the headers in the developer tools, and the log messages that spring prints out for each request.</li>
+<li>Add a method that replies to requests for <code>localhost:8000/bad</code> with a HTTP <code>404 NOT FOUND</code> error. The body of the page can be a simple string with a message of your choice. Stop and restart the application, and check that you get the correct error message when you try and open this page.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="html5"><a class="header" href="#html5">HTML5</a></h1>
+<p>HTML5, officially introduced in 2014, is the language for writing websites nowadays.</p>
+<p>It gets rid of a lot of historical annoyances and inconsistencies from previous versions of HTML and XML and contains a lot of new standard tags and attributes for features that individual sites had built with JavaScript or Adobe Flash in the past. For example, HTML5 has a <code>&lt;video&gt;</code> tag for a consistent way to include videos that work across different platforms and without plug-ins, and a standard way of writing a date picker or &quot;calendar&quot; widget.</p>
+<h2 id="videos-1"><a class="header" href="#videos-1">Videos</a></h2>
+<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<tr><td><a href="https://web.microsoftstream.com/video/3cb27889-2cb1-40d8-a037-ffdb216fff61?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">HTML5</a></td><td style="text-align: right">24 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/HTML5.pdf">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/4bf898f3-3f7a-4443-96e7-8aec708af2ce?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">HTML elements</a></td><td style="text-align: right">24 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/HTML%20elements.pdf">slides</a></td></tr>
+</tbody></table>
+<h2 id="mdn"><a class="header" href="#mdn">MDN</a></h2>
+<p><em>For the web part of the unit, we will be reading some of the documentation on the Mozilla Developer Network (MDN) for some workshops, to complement the videos and exercises.</em></p>
+<p>These pages are pitched at a lower level of technical expertise than CS students, so you should get through them very quickly. Many of them also contain interactive examples to try out. If your future career involves web development, you will be consulting documentation like the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN HTML reference guide</a> a lot - for example, to read through all the attributes you can put on a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">form tag</a>.</p>
+<p>Please read the following pages for this workshop, as well as watching the videos.</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started">MDN: Getting Started with HTML</a> The very basics, and the HTML5 page template. </li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals">MDN: HTML Text Fundamentals</a> A recap of paragraphs, headings, styling, semantic tags.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks">MDN: Creating Hyperlinks</a> All about the <code>&lt;a&gt;</code> tag.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure">MDN: Document and website structure</a> HTML5 semantic tags for structure.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/HTML5_input_types">MDN: HTML5 input types</a> More on using the most appropriate controls in your forms.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="basic-html5"><a class="header" href="#basic-html5">Basic HTML5</a></h1>
+<p>For your first exercise, create a page called <code>index.html</code> and add the HTML5 template code to it.</p>
+<p>The name <code>index.html</code> is a convention: most web servers, if you give an URL that looks like a &quot;folder&quot; e.g. <code>example.com/pages</code> (or <code>example.com/pages/</code> with slash on the end) will serve the file <code>index.html</code> from within that folder, if there is one.</p>
+<h2 id="create-a-page"><a class="header" href="#create-a-page">Create a page</a></h2>
+<p>Create content in your page to make it look like the following, then open it in your browser. All body text, but not the bullet list, is contained in paragraph tags.</p>
+<iframe style="border: 1px solid #000; width: 100%; height: 450px" src="../resources/examplepage.html" title="example page">
+</iframe>
+<h2 id="validate-your-page"><a class="header" href="#validate-your-page">Validate your page</a></h2>
+<p>There are various libraries and services that check if your page is valid HTML5.</p>
+<p>At <a href="https://validator.w3.org/">validator.w3.org</a> you can enter an URL, upload a file, or paste the contents of a file and validate it. Check that the page you have just written is valid HTML5.</p>
+<p>Your browser's developer tools can also check the page you are viewing. For Chrome/Edge, to to the <em>Console</em> tab and, if the button at the top does not read <em>No Issues</em> but shows a number with a blue (or even yellow or red) icon, then click it to open the <em>Issues</em> tab and see what the browser is complaining about.</p>
+<p>You can check the sample solution <a href="html5/../resources/examplepage.html">here</a> but you might have a different, equally valid solution.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="templating"><a class="header" href="#templating">Templating</a></h1>
+<p>The bread and butter of many developer jobs is building web applications that let people interact with data in a database. In a university for example, such an application might let students see the units they are enrolled in, their teaching and exam timetables, and their grades. Academics would be able to add new grades, and staff in the timetabling office would be able to create and edit timetables.</p>
+<p>In such an application, pages need to be somewhat dynamic: the &quot;student profile&quot; page will show data for the particular student that you are looking at. Rather than generating these HTML pages &quot;manually&quot;, for example by pasting strings together, it is much cleaner and usually more efficient to use a templating library. You could define one &quot;student profile page&quot; template, and then when a student requests their profile page, the server uses the template to create the page with this student's data. Creating a particular page from a template and some data is called <em>rendering</em> the page.</p>
+<p>This workshop's example application is <code>code/server02</code> in the unit git repository. You build it with <code>mvn spring-boot:run</code> like the previous one, then access <code>localhost:8000</code>.</p>
+<p>The application is a very minimal university database with students, units and grades. The <code>Database</code> interface in the <code>model</code> folder, together with the Student and Unit classes, form the data model - you can search for all students or all units in the database. In a real database of course, you would be able to search for an individual student by ID as well. </p>
+<p>The file <code>Templates.java</code> sets up the <a href="https://www.thymeleaf.org/">thymeleaf</a> template engine. The <code>@Component</code> annotation tells spring to manage this class; other classes that need templates can request it by declaring a field of the right class with <code>@Autowired</code>, as you can see in <code>Controller.java</code>.</p>
+<p>The main page is served up as before as a HTML file from the classpath in <code>src/main/resources/web</code>.</p>
+<p>Have a look at the process when <code>/units</code> is requested. </p>
+<ul>
+<li>First, the method <code>unitsPage</code> accesses the database and loads the list of units.</li>
+<li>Next, it creates a <code>Context</code>, a thymeleaf object that lets you pass values to a template. Here we add one value with key <code>units</code>, containing the list of units.</li>
+<li>Finally, we render the template with the context and return this. If a method in a spring controller returns a string, then the string is assumed to contain a HTML page and spring correctly sets the HTTP status code and headers.</li>
+</ul>
+<p>The template itself is in <code>src/main/resources/units.html</code>. Anything with a <code>th:</code> prefix is rendered by thymeleaf:</p>
+<pre><code class="language-html">&lt;ul th:each=&quot;unit : ${units}&quot;&gt;
+    &lt;li&gt;
+        &lt;a th:href=&quot;'/unit/' + ${unit.code}&quot; th:text=&quot;${unit.code}&quot;&gt;&lt;/a&gt;
+        &lt;span th:text=&quot;${unit.title}&quot;&gt;&lt;/span&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>The <code>th:each</code> attribute is the equivalent of a for loop in Java, in this case <code>for (Unit unit : units)</code> - in thymeleaf, unlike plain Java, you do not need to give the loop variable a type but you do need to use the <code>${...}</code> syntax whenever you are accessing a variable from the context. The <code>th:each</code> attribute renders its own tag once (in this case <code>&lt;ul&gt;</code>) and then renders everything inside the tag once per pass through the loop, so you get one <code>&lt;li&gt;</code> item per unit.</p>
+<p>To create an attribute, you put <code>th:</code> in front of the attribute name, so the <code>th:href</code> creates the <code>href</code> attribute of a link (check the result in your browser). Thymeleaf attribute syntax is that you need to put single quotes around strings, <code>+</code> like in Java to stick strings together, and <code>${...}</code> around variables. </p>
+<p>The syntax <code>${instance.attribute}</code> loads an attribute from an instance of a Java class by calling its getter. In this case <code>${unit.code}</code> ends up calling <code>.getCode()</code> on the unit instance rather than accessing the field directly.</p>
+<p>The <code>th:text</code> attribute is special and creates the body of a tag. For example, the span tag here creates a <code>&lt;span&gt;</code> whose body (between the opening and closing tags) contains the unit's title. Thymeleaf, unlike some other templating systems, doesn't let you include variables everywhere - some template engines let you just write <code>${variable}</code> anywhere in the HTML page, but thymeleaf only lets you do that in an attribute of a tag so if you simply want some text, you need to make a placeholder tag (<code>span</code> is a good choice here) and put the variable in its <code>th:text</code> attribute.</p>
+<p>If you click on a unit, you get to the details page for that unit (that currently doesn't have any more detail than the code and title). When you send a HTTP request for <code>/unit/UNITCODE</code>, for example <code>/unit/COMS10012</code>, this is handled by the <code>unitDetailPage</code> method. </p>
+<p>Note that the <code>@GetMapping</code> contains a pattern <code>/unit/{code}</code> with a parameter to match all URLs of this form, and the parameter is passed to the method as a parameter that is annotated with <code>@PathVariable</code> to tell spring how to deal with it, namely to fill its value from the path of the HTTP request.</p>
+<p>The method first finds the unit in the database and returns a 404 error page if there is no unit with that code. (In a real database, there would be a &quot;find unit by code&quot; method, you would not have to load all units just to find one of them.)</p>
+<p>After this, we call thymeleaf on the <code>unit.html</code> template (this is the one without 's' in its name) to render the unit page.</p>
+<h2 id="exercises-1"><a class="header" href="#exercises-1">Exercises</a></h2>
+<p><strong>Basic exercise:</strong> Rewrite the units list page to show the units in a table instead of a list. The table should have one row per unit and three columns: the first column should be the unit code, the second should be the unit title, and the third column should contain a link with text &quot;details&quot; that takes you to the details page for the unit. Also make a header row in the table with headings 'code', 'title' and 'link'. (This is purely a HTML and templating exercise, you do not need to change any Java code for this.)</p>
+<p><strong>Intermediate exercise:</strong> Implement controller methods and templates for listing all students and viewing an individual student's details, analogous to the ones for units (you can choose whether you make a list or a table for the students - there are currently only two). You only need to show a student's id and name for now, not the grades. Note that the id is an integer, not a string. You can copy-paste the Unit controller code and templates and make the necessary changes to show students instead, but make sure you understand what the bits do that you're changing. The student class is in the <code>src/main/java/softwaretools/server02/model</code> folder.</p>
+<p><strong>Intermediate exercise:</strong> The student class contains a method <code>getGrades()</code> that returns a list of pairs (unit, grade). The unit is a unit object, and the grade is an integer. On your student details page, make a table listing the titles and codes of all the units the student has taken, and the grades they got. </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="css"><a class="header" href="#css">CSS</a></h1>
+<p>CSS, or Cascading Style Sheets, allows you to set what your page looks like, separately from creating the content.</p>
+<p><em>Not to be confused with <a href="https://cssbristol.co.uk/">CSS Bristol</a>.</em></p>
+<h2 id="videos-2"><a class="header" href="#videos-2">Videos</a></h2>
+<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<tr><td><a href="https://web.microsoftstream.com/video/19b45256-575f-4d09-8bc5-ccd29d34c64e?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">CSS part 1</a></td><td style="text-align: right">19 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/CSS%201.pdf">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/77d53305-8551-459f-83b6-baa9ae989e15?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">CSS part 2</a></td><td style="text-align: right">14 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/CSS%202.pdf">slides</a></td></tr>
+</tbody></table>
+<h2 id="mdn-1"><a class="header" href="#mdn-1">MDN</a></h2>
+<p>For this workshop, please read the following pages:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps">CSS first steps</a> including the 5 subpages linked under &quot;Guides&quot; - they are all meant for beginners so you should be able to get through quickly</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors">CSS selectors</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model">The box model</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units">Values and units</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="styling-text"><a class="header" href="#styling-text">Styling Text</a></h1>
+<p>Under <a href="css/../resources/sometext.html">resources/sometext.html</a> you have a basic text-based HTML document with some information about your degree. Download this file and open it in your browser, you will see it displayed with the default stylesheet (and any customisations you might have applied, such as selecting a default font and size).</p>
+<h2 id="reading-mode"><a class="header" href="#reading-mode">Reading Mode</a></h2>
+<p>Many browsers have a <em>reading mode</em> which is meant to make text as east to read as possible. Let's simulate this - create a new link to a stylesheet in the header (call it something like <code>sometext.css</code>) and insert the following:</p>
+<pre><code class="language-css">body {
+    margin: 0 auto;
+    max-width: 40em;
+    line-height: 125%;
+}
+</code></pre>
+<p>This already looks much better, but you can play with the parameters to get something that's perfect for you.</p>
+<ul>
+<li>The <code>max-width</code> is doing most of the work here, following the design principle (that's fairly well replicated with studies) that most people find text easier to read if lines are not much longer than some limit, quoted variously as <a href="https://baymard.com/blog/line-length-readability">around 60 characters</a>. Since an 'm' is wider than the average character and <code>em</code> rather than e.g. <code>px</code> is the correct thing to use here (as it's relative to the font being used), I went for 40em.</li>
+<li>The <code>margin: 0 auto</code> centers content horizontally if it has a fixed width. The space around the text both gets the left margin away from the edge of the window, and gives the eye an area around the text free of distractions.</li>
+<li>Increasing the line height follows the same principle, sometimes known as giving the text <em>room to breathe</em>. Experiment with differnt line heights if you like to see which one suits you best. Note: it's possible to overdo this. Double-spacing (<code>line-height: 200%</code>) was common for dissertations in the typewriter era, mainly to give proofreaders and markers space to write comments between the lines. This is considered bad design nowadays, and you should not do it.</li>
+</ul>
+<p>If you want, you can try a few other things:</p>
+<ul>
+<li>Change the <code>font-size</code>. The default is <code>16px</code> but depending on your screen size, resolution and distance from your eyes you might want a larger one.</li>
+<li>Set a different <code>font-family</code>. The values <code>serif</code> and <code>sans-serif</code> give default choices across all operating systems, you could set this to a more specific font on yours such as <code>Calibri</code> (if on Windows) but bear in mind this will not work for Mac users.</li>
+<li>Set a <code>background-color</code> on the body, either a light but not quite white one (pale yellow/brown is often used), or go dark mode with a dark backround and a light <code>color</code> for the font itself.</li>
+</ul>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>Tricks like this - which you can code as a browser extension if you want to - might be particularly helpful for visually impaired or dyslexic students so you can force any website to use fonts and styles that work for you.</p>
+<p>If you are designing for dyslexic people other than yourself, the best you can do is give them a way to configure the fonts and colours themselves (for example with a menu that lets you change them via JavaScript) - different dyslexic people might have different preferences that work for them, for example one person may prefer serif fonts to sans-serif or the other way round, there is no one best design for everyone.</p>
+<p>There are statistical trends which mean that &quot;use sans serif fonts&quot; is good advice if you have to pick one font (for example for printed material) but one of the advantages of the web is that you do not have to choose one font in advance, you can let different users select different preferences.</p>
+</div>
+</div>
+<h2 id="starting-from-scratch"><a class="header" href="#starting-from-scratch">Starting from Scratch</a></h2>
+<p>Uncomment the line that includes <code>reset.css</code> in the HTML file (comments go from <code>&lt;!--</code> to <code>--&gt;</code>, a relic of when HTML was connected with XML). The file is at <a href="css/../resources/reset.css">resources/reset.css</a> so download it to the same folder as your HTML file.</p>
+<p>You now have almost no styling at all: headings, lists, paragraphs all just look like text.</p>
+<p>In your own stylesheet, which you should include <em>after</em> <code>reset.css</code>, either try and recreate the default settings or try out ones that look good to you.</p>
+<p>Headings are meant to stand out among the paragraphs, and the extra white space around them (padding or margin) is as important as the larger font size and bold font. You could try leaving headings the same size as the body font but still <code>font-weight: bold</code> and use just padding to make them stand out. (Since a heading relates to the text after it not the text before it, it is good design to have a greater margin/padding above the heading than below it.)</p>
+<p>The default body font size is <code>font-size: 16px</code>. If you want to make the headings larger, you should not set an absolute value (such as 24px) but one relative to the default size. Since the default size comes from the <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> elements, you have two ways to do this: either with a percentage e.g. <code>h1 { font-size: 150%; }</code> which makes headings 1.5 times as big as the paragraph font, or using the <code>em/rem</code> units (setting a font size in ems refers to the em size of the parent unit).</p>
+<p>In the browser, open the developer tools and type the following in the console and press ENTER:</p>
+<pre><code class="language-js">document.body.style.fontSize=&quot;24px&quot;;
+</code></pre>
+<p>(Since this is JavaScript, the property is called <code>fontSize</code> not <code>font-size</code> as dashes are not allowed in identifiers.)</p>
+<p>This increases the body text size from 16px to 24px (if you have manually set a different size in your stylesheet, you might need to set it to <code>&quot;24px !important&quot;</code> to override this). If you had set your headings to fixed sizes like 18px, then headings would now be smaller than the body text - if you have correctly used relative sizing, then headings will now still be 1.5 times as big as the body fonts or whichever multiple you set them to be. That is the right way to do it.</p>
+<h2 id="vertical-rhythm"><a class="header" href="#vertical-rhythm">Vertical Rhythm</a></h2>
+<p>Here is another design principle worth knowing about. Look at this image, part of a screenshot of one way to style the text on the page:</p>
+<p><img src="css/rhythm1.png" alt="text in vertical rhythm layout" /></p>
+<p>The principle here is that we imagine a grid with 20px high lines, and lay out everything according to that. Under <a href="css/../resources/baseline.png">resources/baseline.png</a> there is an image 1px wide and 20px high with the last pixel coloured pink. Download that image to the folder with the HTML file and set</p>
+<pre><code class="language-css">body {
+    background-image: url(&quot;baseline.png&quot;);
+}
+</code></pre>
+<p>This will make the image repeat horizontally and vertically, and you can now see the design behind this approach:</p>
+<p><img src="css/rhythm2.png" alt="text in vertical rhythm layout" /></p>
+<p>The baselines of the paragraph text all sit on the grid lines. The important thing here is that when a heading interrupts the flow of text, the total height of the heading is an exact multiple of the grid height, even if the font size is different.</p>
+<p>Try and recreate this layout or a similar one using vertical rhythm, starting from the reset stylesheet so you have to do everything yourself from scratch. Notes:</p>
+<ul>
+<li>The aim is that all paragraphs have their baselines on the grid, even if there are other elements (headlings, lists) earlier in the document.</li>
+<li>This means that the total height of headings must be an exact multiple of the grid size; you can assume that the text in a heading does not require more than one line.</li>
+<li>You should set all sizes, including margins and padding, in terms of relative units (either ems/rems or percentages).</li>
+<li>The base font size here is the default 16px. Start with the max-width and line-height from the first example, and modify the line height if necessary for your font to get the lines of paragraph text the right distance apart. </li>
+<li>The paragraphs themselves have a margin at the bottom (the empty line after the first paragraph) that also appears between paragraphs of text (not shown in the image) when one <code>&lt;p&gt;</code> tag follows another. You might also need to give them a small top padding to get the text on the lines, not between them.</li>
+<li>The shading around the headings is <code>background-color: rgba(0, 0, 255, 0.25);</code> to be semitransparent and let the lines show through, to see that while the heading text itself doesn't have to sit on a grid line, the total height of a heading including padding does respect the grid. However this shading is just to motivate the layout: if you want an actual coloured background, then you should set a <code>padding-left: 0.5em;</code> or something on the headings to make the text not start just on the edge of a coloured box. This improves readability.</li>
+<li>You will also need to style the <code>&lt;ul&gt;</code> list to have some spacing before and after, and to keep everything on the grid lines. You get the bullets back with the following code - or one of many other options <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style">listed on MDN</a>:</li>
+</ul>
+<pre><code class="language-css">ul {
+    padding-left: 2em; /* the bullets appear in the padding */
+    list-style-type: disc;
+    list-style-position: outside;
+}
+</code></pre>
+<ul>
+<li>Don't forget to style the link. <code>text-decoration: underline</code> is one option; or you can read more on MDN about <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Styling_links">styling links</a> including how to make a link someone has visited before look different to a new one.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="using-a-css-framework"><a class="header" href="#using-a-css-framework">Using a CSS Framework</a></h1>
+<p>Now that you know some CSS, you could write your own framework - one or more stylesheet files that implement your idea of good design. In this exercise we will look at some examples.</p>
+<h2 id="milligram"><a class="header" href="#milligram">Milligram</a></h2>
+<p><a href="css/milligram.io">Milligram</a> is, in its own words, a &quot;minimalist CSS framework&quot;.</p>
+<p>Download the <a href="css/../resources/page1.html">page1.html</a> file and open it in the browser: it contains some text and a sign-up form for a CSS conference.</p>
+<p>Following the instructions on the milligram website, add the following to the page head:</p>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css&quot;&gt;
+
+</code></pre>
+<ul>
+<li>The first one loads Google's <a href="https://fonts.google.com/specimen/Roboto">Roboto web font</a>, which the designers of milligram selected as their default. Because it is loaded as a web resource, it should work across different browsers and operating systems, you don't need to install it first.</li>
+<li>The next line loads <code>normalize.css</code>, an alternative to <code>reset.css</code> that provides a consistent stylesheet across browsers. Try out the page with just the first two stylesheets and see how it looks now - the font won't have changed because no-one has set <code>font-family</code> yet, that will happen in the next stylesheet, but the margins will be slightly different.</li>
+<li>The third one adds milligram itself. Your page now uses a different style, for example the form fields and labels are laid out vertically and the register button is purple.</li>
+</ul>
+<p>Milligram chooses to style the whole page by default, but you can customise this further. One of their features is a <em>container</em> that gives its content a fixed maximum width.</p>
+<ul>
+<li>Add <code>class=&quot;container&quot;</code> to the <code>&lt;main&gt;</code> element, save and reload. See how the page behaves when you make the window wider and narrower. The page will always have some left/right padding, but the form adapts to the window size.</li>
+<li>In the developer tools, activate mobile mode a.k.a. <em>toggle device emulation</em>, on chrome/edge this is the second icon from the left in the top left of the developer panel. The text looks much too small now!</li>
+<li>This is due to a number of factors including higher pixel density on mobile screens. Milligram can handle mobile devices, but it needs the following line in the header:</li>
+</ul>
+<pre><code class="language-html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+</code></pre>
+<p>This line, which is often (but not always) good practice to include in a HTML5 page anyway, tells a mobile browser (or a device pretending to be one) to adopt sensible defaults including larger fonts depending on the pixel density and no horizontal scrollbars. You can read more about this <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag">on MDN</a>.</p>
+<p>On <a href="https://milligram.io/#typography">the milligram documentation page</a> you can read more about the elements that milligram styles for you, and how you can customise this (e.g. buttons).</p>
+<p>Have a look in your browser's developer tools at how milligram styles the page: select an element in the <em>Elements</em> tab (or right-click it and choose <em>Inspect</em>), then look at the styles that appear in the <em>Styles</em> area. How does milligram set the following?</p>
+<ul>
+<li>Size of heading fonts</li>
+<li>Form fields take up the full width of the container</li>
+<li>Form labels and fields appear below each other</li>
+<li>Labels are closer to their own field than the field above</li>
+<li>Size and centering of everything in a container on wide enough screens</li>
+</ul>
+<h2 id="bulma"><a class="header" href="#bulma">Bulma</a></h2>
+<p><a href="css/bulma.io">Bulma</a> is a larger but still fairly lightweight CSS framework. Unlike milligram, it only styles parts of the page you tell it to (but it sets a default font), and it has some more components to build things like menus or panels.</p>
+<p>Start with <a href="css/../resources/page2.html">page2.html</a>, have a look at the raw page and then add the following to the header (the viewport tag is already there):</p>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.css&quot;&gt;
+</code></pre>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>Bulma, like most frameworks, comes in two formats: <code>bulma.css</code> is the CSS file with human-readable formatting, and <code>bulma.min.css</code> (at the same location) is the minified version with all unnecessary whitespace removed and so is slightly quicker to download.</p>
+<p>The bulma sources <a href="css/github.com/jgthms/bulma">on github</a> are actually in SASS format, a language that compiles to CSS but offers extra features in the source file like nested blocks and variables. (After SASS was created, variables were introduced in CSS too, but with a different syntax.)</p>
+</div>
+</div>
+<p>Bulma works with custom class names. For example, we are going to make the first heading into a banner that spans the whole page width - called a <em>hero</em> in web design circles. Bulma has classes for this.</p>
+<ul>
+<li>First, add <code>class=&quot;title&quot;</code> to the h1 heading, save and reload the page.</li>
+</ul>
+<p>This tells bulma to style it as a title/heading element. On the <a href="https://bulma.io/documentation/elements/title/">title element page</a> you can see that the correct way to get a top-level heading is with the classes <code>&quot;title is-1&quot;</code>, whereas a <code>&quot;title is-2&quot;</code> would be a second-level heading (slightly smaller font):</p>
+<pre><code class="language-html">&lt;h1 class=&quot;title is-1&quot;&gt;Title 1&lt;/h1&gt;
+&lt;h2 class=&quot;title is-2&quot;&gt;Title 2&lt;/h2&gt;
+</code></pre>
+<p>This looks like you are saying the same thing twice, and you are, but it lets you keep the structure and the styling separate - tag names give structure, class names give styling. Note that this method is a convention by the bulma designers, which other designers might not agree with, not part of the HTML/CSS standard.</p>
+<p>Now to the hero part. According to the bulma documentation for the <a href="https://bulma.io/documentation/layout/hero/">hero component</a>, we need a container with class <code>hero</code> and a direct child with class <code>hero-body</code>, so</p>
+<ul>
+<li>Add class <code>hero</code> to the header tag.</li>
+<li>Add a child div <code>hero-body</code> inside it that wraps the <code>h1</code> tag.</li>
+<li>Set the classes <code>title is-1</code> on the h1 tag itself.</li>
+</ul>
+<p>You now have an eye-catching element at the top of your page.</p>
+<p>Bulma also lets you give an element the class <code>content</code> to tell it to style everything within that tag based on the tag names. Class <code>section</code> creates a section with spacing before/after, and class <code>container</code> makes something fixed width and centered.</p>
+<ul>
+<li>Add class <code>content</code> on the <code>main</code> tag. Reload the page and observe the changes.</li>
+<li>Add a <code>div</code> inside main that wraps all the content inside, and give it class <code>container</code>. Reload again and observe the change.</li>
+<li>Notice that the first h2 heading text touches the bottom of the hero area, which is not good design - text needs space between it and edges of coloured areas. Create a section tag as the direct child of the container, and give it class <code>section</code> so your code should look like this:</li>
+</ul>
+<pre><code class="language-html">&lt;main class=&quot;content&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;section class=&quot;section&quot;&gt;
+            ... content ...
+</code></pre>
+<p>For the next exercise, style the form.</p>
+<ul>
+<li>Put another section tag around the form and its heading (so the container tag will have two direct children, both of them sections).</li>
+<li>Using the bulma <a href="https://bulma.io/documentation/form/general/">form documentation</a>, add tags and classes to the form as necessary so it looks similar to the milligram one (full width fields, labels immediately above the fields, coloured button with rounded corners). You don't have to make the button purple, use <code>is-primary</code> to make it blue.</li>
+</ul>
+<p>Finally, add and style a <a href="https://bulma.io/documentation/components/">bulma component</a> of your own choice on the page.</p>
+<h2 id="bootstrap"><a class="header" href="#bootstrap">Bootstrap</a></h2>
+<p>The most popular CSS framework is <a href="css/getbootstrap.com">bootstrap</a>, developed by twitter. If you are interested and have some spare time, you can have a look at it - it has lots of different components and options to customise the styling further with themes.</p>
+<p>Bootstrap includes a JavaScript file as well as a stylesheet: for some components like tabbed pages, you need the scripts to make clicking on a tab switch to the correct content.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="css-grids"><a class="header" href="#css-grids">CSS grids</a></h1>
+<h2 id="videos-3"><a class="header" href="#videos-3">Videos</a></h2>
+<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<tr><td><a href="https://web.microsoftstream.com/video/e63033d4-c62b-4a96-a4c5-3f3aea6451dc?channelId=793a8a65-ed73-4803-820f-dd7f2c675f460">Design</a></td><td style="text-align: right">26 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/Design.pdf">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/a8663532-67a3-470b-9243-701fd51d8855?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">CSS grids</a></td><td style="text-align: right">15 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/CSS%20grids.pdf">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/5cf692e4-6f63-4745-9ded-32a59b7673bd?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Responsive Layout</a></td><td style="text-align: right">7 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/Responsive%20CSS.pdf">slides</a></td></tr>
+</tbody></table>
+<h2 id="mdn-2"><a class="header" href="#mdn-2">MDN</a></h2>
+<p>Please read the following pages, and play with the interactive examples if you want:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Normal_Flow">Normal flow</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids">CSS grids</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Media_queries">Media queries</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="css-grids-introduction"><a class="header" href="#css-grids-introduction">CSS grids introduction</a></h1>
+<p>To create a CSS grid, you place a container element (usually a <code>&lt;div&gt;</code>) and style it <code>display: grid</code>. All its direct children will now be laid out in a grid, and you can configure the general layout on the parent element:</p>
+<ul>
+<li><code>grid-template-columns</code> defines the number and widths of the columns.</li>
+<li><code>gap</code> (which should have been called <code>grid-gap</code>, but is not) defines the gap between different grid cells. </li>
+<li>For a gap around the outside of the grid, give the container a margin (or padding).</li>
+</ul>
+<p>On the child elements, you can set the placement rules for each one and the browser will build the grid accordingly:</p>
+<ul>
+<li>By default, each child takes up the next free 1x1 space.</li>
+<li><code>grid-row</code> and <code>grid-column</code> modify this:
+<ul>
+<li><code>span N</code> makes a child element N cells wide/tall.</li>
+<li><code>M / N</code> positions the child absolutely from dividing line M to dividing line N (you can overlap or stack elements on top of each other this way if you want to).</li>
+</ul>
+</li>
+</ul>
+<p>There are many more things that you can do with grids, and your best resources if you need to look this up are:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids">Grids on MDN</a></li>
+<li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/">CSS-tricks complete guide to grids</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="exercise-curriculum"><a class="header" href="#exercise-curriculum">Exercise: Curriculum</a></h1>
+<p>Download the file <a href="cssgrid/../resources/curriculum.html">curriculum.html</a> and open it in an editor.</p>
+<p>You can see that it references a stylesheet file <code>curriculum.css</code> in the same folder, so create that file.</p>
+<p>Your task is to write a stylesheet to make the curriculum look like this (for this exercise, we do not care about responsive layout):</p>
+<p><img src="cssgrid/curriculum.png" alt="image of the curriculum" /></p>
+<p><em>(If you are a MEng student, mentally replace &quot;individual project&quot; with &quot;group project&quot; in 3rd year and then 4th year should follow the same layout as 3rd year, but you don't have to edit this in the file for this exercise.)</em></p>
+<p>The units are coded like this in the file:</p>
+<pre><code>&lt;main&gt;
+    &lt;div class=&quot;unit y1-tb1 cp20&quot;&gt;
+        &lt;b&gt;COMS10014&lt;/b&gt;
+        &lt;p&gt;Mathematics A&lt;/p&gt;
+    &lt;/div&gt;
+</code></pre>
+<p>Each unit is a <code>&lt;div&gt;</code> with class <code>unit</code> and further classes declaring its teaching block and weight in credit points. SPE in year 2 is special and is the only unit declared as <code>y2-tb4</code> with no CP class. By the way, why did we choose <code>cp20</code> and not <code>20cp</code> as the class name?</p>
+<p>We are being pedantic here about separating content/structure (in the HTML file) and styling/layout (which you will write in a CSS file). There is no hint in the HTML file that the aim of the exercise is to lay the units out on a grid!</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>Our class names are purely semantic - they describe attributes of the units (academic year, teaching block, credit points), not how they should be displayed. There is some debate among web developers and designers just how far you should take this separation; we are being absolutely purist for this exercise, but even bootstrap, one of the most widely used web libraries, has classes like <code>.col-4</code> to make something four columns wide. In practice the answer to how you separate concerns between HTML and CSS is really a case of &quot;it depends&quot;.</p>
+</div>
+</div>
+<p>Some general styles that you can apply in your <code>curriculum.css</code>:</p>
+<pre><code class="language-css">body {
+    font-family: sans-serif;
+    background-color: rgba(112, 145, 53, 0.1);
+}
+
+.unit {
+    background-color: rgba(0, 67, 79, 0.2);
+}
+
+.unit b {
+    display: block;
+    background-color: rgb(0, 67, 79);
+    color: white;
+    padding: 5px;
+}
+
+.unit p {
+    padding: 5px;
+}
+</code></pre>
+<p>This sets the colour scheme (derived from the official University of Bristol one), and some sensible padding/margins. The <code>&lt;p&gt;</code> elements already come with a default margin that we don't want to change here, but note that we applied the background colour for the text boxes to the <code>&lt;div class=&quot;unit&quot;&gt;</code> element itself, not the <code>&lt;p&gt;</code> elements otherwise the margin of the <code>&lt;p&gt;</code> elements would not be coloured in. The 5px paddinjg that we declared everywhere creates some space between the text and the edge of the boxes, which makes the text easier to read. </p>
+<p>We used <code>&lt;b&gt;</code> tags for the title bars that are normally inline elements, but we redefined them to be block elements here (this is allowed) so they span the whole width of their grid cell.</p>
+<h2 id="exercise"><a class="header" href="#exercise">Exercise</a></h2>
+<ul>
+<li>The grid should be applied to the <code>&lt;main&gt;</code> element, with 12 equally wide columns and a maximum width of 1500px overall; you can center the grid for even wider screens with <code>margin: 0 auto;</code> on the main element.</li>
+<li>The gap between grid cells is <code>15px</code>.</li>
+<li>10CP units should take up 2 of the 12 columns in width, 15CP units 3 columns, and 20CP units 4 columns. The 40CP project is 8 columns wide.</li>
+<li>All units are one row high except SPE which is 2 rows high.</li>
+<li>The aim of the exercise is not to write an individual rule for each unit! Try and use as few rules as necessary, you can do it with one rule per individual class that appears in the source file (you can even do it with a couple of rules less if you really understand grid layout).</li>
+<li>The main challenge will be getting the SPE unit placed correctly, and since this disrupts the normal flow of the layout, writing the necessary rules to get everything else after that to go in its correct place again.</li>
+</ul>
+<p>Extra challenge:</p>
+<ul>
+<li>Notice that the gap between the academic years is twice as large as that within years (e.g. the vertical space between COMS10013 and COMS20007 is twice that between COMS10014 and COMS10013). </li>
+<li>This can be achieved by leaving an empty grid row between the years, thus doubling the grid gap. That is, Year 1 lives in rows 1 and 2; row 3 is empty; Year 2 lives in rows 4 and 5 and so on - the empty row 3 has a height of 0 and no elements, but there are two gaps between rows 2 and 3, and 3 and 4, that separate the Year 1 from Year 2 units.</li>
+<li>Alternatively, you could add extra margin (why not padding?) to the bottom of all TB2/TB4 units to achieve the same effect.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="responsive-layout-trees-exercise"><a class="header" href="#responsive-layout-trees-exercise">Responsive layout: trees exercise</a></h1>
+<p>Download the <a href="cssgrid/../resources/trees.tar.gz">trees.tar.gz</a> file for this exercise and extract it (<code>tar zxvf FILENAME</code>) to a folder, then open <code>trees.html</code> in your editor. Create an empty <code>trees.css</code> in the same folder and open that too.</p>
+<p>The file contains images and English and Latin names of some trees at <a href="https://www.forestryengland.uk/westonbirt-the-national-arboretum">Westonbirt, the UK national arboretum</a>.</p>
+<p>Your task is to write a stylesheet to create a responsive grid layout.</p>
+<p>On media that is 600px or wider, the page should look like this:</p>
+<p><img src="cssgrid/./trees-wide.png" alt="4 column layout above 600px" /></p>
+<p>(The image for Lawson's Cypress is one single PNG like the others, there is nothing special to do here to fit in two images side by side.)</p>
+<p><em>The small-leaved lime (Tilia Cordata) featured here is believed to be over 2000 years old, making it one of the oldest trees in Britain.</em></p>
+<p>From 400px to 600px, the page should show all trees except the &quot;featured&quot; ones in two columns:</p>
+<p><img src="cssgrid/./trees-medium.png" alt="2 column layout above 400px" /></p>
+<p>And below 400px width, all trees should be shown in a single column layout, whether featured or not.</p>
+<p>Each tree is defined in the HTML file with an element like this:</p>
+<pre><code class="language-html">&lt;div class=&quot;card&quot;&gt;
+    &lt;img class=&quot;card-image&quot; src=&quot;images/cedrus_atlantica.jpg&quot; alt=&quot;Cedrus Atlantica&quot;/&gt;
+    &lt;span class=&quot;latin-name&quot;&gt;Cedrus Atlantica&lt;/span&gt;
+    &lt;span class=&quot;common-name&quot;&gt;Atlas Cedar&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<p>The two &quot;featured&quot; trees at the start also have class <code>featured</code> on their card element.</p>
+<h2 id="exercise-1"><a class="header" href="#exercise-1">Exercise</a></h2>
+<p>General non-grid-related CSS that you can just paste in:</p>
+<pre><code class="language-css">body {
+    font-family: &quot;Open Sans&quot;, sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: #04443c;
+    color: white;
+    margin: 0;
+    padding: 10px;
+    padding-left: 50px;
+}
+
+.card {
+    background-color: #167f5f;
+    color: white;
+}
+
+.card-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.card span.latin-name {
+    display: block;
+    font-style: italic;
+    padding: 10px;
+    padding-bottom: 0;
+}
+
+.card span.common-name {
+    display: block;
+    padding: 10px;
+    padding-top: 5px;
+    font-weight: bold;
+}
+</code></pre>
+<ul>
+<li>The grid should be horizontally centered if the screen is wider than the grid, by setting <code>margin: 0 auto</code> on the container.</li>
+<li>The grid should be applied to the container div, with  a margin of 20px on top and bottom (this has to come after the horizontal centering), and a padding of 10px on left and right (this has to be padding, not margin, to avoid undoing the centering again).</li>
+<li>Set a grid gap of 20px.</li>
+<li>If the screen is at least 600px wide, then the container should have a maximum width of 960px and four equally wide columns. Featured trees should take up a 2x2 space on the grid, all other trees a 1x1 space.</li>
+<li>Between 400px and 600px, the grid should only be two columns wide, trees still take up 2x2 space if featured and 1x1 otherwise.</li>
+<li>Below 400px, make a grid with only one column, and all trees take up 1x1 space. Note that you do not need to do anything for this as this is the default - just make sure that your other grid rules such as making featured trees 2x2 only apply on larger screens.</li>
+</ul>
+<p>Test this out by making your browser window wider and narrower. You cannot normally make a chrome/edge window narrower than 400px, but there are two workarounds. With the F12 developer tools open, you can position them to the right of the window and then drag the divider to make the actual page width as narrow as you want, or you can switch to &quot;mobile&quot; mode (second icon in top left of developer tools, usually) and manually set a page size or select one from a dropdown list of common phone models.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>In practice, one would use a layout like this to make the individual grid elements clickable (such as news stories, or in this case links to a more detailed page about the tree).</p>
+<p>One way to do this would be to use <code>&lt;a class=&quot;card&quot; href=&quot;...&quot;&gt;</code> elements instead of <code>&lt;div&gt;</code> ones, and set them manually to <code>display:block</code>. This has the advantage that the entire card, including the image, becomes clickable. An <code>&lt;a&gt;</code> tag can contain arbitrary content, not just text.</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="javascript"><a class="header" href="#javascript">JavaScript</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="react"><a class="header" href="#react">React</a></h1>
+<p><a href="react/reactjs.org">React</a> is a JavaScript web development framework built by facebook.</p>
+<h2 id="videos-4"><a class="header" href="#videos-4">Videos</a></h2>
+<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<tr><td><a href="https://web.microsoftstream.com/video/30f91ab2-06a2-4f40-a5f2-44797341a407?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">React</a></td><td style="text-align: right">15 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/React.pdf">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/7384d735-a488-4167-9398-ca5402c16775?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Code examples</a></td><td style="text-align: right">19 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/React%20Code.pdf">slides</a></td></tr>
+</tbody></table>
+<h2 id="readings"><a class="header" href="#readings">Readings</a></h2>
+<p>This week, we are doing react, so the readings are the <a href="https://reactjs.org/docs/hello-world.html">official react guide</a>, main concepts 1-7. If you have time you can read up to 10 and if you are particularly interested in React, all 12 of the &quot;main concepts&quot; pages.</p>
+<p>React has a separate <a href="https://reactjs.org/tutorial/tutorial.html">practical tutorial</a> which we will not be using for this unit, but as a complement to the workshops if you are particularly interested then you could look at this as well.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installing-react"><a class="header" href="#installing-react">Installing React</a></h1>
+<h2 id="nodejs-and-npm"><a class="header" href="#nodejs-and-npm">Nodejs and NPM</a></h2>
+<p>JavaScript's original selling point was that it runs in the browser. <a href="react/nodejs.org">NodeJS</a> is a JavaScript runtime without a browser, so you can for example write a server / back-end in JavaScript too. Using a library called <a href="react/electronjs.org">Electron</a>, you can even write desktop apps in JavaScript/NodeJS (Electron is essentially google's Chrome browser without the branding, so you can use it to build your own user interface.) We will need NodeJS to run React, which compiles JSX code into JavaScript and HTML.</p>
+<p>NodeJS comes with its own package manager, NPM (NodeJS Package Manager). The shell command to run it is <code>npm</code>, but there is also <code>npx</code> which downloads the latest version of a package and immediately runs it, if it contains a command-line tool.</p>
+<ul>
+<li>Install NodeJS for your operating system. On alpine, use <code>sudo apk add nodejs-npm</code>; for other operating systems you can download it from <a href="https://nodejs.org/en/">nodejs.org</a> or use your system's package manager, if available.</li>
+</ul>
+<h2 id="your-first-react-app"><a class="header" href="#your-first-react-app">Your first React app</a></h2>
+<ul>
+<li>Create a new react app with <code>npx create-react-app FOLDERNAME</code>. You cannot call the folder <code>react</code> itself, so please choose a different name. Downloading and preparing everything for the first time might take a while.</li>
+<li>By default, react uses port 3000 for its server. If you want another port, like 8000, edit <code>package.json</code> and edit the line </li>
+</ul>
+<pre><code>&quot;start&quot;: &quot;react-scripts start&quot;,`
+</code></pre>
+<p>to read as follows</p>
+<pre><code>&quot;start&quot;: &quot;PORT=8000 react-scripts start&quot;,
+</code></pre>
+<ul>
+<li>Start the react app with <code>npm start</code> inside the folder with the <code>package.json</code> and open your browser on <code>localhost:8000</code> or whichever port you are using (the default is 3000). You should see a message &quot;Edit <code>src/App.js</code> and save to reload.&quot; in your browser.</li>
+</ul>
+<h2 id="explore-the-code"><a class="header" href="#explore-the-code">Explore the Code</a></h2>
+<p>Have a look at the structure of the project files:</p>
+<ul>
+<li><code>package.json</code> is the configuration file (like the <code>pom.xml</code> for Java/maven).</li>
+<li>The page being served is <code>public/index.html</code> although the server replaces <code>%PUBLIC_URL%</code> itself (in development this just becomes the empty string). Note the contents of the page are essentially <code>&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</code>, but if you look at the source in the browser (Control+U) you will see that react has added a line at the end of the body pulling in the JavaScript files. If you look with the developer tools (F12) you will see that the content of the app has been added as a child of the root div.</li>
+<li>The code lives in <code>src/</code>, mainly in <code>src/App.js</code>. The default code uses a function style component rather than a class style one, but the elements you see in the JSX code here (the HTML-embedded-in-JavaScript) are the ones that you saw in your browser inside the root div.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hello-world-in-react"><a class="header" href="#hello-world-in-react">Hello World in React</a></h1>
+<p>In this exercise we will build a simple React app that greets the user, and so demonstrates managing state and passing it between components.</p>
+<p>Create a react app folder with <code>npx create-react-app FOLDERNAME</code>. Edit the port if necessary, as described on the previous page.</p>
+<p>You can start the development server (<code>npm start</code>) and it will automatically reload when it detects that you have edited a source file. This feature can be quite convenient to develop with.</p>
+<p>We will create an app with three components:</p>
+<ul>
+<li>The app component manages some state, namely a person's name.</li>
+<li>The input component lets you enter and change your name.</li>
+<li>The output compoment displays &quot;Hello, NAME&quot;.</li>
+</ul>
+<h2 id="a-basic-app"><a class="header" href="#a-basic-app">A basic app</a></h2>
+<p>First, strip out the sample code so your <code>App.js</code> file looks like this:</p>
+<pre><code class="language-js">import './App.css';
+import React from 'react';
+
+class App extends React.Component {
+  render() {
+    return (
+      &lt;p&gt;App&lt;/p&gt;
+    )
+  }
+}
+
+export default App;
+</code></pre>
+<p>Save the file - if the <code>npm run</code> server is running in another window, it will reload - and check that you get a page with just the text <code>App</code>.</p>
+<h2 id="add-some-state"><a class="header" href="#add-some-state">Add some state</a></h2>
+<p>In the app class, we can add some state such as a name field:</p>
+<pre><code class="language-js">import './App.css';
+import React from 'react';
+
+class App extends React.Component {
+  state = {
+    name: 'David'
+  }
+
+  render() {
+    return (
+      &lt;p&gt;Hello, {this.state.name}!&lt;/p&gt;
+    )
+  }
+}
+
+export default App;
+</code></pre>
+<p>Check that this now displays <code>Hello, David!</code>. </p>
+<h2 id="pass-state-between-components"><a class="header" href="#pass-state-between-components">Pass state between Components</a></h2>
+<p>Let's make a separate component to display the name - add this class before the <code>export default</code> line:</p>
+<pre><code class="language-js">class NameGreeter extends React.Component {
+  render() {
+    if (this.props.name === &quot;&quot;) {
+      return (
+        &lt;p&gt;Hello!&lt;/p&gt;
+      )
+    } else {
+      return (
+        &lt;p&gt;Hello, {this.props.name}!&lt;/p&gt;
+      )
+    }
+  }
+}
+</code></pre>
+<p>This component expects one property (the react version of a &quot;parameter&quot;) called <code>name</code> and displays either a generic greeting or a greeting with a name.</p>
+<p>Change the render method for the App class to this:</p>
+<pre><code class="language-js">render() {
+  return (
+    &lt;NameGreeter name={this.state.name} /&gt;
+  )
+}
+</code></pre>
+<p>This tells react that when it's time to render the App, it should create a <code>NameGreeter</code> component and pass it one prop called <code>name</code> which has the value of the name in the current state.</p>
+<p>Note how we refer to <code>this.state.name</code> in the component that owns the state, but <code>this.props.name</code> in the child component. Generally, <code>this.state</code> is a component's own state and <code>this.props</code> is state (or other things) that a component gets from its parent.</p>
+<p>You could try making more than one name greeter, but a JSX block must always have a single root tag so this won't work:</p>
+<pre><code class="language-js">// don't do this
+return (
+  &lt;NameGreeter name={this.state.name} /&gt;
+  &lt;NameGreeter name={this.state.name} /&gt;
+)
+</code></pre>
+<p>But this is fine:</p>
+<pre><code class="language-js">return (
+  &lt;div&gt;
+    &lt;NameGreeter name={this.state.name} /&gt;
+    &lt;NameGreeter name={this.state.name} /&gt;
+  &lt;/div&gt;
+)
+</code></pre>
+<h2 id="change-state"><a class="header" href="#change-state">Change State</a></h2>
+<p>We are going to make a <code>NameEditor</code> component with an input field to change the name. 
+However, the name <em>belongs</em> to the app component: this is the <em>state lifting</em> pattern in React, where if more than one component wants to 'share' some state, then you make a common parent component to hold the state. Any changing of the state has to happen on the parent component that 'owns' it, so we have to create functions to pass it around correctly.</p>
+<p>First, create a new component like this:</p>
+<pre><code class="language-js">class NameEditor extends React.Component {
+  render() {
+    return (
+      &lt;p&gt;
+        &lt;label for=&quot;name&quot;&gt;Name: &lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;name&quot; value={this.props.name} /&gt;
+      &lt;/p&gt;
+    )
+  }
+}
+</code></pre>
+<p>And change the render method of the <code>App</code> component to create a name editor:</p>
+<pre><code class="language-js">return (
+  &lt;div&gt;
+    &lt;NameEditor name={this.state.name} /&gt;
+    &lt;NameGreeter name={this.state.name} /&gt;
+  &lt;/div&gt;
+)
+</code></pre>
+<p>When you run this, it will show you an input box with the current name, but if you try and change it then React will change it straight back again.</p>
+<p>Input and output in React works with <em>data binding</em>: react maintains the correspondence between items on the screen (such as the input field) and its own state, but by default this only works in one way: React makes sure that the components on the screen reflect React's own state.</p>
+<p>To make the edit box work, we have to first create a function on the <code>App</code> component that allows the state to be updated:</p>
+<pre><code class="language-js">class App extends React.Component {
+  constructor() {
+    super();
+    this.onNameChange = this.onNameChange.bind(this);
+  }
+
+  onNameChange(newName) {
+        this.setState({name: newName})
+  }
+
+  // state and render method here, same as before
+}
+</code></pre>
+<p>The real work is happening in <code>this.setState</code>, we can't just do <code>this.state.name = newName</code> as that would not trigger React's updates. The <code>setState</code> function which is part of React, apart from setting the new state, also re-renders any component that needs to update itself.</p>
+<p>The constructor is just boilerplate code to correctly re-bind the <code>this</code> variable for <code>onNameChange</code>, you have to do this for every method you write in a React class. You also need to call the <code>super()</code> constructor explicitly at the start of the constructor, as this calls the <code>React.Component</code> constructor to set the component up correctly.</p>
+<p>We also have to let the name editor know which function to call to process changes. Change the JSX line that creates it to</p>
+<pre><code class="language-html">&lt;NameEditor name={this.state.name} onNameChange={this.onNameChange} /&gt;
+</code></pre>
+<p>We did not put brackets after the function name, as we don't want to call the function when the component is created or rendered, we just want to tell it &quot;here's a function that you can call later when you need it&quot;.</p>
+<p>Next, in the <code>NameEditor</code> class, we create a method to handle updates:</p>
+<pre><code class="language-js">constructor(props) {
+  super(props);
+  this.onNameChange = this.onNameChange.bind(this);
+}
+
+onNameChange(e) {
+  this.props.onNameChange(e.target.value);
+}
+</code></pre>
+<p>If our component takes props, then we should pass them to the super constructor too.</p>
+<p>The parameter <code>e</code> is an element of type event, which is triggered by the input component when the user changes its value. The event class has a property <code>target</code> which refers to the element on the page that triggered it, and if that was an input box like it is here then we can read its <code>value</code>. This is what we pass, via <code>props</code>, back to the <code>App</code> component.</p>
+<p>Finally, change the line that creates the input box to</p>
+<pre><code class="language-html">&lt;input type=&quot;text&quot; id=&quot;name&quot; value={this.props.name} onChange={this.onNameChange} /&gt;
+</code></pre>
+<p>The <code>onChange</code> attribute of an <code>&lt;input&gt;</code> is defined in the HTML standard and takes a JavaScript function that should be called whenever the input value changes.</p>
+<p>With all this in place, you should be able to run the app and edit the text box, and watch the greeting change as you do this.</p>
+<h2 id="sequence-of-events"><a class="header" href="#sequence-of-events">Sequence of Events</a></h2>
+<p>Make sure you understand what happens when you type in the input box. You can observe this yourself if you set breakpoints in the F12 debug tools:</p>
+<ol>
+<li>You type in the input box.</li>
+<li>The browser reacts by calling the input box's <code>onChange</code> function with one parameter, an <code>Event</code>. This function is <code>NameEditor.onNameChange</code>.</li>
+<li>Your <code>NameEditor.onNameChange</code> calls <code>App.onNameChange</code>.</li>
+<li><code>App.onNameChange</code> calls React's <code>setState</code>.</li>
+<li>In response to this, React calls <code>render()</code> on the <code>App</code>.</li>
+<li>This triggers further <code>render()</code> calls in both <code>NameGreeter</code> and <code>NameEditor</code>.</li>
+</ol>
+<h2 id="build-the-app"><a class="header" href="#build-the-app">Build the app</a></h2>
+<p>When you have finished developing an app, run <code>npm run build</code>. This will create your app in <code>build/</code>, compiling the JSX to JavaScript and HTML files. You can open <code>build/index.html</code> in a web browser without a server running.</p>
+<h2 id="read-all-about-it"><a class="header" href="#read-all-about-it">Read all about it</a></h2>
+<p>We have essentially, with a different example, done step 10 of the <a href="https://reactjs.org/docs/lifting-state-up.html">official React tutorial</a>. After the workshop, you may want to read this page again.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="character-design-exercise"><a class="header" href="#character-design-exercise">Character design exercise</a></h1>
+<p>The final react exercise today is to write a &quot;character design&quot; React app, similar to the one in the lectures. Functionality is your first priority, before design: it's ok to lay out everything in simple paragraphs one above the other.</p>
+<p>The constraints are:</p>
+<ul>
+<li>There are four stats, called <em>Charisma, Prowess, Agility</em> and <em>Strength</em>.</li>
+<li>You have 4 stat points to spend in total, but you may not spend more than 2 points on the same stat.</li>
+<li>You should make a reusable &quot;stat editor&quot; component that displays the points allocated to a stat and has +/- buttons to change these, and displays the name of the stat.</li>
+<li>The buttons must be enabled when you are allowed to increase/decrease the stat in question, and disabled otherwise.</li>
+<li>You should also make a separate component that displays the number of stat points remaining to spend (this was not in the example in the lectures).</li>
+</ul>
+<p>You can ignore the character's name for now.</p>
+<p>The design question here is where to put the functions that access or manipulate state. For example you will probably want a function somewhere that returns the number of stat points remaining to spend.</p>
+<p>You will also need to think about how you can make a <em>reusable</em> stat editor component, so that you can include it four times in the app's render method. The design question here is which props you pass to the component - each of the four copies of the stat editor will need a different value for at least one of the props. The solution shown in the lectures is just one of many possibilities.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="a-complete-application-part-1"><a class="header" href="#a-complete-application-part-1">A complete application, part 1</a></h1>
+<p>In this workshop we will set up and inspect a complete application including database, Java back-end/API and React front-end.</p>
+<p>Just one short video to introduce the topic:</p>
+<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<tr><td><a href="https://web.microsoftstream.com/video/?3b4968c8-5cb9-457d-80cf-cf5b1fe4b2c0channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Application</a></td><td style="text-align: right">18 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/Application.pdf">slides</a></td></tr>
+</tbody></table>
+<p>Please try the steps on the &quot;setting things up&quot; page before you come to the workshop - ideally you will then be able to start the walkthrough in the workshop itself immediately, but if you get stuck in the set-up, you will be able to ask for help at the very start.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="setting-things-up"><a class="header" href="#setting-things-up">Setting Things Up</a></h1>
+<p>The application lives in the <code>code/application</code> folder of the unit repository.</p>
+<h2 id="the-database"><a class="header" href="#the-database">The Database</a></h2>
+<p>For the application to work, you will need a MariaDB database that serves the <code>census</code> database.</p>
+<p>If you want to run the database on a vagrant VM but the Java application on your own machine (this is the recommended way), make sure the VM is serving the database correctly:</p>
+<ul>
+<li>MariaDB must be installed on the VM and the census database installed as described earlier in the unit.</li>
+<li>Port 3306 must be exported in the <code>Vagrantfile</code>.</li>
+<li>The <code>/etc/my.cnf.d/mariadb-server.cnf</code> must have the <code>skip-networking</code> line commented out or removed.</li>
+</ul>
+<p>If you want to run the database and the Java application on your vagrant VM, make sure that the following are set up:</p>
+<ul>
+<li>MariaDB must be installed on the VM and the census database installed as described earlier in the unit.</li>
+<li>You must export port 8000 in the <code>Vagrantfile</code>. You do not need to export port 3306 to the host, as both the database and the application using it will be running on the VM.</li>
+<li>Either the <code>/etc/my.cnf.d/mariadb-server.cnf</code> must have the <code>skip-networking</code> line commented out or removed, or in <code>src/main/resources/application.properties</code> you must add <code>?localSocket=/var/run/mysqld/mysqld.sock</code> to the end of the data source URL to use a socket instead of a network (TCP) connection.</li>
+</ul>
+<p>If you want to run everything on your own machine, then you need to install and run MariaDB and make sure the server is running on port 3306 (this proably means uncommenting <code>skip-networking</code> in a configuration file). By default, the Java application expects the database to have a username of <code>vagrant</code> and an empty password, but you can edit this in <code>src/main/resources/application.properties</code>.</p>
+<h2 id="the-react-client"><a class="header" href="#the-react-client">The React Client</a></h2>
+<p>The client lives in <code>code/application/client</code> in the unit repository.</p>
+<p>There are two ways to run the client. First (and recommended), install nodejs and npm if you have not done so already - this can be on a VM or on your local machine - open a terminal in the <code>client</code> folder and run the following:</p>
+<ul>
+<li><code>npm install</code> to download and install the dependencies. These will end up in a folder <code>node_modules</code>, which is (sensibly) excluded from the repository via a <code>.gitignore</code> file in the same folder. You will get some warnings which you can ignore for now.</li>
+<li><code>npm run-scripts build</code> will build the application and put the results in the <code>build</code> folder (which is also sensibly excluded from the repository).</li>
+<li>Copy the contents of the <code>build/</code> folder to the folder <code>../src/main/resources/static/</code> (the <code>../</code> is relative to the <code>client/</code> folder)  for the Java application to serve.</li>
+</ul>
+<p>If you are actively developing the react application, then instead of building it you can use <code>npm start</code> which will run a development server on <code>localhost:3000</code>. The advantage of this method is that whenever you change a source file in the client folder, it will recompile and reload the react client automatically.</p>
+<h2 id="the-java-application"><a class="header" href="#the-java-application">The Java Application</a></h2>
+<p>In the folder <code>code/application</code> in the repository, there is a maven <code>pom.xml</code> file.</p>
+<ul>
+<li>Open this folder in a terminal and run <code>mvn spring-boot:run</code>.</li>
+</ul>
+<p>This will automatically download any dependencies.</p>
+<p>You can now point your browser at <code>localhost:8000</code> and you should see an overview of the regions of England. Clicking an item such as a region navigates to it, and the <em>Details</em> link loads the employment statistics for the current unit in a second panel on the right-hand side.</p>
+<h2 id="developer-tools"><a class="header" href="#developer-tools">Developer Tools</a></h2>
+<p>For the following walkthrough of the application it is helpful to have everything running and to have the browser's F12 developer tools open in the tab running the application.</p>
+<p>Since this is a React app, you may also want to install the <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">React Developer Tools</a> extension if you are using a Chrome-based browser (chrome, chromium, edge etc.). This provides extra React debugging and development integration, for example a new <em>Components</em> tab showing the structure of the React components on the page with their state and props.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="walkthrough"><a class="header" href="#walkthrough">Walkthrough</a></h1>
+<p>Here is a quick overview of what happens when the application loads and you click first <em>South West</em> then <em>Details</em>.</p>
+<p>You should look at the mentioned code snippets as you follow along and make sure you understand what they do.</p>
+<h2 id="the-first-screen"><a class="header" href="#the-first-screen">The first screen</a></h2>
+<ol>
+<li>When you open <code>localhost:8000</code> in your browser, a HTTP request for <code>/</code> goes to the Java server. If there were a controller configured for this URL pattern, it would now fire, but there isn't so spring falls back to serving <code>src/main/resources/static/index.html</code> if it exists as this is by convention the default file name to show. This file does exist, so it gets sent to the browser.</li>
+<li>This file came from <code>client/build/index.html</code> which is the compiled version of <code>client/public/index.html</code>. There is not much to see here except a <code>&lt;div id=&quot;root&quot;&gt;</code> which is where the React application will be loaded (the necessary script tags get added when React compiles the file). If you watch the network tab when you open <code>localhost:8000</code> you will see requests for several css and js files, followed by a request of type <code>fetch</code> for <code>E92000001</code> which is the React app loading the country data to show.</li>
+<li>When the React scripts on the page load, it runs the compiled version of the code in <code>client/src/App.js</code>. The <code>App.render()</code> method creates the navigation bar at the top (this is a standard Bootstrap component) and two custom elements called <code>OverView</code> and <code>UnitView</code> (in their own files), passing along some state. The initial state of the app is set in its constructor.</li>
+<li>Once the component is loaded, the <code>OverView.componentDidMount()</code> function fires. This just delegates to <code>_fetchData()</code>. Here we fetch the country data: <code>App.state.overview</code> starts out at <code>country</code> and <code>App.state.overviewCode</code> starts out at <code>E92000001</code>. These are passed as props to the <code>OverView</code>, with names of <code>type</code> and <code>code</code>, which are referenced in the <code>fetch()</code> call in <code>componentDidMount</code>. The effect is to send off a request for <code>http://localhost:8000/api/country/E92000001</code>.</li>
+<li>You can (and should) paste the above URL in a new browser tab, and you will see some JSON as a result. On the server side, the request is handled by the <code>CountryController.getCountryById</code> function (in <code>src/main/java/uk/ac/bristol/cs/application/controller</code>) as the path is declared in its <code>@GetMapping</code> annotation.</li>
+<li>The <code>CountryController</code> first calls <code>getWithChildren</code> on the <code>repository.CountryRepository</code>. This is just an interface - the implementation is provided by Hibernate, automatically triggered by Spring - but the important part here is the <code>@Query</code> annotation that explains the extent of the data to fetch. This is HQL, Hibernate's query language, and we tell it to fetch not only the country but also all its regions.</li>
+<li>This returns an instance of <code>model.Country</code> which is more or less a simple Java class with properties <code>name</code>, <code>code</code> and <code>Regions</code>. Hibernate is in charge of creating the instances and the JPA annotations such as <code>@OneToMany</code> explain how it should process JOINs to fetch data from other classes (such as the regions).</li>
+<li>Back in the controller, the next thing we do is render the country as JSON. We will discuss later why we are doing it this particular way, but the code is in <code>model.ModelClass.renderJSON</code> so it can be reused for different classes.</li>
+<li>The JSON object now gets sent to the client. If you queried the URL yourself in a new tab, you just see the JSON at this point. If React queried it with <code>fetch()</code>, it can now check - back in <code>OverView._fetchData()</code> - whether the call was successful, and if so run <code>this.setState({loaded: &quot;yes&quot;, item: result})</code> to store the object in its state (the previous call to <code>r.json()</code> decoded the JSON to a JS object, which is now in <code>result</code>).</li>
+<li>The <code>setState</code> causes react to call <code>render()</code> which, now that <code>this.state.loaded</code> is <code>yes</code>, renders a the country information including a list of regions, pulled from <code>this.state.item</code> which is where the decoded JSON object is stored.</li>
+</ol>
+<h2 id="navigating-to-a-region"><a class="header" href="#navigating-to-a-region">Navigating to a Region</a></h2>
+<p>Click on one of the region entries. The following happens:</p>
+<ol>
+<li>The link (actually a button styled as a link, for accessibility reasons) has a click handler <code>onClick={() =&gt; this.navigate(i.code, false)}</code> (created in <code>OverView.children()</code>, where <code>i</code> is the item to navigate to, e.g. the region).</li>
+<li><code>OverView.navigate</code> calls <code>App.navigate</code> through <code>this.props</code> (the <code>App</code> passes a  reference to its own <code>navigate</code> method when it creates the <code>OverView</code>).</li>
+<li><code>App.navigate</code> contains a state machine that decides, based on the current state (are we viewing a country, region, county or ward) and the <code>isParent</code> flag (are we navigating to a child or returning to the parent) what type of object we are navigating to. The only option when we are coming from the country view is a region, so this is set up correctly with <code>setState</code> and the code of the new item is set in the app state.</li>
+<li>This state change causes <code>App.render</code> to run, which changes the props on the overview component.</li>
+<li>The props change causes <code>OverView.componentDidUpdate</code> to be called with the old props for comparison (the new ones are already in <code>this.props</code>). If there has been a code change, then we (a.) immediately set the state back to &quot;not loaded&quot;, which triggers a <code>render()</code> call and (b.) call <code>_fetchData()</code>, which asynchronously loads the new data and eventually calls <code>setState</code> again, triggering another <code>render()</code> this time with the new data.</li>
+</ol>
+<p><strong>Exercise</strong>: Return to the countries view using the <em>Back to parent</em> link, then shut down the Java server (so that futher API calls will fail). Then click on a region. You should immediately see a &quot;Loading ...&quot; message, followed around a second or so later by &quot;Network error&quot;. Explain, with the help of the <code>OverView</code> code, how this happens.</p>
+<h2 id="details-view"><a class="header" href="#details-view">Details View</a></h2>
+<p><strong>Exercise</strong>: based on what you have learnt above, sketch the steps that happen when you click on <em>Details</em> to display the occupation data for the selected geographic unit. Look at both the client and the server code. The server-side methods start in <code>StatisticsController</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="react-lifecycles"><a class="header" href="#react-lifecycles">React Lifecycles</a></h1>
+<p>React components have a <a href="https://reactjs.org/docs/react-component.html">lifecycle</a>. The first important rule is that react can call <code>render()</code> any time it likes, and your implementation must always do something (other than crash) even if the component is not in a useful state. For example, if no data has been loaded yet then you can just display &quot;loading ...&quot; as we do in this example application, using the <code>state.loaded</code> flag to keep track of whether there is data to display or not.</p>
+<p>React will call certain lifecycle methods on your component:</p>
+<ul>
+<li><code>componentDidMount</code> gets called after the component is created and rendered for the first time. If you need to load data asynchronously (as we do here) then this is the method to do it in (in our case we delegate to <code>_fetchData</code> because there's another lifecylce method that wants to use this code too).</li>
+<li><code>componentDidUpdate</code> gets called after a component's props or state have changed. This is another place where you can make network requests, for example.</li>
+<li><code>componentWillUnmount</code> gets called before react removes a component. We do not need this in our application, but it can be used to e.g. save some data before the component &quot;closes&quot;.</li>
+</ul>
+<p>In <code>componentDidUpdate</code>, you should always check if this is a &quot;real&quot; update with an if-condition guard. Otherwise, you create an infinite loop: if <code>componentDidUpdate</code> calls <code>setState</code>, then the state change triggers another <code>componentDidUpdate</code> call. So this code:</p>
+<pre><code class="language-js">componentDidUpdate(oldProps) {
+    if (this.props.code !== oldProps.code) {
+        this.setState({loaded: &quot;no&quot;});
+        this._fetchData()
+    }
+}
+</code></pre>
+<p>only does anything if the props have just changed, namely because the parent component has just re-rendered us with a new code and/or type of geographical unit to display. In this application, that can only happen in a <code>navigate()</code> call.</p>
+<p>This application also shows an example of <em>separation of concerns</em>: the <code>App</code> itself is in charge of holding the information on what item is currently being displayed, and knowing that e.g. the child elements of a country are called regions. The app class is also responsible for knowing how to navigate: the <code>OverView</code> can ask the app to navigate, but the app could in principle also refuse this. The app class does not however deal with loading, storing or displaying data for the individual countries, regions or other geographical units.</p>
+<p>The <code>OverView</code> component's responsibility is to display the information for the object it is currently given via its props. It does not know how to navigate (beyond passing requests to the app) but it does know, given a code and a type, how to fetch, store and display that object.</p>
+<p>The general pattern here is that the <code>OverView</code> updates its <em>state</em> based on its <em>props</em> - remember that a component's state is the &quot;stuff it manages itself&quot; whereas props are &quot;stuff the parent is in charge of managing&quot;. This is a common pattern in react programming, but it has some complexities and the recommended solution has changed over time. In this application we follow the recommendation in the <a href="https://reactjs.org/docs/react-component.html#componentdidupdate">component documentation</a> to deal with this in <code>componentDidUpdate</code>, but a <a href="https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#fetching-external-data-when-props-change">2018 react blog entry</a> suggests using <code>getDerivedStateFromProps</code> instead.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-extent-problem"><a class="header" href="#the-extent-problem">The extent problem</a></h1>
+<p>On the server side, imagine a request comes in for a <code>Region</code> object.</p>
+<p>It looks like spring, hibernate and jackson (the library that produces JSON) should be able to handle this automatically, hibernate converting a database row in to a Java object and jackson converting that to a string containing JSON, with Spring making sure the correct classes are loaded in the first place.</p>
+<p>Unfortunately, the automatic approach assumes that there is only one way to deal with each domain class. If you can answer the question &quot;if you load a region, do you want the counties or not?&quot; once and for all in your application, then the automatic approach will work. However,</p>
+<ul>
+<li>When we are viewing a region, we do want to know the counties, as we want to show a clickable list of counties to the user.</li>
+<li>When we are viewing a country, we want to know the regions, but we do not care about the counties in the regions, and even less about the wards in the counties - otherwise a request for England would load the entire contents of the country, region, county and ward tables into memory all at once!</li>
+</ul>
+<p>The solution in this application is to use explict <em>extents</em>, that is for each object we declare when we fetch it what properties we do or don't want to see.</p>
+<p>The first step is to tell Hibernate not to do any joins unless told to, for example in the Region class with two <code>FetchType.LAZY</code> entries:</p>
+<pre><code class="language-java">// Region.java
+
+@ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name=&quot;parent&quot;)
+@JsonView(Region.class)
+private Country parent;
+
+@OneToMany(fetch = FetchType.LAZY, mappedBy = &quot;parent&quot;)
+@JsonView(Region.class)
+private List&lt;County&gt; counties;
+</code></pre>
+<p>When we're fetching a region, the controller uses our own <code>findByIdFull</code> method:</p>
+<pre><code class="language-java">// RegionController.java
+
+@GetMapping(path=&quot;/api/region/{id}&quot;, produces=&quot;application/json&quot;)
+String getRegionById(@PathVariable String id) {
+    Region r = repository.findByIdFull(id);
+    return ModelClass.renderJSON(r, Region.class, id);
+}
+</code></pre>
+<p>which has an annotation declaring its extent:</p>
+<pre><code class="language-java">// RegionRepository.java
+
+@Query(&quot;SELECT r FROM Region r JOIN FETCH r.parent LEFT JOIN FETCH r.counties WHERE r.id = ?1&quot;)
+Region findByIdFull(String id);
+</code></pre>
+<p>Here, we use HQL (Hibernate Query Language) <code>JOIN FETCH</code> to declare that when we're loading a region with this method, we want both the parent (country) and all the children (counties), but not for example the children of the children (wards) as they're not in the query. The <code>?1</code> at the end is HQL's way of doing a bound parameter for a prepared statement.</p>
+<p>The result is now that when we're trying to display a region, we get exactly the extent of information that we need to create the links, no more and no less.
+In contrast, when we're fetching a region through another query (e.g. to display a country) then the extent of that query will not load the region's children, as we don't need them.</p>
+<h2 id="extents-and-json"><a class="header" href="#extents-and-json">Extents and JSON</a></h2>
+<p>The problem is even more pronounced when converting to JSON, as when we are displaying a region we do not want this to happen:</p>
+<pre><code class="language-JSON">{   &quot;code&quot;:&quot;E12000009&quot;,
+    &quot;name&quot;:&quot;South West&quot;,
+    &quot;counties&quot;: [
+        {&quot;code&quot;:&quot;E06000022&quot;,
+         &quot;name&quot;:&quot;Bath and North East Somerset&quot;,
+         &quot;parent&quot;:???} 
+... ]}
+</code></pre>
+<p>A region countains counties (which we want to see to create the list), and those counties have parents, and their parents are regions. So what do we put for the parent of this county? It can't be a copy of the region otherwise we have created infinite recursion. JSON doesn't have a nice way to make a &quot;pointer&quot; back to the copy of the region we already have (which is how the problem is avoided for Java objects in memory).</p>
+<p>We can't say either that all objects should ignore their parents, as when we're displaying a county, we need the code of the parent to make the &quot;Back to parent&quot; link work. But when we're displaying a region, we don't care about the parent objects of the containing counties: not only don't we need to create links for them, but we already know the code - it's the code of the region we're currently displaying.</p>
+<p>Jackson, the JSON generation library, by default displays all properties of an object - that is, it looks for all getter methods on a class and calls all of them in turn. There are several ways this can not end up with what we want.</p>
+<p>First, if regions have counties as children and counties have regions as parents (a so-called <em>bidirectional association</em>) then the &quot;call all getters recursively&quot; strategy ends up in an infinite loop (in practice, it crashes with a stack overflow).</p>
+<p>Secondly, if we call a getter on something that Hibernate hasn't fetched yet with a JOIN, then what the getter actually returns is a Hibernate proxy object, that in turn responds to calls to its getters by firing off a new SQL query to fetch the requested data.</p>
+<p>Hibernate's proxy objects are a good solution to simple cases of the extent problem: when fetching a region, don't load the counties by default, but load them in a separate query if someone actually tries to access them later on. Unfortunately, especially combined with a &quot;fetch all getters&quot; JSON renderer, this gets you the N+1 problem as we already discussed earlier. Assuming we fetch just children, not parents to avoid the infinite loop, then even if Hibernate is clever enough to use a single query to get all the counties in a region, when the JSON renderer loops over each county to get the wards (which we don't want in the first place when displaying a region!) that's one query per county, so the N+1 problem in action.</p>
+<p>My recommended solution here is the following line in <code>src/main/resources/application.properties</code>:</p>
+<pre><code>spring.jpa.open-in-view=false
+</code></pre>
+<p>This turns off the proxy objects' ability to load data later on: a call to load data that was not JOINed to start with now causes an exception. This is a good thing: you will immediately notice any extent problems (because they crash your application) and you can go and adjust your HQL queries to fix the problem. You can even write unit tests to make sure all your methods run correctly, whereas there is no easy way to write a unit test for &quot;did this method only use 1-2 SQL queries to load its data&quot;.</p>
+<p>To really solve the problem, we have to tell jackson which properties we want in our JSON, and again the answer is &quot;it depends&quot;: when we're displaying a region, we do want the region's counties; when we're displaying a country, we want the regions but not the counties.</p>
+<p>In the <code>ModelClass</code> base class for our domain classes, we customise exporting to JSON:</p>
+<pre><code class="language-java">// ModelClass.java
+
+public static &lt;T&gt; String renderJSON(T element, Class&lt;T&gt; cls, String id) {
+    if (element == null) {
+        throw new NoSuchElementException(cls, id);
+    }
+    try {
+        return new ObjectMapper()
+            .writerWithView(cls)
+            .writeValueAsString(element);
+    } catch (JsonProcessingException e) {
+        throw new RuntimeException(e);
+    }
+}
+</code></pre>
+<p>The key call here is <code>writerWithView(cls)</code> that creates a JSON writer for a particular <em>view</em>, allowing you to have more than one view per class. In this case we choose to reuse the domain classes as the views, namely, when we are viewing the contents of e.g. a region, then the view class is simply <code>Region</code>.</p>
+<p>We can now declare attributes to have a <code>@JsonView</code>:</p>
+<pre><code class="language-java">// Region.java
+
+@ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name=&quot;parent&quot;)
+@JsonView(Region.class)
+private Country parent;
+
+@OneToMany(fetch = FetchType.LAZY, mappedBy = &quot;parent&quot;)
+@JsonView(Region.class)
+private List&lt;County&gt; counties;
+</code></pre>
+<p>Jackson will only export an attribute if the view class is equal to, or a subclass of, the class requested in the code above so we now have the following situation:</p>
+<ul>
+<li>When we are viewing a region, the view class is <code>Region</code> so the region's parent and children (counties) will be included in the JSON.</li>
+<li>When we are viewing a country, the view class is <code>Country</code> so the parents and children of the country's regions will not be included in the JSON.</li>
+</ul>
+<h2 id="the-mystery-of-getparentcode"><a class="header" href="#the-mystery-of-getparentcode">The mystery of <code>getParentCode()</code></a></h2>
+<p>There is one more trick in the region class:</p>
+<pre><code class="language-java">// Region.java
+
+public Country getParent() { return parent; }
+public String getParentCode() { return parent.getCode(); }
+</code></pre>
+<p>Jackson calls all the getters except ones it's been told not to, so when we're exporting a country to JSON, it won't call <code>getParent</code> on the contained regions because the <code>Region.parent</code> field is marked as <code>@JsonView(Region.class)</code>.</p>
+<p>However, Jackson will call <code>getParentCode</code> on the regions, so the actual JSON returned for the country view (<a href="http://localhost:8000/api/country/E92000001">http://localhost:8000/api/country/E92000001</a>) looks like this (with some pretty-printing):</p>
+<pre><code class="language-json">{ &quot;code&quot;:&quot;E92000001&quot;, &quot;name&quot;:&quot;England&quot;, 
+  &quot;regions&quot;: [
+      {&quot;code&quot;:&quot;E12000001&quot;,&quot;name&quot;:&quot;North East&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;},
+      {&quot;code&quot;:&quot;E12000002&quot;,&quot;name&quot;:&quot;North West&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;},
+      {&quot;code&quot;:&quot;E12000003&quot;,&quot;name&quot;:&quot;Yorkshire and The Humber&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;},
+      {&quot;code&quot;:&quot;E12000004&quot;,&quot;name&quot;:&quot;East Midlands&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;},
+      {&quot;code&quot;:&quot;E12000005&quot;,&quot;name&quot;:&quot;West Midlands&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;},
+      {&quot;code&quot;:&quot;E12000006&quot;,&quot;name&quot;:&quot;East of England&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;},
+      {&quot;code&quot;:&quot;E12000007&quot;,&quot;name&quot;:&quot;London&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;},
+      {&quot;code&quot;:&quot;E12000008&quot;,&quot;name&quot;:&quot;South East&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;},
+      {&quot;code&quot;:&quot;E12000009&quot;,&quot;name&quot;:&quot;South West&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;}
+  ]
+}
+</code></pre>
+<p>The regions don't show their parent, but they do show the <code>parentCode</code>. We don't need this for the application, this feature is more for demonstration purposes.</p>
+<p>How does this work? Doesn't the following code require the parent to be loaded?</p>
+<pre><code class="language-java">public String getParentCode() { return parent.getCode(); }
+</code></pre>
+<p>The answer is no, for two reasons. First, the reason that these regions were fetched here at all is that they were children of the current country. Hibernate knows that the <code>country.regions</code> and <code>region.parent</code> match up (we told it with JPA annotations, after all) so it could figure out the parent in this case anyway.</p>
+<p>For the second reason, try and manually visit the page <a href="localhost:8000/api/regions">localhost:8000/api/regions</a> which is not used by the react client. This is handled by <code>RegionController.getAllRegions</code>:</p>
+<pre><code class="language-java">@GetMapping(&quot;/api/regions&quot;)
+List&lt;Region&gt; getAllRegions() {
+    return repository.findAll();
+}
+</code></pre>
+<p>This in turn calls the <code>RegionRepository.findAll</code> method which is implemented inside JPA/Hibernate itself (you won't see it in the <code>RegionRepository</code> class itself, it's declared on the parent class <code>JpaRepository</code>). You can see the SQL query it ends up producing in the log output:</p>
+<pre><code class="language-SQL">select region0_.code as code1_2_, 
+       region0_.name as name2_2_, 
+       region0_.parent as parent3_2_
+from Region region0_
+</code></pre>
+<p>There is no JOIN with the parent (country) class going on here. In the JSON output,
+which does not use the <code>ModelClass</code> method of selecting an extent explicitly,
+it just returns a <code>List&lt;Region&gt;</code> which spring takes as a cue to pass through
+jackson to create JSON (shown here pretty-printed and abbreviated):</p>
+<pre><code class="language-JSON">[ { &quot;code&quot;:&quot;E12000001&quot;,
+    &quot;name&quot;:&quot;North East&quot;,
+    &quot;parent&quot;:null,
+    &quot;counties&quot;:null,
+    &quot;parentCode&quot;:&quot;E92000001&quot;
+  },
+  { &quot;code&quot;:&quot;E12000002&quot;,
+    &quot;name&quot;:&quot;North West&quot;,
+    &quot;parent&quot;:null,
+    &quot;counties&quot;:null,
+    &quot;parentCode&quot;:&quot;E92000001&quot;
+  },
+  /* and the others ... */
+]
+</code></pre>
+<p>The parent and counties attributes are <code>null</code> because we haven't explicitly excluded them, yet jackson also can't fetch them because they were not JOINed in the original query and we have turned off &quot;open session in view&quot; which would allow them to be fetched when jackson asks for them. Jackson and hibernate work well enough together not to cause a crash here: jackson notices that the objects are hibernate proxies and first asks behind the scene &quot;are these attributes available?&quot; before trying to call e.g. <code>parent.getName()</code>.</p>
+<p>So why does the following succeed? Think about it for a few moments.</p>
+<pre><code class="language-java">// Region.java
+
+public String getParentCode() { return parent.getCode(); }
+</code></pre>
+<p>The answer is that the parent's code, but not the other attributes, is stored as a foreign key in the Region table, so the SQL query above actually does fetch the parent code.
+When hibernate creates a Region object and the parent / counties are not included in a JOIN, it will replace the parent and counties with hibernate proxy classes that roughly do the following:</p>
+<ul>
+<li>If &quot;open session in view&quot; (configuration line <code>spring.jpa.open-in-view</code> in <code>application.properties</code>) is turned on (this is the default) then the proxies run another SQL query to get the required data whenever someone asks for it, e.g. calls <code>getName()</code> on the parent proxy.</li>
+<li>If &quot;open session in view&quot; is turned off, and someone asks for data that is not loaded yet, throw an exception.</li>
+<li>Alternatively, libraries like jackson who notice the proxy objects can also ask &quot;is this data available?&quot; which is why the JSON returns &quot;null&quot; for the parent / counties in this case.</li>
+</ul>
+<p>But since the parent code, unlike the rest of the parent data, was loaded in the original query, hibernate actually creates a proxy object here that stores this code and returns it if someone calls <code>getCode()</code> on the parent proxy. Only on the other methods like <code>getName()</code> where the data is not loaded yet, do you get an exception.</p>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>The learning point here is that when you have a one-to-many relationship and you're working with an object on the side with the foreign key, then it's no extra effort to keep the foreign key around. There are two reasons you might want to do this.</p>
+<p>The first is to avoid infinite recursion (or finite but unnecessary bloat) when transferring a collection of objects via JSON or some other mechanism that does not have a concept of &quot;pointers&quot;. For example, when sending a country and its regions via JSON, we can't have the regions contain a copy of the country in their parent field (as that would cause infinite recursion), and JSON itself does not support a &quot;pointer&quot; data type, but we can emulate this by having the regions contain the country's code.</p>
+<p>If the data is being put back into proper objects on the client side (e.g. we had JavaScript classes for countries and regions) then the foreign keys could be used to set up &quot;pointers&quot; (technically: object references) correctly again.</p>
+<p>Secondly, foreign keys can be used for navigation. A common pattern is to include the foreign key in a link (in our case &quot;back to parent&quot;) as an option for the user. In other words, to provide a &quot;navigate to parent&quot; feature, you do not have to fetch/join the parent object and then read its primary key: you can just use the foreign key that you already have, saving a JOIN. Clicking a navigation link that was created using a foreign key ends up fetching the object (in this case a country) with the matching primary key.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="exercises-2"><a class="header" href="#exercises-2">Exercises</a></h1>
+<p>To see if you have understood the request lifecycle, here are a couple of small exercises where you can make changes to the application.</p>
+<h2 id="client-side-change"><a class="header" href="#client-side-change">Client-side change</a></h2>
+<p>A change request comes in from the users: when viewing a unit (country, ward etc.), instead of just &quot;Contains:&quot;, the heading before the list of children should read e.g. &quot;Contains 5 wards:&quot;.</p>
+<p>There are two parts to this change: first, you need to count the relevant children; secondly you need to display the correct noun e.g. if you're viewing a region, it should say &quot;Contains ... counties&quot; whereas when viewing a country, it should say &quot;Contains ... regions&quot;.</p>
+<p>The easiest way to make the change is as follows:</p>
+<ol>
+<li>Find the file where the &quot;Contains:&quot; string is created (which component is this?).</li>
+<li>From the point of view of this component, how do you access the new data you need? </li>
+<li>Make the change, then run the react development server (<code>npm start</code> in the <code>client/</code> folder) then view the page on <code>localhost:3000</code> and check that the text is correct (the database and java server must be running, of course).</li>
+<li><code>npm run-scripts build</code> then copy the <code>build/</code> files to the <code>static/</code> folder again as you did in the set-up. The new page now should show under <code>localhost:8000</code> when you restart the java server.</li>
+</ol>
+<p>Note that the name for the children is already stored in a variable for you. You do not need to remove the 's' if there is only one child, for this exercise.</p>
+<p>You might ask what happens if you are viewing a ward, as wards do not have children. Convince yourself, the way the react component is written, that this case is handled safely already.</p>
+<h2 id="server-side-change"><a class="header" href="#server-side-change">Server-side change</a></h2>
+<p>A bug report comes in from a code reviewer:</p>
+<blockquote>
+<p>The data returned from the API call <code>/api/ward/ID</code> does not contain the parent, even though this is in the spec. For example, <code>/api/ward/E05000132</code> gives</p>
+<pre><code>{&quot;code&quot;:&quot;E05000132&quot;, &quot;name&quot;:&quot;Fortune Green&quot;, &quot;parent&quot;:null, &quot;parentCode&quot;:&quot;E09000007&quot;}
+</code></pre>
+<p>but according to the spec it should be </p>
+<pre><code>{&quot;code&quot;:&quot;E05000132&quot;, &quot;name&quot;:&quot;Fortune Green&quot;, &quot;parent&quot;:{&quot;code&quot;:&quot;E09000007&quot;, &quot;name&quot;:&quot;Camden&quot;, &quot;parentCode&quot;:&quot;E12000007&quot;}, &quot;parentCode&quot;:&quot;E09000007&quot;}
+</code></pre>
+<p>I also note that the server-side method for handling this call does not use the same pattern as the corresponding country, region and county methods. This may be related to the bug.</p>
+</blockquote>
+<p>Your task is to rewrite the ward method along the same lines as the other ones to get the extent correct for this API call, and to make any other changes that this implies. You do not have to change the ward class itself, but you will need to make changes to two source code files. For each line that you change, write down separately for your own learning, or discuss with your group of students:</p>
+<ol>
+<li>What is the effect of this line / change?</li>
+<li>Why is it required?</li>
+</ol>
+<p>You do not need to change any client code, as the client only consumes the JSON and it doesn't mind the extra fields. You will need to call the API method yourself to check that your change fixes the bug. But it's good practice to check that the whole application still works after your change!</p>
+<p>(It would be even better practice to have unit tests for all of this, and you should write tests in your second-year software project, but for now we're teaching one thing at a time.)</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="a-complete-application-part-2"><a class="header" href="#a-complete-application-part-2">A complete application, part 2</a></h1>
+<p>There are no new videos or readings for this workshop - you should instead review anything you need to prepare for the following exercise.</p>
+<p>You will be able to continue working on the exercise in the following week, as while there are new lectures, there are no new lab exercises.</p>
+<h2 id="exercise-2"><a class="header" href="#exercise-2">Exercise</a></h2>
+<p>Create an application similar to the one from the previous workshop, but for the elections database. The layout is up to you, but it should contain the following features:</p>
+<ul>
+<li>In one place, the application should show a list of wards in Bristol (from the elections database). There is no need for this list ever to reload later on, as it does not change, but you should create it in react and load it with a <code>fetch()</code>, instead of just creating the HTML on the server.</li>
+<li>Clicking a ward should, in another place, show the election results for this ward. The data for this should be fetched in the background with <code>fetch()</code>.</li>
+<li>Implement the list of wards and the election results as separate components, to demonstrate proper state handling in react.</li>
+</ul>
+<p>Some hints to get you started:</p>
+<ul>
+<li>On <a href="https://start.spring.io/">start.spring.io</a> you can create a ZIP with a template application and POM file for a spring application. You will need &quot;MariaDB Driver&quot;, &quot;Spring Web&quot;, and &quot;Spring Data JPA&quot; as dependencies.</li>
+<li>Create domain classes for wards, candidates and parties based on the schema.</li>
+<li>Write a simple controller that does something like listing all wards, or fetching a single ward by id - without including any candidates or parties yet (leave them off the ward class for now). Test this in your browser and check you get the JSON that you expect.</li>
+<li>Create a sample react application in a separate folder, and write a component that fetches and displays a list of wards (just a list of names is fine to start with, they do not need to be links yet).</li>
+</ul>
+<p>From this &quot;MVP&quot; onwards you can decide which data you need to pass to the client for which features, write controllers based on that, and then implement components that consume and display the data. It is probably easiest to work with two servers running while you are developing, the Java one on <code>localhost:8000</code> and the React one on <code>localhost:3000</code>.</p>
+<p>The data set is small enough that you do not have to worry about extents too much - you can just return domain objects directly from your controllers and Jackson's automatic JSON conversion should do what you need, as long as you do not produce an infinite loop. The way to avoid an infinite loop is to make the associations in only one direction, for example a ward can have a list of candidates but a candidate object does not need a pointer back to the ward as you'll never be working with a candidate in a place where it's not clear what ward they stood in.</p>
+<p>For some computations, like if you want to display the total number of votes cast in a ward, it is your choice whether to do them on the client or on the server. If you do this on the server, you can for example add a <code>getTotalVotes()</code> method to the ward class, then the JSON export will contain a <code>totalVotes</code> property.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-cloud-part-1"><a class="header" href="#the-cloud-part-1">The Cloud, Part 1</a></h1>
+<h2 id="videos-5"><a class="header" href="#videos-5">Videos</a></h2>
+<p>Please watch the following videos. They are hosted on the university's blackboard system, so you will need to be logged in to blackboard for the links to work.</p>
+<ul>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/0ad3ecd639aa4f67a9b0d1d162c5f7a21d">Introduction</a> (19 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/135444aa12ff4c26b8a9c7ad693e1fa61d">Economics</a> (16 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/ff04fe5695bf4604bf478405fc9266f81d">As A Service</a> (6 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/3d1ac0e5b012470f9be58c40e000c7c01d">Amazon Web Services examples</a> (7 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/ea34704392794239b5ecc9517de691771d">Amazon Web Services: IaaS</a> (10 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/7874354926e846ec8cbfb206d6c6047f1d">Google App Engine / PaaS</a> (8 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/c4eb1e2b73c544d7bed5a6df828de4281d">Other providers</a> (6 minutes)</li>
+</ul>
+<p>There are no cloud exercises. The workshops this week are for you to continue to work on your Java/react &quot;elections&quot; application and for you to ask questions about anything previously on the unit.</p>
+<p>However, the cloud material is examinable.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-cloud-part-2"><a class="header" href="#the-cloud-part-2">The Cloud, Part 2</a></h1>
+<h2 id="videos-6"><a class="header" href="#videos-6">Videos</a></h2>
+<p>Please watch the following videos. They are hosted on the university's blackboard system, so you will need to be logged in to blackboard for the links to work.</p>
+<ul>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/06ceda3dd34c49b9b802a6f2e8cb9a6c1d">Introduction</a> (10 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/9b125a5499554316be6cb73449e7aaf71d">Key-Value Databases</a> (16 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/4a9cece0618a429295d6d5254202c8f61d">Document Databases</a>  (7 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/785791610bb54851b7b3a347b448f4181d">Column-Family Databases</a> (9 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/cf8bf402b10546e9af85ea1b502929811d">Graph Databases</a> (13 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/2f523af23cdf470c8a612ca8277985011d">Choosing a Database</a> (9 minutes) </li>
+</ul>
+<p>There are no cloud exercises. The workshops this week are for you to continue to work on your Java/react &quot;elections&quot; application and for you to ask questions about anything previously on the unit.</p>
+<p>However, the cloud material is examinable.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>

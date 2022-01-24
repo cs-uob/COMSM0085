@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Extent Problem - Exercises</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">The web</li><li class="chapter-item expanded "><a href="../http/index.html"><strong aria-hidden="true">1.</strong> HTTP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../http/setup.html"><strong aria-hidden="true">1.1.</strong> Setup</a></li><li class="chapter-item expanded "><a href="../http/explore.html"><strong aria-hidden="true">1.2.</strong> Exploring HTTP</a></li><li class="chapter-item expanded "><a href="../http/research.html"><strong aria-hidden="true">1.3.</strong> Research online exercise</a></li><li class="chapter-item expanded "><a href="../http/server.html"><strong aria-hidden="true">1.4.</strong> A server in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../html5/index.html"><strong aria-hidden="true">2.</strong> HTML5</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../html5/basic.html"><strong aria-hidden="true">2.1.</strong> Basic HTML5</a></li><li class="chapter-item expanded "><a href="../html5/templates.html"><strong aria-hidden="true">2.2.</strong> Templates</a></li></ol></li><li class="chapter-item expanded "><a href="../css/index.html"><strong aria-hidden="true">3.</strong> CSS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../css/text.html"><strong aria-hidden="true">3.1.</strong> Styling Text</a></li><li class="chapter-item expanded "><a href="../css/framework.html"><strong aria-hidden="true">3.2.</strong> Frameworks</a></li></ol></li><li class="chapter-item expanded "><a href="../cssgrid/index.html"><strong aria-hidden="true">4.</strong> CSS grids</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cssgrid/intro.html"><strong aria-hidden="true">4.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../cssgrid/curriculum.html"><strong aria-hidden="true">4.2.</strong> Curriculum exercise</a></li><li class="chapter-item expanded "><a href="../cssgrid/trees.html"><strong aria-hidden="true">4.3.</strong> Trees exercise (responsive layout)</a></li></ol></li><li class="chapter-item expanded "><a href="../js/index.html"><strong aria-hidden="true">5.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../react/index.html"><strong aria-hidden="true">6.</strong> React</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../react/installing.html"><strong aria-hidden="true">6.1.</strong> Installing React</a></li><li class="chapter-item expanded "><a href="../react/hello.html"><strong aria-hidden="true">6.2.</strong> Hello World in React</a></li><li class="chapter-item expanded "><a href="../react/character.html"><strong aria-hidden="true">6.3.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../app1/index.html"><strong aria-hidden="true">7.</strong> A complete application, part 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../app1/setup.html"><strong aria-hidden="true">7.1.</strong> Setting Things Up</a></li><li class="chapter-item expanded "><a href="../app1/walkthrough.html"><strong aria-hidden="true">7.2.</strong> Walkthrough</a></li><li class="chapter-item expanded "><a href="../app1/lifecycle.html"><strong aria-hidden="true">7.3.</strong> React Lifecycles</a></li><li class="chapter-item expanded "><a href="../app1/extent.html" class="active"><strong aria-hidden="true">7.4.</strong> The Extent Problem</a></li><li class="chapter-item expanded "><a href="../app1/ex.html"><strong aria-hidden="true">7.5.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../app2/index.html"><strong aria-hidden="true">8.</strong> A complete application, part 2</a></li><li class="chapter-item expanded "><a href="../cloud/cloud1.html"><strong aria-hidden="true">9.</strong> The Cloud, Part 1</a></li><li class="chapter-item expanded "><a href="../cloud/cloud2.html"><strong aria-hidden="true">10.</strong> The Cloud, Part 2</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Exercises</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="the-extent-problem"><a class="header" href="#the-extent-problem">The extent problem</a></h1>
+<p>On the server side, imagine a request comes in for a <code>Region</code> object.</p>
+<p>It looks like spring, hibernate and jackson (the library that produces JSON) should be able to handle this automatically, hibernate converting a database row in to a Java object and jackson converting that to a string containing JSON, with Spring making sure the correct classes are loaded in the first place.</p>
+<p>Unfortunately, the automatic approach assumes that there is only one way to deal with each domain class. If you can answer the question &quot;if you load a region, do you want the counties or not?&quot; once and for all in your application, then the automatic approach will work. However,</p>
+<ul>
+<li>When we are viewing a region, we do want to know the counties, as we want to show a clickable list of counties to the user.</li>
+<li>When we are viewing a country, we want to know the regions, but we do not care about the counties in the regions, and even less about the wards in the counties - otherwise a request for England would load the entire contents of the country, region, county and ward tables into memory all at once!</li>
+</ul>
+<p>The solution in this application is to use explict <em>extents</em>, that is for each object we declare when we fetch it what properties we do or don't want to see.</p>
+<p>The first step is to tell Hibernate not to do any joins unless told to, for example in the Region class with two <code>FetchType.LAZY</code> entries:</p>
+<pre><code class="language-java">// Region.java
+
+@ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name=&quot;parent&quot;)
+@JsonView(Region.class)
+private Country parent;
+
+@OneToMany(fetch = FetchType.LAZY, mappedBy = &quot;parent&quot;)
+@JsonView(Region.class)
+private List&lt;County&gt; counties;
+</code></pre>
+<p>When we're fetching a region, the controller uses our own <code>findByIdFull</code> method:</p>
+<pre><code class="language-java">// RegionController.java
+
+@GetMapping(path=&quot;/api/region/{id}&quot;, produces=&quot;application/json&quot;)
+String getRegionById(@PathVariable String id) {
+    Region r = repository.findByIdFull(id);
+    return ModelClass.renderJSON(r, Region.class, id);
+}
+</code></pre>
+<p>which has an annotation declaring its extent:</p>
+<pre><code class="language-java">// RegionRepository.java
+
+@Query(&quot;SELECT r FROM Region r JOIN FETCH r.parent LEFT JOIN FETCH r.counties WHERE r.id = ?1&quot;)
+Region findByIdFull(String id);
+</code></pre>
+<p>Here, we use HQL (Hibernate Query Language) <code>JOIN FETCH</code> to declare that when we're loading a region with this method, we want both the parent (country) and all the children (counties), but not for example the children of the children (wards) as they're not in the query. The <code>?1</code> at the end is HQL's way of doing a bound parameter for a prepared statement.</p>
+<p>The result is now that when we're trying to display a region, we get exactly the extent of information that we need to create the links, no more and no less.
+In contrast, when we're fetching a region through another query (e.g. to display a country) then the extent of that query will not load the region's children, as we don't need them.</p>
+<h2 id="extents-and-json"><a class="header" href="#extents-and-json">Extents and JSON</a></h2>
+<p>The problem is even more pronounced when converting to JSON, as when we are displaying a region we do not want this to happen:</p>
+<pre><code class="language-JSON">{   &quot;code&quot;:&quot;E12000009&quot;,
+    &quot;name&quot;:&quot;South West&quot;,
+    &quot;counties&quot;: [
+        {&quot;code&quot;:&quot;E06000022&quot;,
+         &quot;name&quot;:&quot;Bath and North East Somerset&quot;,
+         &quot;parent&quot;:???} 
+... ]}
+</code></pre>
+<p>A region countains counties (which we want to see to create the list), and those counties have parents, and their parents are regions. So what do we put for the parent of this county? It can't be a copy of the region otherwise we have created infinite recursion. JSON doesn't have a nice way to make a &quot;pointer&quot; back to the copy of the region we already have (which is how the problem is avoided for Java objects in memory).</p>
+<p>We can't say either that all objects should ignore their parents, as when we're displaying a county, we need the code of the parent to make the &quot;Back to parent&quot; link work. But when we're displaying a region, we don't care about the parent objects of the containing counties: not only don't we need to create links for them, but we already know the code - it's the code of the region we're currently displaying.</p>
+<p>Jackson, the JSON generation library, by default displays all properties of an object - that is, it looks for all getter methods on a class and calls all of them in turn. There are several ways this can not end up with what we want.</p>
+<p>First, if regions have counties as children and counties have regions as parents (a so-called <em>bidirectional association</em>) then the &quot;call all getters recursively&quot; strategy ends up in an infinite loop (in practice, it crashes with a stack overflow).</p>
+<p>Secondly, if we call a getter on something that Hibernate hasn't fetched yet with a JOIN, then what the getter actually returns is a Hibernate proxy object, that in turn responds to calls to its getters by firing off a new SQL query to fetch the requested data.</p>
+<p>Hibernate's proxy objects are a good solution to simple cases of the extent problem: when fetching a region, don't load the counties by default, but load them in a separate query if someone actually tries to access them later on. Unfortunately, especially combined with a &quot;fetch all getters&quot; JSON renderer, this gets you the N+1 problem as we already discussed earlier. Assuming we fetch just children, not parents to avoid the infinite loop, then even if Hibernate is clever enough to use a single query to get all the counties in a region, when the JSON renderer loops over each county to get the wards (which we don't want in the first place when displaying a region!) that's one query per county, so the N+1 problem in action.</p>
+<p>My recommended solution here is the following line in <code>src/main/resources/application.properties</code>:</p>
+<pre><code>spring.jpa.open-in-view=false
+</code></pre>
+<p>This turns off the proxy objects' ability to load data later on: a call to load data that was not JOINed to start with now causes an exception. This is a good thing: you will immediately notice any extent problems (because they crash your application) and you can go and adjust your HQL queries to fix the problem. You can even write unit tests to make sure all your methods run correctly, whereas there is no easy way to write a unit test for &quot;did this method only use 1-2 SQL queries to load its data&quot;.</p>
+<p>To really solve the problem, we have to tell jackson which properties we want in our JSON, and again the answer is &quot;it depends&quot;: when we're displaying a region, we do want the region's counties; when we're displaying a country, we want the regions but not the counties.</p>
+<p>In the <code>ModelClass</code> base class for our domain classes, we customise exporting to JSON:</p>
+<pre><code class="language-java">// ModelClass.java
+
+public static &lt;T&gt; String renderJSON(T element, Class&lt;T&gt; cls, String id) {
+    if (element == null) {
+        throw new NoSuchElementException(cls, id);
+    }
+    try {
+        return new ObjectMapper()
+            .writerWithView(cls)
+            .writeValueAsString(element);
+    } catch (JsonProcessingException e) {
+        throw new RuntimeException(e);
+    }
+}
+</code></pre>
+<p>The key call here is <code>writerWithView(cls)</code> that creates a JSON writer for a particular <em>view</em>, allowing you to have more than one view per class. In this case we choose to reuse the domain classes as the views, namely, when we are viewing the contents of e.g. a region, then the view class is simply <code>Region</code>.</p>
+<p>We can now declare attributes to have a <code>@JsonView</code>:</p>
+<pre><code class="language-java">// Region.java
+
+@ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name=&quot;parent&quot;)
+@JsonView(Region.class)
+private Country parent;
+
+@OneToMany(fetch = FetchType.LAZY, mappedBy = &quot;parent&quot;)
+@JsonView(Region.class)
+private List&lt;County&gt; counties;
+</code></pre>
+<p>Jackson will only export an attribute if the view class is equal to, or a subclass of, the class requested in the code above so we now have the following situation:</p>
+<ul>
+<li>When we are viewing a region, the view class is <code>Region</code> so the region's parent and children (counties) will be included in the JSON.</li>
+<li>When we are viewing a country, the view class is <code>Country</code> so the parents and children of the country's regions will not be included in the JSON.</li>
+</ul>
+<h2 id="the-mystery-of-getparentcode"><a class="header" href="#the-mystery-of-getparentcode">The mystery of <code>getParentCode()</code></a></h2>
+<p>There is one more trick in the region class:</p>
+<pre><code class="language-java">// Region.java
+
+public Country getParent() { return parent; }
+public String getParentCode() { return parent.getCode(); }
+</code></pre>
+<p>Jackson calls all the getters except ones it's been told not to, so when we're exporting a country to JSON, it won't call <code>getParent</code> on the contained regions because the <code>Region.parent</code> field is marked as <code>@JsonView(Region.class)</code>.</p>
+<p>However, Jackson will call <code>getParentCode</code> on the regions, so the actual JSON returned for the country view (<a href="http://localhost:8000/api/country/E92000001">http://localhost:8000/api/country/E92000001</a>) looks like this (with some pretty-printing):</p>
+<pre><code class="language-json">{ &quot;code&quot;:&quot;E92000001&quot;, &quot;name&quot;:&quot;England&quot;, 
+  &quot;regions&quot;: [
+      {&quot;code&quot;:&quot;E12000001&quot;,&quot;name&quot;:&quot;North East&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;},
+      {&quot;code&quot;:&quot;E12000002&quot;,&quot;name&quot;:&quot;North West&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;},
+      {&quot;code&quot;:&quot;E12000003&quot;,&quot;name&quot;:&quot;Yorkshire and The Humber&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;},
+      {&quot;code&quot;:&quot;E12000004&quot;,&quot;name&quot;:&quot;East Midlands&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;},
+      {&quot;code&quot;:&quot;E12000005&quot;,&quot;name&quot;:&quot;West Midlands&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;},
+      {&quot;code&quot;:&quot;E12000006&quot;,&quot;name&quot;:&quot;East of England&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;},
+      {&quot;code&quot;:&quot;E12000007&quot;,&quot;name&quot;:&quot;London&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;},
+      {&quot;code&quot;:&quot;E12000008&quot;,&quot;name&quot;:&quot;South East&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;},
+      {&quot;code&quot;:&quot;E12000009&quot;,&quot;name&quot;:&quot;South West&quot;,&quot;parentCode&quot;:&quot;E92000001&quot;}
+  ]
+}
+</code></pre>
+<p>The regions don't show their parent, but they do show the <code>parentCode</code>. We don't need this for the application, this feature is more for demonstration purposes.</p>
+<p>How does this work? Doesn't the following code require the parent to be loaded?</p>
+<pre><code class="language-java">public String getParentCode() { return parent.getCode(); }
+</code></pre>
+<p>The answer is no, for two reasons. First, the reason that these regions were fetched here at all is that they were children of the current country. Hibernate knows that the <code>country.regions</code> and <code>region.parent</code> match up (we told it with JPA annotations, after all) so it could figure out the parent in this case anyway.</p>
+<p>For the second reason, try and manually visit the page <a href="localhost:8000/api/regions">localhost:8000/api/regions</a> which is not used by the react client. This is handled by <code>RegionController.getAllRegions</code>:</p>
+<pre><code class="language-java">@GetMapping(&quot;/api/regions&quot;)
+List&lt;Region&gt; getAllRegions() {
+    return repository.findAll();
+}
+</code></pre>
+<p>This in turn calls the <code>RegionRepository.findAll</code> method which is implemented inside JPA/Hibernate itself (you won't see it in the <code>RegionRepository</code> class itself, it's declared on the parent class <code>JpaRepository</code>). You can see the SQL query it ends up producing in the log output:</p>
+<pre><code class="language-SQL">select region0_.code as code1_2_, 
+       region0_.name as name2_2_, 
+       region0_.parent as parent3_2_
+from Region region0_
+</code></pre>
+<p>There is no JOIN with the parent (country) class going on here. In the JSON output,
+which does not use the <code>ModelClass</code> method of selecting an extent explicitly,
+it just returns a <code>List&lt;Region&gt;</code> which spring takes as a cue to pass through
+jackson to create JSON (shown here pretty-printed and abbreviated):</p>
+<pre><code class="language-JSON">[ { &quot;code&quot;:&quot;E12000001&quot;,
+    &quot;name&quot;:&quot;North East&quot;,
+    &quot;parent&quot;:null,
+    &quot;counties&quot;:null,
+    &quot;parentCode&quot;:&quot;E92000001&quot;
+  },
+  { &quot;code&quot;:&quot;E12000002&quot;,
+    &quot;name&quot;:&quot;North West&quot;,
+    &quot;parent&quot;:null,
+    &quot;counties&quot;:null,
+    &quot;parentCode&quot;:&quot;E92000001&quot;
+  },
+  /* and the others ... */
+]
+</code></pre>
+<p>The parent and counties attributes are <code>null</code> because we haven't explicitly excluded them, yet jackson also can't fetch them because they were not JOINed in the original query and we have turned off &quot;open session in view&quot; which would allow them to be fetched when jackson asks for them. Jackson and hibernate work well enough together not to cause a crash here: jackson notices that the objects are hibernate proxies and first asks behind the scene &quot;are these attributes available?&quot; before trying to call e.g. <code>parent.getName()</code>.</p>
+<p>So why does the following succeed? Think about it for a few moments.</p>
+<pre><code class="language-java">// Region.java
+
+public String getParentCode() { return parent.getCode(); }
+</code></pre>
+<p>The answer is that the parent's code, but not the other attributes, is stored as a foreign key in the Region table, so the SQL query above actually does fetch the parent code.
+When hibernate creates a Region object and the parent / counties are not included in a JOIN, it will replace the parent and counties with hibernate proxy classes that roughly do the following:</p>
+<ul>
+<li>If &quot;open session in view&quot; (configuration line <code>spring.jpa.open-in-view</code> in <code>application.properties</code>) is turned on (this is the default) then the proxies run another SQL query to get the required data whenever someone asks for it, e.g. calls <code>getName()</code> on the parent proxy.</li>
+<li>If &quot;open session in view&quot; is turned off, and someone asks for data that is not loaded yet, throw an exception.</li>
+<li>Alternatively, libraries like jackson who notice the proxy objects can also ask &quot;is this data available?&quot; which is why the JSON returns &quot;null&quot; for the parent / counties in this case.</li>
+</ul>
+<p>But since the parent code, unlike the rest of the parent data, was loaded in the original query, hibernate actually creates a proxy object here that stores this code and returns it if someone calls <code>getCode()</code> on the parent proxy. Only on the other methods like <code>getName()</code> where the data is not loaded yet, do you get an exception.</p>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>The learning point here is that when you have a one-to-many relationship and you're working with an object on the side with the foreign key, then it's no extra effort to keep the foreign key around. There are two reasons you might want to do this.</p>
+<p>The first is to avoid infinite recursion (or finite but unnecessary bloat) when transferring a collection of objects via JSON or some other mechanism that does not have a concept of &quot;pointers&quot;. For example, when sending a country and its regions via JSON, we can't have the regions contain a copy of the country in their parent field (as that would cause infinite recursion), and JSON itself does not support a &quot;pointer&quot; data type, but we can emulate this by having the regions contain the country's code.</p>
+<p>If the data is being put back into proper objects on the client side (e.g. we had JavaScript classes for countries and regions) then the foreign keys could be used to set up &quot;pointers&quot; (technically: object references) correctly again.</p>
+<p>Secondly, foreign keys can be used for navigation. A common pattern is to include the foreign key in a link (in our case &quot;back to parent&quot;) as an option for the user. In other words, to provide a &quot;navigate to parent&quot; feature, you do not have to fetch/join the parent object and then read its primary key: you can just use the foreign key that you already have, saving a JOIN. Clicking a navigation link that was created using a foreign key ends up fetching the object (in this case a country) with the matching primary key.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../app1/lifecycle.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../app1/ex.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../app1/lifecycle.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../app1/ex.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
