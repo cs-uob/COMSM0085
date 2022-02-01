@@ -22,9 +22,7 @@
 
 # Build Tools
 
-- [Build Tools 1](./build1/index.md)
-  - [Exercise](./build1/exercise.md)
-- [Build Tools 2](./build2/index.md)
+- [Build Tools](./build2/index.md)
   - [C](./build2/c.md)
   - [Python](./build2/python.md)
   - [Java](./build2/java.md)
@@ -49,4 +47,3 @@
 - [SQL and Java](./db4/sql-java.md)
   - [JDBC](./db4/jdbc.md)
   - [Hibernate](./db4/hibernate.md)
-  - [SQLite](./db4/sqlite.md)
