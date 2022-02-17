@@ -4,47 +4,27 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Walkthrough - Exercises</title>
-        
-        
-
-
         <!-- Custom HTML head -->
-        
-
-
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
-        
         <link rel="stylesheet" href="../css/print.css" media="print">
-        
-
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
-
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
         <link rel="stylesheet" href="../tomorrow-night.css">
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
-
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -103,7 +83,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -120,29 +99,23 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">Exercises</h1>
 
                     <div class="right-buttons">
-                        
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
-                        
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -150,8 +123,6 @@
                         </ul>
                     </div>
                 </div>
-                
-
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
@@ -163,10 +134,10 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#walkthrough" id="walkthrough">Walkthrough</a></h1>
+                        <h1 id="walkthrough"><a class="header" href="#walkthrough">Walkthrough</a></h1>
 <p>Here is a quick overview of what happens when the application loads and you click first <em>South West</em> then <em>Details</em>.</p>
 <p>You should look at the mentioned code snippets as you follow along and make sure you understand what they do.</p>
-<h2><a class="header" href="#the-first-screen" id="the-first-screen">The first screen</a></h2>
+<h2 id="the-first-screen"><a class="header" href="#the-first-screen">The first screen</a></h2>
 <ol>
 <li>When you open <code>localhost:8000</code> in your browser, a HTTP request for <code>/</code> goes to the Java server. If there were a controller configured for this URL pattern, it would now fire, but there isn't so spring falls back to serving <code>src/main/resources/static/index.html</code> if it exists as this is by convention the default file name to show. This file does exist, so it gets sent to the browser.</li>
 <li>This file came from <code>client/build/index.html</code> which is the compiled version of <code>client/public/index.html</code>. There is not much to see here except a <code>&lt;div id=&quot;root&quot;&gt;</code> which is where the React application will be loaded (the necessary script tags get added when React compiles the file). If you watch the network tab when you open <code>localhost:8000</code> you will see requests for several css and js files, followed by a request of type <code>fetch</code> for <code>E92000001</code> which is the React app loading the country data to show.</li>
@@ -179,7 +150,7 @@
 <li>The JSON object now gets sent to the client. If you queried the URL yourself in a new tab, you just see the JSON at this point. If React queried it with <code>fetch()</code>, it can now check - back in <code>OverView._fetchData()</code> - whether the call was successful, and if so run <code>this.setState({loaded: &quot;yes&quot;, item: result})</code> to store the object in its state (the previous call to <code>r.json()</code> decoded the JSON to a JS object, which is now in <code>result</code>).</li>
 <li>The <code>setState</code> causes react to call <code>render()</code> which, now that <code>this.state.loaded</code> is <code>yes</code>, renders a the country information including a list of regions, pulled from <code>this.state.item</code> which is where the decoded JSON object is stored.</li>
 </ol>
-<h2><a class="header" href="#navigating-to-a-region" id="navigating-to-a-region">Navigating to a Region</a></h2>
+<h2 id="navigating-to-a-region"><a class="header" href="#navigating-to-a-region">Navigating to a Region</a></h2>
 <p>Click on one of the region entries. The following happens:</p>
 <ol>
 <li>The link (actually a button styled as a link, for accessibility reasons) has a click handler <code>onClick={() =&gt; this.navigate(i.code, false)}</code> (created in <code>OverView.children()</code>, where <code>i</code> is the item to navigate to, e.g. the region).</li>
@@ -189,74 +160,45 @@
 <li>The props change causes <code>OverView.componentDidUpdate</code> to be called with the old props for comparison (the new ones are already in <code>this.props</code>). If there has been a code change, then we (a.) immediately set the state back to &quot;not loaded&quot;, which triggers a <code>render()</code> call and (b.) call <code>_fetchData()</code>, which asynchronously loads the new data and eventually calls <code>setState</code> again, triggering another <code>render()</code> this time with the new data.</li>
 </ol>
 <p><strong>Exercise</strong>: Return to the countries view using the <em>Back to parent</em> link, then shut down the Java server (so that futher API calls will fail). Then click on a region. You should immediately see a &quot;Loading ...&quot; message, followed around a second or so later by &quot;Network error&quot;. Explain, with the help of the <code>OverView</code> code, how this happens.</p>
-<h2><a class="header" href="#details-view" id="details-view">Details View</a></h2>
+<h2 id="details-view"><a class="header" href="#details-view">Details View</a></h2>
 <p><strong>Exercise</strong>: based on what you have learnt above, sketch the steps that happen when you click on <em>Details</em> to display the occupation data for the selected geographic unit. Look at both the client and the server code. The server-side methods start in <code>StatisticsController</code>.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../app1/setup.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
-
-                        
                             <a rel="next" href="../app1/lifecycle.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
-
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../app1/setup.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
-
-                
                     <a rel="next" href="../app1/lifecycle.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
-
-        
-
-        
-
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
-
-        
-
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
-
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
-
-        
-
     </body>
 </html>
