@@ -1,0 +1,386 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Dynamic Structure, part 1 - Exercises</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">The web</li><li class="chapter-item expanded "><a href="../http/index.html"><strong aria-hidden="true">1.</strong> HTTP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../http/setup.html"><strong aria-hidden="true">1.1.</strong> Setup</a></li><li class="chapter-item expanded "><a href="../http/explore.html"><strong aria-hidden="true">1.2.</strong> Exploring HTTP</a></li><li class="chapter-item expanded "><a href="../http/research.html"><strong aria-hidden="true">1.3.</strong> Research online exercise</a></li><li class="chapter-item expanded "><a href="../http/server.html"><strong aria-hidden="true">1.4.</strong> A server in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../html5/index.html"><strong aria-hidden="true">2.</strong> HTML5</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../html5/basic.html"><strong aria-hidden="true">2.1.</strong> Basic HTML5</a></li><li class="chapter-item expanded "><a href="../html5/templates.html"><strong aria-hidden="true">2.2.</strong> Templates</a></li></ol></li><li class="chapter-item expanded "><a href="../css/index.html"><strong aria-hidden="true">3.</strong> CSS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../css/text.html"><strong aria-hidden="true">3.1.</strong> Styling Text</a></li><li class="chapter-item expanded "><a href="../css/framework.html"><strong aria-hidden="true">3.2.</strong> Frameworks</a></li></ol></li><li class="chapter-item expanded "><a href="../cssgrid/index.html"><strong aria-hidden="true">4.</strong> CSS grids</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cssgrid/intro.html"><strong aria-hidden="true">4.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../cssgrid/curriculum.html"><strong aria-hidden="true">4.2.</strong> Curriculum exercise</a></li><li class="chapter-item expanded "><a href="../cssgrid/trees.html"><strong aria-hidden="true">4.3.</strong> Trees exercise (responsive layout)</a></li></ol></li><li class="chapter-item expanded "><a href="../js/index.html"><strong aria-hidden="true">5.</strong> JavaScript</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../js/single.html"><strong aria-hidden="true">5.1.</strong> A single-page app</a></li><li class="chapter-item expanded "><a href="../js/static.html"><strong aria-hidden="true">5.2.</strong> Static Structure</a></li><li class="chapter-item expanded "><a href="../js/dynamic1.html" class="active"><strong aria-hidden="true">5.3.</strong> Dynamic Structure, part 1</a></li><li class="chapter-item expanded "><a href="../js/dynamic2.html"><strong aria-hidden="true">5.4.</strong> Dynamic Structure, part 2</a></li><li class="chapter-item expanded "><a href="../js/exercises.html"><strong aria-hidden="true">5.5.</strong> Further exercises</a></li></ol></li><li class="chapter-item expanded "><a href="../react/index.html"><strong aria-hidden="true">6.</strong> React</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../react/installing.html"><strong aria-hidden="true">6.1.</strong> Installing React</a></li><li class="chapter-item expanded "><a href="../react/hello.html"><strong aria-hidden="true">6.2.</strong> Hello World in React</a></li><li class="chapter-item expanded "><a href="../react/character.html"><strong aria-hidden="true">6.3.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../app1/index.html"><strong aria-hidden="true">7.</strong> A complete application, part 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../app1/setup.html"><strong aria-hidden="true">7.1.</strong> Setting Things Up</a></li><li class="chapter-item expanded "><a href="../app1/walkthrough.html"><strong aria-hidden="true">7.2.</strong> Walkthrough</a></li><li class="chapter-item expanded "><a href="../app1/lifecycle.html"><strong aria-hidden="true">7.3.</strong> React Lifecycles</a></li><li class="chapter-item expanded "><a href="../app1/extent.html"><strong aria-hidden="true">7.4.</strong> The Extent Problem</a></li><li class="chapter-item expanded "><a href="../app1/ex.html"><strong aria-hidden="true">7.5.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../app2/index.html"><strong aria-hidden="true">8.</strong> A complete application, part 2</a></li><li class="chapter-item expanded "><a href="../cloud/cloud1.html"><strong aria-hidden="true">9.</strong> The Cloud, Part 1</a></li><li class="chapter-item expanded "><a href="../cloud/cloud2.html"><strong aria-hidden="true">10.</strong> The Cloud, Part 2</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Exercises</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2><a class="header" href="#dynamic-structure" id="dynamic-structure">Dynamic structure</a></h2>
+<p>When you point your browser at <code>app.html</code>, the &quot;Initialising...&quot; string appears
+in the left of the screen (the <code>&lt;nav&gt;</code>) only for a fraction of a second. This is
+the time it takes to load and execute the code in <code>script.js</code>, which provides
+the dynamic behaviour of the app.</p>
+<h3><a class="header" href="#making-some-buttons" id="making-some-buttons">Making some buttons</a></h3>
+<p>Indeed, looking at <code>script.js</code> we notice that it goes straight into business:</p>
+<pre><code class="language-javascript">let wards = fetch('https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records?limit=50&amp;select=name,ward_id')
+  .then(response =&gt; response.json())
+  .then(populateWards)
+  .catch(err =&gt; console.log(err));
+</code></pre>
+<p>This code makes an HTTP request to the Bristol City Council API. This returns a
+promise; when it is resolved, it is parsed as JSON, which itself creates another
+promise. Finally, when <em>that</em> promise is resolved, the <code>populateWards</code> function
+is called, and is passed the parsed JSON as an argument. If any of these steps
+cause an error, the last line catches it, and prints it on the console. These
+four lines are a modern JavaScript idiom that uses all the latest technology:
+the fetch API; promises; and higher-order, anonymous functions.</p>
+<p>One might wonder: what will the input passed to <code>populateWards</code> in this call
+look like? To answer this we can peek at the above URL and see what it returns:
+on any Linux machine we may run</p>
+<pre><code>curl -X 'GET' 'https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records?select=name,ward_id' | json_pp | less
+</code></pre>
+<p>which will make a <code>GET</code> request at this URL, parse the result as JSON
+(<code>json_pp</code>), and display it in scrollable format (<code>less</code>). The result looks a
+lot like this:</p>
+<pre><code class="language-javascript">{
+   &quot;links&quot; : ...,
+   &quot;records&quot; : [
+      {
+         &quot;links&quot; : ...,
+         &quot;record&quot; : {
+            &quot;fields&quot; : {
+               &quot;name&quot; : &quot;Eastville&quot;,
+               &quot;ward_id&quot; : &quot;E05010897&quot;
+            },
+            &quot;id&quot; : &quot;996b607b4c31e6aca6a7614bd02ea18a4c14c525&quot;,
+            &quot;size&quot; : 40500,
+            &quot;timestamp&quot; : &quot;2020-09-03T10:02:58.597Z&quot;
+         }
+      },
+      {
+         &quot;links&quot; : ...,
+         &quot;record&quot; : {
+            &quot;fields&quot; : {
+               &quot;name&quot; : &quot;Southville&quot;,
+               &quot;ward_id&quot; : &quot;E05010914&quot;
+            },
+            &quot;id&quot; : &quot;bc2f85ccc34ca606a2fe6473491b5fc50fd4e0d1&quot;,
+            &quot;size&quot; : 25544,
+            &quot;timestamp&quot; : &quot;2020-09-03T10:02:58.597Z&quot;
+         }
+      },
+      ...
+   ],
+   &quot;total_count&quot; : 34
+}
+</code></pre>
+<p>I have abbreviated the <code>links</code> fields, which add a lot of noise to the output.
+We can thus see that this HTTP request returns a JSON object which contains the
+names and ward IDs of all the wards of the city of Bristol! The final field
+returns the total record count, which is 34.</p>
+<p>Unlike SQL databases, which come with a strongly-typed data schema, the data
+here is semi-structured at best. We may discern its structure by looking at the
+above output. The top-level object has a <code>records</code> field, which contains an
+array of records. Each of these records is a JSON object itself. Its <code>record</code>
+field contains a field called <code>fields</code>, which contains the <code>name</code> and <code>ward_id</code>
+of each ward.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>One might ask: how did I figure out the correct URL to obtain all the wards?</p>
+<p>Unlike relational databases, where a predetermined schema tells the developer
+exactly where to look, the situation with APIs is more of a trial-and-error
+affair. Many APIs you will have to use in your life are poorly documented, and
+using them invovles some guesswork.</p>
+<p>In this particular instance, I went on the <a href="https://opendata.bristol.gov.uk/explore/?sort=modified">Open Data
+Bristol</a> website, and
+looked through the available datasets. There I found a dataset called
+<a href="https://opendata.bristol.gov.uk/explore/dataset/wards/information/">'Wards'</a>.
+The description seemed to match what I wanted, which was confirmed by clicking
+on the 'Table' tab, and seeing some sample data.</p>
+<p>Using the 'API' tab on the same page is misleading, as it presents an interface
+for querying the old version (v1) of their API. Following the link to the <a href="https://opendata.bristol.gov.uk/api/v2/console">'full
+API console'</a> reveals that
+there is a modern, REST-type API (v2), described in a format known as
+<a href="https://swagger.io/docs/specification/about/">OpenAPI</a>. This is the current
+industry standard for describing REST APIs.</p>
+<p>Looking through the documentation, it was evident that the endpoint of interest is</p>
+<pre><code>/catalog/datasets/{dataset_id}/records
+</code></pre>
+<p>I replaced <code>{dataset_id}</code> with the id of the ward dataset (<code>wards</code>). I also
+passed in two query parameters:</p>
+<ul>
+<li><code>limit=50</code> which limits the response to contain at most 50 data points in the JSON object (which is way more than the Bristol wards)</li>
+<li><code>select=name,ward_id</code> which limits the fields in the response to those in which we are interested</li>
+</ul>
+<p>To test this I used variations of the above <code>curl</code> command, and looked at the output.</p>
+</div>
+</div>
+<p>Now that we understand the structure of the data returned from that endpoint, we can go ahead and write the <code>populateWards</code> function:</p>
+<pre><code class="language-javascript">function populateWards(wards) {
+  let buttons = new DocumentFragment();
+
+  wards.records.forEach(w =&gt; {
+      const [id, name] = [w.record.fields.ward_id, w.record.fields.name];
+      const b = document.createElement(&quot;button&quot;);
+      b.innerText = name; b.onclick = displayData(id, name);
+      buttons.appendChild(b);
+  });
+  
+  let nav = document.getElementById(&quot;nav&quot;);
+  nav.textContent = '';
+  nav.append(buttons);
+}
+</code></pre>
+<p>This function is a callback that will receive the JSON object containing ward names.</p>
+<p>The first line creates a
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment"><code>DocumentFragment</code></a>
+called <code>buttons</code>. Loosely speaking, this is an object that can be used to
+collect a bunch of stuff that will be added to a page. When creating many new
+elements on a page it is prudent to add them to a <code>DocumentFragment</code> first, and
+only then add that <code>DocumentFragment</code> to the page. That way they will all appear
+on the page at roughly the same time.</p>
+<p>The next part of the function iterates through every ward. First, it extracts
+the <code>id</code> and <code>name</code> fields. Then, it creates a new <code>&lt;button&gt;</code>, and sets its text
+to be the name of the ward. When each of these buttons is clicked, the function
+returned by the call to <code>displayData</code> will be run. Each new button is then added
+to the <code>DocumentFragment</code> using the
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild"><code>appendChild</code></a>
+function.</p>
+<p>Finally, the <code>&lt;nav&gt;</code> is obtained by using its ID. Its contents are deleted, and
+replaced by the <code>DocumentFragment</code> containing all these new buttons, by using
+the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/append">append</a>
+function.</p>
+<p>In short, this is the bit of code that creates the buttons on the navigation
+section on the left!</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>Of course, someone could argue that the wards of Bristol do not change very
+often, and that as a consequence it is slow and wasteful to perform an HTTP
+request to obtain a list of wards; it would be much better to simply hard-code
+these buttons and their names into the app. This developer could well be right.</p>
+</div>
+</div>
+<p><em>Exercises.</em></p>
+<ol>
+<li>Modify the code above so that each button is on a separate line.</li>
+<li>Modify the code above so that buttons appear in alphabetical order.</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../js/static.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../js/dynamic2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../js/static.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../js/dynamic2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

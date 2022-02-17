@@ -1,0 +1,273 @@
+{
+   "links" : [
+      {
+         "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records?select=name%2Cward_id&limit=10&offset=0",
+         "rel" : "self"
+      },
+      {
+         "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records?select=name%2Cward_id&limit=10&offset=0",
+         "rel" : "first"
+      },
+      {
+         "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records?select=name%2Cward_id&limit=10&offset=30",
+         "rel" : "last"
+      },
+      {
+         "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records?select=name%2Cward_id&limit=10&offset=10",
+         "rel" : "next"
+      }
+   ],
+   "records" : [
+      {
+         "links" : [
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records/996b607b4c31e6aca6a7614bd02ea18a4c14c525",
+               "rel" : "self"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards",
+               "rel" : "dataset"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets",
+               "rel" : "datasets"
+            }
+         ],
+         "record" : {
+            "fields" : {
+               "name" : "Eastville",
+               "ward_id" : "E05010897"
+            },
+            "id" : "996b607b4c31e6aca6a7614bd02ea18a4c14c525",
+            "size" : 40500,
+            "timestamp" : "2020-09-03T10:02:58.597Z"
+         }
+      },
+      {
+         "links" : [
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records/bc2f85ccc34ca606a2fe6473491b5fc50fd4e0d1",
+               "rel" : "self"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards",
+               "rel" : "dataset"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets",
+               "rel" : "datasets"
+            }
+         ],
+         "record" : {
+            "fields" : {
+               "name" : "Southville",
+               "ward_id" : "E05010914"
+            },
+            "id" : "bc2f85ccc34ca606a2fe6473491b5fc50fd4e0d1",
+            "size" : 25544,
+            "timestamp" : "2020-09-03T10:02:58.597Z"
+         }
+      },
+      {
+         "links" : [
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records/8c04e4eedd5b987826c78243821456d366c9a0dc",
+               "rel" : "self"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards",
+               "rel" : "dataset"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets",
+               "rel" : "datasets"
+            }
+         ],
+         "record" : {
+            "fields" : {
+               "name" : "Cotham",
+               "ward_id" : "E05010895"
+            },
+            "id" : "8c04e4eedd5b987826c78243821456d366c9a0dc",
+            "size" : 14554,
+            "timestamp" : "2020-09-03T10:02:58.597Z"
+         }
+      },
+      {
+         "links" : [
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records/65f11dbd14f7e132a186a72eae5816d2d6c27026",
+               "rel" : "self"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards",
+               "rel" : "dataset"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets",
+               "rel" : "datasets"
+            }
+         ],
+         "record" : {
+            "fields" : {
+               "name" : "Henbury & Brentry",
+               "ward_id" : "E05010901"
+            },
+            "id" : "65f11dbd14f7e132a186a72eae5816d2d6c27026",
+            "size" : 50870,
+            "timestamp" : "2020-09-03T10:02:58.597Z"
+         }
+      },
+      {
+         "links" : [
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records/16b300d4534e3c1bff3789b71acd018870879305",
+               "rel" : "self"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards",
+               "rel" : "dataset"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets",
+               "rel" : "datasets"
+            }
+         ],
+         "record" : {
+            "fields" : {
+               "name" : "Lawrence Hill",
+               "ward_id" : "E05010907"
+            },
+            "id" : "16b300d4534e3c1bff3789b71acd018870879305",
+            "size" : 32724,
+            "timestamp" : "2020-09-03T10:02:58.597Z"
+         }
+      },
+      {
+         "links" : [
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records/8ebda5362750d238062bf2ccd6d497030a1ec51c",
+               "rel" : "self"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards",
+               "rel" : "dataset"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets",
+               "rel" : "datasets"
+            }
+         ],
+         "record" : {
+            "fields" : {
+               "name" : "St George Troopers Hill",
+               "ward_id" : "E05010911"
+            },
+            "id" : "8ebda5362750d238062bf2ccd6d497030a1ec51c",
+            "size" : 30130,
+            "timestamp" : "2020-09-03T10:02:58.597Z"
+         }
+      },
+      {
+         "links" : [
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records/fafcb51b400bb5974cb90c42ea73447a36c2b5f0",
+               "rel" : "self"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards",
+               "rel" : "dataset"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets",
+               "rel" : "datasets"
+            }
+         ],
+         "record" : {
+            "fields" : {
+               "name" : "Hartcliffe & Withywood",
+               "ward_id" : "E05010900"
+            },
+            "id" : "fafcb51b400bb5974cb90c42ea73447a36c2b5f0",
+            "size" : 22873,
+            "timestamp" : "2020-09-03T10:02:58.597Z"
+         }
+      },
+      {
+         "links" : [
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records/95e871fdb24a1ad4bcbd7eee8b66c12b3dd90744",
+               "rel" : "self"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards",
+               "rel" : "dataset"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets",
+               "rel" : "datasets"
+            }
+         ],
+         "record" : {
+            "fields" : {
+               "name" : "Clifton",
+               "ward_id" : "E05010893"
+            },
+            "id" : "95e871fdb24a1ad4bcbd7eee8b66c12b3dd90744",
+            "size" : 23489,
+            "timestamp" : "2020-09-03T10:02:58.597Z"
+         }
+      },
+      {
+         "links" : [
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records/f5905f2e2fa4374c5d9a5ef6efd7f9c3cf228fa6",
+               "rel" : "self"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards",
+               "rel" : "dataset"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets",
+               "rel" : "datasets"
+            }
+         ],
+         "record" : {
+            "fields" : {
+               "name" : "Bedminster",
+               "ward_id" : "E05010887"
+            },
+            "id" : "f5905f2e2fa4374c5d9a5ef6efd7f9c3cf228fa6",
+            "size" : 23086,
+            "timestamp" : "2020-09-03T10:02:58.597Z"
+         }
+      },
+      {
+         "links" : [
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records/28fad50adbbae57b648752539c2edb794086af96",
+               "rel" : "self"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards",
+               "rel" : "dataset"
+            },
+            {
+               "href" : "https://opendata.bristol.gov.uk/api/v2/catalog/datasets",
+               "rel" : "datasets"
+            }
+         ],
+         "record" : {
+            "fields" : {
+               "name" : "Ashley",
+               "ward_id" : "E05010885"
+            },
+            "id" : "28fad50adbbae57b648752539c2edb794086af96",
+            "size" : 18172,
+            "timestamp" : "2020-09-03T10:02:58.597Z"
+         }
+      }
+   ],
+   "total_count" : 34
+}
