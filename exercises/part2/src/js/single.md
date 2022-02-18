@@ -33,4 +33,5 @@ style.css
 script.js
 ```
 
-We will go through each one in detail.
+We will go through each one in detail. But before we do so, point your browser
+at `app.html` and try the application.
