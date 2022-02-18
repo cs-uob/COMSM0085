@@ -76,7 +76,11 @@ The expressions in the body correspond to the actual tree structure of the row.
 As a result, they are much more readable.
 
 *Exercise*. Rewrite the application using the functions defined above (and
-similar ones). Try to make it as succinct and readable as possible. For example,
-my version of the complete application (with life expectancy) runs to 114 lines,
-and that is without making particularly much effort to shorten the code, of
-which about 20 are the new functions.
+similar ones). Try to make it as succinct and readable as possible. 
+
+For example, my version of the complete application (with life expectancy) runs
+to 114 lines, and that is without making much of an effort to be succint. This
+is only 2 lines shorter than my previous version, but one must remember that
+about 20 of these lines are the new functions, and we could factor these out in
+a separate JavaScript
+[module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules).
