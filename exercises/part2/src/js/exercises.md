@@ -84,3 +84,10 @@ is only 2 lines shorter than my previous version, but one must remember that
 about 20 of these lines are the new functions, and we could factor these out in
 a separate JavaScript
 [module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules).
+This amounts to a 19% reduction in the amount of code - which can be rather
+significant in larger projects.
+
+Of course, larger projects are likely to use frameworks like React to build such
+applications, whose use of JSX and [function
+components](https://www.robinwieruch.de/react-function-component/) deal with
+exactly this sort of problem.
