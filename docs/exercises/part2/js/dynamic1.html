@@ -134,7 +134,11 @@
 
                 <div id="content" class="content">
                     <main>
+<<<<<<< HEAD
                         <h2 id="dynamic-structure"><a class="header" href="#dynamic-structure">Dynamic structure</a></h2>
+=======
+                        <h2><a class="header" href="#dynamic-structure-part-1" id="dynamic-structure-part-1">Dynamic structure, part 1</a></h2>
+>>>>>>> eb8f9f3 (final bit of JS activity)
 <p>When you point your browser at <code>app.html</code>, the &quot;Initialising...&quot; string appears
 in the left of the screen (the <code>&lt;nav&gt;</code>) only for a fraction of a second. This is
 the time it takes to load and execute the code in <code>script.js</code>, which provides
@@ -242,7 +246,8 @@ passed in two query parameters:</p>
   wards.records.forEach(w =&gt; {
       const [id, name] = [w.record.fields.ward_id, w.record.fields.name];
       const b = document.createElement(&quot;button&quot;);
-      b.innerText = name; b.onclick = displayData(id, name);
+      b.innerText = name;
+      b.onclick = displayData(id, name);
       buttons.appendChild(b);
   });
   
@@ -286,6 +291,7 @@ these buttons and their names into the app. This developer could well be right.<
 <li>Modify the code above so that each button is on a separate line.</li>
 <li>Modify the code above so that buttons appear in alphabetical order.</li>
 </ol>
+<p><em>Hint.</em> Both of these exercises can be completed by adding one line of code.</p>
 
                     </main>
 

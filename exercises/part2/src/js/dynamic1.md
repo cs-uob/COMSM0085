@@ -1,4 +1,4 @@
-## Dynamic structure
+## Dynamic structure, part 1
 
 When you point your browser at `app.html`, the "Initialising..." string appears
 in the left of the screen (the `<nav>`) only for a fraction of a second. This is
@@ -119,7 +119,8 @@ function populateWards(wards) {
   wards.records.forEach(w => {
       const [id, name] = [w.record.fields.ward_id, w.record.fields.name];
       const b = document.createElement("button");
-      b.innerText = name; b.onclick = displayData(id, name);
+      b.innerText = name;
+      b.onclick = displayData(id, name);
       buttons.appendChild(b);
   });
   
@@ -164,3 +165,5 @@ these buttons and their names into the app. This developer could well be right.
 *Exercises.*
 1. Modify the code above so that each button is on a separate line.
 2. Modify the code above so that buttons appear in alphabetical order.
+
+_Hint._ Both of these exercises can be completed by adding one line of code.
