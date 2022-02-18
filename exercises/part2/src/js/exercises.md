@@ -59,8 +59,8 @@ creates a new element with this tag, and appends everything in `xs` as children
 of this new element. Finally, it returns the newly constructed element.
 
 These functions allow us to create new elements of the DOM in a more functional
-style. For example, the rows of the population table can be created using the
-following code fragment:
+style. For example, an array containing the rows of the population table can be
+created using the following code fragment:
 
 ```javascript
   records.filter(d => d.record.fields.mid_year >= 2015)
