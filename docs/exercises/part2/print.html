@@ -1193,8 +1193,8 @@ can be defined:</p>
 creates a new element with this tag, and appends everything in <code>xs</code> as children
 of this new element. Finally, it returns the newly constructed element.</p>
 <p>These functions allow us to create new elements of the DOM in a more functional
-style. For example, the rows of the population table can be created using the
-following code fragment:</p>
+style. For example, an array containing the rows of the population table can be
+created using the following code fragment:</p>
 <pre><code class="language-javascript">  records.filter(d =&gt; d.record.fields.mid_year &gt;= 2015)
     .sort((x1, x2) =&gt; x1.record.fields.mid_year &lt; x2.record.fields.mid_year ? -1 : 1)
     .map(r =&gt;
