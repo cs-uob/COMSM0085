@@ -23,8 +23,8 @@ identical behaviour on all sorts of machines. (This is not entirely true
 however, because different JavaScript engines may fail to support various
 language features.)
 
-A basic version of the app can be found as `code/bristol-app.zip` in the
-repository. Download this file, and extract its contents in some location on
+A basic version of the app can be found as `code/javascript/bristol-app.zip` in
+the repository. Download this file, and extract its contents in some location on
 your machine. This should create a folder with exactly three files:
 
 ```
