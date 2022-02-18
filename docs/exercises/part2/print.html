@@ -804,11 +804,7 @@ body {
 comes first, it becomes the first <code>200px</code> column, and the <code>&lt;main&gt;</code> section
 becomes the <code>1fr</code> column.</p>
 <p>The <code>style.css</code> file also sets many other details, such as margins, colours, etc.</p>
-<<<<<<< HEAD
-<div style="break-before: page; page-break-before: always;"></div><h2 id="dynamic-structure"><a class="header" href="#dynamic-structure">Dynamic structure</a></h2>
-=======
-<h2><a class="header" href="#dynamic-structure-part-1" id="dynamic-structure-part-1">Dynamic structure, part 1</a></h2>
->>>>>>> eb8f9f3 (final bit of JS activity)
+<div style="break-before: page; page-break-before: always;"></div><h2 id="dynamic-structure-part-1"><a class="header" href="#dynamic-structure-part-1">Dynamic structure, part 1</a></h2>
 <p>When you point your browser at <code>app.html</code>, the &quot;Initialising...&quot; string appears
 in the left of the screen (the <code>&lt;nav&gt;</code>) only for a fraction of a second. This is
 the time it takes to load and execute the code in <code>script.js</code>, which provides
@@ -961,11 +957,8 @@ these buttons and their names into the app. This developer could well be right.<
 <li>Modify the code above so that each button is on a separate line.</li>
 <li>Modify the code above so that buttons appear in alphabetical order.</li>
 </ol>
-<<<<<<< HEAD
-<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="react"><a class="header" href="#react">React</a></h1>
-=======
 <p><em>Hint.</em> Both of these exercises can be completed by adding one line of code.</p>
-<h2><a class="header" href="#dynamic-structure-part-2" id="dynamic-structure-part-2">Dynamic structure, part 2</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="dynamic-structure-part-2"><a class="header" href="#dynamic-structure-part-2">Dynamic structure, part 2</a></h2>
 <p>The rest of <code>script.js</code> is concerned with displaying data about a given ward in
 the <code>&lt;main&gt;</code> section of the page. In fact, it consists of just one function,
 called <code>displayData</code>. Let us look at its structure, whilst eliding some of its
@@ -1060,7 +1053,7 @@ containing the name of the ward. Then, it calls the local function
 The <code>&lt;main&gt;</code> tag is retrieved through its unique ID, its contents are erased,
 and replaced by the heading and whatever was returned by <code>buildPopulation</code>.</p>
 <p>A version of this function is run every time someone clicks a ward button.</p>
-<h3><a class="header" href="#generating-tables" id="generating-tables">Generating tables</a></h3>
+<h3 id="generating-tables"><a class="header" href="#generating-tables">Generating tables</a></h3>
 <p>The rest of the application is contained in the auxiliary <code>buildPopulation</code> function:</p>
 <pre><code class="language-javascript">  function buildPopulation(records) {
 
@@ -1109,7 +1102,7 @@ heading, and returns a <code>DocumentFragment</code> consisting of the heading a
 table.</p>
 <p>Thus, this part of the application is responsible for retrieving and presenting
 the requested data.</p>
-<h3><a class="header" href="#exercises-2" id="exercises-2">Exercises</a></h3>
+<h3 id="exercises-2"><a class="header" href="#exercises-2">Exercises</a></h3>
 <p><em>Exercise (easy)</em>. Restrict the displayed data to present only population estimates after the year 2015. This may be achieved by changing the API call. However, a significantly easier way is to process the data after it has been retrieved, and discard unwanted records. (This can be achieved with one line of code.)</p>
 <p><em>Exercise</em>. Expand this application so it also presents an estimate of life
 expectancy for each ward. I recommend that you define an auxiliary function</p>
@@ -1150,7 +1143,7 @@ could do something like</p>
     // ... here you can use both data1 and data2 ...
   });
 </code></pre>
-<h2><a class="header" href="#simplifying-your-code" id="simplifying-your-code">Simplifying your code</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="simplifying-your-code"><a class="header" href="#simplifying-your-code">Simplifying your code</a></h2>
 <p>If you have changed the app so that it displays life expectancy as well, you
 will notice that you have amassed a formidable amount of code. For example, my
 solution runs to 116 lines - all to achieve something that is essentially
@@ -1214,9 +1207,9 @@ As a result, they are much more readable.</p>
 <p><em>Exercise</em>. Rewrite the application using the functions defined above (and
 similar ones). Try to make it as succinct and readable as possible. For example,
 my version of the complete application (with life expectancy) runs to 114 lines,
-and that is without making particularly much effort to shorten the code.</p>
-<h1><a class="header" href="#react" id="react">React</a></h1>
->>>>>>> eb8f9f3 (final bit of JS activity)
+and that is without making particularly much effort to shorten the code, of
+which about 20 are the new functions.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="react"><a class="header" href="#react">React</a></h1>
 <p><a href="react/reactjs.org">React</a> is a JavaScript web development framework built by facebook.</p>
 <h2 id="videos-5"><a class="header" href="#videos-5">Videos</a></h2>
 <table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
@@ -1690,11 +1683,7 @@ When hibernate creates a Region object and the parent / counties are not include
 <p>The first is to avoid infinite recursion (or finite but unnecessary bloat) when transferring a collection of objects via JSON or some other mechanism that does not have a concept of &quot;pointers&quot;. For example, when sending a country and its regions via JSON, we can't have the regions contain a copy of the country in their parent field (as that would cause infinite recursion), and JSON itself does not support a &quot;pointer&quot; data type, but we can emulate this by having the regions contain the country's code.</p>
 <p>If the data is being put back into proper objects on the client side (e.g. we had JavaScript classes for countries and regions) then the foreign keys could be used to set up &quot;pointers&quot; (technically: object references) correctly again.</p>
 <p>Secondly, foreign keys can be used for navigation. A common pattern is to include the foreign key in a link (in our case &quot;back to parent&quot;) as an option for the user. In other words, to provide a &quot;navigate to parent&quot; feature, you do not have to fetch/join the parent object and then read its primary key: you can just use the foreign key that you already have, saving a JOIN. Clicking a navigation link that was created using a foreign key ends up fetching the object (in this case a country) with the matching primary key.</p>
-<<<<<<< HEAD
-<div style="break-before: page; page-break-before: always;"></div><h1 id="exercises-2"><a class="header" href="#exercises-2">Exercises</a></h1>
-=======
-<h1><a class="header" href="#exercises-3" id="exercises-3">Exercises</a></h1>
->>>>>>> eb8f9f3 (final bit of JS activity)
+<div style="break-before: page; page-break-before: always;"></div><h1 id="exercises-3"><a class="header" href="#exercises-3">Exercises</a></h1>
 <p>To see if you have understood the request lifecycle, here are a couple of small exercises where you can make changes to the application.</p>
 <h2 id="client-side-change"><a class="header" href="#client-side-change">Client-side change</a></h2>
 <p>A change request comes in from the users: when viewing a unit (country, ward etc.), instead of just &quot;Contains:&quot;, the heading before the list of children should read e.g. &quot;Contains 5 wards:&quot;.</p>

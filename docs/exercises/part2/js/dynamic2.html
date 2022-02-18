@@ -134,7 +134,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2><a class="header" href="#dynamic-structure-part-2" id="dynamic-structure-part-2">Dynamic structure, part 2</a></h2>
+                        <h2 id="dynamic-structure-part-2"><a class="header" href="#dynamic-structure-part-2">Dynamic structure, part 2</a></h2>
 <p>The rest of <code>script.js</code> is concerned with displaying data about a given ward in
 the <code>&lt;main&gt;</code> section of the page. In fact, it consists of just one function,
 called <code>displayData</code>. Let us look at its structure, whilst eliding some of its
@@ -229,7 +229,7 @@ containing the name of the ward. Then, it calls the local function
 The <code>&lt;main&gt;</code> tag is retrieved through its unique ID, its contents are erased,
 and replaced by the heading and whatever was returned by <code>buildPopulation</code>.</p>
 <p>A version of this function is run every time someone clicks a ward button.</p>
-<h3><a class="header" href="#generating-tables" id="generating-tables">Generating tables</a></h3>
+<h3 id="generating-tables"><a class="header" href="#generating-tables">Generating tables</a></h3>
 <p>The rest of the application is contained in the auxiliary <code>buildPopulation</code> function:</p>
 <pre><code class="language-javascript">  function buildPopulation(records) {
 
@@ -278,7 +278,7 @@ heading, and returns a <code>DocumentFragment</code> consisting of the heading a
 table.</p>
 <p>Thus, this part of the application is responsible for retrieving and presenting
 the requested data.</p>
-<h3><a class="header" href="#exercises" id="exercises">Exercises</a></h3>
+<h3 id="exercises"><a class="header" href="#exercises">Exercises</a></h3>
 <p><em>Exercise (easy)</em>. Restrict the displayed data to present only population estimates after the year 2015. This may be achieved by changing the API call. However, a significantly easier way is to process the data after it has been retrieved, and discard unwanted records. (This can be achieved with one line of code.)</p>
 <p><em>Exercise</em>. Expand this application so it also presents an estimate of life
 expectancy for each ward. I recommend that you define an auxiliary function</p>
