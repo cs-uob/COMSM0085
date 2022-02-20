@@ -4,47 +4,27 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>A server in Java - Exercises</title>
-        
-        
-
-
         <!-- Custom HTML head -->
-        
-
-
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
-        
         <link rel="stylesheet" href="../css/print.css" media="print">
-        
-
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
-
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
         <link rel="stylesheet" href="../tomorrow-night.css">
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
-
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -103,7 +83,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -120,29 +99,23 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">Exercises</h1>
 
                     <div class="right-buttons">
-                        
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
-                        
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -150,8 +123,6 @@
                         </ul>
                     </div>
                 </div>
-                
-
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
@@ -163,9 +134,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#a-server-in-java" id="a-server-in-java">A server in Java</a></h1>
+                        <h1 id="a-server-in-java"><a class="header" href="#a-server-in-java">A server in Java</a></h1>
 <p>From now on, we will be using the Java language and the spring boot framework to run real web servers, as that is what you will be doing in your 2nd year software project (COMS20006).</p>
-<h2><a class="header" href="#compile-and-run" id="compile-and-run">Compile and run</a></h2>
+<h2 id="compile-and-run"><a class="header" href="#compile-and-run">Compile and run</a></h2>
 <p>Make sure you have java and maven installed as we did earlier in the unit. On alpine, you need to do the following if you have not done so already:</p>
 <ul>
 <li>Install the packages <code>openjdk8</code> and <code>maven</code>.</li>
@@ -174,7 +145,7 @@
 </ul>
 <p>Clone the repository <code>git@github.com:cs-uob/COMS10012</code> if you have not done so already, and navigate to the folder <code>code/server01</code>. In this folder, run <code>mvn spring-boot:run</code> to compile and run the sample application. The first time you do this, it might download lots of files.</p>
 <p>This runs a web server on port 8000.</p>
-<h2><a class="header" href="#explore-the-application" id="explore-the-application">Explore the application</a></h2>
+<h2 id="explore-the-application"><a class="header" href="#explore-the-application">Explore the application</a></h2>
 <p>The <code>pom.xml</code> file tells maven that this is a spring boot project, and what the project is called (<code>softwaretools.server01</code>).</p>
 <p>Under <code>src/main/resources</code> you find two files. First, <code>application.properties</code> which is a spring file configured to run on port 8000 (the default would otherwise be 8080). Secondly, a HTML file that the application can serve.</p>
 <p>Under <code>src/main/java</code> is the source code. This is only two files, but of course the whole spring framework is active when the application runs. <code>Server01Application</code> is the main class, but this just contains boilerplate code for now.</p>
@@ -188,7 +159,7 @@
 </ul>
 <p>The <code>mainPage</code> method, which is called when you load <code>localhost:8000</code>, shows the basic way to reply to a HTTP request: set up any headers you need - in this case the content type - and return a <code>ResponseEntity</code> taking three parameters: the HTTP body of the response to return (this will be shown in your browser), the HTTP headers to set, and the response code which is 200 (OK) here.</p>
 <p>The <code>htmlPage</code> method replies to requests for <code>localhost:8000/html</code>. Here we want to serve a file, so we use the resource loader to get it from the classpath which includes the <code>src/main/resources</code> folder (or rather, the version of it that ends up in the compiled JAR file). It also shows a second way to create a <code>ResponseEntity</code> using the <em>builder</em> pattern.</p>
-<h2><a class="header" href="#exercises" id="exercises">Exercises</a></h2>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
 <ul>
 <li>Compile and run the application, and test both <code>localhost:8000</code> an <code>localhost:8000/html</code> in your browser. Observe both the headers in the developer tools, and the log messages that spring prints out for each request.</li>
 <li>Add a method that replies to requests for <code>localhost:8000/bad</code> with a HTTP <code>404 NOT FOUND</code> error. The body of the page can be a simple string with a message of your choice. Stop and restart the application, and check that you get the correct error message when you try and open this page.</li>
@@ -198,67 +169,38 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../http/research.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
-
-                        
                             <a rel="next" href="../html5/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
-
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../http/research.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
-
-                
                     <a rel="next" href="../html5/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
-
-        
-
-        
-
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
-
-        
-
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
-
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
-
-        
-
     </body>
 </html>
