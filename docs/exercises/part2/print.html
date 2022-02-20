@@ -1241,7 +1241,7 @@ DOM API is designed. For example, it would be preferable if we had a constructor
 element of the DOM, and immediately initialize it with some text.</p>
 <p>Luckily, JavaScript is a particularly expressive language, and such an interface
 can be defined:</p>
-<pre><code class="language-javascript">function createElementWithText(tag, text) {
+<pre><code class="language-javascript">function createElementText(tag, text) {
   let elem = document.createElement(tag);
   elem.textContent = text;
   return elem;
