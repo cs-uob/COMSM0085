@@ -141,18 +141,25 @@ the time it takes to load and execute the code in <code>script.js</code>, which 
 the dynamic behaviour of the app.</p>
 <h3 id="making-some-buttons"><a class="header" href="#making-some-buttons">Making some buttons</a></h3>
 <p>Indeed, looking at <code>script.js</code> we notice that it goes straight into business:</p>
-<pre><code class="language-javascript">let wards = fetch('https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records?limit=50&amp;select=name,ward_id')
-  .then(response =&gt; response.json())
-  .then(populateWards)
-  .catch(err =&gt; console.log(err));
+<pre><code class="language-javascript">window.onload = function () {
+  let wards = fetch('https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records?limit=50&amp;select=name,ward_id')
+    .then(response =&gt; response.json())
+    .then(populateWards)
+    .catch(err =&gt; console.log(err));
+}
 </code></pre>
-<p>This code makes an HTTP request to the Bristol City Council API. This returns a
-promise; when it is resolved, it is parsed as JSON, which itself creates another
-promise. Finally, when <em>that</em> promise is resolved, the <code>populateWards</code> function
-is called, and is passed the parsed JSON as an argument. If any of these steps
-cause an error, the last line catches it, and prints it on the console. These
-four lines are a modern JavaScript idiom that uses all the latest technology:
-the fetch API; promises; and higher-order, anonymous functions.</p>
+<p>This fragment of code creates a function, and assigns it to
+<code>[window](https://developer.mozilla.org/en-US/docs/Web/API/Window).[onload](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload)</code>.
+This means that this function, which takes no arguments, will be called when the
+browser window has finished loading the page.</p>
+<p>The body of the function makes an HTTP request to the Bristol City Council API.
+This returns a promise; when it is resolved, it is parsed as JSON, which itself
+creates another promise. Finally, when <em>that</em> promise is resolved, the
+<code>populateWards</code> function is called with the fetched JSON as argument. If any of
+these steps cause an error, the last line catches it, and prints it on the
+console (only visible if you press F12). These four lines are a modern
+JavaScript idiom that uses all the latest technology: the fetch API; promises;
+and higher-order, anonymous functions.</p>
 <p>One might wonder: what will the input passed to <code>populateWards</code> in this call
 look like? To answer this we can peek at the above URL and see what it returns:
 on any Linux machine we may run</p>
