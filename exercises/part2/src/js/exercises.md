@@ -34,7 +34,7 @@ Luckily, JavaScript is a particularly expressive language, and such an interface
 can be defined:
 
 ```javascript
-function createElementWithText(tag, text) {
+function createElementText(tag, text) {
   let elem = document.createElement(tag);
   elem.textContent = text;
   return elem;
