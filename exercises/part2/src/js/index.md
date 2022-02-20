@@ -16,7 +16,7 @@
 * [MDN: Working with JSON](https://developer.mozilla.org/en-US/docs/Glossary/JSON)
 * [MDN: Asynchronous JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/)
 * [MDN: Manipulating documents](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents)
-* [MDN: Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+* [MDN: Fetching data from the server](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) (skip the section on `XMLHttpRequest`)
 
 
 ## Further

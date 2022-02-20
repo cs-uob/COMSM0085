@@ -9,18 +9,27 @@ the dynamic behaviour of the app.
 
 Indeed, looking at `script.js` we notice that it goes straight into business:
 ```javascript
-let wards = fetch('https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records?limit=50&select=name,ward_id')
-  .then(response => response.json())
-  .then(populateWards)
-  .catch(err => console.log(err));
+window.onload = function () {
+  let wards = fetch('https://opendata.bristol.gov.uk/api/v2/catalog/datasets/wards/records?limit=50&select=name,ward_id')
+    .then(response => response.json())
+    .then(populateWards)
+    .catch(err => console.log(err));
+}
 ```
-This code makes an HTTP request to the Bristol City Council API. This returns a
-promise; when it is resolved, it is parsed as JSON, which itself creates another
-promise. Finally, when _that_ promise is resolved, the `populateWards` function
-is called, and is passed the parsed JSON as an argument. If any of these steps
-cause an error, the last line catches it, and prints it on the console. These
-four lines are a modern JavaScript idiom that uses all the latest technology:
-the fetch API; promises; and higher-order, anonymous functions.
+
+This fragment of code creates a function, and assigns it to
+`[window](https://developer.mozilla.org/en-US/docs/Web/API/Window).[onload](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload)`.
+This means that this function, which takes no arguments, will be called when the
+browser window has finished loading the page.
+
+The body of the function makes an HTTP request to the Bristol City Council API.
+This returns a promise; when it is resolved, it is parsed as JSON, which itself
+creates another promise. Finally, when _that_ promise is resolved, the
+`populateWards` function is called with the fetched JSON as argument. If any of
+these steps cause an error, the last line catches it, and prints it on the
+console (only visible if you press F12). These four lines are a modern
+JavaScript idiom that uses all the latest technology: the fetch API; promises;
+and higher-order, anonymous functions.
 
 One might wonder: what will the input passed to `populateWards` in this call
 look like? To answer this we can peek at the above URL and see what it returns:

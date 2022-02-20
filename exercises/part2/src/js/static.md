@@ -16,6 +16,7 @@ nothing of substance! In fact, we can quote the complete file here:
     <title>The City of Bristol</title>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
   </head>
   <body>
     <header><h1>The City of Bristol</h1></header>
@@ -26,7 +27,6 @@ nothing of substance! In fact, we can quote the complete file here:
       <div class="initial">Please select one of the wards on the left to view more data about it.</div>
     </main>
     <footer>created by G. A. Kavvos</footer>
-    <script src="script.js"></script>
   </body>
 </html>
 ```
@@ -35,7 +35,9 @@ This is a very standard HTML file, which readily passes the [W3
 validator](https://validator.w3.org/). It consists of a `<head>` and a `<body>`.
 
 * The `<head>` sets the title, loads some nice fonts from the web, and declares
-  that `style.css` is the stylesheet.
+  that `style.css` is the stylesheet. Finally, the `<script>` tag tells the
+  browser that there is JavaScript code to be run in the file `script.js`, which
+  will be retrieved from the same location as the page that is being loaded.
 * The `<body>` describes a document with four sections:
   * There is a `<header>` with a big heading reading "The City of Bristol".
   * There is a `<nav>` [navigation
@@ -50,11 +52,14 @@ validator](https://validator.w3.org/). It consists of a `<head>` and a `<body>`.
 The two `<div>`'s are instances of the `.initial` class. Both `<nav>` and
 `<main>` have unique id attributes, so they can be referred to uniquely.
 
-Finally, note the `<script>` tag, which is the very final tag before the closing
-tag `</body>`. This tag tells the browser that there is JavaScript code to be
-run in the file `script.js`. Its location at the very end of the body means that
-it will be loaded more-or-less after the rest of the HTML file has been parsed,
-and a DOM structure has been created in memory.
+|||advanced
+It is generally agreed that [id attributes must be
+unique](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id)
+in an HTML document. However, there is no enforcing mechanism for this: the
+browser will _not_ check that we have not mistakenly re-used an id for some
+other tag. Again, this is in the interest in providing a smooth user experience
+without errors. Do not abuse this!
+|||
 
 This sparse document structure will be all that we need to present our single-page application.
 
