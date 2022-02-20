@@ -18,7 +18,7 @@ window.onload = function () {
 ```
 
 This fragment of code creates a function, and assigns it to
-`[window](https://developer.mozilla.org/en-US/docs/Web/API/Window).[onload](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload)`.
+[`window`](https://developer.mozilla.org/en-US/docs/Web/API/Window).[`onload`](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload).
 This means that this function, which takes no arguments, will be called when the
 browser window has finished loading the page.
 
@@ -128,7 +128,7 @@ function populateWards(wards) {
   wards.records.forEach(w => {
       const [id, name] = [w.record.fields.ward_id, w.record.fields.name];
       const b = document.createElement("button");
-      b.innerText = name;
+      b.textContent = name;
       b.onclick = displayData(id, name);
       buttons.appendChild(b);
   });
@@ -145,8 +145,9 @@ The first line creates a
 called `buttons`. Loosely speaking, this is an object that can be used to
 collect a bunch of stuff that will be added to a page. When creating many new
 elements on a page it is prudent to add them to a `DocumentFragment` first, and
-only then add that `DocumentFragment` to the page. That way they will all appear
-on the page at roughly the same time.
+only then add it to the page. That way they will all appear on the page at
+roughly the same time, and the user will not see new elements appear on the page
+one after the other.
 
 The next part of the function iterates through every ward. First, it extracts
 the `id` and `name` fields. Then, it creates a new `<button>`, and sets its text
@@ -173,6 +174,19 @@ these buttons and their names into the app. This developer could well be right.
 
 *Exercises.*
 1. Modify the code above so that each button is on a separate line.
-2. Modify the code above so that buttons appear in alphabetical order.
+2. Modify the code above so that buttons appear in alphabetical order. 
+3. The line
+   ```javascript
+   b.onclick = displayData(id, name);
+   ```
+   sets a button's [`onclick`](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick)property to be a newly-created function. Sometimes
+   this is undesirable. For example, if another script had already added some
+   code for what should happen when a button is clicked, this would completely
+   replace it. Change this line so that it instead adds an
+   [`EventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventListener)
+   to `b`, so that it simply adds functionality, without interfering with other
+   code.
 
-_Hint._ Both of these exercises can be completed by adding one line of code.
+[_Hint._ Exercises 1 and 2 can be completed by adding one line of code for each.
+For the second one, use [`Array.sort`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)].
+

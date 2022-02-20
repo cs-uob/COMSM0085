@@ -19,7 +19,7 @@
 * [MDN: Fetching data from the server](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) (skip the section on `XMLHttpRequest`)
 
 
-## Further
+### Further
 
 * [Wat](https://www.destroyallsoftware.com/talks/wat), a famous [lightning
   talk](https://en.wikipedia.org/wiki/Lightning_tal) by Gary Bernhardt (2012).

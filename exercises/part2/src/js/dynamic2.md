@@ -27,9 +27,9 @@ When called with two arguments `id` and `name`, the function `displayData` does 
    _helper function_.
 2. It returns an anonymous [arrow
    function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#arrow_functions).
-   Thus, `displayData` will return... a newly defined function! Recall that in
-   the previous part of the script, `displayData` was used only in one line,
-   namely 
+   Thus, `displayData` will return... a newly defined, anonymous function!
+   Recall that in the previous part of the script, `displayData` was used only
+   in one line, namely 
    ```javascript
       b.onclick = displayData(id, name);
    ```
@@ -163,7 +163,17 @@ the requested data.
 
 ### Exercises
 
-*Exercise (easy)*. Restrict the displayed data to present only population estimates after the year 2015. This may be achieved by changing the API call. However, a significantly easier way is to process the data after it has been retrieved, and discard unwanted records. (This can be achieved with one line of code.)
+*Exercise (easy)*. Make the app present only population estimates after the year
+2015. 
+
+This may be achieved in two ways:
+* by changing the REST API call; or
+* by processing the data after it has been fetched.
+
+The second one is significantly easier.
+
+[Hint: Moreover, the second one can be achieved with one line of code if you use
+[Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).]
 
 *Exercise*. Expand this application so it also presents an estimate of life
 expectancy for each ward. I recommend that you define an auxiliary function

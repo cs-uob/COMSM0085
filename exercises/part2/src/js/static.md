@@ -38,6 +38,19 @@ validator](https://validator.w3.org/). It consists of a `<head>` and a `<body>`.
   that `style.css` is the stylesheet. Finally, the `<script>` tag tells the
   browser that there is JavaScript code to be run in the file `script.js`, which
   will be retrieved from the same location as the page that is being loaded.
+  
+|||advanced
+If you look at introductory content on JavaScript on the internet, you will find many examples where JavaScript is included in a so-called _inline_ style. [For example](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#examples), you might see code of the form
+```javascript
+<script>alert("Hello World!");</script>
+```
+which embeds a fragment of JavaScript directly in the HTML file, instead of
+putting it in a separate `.js` file, and including it using an `src=` attribute
+like we did above.
+
+**Do not do this. This is very bad style. Always keep HTML and JS in separate files.**
+|||
+
 * The `<body>` describes a document with four sections:
   * There is a `<header>` with a big heading reading "The City of Bristol".
   * There is a `<nav>` [navigation

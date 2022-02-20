@@ -9,10 +9,10 @@ For example, to create the population data table we wrote the following code:
 
 ```javascript
 let year = document.createElement('td');
-year.innerText = r.record.fields.mid_year;
+year.textContent = r.record.fields.mid_year;
 
 let population = document.createElement('td');
-population.innerText = r.record.fields.population_estimate;
+population.textContent = r.record.fields.population_estimate;
 
 let row = document.createElement('tr');
 row.append(year, population);
@@ -22,21 +22,21 @@ table.appendChild(row);
 Staring at this code, certain patterns become evident: every time we want to
 create a new HTML tag, we must:
 1. create the HTML element,
-2. set its `innerHTML` (or `innerText` elsewhere, e.g. when making buttons), and
+2. set its `textContent` (or `innerHTML` elsewhere), and
 3. assemble things hierarchically (in rows, tables, etc.)
 
 This pattern occupies the majority of our code. It is an artifact of the way the
 DOM API is designed. For example, it would be preferable if we had a constructor
-`document.createElementWithHTML(tag, innerHTML)` which allowed to construct a
-new element of the DOM, and immediately initialize it with some HTML.
+`document.createElementWithText(tag, text)` which allowed to construct a new
+element of the DOM, and immediately initialize it with some text.
 
 Luckily, JavaScript is a particularly expressive language, and such an interface
 can be defined:
 
 ```javascript
-function createElementHTML(tag, html) {
+function createElementWithText(tag, text) {
   let elem = document.createElement(tag);
-  elem.innerHTML = html;
+  elem.textContent = text;
   return elem;
 }
 ```
