@@ -5,9 +5,13 @@
 
 ## Videos
 
-| Video | Length | Slides |
-|-------|-------:|--------|
-| [JavaScript](https://web.microsoftstream.com/video/254b5d16-7989-41bf-a7ff-f854443e4ff9) | 30 minutes | ? |
+| Video | Length |
+|-------|-------:|
+| [JavaScript](https://web.microsoftstream.com/video/254b5d16-7989-41bf-a7ff-f854443e4ff9) | 6 minutes |
+| [JavaScript: Basics](https://web.microsoftstream.com/video/254b5d16-7989-41bf-a7ff-f854443e4ff9) | 30 minutes |
+| [Objects and JSON](about:blank) | |
+| [Asynchronous JavaScript](about:blank) | |
+| [JavaScript in the browser](https://web.microsoftstream.com/video/bb8f121f-af7f-4675-bc58-5aac466f110d) | 22 minutes |
 
 ## Readings
 
@@ -15,12 +19,12 @@
 
 * [MDN: Working with JSON](https://developer.mozilla.org/en-US/docs/Glossary/JSON)
 * [MDN: Asynchronous JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/)
-* [MDN: Manipulating documents](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents)
 * [MDN: Fetching data from the server](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) (skip the section on `XMLHttpRequest`)
-
+* [MDN: Manipulating documents](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents)
 
 ### Further
 
+* [MDN: Document Object Model (DOM)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) (see guides on the left)
 * [Wat](https://www.destroyallsoftware.com/talks/wat), a famous [lightning
   talk](https://en.wikipedia.org/wiki/Lightning_tal) by Gary Bernhardt (2012).
 
