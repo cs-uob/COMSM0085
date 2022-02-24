@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:replace="layout.html :: head(title='Region ' + ${region.name})"></head>
+    <body>
+        <nav th:replace="layout.html :: nav"></nav>
+        <header>
+            <h1 th:text="'Region: ' + ${region.name}"></h1>
+        </header>
+        <main>
+            <h2>Region details:</h2>
+            <p><em class="blocklabel">Name: </em><span th:text="${region.name}"></span></p>
+            <p><em class="blocklabel">ID: </em><span th:text="${region.code}"></span></p>
+            <p><em class="blocklabel">Part of: </em><span th:text="${region.parent.name}"></span> (<a th:href="'/country/show/' + ${region.parent.code}" th:text="${region.parent.code}"></a>)</p>
+            <h2>Counties in this region:</h2>
+            <ul th:each="county : ${region.counties}">
+                <li>
+                    <span th:text="${county.name}"></span>
+                    (<a th:href="'/county/show/' + ${county.code}" th:text="${county.code}"></a>)
+                </li>
+            </ul>
+            <p class="separator"></p>
+            <p><a href="/region/all">Back to regions list</a></p>
+        </main>
+    </body>
+</html>

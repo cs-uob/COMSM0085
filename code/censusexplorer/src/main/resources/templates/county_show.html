@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:replace="layout.html :: head(title='County: ' + ${county.name})"></head>
+    <body>
+        <nav th:replace="layout.html :: nav"></nav>
+        <header>
+            <h1 th:text="'County: ' + ${county.name}"></h1>
+        </header>
+        <main>
+            <h2>County details:</h2>
+            <p><em class="blocklabel">Name: </em><span th:text="${county.name}"></span></p>
+            <p><em class="blocklabel">ID: </em><span th:text="${county.code}"></span></p>
+            <p><em class="blocklabel">Part of: </em><span th:text="${county.parent.name}"></span> (<a th:href="'/region/show/' + ${county.parent.code}" th:text="${county.parent.code}"></a>)</p>
+            <h2>Wards in this county:</h2>
+            <p>TO DO</p>
+        </main>
+    </body>
+</html>

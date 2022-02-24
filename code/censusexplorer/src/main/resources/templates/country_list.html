@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:replace="layout.html :: head(title='List of Countries')"></head>
+    <body>
+        <nav th:replace="layout.html :: nav"></nav>
+        <header>
+            <h1>List of Countries</h1>
+        </header>
+        <main>
+            <ul th:each="country: ${countries}">
+                <li><span th:text="${country.name}"></span> (<a th:href="'/country/show/' + ${country.code}" th:text="${country.code}"></a>)</li>
+            </ul>
+        </main>
+    </body>
+</html>

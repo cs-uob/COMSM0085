@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:replace="layout.html :: head(title='List of Regions')"></head>
+    <body>
+        <nav th:replace="layout.html :: nav"></nav>
+        <header>
+            <h1>List of Regions</h1>
+        </header>
+        <main>
+            <ul th:each="region: ${regions}">
+                <li><span th:text="${region.name}"></span> (<a th:href="'/region/show/' + ${region.code}" th:text="${region.code}"></a>)</li>
+            </ul>
+        </main>
+    </body>
+</html>

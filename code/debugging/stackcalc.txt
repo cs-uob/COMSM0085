@@ -1,0 +1,59 @@
+Stack Calculator Documentation
+
+This program implements a simple RPN/stack calculator. You can use the digits 0-9 and the
+four operators "+-*/". You can use spaces between numbers and operators, and you must use
+spaces to separate numbers e.g. "12" is the number 12 but "1 2" is the number 1 followed
+by the number 2. The strings "1 2+" and "1 2 +" and any variation on these that adds more
+spaces have exactly the same effect.
+
+The program reads tokens (numbers or operators) from left to right and
+  - for every number read, pushes it onto the stack
+  - for every operator read, pops two values off the stack, operates on them and pushes
+    the result back on the stack.
+An expression is valid if, at the end of evaluating, there is exactly one value on the
+stack and there was never an operator encountered while there were fewer than two values
+on the stack.
+
+Terminate the program by closing standard input (e.g. Control+D on a fresh line on the
+terminal.)
+
+Compile with "-l readline". You might need to "sudo apk add readline-dev" first.
+
+For example,
+
+"1 2 +" -> 3.0000 (all output and calcuations are done on doubles).
+"1 2 + 4 *" -> 12.0000 (this is (1+2)*4, note how RPN never needs brackets).
+"1" -> 1.0000 (a number on its own just evaluates to itself).
+"01" -> 1.0000 (leading zeroes are ignored).
+
+Errors
+
+If the stack limit of 10 is exceeded, you get "Error, stack full".
+
+"1 2 3 4 5 6 7 8 9 0 1" -> Error
+
+If you put an operator when there are fewer than two values on the stack, you get the
+message "Error, operator on empty stack."
+
+"+ 1" -> Error
+"1 + 1" -> Error
+"1 1 +" -> 2.0000 (not an error)
+"1 +" -> Error
+"1 2 + 3 -" -> 0.0000 (not an error)
+"1 2 + - 3" -> Error (the minus appears when there is only one value on the stack)
+
+Any character other than the ones specified above is an error. Note that we don't
+need to handle newlines, because readline() strips them for us, and we stop on
+reaching the end of the string.
+
+If there is no value or more than one value on the stack at the end of the line,
+you get "Error, expected exactly one value but got #." where # is the number of
+values on the stack at the end.
+
+"" -> Error
+"1 2" -> Error
+"1" -> 1.0000 (not an error, although not particularly insightful either)
+"1 2 + 3" -> Error
+
+Division by zero produces an inf or -inf double value, inf/inf or 0/0 produces NaN.
+These are not errors as far as the program is concerned.
