@@ -13,6 +13,7 @@ Please see the following pages for more details:
 The unit materials are available at the following locations:
 
   - [Part 1, weeks 13-17](exercises/part1/)
+  - [Part 2, weeks 19-23](exercises/part2/)
   
 <footer>
   <p> 
