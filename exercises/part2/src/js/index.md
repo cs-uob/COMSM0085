@@ -32,7 +32,7 @@ folder of the repository.
 * [MDN: Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 * [MDN: Document Object Model (DOM)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) (see guides on the left)
 * [Wat](https://www.destroyallsoftware.com/talks/wat), a famous [lightning
-  talk](https://en.wikipedia.org/wiki/Lightning_tal) by Gary Bernhardt (2012).
+  talk](https://en.wikipedia.org/wiki/Lightning_talk) by Gary Bernhardt (2012).
 
 ### Advanced
 
