@@ -24,7 +24,7 @@ however, because different JavaScript engines may fail to support various
 language features.)
 
 A basic version of the app can be found at
-[`code/javascript/bristol-app`](https://github.com/cs-uob/COMSM0085/blob/master/code/javascript/bristol-app)
+[`code/javascript/bristol-app`](https://github.com/cs-uob/COMS10012/blob/master/code/javascript/bristol-app)
 in the repository. It comprises three files:
 
 ```
