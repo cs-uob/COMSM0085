@@ -1,0 +1,61 @@
+html {
+  font-size: 12pt;
+  font-family: 'Libre Baskerville', serif;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+nav {
+  text-align: center;
+}
+
+nav > button {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin: 1em 1em 1em 1em;
+  box-shadow: 5px 5px;
+}
+
+main {
+  margin: 1em 0em 0em 1em;
+}
+
+.initial {
+  margin-left: 2rem;
+  margin-top: 2rem;
+  margin-right: auto;
+}
+
+#populationTable {
+  border: 1px solid black;
+  margin-left: 4rem;
+  margin-right: auto;
+}
+
+#populationTable th, #populationTable td {
+  text-align: center;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+header {
+  color: white;
+  background-color: slateblue;
+  grid-column: span 2;
+}
+
+header > h1 {
+  margin-left: 50px;
+  margin-right: auto;
+}
+
+footer {
+  margin-top: 2em;
+  padding: 1em 0em 1em 0em;
+  text-align: center;
+  background-color: slateblue;
+  color: white;
+  grid-column: span 2;
+}

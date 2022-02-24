@@ -41,4 +41,4 @@ The following references go significantly beyond the curriculum.
 * [MDN: Inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain). This is a guide to the protoyping-style object-orientation of JavaScript.
 * [MDN: The event loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop). This explains the concurrency model of JavaScript, as well as the way asynchronous code and promises arehandled.
 * [Structure and Interpretation of Computer Programs, JS edition](https://sourceacademy.org/sicpjs/) (2022). This is a classic programming book that has been recently rewritten in JavaScript.
-* Boris Cherny (2019). "[Programming TypeScript](https://bris.on.worldcat.org/oclc/1099253345)". This is a book-length introduction to TypeScript, a typed extension to JavaScript which is also supported by React.
+* Boris Cherny, "[Programming TypeScript](https://bris.on.worldcat.org/oclc/1099253345)" (2019). This is a book-length introduction to TypeScript, a typed extension to JavaScript which is also supported by React.
