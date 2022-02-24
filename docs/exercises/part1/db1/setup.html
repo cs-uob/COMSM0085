@@ -159,39 +159,39 @@
 </code></pre>
 <p>This adds the mariadb service to the &quot;default&quot; runlevel, which is for things that you want to start when the machine starts. For example, the ssh service is already here otherwise you would not be able to log in to the machine with <code>vagrant ssh</code> at all. Check with another <code>rc-status</code> that mariadb is still running, but now listed under &quot;default&quot;.</p>
 <h2 id="security"><a class="header" href="#security">Security</a></h2>
-<p>You now have a running database and you can log in with <code>mysql</code>. However, the database will allow anyone to log in and change anything, which is not what you want - especially not on a production machine.</p>
-<p>Most distributions come with a <code>mysql_secure_installation</code> script that prompts you for a database root password and sets up accounts. We are going to do a similar thing, but with a custom setup for our purposes.</p>
+<p>To log in to a database, you normally need a user account and an authentication factor (such as a password, or a private key). However, in the latest Alpine version, mysql user accounts are linked to system user accounts. Try out the following:</p>
+<ul>
+<li>As <code>vagrant</code>, log in to the database with <code>mysql</code>. You should see the mysql prompt. Try <code>SHOW DATABASES;</code> including the semicolon at the end, and press ENTER. You should see two databases including a default one called <code>test</code>. Exit again with <code>exit</code> or Control+D.</li>
+<li>Try <code>sudo mysql</code> then <code>SHOW DATABASES;</code> again. You should now see more databases, including one called <code>mysql</code>. Then log out again.</li>
+</ul>
+<p>The mysql command line tool tries to log you in to the database using the same user account as your current system one - it uses a system call to get the id and name of the user calling it - so when you run it as the system root user (with sudo), then you also get logged in to the database as the database root user, which is why you can see more databases. The <code>mysql</code> database contains tables with database configuration including user accounts and other settings.</p>
+<p>The default set-up will allow anyone to log in and see some of the database, for example the <code>test</code> tables. This is not particularly secure. Most distributions come with a <code>mysql_secure_installation</code> script that sets up more secure access rights. We are going to do a similar thing, but with a custom setup for our purposes.</p>
 <p>The setup file is located at the address given below. You can download it for example with <code>wget ADDRESS</code> in Alpine linux; <code>wget</code> is a download program. Place it in the same folder as your Vagrantfile (in <code>/vagrant</code>, if you're doing the download from within Alpine).</p>
-<pre><code>https://cs-uob.github.io/COMS10012/resources/databases/secure-setup.sql
+<pre><code>https://raw.githubusercontent.com/cs-uob/COMS10012/master/code/databases/secure-setup.sql
 </code></pre>
 <ul>
-<li>Run <code>mysql -u root</code>. This should log you in as root without any authentication, which explains why I am making such a fuss about security! Quit again by typing Control+D.</li>
-<li>Run <code>mysql -u root -e 'source /vagrant/secure-setup.sql'</code>. The <code>-e</code> command means &quot;run the following command line argument as a script&quot;, as you know already from sed and several other tools; <code>source</code> means &quot;load a file and run it&quot; and the file in question is part of the lab package I have prepared for you.</li>
-<li>Run <code>mysql -u root</code> again. This time, it will not let you in, which is what we want.</li>
+<li>Run the command <code>sudo mysql -e 'source /vagrant/secure-setup.sql'</code> to run this script as the database root user.</li>
+<li>Now try a simple <code>mysql</code> again. This time, it should not let you log in.</li>
 </ul>
+<p>The <code>-e</code> option to mysql means &quot;run the following command line argument as a script&quot;, as you know already from sed and several other tools; <code>source</code> means &quot;load a file and run it&quot; and the file in question is part of the lab package I have prepared for you.</p>
 <p>The secure-setup script is as follows:</p>
-<pre><code class="language-sql">UPDATE mysql.user SET Password=PASSWORD('BA/458cR-5p.') WHERE User='root';
-DELETE FROM mysql.user WHERE User='';
+<pre><code class="language-sql">DELETE FROM mysql.user WHERE User='';
 DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
 DROP DATABASE IF EXISTS test;
 DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
 FLUSH PRIVILEGES;
 </code></pre>
-<p>The first line sets a root password, and also shows the absolute minimum standard for a password: 12 characters, mix of uppercase, lowercase and symbols, random-ish. This is the password that you will be using to log in as root to your database on the VM, but of course you can change it if you want to.</p>
-<ul>
-<li>Type <code>mysql -u root -p</code> on the command line and press Enter. <code>-p</code> means &quot;if a password is needed, prompt for one&quot;. You will be asked for the root password, type it in (without the quotes) and you should be let back in to the database. Once you are in, if you'd like to, you can use the first command from the secure-setup script to set a new password of your own.</li>
-</ul>
-<p>The next two lines remove some default users: one with the empty username, and all versions of root that let you log in over the network. The only versions of root that still exist are now &quot;localhost&quot; (e.g. from the same machine), 127.0.0.1 (same thing but using IPV4 notation) and &quot;::1&quot; (same in IPv6). This means that now, if your VM is connected to the internet, you cannot log in as root remotely at all, even with the password, which is the correct attitude to security. To administer a database, you should always first log in to the machine via ssh using a key file, then log in to the database from the machine itself.</p>
+<p>The first two lines remove some default users: one with the empty username, and all versions of root that let you log in over the network. The only versions of root that still exist are now &quot;localhost&quot; (e.g. from the same machine), 127.0.0.1 (same thing but using IPV4 notation) and &quot;::1&quot; (same in IPv6). This means that now, if your VM is connected to the internet, you cannot log in as root remotely at all, which is the correct attitude to security. To administer a database, you should always first log in to the machine via ssh using a key file, then log in to the database from the machine itself.</p>
 <p>Next in the setup script, we remove the default test database and user.</p>
 <p>Finally, <code>FLUSH PRIVILEGES</code> updates the in-memory cache of the users table, making your new permissions take effect.</p>
-<p>Note: what happens when you install the mariadb package (or install it from a ZIP file) depends on the distribution. For some distributions, installing the package automatically creates a database, and adds the server to the default runlevel. Alpine will not do any of these things for you - you have to configure it itself, which is a good opportunity to learn what's going on behind the scenes in other distributions. Most distributions will not, however, configure the security settings automatically - some of them prompt for a root password at installation, but typically leave the test database and let root login remotely. Wherever you install mariadb or mysql, please check this yourself - an unsecured database is something that hackers will be keeping an eye out for.</p>
+<p>Note: what happens when you install the mariadb package (or install it from a ZIP file) depends on the distribution. For some distributions, installing the package automatically creates a database, and adds the server to the default runlevel. Alpine will not do any of these things for you - you have to configure it itself, which is a good opportunity to learn what's going on behind the scenes in other distributions. Most distributions will not, however, configure the security settings automatically - they typically leave the test database and let root login remotely. Wherever you install mariadb or mysql, please check this yourself - an unsecured database is something that hackers will be keeping an eye out for.</p>
 <h2 id="importing-sample-data"><a class="header" href="#importing-sample-data">Importing sample data</a></h2>
 <p>I have prepared some sample data that we will be using in this and the following weeks.</p>
-<p>First, download the following two files and place them in the same folder as your Vagrantfile. You can do this the same way as you did before with the secure setup file.</p>
-<pre><code>https://cs-uob.github.io/COMS10012/resources/databases/sample-data.sql
-https://cs-uob.github.io/COMS10012/resources/databases/sampledata.tar
+<p>First, download the following two files and place them in the same folder as your Vagrantfile. This folder is important as the <code>sample-data.sql</code> script contains hard-coded absolute paths starting in <code>/vagrant/</code> to import some of the data. You can download the files the same way as you did before with the secure setup file.</p>
+<pre><code>https://raw.githubusercontent.com/cs-uob/COMS10012/master/code/databases/sample-data.sql
+https://raw.githubusercontent.com/cs-uob/COMS10012/master/code/databases/sampledata.tar
 </code></pre>
-<p>If you are using a local copy of this repository, you can also find the files under <code>/resources/databases</code>.</p>
+<p>If you are using a local copy of this repository, you can also find the files under <code>/code/databases</code>.</p>
 <p>The <code>tar</code> file is a <em>tape archive</em>: a file that contains further files and folders, as if it were a folder itself. Extract it by going to <code>/vagrant</code> in Alpine and run</p>
 <pre><code>tar xvf sampledata.tar
 </code></pre>
@@ -203,8 +203,8 @@ https://cs-uob.github.io/COMS10012/resources/databases/sampledata.tar
 <p>To create a tar file yourself, the command would be <code>tar cvf ARCHIVE.tar FILE1 FILE2...</code> where c=create the archive if it doesn't exist, and assume all arguments not consumed by another flag refer to files to be added. In fact, <code>tar xvf ARCHIVE.tar FILES...</code> also works and only extracts the named files from the archive.</p>
 </div>
 </div>
-<p>Load the sample data with the following command, which will ask for your root password:</p>
-<pre><code class="language-sh">$ mysql -u root -p -e &quot;source /vagrant/sample-data.sql&quot;
+<p>Load the sample data with the following command:</p>
+<pre><code class="language-sh">sudo mysql -e 'source /vagrant/sample-data.sql'
 </code></pre>
 <p>This pulls in some data in CSV files (have a look at the script if you want) and creates a default user &quot;vagrant&quot; who can log in to the database without a password, but can only read and not write the two sample databases &quot;census&quot; and &quot;elections&quot;. There is another database called &quot;data&quot; which starts out empty, and &quot;vagrant&quot; can both read and write it.</p>
 <p>You can now log in to the database and try the following:</p>
@@ -229,10 +229,10 @@ https://cs-uob.github.io/COMS10012/resources/databases/sampledata.tar
 <pre><code class="language-sh">/etc/init.d/mariadb setup
 rc-update add mariadb default
 rc-service mariadb start
-mysql -u root -e 'source /vagrant/sample-data.sql'
-mysql -u root -e 'source /vagrant/secure-setup.sql'
+mysql -e 'source /vagrant/secure-setup.sql'
+mysql -e 'source /vagrant/sample-data.sql'
 </code></pre>
-<p>This ensures that whenever vagrant recreates the VM, it installs the database for us. The commands are basically the ones that we have done just now, except that we source the sample data before running the secure setup. This is so that the sample data command does not need a password, as none has been set so far - that only happens during the secure setup command.</p>
+<p>This ensures that whenever vagrant recreates the VM, it installs the database for us. The commands are the same ones that we have done just now ourselves.</p>
 
                     </main>
 
