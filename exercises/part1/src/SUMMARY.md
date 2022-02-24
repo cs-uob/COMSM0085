@@ -19,6 +19,12 @@
 - [POSIX Activity 3](./posix3/index.md)
   - [inodes and system calls](./posix3/stat.md)
   - [shell scripting](./posix3/script.md)
+- [BONUS: Posix Activity 4](./posix4/index.md)
+  - [Concurrent programming in POSIX](./posix4/concurrent.md)
+  - [Pipes in C](./posix4/cpipe.md)
+  - [Input/Output in C](./posix4/c_io.md)
+  - [Input/Output in POSIX](./posix4/posix_io.md)
+  - [The final challenge](./posix4/final.md)
 
 # Build Tools
 
