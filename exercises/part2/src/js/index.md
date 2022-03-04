@@ -22,9 +22,9 @@ folder of the repository.
 
 ### Essential
 
-* [MDN: Working with JSON](https://developer.mozilla.org/en-US/docs/Glossary/JSON)
+* [MDN: Working with JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
 * [MDN: Asynchronous JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/)
-* [MDN: Fetching data from the server](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) (skip the section on `XMLHttpRequest`)
+* [MDN: Fetching data from the server](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data) (skip the section on `XMLHttpRequest`)
 * [MDN: Manipulating documents](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents)
 
 ### Further
