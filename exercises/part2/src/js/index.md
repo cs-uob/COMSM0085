@@ -11,8 +11,8 @@
 | [JavaScript: Basics](https://web.microsoftstream.com/video/43d4137d-21d2-4846-9bcb-59b769a793ca) | 30 minutes |
 | [JS Objects (incl. JSON)](https://web.microsoftstream.com/video/a7b9c1dc-c400-442f-b2c7-9bcb246420f3) | 12 minutes |
 | [Counting words in a novel](https://web.microsoftstream.com/video/0ad0c7c3-334f-44f7-b91d-7ecd9bcaab62) | 11 minutes |
-| [Asynchronous JavaScript](https://web.microsoftstream.com/video/4b559613-3bba-4295-8c70-d5e138cba485) | 28 minutes |
 | [JavaScript in the browser](https://web.microsoftstream.com/video/bb8f121f-af7f-4675-bc58-5aac466f110d) | 22 minutes |
+| [Asynchronous JavaScript](https://web.microsoftstream.com/video/4b559613-3bba-4295-8c70-d5e138cba485) | 28 minutes |
 
 All the example code for these lectures can be found in the
 [`code/javascript`](https://github.com/cs-uob/COMS10012/tree/master/code/javascript)
@@ -23,9 +23,9 @@ folder of the repository.
 ### Essential
 
 * [MDN: Working with JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
+* [MDN: Manipulating documents](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents)
 * [MDN: Asynchronous JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/)
 * [MDN: Fetching data from the server](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data) (skip the section on `XMLHttpRequest`)
-* [MDN: Manipulating documents](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents)
 
 ### Further
 
