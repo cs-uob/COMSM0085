@@ -4,7 +4,7 @@ Now that you know some CSS, you could write your own framework - one or more sty
 
 ## Milligram
 
-[Milligram](milligram.io) is, in its own words, a "minimalist CSS framework".
+[Milligram](https://milligram.io) is, in its own words, a "minimalist CSS framework".
 
 Download the [page1.html](../resources/page1.html) file and open it in the browser: it contains some text and a sign-up form for a CSS conference.
 
@@ -45,7 +45,7 @@ Have a look in your browser's developer tools at how milligram styles the page: 
 
 ## Bulma
 
-[Bulma](bulma.io) is a larger but still fairly lightweight CSS framework. Unlike milligram, it only styles parts of the page you tell it to (but it sets a default font), and it has some more components to build things like menus or panels.
+[Bulma](htttps://bulma.io) is a larger but still fairly lightweight CSS framework. Unlike milligram, it only styles parts of the page you tell it to (but it sets a default font), and it has some more components to build things like menus or panels.
 
 Start with [page2.html](../resources/page2.html), have a look at the raw page and then add the following to the header (the viewport tag is already there):
 
@@ -102,6 +102,6 @@ Finally, add and style a [bulma component](https://bulma.io/documentation/compon
 
 ## Bootstrap
 
-The most popular CSS framework is [bootstrap](getbootstrap.com), developed by twitter. If you are interested and have some spare time, you can have a look at it - it has lots of different components and options to customise the styling further with themes.
+The most popular CSS framework is [bootstrap](https://getbootstrap.com), developed by twitter. If you are interested and have some spare time, you can have a look at it - it has lots of different components and options to customise the styling further with themes.
 
 Bootstrap includes a JavaScript file as well as a stylesheet: for some components like tabbed pages, you need the scripts to make clicking on a tab switch to the correct content.
