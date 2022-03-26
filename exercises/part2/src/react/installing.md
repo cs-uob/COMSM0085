@@ -6,7 +6,7 @@ JavaScript's original selling point was that it runs in the browser. [NodeJS](no
 
 NodeJS comes with its own package manager, NPM (NodeJS Package Manager). The shell command to run it is `npm`, but there is also `npx` which downloads the latest version of a package and immediately runs it, if it contains a command-line tool.
 
-  - Install NodeJS for your operating system. On alpine, use `sudo apk add nodejs-npm`; for other operating systems you can download it from [nodejs.org](https://nodejs.org/en/) or use your system's package manager, if available.
+  - Install NodeJS for your operating system. On alpine, use `sudo apk add nodejs npm`; for other operating systems you can download it from [nodejs.org](https://nodejs.org/en/) or use your system's package manager, if available.
 
 ## Your first React app
 
