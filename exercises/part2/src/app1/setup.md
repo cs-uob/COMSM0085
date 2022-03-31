@@ -25,7 +25,7 @@ The client lives in `code/application/client` in the unit repository.
 There are two ways to run the client. First (and recommended), install nodejs and npm if you have not done so already - this can be on a VM or on your local machine - open a terminal in the `client` folder and run the following:
 
   - `npm install` to download and install the dependencies. These will end up in a folder `node_modules`, which is (sensibly) excluded from the repository via a `.gitignore` file in the same folder. You will get some warnings which you can ignore for now.
-  - `npm run-scripts build` will build the application and put the results in the `build` folder (which is also sensibly excluded from the repository).
+  - `npm run-script build` will build the application and put the results in the `build` folder (which is also sensibly excluded from the repository).
   - Copy the contents of the `build/` folder to the folder `../src/main/resources/static/` (the `../` is relative to the `client/` folder)  for the Java application to serve.
 
 If you are actively developing the react application, then instead of building it you can use `npm start` which will run a development server on `localhost:3000`. The advantage of this method is that whenever you change a source file in the client folder, it will recompile and reload the react client automatically.
