@@ -105,8 +105,9 @@ The schedule for [part 2](exercises/part2) of the unit will be:
 
 The materials on this website will be updated throughout the course. You can
 generally expect that the exercise materials for both the _current_ and _next_
-week are up-to-date, to support your preparation. Videos for later sessions may
+weeks are up-to-date, to support your preparation. Videos for later sessions may
 not be available earlier than one week in advance, but if they are present then
-you may safely watch them if you wish. Exercises for later sessions may undergo
-minor alterations, but should remain essentially the same.
+you may safely watch them when you wish. Practical exercises for later sessions 
+may undergo minor alterations, but should remain essentially the same (barring
+the Week 21 webscraping content, which is new this year and not yet available).
 

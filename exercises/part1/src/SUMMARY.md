@@ -2,20 +2,23 @@
 
 [Overview](./overview.md)
 
-# POSIX
+# Week 1: Basics & Git
 
 - [POSIX Activity 1](./posix1/index.md)
   - [Secure shell](./posix1/ssh.md)
   - [Installing vagrant and alpine linux](./posix1/install.md)
   - [Alpine linux system administration](./posix1/admin.md)
   - [Shell expansion](./posix1/shell.md)
-- [POSIX Activity 2](./posix2/index.md)
-  - [File permissions](./posix2/permissions.md)
-  - [Pipes](./posix2/pipes.md)
 - [Git](./git/index.md)
   - [Git, part 1](./git/git1.md)
   - [Git, part 2](./git/git2.md)
   - [Git, part 3](./git/git3.md)
+
+# Week 2: POSIX 
+
+- [POSIX Activity 2](./posix2/index.md)
+  - [File permissions](./posix2/permissions.md)
+  - [Pipes](./posix2/pipes.md)
 - [POSIX Activity 3](./posix3/index.md)
   - [inodes and system calls](./posix3/stat.md)
   - [shell scripting](./posix3/script.md)
@@ -26,7 +29,7 @@
   - [Input/Output in POSIX](./posix4/posix_io.md)
   - [The final challenge](./posix4/final.md)
 
-# Build Tools
+# Week 3: Build Tools
 
 - [Build Tools](./build2/index.md)
   - [C](./build2/c.md)
@@ -34,7 +37,7 @@
   - [Java](./build2/java.md)
   - [Spring](./build2/spring.md)
 
-# Databases
+# Week 4: Introduction to Databases
 
 - [SQL introduction](./db1/sql-introduction.md)
   - [Set up the database](./db1/setup.md)
@@ -46,6 +49,8 @@
   - [Bristol elections](./db2/elections.md)
   - [The UK census](./db2/census.md)
   - [Normal forms](./db2/normalforms.md)
+
+# Week 5: Intermediate Databases 
 
 - [Intermediate SQL](./db3/sql-intermediate.md)
   - [Exercises](./db3/exercises.md)
