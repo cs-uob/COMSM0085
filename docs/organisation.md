@@ -107,7 +107,11 @@ The materials on this website will be updated throughout the course. You can
 generally expect that the exercise materials for both the _current_ and _next_
 weeks are up-to-date, to support your preparation. Videos for later sessions may
 not be available earlier than one week in advance, but if they are present then
-you may safely watch them when you wish. Practical exercises for later sessions 
+you may safely watch them whenever you wish. Practical exercises for later sessions 
 may undergo minor alterations, but should remain essentially the same (barring
 the Week 21 webscraping content, which is new this year and not yet available).
 
+This preparation also means the unit should be able to continue to run even if
+national strike action or other disruptions affect teaching -- in such a case you
+might miss out on some support, but you would still be able to continue working
+independently.

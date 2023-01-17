@@ -1,18 +1,11 @@
 # Overview
 
-This page contains the exercises for part 2 (the last 5 weeks) of COMS10012 Software Tools, namely "the web".
+This page contains the exercises for Part 2 (the last 5 weeks) of COMSM0085 Software Tools.
 
-Each week contains two activities, and each activity has videos to watch (on the main site for each activity) and a set of practical exercises supported by a lab class (on this site) just like part 1.
+As with Part 1, each week contains two 'activities' -- sets of exercises which are supported
+by videos to watch (linked from the main page for each activity). The exercises
+within each activity will require you to do some work within your Alpine Linux
+VM in Vagrant, which we'll be supporting in the labs. 
 
-The structure of this part is:
-
-  - HTTP
-  - HTML5
-  - CSS
-  - CSS grids
-  - JavaScript
-  - React
-  - Spring (server side)
-  - A complete application
-  - Cloud 1 (lectures but no new exercises)
-  - Cloud 2 (lectures but no new exercises)
+Note that the material delivered in Week 23 is not examinable, though it may be
+practically very useful to you in future projects. 
