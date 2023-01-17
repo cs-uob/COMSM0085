@@ -34,7 +34,6 @@
 - Web scraping
  - Crawling
  - BeautifulSoup
- - APIs
 
 # Week 9: React & The Cloud
 
