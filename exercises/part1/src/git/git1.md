@@ -1,6 +1,6 @@
 # Git, part 1
 
-For this exercise, I am assuming that you are working on alpine linux and have nano, git and gcc with musl-dev installed as in the last exercise.
+For this exercise, we are assuming that you are working on alpine linux and have nano, git and gcc with musl-dev installed as in the last exercise.
 
 ## Configuring your identity
 
@@ -11,7 +11,7 @@ git config --global user.name "YOURNAME"
 git config --global user.email "YOUREMAIL"
 ```
 
-where you obviously replace your name and email with something of your choice; I've put them in double quotes because this lets you include a space between your first and last names and the @ character in your email address.
+where you obviously replace your name and email with something of your choice; these are in double quotes because this lets you include a space between your first and last names and the @ character in your email address.
 
 This does not create a user account - git just uses your name and email to record the author in any commits you make, so you can put anything you like here (git will happily accept `-` as your email address, and it does not send you email). Of course, once you are working in a team with other students, you will probably want to use your real name so they know who has made which commits.
 
