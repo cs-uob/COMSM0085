@@ -6,22 +6,22 @@
 
 To use vagrant on your own machine (recommended), follow these steps:
 
-  * Go to [https://www.vagrantup.com/downloads](https://www.vagrantup.com/downloads) and download the version of vagrant for your operating system. Windows, Mac OS and common versions of linux are supported.
-  * Download and install virtualbox from [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads).
+  * Go to [https://www.vagrantup.com/downloads](https://www.vagrantup.com/downloads) and download the version of vagrant for your operating system. Windows, Mac OS and common versions of Linux are supported.
+  * Download and install Virtualbox from [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads).
   * Reboot your machine.
 
-If you are on linux, you can of course also install the programs from your distribution's repository. Vagrant's developers actually recommend against this because they claim that some distributions package outdated versions, but it is your choice.
+If you are on Linux, you can of course also install the programs from your distribution's repository. Vagrant's developers actually recommend against this because they claim that some distributions package outdated versions, but it is your choice.
 
 ## Configuring a box
 
-Next, you are going to configure a virtual machine using [alpine linux](https://www.alpinelinux.org/), a minimal linux distribution that we will be using in this unit. 
+Next, you are going to configure a virtual machine using [alpine linux](https://www.alpinelinux.org/), a minimal Linux distribution that we will be using in this unit. 
 
   * Create an empty folder somewhere.
   * In that folder, create a file called Vagrantfile (capitalised, and with no extension) and add the following lines to it - or just download the file from [here](../resources/Vagrantfile):
 
 ```ruby
 Vagrant.configure("2") do |config|
-  config.vm.box = "generic/alpine314"
+  config.vm.box = "generic/alpine317"
   config.vm.synced_folder ".", "/vagrant"
 
   config.vm.provision "shell", inline: <<-SHELL
@@ -46,7 +46,7 @@ Alpine linux uses the musl libc distribution, which is smaller than and has a fe
   * Open a terminal in the folder containing the Vagrantfile. If you are on windows, both the windows CMD and the windows subsystem for linux terminal will work equally well for this purpose.
   * Run the command `vagrant up`. This starts the virtual machine configured in the current folder, and if it has not been downloaded and provisioned yet (as is the case when you run `up` for the first time) then it does this for you as well.
   * When vagrant tells you the machine is running, run `vagrant ssh` to log in to your virtual machine. If it asks you for a password, use `vagrant`.
-  * You should now see the virtual machine prompt `alpine310:~$`. Try the command `ls /` and check that there is a folder called vagrant in the top-level folder, along with system ones with names like `usr` and `bin`.
+  * You should now see the virtual machine prompt `alpine317:~$`. Try the command `ls /` and check that there is a folder called vagrant in the top-level folder, along with system ones with names like `usr` and `bin`.
 
 There are two kinds of errors you might get during `vagrant up`:
 
@@ -63,14 +63,14 @@ Promise yourself that you will always do this before turning off your computer, 
 
 Vagrant is already installed on the lab machines in MVB 2.11, so you can remotely log in and launch a box from there. This will get you exactly the same alpine environment as if you run on your own machine, and everyone should try this out too. If for some reason you cannot run vagrant on your machine, then as long as you have an internet connection you should still be able to run it on the lab machines.
 
-First, we connect to a lab machine: open a terminal and run the command `ssh lab` that you configured in the previous section on SSH.
+First, we connect to a lab machine: open a terminal and run the command `ssh lab` that you configured in the previous exercise on SSH.
 
 On the lab machine, we need to create a folder and load a Vagrantfile as above, but let's download the Vagrantfile from the unit webpage instead of typing it out. Run the following shell commands (the third one starting `wget` must be all on one line, even if your web browser has added a line break):
 
 ```sh
 mkdir softwaretools
 cd softwaretools
-wget https://raw.githubusercontent.com/cs-uob/COMS10012/master/exercises/part1/src/resources/Vagrantfile
+wget https://raw.githubusercontent.com/cs-uob/COMSM0085/master/exercises/part1/src/resources/Vagrantfile
 ```
 
 You can call the top folder (softwaretools) anything you like and put it anywhere you want. You can now run `vagrant up` followed by `vagrant ssh` from inside that folder.
