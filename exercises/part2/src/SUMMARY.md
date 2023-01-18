@@ -13,7 +13,7 @@
   - [Basic HTML5](./html5/basic.md)
   - [Templates](./html5/templates.md)
 
-# Week 7: Style
+# Week 7: CSS
 
 - [CSS](./css/index.md)
   - [Styling Text](./css/text.md)

@@ -4,8 +4,7 @@
 
 | Video | Length |
 |-------|-------:|
-| [Permissions 1]() | 27 minutes |
-| [Permissions 2]() | 22 minutes |
+| [Permissions]() | 27 minutes |
 | [Pipes 1]() | 18 minutes |
 | [Pipes 2]() | 18 minutes |
 
