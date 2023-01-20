@@ -4,8 +4,10 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Git, part 2 - Exercises</title>
+
+
         <!-- Custom HTML head -->
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
@@ -16,25 +18,28 @@
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
         <link rel="stylesheet" href="../css/print.css" media="print">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
         <link rel="stylesheet" href="../fonts/fonts.css">
+
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
         <link rel="stylesheet" href="../tomorrow-night.css">
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+
     </head>
     <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -50,7 +55,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -62,7 +67,7 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -75,7 +80,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">POSIX</li><li class="chapter-item expanded "><a href="../posix1/index.html"><strong aria-hidden="true">1.</strong> POSIX Activity 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix1/ssh.html"><strong aria-hidden="true">1.1.</strong> Secure shell</a></li><li class="chapter-item expanded "><a href="../posix1/install.html"><strong aria-hidden="true">1.2.</strong> Installing vagrant and alpine linux</a></li><li class="chapter-item expanded "><a href="../posix1/admin.html"><strong aria-hidden="true">1.3.</strong> Alpine linux system administration</a></li><li class="chapter-item expanded "><a href="../posix1/shell.html"><strong aria-hidden="true">1.4.</strong> Shell expansion</a></li></ol></li><li class="chapter-item expanded "><a href="../posix2/index.html"><strong aria-hidden="true">2.</strong> POSIX Activity 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix2/permissions.html"><strong aria-hidden="true">2.1.</strong> File permissions</a></li><li class="chapter-item expanded "><a href="../posix2/pipes.html"><strong aria-hidden="true">2.2.</strong> Pipes</a></li></ol></li><li class="chapter-item expanded "><a href="../git/index.html"><strong aria-hidden="true">3.</strong> Git</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../git/git1.html"><strong aria-hidden="true">3.1.</strong> Git, part 1</a></li><li class="chapter-item expanded "><a href="../git/git2.html" class="active"><strong aria-hidden="true">3.2.</strong> Git, part 2</a></li><li class="chapter-item expanded "><a href="../git/git3.html"><strong aria-hidden="true">3.3.</strong> Git, part 3</a></li></ol></li><li class="chapter-item expanded "><a href="../posix3/index.html"><strong aria-hidden="true">4.</strong> POSIX Activity 3</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix3/stat.html"><strong aria-hidden="true">4.1.</strong> inodes and system calls</a></li><li class="chapter-item expanded "><a href="../posix3/script.html"><strong aria-hidden="true">4.2.</strong> shell scripting</a></li></ol></li><li class="chapter-item expanded "><a href="../posix4/index.html"><strong aria-hidden="true">5.</strong> BONUS: Posix Activity 4</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix4/concurrent.html"><strong aria-hidden="true">5.1.</strong> Concurrent programming in POSIX</a></li><li class="chapter-item expanded "><a href="../posix4/cpipe.html"><strong aria-hidden="true">5.2.</strong> Pipes in C</a></li><li class="chapter-item expanded "><a href="../posix4/c_io.html"><strong aria-hidden="true">5.3.</strong> Input/Output in C</a></li><li class="chapter-item expanded "><a href="../posix4/posix_io.html"><strong aria-hidden="true">5.4.</strong> Input/Output in POSIX</a></li><li class="chapter-item expanded "><a href="../posix4/final.html"><strong aria-hidden="true">5.5.</strong> The final challenge</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Build Tools</li><li class="chapter-item expanded "><a href="../build2/index.html"><strong aria-hidden="true">6.</strong> Build Tools</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../build2/c.html"><strong aria-hidden="true">6.1.</strong> C</a></li><li class="chapter-item expanded "><a href="../build2/python.html"><strong aria-hidden="true">6.2.</strong> Python</a></li><li class="chapter-item expanded "><a href="../build2/java.html"><strong aria-hidden="true">6.3.</strong> Java</a></li><li class="chapter-item expanded "><a href="../build2/spring.html"><strong aria-hidden="true">6.4.</strong> Spring</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Databases</li><li class="chapter-item expanded "><a href="../db1/sql-introduction.html"><strong aria-hidden="true">7.</strong> SQL introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db1/setup.html"><strong aria-hidden="true">7.1.</strong> Set up the database</a></li><li class="chapter-item expanded "><a href="../db1/er-diagram.html"><strong aria-hidden="true">7.2.</strong> ER diagram</a></li><li class="chapter-item expanded "><a href="../db1/er2.html"><strong aria-hidden="true">7.3.</strong> More modelling</a></li></ol></li><li class="chapter-item expanded "><a href="../db2/sql-beginners.html"><strong aria-hidden="true">8.</strong> SQL for beginners</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db2/explore-database.html"><strong aria-hidden="true">8.1.</strong> Explore the database</a></li><li class="chapter-item expanded "><a href="../db2/elections.html"><strong aria-hidden="true">8.2.</strong> Bristol elections</a></li><li class="chapter-item expanded "><a href="../db2/census.html"><strong aria-hidden="true">8.3.</strong> The UK census</a></li><li class="chapter-item expanded "><a href="../db2/normalforms.html"><strong aria-hidden="true">8.4.</strong> Normal forms</a></li></ol></li><li class="chapter-item expanded "><a href="../db3/sql-intermediate.html"><strong aria-hidden="true">9.</strong> Intermediate SQL</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db3/exercises.html"><strong aria-hidden="true">9.1.</strong> Exercises</a></li></ol></li><li class="chapter-item expanded "><a href="../db4/sql-java.html"><strong aria-hidden="true">10.</strong> SQL and Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db4/jdbc.html"><strong aria-hidden="true">10.1.</strong> JDBC</a></li><li class="chapter-item expanded "><a href="../db4/hibernate.html"><strong aria-hidden="true">10.2.</strong> Hibernate</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">Week 1: Basics & Git</li><li class="chapter-item expanded "><a href="../posix1/index.html"><strong aria-hidden="true">1.</strong> POSIX Activity 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix1/ssh.html"><strong aria-hidden="true">1.1.</strong> Secure shell</a></li><li class="chapter-item expanded "><a href="../posix1/install.html"><strong aria-hidden="true">1.2.</strong> Installing vagrant and alpine linux</a></li><li class="chapter-item expanded "><a href="../posix1/admin.html"><strong aria-hidden="true">1.3.</strong> Alpine linux system administration</a></li><li class="chapter-item expanded "><a href="../posix1/shell.html"><strong aria-hidden="true">1.4.</strong> Shell expansion</a></li></ol></li><li class="chapter-item expanded "><a href="../git/index.html"><strong aria-hidden="true">2.</strong> Git</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../git/git1.html"><strong aria-hidden="true">2.1.</strong> Git, part 1</a></li><li class="chapter-item expanded "><a href="../git/git2.html" class="active"><strong aria-hidden="true">2.2.</strong> Git, part 2</a></li><li class="chapter-item expanded "><a href="../git/git3.html"><strong aria-hidden="true">2.3.</strong> Git, part 3</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 2: POSIX</li><li class="chapter-item expanded "><a href="../posix2/index.html"><strong aria-hidden="true">3.</strong> POSIX Activity 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix2/permissions.html"><strong aria-hidden="true">3.1.</strong> File permissions</a></li><li class="chapter-item expanded "><a href="../posix2/pipes.html"><strong aria-hidden="true">3.2.</strong> Pipes</a></li></ol></li><li class="chapter-item expanded "><a href="../posix3/index.html"><strong aria-hidden="true">4.</strong> POSIX Activity 3</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix3/script.html"><strong aria-hidden="true">4.1.</strong> shell scripting</a></li></ol></li><li class="chapter-item expanded "><a href="../posix4/index.html"><strong aria-hidden="true">5.</strong> BONUS: POSIX Activity 4</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix4/stat.html"><strong aria-hidden="true">5.1.</strong> inodes and system calls</a></li><li class="chapter-item expanded "><a href="../posix4/concurrent.html"><strong aria-hidden="true">5.2.</strong> Concurrent programming in POSIX</a></li><li class="chapter-item expanded "><a href="../posix4/cpipe.html"><strong aria-hidden="true">5.3.</strong> Pipes in C</a></li><li class="chapter-item expanded "><a href="../posix4/c_io.html"><strong aria-hidden="true">5.4.</strong> Input/Output in C</a></li><li class="chapter-item expanded "><a href="../posix4/posix_io.html"><strong aria-hidden="true">5.5.</strong> Input/Output in POSIX</a></li><li class="chapter-item expanded "><a href="../posix4/final.html"><strong aria-hidden="true">5.6.</strong> The final challenge</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 3: Build Tools</li><li class="chapter-item expanded "><a href="../build2/index.html"><strong aria-hidden="true">6.</strong> Build Tools</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../build2/c.html"><strong aria-hidden="true">6.1.</strong> C</a></li><li class="chapter-item expanded "><a href="../build2/python.html"><strong aria-hidden="true">6.2.</strong> Python</a></li><li class="chapter-item expanded "><a href="../build2/java.html"><strong aria-hidden="true">6.3.</strong> Java</a></li><li class="chapter-item expanded "><a href="../build2/spring.html"><strong aria-hidden="true">6.4.</strong> Spring</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 4: Introduction to Databases</li><li class="chapter-item expanded "><a href="../db1/sql-introduction.html"><strong aria-hidden="true">7.</strong> SQL introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db1/setup.html"><strong aria-hidden="true">7.1.</strong> Set up the database</a></li><li class="chapter-item expanded "><a href="../db1/er-diagram.html"><strong aria-hidden="true">7.2.</strong> ER diagram</a></li><li class="chapter-item expanded "><a href="../db1/er2.html"><strong aria-hidden="true">7.3.</strong> More modelling</a></li></ol></li><li class="chapter-item expanded "><a href="../db2/sql-beginners.html"><strong aria-hidden="true">8.</strong> SQL for beginners</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db2/explore-database.html"><strong aria-hidden="true">8.1.</strong> Explore the database</a></li><li class="chapter-item expanded "><a href="../db2/elections.html"><strong aria-hidden="true">8.2.</strong> Bristol elections</a></li><li class="chapter-item expanded "><a href="../db2/census.html"><strong aria-hidden="true">8.3.</strong> The UK census</a></li><li class="chapter-item expanded "><a href="../db2/normalforms.html"><strong aria-hidden="true">8.4.</strong> Normal forms</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 5: Intermediate Databases</li><li class="chapter-item expanded "><a href="../db3/sql-intermediate.html"><strong aria-hidden="true">9.</strong> Intermediate SQL</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db3/exercises.html"><strong aria-hidden="true">9.1.</strong> Exercises</a></li></ol></li><li class="chapter-item expanded "><a href="../db4/sql-java.html"><strong aria-hidden="true">10.</strong> SQL and Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db4/jdbc.html"><strong aria-hidden="true">10.1.</strong> JDBC</a></li><li class="chapter-item expanded "><a href="../db4/hibernate.html"><strong aria-hidden="true">10.2.</strong> Hibernate</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -83,7 +88,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
+                                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -93,7 +98,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
@@ -110,6 +115,7 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
+
                     </div>
                 </div>
 
@@ -123,8 +129,9 @@
                         </ul>
                     </div>
                 </div>
+
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -162,18 +169,25 @@
 </div>
 <p>I am assuming that you will be running the git commands in the rest of this section on an alpine linux VM, either on your machine or on a lab machine, however if you have git installed on your own machine directly (which is a good idea) then you can run this exercise there too.</p>
 <h2 id="a-note-on-naming"><a class="header" href="#a-note-on-naming">A note on naming</a></h2>
+<p>TL;DR: You may see the default branch named as either <code>master</code> or <code>main</code>, or more
+rarely something else entirely. So long as you are consistent, the name of the
+default branch doesn't matter at all (and you can configure it if you have a
+preference), and you just need to know that in these exercises we will use <code>master</code> 
+to refer to the default branch and you should substitute that for your own default 
+branch name if it is different.</p>
+<h3 id="long-version"><a class="header" href="#long-version">Long version</a></h3>
 <p>When git first appeared, whenever you created a repository you started with one branch called <code>master</code>. Different workflows and branch naming conventions appeared over time (we will see one of these in the next activity).</p>
-<p>As far as git is concerned, a branch name is just a string and any other name would do just as well (as long as it does not contain spaces, slashes or a few other special characters). As far as humans go, in 2020 it came to developers' attention that the term <code>master</code> is sometimes used in problematic ways in engineering in general and computing in partciular, specifically, a system where several components perform similar roles but one of them is the authoritative one in case of discrepancy has historically been called a <em>master/slave</em> system.</p>
-<p>The git developers' first reaction was to make it easier to choose a different name for your first branch; the latest version of git prints a message on how to do this when you create a repository (the configuration setting is <code>init.defaultBranch</code>) and the online providers such as github offer a text field for this too. At the moment, <code>main</code> seems to be the most popular alternative name for the first branch, but at the time of writing there does not seem to be a clear consensus yet. I have seen both <code>default</code> and <code>root</code> suggested as first branch names, neither of which seems to have gained much traction though. Another contender for workflows which use a <code>develop</code> branch anyway is to use that as the initial branch. The latest post on the matter from <a href="https://sfconservancy.org/news/2020/jun/23/gitbranchname/">software freedom conservancy</a> is dated June 2020 and states that the matter is &quot;currently being discussed on our mailing list&quot;.</p>
-<p>There has been some debate about whether the name &quot;master&quot; in git traces back to <em>master/slave</em> or another, less problematic use of word e.g. the phrase <em>master copy/master recording</em> from the music industry - the most authoritative source I can find on the matter is <a href="https://git.github.io/rev_news/2020/07/29/edition-65/">git rev news 65, July 2020</a> from the git developers themselves, which also states that a change of the default branch name might happen in Git 3.0 (the version installed in Alpine at the time of writing is 2.30.0).</p>
-<p>There is another line of argument that the word <em>master</em> as a default branch name (and thus something developers will refer to a lot) is inherently problematic even if it came from a different origin than <em>master/slave</em>. This is a complicated issue as, among other things, half the cohort taking Software Tools is probably on a <em>Master's Degree</em> and one of the criteria for a first-class mark is showing <em>mastery</em> of the unit material - all terms that will be much harder to change than a simple repository name which is one line of commands to change. Git does not care what your branches are called after all, one string is as good as another (as long as it doesn't contain special characters or spaces).</p>
-<p>However, a fresh installation of git will still call the branch <code>master</code> unless you change a configuration setting, and any book, tutorial, forum or stackexchange post online written about git before around mid-2020 will refer to <code>master</code> so there is currently no way around knowing that in the context of git, the term <code>master</code> refers to a branch with a particular role, but as a future developer you should also have an understanding of the community and conventions around your tools and you should definitely know that there is a currently ongoing discussion around this term.</p>
-<p>For the 2020-21 academic year, I have decided to go with <code>master</code> for this unit as I don't feel it's my job to pre-empt a decision on the new default name - github is in favour of <code>main</code> but the git developers do not seem to have made a final decision yet; and because you will encounter the term <code>master</code> in git itself and in a lot of existing repositories and documentation (including the official <a href="https://git-scm.com/book/en/v2">git book</a> at the time of writing); it will be easy enough to update these notes for 2021-22 if everyone has switched to <code>main</code> or something else by then.</p>
+<p>As far as git is concerned, a branch name is just a string and any other name would do just as well (as long as it does not contain spaces, slashes or a few other special characters). As far as humans go, in 2020 it came to developers' attention that some people consider the term <code>master</code> as used in some contexts of engineering in general and computing in partciular to be problematic. Specifically, a system where several components perform similar roles but one of them is the authoritative one in case of discrepancy has historically been called a <em>master/slave</em> system.</p>
+<p>The git developers' first reaction to complaint about this was to make it easier to choose a different name for your first branch; the latest version of git prints a message on how to do this when you create a repository (the configuration setting is <code>init.defaultBranch</code>) and the online providers such as github offer a text field for this too. The term <code>main</code> seems to be the most popular alternative name for the first branch. Another contender for workflows which use a <code>develop</code> branch anyway is to use that as the initial branch. </p>
+<p>While some in the community dispute that merely referring to the <em>concept</em> of slavery is legitimately problematic, there has also been some debate about whether the name &quot;master&quot; in git even traces back to <em>master/slave</em> or instead stems from another, less problematic use of word e.g. the phrase <em>master copy/master recording</em> from the music industry - the most authoritative source on the matter is <a href="https://git.github.io/rev_news/2020/07/29/edition-65/">git rev news 65, July 2020</a> from the git developers themselves, which also states that a change of the default branch name could happen in Git 3.0 (the version installed in Alpine at the time of writing is 2.38.3).</p>
+<p>There is another line of argument that the word <em>master</em> as a default branch name (and thus something developers will refer to a lot) is somehow inherently problematic even if it came from a different origin than <em>master/slave</em>. This is a complicated issue as, among other things, half the cohort taking Software Tools is probably on a <em>Master's Degree</em> and one of the criteria for a first-class mark is showing <em>mastery</em> of the unit material - all terms that would be much harder to change than a simple repository name which is one line of commands to change. Git does not care what your branches are called, after all -- one string is as good as another (as long as it doesn't contain special characters or spaces).</p>
+<p>A fresh installation of git will still call the branch <code>master</code> unless you change a configuration setting, and any book, tutorial, forum or stackexchange post online written about git before around mid-2020 will refer to <code>master</code>, so there is no way around knowing that in the context of git, the term <code>master</code> refers to a branch with a particular role, but as a future developer you should also have an understanding of the community and conventions around your tools, and you should definitely know that there is a currently ongoing discussion around this term.</p>
+<p>We have decided to go with <code>master</code> for this unit because you will encounter the term <code>master</code> in git itself and in a lot of existing repositories and documentation (including the official <a href="https://git-scm.com/book/en/v2">git book</a> at the time of writing).</p>
 <p>For your own repositories, you are free to choose whatever name you like, and you can configure this with the command</p>
 <pre><code>git config --global init.defaultBranch NAME
 </code></pre>
 <p>and then follow the rest of the git exercises, mentally replacing <code>master</code> by <code>main</code> or your choice of other name. </p>
-<p>When you create a repository on github, the default name you get depends on your settings, which seems to depend on when you created your account - if you create an account today, you will get <code>main</code> as the default name but on my account (which has been around for years) I still get <code>master</code>. The page you want to check while logged in to github is https://github.com/settings/repositories; if you get <code>main</code> as your default then please use that in the rest of this tutorial.</p>
+<p>When you create a repository on github, the default name you get depends on your settings, which seems to depend on when you created your account - if you create an account today, you will get <code>main</code> as the default name but on an older account you will still get <code>master</code>. The page you want to check while logged in to github is https://github.com/settings/repositories; if you get <code>main</code> as your default then please either alter it or use that in the rest of this tutorial.</p>
 <p>To finish with a quote from the git book:</p>
 <blockquote>
 <p>The &quot;master&quot; branch in Git is not a special branch. It is exactly like any other
@@ -183,7 +197,7 @@ command creates it by default and most people don't bother to change it.</p>
 <h2 id="create-a-repository"><a class="header" href="#create-a-repository">Create a repository</a></h2>
 <p>On the main page, you should see an empty <em>Repositories</em> bar on the left, with a new button. Use that to create a repository, on the next page give it a name and tick the <em>Add a README file</em> box.</p>
 <p>On the repository page, there is a green <em>Code</em> button. Clicking that opens a box with three tabs: <em>HTTPS</em>, <em>SSH</em> and <em>GitHub CLI</em>.</p>
-<p>Each repository has a two-part name: the first part is the owner's github username, the second part is the repository name. For example, the repository for this unit is called <code>cs-uob/COMS10012</code>. There are two ways to interact with a remote repository:</p>
+<p>Each repository has a two-part name: the first part is the owner's github username, the second part is the repository name. For example, the repository for this unit is called <code>cs-uob/COMSM0085</code>. There are two ways to interact with a remote repository:</p>
 <ul>
 <li>Via HTTPS. This is ok if you are just cloning a public repository, as it does not require any authentication. To interact with a private repository or to push files, HTTPS requires username/password authentication, and we can do better than that.</li>
 <li>Via SSH, using keys. This is the recommended way to use Git.</li>
@@ -335,9 +349,11 @@ Created by NAME1.
                             <a rel="prev" href="../git/git1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
+
                             <a rel="next" href="../git/git3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
+
                         <div style="clear: both"></div>
                     </nav>
                 </div>
@@ -347,6 +363,7 @@ Created by NAME1.
                     <a rel="prev" href="../git/git1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
+
                     <a rel="next" href="../git/git3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
@@ -354,16 +371,24 @@ Created by NAME1.
 
         </div>
 
-        <script type="text/javascript">
+
+
+
+        <script>
             window.playground_copyable = true;
         </script>
-        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
+
+
     </body>
 </html>
