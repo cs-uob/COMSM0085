@@ -5,8 +5,10 @@
         <meta charset="UTF-8">
         <title>Exercises</title>
         <meta name="robots" content="noindex" />
+
+
         <!-- Custom HTML head -->
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
@@ -17,25 +19,28 @@
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
         <link rel="stylesheet" href="css/print.css" media="print">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
         <link rel="stylesheet" href="fonts/fonts.css">
+
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
         <link rel="stylesheet" href="tomorrow-night.css">
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+
     </head>
     <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -51,7 +56,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -63,7 +68,7 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -76,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">POSIX</li><li class="chapter-item expanded "><a href="posix1/index.html"><strong aria-hidden="true">1.</strong> POSIX Activity 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="posix1/ssh.html"><strong aria-hidden="true">1.1.</strong> Secure shell</a></li><li class="chapter-item expanded "><a href="posix1/install.html"><strong aria-hidden="true">1.2.</strong> Installing vagrant and alpine linux</a></li><li class="chapter-item expanded "><a href="posix1/admin.html"><strong aria-hidden="true">1.3.</strong> Alpine linux system administration</a></li><li class="chapter-item expanded "><a href="posix1/shell.html"><strong aria-hidden="true">1.4.</strong> Shell expansion</a></li></ol></li><li class="chapter-item expanded "><a href="posix2/index.html"><strong aria-hidden="true">2.</strong> POSIX Activity 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="posix2/permissions.html"><strong aria-hidden="true">2.1.</strong> File permissions</a></li><li class="chapter-item expanded "><a href="posix2/pipes.html"><strong aria-hidden="true">2.2.</strong> Pipes</a></li></ol></li><li class="chapter-item expanded "><a href="git/index.html"><strong aria-hidden="true">3.</strong> Git</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="git/git1.html"><strong aria-hidden="true">3.1.</strong> Git, part 1</a></li><li class="chapter-item expanded "><a href="git/git2.html"><strong aria-hidden="true">3.2.</strong> Git, part 2</a></li><li class="chapter-item expanded "><a href="git/git3.html"><strong aria-hidden="true">3.3.</strong> Git, part 3</a></li></ol></li><li class="chapter-item expanded "><a href="posix3/index.html"><strong aria-hidden="true">4.</strong> POSIX Activity 3</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="posix3/stat.html"><strong aria-hidden="true">4.1.</strong> inodes and system calls</a></li><li class="chapter-item expanded "><a href="posix3/script.html"><strong aria-hidden="true">4.2.</strong> shell scripting</a></li></ol></li><li class="chapter-item expanded "><a href="posix4/index.html"><strong aria-hidden="true">5.</strong> BONUS: Posix Activity 4</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="posix4/concurrent.html"><strong aria-hidden="true">5.1.</strong> Concurrent programming in POSIX</a></li><li class="chapter-item expanded "><a href="posix4/cpipe.html"><strong aria-hidden="true">5.2.</strong> Pipes in C</a></li><li class="chapter-item expanded "><a href="posix4/c_io.html"><strong aria-hidden="true">5.3.</strong> Input/Output in C</a></li><li class="chapter-item expanded "><a href="posix4/posix_io.html"><strong aria-hidden="true">5.4.</strong> Input/Output in POSIX</a></li><li class="chapter-item expanded "><a href="posix4/final.html"><strong aria-hidden="true">5.5.</strong> The final challenge</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Build Tools</li><li class="chapter-item expanded "><a href="build2/index.html"><strong aria-hidden="true">6.</strong> Build Tools</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="build2/c.html"><strong aria-hidden="true">6.1.</strong> C</a></li><li class="chapter-item expanded "><a href="build2/python.html"><strong aria-hidden="true">6.2.</strong> Python</a></li><li class="chapter-item expanded "><a href="build2/java.html"><strong aria-hidden="true">6.3.</strong> Java</a></li><li class="chapter-item expanded "><a href="build2/spring.html"><strong aria-hidden="true">6.4.</strong> Spring</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Databases</li><li class="chapter-item expanded "><a href="db1/sql-introduction.html"><strong aria-hidden="true">7.</strong> SQL introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="db1/setup.html"><strong aria-hidden="true">7.1.</strong> Set up the database</a></li><li class="chapter-item expanded "><a href="db1/er-diagram.html"><strong aria-hidden="true">7.2.</strong> ER diagram</a></li><li class="chapter-item expanded "><a href="db1/er2.html"><strong aria-hidden="true">7.3.</strong> More modelling</a></li></ol></li><li class="chapter-item expanded "><a href="db2/sql-beginners.html"><strong aria-hidden="true">8.</strong> SQL for beginners</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="db2/explore-database.html"><strong aria-hidden="true">8.1.</strong> Explore the database</a></li><li class="chapter-item expanded "><a href="db2/elections.html"><strong aria-hidden="true">8.2.</strong> Bristol elections</a></li><li class="chapter-item expanded "><a href="db2/census.html"><strong aria-hidden="true">8.3.</strong> The UK census</a></li><li class="chapter-item expanded "><a href="db2/normalforms.html"><strong aria-hidden="true">8.4.</strong> Normal forms</a></li></ol></li><li class="chapter-item expanded "><a href="db3/sql-intermediate.html"><strong aria-hidden="true">9.</strong> Intermediate SQL</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="db3/exercises.html"><strong aria-hidden="true">9.1.</strong> Exercises</a></li></ol></li><li class="chapter-item expanded "><a href="db4/sql-java.html"><strong aria-hidden="true">10.</strong> SQL and Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="db4/jdbc.html"><strong aria-hidden="true">10.1.</strong> JDBC</a></li><li class="chapter-item expanded "><a href="db4/hibernate.html"><strong aria-hidden="true">10.2.</strong> Hibernate</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">Week 1: Basics & Git</li><li class="chapter-item expanded "><a href="posix1/index.html"><strong aria-hidden="true">1.</strong> POSIX Activity 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="posix1/ssh.html"><strong aria-hidden="true">1.1.</strong> Secure shell</a></li><li class="chapter-item expanded "><a href="posix1/install.html"><strong aria-hidden="true">1.2.</strong> Installing vagrant and alpine linux</a></li><li class="chapter-item expanded "><a href="posix1/admin.html"><strong aria-hidden="true">1.3.</strong> Alpine linux system administration</a></li><li class="chapter-item expanded "><a href="posix1/shell.html"><strong aria-hidden="true">1.4.</strong> Shell expansion</a></li></ol></li><li class="chapter-item expanded "><a href="git/index.html"><strong aria-hidden="true">2.</strong> Git</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="git/git1.html"><strong aria-hidden="true">2.1.</strong> Git, part 1</a></li><li class="chapter-item expanded "><a href="git/git2.html"><strong aria-hidden="true">2.2.</strong> Git, part 2</a></li><li class="chapter-item expanded "><a href="git/git3.html"><strong aria-hidden="true">2.3.</strong> Git, part 3</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 2: POSIX</li><li class="chapter-item expanded "><a href="posix2/index.html"><strong aria-hidden="true">3.</strong> POSIX Activity 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="posix2/permissions.html"><strong aria-hidden="true">3.1.</strong> File permissions</a></li><li class="chapter-item expanded "><a href="posix2/pipes.html"><strong aria-hidden="true">3.2.</strong> Pipes</a></li></ol></li><li class="chapter-item expanded "><a href="posix3/index.html"><strong aria-hidden="true">4.</strong> POSIX Activity 3</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="posix3/script.html"><strong aria-hidden="true">4.1.</strong> shell scripting</a></li></ol></li><li class="chapter-item expanded "><a href="posix4/index.html"><strong aria-hidden="true">5.</strong> BONUS: POSIX Activity 4</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="posix4/stat.html"><strong aria-hidden="true">5.1.</strong> inodes and system calls</a></li><li class="chapter-item expanded "><a href="posix4/concurrent.html"><strong aria-hidden="true">5.2.</strong> Concurrent programming in POSIX</a></li><li class="chapter-item expanded "><a href="posix4/cpipe.html"><strong aria-hidden="true">5.3.</strong> Pipes in C</a></li><li class="chapter-item expanded "><a href="posix4/c_io.html"><strong aria-hidden="true">5.4.</strong> Input/Output in C</a></li><li class="chapter-item expanded "><a href="posix4/posix_io.html"><strong aria-hidden="true">5.5.</strong> Input/Output in POSIX</a></li><li class="chapter-item expanded "><a href="posix4/final.html"><strong aria-hidden="true">5.6.</strong> The final challenge</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 3: Build Tools</li><li class="chapter-item expanded "><a href="build2/index.html"><strong aria-hidden="true">6.</strong> Build Tools</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="build2/c.html"><strong aria-hidden="true">6.1.</strong> C</a></li><li class="chapter-item expanded "><a href="build2/python.html"><strong aria-hidden="true">6.2.</strong> Python</a></li><li class="chapter-item expanded "><a href="build2/java.html"><strong aria-hidden="true">6.3.</strong> Java</a></li><li class="chapter-item expanded "><a href="build2/spring.html"><strong aria-hidden="true">6.4.</strong> Spring</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 4: Introduction to Databases</li><li class="chapter-item expanded "><a href="db1/sql-introduction.html"><strong aria-hidden="true">7.</strong> SQL introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="db1/setup.html"><strong aria-hidden="true">7.1.</strong> Set up the database</a></li><li class="chapter-item expanded "><a href="db1/er-diagram.html"><strong aria-hidden="true">7.2.</strong> ER diagram</a></li><li class="chapter-item expanded "><a href="db1/er2.html"><strong aria-hidden="true">7.3.</strong> More modelling</a></li></ol></li><li class="chapter-item expanded "><a href="db2/sql-beginners.html"><strong aria-hidden="true">8.</strong> SQL for beginners</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="db2/explore-database.html"><strong aria-hidden="true">8.1.</strong> Explore the database</a></li><li class="chapter-item expanded "><a href="db2/elections.html"><strong aria-hidden="true">8.2.</strong> Bristol elections</a></li><li class="chapter-item expanded "><a href="db2/census.html"><strong aria-hidden="true">8.3.</strong> The UK census</a></li><li class="chapter-item expanded "><a href="db2/normalforms.html"><strong aria-hidden="true">8.4.</strong> Normal forms</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 5: Intermediate Databases</li><li class="chapter-item expanded "><a href="db3/sql-intermediate.html"><strong aria-hidden="true">9.</strong> Intermediate SQL</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="db3/exercises.html"><strong aria-hidden="true">9.1.</strong> Exercises</a></li></ol></li><li class="chapter-item expanded "><a href="db4/sql-java.html"><strong aria-hidden="true">10.</strong> SQL and Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="db4/jdbc.html"><strong aria-hidden="true">10.1.</strong> JDBC</a></li><li class="chapter-item expanded "><a href="db4/hibernate.html"><strong aria-hidden="true">10.2.</strong> Hibernate</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -84,7 +89,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
+                                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -94,7 +99,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
@@ -111,6 +116,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
+
                     </div>
                 </div>
 
@@ -124,8 +130,9 @@
                         </ul>
                     </div>
                 </div>
+
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -136,22 +143,26 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="overview"><a class="header" href="#overview">Overview</a></h1>
-<p>This page contains the exercises for part 1 (the first 5 weeks) of COMS10012 Software Tools, namely</p>
+<p>This page contains the exercises for Part 1 (the first 5 weeks) of COMSM0085 Software Tools, namely</p>
 <ul>
-<li>2 weeks of Posix</li>
+<li>2 weeks of POSIX</li>
 <li>1 week of build tools</li>
 <li>2 weeks of databases</li>
 </ul>
-<p>Each week contains two activities, and each activity has videos to watch (on the main site for each activity) and a set of practical exercises supported by a lab class (on this site).</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="activity-1"><a class="header" href="#activity-1">Activity 1</a></h1>
+<p>Each week contains two 'activities' -- sets of exercises which are supported
+by videos to watch (linked from the main page for each activity). The exercises
+within each activity will require you to do some work within your Alpine Linux
+VM in Vagrant, which we'll be supporting in the labs. </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="posix-activity-1"><a class="header" href="#posix-activity-1">POSIX Activity 1</a></h1>
 <h2 id="videos"><a class="header" href="#videos">Videos</a></h2>
-<p>Before this activity, you should watch the following videos - most of them are quite short. The videos are hosted on Microsoft Streams, and you will need to authenticate and be registered on the unit to watch them.</p>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th></tr></thead><tbody>
-<tr><td><a href="https://web.microsoftstream.com/video/0bbb61a4-9ddc-439a-9ec9-a7c36a3cd869?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">shell</a></td><td style="text-align: right">19 minutes</td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/6fe23d1f-f96c-419d-93e1-1d1ef15082d5?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">SSH</a></td><td style="text-align: right">7 minutes</td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/51c29280-dbc2-4a12-9f1d-5a54f3d72b6e?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Vagrant</a></td><td style="text-align: right">21 minutes</td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/185316e9-6c3d-4a8a-8a25-cdca64aa3f1d?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Package managers</a></td><td style="text-align: right">12 minutes</td></tr>
+<p>Before this activity, you should watch the following videos - most of them are quite short. The videos are hosted on Microsoft Stream, and you will need to authenticate via university log-in to watch them.</p>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<tr><td><a href="https://web.microsoftstream.com/video/a55ff501-9e8d-4bb3-a00e-b680596b2de3">The shell</a></td><td style="text-align: right">30 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EbOfjsNY9SJAkEXbMb9WorcBAQMW0QuKthcQHRBDvru8eg?e=HWh7D1">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/d2736b4b-80de-4740-9084-2ab458a9dbab">SSH</a></td><td style="text-align: right">10 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/ERXOIS-oCUxMmOguGB0ctO8BSWKpCskLDBmWM3c6wrk90A?e=IobhBb">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/373abf95-52ce-45d2-82d0-28250d300184">Vagrant</a></td><td style="text-align: right">12 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EW4-UCx2St1Gl8AGPwTuq4EBhNt7-KfnKhbewow6w3WuJQ?e=bJeh4g">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/9091bdf6-2242-4b43-b09e-9641f9401135">Package managers</a></td><td style="text-align: right">6 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EUPLvl82HzRGi-nyhSdiBicBb7EBnouRVnT6RAKKyzhqKQ?e=Ow5cmt">slides</a></td></tr>
 </tbody></table>
+</div>
 <h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
 <ul>
 <li><a href="posix1/./ssh.html">Secure shell</a></li>
@@ -160,7 +171,7 @@
 <li><a href="posix1/./shell.html">Shell expansion</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="secure-shell"><a class="header" href="#secure-shell">Secure shell</a></h1>
-<p>Secure shell (SSH) is a protocol to allow you to remotely log in to another computer, such as a lab machine. Everyone I know of who uses SSH uses the free OpenSSH implementation, which is standard on every linux distribution that I know of and is also available for Windows and Mac - and even for the mobile operating systems iOS and Android.</p>
+<p>Secure shell (SSH) is a protocol to allow you to remotely log in to another computer, such as a lab machine. Everyone I know of who uses SSH uses the free OpenSSH implementation, which is standard on every Linux distribution that I know of and is also available for Windows and Mac - and even for the mobile operating systems iOS and Android.</p>
 <p>We will see in more detail how SSH manages connections later on, but for now imagine that it opens a network connection between your own machine, and a shell running on a different machine. When you type something, SSH encrypts this and sends it to the other machine which decrypts it and passes it to the shell (or any other program you're running); when the shell replies then SSH encrypts that and sends it back to you. For this to work, (Open)SSH is actually two programs:</p>
 <ul>
 <li><code>ssh</code> is the client, which you run on your machine to connect to another machine.</li>
@@ -222,7 +233,7 @@
 </ul>
 <p>Let's create a key pair:</p>
 <ul>
-<li>Type the command <code>ssh-keygen -t ed25519</code>. (If you get an &quot;unknown key type&quot; error, then you are using an outdated version of OpenSSH and for security reasons you should upgrade immediately.) <em>Note: type <code>ed25519</code> directly, do not replace this with your username. It stands for the &quot;Edwards curve over the prime <code>2^255-19</code>&quot; cryptographic group, if you want to know.</em></li>
+<li>On your own machine, make sure you are not connected to a lab machine or seis, then type the command <code>ssh-keygen -t ed25519</code>. (If you get an &quot;unknown key type&quot; error, then you are using an outdated version of OpenSSH and for security reasons you should upgrade immediately.) <em>Note: type <code>ed25519</code> directly, do not replace this with your username. It stands for the &quot;Edwards curve over the prime <code>2^255-19</code>&quot; cryptographic group, if you want to know.</em></li>
 <li>When it asks you where to save the file, just press ENTER to accept the default, but make a note of the path - normally it's a folder <code>.ssh</code> in your home directory.</li>
 <li>If it asks you &quot;Overwrite (y/n)&quot;, say no (n, then ENTER) as it means you already have a key for something else - either ssh directly or something that uses it, like github. Restart key generation but pick a different file name.</li>
 <li>When it asks you for a password, I recommend that you just press ENTER which doesn't set a password (good security, maximum convenience). If you do set a password, it will ask you to type it twice and then you will need the password and the key file to use this key (maximum security, less convenient).</li>
@@ -260,10 +271,10 @@
 cat id_ed25519.pub &gt;&gt; authorized_keys
 chmod 600 authorized_keys
 </code></pre>
-<p>SSH will accept a public key if it is listed in the file <code>authorized_keys</code> in the user's <code>.ssh</code> folder, the format is one line per key. Instead of just copying <code>id_ed25519.pub</code> to <code>authorized_keys</code>, which would overwrite the latter file if it already existed, we use the construction <code>cat SOURCE &gt;&gt; DEST</code> to have our shell append the source file to the destination.</p>
+<p>SSH will accept a public key if it is listed in the file <code>authorized_keys</code> in the user's <code>.ssh</code> folder, the format is one line per key. Instead of just copying <code>id_ed25519.pub</code> to <code>authorized_keys</code>, which would overwrite the latter file if it already existed, we use the construction <code>cat SOURCE &gt;&gt; DEST</code> to have our shell append the source file to the destination. <em>Note: it's <strong>authorized</strong>, the American spelling -- if you use the British spelling here OpenSSH won't know to read that file.</em></p>
 <p>However, if the authorised keys file didn't exist already, then it has now been created with default permissions and SSH won't accept that for security reasons. <code>chmod</code> means change permissions (also known as &quot;mod bits&quot;) and 600 is the bit pattern we want in base 8, because that is how permissions work for historical reasons. Permissions are a bitfield of 9 bits, the first three are read/write/execute for the owner, the next three the same for the group, and then for everyone else. If you <code>ls -l</code> you will see this in a slightly more human-readable format, namely <code>rw-------</code> where a minus means that a bit is turned off.</p>
 <p>Now type <code>exit</code> to get back to your own machine, and then <code>ssh USERNAME@seis.bris.ac.uk</code> to log back in to seis. It should log you in without asking for a password, and you have now set up key-based SSH authentication for seis.</p>
-<p>Note: if you set a password on your SSH key earlier, then it will ask you for a password, and it will expect the key password not your uni password. You know not to ever reuse your uni password for anything else, right?</p>
+<p><em>Note: if you set a password on your SSH key earlier, then it will ask you for a password, and it will expect the key password not your uni password. You know not to ever reuse your uni password for anything else, right?</em></p>
 <p>If for some reason something doesn't work with ssh, the first thing to try is to add the <code>-v</code> switch enable debugging information (you can even do <code>-vv</code> or <code>-vvv</code> to see even more detail, but we don't need that). If there is a problem with the permissions on your private key file for example, then you will see SSH complain in the debugging information.</p>
 <h2 id="setting-up-keys-for-lab-machines"><a class="header" href="#setting-up-keys-for-lab-machines">Setting up keys for lab machines</a></h2>
 <p>You can now get into seis with a key, but you want to be on a lab machine to get work done.</p>
@@ -294,7 +305,7 @@ chmod 600 authorized_keys
 <p>From now on, from you own machine, you should be able to get directly into a lab machine with the following command, which should not ask for your password at all:</p>
 <pre><code>ssh -A -J USERNAME@seis.bris.ac.uk USERNAME@rd-mvb-linuxlab.bristol.ac.uk
 </code></pre>
-<p><em>Unfortunately, <code>-J</code> will not work on a windows CMD terminal, although it should work on Windows Subsystem for Linux. Once we have set up a configuration file, there will be a way to work around this problem. Mac and linux users should be fine though, as should anyone running these commands from an Alpine VM on their own machine, whatever their host OS.</em></p>
+<p><em>Unfortunately, <code>-J</code> will not work on a windows CMD terminal, although it should work on Windows Subsystem for Linux. Once we have set up a configuration file, there will be a way to work around this problem. Mac and Linux users should be fine though, as should anyone running these commands from an Alpine VM on their own machine, whatever their host OS.</em></p>
 <h2 id="setting-up-a-configuration-file"><a class="header" href="#setting-up-a-configuration-file">Setting up a configuration file</a></h2>
 <p>You now have a log in command that works, but you still have to type a lot, and you need to type your username twice. We can improve this by using a configuration file.</p>
 <p>SSH reads two configuration files: one for all users at <code>/etc/ssh/ssh_config</code> (<code>/etc</code> is where POSIX programs typically store global settings) and a per-user one at <code>~/.ssh/config</code>. The site <a href="https://www.ssh.com/ssh/config/">https://www.ssh.com/ssh/config/</a> or just <code>man ssh_config | less</code> on a terminal contain the documentation (<code>man</code> means manual page, and <code>less</code> is a program that shows a file on page at a time and lets you scroll and search).</p>
@@ -341,19 +352,19 @@ Host lab
 <h2 id="installing-on-your-own-machine"><a class="header" href="#installing-on-your-own-machine">Installing on your own machine</a></h2>
 <p>To use vagrant on your own machine (recommended), follow these steps:</p>
 <ul>
-<li>Go to <a href="https://www.vagrantup.com/downloads">https://www.vagrantup.com/downloads</a> and download the version of vagrant for your operating system. Windows, Mac OS and common versions of linux are supported.</li>
-<li>Download and install virtualbox from <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a>.</li>
+<li>Go to <a href="https://www.vagrantup.com/downloads">https://www.vagrantup.com/downloads</a> and download the version of vagrant for your operating system. Windows, Mac OS and common versions of Linux are supported.</li>
+<li>Download and install Virtualbox from <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a>.</li>
 <li>Reboot your machine.</li>
 </ul>
-<p>If you are on linux, you can of course also install the programs from your distribution's repository. Vagrant's developers actually recommend against this because they claim that some distributions package outdated versions, but it is your choice.</p>
+<p>If you are on Linux, you can of course also install the programs from your distribution's repository. Vagrant's developers actually recommend against this because they claim that some distributions package outdated versions, but it is your choice.</p>
 <h2 id="configuring-a-box"><a class="header" href="#configuring-a-box">Configuring a box</a></h2>
-<p>Next, you are going to configure a virtual machine using <a href="https://www.alpinelinux.org/">alpine linux</a>, a minimal linux distribution that we will be using in this unit. </p>
+<p>Next, you are going to configure a virtual machine using <a href="https://www.alpinelinux.org/">alpine linux</a>, a minimal Linux distribution that we will be using in this unit. </p>
 <ul>
 <li>Create an empty folder somewhere.</li>
 <li>In that folder, create a file called Vagrantfile (capitalised, and with no extension) and add the following lines to it - or just download the file from <a href="posix1/../resources/Vagrantfile">here</a>:</li>
 </ul>
 <pre><code class="language-ruby">Vagrant.configure(&quot;2&quot;) do |config|
-  config.vm.box = &quot;generic/alpine314&quot;
+  config.vm.box = &quot;generic/alpine317&quot;
   config.vm.synced_folder &quot;.&quot;, &quot;/vagrant&quot;
 
   config.vm.provision &quot;shell&quot;, inline: &lt;&lt;-SHELL
@@ -379,7 +390,7 @@ end
 <li>Open a terminal in the folder containing the Vagrantfile. If you are on windows, both the windows CMD and the windows subsystem for linux terminal will work equally well for this purpose.</li>
 <li>Run the command <code>vagrant up</code>. This starts the virtual machine configured in the current folder, and if it has not been downloaded and provisioned yet (as is the case when you run <code>up</code> for the first time) then it does this for you as well.</li>
 <li>When vagrant tells you the machine is running, run <code>vagrant ssh</code> to log in to your virtual machine. If it asks you for a password, use <code>vagrant</code>.</li>
-<li>You should now see the virtual machine prompt <code>alpine310:~$</code>. Try the command <code>ls /</code> and check that there is a folder called vagrant in the top-level folder, along with system ones with names like <code>usr</code> and <code>bin</code>.</li>
+<li>You should now see the virtual machine prompt <code>alpine317:~$</code>. Try the command <code>ls /</code> and check that there is a folder called vagrant in the top-level folder, along with system ones with names like <code>usr</code> and <code>bin</code>.</li>
 </ul>
 <p>There are two kinds of errors you might get during <code>vagrant up</code>:</p>
 <ul>
@@ -391,11 +402,11 @@ end
 <p>Promise yourself that you will always do this before turning off your computer, if you have been using vagrant!</p>
 <h2 id="running-on-a-lab-machine"><a class="header" href="#running-on-a-lab-machine">Running on a lab machine</a></h2>
 <p>Vagrant is already installed on the lab machines in MVB 2.11, so you can remotely log in and launch a box from there. This will get you exactly the same alpine environment as if you run on your own machine, and everyone should try this out too. If for some reason you cannot run vagrant on your machine, then as long as you have an internet connection you should still be able to run it on the lab machines.</p>
-<p>First, we connect to a lab machine: open a terminal and run the command <code>ssh lab</code> that you configured in the previous section on SSH.</p>
+<p>First, we connect to a lab machine: open a terminal and run the command <code>ssh lab</code> that you configured in the previous exercise on SSH.</p>
 <p>On the lab machine, we need to create a folder and load a Vagrantfile as above, but let's download the Vagrantfile from the unit webpage instead of typing it out. Run the following shell commands (the third one starting <code>wget</code> must be all on one line, even if your web browser has added a line break):</p>
 <pre><code class="language-sh">mkdir softwaretools
 cd softwaretools
-wget https://raw.githubusercontent.com/cs-uob/COMS10012/master/exercises/part1/src/resources/Vagrantfile
+wget https://raw.githubusercontent.com/cs-uob/COMSM0085/master/exercises/part1/src/resources/Vagrantfile
 </code></pre>
 <p>You can call the top folder (softwaretools) anything you like and put it anywhere you want. You can now run <code>vagrant up</code> followed by <code>vagrant ssh</code> from inside that folder.</p>
 <div class="advanced container">
@@ -571,202 +582,28 @@ gcc -Wall &quot;$program.c&quot; -o &quot;$program&quot;
 <pre><code>file=arguments gcc -Wall &quot;$file.c&quot; -o &quot;$file&quot;
 </code></pre>
 <p>The problem here is that the shell first reads the line and substitutes in the value of <code>$file</code> (unset variables expand to the empty string by default) before starting to execute the command, so you are reading the variable's value before writing it. Leaving off the quotes doesn't help: you need to set the variable on a separate line.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="activity-2"><a class="header" href="#activity-2">Activity 2</a></h1>
-<h2 id="videos-1"><a class="header" href="#videos-1">Videos</a></h2>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th></tr></thead><tbody>
-<tr><td><a href="https://web.microsoftstream.com/video/67625d6d-1b0b-4c83-b2d0-cb451eb0a98e?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Permissions 1</a></td><td style="text-align: right">27 minutes</td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/d8cc15d9-a61a-4279-b6fa-da34c4722a4e?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Permissions 2</a></td><td style="text-align: right">22 minutes</td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/e896745c-fbfe-4730-bb45-7739be141011?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Pipes 1</a></td><td style="text-align: right">18 minutes</td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/3520bb75-d019-4706-8f35-9126a2c600c0?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Pipes 2</a></td><td style="text-align: right">18 minutes</td></tr>
-</tbody></table>
-<h2 id="exercises-1"><a class="header" href="#exercises-1">Exercises</a></h2>
-<ul>
-<li><a href="posix2/./permissions.html">File permissions</a></li>
-<li><a href="posix2/./pipes.html">Pipes</a></li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="file-permissions"><a class="header" href="#file-permissions">File permissions</a></h1>
-<p>Log in to your vagrant VM for the following exercises.</p>
-<h2 id="show-the-current-user"><a class="header" href="#show-the-current-user">Show the current user</a></h2>
-<p>First, use the command <code>whoami</code> to see the current user name: it should be <code>vagrant</code>.</p>
-<p>For this exercise it will be useful to display the user in the prompt, so do <code>sudo nano /etc/profile</code>. This file is a configuration file that is read by the shell when it starts up. Notice the lines:</p>
-<pre><code>export CHARSET=UTF-8
-export LANG=C.UTF-8
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-export PAGER=less
-export PS1='\h:\w\$ '
-umask 022
-</code></pre>
-<p>The <code>export</code> ones set environment variables, for example the default <code>PATH</code> where the shell looks for programs. The <code>PAGER</code> is what programs such as the manual page viewer (<code>man</code>) use to display information one page at a time.</p>
-<p>The <code>PS1</code> (prompt level 1) controls your shell prompt. Here <code>\h</code> means the hostname, <code>\w</code> the working directory and <code>\$</code> is the appropriate prompt symbol (<code>$</code> for normal users, <code>#</code> for root). This gets you a default prompt that looks like <code>alpine310:~$ </code> (note the space after the dollar sign, which is also in the PS1). Let's add the username: change the line to <code>export PS1='\u@\h:\w\$ '</code>. When you log out and in again, your prompt will now be <code>vagrant@alpine310:~$ </code>.</p>
-<p>While you're here, you can <code>export EDITOR=nano</code> so that every user gets nano instead of vi as their default editor. Then save the file (Control+X in nano).</p>
-<ul>
-<li>Research online what <code>umask 022</code> does, note that the number is in base 8.</li>
-</ul>
-<h2 id="create-a-user-and-a-group"><a class="header" href="#create-a-user-and-a-group">Create a user and a group</a></h2>
-<p>Create a new user with <code>sudo adduser NAME</code> - I'm going to be using <code>fred</code> as an example name in these notes. When it asks for a password, you can just use <code>fred</code> or something; it will complain about the password being too short but it will create the user anyway.</p>
-<p>Check the user and group files with <code>tail /etc/passwd</code> and <code>tail /etc/group</code> to check that the new user has been created - <code>tail</code> displays the last 10 lines of a file by default; <code>tail -n N FILE</code> would display the last N lines. Your new user <code>fred</code> (or whatever you called them) should appear in both files. Also check with <code>ls -l /home</code> that the home directory for Fred exists and is set to the correct user and group.</p>
-<p>Time to change user: <code>su fred</code> and enter the password. Notice that the prompt has changed to <code>fred@alpine310:/home/vagrant$</code> (at least if you started off in that folder). So the user has changed, and because <code>/home/vagrant</code> is no longer the current user's home directory, it gets written out in full. Run <code>cd</code> to go home followed by <code>pwd</code> and check that you are now in <code>/home/fred</code> or whatever you called your new user.</p>
-<p>Next, create a user <code>george</code> (or some other name) add both your two new users, but not <code>vagrant</code>, to the group <code>users</code> (which already exists) as described in the video. Note: <code>fred</code> cannot use sudo, so you have to exit his terminal to get back to one running as vagrant for this.</p>
-<h2 id="explore-file-permissions"><a class="header" href="#explore-file-permissions">Explore file permissions</a></h2>
-<p>As user <code>fred</code> (or whatever you called your first new user), set up your home directory using what you learnt in the videos so that</p>
-<ul>
-<li>You can do everything (rwx).</li>
-<li>Members of the <code>users</code> group can list files and change to your home directory, but not add/remove files. You will need to change the group of your home directory to <code>users</code> for this, as described in the videos.</li>
-<li>Everyone else cannot do anything with your home directory.</li>
-</ul>
-<p>Create a file in your home directory, e.g. <code>nano readme.txt</code> then add some content.</p>
-<p>Check, by using <code>su USERNAME</code> to log in as the different users, that:</p>
-<ul>
-<li><code>george</code> can view Fred's home directory but not create files there; </li>
-<li><code>george</code> can view but not edit Fred's readme file; </li>
-<li><code>vagrant</code> cannot list files in or enter Fred's home directory at all. What happens when you try?</li>
-</ul>
-<p><em>Of course, vagrant can use sudo to get around all these restrictions. Permissions do not protect you from anyone who can become root.</em></p>
-<p>Also as <code>fred</code>, make a <code>private</code> subdirectory in your home folder that no-one but you can access (read, write or execute). Create a file <code>secret.txt</code> in there with <code>nano private/secret.txt</code> as user <code>fred</code> from Fred's home directory, and put something in it. Do not change any permissions on <code>secret.txt</code> itself.</p>
-<p>Check as George that you can see the folder itself, but not cd into it nor list the file. Check that even knowing the file name (<code>cat /home/fred/private/secret.txt</code>) as George doesn't work.</p>
-<p>Using <code>ls -l</code> as Fred in both <code>~</code> and <code>~/private</code>, compare the entries for the files <code>~/readme.txt</code>, <code>~/private/secret.txt</code> and the folder <code>~/private</code>. Why do the groups of the two files differ?</p>
-<p>Note that, even though the secret file has read permissions for everyone by default, George cannot read it. The rule is that you need permissions on the whole path from <code>/</code> to a file to be able to access it.</p>
-<p><em>This is another reminder that if you want to store coursework on a lab machine, then put it in a folder that is only accessible to you. Other students can read your home directory by default, and they would be able to steal your work and submit it as their own otherwise: this has happened in the past.</em></p>
-<p><em>Altenatively you could remove permissions from everyone else on your home directory there, but this prevents you from being able to share files in specific folders that you do want to share with other students.</em></p>
-<h2 id="setuid"><a class="header" href="#setuid">Setuid</a></h2>
-<p>We are going to create a file to let George (and others in the users group) send Fred messages which go in a file in his home directory.</p>
-<p>As Fred, create a file <code>message-fred.c</code> in your home directory and add the following lines:</p>
-<pre><code class="language-C">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-
-const char *filename =&quot;/home/fred/messages.txt&quot;;
-
-int main(int argc, char **argv) {
-  if (argc != 2) {
-    puts(&quot;Usage: message-fred MESSAGE&quot;);
-    return 1;
-  }
-  FILE *file = fopen(filename, &quot;a&quot;);
-  if (file == NULL) {
-    puts(&quot;Error opening file&quot;);
-    return 2;
-  }
-  int r = fputs(argv[1], file);
-  if (r == EOF) {
-    puts(&quot;Error writing message&quot;);
-    return 2;
-  }
-  r = fputc('\n', file);
-  if (r == EOF) {
-    puts(&quot;Error writing newline&quot;);
-    return 2;
-  }
-  fclose(file);
-  return 0;
-}
-</code></pre>
-<p>Compile it with <code>gcc -Wall message-fred.c -o message-fred</code> (you should not get any warnings) and check with <code>ls -l</code>, you will see a line like</p>
-<pre><code>-rwxr-xr-x    1 fred     fred         19984 Oct 28 13:26 message-fred
-</code></pre>
-<p>These are the default permissions for a newly created executable file; note that gcc has set the three <code>+x</code> bits for you. Still as Fred, run <code>chmod u+s message-fred</code> and check the file again: you should now see <code>-rwsr-xr-x</code> for the file permissions. The <code>s</code> is the setuid bit.</p>
-<p>As George (<code>su george</code>), go into Fred's home directory and run <code>./message-fred &quot;Hi from George!&quot;</code>. The quotes are needed here because the program accepts only a single argument.</p>
-<p>Now run <code>ls -l</code> and notice that a <code>messages.txt</code> has appeared with owner and group <code>fred</code>. Check the contents with <code>cat messages.txt</code>. Although George cannot create and edit files in Fred's home directory himself (he can't edit <code>messages.txt</code> for example, although he can read it), the program <code>message-fred</code> ran as Fred, which let it create the file. George can send another message like this (<code>./message-fred &quot;Hi again!&quot;</code>), which gets appended to the file: try this out.</p>
-<p>This shows how setuid programs can be used to allow other users to selectively perform specific tasks under a different user account.</p>
-<p><strong>Warning</strong>: writing your own setuid programs is extremely dangerous if you don't know the basics of secure coding and hacking C programs, because a bug in such a program could let someone take over your user account. The absolute minimum you should know is the contents of our security units up to and including 4th year.</p>
-<p>A general task for a security analyst might be finding all files with the setuid bit set on a system. You can try this yourself, but return to a vagrant shell first so that you're allowed to use sudo:</p>
-<pre><code>sudo find / -perm /4000
-</code></pre>
-<p>You might get some errors relating to <code>/proc</code> files, which you can ignore: these are subprocesses that find uses to look at individual files.</p>
-<p>Apart from <code>message-fred</code>, on alpine there are four such files by default: <code>sudo</code>, <code>mount</code>, <code>umount</code> and <code>bbsuid</code>. The first one you already know; look up what the next two do and think about why they are setuid. Specifically, what kinds of (un)mounting are non-root users allowed to do according to the manual pages?</p>
-<p>The last one is busybox' general-purpose setuid helper. For example,</p>
-<pre><code>ls -l /bin | grep bbsuid
-</code></pre>
-<p>shows that <code>/bin/su</code> is in fact a link to bbsuid on this system (a symlink to a setuid program inherits the setuid property). <code>grep STRING</code> here filters its input and only returns lines containing the string (or regular expression).</p>
-<p>Have a look at the output of the following:</p>
-<pre><code>ls -l /usr/bin | grep bbsuid
-</code></pre>
-<p>Look up what these programs do and think about why they have to be setuid root.</p>
-<p>Also have a look at the <a href="https://github.com/alpinelinux/aports/blob/master/main/busybox/bbsuid.c">source code of bbsuid</a>: it's only around 100 lines of C and all it does is check that you're calling it from an approved filename, then launch busybox (still as root) to handle the command. The check is important because anyone can make a symlink to bbsuid and call it say <code>rm</code>, and if bbsuid didn't check for this then it would allow anyone to remove any file on the system as root.</p>
-<h2 id="sudo"><a class="header" href="#sudo">Sudo</a></h2>
-<p>Make sure your terminal is running as <code>fred</code> and try a <code>sudo ls</code>. You will see a general message, you will be asked for your password, and then you will get the error <code>fred is not in the sudoers file.  This incident will be reported.</code> (This means that an entry has been logged in <code>/var/log/messages</code>.)</p>
-<p>So, <code>fred</code> can currently not use sudo. Switch back to <code>vagrant</code> and run the command <code>sudo cat /etc/sudoers</code>. Everything is commented out except <code>root ALL=(ALL) ALL</code> and the last line <code>#includedir /etc/sudoers.d</code> (this is not a comment!) which contains a single file <code>vagrant</code> with the line <code>vagrant ALL=(ALL) NOPASSWD: ALL</code> which is why vagrant can use sudo in the first place.</p>
-<p>However, note the commented lines such as</p>
-<pre><code># %wheel ALL=(ALL) NOPASSWD: ALL
-# %sudo ALL=(ALL) ALL
-</code></pre>
-<p>If uncommented, the first one would let everyone in group wheel run commands using sudo (this is the default on some other linux distributions), whereas the second one would allow everyone in the group <code>sudo</code> to do this, but would prompt for their own password beforehand.</p>
-<p>Let's allow people in the users group to reboot the machine. Open a root shell with <code>sudo su</code> as vagrant; this is so we don't get locked out if we break sudo.</p>
-<p>Edit the sudoers file with <code>nano /etc/sudoers</code> as root, and add the following line:</p>
-<pre><code>%users ALL=(ALL) /sbin/reboot
-</code></pre>
-<p>and save the sudoers file.</p>
-<p>If you read the comment at the top of the file, it suggests using <code>visudo</code> to edit the file. Since we don't want to use vi, we can instead check the syntax with <code>visudo -c</code> and check that we get &quot;parsed OK&quot;; if not then we edit the file again to fix it (this is why we opened a root shell: if there's a syntax error in the file, sudo would refuse to run at all).</p>
-<p>You can now switch back to <code>fred</code> (check the prompt to make sure you are Fred) and do <code>sudo reboot</code>. After asking for Fred's password, the virtual machine will now reboot, which you notice because you get kicked out of your ssh connection. Another <code>vagrant ssh</code> after a few seconds will get you back in again.</p>
-<div class="advanced container">
-<header><span class="advanced-title"></span></header>
-<div class="container-content">
-<p>After rebooting, your <code>/vagrant</code> shared folder might not work. In this case, log out and do <code>vagrant halt</code> then <code>vagrant up</code> and <code>vagrant ssh</code> again on the host machine.</p>
-<p>When vagrant boots your VM, it automatically sets up the shared folder, but this doesn't always work if you reboot the VM yourself.</p>
-</div>
-</div>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="pipes"><a class="header" href="#pipes">Pipes</a></h1>
-<p>The command <code>ls | head</code> runs ls and head and pipes the standard output of ls into the standard input of head.</p>
-<p>The following shell commands are particularly useful in pipes:</p>
-<ul>
-<li><code>cat [FILENAME [FILENAME...]]</code> writes the contents of one or more files to standard output. This is a good way of starting a pipe. If you leave off all the filenames, cat just reads its standard input and writes it to standard output.</li>
-<li><code>head [-n N]</code> reads its standard input and writes only the first N lines (default is 10 if you leave the option off) to standard output. You can also put a minus before the argument e.g. <code>head -n -2</code> to <em>skip the last 2 lines</em> and write all the rest.</li>
-<li><code>tail [-n N]</code> is like head except that it writes the last N lines (with a minus, it skips the first N ones).</li>
-<li><code>sort</code> reads all its standard input into a memory buffer, then sorts the lines and writes them all to standard output.</li>
-<li><code>uniq</code> reads standard input and writes to standard output, but skips repeated lines that immediately follow each other, for example if there are three lines A, A, B then it would only write A, B but if it gets A, B, A it would write all three. A common way to remove duplicate lines is <code>... | sort | uniq | ...</code>.</li>
-<li><code>grep [-iv] EXPRESSION</code> reads standard input and prints only lines that match the regular expression to standard output. With <code>-i</code> it is case-insensitive, and with <code>-v</code> it only prints lines that do <em>not</em> match the expression.</li>
-<li><code>sed -e COMMAND</code> reads lines from standard input, transforms them according to the command and writes the results to standard output. <code>sed</code> has its own command language but the most common one is <code>s/SOURCE/DEST/</code> which changes substrings matching the source regular expression into the destination one.</li>
-<li><code>wc [-l]</code> stands for word count, but with <code>-l</code> it counts lines instead. Putting a <code>wc -l</code> on the very end of a pipe is useful if you just want to know how many results a particular command or pipe produces, assuming the results come one per line.</li>
-</ul>
-<p>All these commands actually take an optional extra filename as argument, in which case they read from this file as input. For example, to display the first 10 lines of a file called <code>Readme.txt</code>, you could do either <code>cat Readme.txt | head</code> or <code>head Readme.txt</code>.</p>
-<h2 id="word-list-exercises---pipes-and-regular-expressions"><a class="header" href="#word-list-exercises---pipes-and-regular-expressions">Word list exercises - pipes and regular expressions</a></h2>
-<p>Most linux distributions come with a dictionary file <code>/usr/dict/words</code> that contains a list of English words in alphabetical order, for use in spell-checking programs. The list includes a selection of proper nouns, for example countries and cities. Alpine linux, true to its principles of being minimal, omits this file - but you can download one yourself with</p>
-<pre><code>wget https://users.cs.duke.edu/~ola/ap/linuxwords -O words
-</code></pre>
-<p><code>wget</code> is one of two utilities for downloading files, the other being <code>curl</code>. Note that the option for output file name is a capital O, not a lowercase o or a zero.</p>
-<p>Find one-line commands, possibly with pipes, to print the following to your terminal. You can either start each command with <code>cat words | ...</code> or do it without cat by providing the words file as an argument to the first command in your pipeline.</p>
-<p><em>If English is not your native language, ignore the guessing part - it is not assessed.</em></p>
-<ul>
-<li>The first word in the file. <em>Can you guess what it will be, it is a city in Europe?</em></li>
-<li>The last word in the file. <em>Can you guess this one, another city in Europe?</em></li>
-<li>The number of words in the words file - there is one word per line.</li>
-<li>The 6171st word in the file. <em>Can you read my mind and guess this word directly?</em></li>
-<li>All words containing the letter Q, capitalised. (A regular expression containing a string of one or more letters matches all strings that contain the expression as a substring.)</li>
-<li>All words starting with the letter X. The regular expression <code>X</code> would match an X anywhere in the word, but <code>^X</code> matches an X only at the start of the string.</li>
-<li>All words ending in j. (The expression <code>'j$'</code> matches a j only at the end of the string, but you have to single-quote it to stop the shell from interpreting the dollar sign). <em>Can you guess the word - it is a city in eastern Europe?</em></li>
-<li>The number of words containing the letter Q, ignoring case (e.g. capitalised or not).</li>
-<li>The first five words containing the letter sequence <code>cl</code>.</li>
-<li>All words containing the sequence &quot;kp&quot;, but not &quot;ckp&quot;. <em>Can you guess any of these?</em></li>
-<li>The last 15 words of exactly two letters. The expression <code>.</code> (period) matches a single character, and <code>'^...$'</code> for example would match all strings of the format <em>exactly three characters between start and end of string</em>. You need to quote it because of the dollar sign.</li>
-<li>All words from the first 100 words on the list, which contain the letter y.</li>
-<li>The first five words that are among the last 100 words on the list, and contain the letter y (whether capitalised or not).</li>
-<li>All three-letter words with no vowels (aeiou).The regular expression <code>'[aeiou]'</code> matches any string that contains one of the bracketed characters; you need quotes to stop the shell from interpreting the brackets. Remember to exclude words with capitalised vowels as well. <em>There are 12 of these, can you guess them all before looking?</em></li>
-<li>All words of exactly 7 letters, where the third one is an e and the word ends &quot;-ded&quot;. <em>This kind of search is really useful for crosswords. There are 9 words of this form, can you guess them?</em></li>
-</ul>
-<p>Bonus regular expression question:</p>
-<ul>
-<li>Find all words that start with a P (whether capitalised or not), and contain at least four instances of the letter a. Putting a <code>*</code> after something in a regular expression searches for <em>any number of repetitions of this, including 0</em> so for example <code>'a*'</code> would find words with any number of the letter a, including 0 (which is not what you want here). You need single quotes to stop the shell from expanding the <code>*</code>. <em>Can you guess the words? There are essentially four of them, two demonyms (for some reason one of them has a plural in the list, the other doesn't), and two nouns which are not proper nouns.</em></li>
-</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="activity-git"><a class="header" href="#activity-git">Activity: Git</a></h1>
-<h2 id="videos-2"><a class="header" href="#videos-2">Videos</a></h2>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th></tr></thead><tbody>
-<tr><td><a href="https://web.microsoftstream.com/video/e30fddec-b920-43d0-9f84-f650041e2e0e?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Git, part 1</a></td><td style="text-align: right">21 minutes</td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/f9486304-e51d-434e-9ae2-7ace1d26068e?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Git, part 2</a></td><td style="text-align: right">27 minutes</td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/ee347f5e-20f4-4baf-87c6-abc58b40f66a?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Git, part 3</a></td><td style="text-align: right">19 minutes</td></tr>
+<h2 id="videos-1"><a class="header" href="#videos-1">Videos</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<tr><td><a href="https://web.microsoftstream.com/video/1fb28095-555d-40e5-8b3b-5fb18b178892">Git, part 1</a></td><td style="text-align: right">34 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/ETueHYft1rVKjld7jesRNBwBL-iNbDoDElJRwZ1BymcXnQ?e=obfTVF">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/ea90c1c9-89cd-4cbf-9af1-14675bebdaea">Git, part 2</a></td><td style="text-align: right">27 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EZjMmRvbrndMkCf0wNwv93MBLorPR9KHzlMZ0iEJa1vBJg?e=08BmRQ">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/ecb70e8b-a390-44fa-8bc1-5af08d79a065">Git, part 3</a></td><td style="text-align: right">19 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/Ed3pRweWtgBPlylvSqRa9eMBzieIVzJ_SYjJY-Hw10V_3Q?e=WGEyNg">slides</a></td></tr>
 </tbody></table>
-<h2 id="exercises-2"><a class="header" href="#exercises-2">Exercises</a></h2>
+</div>
+<h2 id="exercises-1"><a class="header" href="#exercises-1">Exercises</a></h2>
 <ul>
 <li><a href="git/./git1.html">Git, part 1</a></li>
 <li><a href="git/./git2.html">Git, part 2</a></li>
 <li><a href="git/./git3.html">Git, part 3</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="git-part-1"><a class="header" href="#git-part-1">Git, part 1</a></h1>
-<p>For this exercise, I am assuming that you are working on alpine linux and have nano, git and gcc with musl-dev installed as in the last exercise.</p>
+<p>For this exercise, we are assuming that you are working on alpine linux and have nano, git and gcc with musl-dev installed as in the last exercise.</p>
 <h2 id="configuring-your-identity"><a class="header" href="#configuring-your-identity">Configuring your identity</a></h2>
 <p>Run the following two lines to set up git correctly. You only need to do this once when you install git, but not every time you create a new repository.</p>
 <pre><code>git config --global user.name &quot;YOURNAME&quot;
 git config --global user.email &quot;YOUREMAIL&quot;
 </code></pre>
-<p>where you obviously replace your name and email with something of your choice; I've put them in double quotes because this lets you include a space between your first and last names and the @ character in your email address.</p>
+<p>where you obviously replace your name and email with something of your choice; these are in double quotes because this lets you include a space between your first and last names and the @ character in your email address.</p>
 <p>This does not create a user account - git just uses your name and email to record the author in any commits you make, so you can put anything you like here (git will happily accept <code>-</code> as your email address, and it does not send you email). Of course, once you are working in a team with other students, you will probably want to use your real name so they know who has made which commits.</p>
 <p>If you are running a VM on a lab machine, then you would need to reconfigure git every time vagrant rebuilds the VM, for example when you log in to a different lab machine. You can put these commands in your Vagrantfile, like anything else that you want to run when vagrant (re)builds your box, but they need to be run as the vagrant user and not the root user. So add the following block to your vagrantfile just before the <code>end</code> line, editing your name and email address obviously; the key point being the <code>privileged: false</code> entry which runs the commands as the <code>vagrant</code> user:</p>
 <pre><code>config.vm.provision :shell, privileged: false, inline: &lt;&lt;-SHELL
@@ -866,18 +703,25 @@ int main() {
 </div>
 <p>I am assuming that you will be running the git commands in the rest of this section on an alpine linux VM, either on your machine or on a lab machine, however if you have git installed on your own machine directly (which is a good idea) then you can run this exercise there too.</p>
 <h2 id="a-note-on-naming"><a class="header" href="#a-note-on-naming">A note on naming</a></h2>
+<p>TL;DR: You may see the default branch named as either <code>master</code> or <code>main</code>, or more
+rarely something else entirely. So long as you are consistent, the name of the
+default branch doesn't matter at all (and you can configure it if you have a
+preference), and you just need to know that in these exercises we will use <code>master</code> 
+to refer to the default branch and you should substitute that for your own default 
+branch name if it is different.</p>
+<h3 id="long-version"><a class="header" href="#long-version">Long version</a></h3>
 <p>When git first appeared, whenever you created a repository you started with one branch called <code>master</code>. Different workflows and branch naming conventions appeared over time (we will see one of these in the next activity).</p>
-<p>As far as git is concerned, a branch name is just a string and any other name would do just as well (as long as it does not contain spaces, slashes or a few other special characters). As far as humans go, in 2020 it came to developers' attention that the term <code>master</code> is sometimes used in problematic ways in engineering in general and computing in partciular, specifically, a system where several components perform similar roles but one of them is the authoritative one in case of discrepancy has historically been called a <em>master/slave</em> system.</p>
-<p>The git developers' first reaction was to make it easier to choose a different name for your first branch; the latest version of git prints a message on how to do this when you create a repository (the configuration setting is <code>init.defaultBranch</code>) and the online providers such as github offer a text field for this too. At the moment, <code>main</code> seems to be the most popular alternative name for the first branch, but at the time of writing there does not seem to be a clear consensus yet. I have seen both <code>default</code> and <code>root</code> suggested as first branch names, neither of which seems to have gained much traction though. Another contender for workflows which use a <code>develop</code> branch anyway is to use that as the initial branch. The latest post on the matter from <a href="https://sfconservancy.org/news/2020/jun/23/gitbranchname/">software freedom conservancy</a> is dated June 2020 and states that the matter is &quot;currently being discussed on our mailing list&quot;.</p>
-<p>There has been some debate about whether the name &quot;master&quot; in git traces back to <em>master/slave</em> or another, less problematic use of word e.g. the phrase <em>master copy/master recording</em> from the music industry - the most authoritative source I can find on the matter is <a href="https://git.github.io/rev_news/2020/07/29/edition-65/">git rev news 65, July 2020</a> from the git developers themselves, which also states that a change of the default branch name might happen in Git 3.0 (the version installed in Alpine at the time of writing is 2.30.0).</p>
-<p>There is another line of argument that the word <em>master</em> as a default branch name (and thus something developers will refer to a lot) is inherently problematic even if it came from a different origin than <em>master/slave</em>. This is a complicated issue as, among other things, half the cohort taking Software Tools is probably on a <em>Master's Degree</em> and one of the criteria for a first-class mark is showing <em>mastery</em> of the unit material - all terms that will be much harder to change than a simple repository name which is one line of commands to change. Git does not care what your branches are called after all, one string is as good as another (as long as it doesn't contain special characters or spaces).</p>
-<p>However, a fresh installation of git will still call the branch <code>master</code> unless you change a configuration setting, and any book, tutorial, forum or stackexchange post online written about git before around mid-2020 will refer to <code>master</code> so there is currently no way around knowing that in the context of git, the term <code>master</code> refers to a branch with a particular role, but as a future developer you should also have an understanding of the community and conventions around your tools and you should definitely know that there is a currently ongoing discussion around this term.</p>
-<p>For the 2020-21 academic year, I have decided to go with <code>master</code> for this unit as I don't feel it's my job to pre-empt a decision on the new default name - github is in favour of <code>main</code> but the git developers do not seem to have made a final decision yet; and because you will encounter the term <code>master</code> in git itself and in a lot of existing repositories and documentation (including the official <a href="https://git-scm.com/book/en/v2">git book</a> at the time of writing); it will be easy enough to update these notes for 2021-22 if everyone has switched to <code>main</code> or something else by then.</p>
+<p>As far as git is concerned, a branch name is just a string and any other name would do just as well (as long as it does not contain spaces, slashes or a few other special characters). As far as humans go, in 2020 it came to developers' attention that some people consider the term <code>master</code> as used in some contexts of engineering in general and computing in partciular to be problematic. Specifically, a system where several components perform similar roles but one of them is the authoritative one in case of discrepancy has historically been called a <em>master/slave</em> system.</p>
+<p>The git developers' first reaction to complaint about this was to make it easier to choose a different name for your first branch; the latest version of git prints a message on how to do this when you create a repository (the configuration setting is <code>init.defaultBranch</code>) and the online providers such as github offer a text field for this too. The term <code>main</code> seems to be the most popular alternative name for the first branch. Another contender for workflows which use a <code>develop</code> branch anyway is to use that as the initial branch. </p>
+<p>While some in the community dispute that merely referring to the <em>concept</em> of slavery is legitimately problematic, there has also been some debate about whether the name &quot;master&quot; in git even traces back to <em>master/slave</em> or instead stems from another, less problematic use of word e.g. the phrase <em>master copy/master recording</em> from the music industry - the most authoritative source on the matter is <a href="https://git.github.io/rev_news/2020/07/29/edition-65/">git rev news 65, July 2020</a> from the git developers themselves, which also states that a change of the default branch name could happen in Git 3.0 (the version installed in Alpine at the time of writing is 2.38.3).</p>
+<p>There is another line of argument that the word <em>master</em> as a default branch name (and thus something developers will refer to a lot) is somehow inherently problematic even if it came from a different origin than <em>master/slave</em>. This is a complicated issue as, among other things, half the cohort taking Software Tools is probably on a <em>Master's Degree</em> and one of the criteria for a first-class mark is showing <em>mastery</em> of the unit material - all terms that would be much harder to change than a simple repository name which is one line of commands to change. Git does not care what your branches are called, after all -- one string is as good as another (as long as it doesn't contain special characters or spaces).</p>
+<p>A fresh installation of git will still call the branch <code>master</code> unless you change a configuration setting, and any book, tutorial, forum or stackexchange post online written about git before around mid-2020 will refer to <code>master</code>, so there is no way around knowing that in the context of git, the term <code>master</code> refers to a branch with a particular role, but as a future developer you should also have an understanding of the community and conventions around your tools, and you should definitely know that there is a currently ongoing discussion around this term.</p>
+<p>We have decided to go with <code>master</code> for this unit because you will encounter the term <code>master</code> in git itself and in a lot of existing repositories and documentation (including the official <a href="https://git-scm.com/book/en/v2">git book</a> at the time of writing).</p>
 <p>For your own repositories, you are free to choose whatever name you like, and you can configure this with the command</p>
 <pre><code>git config --global init.defaultBranch NAME
 </code></pre>
 <p>and then follow the rest of the git exercises, mentally replacing <code>master</code> by <code>main</code> or your choice of other name. </p>
-<p>When you create a repository on github, the default name you get depends on your settings, which seems to depend on when you created your account - if you create an account today, you will get <code>main</code> as the default name but on my account (which has been around for years) I still get <code>master</code>. The page you want to check while logged in to github is https://github.com/settings/repositories; if you get <code>main</code> as your default then please use that in the rest of this tutorial.</p>
+<p>When you create a repository on github, the default name you get depends on your settings, which seems to depend on when you created your account - if you create an account today, you will get <code>main</code> as the default name but on an older account you will still get <code>master</code>. The page you want to check while logged in to github is https://github.com/settings/repositories; if you get <code>main</code> as your default then please either alter it or use that in the rest of this tutorial.</p>
 <p>To finish with a quote from the git book:</p>
 <blockquote>
 <p>The &quot;master&quot; branch in Git is not a special branch. It is exactly like any other
@@ -887,7 +731,7 @@ command creates it by default and most people don't bother to change it.</p>
 <h2 id="create-a-repository"><a class="header" href="#create-a-repository">Create a repository</a></h2>
 <p>On the main page, you should see an empty <em>Repositories</em> bar on the left, with a new button. Use that to create a repository, on the next page give it a name and tick the <em>Add a README file</em> box.</p>
 <p>On the repository page, there is a green <em>Code</em> button. Clicking that opens a box with three tabs: <em>HTTPS</em>, <em>SSH</em> and <em>GitHub CLI</em>.</p>
-<p>Each repository has a two-part name: the first part is the owner's github username, the second part is the repository name. For example, the repository for this unit is called <code>cs-uob/COMS10012</code>. There are two ways to interact with a remote repository:</p>
+<p>Each repository has a two-part name: the first part is the owner's github username, the second part is the repository name. For example, the repository for this unit is called <code>cs-uob/COMSM0085</code>. There are two ways to interact with a remote repository:</p>
 <ul>
 <li>Via HTTPS. This is ok if you are just cloning a public repository, as it does not require any authentication. To interact with a private repository or to push files, HTTPS requires username/password authentication, and we can do better than that.</li>
 <li>Via SSH, using keys. This is the recommended way to use Git.</li>
@@ -1132,17 +976,236 @@ Switched to a new branch 'develop'
 <li>If necessary, participate in a discussion or review and make extra commits to address points that other developers have raised.</li>
 <li>Someone - usually not the developer who created the pull request - approves it, creating a merge commit in develop (or master).</li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="activity-3"><a class="header" href="#activity-3">Activity 3</a></h1>
-<h2 id="videos-3"><a class="header" href="#videos-3">Videos</a></h2>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th></tr></thead><tbody>
-<tr><td><a href="https://web.microsoftstream.com/video/a6b0b42d-21be-4d1e-960d-2323f437b46c?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">inodes</a></td><td style="text-align: right">28 minutes</td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/6b2eb8b5-bb65-4152-b27a-e5e71398741a?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">shell scripting 1</a></td><td style="text-align: right">17 minutes</td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/edbb35de-2b9f-46ce-99bc-e8468bdf9556?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">shell scripting 2</a></td><td style="text-align: right">21 minutes</td></tr>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="posix-activity-2"><a class="header" href="#posix-activity-2">POSIX Activity 2</a></h1>
+<h2 id="videos-2"><a class="header" href="#videos-2">Videos</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<tr><td><a href="https://web.microsoftstream.com/video/71b186df-c373-4b98-ba34-035679cb1ec6">Permissions</a></td><td style="text-align: right">20 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EUQ3xxCL4xlHtQ1M6uaLdW4Bc2sxbrCrLNQcinAUgCjmOg?e=ciQDX2">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/7b2657a6-a2d4-4c34-a642-da993d468851">Pipes 1</a></td><td style="text-align: right">20 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EdOsJY_EYlRIveTotkGszNoBWeGx5efiVPJPhhbiQfydTQ?e=RHGVol">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/d04fb18c-533b-4ffe-b8a1-f4d46e9b73d1">Pipes 2</a></td><td style="text-align: right">30 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EfGZcNx_ttNCsx8vpo2uZqIBERTzvUzap84BdzMfxLRuQw?e=Ty9yjZ">slides</a></td></tr>
 </tbody></table>
+</div>
+<h2 id="exercises-2"><a class="header" href="#exercises-2">Exercises</a></h2>
+<ul>
+<li><a href="posix2/./permissions.html">File permissions</a></li>
+<li><a href="posix2/./pipes.html">Pipes</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="file-permissions"><a class="header" href="#file-permissions">File permissions</a></h1>
+<p>Log in to your vagrant VM for the following exercises.</p>
+<h2 id="show-the-current-user"><a class="header" href="#show-the-current-user">Show the current user</a></h2>
+<p>First, use the command <code>whoami</code> to see the current user name: it should be <code>vagrant</code>.</p>
+<p>For this exercise it will be useful to display the user in the prompt, so do <code>sudo nano /etc/profile</code>. This file is a configuration file that is read by the shell when it starts up. Notice the lines:</p>
+<pre><code>export CHARSET=UTF-8
+export LANG=C.UTF-8
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export PAGER=less
+export PS1='\h:\w\$ '
+umask 022
+</code></pre>
+<p>The <code>export</code> ones set environment variables, for example the default <code>PATH</code> where the shell looks for programs. The <code>PAGER</code> is what programs such as the manual page viewer (<code>man</code>) use to display information one page at a time.</p>
+<p>The <code>PS1</code> (prompt level 1) controls your shell prompt. Here <code>\h</code> means the hostname, <code>\w</code> the working directory and <code>\$</code> is the appropriate prompt symbol (<code>$</code> for normal users, <code>#</code> for root). This gets you a default prompt that looks like <code>alpine310:~$ </code> (note the space after the dollar sign, which is also in the PS1). Let's add the username: change the line to <code>export PS1='\u@\h:\w\$ '</code>. When you log out and in again, your prompt will now be <code>vagrant@alpine310:~$ </code>.</p>
+<p>While you're here, you can <code>export EDITOR=nano</code> so that every user gets nano instead of vi as their default editor. Then save the file (Control+X in nano).</p>
+<ul>
+<li>Research online what <code>umask 022</code> does, note that the number is in base 8.</li>
+</ul>
+<h2 id="create-a-user-and-a-group"><a class="header" href="#create-a-user-and-a-group">Create a user and a group</a></h2>
+<p>Create a new user with <code>sudo adduser NAME</code> - I'm going to be using <code>fred</code> as an example name in these notes. When it asks for a password, you can just use <code>fred</code> or something; it will complain about the password being too short but it will create the user anyway.</p>
+<p>Check the user and group files with <code>tail /etc/passwd</code> and <code>tail /etc/group</code> to check that the new user has been created - <code>tail</code> displays the last 10 lines of a file by default; <code>tail -n N FILE</code> would display the last N lines. Your new user <code>fred</code> (or whatever you called them) should appear in both files. Also check with <code>ls -l /home</code> that the home directory for Fred exists and is set to the correct user and group.</p>
+<p>Time to change user: <code>su fred</code> and enter the password. Notice that the prompt has changed to <code>fred@alpine310:/home/vagrant$</code> (at least if you started off in that folder). So the user has changed, and because <code>/home/vagrant</code> is no longer the current user's home directory, it gets written out in full. Run <code>cd</code> to go home followed by <code>pwd</code> and check that you are now in <code>/home/fred</code> or whatever you called your new user.</p>
+<p>Next, create a user <code>george</code> (or some other name) add both your two new users, but not <code>vagrant</code>, to the group <code>users</code> (which already exists) as described in the video. Note: <code>fred</code> cannot use sudo, so you have to exit his terminal to get back to one running as vagrant for this.</p>
+<h2 id="explore-file-permissions"><a class="header" href="#explore-file-permissions">Explore file permissions</a></h2>
+<p>As user <code>fred</code> (or whatever you called your first new user), set up your home directory using what you learnt in the videos so that</p>
+<ul>
+<li>You can do everything (rwx).</li>
+<li>Members of the <code>users</code> group can list files and change to your home directory, but not add/remove files. You will need to change the group of your home directory to <code>users</code> for this, as described in the videos.</li>
+<li>Everyone else cannot do anything with your home directory.</li>
+</ul>
+<p>Create a file in your home directory, e.g. <code>nano readme.txt</code> then add some content.</p>
+<p>Check, by using <code>su USERNAME</code> to log in as the different users, that:</p>
+<ul>
+<li><code>george</code> can view Fred's home directory but not create files there; </li>
+<li><code>george</code> can view but not edit Fred's readme file; </li>
+<li><code>vagrant</code> cannot list files in or enter Fred's home directory at all. What happens when you try?</li>
+</ul>
+<p><em>Of course, vagrant can use sudo to get around all these restrictions. Permissions do not protect you from anyone who can become root.</em></p>
+<p>Also as <code>fred</code>, make a <code>private</code> subdirectory in your home folder that no-one but you can access (read, write or execute). Create a file <code>secret.txt</code> in there with <code>nano private/secret.txt</code> as user <code>fred</code> from Fred's home directory, and put something in it. Do not change any permissions on <code>secret.txt</code> itself.</p>
+<p>Check as George that you can see the folder itself, but not cd into it nor list the file. Check that even knowing the file name (<code>cat /home/fred/private/secret.txt</code>) as George doesn't work.</p>
+<p>Using <code>ls -l</code> as Fred in both <code>~</code> and <code>~/private</code>, compare the entries for the files <code>~/readme.txt</code>, <code>~/private/secret.txt</code> and the folder <code>~/private</code>. Why do the groups of the two files differ?</p>
+<p>Note that, even though the secret file has read permissions for everyone by default, George cannot read it. The rule is that you need permissions on the whole path from <code>/</code> to a file to be able to access it.</p>
+<p><em>This is another reminder that if you want to store coursework on a lab machine, then put it in a folder that is only accessible to you. Other students can read your home directory by default, and they would be able to steal your work and submit it as their own otherwise: this has happened in the past.</em></p>
+<p><em>Altenatively you could remove permissions from everyone else on your home directory there, but this prevents you from being able to share files in specific folders that you do want to share with other students.</em></p>
+<h2 id="setuid"><a class="header" href="#setuid">Setuid</a></h2>
+<p>We are going to create a file to let George (and others in the users group) send Fred messages which go in a file in his home directory.</p>
+<p>As Fred, create a file <code>message-fred.c</code> in your home directory and add the following lines:</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+const char *filename =&quot;/home/fred/messages.txt&quot;;
+
+int main(int argc, char **argv) {
+  if (argc != 2) {
+    puts(&quot;Usage: message-fred MESSAGE&quot;);
+    return 1;
+  }
+  FILE *file = fopen(filename, &quot;a&quot;);
+  if (file == NULL) {
+    puts(&quot;Error opening file&quot;);
+    return 2;
+  }
+  int r = fputs(argv[1], file);
+  if (r == EOF) {
+    puts(&quot;Error writing message&quot;);
+    return 2;
+  }
+  r = fputc('\n', file);
+  if (r == EOF) {
+    puts(&quot;Error writing newline&quot;);
+    return 2;
+  }
+  fclose(file);
+  return 0;
+}
+</code></pre>
+<p>Compile it with <code>gcc -Wall message-fred.c -o message-fred</code> (you should not get any warnings) and check with <code>ls -l</code>, you will see a line like</p>
+<pre><code>-rwxr-xr-x    1 fred     fred         19984 Oct 28 13:26 message-fred
+</code></pre>
+<p>These are the default permissions for a newly created executable file; note that gcc has set the three <code>+x</code> bits for you. Still as Fred, run <code>chmod u+s message-fred</code> and check the file again: you should now see <code>-rwsr-xr-x</code> for the file permissions. The <code>s</code> is the setuid bit.</p>
+<p>As George (<code>su george</code>), go into Fred's home directory and run <code>./message-fred &quot;Hi from George!&quot;</code>. The quotes are needed here because the program accepts only a single argument.</p>
+<p>Now run <code>ls -l</code> and notice that a <code>messages.txt</code> has appeared with owner and group <code>fred</code>. Check the contents with <code>cat messages.txt</code>. Although George cannot create and edit files in Fred's home directory himself (he can't edit <code>messages.txt</code> for example, although he can read it), the program <code>message-fred</code> ran as Fred, which let it create the file. George can send another message like this (<code>./message-fred &quot;Hi again!&quot;</code>), which gets appended to the file: try this out.</p>
+<p>This shows how setuid programs can be used to allow other users to selectively perform specific tasks under a different user account.</p>
+<p><strong>Warning</strong>: writing your own setuid programs is extremely dangerous if you don't know the basics of secure coding and hacking C programs, because a bug in such a program could let someone take over your user account. The absolute minimum you should know is the contents of our security units up to and including 4th year.</p>
+<p>A general task for a security analyst might be finding all files with the setuid bit set on a system. You can try this yourself, but return to a vagrant shell first so that you're allowed to use sudo:</p>
+<pre><code>sudo find / -perm /4000
+</code></pre>
+<p>You might get some errors relating to <code>/proc</code> files, which you can ignore: these are subprocesses that find uses to look at individual files.</p>
+<p>Apart from <code>message-fred</code>, on alpine there are four such files by default: <code>sudo</code>, <code>mount</code>, <code>umount</code> and <code>bbsuid</code>. The first one you already know; look up what the next two do and think about why they are setuid. Specifically, what kinds of (un)mounting are non-root users allowed to do according to the manual pages?</p>
+<p>The last one is busybox' general-purpose setuid helper. For example,</p>
+<pre><code>ls -l /bin | grep bbsuid
+</code></pre>
+<p>shows that <code>/bin/su</code> is in fact a link to bbsuid on this system (a symlink to a setuid program inherits the setuid property). <code>grep STRING</code> here filters its input and only returns lines containing the string (or regular expression).</p>
+<p>Have a look at the output of the following:</p>
+<pre><code>ls -l /usr/bin | grep bbsuid
+</code></pre>
+<p>Look up what these programs do and think about why they have to be setuid root.</p>
+<p>Also have a look at the <a href="https://github.com/alpinelinux/aports/blob/master/main/busybox/bbsuid.c">source code of bbsuid</a>: it's only around 100 lines of C and all it does is check that you're calling it from an approved filename, then launch busybox (still as root) to handle the command. The check is important because anyone can make a symlink to bbsuid and call it say <code>rm</code>, and if bbsuid didn't check for this then it would allow anyone to remove any file on the system as root.</p>
+<h2 id="sudo"><a class="header" href="#sudo">Sudo</a></h2>
+<p>Make sure your terminal is running as <code>fred</code> and try a <code>sudo ls</code>. You will see a general message, you will be asked for your password, and then you will get the error <code>fred is not in the sudoers file.  This incident will be reported.</code> (This means that an entry has been logged in <code>/var/log/messages</code>.)</p>
+<p>So, <code>fred</code> can currently not use sudo. Switch back to <code>vagrant</code> and run the command <code>sudo cat /etc/sudoers</code>. Everything is commented out except <code>root ALL=(ALL) ALL</code> and the last line <code>#includedir /etc/sudoers.d</code> (this is not a comment!) which contains a single file <code>vagrant</code> with the line <code>vagrant ALL=(ALL) NOPASSWD: ALL</code> which is why vagrant can use sudo in the first place.</p>
+<p>However, note the commented lines such as</p>
+<pre><code># %wheel ALL=(ALL) NOPASSWD: ALL
+# %sudo ALL=(ALL) ALL
+</code></pre>
+<p>If uncommented, the first one would let everyone in group wheel run commands using sudo (this is the default on some other linux distributions), whereas the second one would allow everyone in the group <code>sudo</code> to do this, but would prompt for their own password beforehand.</p>
+<p>Let's allow people in the users group to reboot the machine. Open a root shell with <code>sudo su</code> as vagrant; this is so we don't get locked out if we break sudo.</p>
+<p>Edit the sudoers file with <code>nano /etc/sudoers</code> as root, and add the following line:</p>
+<pre><code>%users ALL=(ALL) /sbin/reboot
+</code></pre>
+<p>and save the sudoers file.</p>
+<p>If you read the comment at the top of the file, it suggests using <code>visudo</code> to edit the file. Since we don't want to use vi, we can instead check the syntax with <code>visudo -c</code> and check that we get &quot;parsed OK&quot;; if not then we edit the file again to fix it (this is why we opened a root shell: if there's a syntax error in the file, sudo would refuse to run at all).</p>
+<p>You can now switch back to <code>fred</code> (check the prompt to make sure you are Fred) and do <code>sudo reboot</code>. After asking for Fred's password, the virtual machine will now reboot, which you notice because you get kicked out of your ssh connection. Another <code>vagrant ssh</code> after a few seconds will get you back in again.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>After rebooting, your <code>/vagrant</code> shared folder might not work. In this case, log out and do <code>vagrant halt</code> then <code>vagrant up</code> and <code>vagrant ssh</code> again on the host machine.</p>
+<p>When vagrant boots your VM, it automatically sets up the shared folder, but this doesn't always work if you reboot the VM yourself.</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pipes"><a class="header" href="#pipes">Pipes</a></h1>
+<p>The command <code>ls | head</code> runs ls and head and pipes the standard output of ls into the standard input of head.</p>
+<p>The following shell commands are particularly useful in pipes:</p>
+<ul>
+<li><code>cat [FILENAME [FILENAME...]]</code> writes the contents of one or more files to standard output. This is a good way of starting a pipe. If you leave off all the filenames, cat just reads its standard input and writes it to standard output.</li>
+<li><code>head [-n N]</code> reads its standard input and writes only the first N lines (default is 10 if you leave the option off) to standard output. You can also put a minus before the argument e.g. <code>head -n -2</code> to <em>skip the last 2 lines</em> and write all the rest.</li>
+<li><code>tail [-n N]</code> is like head except that it writes the last N lines (with a minus, it skips the first N ones).</li>
+<li><code>sort</code> reads all its standard input into a memory buffer, then sorts the lines and writes them all to standard output.</li>
+<li><code>uniq</code> reads standard input and writes to standard output, but skips repeated lines that immediately follow each other, for example if there are three lines A, A, B then it would only write A, B but if it gets A, B, A it would write all three. A common way to remove duplicate lines is <code>... | sort | uniq | ...</code>.</li>
+<li><code>grep [-iv] EXPRESSION</code> reads standard input and prints only lines that match the regular expression to standard output. With <code>-i</code> it is case-insensitive, and with <code>-v</code> it only prints lines that do <em>not</em> match the expression.</li>
+<li><code>sed -e COMMAND</code> reads lines from standard input, transforms them according to the command and writes the results to standard output. <code>sed</code> has its own command language but the most common one is <code>s/SOURCE/DEST/</code> which changes substrings matching the source regular expression into the destination one.</li>
+<li><code>wc [-l]</code> stands for word count, but with <code>-l</code> it counts lines instead. Putting a <code>wc -l</code> on the very end of a pipe is useful if you just want to know how many results a particular command or pipe produces, assuming the results come one per line.</li>
+</ul>
+<p>All these commands actually take an optional extra filename as argument, in which case they read from this file as input. For example, to display the first 10 lines of a file called <code>Readme.txt</code>, you could do either <code>cat Readme.txt | head</code> or <code>head Readme.txt</code>.</p>
+<h2 id="word-list-exercises---pipes-and-regular-expressions"><a class="header" href="#word-list-exercises---pipes-and-regular-expressions">Word list exercises - pipes and regular expressions</a></h2>
+<p>Most linux distributions come with a dictionary file <code>/usr/dict/words</code> that contains a list of English words in alphabetical order, for use in spell-checking programs. The list includes a selection of proper nouns, for example countries and cities. Alpine linux, true to its principles of being minimal, omits this file - but you can download one yourself with</p>
+<pre><code>wget https://users.cs.duke.edu/~ola/ap/linuxwords -O words
+</code></pre>
+<p><code>wget</code> is one of two utilities for downloading files, the other being <code>curl</code>. Note that the option for output file name is a capital O, not a lowercase o or a zero.</p>
+<p>Find one-line commands, possibly with pipes, to print the following to your terminal. You can either start each command with <code>cat words | ...</code> or do it without cat by providing the words file as an argument to the first command in your pipeline.</p>
+<p><em>If English is not your native language, ignore the guessing part - it is not assessed.</em></p>
+<ul>
+<li>The first word in the file. <em>Can you guess what it will be, it is a city in Europe?</em></li>
+<li>The last word in the file. <em>Can you guess this one, another city in Europe?</em></li>
+<li>The number of words in the words file - there is one word per line.</li>
+<li>The 6171st word in the file. <em>Can you read my mind and guess this word directly?</em></li>
+<li>All words containing the letter Q, capitalised. (A regular expression containing a string of one or more letters matches all strings that contain the expression as a substring.)</li>
+<li>All words starting with the letter X. The regular expression <code>X</code> would match an X anywhere in the word, but <code>^X</code> matches an X only at the start of the string.</li>
+<li>All words ending in j. (The expression <code>'j$'</code> matches a j only at the end of the string, but you have to single-quote it to stop the shell from interpreting the dollar sign). <em>Can you guess the word - it is a city in eastern Europe?</em></li>
+<li>The number of words containing the letter Q, ignoring case (e.g. capitalised or not).</li>
+<li>The first five words containing the letter sequence <code>cl</code>.</li>
+<li>All words containing the sequence &quot;kp&quot;, but not &quot;ckp&quot;. <em>Can you guess any of these?</em></li>
+<li>The last 15 words of exactly two letters. The expression <code>.</code> (period) matches a single character, and <code>'^...$'</code> for example would match all strings of the format <em>exactly three characters between start and end of string</em>. You need to quote it because of the dollar sign.</li>
+<li>All words from the first 100 words on the list, which contain the letter y.</li>
+<li>The first five words that are among the last 100 words on the list, and contain the letter y (whether capitalised or not).</li>
+<li>All three-letter words with no vowels (aeiou).The regular expression <code>'[aeiou]'</code> matches any string that contains one of the bracketed characters; you need quotes to stop the shell from interpreting the brackets. Remember to exclude words with capitalised vowels as well. <em>There are 12 of these, can you guess them all before looking?</em></li>
+<li>All words of exactly 7 letters, where the third one is an e and the word ends &quot;-ded&quot;. <em>This kind of search is really useful for crosswords. There are 9 words of this form, can you guess them?</em></li>
+</ul>
+<p>Bonus regular expression question:</p>
+<ul>
+<li>Find all words that start with a P (whether capitalised or not), and contain at least four instances of the letter a. Putting a <code>*</code> after something in a regular expression searches for <em>any number of repetitions of this, including 0</em> so for example <code>'a*'</code> would find words with any number of the letter a, including 0 (which is not what you want here). You need single quotes to stop the shell from expanding the <code>*</code>. <em>Can you guess the words? There are essentially four of them, two demonyms (for some reason one of them has a plural in the list, the other doesn't), and two nouns which are not proper nouns.</em></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="posix-activity-3"><a class="header" href="#posix-activity-3">POSIX Activity 3</a></h1>
+<h2 id="videos-3"><a class="header" href="#videos-3">Videos</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<tr><td><a href="https://web.microsoftstream.com/video/bbe017bf-c1b6-44a0-96cf-ef79a9b17f0e">shell scripting 1</a></td><td style="text-align: right">17 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/Ebuz7SukPjRLhMYQd3NJRkkBhgkFxVutnYmcv622ePSxkg?e=8hhLWP">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/0a2a65bc-1655-4089-984f-53c9400dc2d3">shell scripting 2</a></td><td style="text-align: right">21 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EVMTcoOLqmVNiflYUpHfRhMB1XzttL_7gHYOux1qznX4ZA?e=mXRBtE">slides</a></td></tr>
+</tbody></table>
+</div>
 <h2 id="exercises-3"><a class="header" href="#exercises-3">Exercises</a></h2>
 <ul>
-<li><a href="posix3/./stat.html">inodes and system calls</a></li>
 <li><a href="posix3/./script.html">shell scripting</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="shell-scripting"><a class="header" href="#shell-scripting">Shell Scripting</a></h1>
+<p>Shell scripting is a huge topic - the shell is a full programming language after all.
+In the video for this activity you have only seen a very brief introduction.</p>
+<h2 id="compile-helper-exercise"><a class="header" href="#compile-helper-exercise">Compile helper exercise</a></h2>
+<p>Write a shell script in a file called <code>b</code> (for build) that does the following:</p>
+<ul>
+<li>Your script should run under any Bourne-compatible shell (e.g. not just <code>bash</code>), and it should be written so that you can call it with <code>./b</code>.</li>
+<li><code>./b compile NAME</code> should compile the file of the given name, so for example <code>./b compile hello</code> should run <code>gcc -Wall -std=c11 -g hello.c -o hello</code>.</li>
+<li>However, your script should accept both <code>./b compile hello</code> and <code>./b compile hello.c</code> as input, and do the same thing in both cases, namely compile <code>hello.c</code>. The output file for gcc in both cases should be called just <code>hello</code>.</li>
+<li>If the source file you provided as an argument does not exist (adding <code>.c</code> if necessary) then the script should print an error message and return a nonzero exit status - <em>not</em> invoke the C compiler.</li>
+<li><code>./b run NAME</code> should run the program, assuming it exists in the current folder, so both <code>./b run hello</code> and <code>./b run hello.c</code> should run <code>./hello</code>. If it does not exist, again print an error message and exit with a nonzero status, don't try and run the program.</li>
+<li><code>./b build NAME</code> should first compile the C source file, and then if the compile was successful it should run the program. If the compile failed, it should not try and run the program.</li>
+<li>If you call <code>./b</code> without any parameters, or <code>./b COMMAND</code> with a command other than compile or run or build, it should print some information on how to use it. If you call <code>./b compile</code> or another command with no filename at all, then the script should print an error message and exit with a nonzero exit status.</li>
+</ul>
+<p>You now have a useful tool for when you are developing C programs. Of course you can add other features of your own like a <code>debug</code> command that compiles the file and launches it in <code>gdb</code>.</p>
+<p><em>If you already know about makefiles, you might wonder why we don't just use <code>make</code> for this. You are correct, but this is specifically a shell scripting exercise. We will learn about makefiles soon.</em></p>
+<h2 id="strict-mode"><a class="header" href="#strict-mode">Strict Mode</a></h2>
+<p>Some programming languages have an optional <em>strict mode</em> which treats some constructs as errors that people often do by mistake. It is similar in spirit to <code>-Werror</code> in C that treats all warnings as errors. <a href="http://redsymbol.net/articles/unofficial-bash-strict-mode/">This page</a> suggests using the following line near the top of your shell scripts: <code>set -euo pipefail</code>. (It also talks about IFS to improve string handling with spaces, but that's a separate matter.)</p>
+<p>You might want to use these yourself if you get into shell scripting. <code>set</code> is a shell internal command that sets shell flags which controls how commands are run.</p>
+<ul>
+<li><code>set -e</code> makes the whole script exit if any command fails. This way, if you want to run a list of commands, you can just put them in a script with <code>set -e</code> at the top, and as long as all the commands succeed (return 0), the shell will carry on; it will stop running any further if any command returns nonzero. It is like putting <code>|| exit $?</code> on the end of every command.</li>
+<li><code>set -u</code> means referencing an undefined variable is an error. This is good practice for lots of reasons.</li>
+<li><code>set -o pipefail</code> changes how pipes work: normally, the return value of a pipe is that of the <em>last</em> command in the pipe. With the <code>pipefail</code> option, if any command in the pipeline fails (non-zero return) then the pipeline returns that command's exit code.</li>
+</ul>
+<p>A couple of notes on <code>set -u</code>: if you write something like <code>rm -rf $FOLDER/</code> and <code>$FOLDER</code> isn't set, then you don't accidentally end up deleting the whole system! Of course, most <code>rm</code> implementations will refuse to delete <code>/</code> without the <code>--no-preserve-root</code> option, and you should not have that trailing slash in the first place. There was a <a href="https://drj11.wordpress.com/2015/01/20/steaming/">bug in a beta version of Steam for linux</a> where it tried to do <code>rm -rf &quot;$STEAMROOT/&quot;*</code> to delete all files in a folder (which explains the slash), but the variable in some cases got set to the <em>empty string</em>, which <code>-u</code> would not protect against. This was an installer script, so it ran as root which made things even worse.</p>
+<p><strong>Exercise</strong>: think of an example in a shell script where <code>pipefail</code> makes a difference, that is where the last command in a pipe could succeed even if a previous one fails. As a counter-example, <code>cat FILE | grep STRING</code> would fail even without <code>pipefail</code> if the file does not exist, because grep would immediately get end-of-file on standard input.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="activity-4"><a class="header" href="#activity-4">Activity 4</a></h1>
+<p><em>This activity is optional, and non-examinable. We recommend that you watch the videos anyway.</em></p>
+<h2 id="videos-4"><a class="header" href="#videos-4">Videos</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<tr><td><a href="posix4/">inodes</a></td><td style="text-align: right">28 minutes</td><td><a href="posix4/">slides</a></td></tr>
+<tr><td><a href="posix4/">The TTY, part 1</a></td><td style="text-align: right">29 minutes</td><td><a href="posix4/">slides</a></td></tr>
+<tr><td><a href="posix4/">The TTY, part 2</a></td><td style="text-align: right">23 minutes</td><td><a href="posix4/">slides</a></td></tr>
+<tr><td><a href="posix4/">The TTY, part 3</a></td><td style="text-align: right">30 minutes</td><td><a href="posix4/">slides</a></td></tr>
+</tbody></table>
+</div>
+<h2 id="exercises-4"><a class="header" href="#exercises-4">Exercises</a></h2>
+<ul>
+<li><a href="posix4/./stat.html">inodes and system calls</a></li>
+<li><a href="posix4/./concurrent.html">Concurrent programming in POSIX</a></li>
+<li><a href="posix4/./cpipe.html">Pipes in C</a></li>
+<li><a href="posix4/./c_io.html">Input/Output in C</a></li>
+<li><a href="posix4/./posix_io.html">Input/Output in POSIX</a></li>
+<li><a href="posix4/./final.html">The final challenge</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="inodes-and-system-calls"><a class="header" href="#inodes-and-system-calls">Inodes and System Calls</a></h1>
 <p>In this exercise we will look under the hood of the <code>stat</code> system call, which returns information about an inode.</p>
@@ -1304,56 +1367,14 @@ ssize_t readlink(const char *pathname, char *buf, size_t bufsiz)
 <p>The main function for this utility is <code>stat_main</code>, currently on line 757. All this does is parse the command line arguments with <code>getopt32</code>, call the <code>do_stat</code> function in a loop for each command line argument (lines 787 and following in the current version) and then return success if all files were successfully processed, otherwise failure.</p>
 <p>If nothing else, the learning point of this activity is that system programming in C and calling syscalls directly is a lot more involved than you may think! Please don't be that kind of programmer who <a href="https://rachelbythebay.com/w/2014/08/19/fork/">ignores system call error values, and makes terrible things happen</a>.</p>
 <p>If you want to explore this code further, you can build your own busybox - install <code>ncurses</code> and <code>linux-headers</code>, then run <code>make menuconfig</code> to bring up a configuration menu (this is the part that uses ncurses, which is the menu system) and just select exit (with TAB then ENTER). Then you can <code>make</code> the whole thing.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="shell-scripting"><a class="header" href="#shell-scripting">Shell Scripting</a></h1>
-<p>Shell scripting is a huge topic - the shell is a full programming language after all.
-In the video for this activity you have only seen a very brief introduction.</p>
-<h2 id="compile-helper-exercise"><a class="header" href="#compile-helper-exercise">Compile helper exercise</a></h2>
-<p>Write a shell script in a file called <code>b</code> (for build) that does the following:</p>
-<ul>
-<li>Your script should run under any Bourne-compatible shell (e.g. not just <code>bash</code>), and it should be written so that you can call it with <code>./b</code>.</li>
-<li><code>./b compile NAME</code> should compile the file of the given name, so for example <code>./b compile hello</code> should run <code>gcc -Wall -std=c11 -g hello.c -o hello</code>.</li>
-<li>However, your script should accept both <code>./b compile hello</code> and <code>./b compile hello.c</code> as input, and do the same thing in both cases, namely compile <code>hello.c</code>. The output file for gcc in both cases should be called just <code>hello</code>.</li>
-<li>If the source file you provided as an argument does not exist (adding <code>.c</code> if necessary) then the script should print an error message and return a nonzero exit status - <em>not</em> invoke the C compiler.</li>
-<li><code>./b run NAME</code> should run the program, assuming it exists in the current folder, so both <code>./b run hello</code> and <code>./b run hello.c</code> should run <code>./hello</code>. If it does not exist, again print an error message and exit with a nonzero status, don't try and run the program.</li>
-<li><code>./b build NAME</code> should first compile the C source file, and then if the compile was successful it should run the program. If the compile failed, it should not try and run the program.</li>
-<li>If you call <code>./b</code> without any parameters, or <code>./b COMMAND</code> with a command other than compile or run or build, it should print some information on how to use it. If you call <code>./b compile</code> or another command with no filename at all, then the script should print an error message and exit with a nonzero exit status.</li>
-</ul>
-<p>You now have a useful tool for when you are developing C programs. Of course you can add other features of your own like a <code>debug</code> command that compiles the file and launches it in <code>gdb</code>.</p>
-<p><em>If you already know about makefiles, you might wonder why we don't just use <code>make</code> for this. You are correct, but this is specifically a shell scripting exercise. We will learn about makefiles soon.</em></p>
-<h2 id="strict-mode"><a class="header" href="#strict-mode">Strict Mode</a></h2>
-<p>Some programming languages have an optional <em>strict mode</em> which treats some constructs as errors that people often do by mistake. It is similar in spirit to <code>-Werror</code> in C that treats all warnings as errors. <a href="http://redsymbol.net/articles/unofficial-bash-strict-mode/">This page</a> suggests using the following line near the top of your shell scripts: <code>set -euo pipefail</code>. (It also talks about IFS to improve string handling with spaces, but that's a separate matter.)</p>
-<p>You might want to use these yourself if you get into shell scripting. <code>set</code> is a shell internal command that sets shell flags which controls how commands are run.</p>
-<ul>
-<li><code>set -e</code> makes the whole script exit if any command fails. This way, if you want to run a list of commands, you can just put them in a script with <code>set -e</code> at the top, and as long as all the commands succeed (return 0), the shell will carry on; it will stop running any further if any command returns nonzero. It is like putting <code>|| exit $?</code> on the end of every command.</li>
-<li><code>set -u</code> means referencing an undefined variable is an error. This is good practice for lots of reasons.</li>
-<li><code>set -o pipefail</code> changes how pipes work: normally, the return value of a pipe is that of the <em>last</em> command in the pipe. With the <code>pipefail</code> option, if any command in the pipeline fails (non-zero return) then the pipeline returns that command's exit code.</li>
-</ul>
-<p>A couple of notes on <code>set -u</code>: if you write something like <code>rm -rf $FOLDER/</code> and <code>$FOLDER</code> isn't set, then you don't accidentally end up deleting the whole system! Of course, most <code>rm</code> implementations will refuse to delete <code>/</code> without the <code>--no-preserve-root</code> option, and you should not have that trailing slash in the first place. There was a <a href="https://drj11.wordpress.com/2015/01/20/steaming/">bug in a beta version of Steam for linux</a> where it tried to do <code>rm -rf &quot;$STEAMROOT/&quot;*</code> to delete all files in a folder (which explains the slash), but the variable in some cases got set to the <em>empty string</em>, which <code>-u</code> would not protect against. This was an installer script, so it ran as root which made things even worse.</p>
-<p><strong>Exercise</strong>: think of an example in a shell script where <code>pipefail</code> makes a difference, that is where the last command in a pipe could succeed even if a previous one fails. As a counter-example, <code>cat FILE | grep STRING</code> would fail even without <code>pipefail</code> if the file does not exist, because grep would immediately get end-of-file on standard input.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="activity-4"><a class="header" href="#activity-4">Activity 4</a></h1>
-<p><em>This activity is optional, and non-examinable. We recommend that you watch the videos anyway.</em></p>
-<h2 id="videos-4"><a class="header" href="#videos-4">Videos</a></h2>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
-<tr><td><a href="https://web.microsoftstream.com/video/ab2490f0-aa2a-4da1-b2bf-3e5c9e303b4a?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">The TTY, part 1</a></td><td style="text-align: right">29 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/TTY.pdf">slides</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/af872f28-8704-4d55-9378-9557cbb9781a?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">The TTY, part 2</a></td><td style="text-align: right">23 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/TTY2.pdf">slides</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/11a7c060-400c-44fa-8a1c-2148673f4eea?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">The TTY, part 3</a></td><td style="text-align: right">30 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/TTY3.pdf">slides</a></td></tr>
-</tbody></table>
-<h2 id="exercises-4"><a class="header" href="#exercises-4">Exercises</a></h2>
-<ul>
-<li><a href="posix4/./concurrent.html">Concurrent programming in POSIX</a></li>
-<li><a href="posix4/./cpipe.html">Pipes in C</a></li>
-<li><a href="posix4/./c_io.html">Input/Output in C</a></li>
-<li><a href="posix4/./posix_io.html">Input/Output in POSIX</a></li>
-<li><a href="posix4/./final.html">The final challenge</a></li>
-</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="concurrent-programming-in-posix"><a class="header" href="#concurrent-programming-in-posix">Concurrent programming in POSIX</a></h1>
-<p>In your second year, you will study concurrent programming using the go programming language, which provides an abstraction called <em>channels</em> that different <em>actors</em> can use to talk to each other. In the case of go, the actors are threads, but the same principle applies to a concurrent system with different processes, in which case channels are a kind of <em>inter-process communication (IPC)</em>. In POSIX, pipes are a kind of channel.</p>
+<p>In the undergraduate degree at Bristol, students study concurrent programming using the go programming language, which provides an abstraction called <em>channels</em> that different <em>actors</em> can use to talk to each other. In the case of go, the actors are threads, but the same principle applies to a concurrent system with different processes, in which case channels are a kind of <em>inter-process communication (IPC)</em>. In POSIX, pipes are a kind of channel.</p>
 <ul>
 <li>If one process reads from a pipe, then this blocks the process until another process writes to it.</li>
 <li>If one process writes to a pipe, then this blocks the process until another process reads from it.</li>
 <li>If one process reads from a pipe and another process writes to it (it does not matter who goes first) then the data is transferred from the reader to the writer, and both processes continue.</li>
 </ul>
-<p>For example, when you to a command like <code>cat logfile | grep Error | wc -l</code> to count the number of lines containing the word &quot;Error&quot;, then there are three processes (not counting the terminal) and two pipes involved:</p>
+<p>For example, when you use a command like <code>cat logfile | grep Error | wc -l</code> to count the number of lines containing the word &quot;Error&quot;, then there are three processes (not counting the terminal) and two pipes involved:</p>
 <p><img src="posix4/../resources/pipe1.png" alt="pipe diagram" /></p>
 <p><em>In this diagram, green boxes are processes with standard input on the left and standard output (top) and standard error (bottom) on the right. The little squares all represent file descriptors; a pipe has two of them, one each for reading and writing.</em></p>
 <p>This is not yet a fully concurrent system though, as data is only flowing in one direction: there are no loops.</p>
@@ -1805,10 +1826,11 @@ ok = close(saved);   check(ok, &quot;closing duplicate&quot;);
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="build-tools-2"><a class="header" href="#build-tools-2">Build Tools 2</a></h1>
 <h2 id="videos-5"><a class="header" href="#videos-5">Videos</a></h2>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th></tr></thead><tbody>
-<tr><td><a href="https://web.microsoftstream.com/video/9f6b781c-e2a4-4860-9a0a-ae795b19438e?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Build Tools 1</a></td><td style="text-align: right">24 minutes</td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/14fb7d93-0b2e-4d24-a452-28f232dce575?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Build Tools 2</a></td><td style="text-align: right">18 minutes</td></tr>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th></tr></thead><tbody>
+<tr><td><a href="build2/">Build Tools 1</a></td><td style="text-align: right">17 minutes</td></tr>
+<tr><td><a href="build2/">Build Tools 2</a></td><td style="text-align: right">12 minutes</td></tr>
 </tbody></table>
+</div>
 <h2 id="exercises-6"><a class="header" href="#exercises-6">Exercises</a></h2>
 <ul>
 <li><a href="build2/c.html">C</a></li>
@@ -2113,17 +2135,18 @@ public String mainPage() {
 <p>You've seen that build tools like maven automate the process of downloading the libraries your project needs and compiling your project. The Spring Framework automates (as far as possible) the process of running these libraries when your application starts, and getting them all to work nicely together (there is a <em>lot</em> going on in the background from a web request arriving to your function being called to get the page contents).
 The obvious next step would be to use thymeleaf to render HTML templates to make proper pages. This is indeed something you'll learn about later in this unit and in your second-year software project next year, but there are a few more steps you'll need to know to do this, and I don't want to go into that today - that's quite enough material for one workshop.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="introduction-to-sql"><a class="header" href="#introduction-to-sql">Introduction to SQL</a></h1>
-<p>This is the first of four activities to teach you relational databases and the SQL programming language.</p>
+<p>This is the first of four activities to teach you about relational databases and the SQL programming language.</p>
 <h2 id="videos-6"><a class="header" href="#videos-6">Videos</a></h2>
 <p>The videos for this activity are:</p>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
-<tr><td><a href="https://web.microsoftstream.com/video/cc54562e-1a88-4d3a-95b2-f7dfaf9915de?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Installing MariaDB</a></td><td style="text-align: right">24 minutes, optional</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/MariaDB%20installation.pdf">PDF</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/b625867d-b140-47ac-835e-4c2d364202de?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Introduction to Relational Modelling 1</a></td><td style="text-align: right">30 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/Relational%20modelling%201.pdf">PDF</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/0dd48abb-3118-405f-9436-5e7b47f50044?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Introduction to Relational Modelling 2</a></td><td style="text-align: right">7 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/Relational%20modelling%202.pdf">PDF</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/12c2b1a3-668b-4622-b145-4d8ca3aa394b?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">SQL Create-Drop Scripts</a></td><td style="text-align: right">26 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/CREATE-DROP%20scripts.pdf">PDF</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/ba9df785-e9c8-4ab6-bb26-92a59cd66db1?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">SQL SELECT</a></td><td style="text-align: right">11 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/SQL%20SELECT.pdf">PDF</a></td></tr>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<tr><td><a href="db1/">Installing MariaDB</a></td><td style="text-align: right">24 minutes, optional</td><td><a href="db1/">PDF</a></td></tr>
+<tr><td><a href="db1/">Introduction to Relational Modelling 1</a></td><td style="text-align: right">30 minutes</td><td><a href="db1/">PDF</a></td></tr>
+<tr><td><a href="db1/">Introduction to Relational Modelling 2</a></td><td style="text-align: right">7 minutes</td><td><a href="db1/">PDF</a></td></tr>
+<tr><td><a href="db1/">SQL Create-Drop Scripts</a></td><td style="text-align: right">26 minutes</td><td><a href="db1/">PDF</a></td></tr>
+<tr><td><a href="db1/">SQL SELECT</a></td><td style="text-align: right">11 minutes</td><td><a href="db1/">PDF</a></td></tr>
 </tbody></table>
-<p>The first video is optional but should help you if you are having problems installing MariaDB on Alpine linux.</p>
+</div>
+<p>The first video is optional but should help you if you are having problems installing MariaDB on Alpine Linux.</p>
 <h2 id="exercises-7"><a class="header" href="#exercises-7">Exercises</a></h2>
 <ul>
 <li><a href="db1/./setup.html">Set up the database</a></li>
@@ -2158,12 +2181,13 @@ The obvious next step would be to use thymeleaf to render HTML templates to make
 <p>To log in to a database, you normally need a user account and an authentication factor (such as a password, or a private key). However, in the latest Alpine version, mysql user accounts are linked to system user accounts. Try out the following:</p>
 <ul>
 <li>As <code>vagrant</code>, log in to the database with <code>mysql</code>. You should see the mysql prompt. Try <code>SHOW DATABASES;</code> including the semicolon at the end, and press ENTER. You should see two databases including a default one called <code>test</code>. Exit again with <code>exit</code> or Control+D.</li>
-<li>Try <code>sudo mysql</code> then <code>SHOW DATABASES;</code> again. You should now see more databases, including one called <code>mysql</code>. Then log out again.</li>
+<li>Try <code>sudo mysql</code> then <code>SHOW DATABASES;</code> again. You should now see more databases, including one called <code>mysql</code>. Next type <code>SELECT Host,User from mysql.user;</code>. Then log out again.</li>
 </ul>
+<p>If you see three or four lines of result from the above which are <em>all</em> prefaced with 'localhost' in the Host column, then you don't need to execute the script mentioned below (though the rest of this section is still worth reading to understand more about mysql database security), and indeed trying to execute the script will result in an error message (because you attempt to remove something that doesn't exist). </p>
 <p>The mysql command line tool tries to log you in to the database using the same user account as your current system one - it uses a system call to get the id and name of the user calling it - so when you run it as the system root user (with sudo), then you also get logged in to the database as the database root user, which is why you can see more databases. The <code>mysql</code> database contains tables with database configuration including user accounts and other settings.</p>
 <p>The default set-up will allow anyone to log in and see some of the database, for example the <code>test</code> tables. This is not particularly secure. Most distributions come with a <code>mysql_secure_installation</code> script that sets up more secure access rights. We are going to do a similar thing, but with a custom setup for our purposes.</p>
 <p>The setup file is located at the address given below. You can download it for example with <code>wget ADDRESS</code> in Alpine linux; <code>wget</code> is a download program. Place it in the same folder as your Vagrantfile (in <code>/vagrant</code>, if you're doing the download from within Alpine).</p>
-<pre><code>https://raw.githubusercontent.com/cs-uob/COMS10012/master/code/databases/secure-setup.sql
+<pre><code>https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/secure-setup.sql
 </code></pre>
 <ul>
 <li>Run the command <code>sudo mysql -e 'source /vagrant/secure-setup.sql'</code> to run this script as the database root user.</li>
@@ -2184,19 +2208,19 @@ FLUSH PRIVILEGES;
 <h2 id="importing-sample-data"><a class="header" href="#importing-sample-data">Importing sample data</a></h2>
 <p>I have prepared some sample data that we will be using in this and the following weeks.</p>
 <p>First, download the following two files and place them in the same folder as your Vagrantfile. This folder is important as the <code>sample-data.sql</code> script contains hard-coded absolute paths starting in <code>/vagrant/</code> to import some of the data. You can download the files the same way as you did before with the secure setup file.</p>
-<pre><code>https://raw.githubusercontent.com/cs-uob/COMS10012/master/code/databases/sample-data.sql
-https://raw.githubusercontent.com/cs-uob/COMS10012/master/code/databases/sampledata.tar
+<pre><code>https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/sample-data.sql
+https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/sampledata.tar
 </code></pre>
 <p>If you are using a local copy of this repository, you can also find the files under <code>/code/databases</code>.</p>
 <p>The <code>tar</code> file is a <em>tape archive</em>: a file that contains further files and folders, as if it were a folder itself. Extract it by going to <code>/vagrant</code> in Alpine and run</p>
-<pre><code>tar xvf sampledata.tar
+<pre><code>tar -xvf sampledata.tar
 </code></pre>
 <p>This creates a folder sampledata with the files we need.</p>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
-<p>Note that <code>tar</code> uses an older convention where options are not prefixed with a dash; the options here are x=extract a file, v=verify (print the name of every processed file to standard output), f=the filename is in the following argument.</p>
-<p>To create a tar file yourself, the command would be <code>tar cvf ARCHIVE.tar FILE1 FILE2...</code> where c=create the archive if it doesn't exist, and assume all arguments not consumed by another flag refer to files to be added. In fact, <code>tar xvf ARCHIVE.tar FILES...</code> also works and only extracts the named files from the archive.</p>
+<p>The options here are x=extract a file, v=verify (print the name of every processed file to standard output), f=the filename is in the following argument. You may sometimes see this command without the '-' for these options -- this works because <code>tar</code> supports an older convention where options are not prefixed with a dash, but to be safe you should stick to the modern convention (which it also understands).</p>
+<p>To create a tar file yourself, the command would be <code>tar -cvf ARCHIVE.tar FILE1 FILE2...</code> where c=create the archive if it doesn't exist, and assume all arguments not consumed by another flag refer to files to be added. In fact, <code>tar -xvf ARCHIVE.tar FILES...</code> also works and only extracts the named files from the archive.</p>
 </div>
 </div>
 <p>Load the sample data with the following command:</p>
@@ -2218,9 +2242,9 @@ https://raw.githubusercontent.com/cs-uob/COMS10012/master/code/databases/sampled
 <p>On a lab machine, to save disk space your VMs may not remain between reboots - and because they are not hosted on the network file system, if you log in to a different machine next time, your changes will not be saved either but you will get the VM reinstalled from scratch. To make sure the database is ready whenever you need it, open the <code>Vagrantfile</code> in a text editor and make the following changes.</p>
 <ul>
 <li>On the line starting <code>apk add</code>, add the packages <code>mariadb</code> and <code>mariadb-client</code> to the end, separated by spaces.</li>
-<li>Download and save the three setup files (<code>sample-data.sql</code>, <code>secure-setup.sql</code> and <code>sampledata.tar</code>) in the same folder as your Vagrantfile (this is on the host machine, so it will not get deleted along with the VM).</li>
+<li>Download and save the three setup files (<code>sample-data.sql</code>, <code>secure-setup.sql</code> and <code>sampledata.tar</code>) in the same folder as your Vagrantfile (this is on the host machine, so it will not get deleted along with the VM). </li>
 <li>Extract the tar file so that there is a folder <code>sampledata/</code> in the same folder as your Vagrantfile.</li>
-<li>Following the <code>apk add</code> line in your Vagrantfile, add the following lines:</li>
+<li>Following the <code>apk add</code> lines for mariadb in your Vagrantfile, add the following lines (obviously, exclude the line for <code>secure-setup.sql</code> if you didn't need to do this above):</li>
 </ul>
 <pre><code class="language-sh">/etc/init.d/mariadb setup
 rc-update add mariadb default
@@ -2274,18 +2298,19 @@ mysql -e 'source /vagrant/sample-data.sql'
 If you want to model this in your schema, the idea here is that a student has two marks associated with each unit: the &quot;actual mark&quot; (the input to the exam board) and the &quot;agreed mark&quot; (the one that comes out of the board and goes on your transcript). Of course, for most students most of the time, the two are the same. Your schema will need to store &quot;agreed marks&quot; explicitly, but there are ways of doing the model that does not store the &quot;actual mark&quot; directly. Think about how you could recompute it from other information in the database - we will of course learn how to do this in SQL in a later activity.</p>
 <p>The key idea in relational modelling is not to store information more than once if you can avoid it. If you have stored in several places that Fred is taking Introduction to Programming, and then Fred switches his units, you don't want to end up with a situation where this change is only reflected in some parts of the database.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sql-for-beginners"><a class="header" href="#sql-for-beginners">SQL for beginners</a></h1>
-<p>This is the second activity of four to teach you relational databases and the SQL programming language.</p>
+<p>This is the second activity of four to teach you about relational databases and the SQL programming language.</p>
 <h2 id="videos-7"><a class="header" href="#videos-7">Videos</a></h2>
 <p>The videos for this activity are:</p>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
-<tr><td><a href="https://web.microsoftstream.com/video/159003c7-3c66-4256-9955-c0746fb54ca4?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">SQL JOIN, part 1</a></td><td style="text-align: right">10 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/SQL%20JOIN%20part%201.pdf">PDF</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/c3db4481-31ac-48f2-9a87-05bf0e4f3006?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">SQL JOIN, part 2</a></td><td style="text-align: right">10 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/SQL%20JOIN%20part%202.pdf">PDF</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/e2a860f3-9fbe-4d24-b579-e1fc79b50ca9?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">SQL ORDER BY</a></td><td style="text-align: right">9 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/SQL%20ORDER%20BY.pdf">PDF</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/23bf5561-f7bd-44af-986f-4a5038a1ea88?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Normal Forms 1</a></td><td style="text-align: right">5 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/Normal%20forms%201.pdf">PDF</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/1170b646-b19a-4a92-a59a-0ba9eecad6cd?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Normal Forms 2</a></td><td style="text-align: right">20 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/Normal%20forms%202.pdf">PDF</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/5805bf00-b9ae-4fe0-b7f3-ce5dc93ef213?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Normal Forms 3</a></td><td style="text-align: right">6 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/Normal%20forms%203.pdf">PDF</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/dc6ee719-d36b-41f2-b8a6-01ba638cbe7d?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Normal Forms 4</a></td><td style="text-align: right">24 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/Normal%20forms%204.pdf">PDF</a></td></tr>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<tr><td><a href="db2/">SQL JOIN, part 1</a></td><td style="text-align: right">10 minutes</td><td><a href="db2/">PDF</a></td></tr>
+<tr><td><a href="db2/">SQL JOIN, part 2</a></td><td style="text-align: right">10 minutes</td><td><a href="db2/">PDF</a></td></tr>
+<tr><td><a href="db2/">SQL ORDER BY</a></td><td style="text-align: right">9 minutes</td><td><a href="db2/">PDF</a></td></tr>
+<tr><td><a href="db2/">Normal Forms 1</a></td><td style="text-align: right">5 minutes</td><td><a href="db2/">PDF</a></td></tr>
+<tr><td><a href="db2/">Normal Forms 2</a></td><td style="text-align: right">20 minutes</td><td><a href="db2/">PDF</a></td></tr>
+<tr><td><a href="db2/">Normal Forms 3</a></td><td style="text-align: right">6 minutes</td><td><a href="db2/">PDF</a></td></tr>
+<tr><td><a href="db2/">Normal Forms 4</a></td><td style="text-align: right">24 minutes</td><td><a href="db2/">PDF</a></td></tr>
 </tbody></table>
+</div>
 <h2 id="exercises-8"><a class="header" href="#exercises-8">Exercises</a></h2>
 <ul>
 <li><a href="db2/./explore-database.html">Explore the database</a></li>
@@ -2452,7 +2477,7 @@ INNER JOIN Ward ON Candidate.ward = Ward.id
 </ol>
 <h2 id="schema-1"><a class="header" href="#schema-1">Schema 1</a></h2>
 <p>A school's database looks like this (it was set up by someone more used to spreadsheets): </p>
-<table><thead><tr><th>stuId</th><th>name</th><th>gender</th><th>unit</th><th>grade</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>stuId</th><th>name</th><th>gender</th><th>unit</th><th>grade</th></tr></thead><tbody>
 <tr><td>101</td><td>Fred</td><td>M</td><td>Mathematics</td><td>75</td></tr>
 <tr><td>101</td><td>Fred</td><td>M</td><td>German</td><td>65</td></tr>
 <tr><td>101</td><td>Fred</td><td>M</td><td>English</td><td>90</td></tr>
@@ -2460,10 +2485,11 @@ INNER JOIN Ward ON Candidate.ward = Ward.id
 <tr><td>102</td><td>Sam</td><td>X</td><td>English</td><td>60</td></tr>
 <tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
 </tbody></table>
+</div>
 <p>stuId is a student id that is unique per student. Students' names are not required to be unique, i.e. you can have two 'Fred's in the school. Gender is one of {M, F, X}. For each student and each unit they take, there is one row containing among other things the student name, unit name and the grade (0-100) that the student got on this unit. In the example above, we can see that Fred took three units (Mathematics, German and English). No two units have the same name but a unit name can appear several times in the database since many students can take the same unit. The first row of the example tells us that there is a student called Fred with id 101, who is male, and took the Mathematics unit and got a grade of 75 on it. </p>
 <h2 id="schema-2"><a class="header" href="#schema-2">Schema 2</a></h2>
 <p>The CIA world factbook contains geographical, political and military information about the world. Here is part of one table listing principal cities from 2015:</p>
-<table><thead><tr><th>*city</th><th>country</th><th style="text-align: right">pop</th><th style="text-align: right">co_pop</th><th>capital</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>*city</th><th>country</th><th style="text-align: right">pop</th><th style="text-align: right">co_pop</th><th>capital</th></tr></thead><tbody>
 <tr><td>...</td><td>...</td><td style="text-align: right">...</td><td style="text-align: right">...</td><td>...</td></tr>
 <tr><td>Paris</td><td>France</td><td style="text-align: right">10.8M</td><td style="text-align: right">66.8M</td><td>yes</td></tr>
 <tr><td>Lyon</td><td>France</td><td style="text-align: right">1.6M</td><td style="text-align: right">66.8M</td><td>no</td></tr>
@@ -2472,18 +2498,20 @@ INNER JOIN Ward ON Candidate.ward = Ward.id
 <tr><td>Libreville</td><td>Gabon</td><td style="text-align: right">707K</td><td style="text-align: right">1.7M</td><td>yes</td></tr>
 <tr><td>...</td><td>...</td><td style="text-align: right">...</td><td style="text-align: right">...</td><td>...</td></tr>
 </tbody></table>
+</div>
 <p>We will assume for this exercise that city names are globally unique and therefore the &quot;City&quot; column has been chosen as the primary key for this table. The &quot;pop&quot; column lists the city's population and the &quot;co_pop&quot; lists the population of the country in which the city is located (with abbreviations K = 1000, M=1000000). The &quot;capital&quot; column is a Boolean yes/no value that is set to &quot;yes&quot; for exactly one city in each country. (While the capital is included in the table for every country however small, non-captial cities are only included if they are of international significance.)</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="intermediate-sql"><a class="header" href="#intermediate-sql">Intermediate SQL</a></h1>
-<p>This is the third of four activities to teach you relational databases and SQL.</p>
+<p>This is the third of four activities to teach you about relational databases and SQL.</p>
 <h2 id="videos-8"><a class="header" href="#videos-8">Videos</a></h2>
 <p>The videos for this activity are:</p>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
-<tr><td><a href="https://web.microsoftstream.com/video/b3075b96-6f51-420a-830c-0324441d0b6b?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">SQL insert/delete</a></td><td style="text-align: right">8 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/SQL%20insert%20and%20delete.pdf">PDF</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/4828f5ac-66e0-4b5b-89d4-7f4ecb01c734?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">SQL subqueries</a></td><td style="text-align: right">13 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/SQL%20Subqueries.pdf">PDF</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/011e902d-e640-4940-beac-54c10a6ac09b?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">SQL statistics</a></td><td style="text-align: right">22 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/SQL%20statistics.pdf">PDF</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/89c1e2e3-7704-49b3-9ce4-c8a9f89bfb3a?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">SQL NULL</a></td><td style="text-align: right">7 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/SQL%20NULL.pdf">PDF</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/83086484-7a0a-4c79-b8f4-6052d2e57753?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">SQL tips</a></td><td style="text-align: right">17 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/SQL%20tips.pdf">PDF</a></td></tr>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<tr><td><a href="db3/">SQL insert/delete</a></td><td style="text-align: right">8 minutes</td><td><a href="db3/">PDF</a></td></tr>
+<tr><td><a href="db3/">SQL subqueries</a></td><td style="text-align: right">13 minutes</td><td><a href="db3/">PDF</a></td></tr>
+<tr><td><a href="db3/">SQL statistics</a></td><td style="text-align: right">22 minutes</td><td><a href="db3/">PDF</a></td></tr>
+<tr><td><a href="db3/">SQL NULL</a></td><td style="text-align: right">7 minutes</td><td><a href="db3/">PDF</a></td></tr>
+<tr><td><a href="db3/">SQL tips</a></td><td style="text-align: right">17 minutes</td><td><a href="db3/">PDF</a></td></tr>
 </tbody></table>
+</div>
 <h2 id="exercises-11"><a class="header" href="#exercises-11">Exercises</a></h2>
 <p>The exercises for this activity are all on one page:</p>
 <ul>
@@ -2532,11 +2560,12 @@ Where an identifier is given in the question you may use it, e.g. when I say &qu
 <p>In this activity you will learn how to connect to an SQL database from a Java program using the JDBC interface and the Hibernate ORM.</p>
 <h2 id="videos-9"><a class="header" href="#videos-9">Videos</a></h2>
 <p>The videos for this activity are:</p>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
-<tr><td><a href="https://web.microsoftstream.com/video/2e9205a2-cb47-4ee7-9d3a-cd86d5e945c5?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">JDBC</a></td><td style="text-align: right">27 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/JDBC.pdf">PDF</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/d42cec3f-4531-4441-b543-b42a5601d835?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Hibernate</a></td><td style="text-align: right">19 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/Hibernate.pdf">PDF</a></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/abe90adf-5faa-431e-b355-7c06875d6887?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">SQLite</a></td><td style="text-align: right">13 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/SQLite.pdf">PDF</a></td></tr>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<tr><td><a href="db4/">JDBC</a></td><td style="text-align: right">27 minutes</td><td><a href="db4/">PDF</a></td></tr>
+<tr><td><a href="db4/">Hibernate</a></td><td style="text-align: right">19 minutes</td><td><a href="db4/">PDF</a></td></tr>
+<tr><td><a href="db4/">SQLite</a></td><td style="text-align: right">13 minutes</td><td><a href="db4/">PDF</a></td></tr>
 </tbody></table>
+</div>
 <h2 id="exercises-12"><a class="header" href="#exercises-12">Exercises</a></h2>
 <p>The exercises for this activity are:</p>
 <ul>
@@ -2623,7 +2652,7 @@ skip-networking
 </div>
 </div>
 <h2 id="pom-file"><a class="header" href="#pom-file">POM file</a></h2>
-<p>Under <a href="db4//COMS10012/resources/jdbc/jdbc-example.tar">resources/jdbc/jdbc-example.tar</a> you can find a minimal JDBC application that uses the <code>elections</code> database. Download this to your Alpine VM with <code>wget</code> (or get it from the unit repository, if you have cloned it there) and extract it to an otherwise empty folder (<code>tar xvf jdbc-example.tar</code>). It contains a file <code>pom.xml</code> and a file <code>src/main/java/org/example/Example.java</code>.</p>
+<p>Under <a href="db4//COMSM0085/resources/jdbc/jdbc-example.tar">resources/jdbc/jdbc-example.tar</a> you can find a minimal JDBC application that uses the <code>elections</code> database. Download this to your Alpine VM with <code>wget</code> (or get it from the unit repository, if you have cloned it there) and extract it to an otherwise empty folder (<code>tar xvf jdbc-example.tar</code>). It contains a file <code>pom.xml</code> and a file <code>src/main/java/org/example/Example.java</code>.</p>
 <p>In the POM file, we note the following dependencies:</p>
 <pre><code class="language-xml">&lt;dependencies&gt;
     &lt;dependency&gt;
@@ -2781,7 +2810,7 @@ public class Candidate {
 <p>Hibernate is an object-relational mapping (ORM) framework, that is to say it automatically generates an advanced form of data service at runtime which includes many extra features such as sessions, transactions, caches and connection pools. It implements the Java Persistence Api (JPA), an API that in turn builds on JDBC for the purpose of implementing ORMs. Actually Hibernate has its own features that go beyond JPA, such as its own query language.</p>
 <p>In a real application, you will be using an ORM most of the time, but you can fall back to SQL for more advanced queries that the ORM cannot support easily.</p>
 <h2 id="example-application---set-up"><a class="header" href="#example-application---set-up">Example application - set-up</a></h2>
-<p>There is an example application in <a href="db4//COMS10012/resources/orm/orm.tar">resources/orm/orm.tar</a> which you can download and extract in your VM.</p>
+<p>There is an example application in <a href="db4//COMSM0085/resources/orm/orm.tar">resources/orm/orm.tar</a> which you can download and extract in your VM.</p>
 <p>The POM file simply has an extra dependency on Hibernate:</p>
 <pre><code class="language-xml">&lt;dependency&gt;
     &lt;groupId&gt;org.hibernate&lt;/groupId&gt;
@@ -3027,31 +3056,42 @@ private List&lt;Ward&gt; wards;
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+
+
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
             </nav>
 
         </div>
 
-        <script type="text/javascript">
+
+
+
+        <script>
             window.playground_copyable = true;
         </script>
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script type="text/javascript">
+
+        <script>
         window.addEventListener('load', function() {
             window.setTimeout(window.print, 100);
         });
         </script>
+
     </body>
 </html>

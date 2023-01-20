@@ -5,8 +5,10 @@
         <meta charset="UTF-8">
         <title>Exercises</title>
         <meta name="robots" content="noindex" />
+
+
         <!-- Custom HTML head -->
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
@@ -17,25 +19,28 @@
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
         <link rel="stylesheet" href="css/print.css" media="print">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
         <link rel="stylesheet" href="fonts/fonts.css">
+
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
         <link rel="stylesheet" href="tomorrow-night.css">
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+
     </head>
     <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -51,7 +56,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -63,7 +68,7 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -76,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">The web</li><li class="chapter-item expanded "><a href="http/index.html"><strong aria-hidden="true">1.</strong> HTTP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="http/setup.html"><strong aria-hidden="true">1.1.</strong> Setup</a></li><li class="chapter-item expanded "><a href="http/explore.html"><strong aria-hidden="true">1.2.</strong> Exploring HTTP</a></li><li class="chapter-item expanded "><a href="http/research.html"><strong aria-hidden="true">1.3.</strong> Research online exercise</a></li><li class="chapter-item expanded "><a href="http/server.html"><strong aria-hidden="true">1.4.</strong> A server in Java</a></li></ol></li><li class="chapter-item expanded "><a href="html5/index.html"><strong aria-hidden="true">2.</strong> HTML5</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="html5/basic.html"><strong aria-hidden="true">2.1.</strong> Basic HTML5</a></li><li class="chapter-item expanded "><a href="html5/templates.html"><strong aria-hidden="true">2.2.</strong> Templates</a></li></ol></li><li class="chapter-item expanded "><a href="css/index.html"><strong aria-hidden="true">3.</strong> CSS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="css/text.html"><strong aria-hidden="true">3.1.</strong> Styling Text</a></li><li class="chapter-item expanded "><a href="css/framework.html"><strong aria-hidden="true">3.2.</strong> Frameworks</a></li></ol></li><li class="chapter-item expanded "><a href="cssgrid/index.html"><strong aria-hidden="true">4.</strong> CSS grids</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cssgrid/intro.html"><strong aria-hidden="true">4.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="cssgrid/curriculum.html"><strong aria-hidden="true">4.2.</strong> Curriculum exercise</a></li><li class="chapter-item expanded "><a href="cssgrid/trees.html"><strong aria-hidden="true">4.3.</strong> Trees exercise (responsive layout)</a></li></ol></li><li class="chapter-item expanded "><a href="js/index.html"><strong aria-hidden="true">5.</strong> JavaScript</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="js/single.html"><strong aria-hidden="true">5.1.</strong> A single-page app</a></li><li class="chapter-item expanded "><a href="js/static.html"><strong aria-hidden="true">5.2.</strong> Static structure</a></li><li class="chapter-item expanded "><a href="js/dynamic1.html"><strong aria-hidden="true">5.3.</strong> Dynamic structure, part 1</a></li><li class="chapter-item expanded "><a href="js/dynamic2.html"><strong aria-hidden="true">5.4.</strong> Dynamic structure, part 2</a></li><li class="chapter-item expanded "><a href="js/exercises.html"><strong aria-hidden="true">5.5.</strong> Further exercises</a></li></ol></li><li class="chapter-item expanded "><a href="react/index.html"><strong aria-hidden="true">6.</strong> React</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="react/installing.html"><strong aria-hidden="true">6.1.</strong> Installing React</a></li><li class="chapter-item expanded "><a href="react/hello.html"><strong aria-hidden="true">6.2.</strong> Hello World in React</a></li><li class="chapter-item expanded "><a href="react/character.html"><strong aria-hidden="true">6.3.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="app1/index.html"><strong aria-hidden="true">7.</strong> A complete application, part 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="app1/setup.html"><strong aria-hidden="true">7.1.</strong> Setting Things Up</a></li><li class="chapter-item expanded "><a href="app1/walkthrough.html"><strong aria-hidden="true">7.2.</strong> Walkthrough</a></li><li class="chapter-item expanded "><a href="app1/lifecycle.html"><strong aria-hidden="true">7.3.</strong> React Lifecycles</a></li><li class="chapter-item expanded "><a href="app1/extent.html"><strong aria-hidden="true">7.4.</strong> The Extent Problem</a></li><li class="chapter-item expanded "><a href="app1/ex.html"><strong aria-hidden="true">7.5.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="app2/index.html"><strong aria-hidden="true">8.</strong> A complete application, part 2</a></li><li class="chapter-item expanded "><a href="cloud/cloud1.html"><strong aria-hidden="true">9.</strong> The Cloud, Part 1</a></li><li class="chapter-item expanded "><a href="cloud/cloud2.html"><strong aria-hidden="true">10.</strong> The Cloud, Part 2</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">Week 6: The Web</li><li class="chapter-item expanded "><a href="http/index.html"><strong aria-hidden="true">1.</strong> HTTP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="http/setup.html"><strong aria-hidden="true">1.1.</strong> Setup</a></li><li class="chapter-item expanded "><a href="http/explore.html"><strong aria-hidden="true">1.2.</strong> Exploring HTTP</a></li><li class="chapter-item expanded "><a href="http/research.html"><strong aria-hidden="true">1.3.</strong> Research online exercise</a></li><li class="chapter-item expanded "><a href="http/server.html"><strong aria-hidden="true">1.4.</strong> A server in Java</a></li></ol></li><li class="chapter-item expanded "><a href="html5/index.html"><strong aria-hidden="true">2.</strong> HTML5</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="html5/basic.html"><strong aria-hidden="true">2.1.</strong> Basic HTML5</a></li><li class="chapter-item expanded "><a href="html5/templates.html"><strong aria-hidden="true">2.2.</strong> Templates</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 7: CSS</li><li class="chapter-item expanded "><a href="css/index.html"><strong aria-hidden="true">3.</strong> CSS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="css/text.html"><strong aria-hidden="true">3.1.</strong> Styling Text</a></li><li class="chapter-item expanded "><a href="css/framework.html"><strong aria-hidden="true">3.2.</strong> Frameworks</a></li></ol></li><li class="chapter-item expanded "><a href="cssgrid/index.html"><strong aria-hidden="true">4.</strong> CSS grids</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cssgrid/intro.html"><strong aria-hidden="true">4.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="cssgrid/curriculum.html"><strong aria-hidden="true">4.2.</strong> Curriculum exercise</a></li><li class="chapter-item expanded "><a href="cssgrid/trees.html"><strong aria-hidden="true">4.3.</strong> Trees exercise (responsive layout)</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 8: Javascript & Scraping</li><li class="chapter-item expanded "><a href="js/index.html"><strong aria-hidden="true">5.</strong> JavaScript</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="js/single.html"><strong aria-hidden="true">5.1.</strong> A single-page app</a></li><li class="chapter-item expanded "><a href="js/static.html"><strong aria-hidden="true">5.2.</strong> Static structure</a></li><li class="chapter-item expanded "><a href="js/dynamic1.html"><strong aria-hidden="true">5.3.</strong> Dynamic structure, part 1</a></li><li class="chapter-item expanded "><a href="js/dynamic2.html"><strong aria-hidden="true">5.4.</strong> Dynamic structure, part 2</a></li><li class="chapter-item expanded "><a href="js/exercises.html"><strong aria-hidden="true">5.5.</strong> Further exercises</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Web scraping</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Crawling</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> BeautifulSoup</div></li><li class="chapter-item expanded affix "><li class="part-title">Week 9: React & The Cloud</li><li class="chapter-item expanded "><a href="react/index.html"><strong aria-hidden="true">9.</strong> React</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="react/installing.html"><strong aria-hidden="true">9.1.</strong> Installing React</a></li><li class="chapter-item expanded "><a href="react/hello.html"><strong aria-hidden="true">9.2.</strong> Hello World in React</a></li><li class="chapter-item expanded "><a href="react/character.html"><strong aria-hidden="true">9.3.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="cloud/cloud1.html"><strong aria-hidden="true">10.</strong> The Cloud</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> AWS</div></li><li class="chapter-item expanded affix "><li class="part-title">Week 10: A Complete Application</li><li class="chapter-item expanded "><a href="app1/index.html"><strong aria-hidden="true">12.</strong> A complete application, part 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="app1/setup.html"><strong aria-hidden="true">12.1.</strong> Setting Things Up</a></li><li class="chapter-item expanded "><a href="app1/walkthrough.html"><strong aria-hidden="true">12.2.</strong> Walkthrough</a></li><li class="chapter-item expanded "><a href="app1/lifecycle.html"><strong aria-hidden="true">12.3.</strong> React Lifecycles</a></li><li class="chapter-item expanded "><a href="app1/extent.html"><strong aria-hidden="true">12.4.</strong> The Extent Problem</a></li><li class="chapter-item expanded "><a href="app1/ex.html"><strong aria-hidden="true">12.5.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="app2/index.html"><strong aria-hidden="true">13.</strong> A complete application, part 2</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -84,7 +89,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
+                                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -94,7 +99,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
@@ -111,6 +116,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
+
                     </div>
                 </div>
 
@@ -124,8 +130,9 @@
                         </ul>
                     </div>
                 </div>
+
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -136,29 +143,22 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="overview"><a class="header" href="#overview">Overview</a></h1>
-<p>This page contains the exercises for part 2 (the last 5 weeks) of COMS10012 Software Tools, namely &quot;the web&quot;.</p>
-<p>Each week contains two activities, and each activity has videos to watch (on the main site for each activity) and a set of practical exercises supported by a lab class (on this site) just like part 1.</p>
-<p>The structure of this part is:</p>
-<ul>
-<li>HTTP</li>
-<li>HTML5</li>
-<li>CSS</li>
-<li>CSS grids</li>
-<li>JavaScript</li>
-<li>React</li>
-<li>Spring (server side)</li>
-<li>A complete application</li>
-<li>Cloud 1 (lectures but no new exercises)</li>
-<li>Cloud 2 (lectures but no new exercises)</li>
-</ul>
+<p>This page contains the exercises for Part 2 (the last 5 weeks) of COMSM0085 Software Tools.</p>
+<p>As with Part 1, each week contains two 'activities' -- sets of exercises which are supported
+by videos to watch (linked from the main page for each activity). The exercises
+within each activity will require you to do some work within your Alpine Linux
+VM in Vagrant, which we'll be supporting in the labs. </p>
+<p>Note that the material delivered in Week 23 is not examinable, though it may be
+practically very useful to you in future projects. </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="http"><a class="header" href="#http">HTTP</a></h1>
 <p>HTTP, or HyperText Transfer Protocol, is one of the basic protocols that make up the internet - and usually the lowest level that a web developer needs to concern themselves with frequently.</p>
 <h2 id="videos"><a class="header" href="#videos">Videos</a></h2>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
 <tr><td><a href="https://web.microsoftstream.com/video/70642ec0-ed1b-4fc6-a5ef-26213128c2e7?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">The internet</a></td><td style="text-align: right">22 minutes</td><td></td></tr>
 <tr><td><a href="https://web.microsoftstream.com/video/1895a219-f515-41b7-a1e9-562b48945b59?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">HTTP</a></td><td style="text-align: right">24 minutes</td><td></td></tr>
 <tr><td><a href="https://web.microsoftstream.com/video/3d3409a0-0295-416f-9f98-020c720761d1?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">URLs</a></td><td style="text-align: right">15 minutes</td><td></td></tr>
 </tbody></table>
+</div>
 <h2 id="optional"><a class="header" href="#optional">Optional</a></h2>
 <p>If you want to, you can read further about HTTP (including the new HTTP/2 standard) on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP">Mozilla Developer Network</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="set-up"><a class="header" href="#set-up">Set-up</a></h1>
@@ -289,10 +289,11 @@ Hello over HTTP!
 <p>HTML5, officially introduced in 2014, is the language for writing websites nowadays.</p>
 <p>It gets rid of a lot of historical annoyances and inconsistencies from previous versions of HTML and XML and contains a lot of new standard tags and attributes for features that individual sites had built with JavaScript or Adobe Flash in the past. For example, HTML5 has a <code>&lt;video&gt;</code> tag for a consistent way to include videos that work across different platforms and without plug-ins, and a standard way of writing a date picker or &quot;calendar&quot; widget.</p>
 <h2 id="videos-1"><a class="header" href="#videos-1">Videos</a></h2>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
 <tr><td><a href="https://web.microsoftstream.com/video/3cb27889-2cb1-40d8-a037-ffdb216fff61?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">HTML5</a></td><td style="text-align: right">24 minutes</td><td></td></tr>
 <tr><td><a href="https://web.microsoftstream.com/video/4bf898f3-3f7a-4443-96e7-8aec708af2ce?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">HTML elements</a></td><td style="text-align: right">24 minutes</td><td></td></tr>
 </tbody></table>
+</div>
 <h2 id="mdn"><a class="header" href="#mdn">MDN</a></h2>
 <p><em>For the web part of the unit, we will be reading some of the documentation on the Mozilla Developer Network (MDN) for some workshops, to complement the videos and exercises.</em></p>
 <p>These pages are pitched at a lower level of technical expertise than CS students, so you should get through them very quickly. Many of them also contain interactive examples to try out. If your future career involves web development, you will be consulting documentation like the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN HTML reference guide</a> a lot - for example, to read through all the attributes you can put on a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">form tag</a>.</p>
@@ -363,10 +364,11 @@ Hello over HTTP!
 <p>CSS, or Cascading Style Sheets, allows you to set what your page looks like, separately from creating the content.</p>
 <p><em>Not to be confused with <a href="https://cssbristol.co.uk/">CSS Bristol</a>.</em></p>
 <h2 id="videos-2"><a class="header" href="#videos-2">Videos</a></h2>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
 <tr><td><a href="https://web.microsoftstream.com/video/19b45256-575f-4d09-8bc5-ccd29d34c64e?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">CSS part 1</a></td><td style="text-align: right">19 minutes</td><td></td></tr>
 <tr><td><a href="https://web.microsoftstream.com/video/77d53305-8551-459f-83b6-baa9ae989e15?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">CSS part 2</a></td><td style="text-align: right">14 minutes</td><td></td></tr>
 </tbody></table>
+</div>
 <h2 id="mdn-1"><a class="header" href="#mdn-1">MDN</a></h2>
 <p>For this workshop, please read the following pages:</p>
 <ul>
@@ -530,11 +532,12 @@ Hello over HTTP!
 <p>Bootstrap includes a JavaScript file as well as a stylesheet: for some components like tabbed pages, you need the scripts to make clicking on a tab switch to the correct content.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="css-grids"><a class="header" href="#css-grids">CSS grids</a></h1>
 <h2 id="videos-3"><a class="header" href="#videos-3">Videos</a></h2>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
 <tr><td><a href="https://web.microsoftstream.com/video/e63033d4-c62b-4a96-a4c5-3f3aea6451dc?channelId=793a8a65-ed73-4803-820f-dd7f2c675f460">Design</a></td><td style="text-align: right">26 minutes</td><td></td></tr>
 <tr><td><a href="https://web.microsoftstream.com/video/a8663532-67a3-470b-9243-701fd51d8855?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">CSS grids</a></td><td style="text-align: right">15 minutes</td><td></td></tr>
 <tr><td><a href="https://web.microsoftstream.com/video/5cf692e4-6f63-4745-9ded-32a59b7673bd?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Responsive Layout</a></td><td style="text-align: right">7 minutes</td><td></td></tr>
 </tbody></table>
+</div>
 <h2 id="mdn-2"><a class="header" href="#mdn-2">MDN</a></h2>
 <p>Please read the following pages, and play with the interactive examples if you want:</p>
 <ul>
@@ -700,7 +703,7 @@ header {
 <div style="break-before: page; page-break-before: always;"></div><h1 id="javascript"><a class="header" href="#javascript">JavaScript</a></h1>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a> is a programming language for creating dynamic web pages.</p>
 <h2 id="videos-4"><a class="header" href="#videos-4">Videos</a></h2>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th></tr></thead><tbody>
 <tr><td><a href="https://web.microsoftstream.com/video/254b5d16-7989-41bf-a7ff-f854443e4ff9">JavaScript</a></td><td style="text-align: right">6 minutes</td></tr>
 <tr><td><a href="https://web.microsoftstream.com/video/43d4137d-21d2-4846-9bcb-59b769a793ca">JavaScript: Basics</a></td><td style="text-align: right">30 minutes</td></tr>
 <tr><td><a href="https://web.microsoftstream.com/video/a7b9c1dc-c400-442f-b2c7-9bcb246420f3">JS Objects (incl. JSON)</a></td><td style="text-align: right">12 minutes</td></tr>
@@ -708,6 +711,7 @@ header {
 <tr><td><a href="https://web.microsoftstream.com/video/bb8f121f-af7f-4675-bc58-5aac466f110d">JavaScript in the browser</a></td><td style="text-align: right">22 minutes</td></tr>
 <tr><td><a href="https://web.microsoftstream.com/video/4b559613-3bba-4295-8c70-d5e138cba485">Asynchronous JavaScript</a></td><td style="text-align: right">28 minutes</td></tr>
 </tbody></table>
+</div>
 <p>All the example code for these lectures can be found in the
 <a href="https://github.com/cs-uob/COMSM0085/tree/master/code/javascript"><code>code/javascript</code></a>
 folder of the repository.</p>
@@ -1311,10 +1315,11 @@ exactly this sort of problem.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="react"><a class="header" href="#react">React</a></h1>
 <p><a href="react/reactjs.org">React</a> is a JavaScript web development framework built by facebook.</p>
 <h2 id="videos-5"><a class="header" href="#videos-5">Videos</a></h2>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
 <tr><td><a href="https://web.microsoftstream.com/video/30f91ab2-06a2-4f40-a5f2-44797341a407?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">React</a></td><td style="text-align: right">15 minutes</td><td></td></tr>
 <tr><td><a href="https://web.microsoftstream.com/video/7384d735-a488-4167-9398-ca5402c16775?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46">Code examples</a></td><td style="text-align: right">19 minutes</td><td></td></tr>
 </tbody></table>
+</div>
 <h2 id="readings-1"><a class="header" href="#readings-1">Readings</a></h2>
 <p>This week, we are doing react, so the readings are the <a href="https://reactjs.org/docs/hello-world.html">official react guide</a>, main concepts 1-7. If you have time you can read up to 10 and if you are particularly interested in React, all 12 of the &quot;main concepts&quot; pages.</p>
 <p>React has a separate <a href="https://reactjs.org/tutorial/tutorial.html">practical tutorial</a> which we will not be using for this unit, but as a complement to the workshops if you are particularly interested then you could look at this as well.</p>
@@ -1521,12 +1526,27 @@ onNameChange(e) {
 <p>You can ignore the character's name for now.</p>
 <p>The design question here is where to put the functions that access or manipulate state. For example you will probably want a function somewhere that returns the number of stat points remaining to spend.</p>
 <p>You will also need to think about how you can make a <em>reusable</em> stat editor component, so that you can include it four times in the app's render method. The design question here is which props you pass to the component - each of the four copies of the stat editor will need a different value for at least one of the props. The solution shown in the lectures is just one of many possibilities.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-cloud-part-1"><a class="header" href="#the-cloud-part-1">The Cloud, Part 1</a></h1>
+<h2 id="videos-6"><a class="header" href="#videos-6">Videos</a></h2>
+<p>Please watch the following videos. They are hosted on the university's blackboard system, so you will need to be logged in to blackboard for the links to work.</p>
+<ul>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/0ad3ecd639aa4f67a9b0d1d162c5f7a21d">Introduction</a> (19 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/135444aa12ff4c26b8a9c7ad693e1fa61d">Economics</a> (16 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/ff04fe5695bf4604bf478405fc9266f81d">As A Service</a> (6 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/3d1ac0e5b012470f9be58c40e000c7c01d">Amazon Web Services examples</a> (7 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/ea34704392794239b5ecc9517de691771d">Amazon Web Services: IaaS</a> (10 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/7874354926e846ec8cbfb206d6c6047f1d">Google App Engine / PaaS</a> (8 minutes)</li>
+<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/c4eb1e2b73c544d7bed5a6df828de4281d">Other providers</a> (6 minutes)</li>
+</ul>
+<p>There are no cloud exercises. The workshops this week are for you to continue to work on your Java/react &quot;elections&quot; application and for you to ask questions about anything previously on the unit.</p>
+<p>However, the cloud material is examinable.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="a-complete-application-part-1"><a class="header" href="#a-complete-application-part-1">A complete application, part 1</a></h1>
 <p>In this workshop we will set up and inspect a complete application including database, Java back-end/API and React front-end.</p>
 <p>Just one short video to introduce the topic:</p>
-<table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
 <tr><td><a href="https://web.microsoftstream.com/video/3b4968c8-5cb9-457d-80cf-cf5b1fe4b2c0">Application</a></td><td style="text-align: right">18 minutes</td><td><a href="https://uob.sharepoint.com/:b:/r/teams/UnitTeams-COMS10012-2021-22-TB-2-A/Shared%20Documents/Documents/Application.pdf">slides</a></td></tr>
 </tbody></table>
+</div>
 <p>Please try the steps on the &quot;setting things up&quot; page before you come to the workshop - ideally you will then be able to start the walkthrough in the workshop itself immediately, but if you get stuck in the set-up, you will be able to ask for help at the very start.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="setting-things-up"><a class="header" href="#setting-things-up">Setting Things Up</a></h1>
 <p>The application lives in the <code>code/application</code> folder of the unit repository.</p>
@@ -1834,63 +1854,47 @@ When hibernate creates a Region object and the parent / counties are not include
 <p>From this &quot;MVP&quot; onwards you can decide which data you need to pass to the client for which features, write controllers based on that, and then implement components that consume and display the data. It is probably easiest to work with two servers running while you are developing, the Java one on <code>localhost:8000</code> and the React one on <code>localhost:3000</code>.</p>
 <p>The data set is small enough that you do not have to worry about extents too much - you can just return domain objects directly from your controllers and Jackson's automatic JSON conversion should do what you need, as long as you do not produce an infinite loop. The way to avoid an infinite loop is to make the associations in only one direction, for example a ward can have a list of candidates but a candidate object does not need a pointer back to the ward as you'll never be working with a candidate in a place where it's not clear what ward they stood in.</p>
 <p>For some computations, like if you want to display the total number of votes cast in a ward, it is your choice whether to do them on the client or on the server. If you do this on the server, you can for example add a <code>getTotalVotes()</code> method to the ward class, then the JSON export will contain a <code>totalVotes</code> property.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="the-cloud-part-1"><a class="header" href="#the-cloud-part-1">The Cloud, Part 1</a></h1>
-<h2 id="videos-6"><a class="header" href="#videos-6">Videos</a></h2>
-<p>Please watch the following videos. They are hosted on the university's blackboard system, so you will need to be logged in to blackboard for the links to work.</p>
-<ul>
-<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/0ad3ecd639aa4f67a9b0d1d162c5f7a21d">Introduction</a> (19 minutes)</li>
-<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/135444aa12ff4c26b8a9c7ad693e1fa61d">Economics</a> (16 minutes)</li>
-<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/ff04fe5695bf4604bf478405fc9266f81d">As A Service</a> (6 minutes)</li>
-<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/3d1ac0e5b012470f9be58c40e000c7c01d">Amazon Web Services examples</a> (7 minutes)</li>
-<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/ea34704392794239b5ecc9517de691771d">Amazon Web Services: IaaS</a> (10 minutes)</li>
-<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/7874354926e846ec8cbfb206d6c6047f1d">Google App Engine / PaaS</a> (8 minutes)</li>
-<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/c4eb1e2b73c544d7bed5a6df828de4281d">Other providers</a> (6 minutes)</li>
-</ul>
-<p>There are no cloud exercises. The workshops this week are for you to continue to work on your Java/react &quot;elections&quot; application and for you to ask questions about anything previously on the unit.</p>
-<p>However, the cloud material is examinable.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="the-cloud-part-2"><a class="header" href="#the-cloud-part-2">The Cloud, Part 2</a></h1>
-<h2 id="videos-7"><a class="header" href="#videos-7">Videos</a></h2>
-<p>Please watch the following videos. They are hosted on the university's blackboard system, so you will need to be logged in to blackboard for the links to work.</p>
-<ul>
-<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/06ceda3dd34c49b9b802a6f2e8cb9a6c1d">Introduction</a> (10 minutes)</li>
-<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/9b125a5499554316be6cb73449e7aaf71d">Key-Value Databases</a> (16 minutes)</li>
-<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/4a9cece0618a429295d6d5254202c8f61d">Document Databases</a>  (7 minutes)</li>
-<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/785791610bb54851b7b3a347b448f4181d">Column-Family Databases</a> (9 minutes)</li>
-<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/cf8bf402b10546e9af85ea1b502929811d">Graph Databases</a> (13 minutes)</li>
-<li><a href="https://mediasite.bris.ac.uk/Mediasite/Play/2f523af23cdf470c8a612ca8277985011d">Choosing a Database</a> (9 minutes) </li>
-</ul>
-<p>There are no cloud exercises. The workshops this week are for you to continue to work on your Java/react &quot;elections&quot; application and for you to ask questions about anything previously on the unit.</p>
-<p>However, the cloud material is examinable.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+
+
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
             </nav>
 
         </div>
 
-        <script type="text/javascript">
+
+
+
+        <script>
             window.playground_copyable = true;
         </script>
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script type="text/javascript">
+
+        <script>
         window.addEventListener('load', function() {
             window.setTimeout(window.print, 100);
         });
         </script>
+
     </body>
 </html>
