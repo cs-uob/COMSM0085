@@ -100,7 +100,7 @@ The schedule for [part 2](exercises/part2) of the unit will be:
 | 19   | HTTP & HTML        |
 | 20   | CSS & CSS Grid     |
 | 21   | JS & Webscraping   |
-| 21   | React & Cloud      |
+| 22   | React & Cloud      |
 | 23   | _Application_      | 
 
 The materials on this website will be updated throughout the course. You can
