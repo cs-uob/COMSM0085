@@ -8,8 +8,8 @@ It gets rid of a lot of historical annoyances and inconsistencies from previous 
 
 | Video | Length | Slides |
 |-------|-------:|--------|
-| [HTML5](https://web.microsoftstream.com/video/3cb27889-2cb1-40d8-a037-ffdb216fff61?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46) | 24 minutes |
-| [HTML elements](https://web.microsoftstream.com/video/4bf898f3-3f7a-4443-96e7-8aec708af2ce?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46) | 24 minutes |
+| [HTML5]() | 24 minutes | [slides]() |
+| [HTML elements]() | 24 minutes | [slides]() |
 
 ## MDN
 
@@ -24,3 +24,8 @@ Please read the following pages for this workshop, as well as watching the video
   - [MDN: Creating Hyperlinks](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks) All about the `<a>` tag.
   - [MDN: Document and website structure](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure) HTML5 semantic tags for structure.
   - [MDN: HTML5 input types](https://developer.mozilla.org/en-US/docs/Learn/Forms/HTML5_input_types) More on using the most appropriate controls in your forms.
+
+## Exercises
+
+  - [Basic HTML5](./basic.md)
+  - [Templates](./templates.md)

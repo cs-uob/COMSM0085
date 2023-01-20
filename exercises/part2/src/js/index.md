@@ -7,12 +7,12 @@
 
 | Video | Length |
 |-------|-------:|
-| [JavaScript](https://web.microsoftstream.com/video/254b5d16-7989-41bf-a7ff-f854443e4ff9) | 6 minutes |
-| [JavaScript: Basics](https://web.microsoftstream.com/video/43d4137d-21d2-4846-9bcb-59b769a793ca) | 30 minutes |
-| [JS Objects (incl. JSON)](https://web.microsoftstream.com/video/a7b9c1dc-c400-442f-b2c7-9bcb246420f3) | 12 minutes |
-| [Counting words in a novel](https://web.microsoftstream.com/video/0ad0c7c3-334f-44f7-b91d-7ecd9bcaab62) | 11 minutes |
-| [JavaScript in the browser](https://web.microsoftstream.com/video/bb8f121f-af7f-4675-bc58-5aac466f110d) | 22 minutes |
-| [Asynchronous JavaScript](https://web.microsoftstream.com/video/4b559613-3bba-4295-8c70-d5e138cba485) | 28 minutes |
+| [JavaScript]() | 6 minutes |
+| [JavaScript: Basics]() | 30 minutes |
+| [JS Objects (incl. JSON)]() | 12 minutes |
+| [Counting words in a novel]() | 11 minutes |
+| [JavaScript in the browser]() | 22 minutes |
+| [Asynchronous JavaScript]() | 28 minutes |
 
 All the example code for these lectures can be found in the
 [`code/javascript`](https://github.com/cs-uob/COMSM0085/tree/master/code/javascript)
@@ -42,3 +42,12 @@ The following references go significantly beyond the curriculum.
 * [MDN: The event loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop). This explains the concurrency model of JavaScript, as well as the way asynchronous code and promises arehandled.
 * [Structure and Interpretation of Computer Programs, JS edition](https://sourceacademy.org/sicpjs/) (2022). This is a classic programming book that has been recently rewritten in JavaScript.
 * Boris Cherny, "[Programming TypeScript](https://bris.on.worldcat.org/oclc/1099253345)" (2019). This is a book-length introduction to TypeScript, a typed extension to JavaScript which is also supported by React.
+
+
+## Exercises
+
+ - [A single-page app](./single.md)
+ - [Static structure](./static.md)
+ - [Dynamic structure, part 1](./dynamic1.md)
+ - [Dynamic structure, part 2](./dynamic2.md)
+ - [Further exercises](./exercises.md)

@@ -8,7 +8,7 @@ Now that you know some CSS, you could write your own framework - one or more sty
 
 Download the [page1.html](../resources/page1.html) file and open it in the browser: it contains some text and a sign-up form for a CSS conference.
 
-Following the instructions on the milligram website, add the following to the page head:
+Following the instructions on the Milligram website, add the following to the page head:
 
 ```html
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
@@ -17,9 +17,9 @@ Following the instructions on the milligram website, add the following to the pa
 
 ```
 
-  - The first one loads Google's [Roboto web font](https://fonts.google.com/specimen/Roboto), which the designers of milligram selected as their default. Because it is loaded as a web resource, it should work across different browsers and operating systems, you don't need to install it first.
+  - The first one loads Google's [Roboto web font](https://fonts.google.com/specimen/Roboto), which the designers of Milligram selected as their default. Because it is loaded as a web resource, it should work across different browsers and operating systems, you don't need to install it first.
   - The next line loads `normalize.css`, an alternative to `reset.css` that provides a consistent stylesheet across browsers. Try out the page with just the first two stylesheets and see how it looks now - the font won't have changed because no-one has set `font-family` yet, that will happen in the next stylesheet, but the margins will be slightly different.
-  - The third one adds milligram itself. Your page now uses a different style, for example the form fields and labels are laid out vertically and the register button is purple.
+  - The third one adds Milligram itself. Your page now uses a different style, for example the form fields and labels are laid out vertically and the register button is purple.
 
 Milligram chooses to style the whole page by default, but you can customise this further. One of their features is a _container_ that gives its content a fixed maximum width.
 
@@ -33,9 +33,9 @@ Milligram chooses to style the whole page by default, but you can customise this
 
 This line, which is often (but not always) good practice to include in a HTML5 page anyway, tells a mobile browser (or a device pretending to be one) to adopt sensible defaults including larger fonts depending on the pixel density and no horizontal scrollbars. You can read more about this [on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag).
 
-On [the milligram documentation page](https://milligram.io/#typography) you can read more about the elements that milligram styles for you, and how you can customise this (e.g. buttons).
+On [the milligram documentation page](https://milligram.io/#typography) you can read more about the elements that Milligram styles for you, and how you can customise this (e.g. buttons).
 
-Have a look in your browser's developer tools at how milligram styles the page: select an element in the _Elements_ tab (or right-click it and choose _Inspect_), then look at the styles that appear in the _Styles_ area. How does milligram set the following?
+Have a look in your browser's developer tools at how Milligram styles the page: select an element in the _Elements_ tab (or right-click it and choose _Inspect_), then look at the styles that appear in the _Styles_ area. How does Milligram set the following?
 
   - Size of heading fonts
   - Form fields take up the full width of the container
@@ -45,7 +45,7 @@ Have a look in your browser's developer tools at how milligram styles the page: 
 
 ## Bulma
 
-[Bulma](htttps://bulma.io) is a larger but still fairly lightweight CSS framework. Unlike milligram, it only styles parts of the page you tell it to (but it sets a default font), and it has some more components to build things like menus or panels.
+[Bulma](htttps://bulma.io) is a larger but still fairly lightweight CSS framework. Unlike Milligram, it only styles parts of the page you tell it to (but it sets a default font), and it has some more components to build things like menus or panels.
 
 Start with [page2.html](../resources/page2.html), have a look at the raw page and then add the following to the header (the viewport tag is already there):
 
@@ -96,12 +96,12 @@ Bulma also lets you give an element the class `content` to tell it to style ever
 For the next exercise, style the form.
 
   - Put another section tag around the form and its heading (so the container tag will have two direct children, both of them sections).
-  - Using the bulma [form documentation](https://bulma.io/documentation/form/general/), add tags and classes to the form as necessary so it looks similar to the milligram one (full width fields, labels immediately above the fields, coloured button with rounded corners). You don't have to make the button purple, use `is-primary` to make it blue.
+  - Using the bulma [form documentation](https://bulma.io/documentation/form/general/), add tags and classes to the form as necessary so it looks similar to the Milligram one (full width fields, labels immediately above the fields, coloured button with rounded corners). You don't have to make the button purple, use `is-primary` to make it blue.
 
 Finally, add and style a [bulma component](https://bulma.io/documentation/components/) of your own choice on the page.
 
 ## Bootstrap
 
-The most popular CSS framework is [bootstrap](https://getbootstrap.com), developed by twitter. If you are interested and have some spare time, you can have a look at it - it has lots of different components and options to customise the styling further with themes.
+The most popular CSS framework is [bootstrap](https://getbootstrap.com), developed by Twitter. If you are interested and have some spare time, you can have a look at it - it has lots of different components and options to customise the styling further with themes.
 
 Bootstrap includes a JavaScript file as well as a stylesheet: for some components like tabbed pages, you need the scripts to make clicking on a tab switch to the correct content.

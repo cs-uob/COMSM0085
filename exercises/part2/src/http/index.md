@@ -6,9 +6,17 @@ HTTP, or HyperText Transfer Protocol, is one of the basic protocols that make up
 
 | Video | Length | Slides |
 |-------|-------:|--------|
-| [The internet](https://web.microsoftstream.com/video/70642ec0-ed1b-4fc6-a5ef-26213128c2e7?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46) | 22 minutes |
-| [HTTP](https://web.microsoftstream.com/video/1895a219-f515-41b7-a1e9-562b48945b59?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46) | 24 minutes |
-| [URLs](https://web.microsoftstream.com/video/3d3409a0-0295-416f-9f98-020c720761d1?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46) | 15 minutes |
+| [The internet]() | 22 minutes | [slides]() | 
+| [HTTP]() | 24 minutes | [slides]() | 
+| [URLs]() | 15 minutes | [slides]() | 
+
+
+## Exercises
+
+  - [Setup](./setup.md)
+  - [Exploring HTTP](./explore.md)
+  - [Online research](./research.md)
+  - [A server in Java](./server.md)
 
 ## Optional
 

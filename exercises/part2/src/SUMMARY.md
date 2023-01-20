@@ -7,7 +7,7 @@
 - [HTTP](./http/index.md)
   - [Setup](./http/setup.md)
   - [Exploring HTTP](./http/explore.md)
-  - [Research online exercise](./http/research.md)
+  - [Online research](./http/research.md)
   - [A server in Java](./http/server.md)
 - [HTML5](./html5/index.md)
   - [Basic HTML5](./html5/basic.md)
@@ -32,8 +32,8 @@
   - [Dynamic structure, part 2](./js/dynamic2.md)
   - [Further exercises](./js/exercises.md)
 - [Web scraping]()
- - [Crawling]()
- - [BeautifulSoup]()
+  - [Crawling]()
+  - [BeautifulSoup]()
 
 # Week 9: React & The Cloud
 
@@ -41,8 +41,8 @@
   - [Installing React](./react/installing.md)
   - [Hello World in React](./react/hello.md)
   - [Exercise](./react/character.md)
-- [The Cloud](./cloud/cloud1.md)
- - [AWS]()
+- [The Cloud]()
+  - [AWS]()
 
 # Week 10: A Complete Application
 

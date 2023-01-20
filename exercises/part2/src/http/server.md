@@ -10,7 +10,10 @@ Make sure you have java and maven installed as we did earlier in the unit. On al
   - Add the line `export PATH="$PATH:/usr/lib/jvm/java-1.8-openjdk/bin/"` to your `~/.profile` file.
   - Run `source ~/.profile`.
 
-Clone the repository `git@github.com:cs-uob/COMS10012` if you have not done so already, and navigate to the folder `code/server01`. In this folder, run `mvn spring-boot:run` to compile and run the sample application. The first time you do this, it might download lots of files.
+Clone the repository `git@github.com:cs-uob/COMSM0085` if you have not done so
+already, and navigate to the folder `code/server01`. In this folder, run `mvn
+spring-boot:run` to compile and run the sample application. The first time you
+do this, it might download lots of files.
 
 This runs a web server on port 8000.
 

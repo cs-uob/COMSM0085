@@ -8,8 +8,8 @@ _Not to be confused with [CSS Bristol](https://cssbristol.co.uk/)._
 
 | Video | Length | Slides |
 |-------|-------:|--------|
-| [CSS part 1](https://web.microsoftstream.com/video/19b45256-575f-4d09-8bc5-ccd29d34c64e?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46) | 19 minutes |
-| [CSS part 2](https://web.microsoftstream.com/video/77d53305-8551-459f-83b6-baa9ae989e15?channelId=793a8a65-ed73-4803-820f-dd7f2c675f46) | 14 minutes |
+| [CSS part 1]() | 19 minutes | [slides]() |
+| [CSS part 2]() | 14 minutes | [slides]() |
 
 ## MDN
 
@@ -19,3 +19,8 @@ For this workshop, please read the following pages:
   - [CSS selectors](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors)
   - [The box model](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model)
   - [Values and units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units)
+
+## Exercises
+
+  - [Styling Text](./text.md)
+  - [Frameworks](./framework.md)

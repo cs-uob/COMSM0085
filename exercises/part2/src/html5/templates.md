@@ -36,7 +36,10 @@ The syntax `${instance.attribute}` loads an attribute from an instance of a Java
 
 The `th:text` attribute is special and creates the body of a tag. For example, the span tag here creates a `<span>` whose body (between the opening and closing tags) contains the unit's title. Thymeleaf, unlike some other templating systems, doesn't let you include variables everywhere - some template engines let you just write `${variable}` anywhere in the HTML page, but thymeleaf only lets you do that in an attribute of a tag so if you simply want some text, you need to make a placeholder tag (`span` is a good choice here) and put the variable in its `th:text` attribute.
 
-If you click on a unit, you get to the details page for that unit (that currently doesn't have any more detail than the code and title). When you send a HTTP request for `/unit/UNITCODE`, for example `/unit/COMS10012`, this is handled by the `unitDetailPage` method. 
+If you click on a unit, you get to the details page for that unit (that
+currently doesn't have any more detail than the code and title). When you send a
+HTTP request for `/unit/UNITCODE`, for example `/unit/COMSM0085`, this is
+handled by the `unitDetailPage` method. 
 
 Note that the `@GetMapping` contains a pattern `/unit/{code}` with a parameter to match all URLs of this form, and the parameter is passed to the method as a parameter that is annotated with `@PathVariable` to tell spring how to deal with it, namely to fill its value from the path of the HTTP request.
 
