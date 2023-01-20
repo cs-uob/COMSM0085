@@ -8,7 +8,7 @@ In a real application, you will be using an ORM most of the time, but you can fa
 
 ## Example application - set-up
 
-There is an example application in [resources/orm/orm.tar](/COMS10012/resources/orm/orm.tar) which you can download and extract in your VM.
+There is an example application in [resources/orm/orm.tar](/COMSM0085/resources/orm/orm.tar) which you can download and extract in your VM.
 
 The POM file simply has an extra dependency on Hibernate:
 

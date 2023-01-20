@@ -46,7 +46,7 @@ preference), and you just need to know that in these exercises we will use `mast
 to refer to the default branch and you should substitute that for your own default 
 branch name if it is different.
 
-### Long version: 
+### Long version
 
 When git first appeared, whenever you created a repository you started with one branch called `master`. Different workflows and branch naming conventions appeared over time (we will see one of these in the next activity).
 
@@ -56,7 +56,7 @@ The git developers' first reaction to complaint about this was to make it easier
 
 While some in the community dispute that merely referring to the _concept_ of slavery is legitimately problematic, there has also been some debate about whether the name "master" in git even traces back to _master/slave_ or instead stems from another, less problematic use of word e.g. the phrase _master copy/master recording_ from the music industry - the most authoritative source on the matter is [git rev news 65, July 2020](https://git.github.io/rev_news/2020/07/29/edition-65/) from the git developers themselves, which also states that a change of the default branch name could happen in Git 3.0 (the version installed in Alpine at the time of writing is 2.38.3).
 
-There is another line of argument that the word _master_ as a default branch name (and thus something developers will refer to a lot) is somehow inherently problematic even if it came from a different origin than _master/slave_. This is a complicated issue as, among other things, half the cohort taking Software Tools is probably on a _Master's Degree_ and one of the criteria for a first-class mark is showing _mastery_ of the unit material - all terms that will be much harder to change than a simple repository name which is one line of commands to change. Git does not care what your branches are called, after all -- one string is as good as another (as long as it doesn't contain special characters or spaces).
+There is another line of argument that the word _master_ as a default branch name (and thus something developers will refer to a lot) is somehow inherently problematic even if it came from a different origin than _master/slave_. This is a complicated issue as, among other things, half the cohort taking Software Tools is probably on a _Master's Degree_ and one of the criteria for a first-class mark is showing _mastery_ of the unit material - all terms that would be much harder to change than a simple repository name which is one line of commands to change. Git does not care what your branches are called, after all -- one string is as good as another (as long as it doesn't contain special characters or spaces).
 
 A fresh installation of git will still call the branch `master` unless you change a configuration setting, and any book, tutorial, forum or stackexchange post online written about git before around mid-2020 will refer to `master`, so there is no way around knowing that in the context of git, the term `master` refers to a branch with a particular role, but as a future developer you should also have an understanding of the community and conventions around your tools, and you should definitely know that there is a currently ongoing discussion around this term.
 
@@ -82,7 +82,7 @@ On the main page, you should see an empty _Repositories_ bar on the left, with a
 
 On the repository page, there is a green _Code_ button. Clicking that opens a box with three tabs: _HTTPS_, _SSH_ and _GitHub CLI_.
 
-Each repository has a two-part name: the first part is the owner's github username, the second part is the repository name. For example, the repository for this unit is called `cs-uob/COMS10012`. There are two ways to interact with a remote repository:
+Each repository has a two-part name: the first part is the owner's github username, the second part is the repository name. For example, the repository for this unit is called `cs-uob/COMSM0085`. There are two ways to interact with a remote repository:
 
   * Via HTTPS. This is ok if you are just cloning a public repository, as it does not require any authentication. To interact with a private repository or to push files, HTTPS requires username/password authentication, and we can do better than that.
   * Via SSH, using keys. This is the recommended way to use Git.

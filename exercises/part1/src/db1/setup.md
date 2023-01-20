@@ -51,7 +51,9 @@ This adds the mariadb service to the "default" runlevel, which is for things tha
 To log in to a database, you normally need a user account and an authentication factor (such as a password, or a private key). However, in the latest Alpine version, mysql user accounts are linked to system user accounts. Try out the following:
 
   - As `vagrant`, log in to the database with `mysql`. You should see the mysql prompt. Try `SHOW DATABASES;` including the semicolon at the end, and press ENTER. You should see two databases including a default one called `test`. Exit again with `exit` or Control+D.
-  - Try `sudo mysql` then `SHOW DATABASES;` again. You should now see more databases, including one called `mysql`. Then log out again.
+  - Try `sudo mysql` then `SHOW DATABASES;` again. You should now see more databases, including one called `mysql`. Next type `SELECT Host,User from mysql.user;`. Then log out again.
+
+If you see three or four lines of result from the above which are _all_ prefaced with 'localhost' in the Host column, then you don't need to execute the script mentioned below (though the rest of this section is still worth reading to understand more about mysql database security), and indeed trying to execute the script will result in an error message (because you attempt to remove something that doesn't exist). 
 
 The mysql command line tool tries to log you in to the database using the same user account as your current system one - it uses a system call to get the id and name of the user calling it - so when you run it as the system root user (with sudo), then you also get logged in to the database as the database root user, which is why you can see more databases. The `mysql` database contains tables with database configuration including user accounts and other settings.
 
@@ -60,7 +62,7 @@ The default set-up will allow anyone to log in and see some of the database, for
 The setup file is located at the address given below. You can download it for example with `wget ADDRESS` in Alpine linux; `wget` is a download program. Place it in the same folder as your Vagrantfile (in `/vagrant`, if you're doing the download from within Alpine).
 
 ```
-https://raw.githubusercontent.com/cs-uob/COMS10012/master/code/databases/secure-setup.sql
+https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/secure-setup.sql
 ```
 
   - Run the command `sudo mysql -e 'source /vagrant/secure-setup.sql'` to run this script as the database root user.
@@ -93,22 +95,22 @@ I have prepared some sample data that we will be using in this and the following
 First, download the following two files and place them in the same folder as your Vagrantfile. This folder is important as the `sample-data.sql` script contains hard-coded absolute paths starting in `/vagrant/` to import some of the data. You can download the files the same way as you did before with the secure setup file.
 
 ```
-https://raw.githubusercontent.com/cs-uob/COMS10012/master/code/databases/sample-data.sql
-https://raw.githubusercontent.com/cs-uob/COMS10012/master/code/databases/sampledata.tar
+https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/sample-data.sql
+https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/sampledata.tar
 ```
 
 If you are using a local copy of this repository, you can also find the files under `/code/databases`.
 
 The `tar` file is a _tape archive_: a file that contains further files and folders, as if it were a folder itself. Extract it by going to `/vagrant` in Alpine and run
 
-    tar xvf sampledata.tar
+    tar -xvf sampledata.tar
 
 This creates a folder sampledata with the files we need.
 
 |||advanced
-Note that `tar` uses an older convention where options are not prefixed with a dash; the options here are x=extract a file, v=verify (print the name of every processed file to standard output), f=the filename is in the following argument.
+The options here are x=extract a file, v=verify (print the name of every processed file to standard output), f=the filename is in the following argument. You may sometimes see this command without the '-' for these options -- this works because `tar` supports an older convention where options are not prefixed with a dash, but to be safe you should stick to the modern convention (which it also understands).
 
-To create a tar file yourself, the command would be `tar cvf ARCHIVE.tar FILE1 FILE2...` where c=create the archive if it doesn't exist, and assume all arguments not consumed by another flag refer to files to be added. In fact, `tar xvf ARCHIVE.tar FILES...` also works and only extracts the named files from the archive.
+To create a tar file yourself, the command would be `tar -cvf ARCHIVE.tar FILE1 FILE2...` where c=create the archive if it doesn't exist, and assume all arguments not consumed by another flag refer to files to be added. In fact, `tar -xvf ARCHIVE.tar FILES...` also works and only extracts the named files from the archive.
 |||
 
 Load the sample data with the following command:
@@ -136,9 +138,9 @@ You can open the SQL and CSV files under `/vagrant/sampledata` to compare with t
 On a lab machine, to save disk space your VMs may not remain between reboots - and because they are not hosted on the network file system, if you log in to a different machine next time, your changes will not be saved either but you will get the VM reinstalled from scratch. To make sure the database is ready whenever you need it, open the `Vagrantfile` in a text editor and make the following changes.
 
   * On the line starting `apk add`, add the packages `mariadb` and `mariadb-client` to the end, separated by spaces.
-  * Download and save the three setup files (`sample-data.sql`, `secure-setup.sql` and `sampledata.tar`) in the same folder as your Vagrantfile (this is on the host machine, so it will not get deleted along with the VM).
+  * Download and save the three setup files (`sample-data.sql`, `secure-setup.sql` and `sampledata.tar`) in the same folder as your Vagrantfile (this is on the host machine, so it will not get deleted along with the VM). 
   * Extract the tar file so that there is a folder `sampledata/` in the same folder as your Vagrantfile.
-  * Following the `apk add` line in your Vagrantfile, add the following lines:
+  * Following the `apk add` lines for mariadb in your Vagrantfile, add the following lines (obviously, exclude the line for `secure-setup.sql` if you didn't need to do this above):
 
 ```sh
 /etc/init.d/mariadb setup

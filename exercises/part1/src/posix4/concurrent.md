@@ -1,12 +1,12 @@
 # Concurrent programming in POSIX
 
-In your second year, you will study concurrent programming using the go programming language, which provides an abstraction called _channels_ that different _actors_ can use to talk to each other. In the case of go, the actors are threads, but the same principle applies to a concurrent system with different processes, in which case channels are a kind of _inter-process communication (IPC)_. In POSIX, pipes are a kind of channel.
+In the undergraduate degree at Bristol, students study concurrent programming using the go programming language, which provides an abstraction called _channels_ that different _actors_ can use to talk to each other. In the case of go, the actors are threads, but the same principle applies to a concurrent system with different processes, in which case channels are a kind of _inter-process communication (IPC)_. In POSIX, pipes are a kind of channel.
 
   - If one process reads from a pipe, then this blocks the process until another process writes to it.
   - If one process writes to a pipe, then this blocks the process until another process reads from it.
   - If one process reads from a pipe and another process writes to it (it does not matter who goes first) then the data is transferred from the reader to the writer, and both processes continue.
 
-For example, when you to a command like `cat logfile | grep Error | wc -l` to count the number of lines containing the word "Error", then there are three processes (not counting the terminal) and two pipes involved:
+For example, when you use a command like `cat logfile | grep Error | wc -l` to count the number of lines containing the word "Error", then there are three processes (not counting the terminal) and two pipes involved:
 
 ![pipe diagram](../resources/pipe1.png)
 
