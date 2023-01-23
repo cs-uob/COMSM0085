@@ -2,6 +2,10 @@
 
 ## Videos
 
-Here is a recording of a [lecture on debugging](), 50 minutes long (feel free to watch in sections and pause/stop in between).
+| Video | Length | Slides |
+|-------|-------:|--------|
+| [Debugging](https://web.microsoftstream.com/video/10926ab8-e10e-43b4-b486-495ce9f775c2)| 34 minutes | [slides](https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EX0-s0boltxDq0oNPgudC40BsWc1PnK6pEWXJuRabPQnHA?e=ccd8Gh) |
 
-There are no slides as this is not a presentation-based lecture.
+## Exercise
+
+  - [Debugging exercise](./exercise.md)
