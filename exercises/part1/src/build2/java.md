@@ -16,9 +16,9 @@ You can do this exercise either on Alpine, or on your own machine where you have
 
 ## Installing on Alpine
 
-On Alpine, install the `openjdk8` and `maven` packages. Alpine's JDK does not end up on the `PATH`, presumably in case you want to have several different JDKs on the same machine, so you should run the following command and also add it to your `~/.profile`:
+On Alpine, install the `openjdk17` and `maven` packages. Alpine's JDK does not end up on the `PATH`, presumably in case you want to have several different JDKs on the same machine, so you should run the following command and also add it to your `~/.profile`:
 
-    export PATH="$PATH:/usr/lib/jvm/java-1.8-openjdk/bin/"
+    export PATH="$PATH:/usr/lib/jvm/java-17-openjdk/bin/"
 
 This lets you run `javac`, although you could of course also run it by calling it with the full path to the file.
 
