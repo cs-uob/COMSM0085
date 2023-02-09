@@ -33,6 +33,7 @@
 
     </head>
     <body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "";
@@ -1934,8 +1935,8 @@ norm(loc=200, scale=10).rvs(5)
 <p><code>maven</code> is a Java package manager and build tool. It is not part of the Java distribution, so you will need to install it separately.</p>
 <p>You can do this exercise either on Alpine, or on your own machine where you have probably already installed Java for the OOP/Algorithms unit, and you can use your favourite editor. The exercises should work exactly the same way in both cases, there is nothing POSIX-specific here.</p>
 <h2 id="installing-on-alpine"><a class="header" href="#installing-on-alpine">Installing on Alpine</a></h2>
-<p>On Alpine, install the <code>openjdk8</code> and <code>maven</code> packages. Alpine's JDK does not end up on the <code>PATH</code>, presumably in case you want to have several different JDKs on the same machine, so you should run the following command and also add it to your <code>~/.profile</code>:</p>
-<pre><code>export PATH=&quot;$PATH:/usr/lib/jvm/java-1.8-openjdk/bin/&quot;
+<p>On Alpine, install the <code>openjdk17</code> and <code>maven</code> packages. Alpine's JDK does not end up on the <code>PATH</code>, presumably in case you want to have several different JDKs on the same machine, so you should run the following command and also add it to your <code>~/.profile</code>:</p>
+<pre><code>export PATH=&quot;$PATH:/usr/lib/jvm/java-17-openjdk/bin/&quot;
 </code></pre>
 <p>This lets you run <code>javac</code>, although you could of course also run it by calling it with the full path to the file.</p>
 <h2 id="installing-on-your-own-machine-1"><a class="header" href="#installing-on-your-own-machine-1">Installing on your own machine</a></h2>
@@ -3091,5 +3092,6 @@ private List&lt;Ward&gt; wards;
         });
         </script>
 
+    </div>
     </body>
 </html>
