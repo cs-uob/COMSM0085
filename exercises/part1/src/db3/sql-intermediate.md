@@ -8,11 +8,7 @@ The videos for this activity are:
 
 | Video | Length | Slides |
 |-------|-------:|--------|
-| [SQL insert/delete]()  | 8 minutes | [PDF]() |
-| [SQL subqueries]()  | 13 minutes | [PDF]() |
-| [SQL statistics]()  | 22 minutes | [PDF]() |
-| [SQL NULL]()  | 7 minutes | [PDF]() |
-| [SQL tips]()  | 17 minutes | [PDF]() |
+|[Intermediate SQL](https://web.microsoftstream.com/video/455af5a1-bcca-4378-a0e1-6b52891b20a4) | 22 minutes | [Slides](https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EWv9-8AjCwpBpO0V9einLsEBczmpJKUD3UsrFBzYbe_i8A?e=i3TGr0) | 
 
 ## Exercises
 
