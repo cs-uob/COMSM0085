@@ -58,3 +58,4 @@
 - [SQL and Java](./db4/sql-java.md)
   - [JDBC](./db4/jdbc.md)
   - [Hibernate](./db4/hibernate.md)
+  - [SQLite](./db4/sqlite.md)
