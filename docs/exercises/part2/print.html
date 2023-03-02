@@ -155,11 +155,16 @@ examinable, though it may be practically very useful to you in future projects. 
 <p>HTTP, or HyperText Transfer Protocol, is one of the basic protocols that make up the internet - and usually the lowest level that a web developer needs to concern themselves with frequently.</p>
 <h2 id="videos"><a class="header" href="#videos">Videos</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
-<tr><td><a href="http/">The internet</a></td><td style="text-align: right">22 minutes</td><td><a href="http/">slides</a></td></tr>
-<tr><td><a href="http/">HTTP</a></td><td style="text-align: right">24 minutes</td><td><a href="http/">slides</a></td></tr>
-<tr><td><a href="http/">URLs</a></td><td style="text-align: right">15 minutes</td><td><a href="http/">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/99c10922-d2fa-4a82-8098-4f779ea026e8">HTTP</a></td><td style="text-align: right">26 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EaKDKCP6APNJj9c6PH35ZLUBz97c5mVLITbUBxiYm-UfSw?e=D4Zwao">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/43097d0a-1064-42d0-8a3a-dd67bc78542c">The Internet</a></td><td style="text-align: right">15 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EW193TDO4qVHtgZONmbmNXYB1ypxNTN3DIOrlS2n7aEkPg?e=MuI7jC">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/4ed9cab8-021d-41b1-bffb-4fdf5fa11fe4">URLs</a></td><td style="text-align: right">7 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EUY5-p9SDSJFnqDPlBRzUxwBuhV9uORYmF7ZLoOhgAySbA?e=LAaGZv">slides</a></td></tr>
 </tbody></table>
 </div>
+<h2 id="reading"><a class="header" href="#reading">Reading</a></h2>
+<ul>
+<li><a href="https://www.rfc-editor.org/rfc/rfc7230">RFC 7230</a> - this is a comprehensive
+outline of the protocol for HTTP, but you can focus on sections 2.1, 2.2, 2.7 and 3. </li>
+</ul>
 <h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
 <ul>
 <li><a href="http/./setup.html">Setup</a></li>
@@ -168,6 +173,9 @@ examinable, though it may be practically very useful to you in future projects. 
 <li><a href="http/./server.html">A server in Java</a></li>
 </ul>
 <h2 id="optional"><a class="header" href="#optional">Optional</a></h2>
+<p>You can read the RFC for the internet protocol IP at <a href="https://www.rfc-editor.org/rfc/rfc791.html">RFC 791</a>.
+You can read the RFC for the transmission control protocol at <a href="https://www.rfc-editor.org/rfc/rfc793">RFC 793</a>.
+You can read the RFC for URIs at <a href="https://www.rfc-editor.org/rfc/rfc3986">RFC 3986</a>.</p>
 <p>If you want to, you can read further about HTTP (including the new HTTP/2 standard) on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP">Mozilla Developer Network</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="set-up"><a class="header" href="#set-up">Set-up</a></h1>
 <p>From this point on we will be running web servers on our development environment, and connecting to them with web browsers. To get this to work we need to set some things up first, so please follow the instructions for your environment:</p>
@@ -238,8 +246,8 @@ Hello over HTTP!
 <p>This details page shows you the HTTP request details, including the response code (<code>200 OK</code> in this case) and all the headers sent in both directions. This screen is one of the first places you should look at when something web-based that you've coded is not working correctly or at all, as HTTP is normally the lowest layer you need to care about.</p>
 <p>In particular, the <code>Content-type</code> header is a common source of mistakes: if you want to serve e.g. a script or a stylesheet but you don't set the correct type header, your browser may download the file just fine but won't do anything with it. Similarly, whether you send <code>text/plain</code> or <code>text/html</code> determines whether the browser will interpret a file you navigate to as HTML or not.</p>
 <h2 id="a-web-server-in-c"><a class="header" href="#a-web-server-in-c">A web server in C</a></h2>
-<p>On your server machine, clone the repository <code>https://github.com/emikulic/darkhttpd</code> which contains a single-file web server in just under 3000 lines of C. You do not need to understand this code, and in 2nd year Computer Systems A you will be able to write a web server in around 10 lines of golang instead and understand the concurrency principles behind it.</p>
-<p>Compile the program either with <code>make</code> or simply <code>gcc darkhttpd.c -o darkhttpd</code>. Its job is to serve files within a folder, so make a subfolder called <code>web</code> and then run it with <code>./darkhttpd web --port 8000</code>. You can stop it again at the end of the exercise with <code>Control+C</code>.</p>
+<p>On your server machine, clone the repository <code>https://github.com/emikulic/darkhttpd</code> which contains a single-file web server in just under 3000 lines of C. You do not need to understand this code in detail, but it can be educational to try to understand some of what it does internally. </p>
+<p>Compile the program either with <code>make</code> or simply <code>gcc darkhttpd.c -o darkhttpd</code>. The server's job is to serve files within a folder, so make a subfolder called <code>web</code> and then run it with <code>./darkhttpd web --port 8000</code>. You can stop it again at the end of the exercise with <code>Control+C</code>.</p>
 <p>You can now experiment with the following:</p>
 <ul>
 <li>Create some files (plain text, HTML, image etc.) in <code>web/</code>.</li>
@@ -252,24 +260,24 @@ Hello over HTTP!
 <p>You can try this out for yourself if you want: make a HTML file called <code>one.html5</code> in the web directory and access it with the browser. (<code>.html5</code> is not an official extension, it's something I just made up. The correct one to use for proper websites is <code>.html</code>.) The server won't send a <code>Content-type</code> header at all, since it doesn't know this extension, so the browser will either display it as a plain text file or download the file instead of showing it.</p>
 <p>Edit the map in the source file and change the entry for <code>text/html</code> to read <code>&quot; html htm html5&quot;</code>, keeping the space at the start of the string. Recompile the server.</p>
 <p>Rename the file to <code>two.html5</code> (I'll explain why in a second) and restart the server and try and open the file in the browser. This time, the file will display as a HTML page.</p>
-<p>Why did you have to rename the file? Because the browser will otherwise try and be clever if it thinks you're trying to access a file that you've just downloaded already. The server sends a <code>Last-modified</code> header, and if the browser notices you're asking for a file you have just downloaded, with the same timestamp as the HTTP header indicates, then your browser might ignore the rest of the request and not see that another header has changed - I get this behaviour on Edge/Win10. Changing the file name forces the browser to look again as it thinks it's a different file now. Deleting the downloaded file, or editing the file on the server, would both have the same effect.</p>
+<p>Why did you have to rename the file? Because the browser will otherwise try and be clever if it thinks you're trying to access a file that you've just downloaded already. The server sends a <code>Last-modified</code> header, and if the browser notices you're asking for a file you have just downloaded, with the same timestamp as the HTTP header indicates, then your browser might ignore the rest of the request and not see that another header has changed. Changing the file name forces the browser to look again as it thinks it's a different file now. Deleting the downloaded file, or editing the file on the server, would both have the same effect.</p>
 <p>There is a moral here: if you're doing web development, and you are trying to find out why a change you made isn't showing in the browser (even if you refresh the page), it might be a cache problem. On the network tab of the developer tools window, there should be a checkbox to &quot;disable cache&quot; which you might want to turn on in this case and reload the page again, to exclude the cache as the possible source of the problem.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="httpurl-research-exercises"><a class="header" href="#httpurl-research-exercises">HTTP/URL research exercises</a></h1>
 <p>Research online what the following are and what they do:</p>
 <ul>
-<li>The <em>fragment</em> part of an URL.</li>
+<li>The <em>fragment</em> part of a URL.</li>
 <li>The <code>Accept</code> header sent by the HTTP client.</li>
 <li>The <code>User-agent</code> header sent by the HTTP client. What does your browser send?</li>
-<li>How do you encode a path that contains a space in an URL? (The link to the slides PDF for the first video called &quot;The internet&quot; for this week contains an example. If you hover over the link, it will display the target filename as <code>The internet.pdf</code>, but how is it written in the HTML file?) Which other characters are &quot;special&quot; and need to be treated this way in paths?</li>
+<li>How do you encode a path that contains a space in an URL? Which other characters are &quot;special&quot; and need to be treated this way in paths?</li>
 <li>Which web server is the University of Bristol using for <code>www.bristol.ac.uk</code>, according to the headers? Read up online on this server and the organisation of the same name that maintains it.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="a-server-in-java"><a class="header" href="#a-server-in-java">A server in Java</a></h1>
-<p>From now on, we will be using the Java language and the spring boot framework to run real web servers, as that is what you will be doing in your 2nd year software project (COMS20006).</p>
+<p>From now on, we will be using the Java language and the spring boot framework to run real web servers, as you might do in a software engineering project.</p>
 <h2 id="compile-and-run"><a class="header" href="#compile-and-run">Compile and run</a></h2>
 <p>Make sure you have java and maven installed as we did earlier in the unit. On alpine, you need to do the following if you have not done so already:</p>
 <ul>
-<li>Install the packages <code>openjdk8</code> and <code>maven</code>.</li>
-<li>Add the line <code>export PATH=&quot;$PATH:/usr/lib/jvm/java-1.8-openjdk/bin/&quot;</code> to your <code>~/.profile</code> file.</li>
+<li>Install the packages <code>openjdk17</code> and <code>maven</code>.</li>
+<li>Add the line <code>export PATH=&quot;$PATH:/usr/lib/jvm/java-17-openjdk/bin/&quot;</code> to your <code>~/.profile</code> file.</li>
 <li>Run <code>source ~/.profile</code>.</li>
 </ul>
 <p>Clone the repository <code>git@github.com:cs-uob/COMSM0085</code> if you have not done so
