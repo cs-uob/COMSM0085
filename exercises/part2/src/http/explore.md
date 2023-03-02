@@ -71,9 +71,9 @@ In particular, the `Content-type` header is a common source of mistakes: if you 
 
 ## A web server in C
 
-On your server machine, clone the repository `https://github.com/emikulic/darkhttpd` which contains a single-file web server in just under 3000 lines of C. You do not need to understand this code, and in 2nd year Computer Systems A you will be able to write a web server in around 10 lines of golang instead and understand the concurrency principles behind it.
+On your server machine, clone the repository `https://github.com/emikulic/darkhttpd` which contains a single-file web server in just under 3000 lines of C. You do not need to understand this code in detail, but it can be educational to try to understand some of what it does internally. 
 
-Compile the program either with `make` or simply `gcc darkhttpd.c -o darkhttpd`. Its job is to serve files within a folder, so make a subfolder called `web` and then run it with `./darkhttpd web --port 8000`. You can stop it again at the end of the exercise with `Control+C`.
+Compile the program either with `make` or simply `gcc darkhttpd.c -o darkhttpd`. The server's job is to serve files within a folder, so make a subfolder called `web` and then run it with `./darkhttpd web --port 8000`. You can stop it again at the end of the exercise with `Control+C`.
 
 You can now experiment with the following:
 
@@ -93,6 +93,6 @@ Edit the map in the source file and change the entry for `text/html` to read `" 
 
 Rename the file to `two.html5` (I'll explain why in a second) and restart the server and try and open the file in the browser. This time, the file will display as a HTML page.
 
-Why did you have to rename the file? Because the browser will otherwise try and be clever if it thinks you're trying to access a file that you've just downloaded already. The server sends a `Last-modified` header, and if the browser notices you're asking for a file you have just downloaded, with the same timestamp as the HTTP header indicates, then your browser might ignore the rest of the request and not see that another header has changed - I get this behaviour on Edge/Win10. Changing the file name forces the browser to look again as it thinks it's a different file now. Deleting the downloaded file, or editing the file on the server, would both have the same effect.
+Why did you have to rename the file? Because the browser will otherwise try and be clever if it thinks you're trying to access a file that you've just downloaded already. The server sends a `Last-modified` header, and if the browser notices you're asking for a file you have just downloaded, with the same timestamp as the HTTP header indicates, then your browser might ignore the rest of the request and not see that another header has changed. Changing the file name forces the browser to look again as it thinks it's a different file now. Deleting the downloaded file, or editing the file on the server, would both have the same effect.
 
 There is a moral here: if you're doing web development, and you are trying to find out why a change you made isn't showing in the browser (even if you refresh the page), it might be a cache problem. On the network tab of the developer tools window, there should be a checkbox to "disable cache" which you might want to turn on in this case and reload the page again, to exclude the cache as the possible source of the problem.
