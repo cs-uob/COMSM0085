@@ -1,6 +1,6 @@
 # HTML5
 
-HTML5, officially introduced in 2014, is the language for writing websites nowadays.
+HTML5, officially introduced in 2014, is the modern markup language for writing websites.
 
 It gets rid of a lot of historical annoyances and inconsistencies from previous versions of HTML and XML and contains a lot of new standard tags and attributes for features that individual sites had built with JavaScript or Adobe Flash in the past. For example, HTML5 has a `<video>` tag for a consistent way to include videos that work across different platforms and without plug-ins, and a standard way of writing a date picker or "calendar" widget.
 

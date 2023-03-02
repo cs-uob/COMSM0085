@@ -24,7 +24,9 @@ HTTP, or HyperText Transfer Protocol, is one of the basic protocols that make up
 ## Optional
 
 You can read the RFC for the internet protocol IP at [RFC 791](https://www.rfc-editor.org/rfc/rfc791.html).
+
 You can read the RFC for the transmission control protocol at [RFC 793](https://www.rfc-editor.org/rfc/rfc793).
+
 You can read the RFC for URIs at [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986).
 
 If you want to, you can read further about HTTP (including the new HTTP/2 standard) on the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTTP).
