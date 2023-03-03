@@ -8,8 +8,8 @@ It gets rid of a lot of historical annoyances and inconsistencies from previous 
 
 | Video | Length | Slides |
 |-------|-------:|--------|
-| [HTML5]() | 24 minutes | [slides]() |
-| [HTML elements]() | 24 minutes | [slides]() |
+| [HTML5](https://web.microsoftstream.com/video/60b286e4-2a48-457c-b564-fec86ee2169d) | 16 minutes | [slides](https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/Ea3-DaFYa9RItnmSRhVGPXIBGAS_PHaWAKGgeuay7Zf1kg?e=0rxeGt) |
+| [HTML elements](https://web.microsoftstream.com/video/eccbed8b-eca0-4d67-a4fe-ac9f440e422d) | 9 minutes | [slides](https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/ERJbx2SsLUlDtuutM2Iort0BkVM4OmX4cfK1v79eixrtqA?e=CrgGEv) |
 
 ## MDN
 
