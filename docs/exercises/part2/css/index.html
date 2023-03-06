@@ -70,10 +70,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -147,14 +149,14 @@
 <p><em>Not to be confused with <a href="https://cssbristol.co.uk/">CSS Bristol</a>.</em></p>
 <h2 id="videos"><a class="header" href="#videos">Videos</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
-<tr><td><a href="">CSS part 1</a></td><td style="text-align: right">19 minutes</td><td><a href="">slides</a></td></tr>
-<tr><td><a href="">CSS part 2</a></td><td style="text-align: right">14 minutes</td><td><a href="">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/966c07b6-6f2f-4676-b348-e942101be174">CSS part 1</a></td><td style="text-align: right">14 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EXPRGR7nfbdLgB8krc9jTFcBHEH__HvV-vqXfbmYemGfnA?e=lwKNBI">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/b38974b4-2675-4143-82c8-a8ff2c6a3288">CSS part 2</a></td><td style="text-align: right">10 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EaPEjEpM1JtNkDwYQyQ8tCUBFT6Q78VI4QKMSANf6jhfyg?e=VIS7eB">slides</a></td></tr>
 </tbody></table>
 </div>
 <h2 id="mdn"><a class="header" href="#mdn">MDN</a></h2>
 <p>For this workshop, please read the following pages:</p>
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps">CSS first steps</a> including the 5 subpages linked under &quot;Guides&quot; - they are all meant for beginners so you should be able to get through quickly</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps">CSS first steps</a> including the 5 subpages linked under &quot;Guides&quot; - they are all meant for beginners so you should be able to get through them quickly.</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors">CSS selectors</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model">The box model</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units">Values and units</a></li>
