@@ -14,7 +14,7 @@
 | [Object Oriented Programming](https://web.microsoftstream.com/video/f9547854-f642-4b40-8800-7daab588c363) | 9.40 minutes |
 | [Asynchronous JavaScript](https://web.microsoftstream.com/video/d5072390-853b-49a0-888c-9ed086b044df) | 12 minutes |
 
-All the example code for these lectures can be found in the
+Some example code can be found in the
 [`code/javascript`](https://github.com/cs-uob/COMSM0085/tree/master/code/javascript)
 folder of the repository.
 
