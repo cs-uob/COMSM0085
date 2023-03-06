@@ -5,12 +5,10 @@
 
 ## Videos
 
-| Video | Length |
-|-------|-------:|
-| 
-| [JavaScript: Basics](https://web.microsoftstream.com/video/2dc6a701-fa1a-40d8-89c2-27e99e976d7f) | 24 minutes |[Slides](https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EfidO6rhwlhPs_AZSgBCH18BJ6eR1Zz4mIOpcbAiYxPpTQ?e=7KrHSL)|
+| Video | Length | Slides |
+|-------|-------:|--------|
+| [JavaScript: Basics](https://web.microsoftstream.com/video/2dc6a701-fa1a-40d8-89c2-27e99e976d7f) | 24 minutes | [Slides](https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EfidO6rhwlhPs_AZSgBCH18BJ6eR1Zz4mIOpcbAiYxPpTQ?e=7KrHSL)|
 | [JS Objects (incl. JSON)](https://web.microsoftstream.com/video/0d40a41d-ed42-4441-8635-2cb8d452ed16) | 5.21 minutes |[Slides](https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EYtHZ1I7R3BLgZdjTgvO_lQB5SMzb6CbIX1XIUBIYyPd7Q?e=QQUJY1)|
-| 
 | [Object Oriented Programming](https://web.microsoftstream.com/video/f9547854-f642-4b40-8800-7daab588c363) | 9.40 minutes |[Slides](https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EXKvkOEwbmBNpw9Cmx8iiwUBkFJ1fv8t_qK8shkrVBsQtQ?e=hCMG3L)|
 | [Asynchronous JavaScript](https://web.microsoftstream.com/video/d5072390-853b-49a0-888c-9ed086b044df) | 12 minutes |[Slides](https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/ERxtlsuDqslLtKOvIPCkxPwBWjsg85cJjoQIp6JdKeXUuA?e=Fm1PiJ)|
 
