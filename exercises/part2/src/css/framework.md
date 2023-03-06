@@ -8,7 +8,7 @@ Now that you know some CSS, you could write your own framework - one or more sty
 
 Download the [page1.html](../resources/page1.html) file and open it in the browser: it contains some text and a sign-up form for a CSS conference.
 
-Following the instructions on the Milligram website, add the following to the page head:
+Add the following to the page head:
 
 ```html
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
@@ -45,7 +45,7 @@ Have a look in your browser's developer tools at how Milligram styles the page: 
 
 ## Bulma
 
-[Bulma](htttps://bulma.io) is a larger but still fairly lightweight CSS framework. Unlike Milligram, it only styles parts of the page you tell it to (but it sets a default font), and it has some more components to build things like menus or panels.
+[Bulma](https://bulma.io) is a larger but still fairly lightweight CSS framework. Unlike Milligram, it only styles parts of the page you tell it to (but it sets a default font), and it has some more components to build things like menus or panels.
 
 Start with [page2.html](../resources/page2.html), have a look at the raw page and then add the following to the header (the viewport tag is already there):
 
