@@ -1,6 +1,6 @@
 # Responsive layout: trees exercise
 
-Download the [trees.tar.gz](../resources/trees.tar.gz) file for this exercise and extract it (`tar zxvf FILENAME`) to a folder, then open `trees.html` in your editor. Create an empty `trees.css` in the same folder and open that too.
+Download the [trees.tar.gz](../resources/trees.tar.gz) file for this exercise and extract it (`tar -zxvf FILENAME`) to a folder, then open `trees.html` in your editor. Create an empty `trees.css` in the same folder and open that too.
 
 The file contains images and English and Latin names of some trees at [Westonbirt, the UK national arboretum](https://www.forestryengland.uk/westonbirt-the-national-arboretum).
 
