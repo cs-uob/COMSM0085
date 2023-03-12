@@ -71,10 +71,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -391,14 +393,14 @@ handled by the <code>unitDetailPage</code> method. </p>
 <p><em>Not to be confused with <a href="https://cssbristol.co.uk/">CSS Bristol</a>.</em></p>
 <h2 id="videos-2"><a class="header" href="#videos-2">Videos</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
-<tr><td><a href="css/">CSS part 1</a></td><td style="text-align: right">19 minutes</td><td><a href="css/">slides</a></td></tr>
-<tr><td><a href="css/">CSS part 2</a></td><td style="text-align: right">14 minutes</td><td><a href="css/">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/966c07b6-6f2f-4676-b348-e942101be174">CSS part 1</a></td><td style="text-align: right">14 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EXPRGR7nfbdLgB8krc9jTFcBHEH__HvV-vqXfbmYemGfnA?e=lwKNBI">slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/b38974b4-2675-4143-82c8-a8ff2c6a3288">CSS part 2</a></td><td style="text-align: right">10 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EaPEjEpM1JtNkDwYQyQ8tCUBFT6Q78VI4QKMSANf6jhfyg?e=VIS7eB">slides</a></td></tr>
 </tbody></table>
 </div>
 <h2 id="mdn-1"><a class="header" href="#mdn-1">MDN</a></h2>
 <p>For this workshop, please read the following pages:</p>
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps">CSS first steps</a> including the 5 subpages linked under &quot;Guides&quot; - they are all meant for beginners so you should be able to get through quickly</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps">CSS first steps</a> including the 5 subpages linked under &quot;Guides&quot; - they are all meant for beginners so you should be able to get through them quickly.</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors">CSS selectors</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model">The box model</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units">Values and units</a></li>
@@ -484,7 +486,7 @@ handled by the <code>unitDetailPage</code> method. </p>
 <h2 id="milligram"><a class="header" href="#milligram">Milligram</a></h2>
 <p><a href="https://milligram.io">Milligram</a> is, in its own words, a &quot;minimalist CSS framework&quot;.</p>
 <p>Download the <a href="css/../resources/page1.html">page1.html</a> file and open it in the browser: it contains some text and a sign-up form for a CSS conference.</p>
-<p>Following the instructions on the Milligram website, add the following to the page head:</p>
+<p>Add the following to the page head:</p>
 <pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic&quot;&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css&quot;&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css&quot;&gt;
@@ -514,7 +516,7 @@ handled by the <code>unitDetailPage</code> method. </p>
 <li>Size and centering of everything in a container on wide enough screens</li>
 </ul>
 <h2 id="bulma"><a class="header" href="#bulma">Bulma</a></h2>
-<p><a href="htttps://bulma.io">Bulma</a> is a larger but still fairly lightweight CSS framework. Unlike Milligram, it only styles parts of the page you tell it to (but it sets a default font), and it has some more components to build things like menus or panels.</p>
+<p><a href="https://bulma.io">Bulma</a> is a larger but still fairly lightweight CSS framework. Unlike Milligram, it only styles parts of the page you tell it to (but it sets a default font), and it has some more components to build things like menus or panels.</p>
 <p>Start with <a href="css/../resources/page2.html">page2.html</a>, have a look at the raw page and then add the following to the header (the viewport tag is already there):</p>
 <pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.css&quot;&gt;
 </code></pre>
@@ -740,16 +742,14 @@ header {
 <div style="break-before: page; page-break-before: always;"></div><h1 id="javascript"><a class="header" href="#javascript">JavaScript</a></h1>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a> is a programming language for creating dynamic web pages.</p>
 <h2 id="videos-4"><a class="header" href="#videos-4">Videos</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th></tr></thead><tbody>
-<tr><td></td><td style="text-align: right"></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/2dc6a701-fa1a-40d8-89c2-27e99e976d7f">JavaScript: Basics</a></td><td style="text-align: right">24 minutes</td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/0d40a41d-ed42-4441-8635-2cb8d452ed16">JS Objects (incl. JSON)</a></td><td style="text-align: right">5.21 minutes</td></tr>
-<tr><td></td><td style="text-align: right"></td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/f9547854-f642-4b40-8800-7daab588c363">Object Oriented Programming</a></td><td style="text-align: right">9.40 minutes</td></tr>
-<tr><td><a href="https://web.microsoftstream.com/video/d5072390-853b-49a0-888c-9ed086b044df">Asynchronous JavaScript</a></td><td style="text-align: right">12 minutes</td></tr>
+<div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
+<tr><td><a href="https://web.microsoftstream.com/video/2dc6a701-fa1a-40d8-89c2-27e99e976d7f">JavaScript: Basics</a></td><td style="text-align: right">24 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EfidO6rhwlhPs_AZSgBCH18BJ6eR1Zz4mIOpcbAiYxPpTQ?e=7KrHSL">Slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/0d40a41d-ed42-4441-8635-2cb8d452ed16">JS Objects (incl. JSON)</a></td><td style="text-align: right">5.21 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EYtHZ1I7R3BLgZdjTgvO_lQB5SMzb6CbIX1XIUBIYyPd7Q?e=QQUJY1">Slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/f9547854-f642-4b40-8800-7daab588c363">Object Oriented Programming</a></td><td style="text-align: right">9.40 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EXKvkOEwbmBNpw9Cmx8iiwUBkFJ1fv8t_qK8shkrVBsQtQ?e=hCMG3L">Slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/d5072390-853b-49a0-888c-9ed086b044df">Asynchronous JavaScript</a></td><td style="text-align: right">12 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/ERxtlsuDqslLtKOvIPCkxPwBWjsg85cJjoQIp6JdKeXUuA?e=Fm1PiJ">Slides</a></td></tr>
 </tbody></table>
 </div>
-<p>All the example code for these lectures can be found in the
+<p>Some example code can be found in the
 <a href="https://github.com/cs-uob/COMSM0085/tree/master/code/javascript"><code>code/javascript</code></a>
 folder of the repository.</p>
 <h2 id="readings"><a class="header" href="#readings">Readings</a></h2>
