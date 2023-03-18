@@ -31,9 +31,9 @@
   - [Dynamic structure, part 1](./js/dynamic1.md)
   - [Dynamic structure, part 2](./js/dynamic2.md)
   - [Further exercises](./js/exercises.md)
-- [Web scraping]()
-  - [Crawling]()
-  - [BeautifulSoup]()
+- [Web scraping](./scrape/index.md)
+  - [Crawling](./scrape/crawl.md)
+  - [BeautifulSoup](./scrape/soup.md)
 
 # Week 9: React & The Cloud
 
