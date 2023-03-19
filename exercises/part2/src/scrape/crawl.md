@@ -12,7 +12,7 @@ things via localhost -- it's designed to work with real websites -- but we
 decided that getting ~200 students to test out web-crawling on a particular live
 website was probably not a great idea, so we're having each of you run your own.
 
-### Setup the server
+### Set up the server
 
 As with the HTTP exercises, it would be best to either carry out these steps directly on a lab machine
 or on your own machine (optionally from the Alpine Linux VM with ports forwarded). If you are using 

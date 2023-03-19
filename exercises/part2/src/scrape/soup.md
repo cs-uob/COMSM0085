@@ -11,7 +11,7 @@ However, there are situations where you may need to write code that interacts
 with webpages in an automated fashion -- perhaps to extract some data from webpages
 that isn't available in a more machine-friendly format. This _scraping_ of
 webpages is a valuable (if sometimes maliciously applied) skill that can be
-valuable to many kinds of software engineers and data scientists. This exercise
+useful to many kinds of software engineers and data scientists. This exercise
 talks you through some applications of one of the most common frameworks, a
 Python library called BeautifulSoup.
 
@@ -123,6 +123,7 @@ the dictionary's contents are what you expect by interacting with the dict
 object in your interpreter._
 
 
+
 ## When to scrape
 
 As we discuss in this week's lectures, scraping webpages can come with some
@@ -142,3 +143,15 @@ audience, you could be betraying a confidence, and might even face legal
 repercussions.
 + Generally beware that being able to access and read information from the web
   does not mean you are permitted to republish it, even in a modified form.
+
+
+## Further reading
+
+You may have noticed that we downloaded our webpages with `wget` in the previous
+exercise, and then dealt with their content using Python in this one. If you
+were writing a Python tool that was meant to do something specific with the
+content of a webpage, then you would often want to avoid using a second tool.
+The Python library that is most often recommended for requesting web resources
+is the [Requests library](https://docs.python-requests.org/en/latest/), and
+getting familiar with it would be useful both if you wanted to access web pages
+programmatically and if you need to interact with a website's API.
