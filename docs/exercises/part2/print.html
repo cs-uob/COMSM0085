@@ -1469,7 +1469,7 @@ supports something called 'recursive downloading'. Simply put, when used in this
 manner it will follow all links internal to a site and download the resources
 displayed at those links, storing a copy locally and creating a directory
 structure if necessary. One version of this recursion is to use the <code>-r</code> (or
-<code>--recursive</code> option, which downloads all linked pages up to a certain maximum
+<code>--recursive</code>) option, which downloads all linked pages up to a certain maximum
 depth. Try this out:</p>
 <pre><code>wget -r -l 1 localhost:8080/index.html
 </code></pre>
@@ -1640,11 +1640,18 @@ does not mean you are permitted to republish it, even in a modified form.</li>
 <p>You may have noticed that we downloaded our webpages with <code>wget</code> in the previous
 exercise, and then dealt with their content using Python in this one. If you
 were writing a Python tool that was meant to do something specific with the
-content of a webpage, then you would often want to avoid using a second tool.
+content of a webpage, then you would often want to avoid using a second tool,
+and make web requests directly from your program.
 The Python library that is most often recommended for requesting web resources
 is the <a href="https://docs.python-requests.org/en/latest/">Requests library</a>, and
 getting familiar with it would be useful both if you wanted to access web pages
 programmatically and if you need to interact with a website's API.</p>
+<p>We've also been dealing with the content of <em>static</em> websites, without the dynamic
+content like that you learned about in the Javascript exercises. Scraping
+dynamic sites gets trickier, as your scraper needs to have a browser-like
+context to execute Javascript within, and often might need to pretend to
+interact with the page. Systems like <a href="https://www.selenium.dev/documentation/">Selenium</a> 
+are designed for cases like this.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="react"><a class="header" href="#react">React</a></h1>
 <p><a href="https://reactjs.org">React</a> is a JavaScript web development framework built by facebook.</p>
 <h2 id="videos-6"><a class="header" href="#videos-6">Videos</a></h2>
