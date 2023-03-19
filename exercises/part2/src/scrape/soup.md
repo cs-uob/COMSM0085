@@ -150,8 +150,16 @@ repercussions.
 You may have noticed that we downloaded our webpages with `wget` in the previous
 exercise, and then dealt with their content using Python in this one. If you
 were writing a Python tool that was meant to do something specific with the
-content of a webpage, then you would often want to avoid using a second tool.
+content of a webpage, then you would often want to avoid using a second tool,
+and make web requests directly from your program.
 The Python library that is most often recommended for requesting web resources
 is the [Requests library](https://docs.python-requests.org/en/latest/), and
 getting familiar with it would be useful both if you wanted to access web pages
 programmatically and if you need to interact with a website's API.
+
+We've also been dealing with the content of _static_ websites, without the dynamic
+content like that you learned about in the Javascript exercises. Scraping
+dynamic sites gets trickier, as your scraper needs to have a browser-like
+context to execute Javascript within, and often might need to pretend to
+interact with the page. Systems like [Selenium](https://www.selenium.dev/documentation/) 
+are designed for cases like this.

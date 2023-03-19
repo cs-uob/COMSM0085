@@ -126,7 +126,7 @@ supports something called 'recursive downloading'. Simply put, when used in this
 manner it will follow all links internal to a site and download the resources
 displayed at those links, storing a copy locally and creating a directory
 structure if necessary. One version of this recursion is to use the `-r` (or
-`--recursive` option, which downloads all linked pages up to a certain maximum
+`--recursive`) option, which downloads all linked pages up to a certain maximum
 depth. Try this out:
 
 ```
