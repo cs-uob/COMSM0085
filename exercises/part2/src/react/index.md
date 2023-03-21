@@ -7,8 +7,8 @@
 
 | Video | Length | Slides |
 |-------|-------:|--------|
-| [React]() | 15 minutes | [slides]() |
-| [Code examples]() | 19 minutes | [slides]() |
+| [React](https://web.microsoftstream.com/video/521dbfc2-0bd1-4f9a-ab90-a3223bdac16b) | 14 minutes | [slides](REACT - Basics-Slides.pdf) |
+| [REACT II](https://web.microsoftstream.com/video/521dbfc2-0bd1-4f9a-ab90-a3223bdac16b) | 9 minutes | [slides](REACT - Basics-Slides.pdf) |
 
 ## Readings
 
