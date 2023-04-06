@@ -7,8 +7,7 @@
 
 | Video | Length | Slides |
 |-------|-------:|--------|
-| [React]() | 15 minutes | [slides]() |
-| [Code examples]() | 19 minutes | [slides]() |
+[React Part III](https://web.microsoftstream.com/video/7a0187b9-a6c7-4515-a08d-e6e24d3bc0c6) | 9 minutes | [slides](REACT - Part III-Slides.pdf) |
 
 ## Readings
 
