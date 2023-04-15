@@ -41,8 +41,7 @@
   - [Installing React](./react/installing.md)
   - [Hello World in React](./react/hello.md)
   - [Exercise](./react/character.md)
-- [The Cloud]()
-  - [AWS]()
+- [The Cloud](./cloud/cloud1.md)
 
 # Week 10: A Complete Application
 
