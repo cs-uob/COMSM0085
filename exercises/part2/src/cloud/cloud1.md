@@ -1,17 +1,23 @@
-# The Cloud, Part 1
+# The Cloud
 
-## Videos
+For this session, there are no videos. Instead, you should read the following
+web resources, the content of which is examinable:
 
-Please watch the following videos. They are hosted on the university's blackboard system, so you will need to be logged in to blackboard for the links to work.
+ - [What is Cloud Computing?](https://cloud.google.com/learn/what-is-cloud-computing)
+ - [What is Cloud Economics?](https://www.cloudzero.com/blog/cloud-economics)
+ - [As A Service](https://www.ibm.com/topics/iaas-paas-saas)
 
-  - [Introduction](https://mediasite.bris.ac.uk/Mediasite/Play/0ad3ecd639aa4f67a9b0d1d162c5f7a21d) (19 minutes)
-  - [Economics](https://mediasite.bris.ac.uk/Mediasite/Play/135444aa12ff4c26b8a9c7ad693e1fa61d) (16 minutes)
-  - [As A Service](https://mediasite.bris.ac.uk/Mediasite/Play/ff04fe5695bf4604bf478405fc9266f81d) (6 minutes)
-  - [Amazon Web Services examples](https://mediasite.bris.ac.uk/Mediasite/Play/3d1ac0e5b012470f9be58c40e000c7c01d) (7 minutes)
-  - [Amazon Web Services: IaaS](https://mediasite.bris.ac.uk/Mediasite/Play/ea34704392794239b5ecc9517de691771d) (10 minutes)
-  - [Google App Engine / PaaS](https://mediasite.bris.ac.uk/Mediasite/Play/7874354926e846ec8cbfb206d6c6047f1d) (8 minutes)
-  - [Other providers](https://mediasite.bris.ac.uk/Mediasite/Play/c4eb1e2b73c544d7bed5a6df828de4281d) (6 minutes)
 
-There are no cloud exercises. The workshops this week are for you to continue to work on your Java/react "elections" application and for you to ask questions about anything previously on the unit.
+There are no exercises for the cloud material. Instead, use this time to
+complete the React exercises, recap exercises from earlier in this part of the
+unit, and ask questions about this or other material from across the uni. If
+there are exercises that you could not solve or want to ask questions about, now
+would be a good time to revisit them and ask for help.
 
-However, the cloud material is examinable.
+
+_(The original intention was to include a non-examinable practical component
+here using AWS services, but there was trouble getting this set up for the class
+in time.  While not the same as a guided exercise, some of you may want to look
+at AWS' own onboarding material
+[here](https://aws.amazon.com/getting-started/).)_
+
