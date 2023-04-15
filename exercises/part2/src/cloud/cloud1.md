@@ -10,7 +10,7 @@ web resources, the content of which is examinable:
 
 There are no exercises for the cloud material. Instead, use this time to
 complete the React exercises, recap exercises from earlier in this part of the
-unit, and ask questions about this or other material from across the uni. If
+unit, and ask questions about this or other material from across the unit. If
 there are exercises that you could not solve or want to ask questions about, now
 would be a good time to revisit them and ask for help.
 
