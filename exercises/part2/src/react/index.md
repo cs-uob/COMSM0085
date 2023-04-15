@@ -1,20 +1,20 @@
 # React
 
-[React](https://reactjs.org) is a JavaScript web development framework built by facebook.
+[React](https://react.dev) is a JavaScript web development framework built by Facebook.
 
 
 ## Videos
 
 | Video | Length | Slides |
 |-------|-------:|--------|
-| [React]() | 15 minutes | [slides]() |
-| [Code examples]() | 19 minutes | [slides]() |
+|[React](https://web.microsoftstream.com/video/521dbfc2-0bd1-4f9a-ab90-a3223bdac16b) | 14 minutes | [slides](https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EVqs65v78RdOuGe-i3WW_NEB2hZdIaq-cTY0KKyYANUo7g?e=C1FoyK) | 
+|[React Part II](https://web.microsoftstream.com/video/521dbfc2-0bd1-4f9a-ab90-a3223bdac16b) | 9 minutes | [slides](https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EUjed5sNPf9AjK26Bxp1wV8BvV67Sdyb6ZYFPQgrgzaiuQ?e=KZJ9MX) |
+|[React Part III](https://web.microsoftstream.com/video/7a0187b9-a6c7-4515-a08d-e6e24d3bc0c6) | 9 minutes | [slides](https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EV0TcUaEn61IpkdWjDJ5wq4Bx6V83oCGOh8ZfoLGo339Ew?e=XK7Ba8) |
 
 ## Readings
 
-This week, we are doing react, so the readings are the [official react guide](https://reactjs.org/docs/hello-world.html), main concepts 1-7. If you have time you can read up to 10 and if you are particularly interested in React, all 12 of the "main concepts" pages.
+ The main reading is the [official React guide](https://react.dev/learn).
 
-React has a separate [practical tutorial](https://reactjs.org/tutorial/tutorial.html) which we will not be using for this unit, but as a complement to the workshops if you are particularly interested then you could look at this as well.
 
 ## Exercises
 

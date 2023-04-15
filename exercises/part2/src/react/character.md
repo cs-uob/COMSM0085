@@ -1,6 +1,6 @@
 # Character design exercise
 
-The final react exercise today is to write a "character design" React app, similar to the one in the lectures. Functionality is your first priority, before design: it's ok to lay out everything in simple paragraphs one above the other.
+The final React exercise today is to write a "character design" React app. Functionality is your first priority, before design: it's ok to lay out everything in simple paragraphs one above the other.
 
 The constraints are:
 
