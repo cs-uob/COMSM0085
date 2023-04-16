@@ -2,7 +2,7 @@
 
 ## Nodejs and NPM
 
-JavaScript's original selling point was that it runs in the browser. [NodeJS](nodejs.org) is a JavaScript runtime without a browser, so you can for example write a server / back-end in JavaScript too. Using a library called [Electron](electronjs.org), you can even write desktop apps in JavaScript/NodeJS (Electron is essentially google's Chrome browser without the branding, so you can use it to build your own user interface.) We will need NodeJS to run React, which compiles JSX code into JavaScript and HTML.
+JavaScript's original selling point was that it runs in the browser. [NodeJS](https://nodejs.org) is a JavaScript runtime without a browser, so you can for example write a server / back-end in JavaScript too. Using a library called [Electron](https://electronjs.org), you can even write desktop apps in JavaScript/NodeJS (Electron is essentially google's Chrome browser without the branding, so you can use it to build your own user interface.) We will need NodeJS to run React, which compiles JSX code into JavaScript and HTML.
 
 NodeJS comes with its own package manager, NPM (NodeJS Package Manager). The shell command to run it is `npm`, but there is also `npx` which downloads the latest version of a package and immediately runs it, if it contains a command-line tool.
 
