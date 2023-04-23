@@ -1,67 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-class OverView extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loaded: "no", // options: no, yes, error
-      item: null
-    }
-    this.navigate = this.navigate.bind(this);
-    this.details = this.details.bind(this);
+function OverView({ displayName, type, code, callback, details, children}) {
+  const [loaded, setLoaded] = useState("no"); // options: no, yes, error
+  const [errmsg, setErrmsg] = useState(null);
+  const [item, setItem] = useState(null);
+
+  function navigate(code, isParent) {
+    callback(code, isParent);
   }
 
-  details() {
-    this.props.details();
-  }
-
-  navigate(code, isParent) {
-    this.props.callback(code, isParent);
-  }
-
-  _fetchData() {
-    const url = "http://localhost:8000/api/" + this.props.type + "/" + this.props.code;
+  function _fetchData() {
+    const url = "http://localhost:8000/api/" + type + "/" + code;
     console.log("OverView fetch " + url);
     fetch(url)
       .then(r => {
         if (!r.ok) {
           const e = "Attempting to load " + r.url + " got status " + r.status + ".";
-          this.setState({loaded: "error", errmsg: e})
+          setLoaded("error");
+          setErrmsg(e);
         }
         return r.json()
       })
       .then (
         (result) => {
-          if (this.state.loaded !== "error") {
-            this.setState({loaded: "yes", item: result})
+          if (loaded !== "error") {
+            setLoaded("yes");
+            setItem(result);
           }
-        },
-        (error) => {
-          this.setState({loaded: "error", errmsg: "Network error"})
+        }).catch((error) => {
+          setLoaded("error");
+          setErrmsg("Network error");
         }
       )
   }
 
-  componentDidMount() {
-    this._fetchData()
+  useEffect(() => {
+    setLoaded("no");
+    _fetchData();
+  }, [code]);
+
+  function hasChildren() {
+    return children !== undefined;
   }
 
-  componentDidUpdate(oldProps) {
-    if (this.props.code !== oldProps.code) {
-      this.setState({loaded: "no"});
-      this._fetchData()
-    }
-  }
-
-  hasChildren() {
-    return this.state.item[this.props.children] !== undefined;
-  }
-
-  children() {
-    const ch = this.state.item[this.props.children];
+  function createChildren() {
+    const ch = item[children];
     if (ch === undefined) {
       return ""
     } else {
@@ -72,63 +58,61 @@ class OverView extends React.Component {
     }
   }
 
-  parent() {
-   const code = this.state.item.parentCode;
+  function parent() {
+   const code = item.parentCode;
    if (code === undefined) {
      return ""
    } else {
      return (
       <Button variant="link" className="p-0"
-              onClick={() => this.navigate(code, true)}>
+              onClick={() => navigate(code, true)}>
               Back to parent</Button>
      )
    }
   }
 
-  render() {
-    switch (this.state.loaded) {
-      case "no":
-        return (
-          <Card>
-            <Card.Body>
-              <Card.Text>
-                Loading ...
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        )
-      case "error":
-        return (
-          <Card>
-            <Card.Body>
-              <Card.Text>
-                An error occurred.
-              </Card.Text>
-              <Card.Text>
-                {this.state.errmsg}
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        )
-      default: // yes
-        return (
-          <Card>
-            <Card.Body>
-              <Card.Title>{this.state.item.name}</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">{this.props.displayName}</Card.Subtitle>
-              <Card.Text>
-                <b>ID: </b>{this.state.item.code} <br />
-                {this.hasChildren() ? <b>Contains:</b> : ""} </Card.Text>
-              <ul>
-              { this.children() }
-              </ul>
-              { this.parent() }
-              <Button variant="link" onClick={this.details}>
-              Details</Button>
-            </Card.Body>
-          </Card>
-        )
-    }
+  switch (loaded) {
+    case "no":
+      return (
+        <Card>
+          <Card.Body>
+            <Card.Text>
+              Loading ...
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      )
+    case "error":
+      return (
+        <Card>
+          <Card.Body>
+            <Card.Text>
+              An error occurred.
+            </Card.Text>
+            <Card.Text>
+              {errmsg}
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      )
+    default: // yes
+      return (
+        <Card>
+          <Card.Body>
+            <Card.Title>{item.name}</Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">{displayName}</Card.Subtitle>
+            <Card.Text>
+              <b>ID: </b>{item.code} <br />
+              {hasChildren() ? <b>Contains:</b> : ""} </Card.Text>
+            <ul>
+            { createChildren() }
+            </ul>
+            { parent() }
+            <Button variant="link" onClick={details}>
+            Details</Button>
+          </Card.Body>
+        </Card>
+      )
   }
 }
 
