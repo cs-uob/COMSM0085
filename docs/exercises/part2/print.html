@@ -1711,139 +1711,129 @@ are designed for cases like this.</p>
 <pre><code class="language-js">import './App.css';
 import React from 'react';
 
-class App extends React.Component {
-  render() {
-    return (
-      &lt;p&gt;App&lt;/p&gt;
-    )
-  }
+function App() {
+  return (
+    &lt;p&gt;App&lt;/p&gt;
+  )
 }
 
 export default App;
 </code></pre>
-<p>Save the file - if the <code>npm run</code> server is running in another window, it will reload - and check that you get a page with just the text <code>App</code>.</p>
+<p>Save the file - if the <code>npm start</code> server is running in another window, it will reload - and check that you get a page with just the text <code>App</code>.</p>
 <h2 id="add-some-state"><a class="header" href="#add-some-state">Add some state</a></h2>
-<p>In the app class, we can add some state such as a name field:</p>
+<p>In the app component, we can add some state such as a name field:</p>
 <pre><code class="language-js">import './App.css';
 import React from 'react';
 
-class App extends React.Component {
-  state = {
-    name: 'David'
-  }
-
-  render() {
-    return (
-      &lt;p&gt;Hello, {this.state.name}!&lt;/p&gt;
-    )
-  }
+function App() {
+  const name = &quot;David&quot;;
+  return (
+    &lt;p&gt;Hello, {name}!&lt;/p&gt;
+  )
 }
 
 export default App;
 </code></pre>
 <p>Check that this now displays <code>Hello, David!</code>. </p>
 <h2 id="pass-state-between-components"><a class="header" href="#pass-state-between-components">Pass state between Components</a></h2>
-<p>Let's make a separate component to display the name - add this class before the <code>export default</code> line:</p>
-<pre><code class="language-js">class NameGreeter extends React.Component {
-  render() {
-    if (this.props.name === &quot;&quot;) {
-      return (
-        &lt;p&gt;Hello!&lt;/p&gt;
-      )
-    } else {
-      return (
-        &lt;p&gt;Hello, {this.props.name}!&lt;/p&gt;
-      )
-    }
+<p>Let's make a separate component to display the name - add this function before the <code>export default</code> line:</p>
+<pre><code class="language-js">function NameGreeter({ name }) {
+  if (name === &quot;&quot;) {
+    return (
+      &lt;p&gt;Hello!&lt;/p&gt;
+    )
+  } else {
+    return (
+      &lt;p&gt;Hello, {name}!&lt;/p&gt;
+    )
   }
+  // you can also write this as a single expression:
+  // return name === &quot;&quot; ? &lt;p&gt;Hello!&lt;/p&gt; : &lt;p&gt;Hello, {name}!&lt;/p&gt;
 }
 </code></pre>
 <p>This component expects one property (the react version of a &quot;parameter&quot;) called <code>name</code> and displays either a generic greeting or a greeting with a name.</p>
 <p>Change the render method for the App class to this:</p>
-<pre><code class="language-js">render() {
-  return (
-    &lt;NameGreeter name={this.state.name} /&gt;
-  )
-}
+<pre><code class="language-js">return (
+  &lt;NameGreeter name={name} /&gt;
+)
 </code></pre>
 <p>This tells react that when it's time to render the App, it should create a <code>NameGreeter</code> component and pass it one prop called <code>name</code> which has the value of the name in the current state.</p>
-<p>Note how we refer to <code>this.state.name</code> in the component that owns the state, but <code>this.props.name</code> in the child component. Generally, <code>this.state</code> is a component's own state and <code>this.props</code> is state (or other things) that a component gets from its parent.</p>
 <p>You could try making more than one name greeter, but a JSX block must always have a single root tag so this won't work:</p>
 <pre><code class="language-js">// don't do this
 return (
-  &lt;NameGreeter name={this.state.name} /&gt;
-  &lt;NameGreeter name={this.state.name} /&gt;
+  &lt;NameGreeter name={name} /&gt;
+  &lt;NameGreeter name={name} /&gt;
 )
 </code></pre>
 <p>But this is fine:</p>
 <pre><code class="language-js">return (
-  &lt;div&gt;
-    &lt;NameGreeter name={this.state.name} /&gt;
-    &lt;NameGreeter name={this.state.name} /&gt;
-  &lt;/div&gt;
+  &lt;div&gt; {/*or &lt;&gt;*/}
+    &lt;NameGreeter name={name} /&gt;
+    &lt;NameGreeter name={name} /&gt;
+  &lt;/div&gt; {/*or &lt;/&gt;*/}
 )
 </code></pre>
 <h2 id="change-state"><a class="header" href="#change-state">Change State</a></h2>
 <p>We are going to make a <code>NameEditor</code> component with an input field to change the name. 
 However, the name <em>belongs</em> to the app component: this is the <em>state lifting</em> pattern in React, where if more than one component wants to 'share' some state, then you make a common parent component to hold the state. Any changing of the state has to happen on the parent component that 'owns' it, so we have to create functions to pass it around correctly.</p>
 <p>First, create a new component like this:</p>
-<pre><code class="language-js">class NameEditor extends React.Component {
-  render() {
-    return (
-      &lt;p&gt;
-        &lt;label for=&quot;name&quot;&gt;Name: &lt;/label&gt;
-        &lt;input type=&quot;text&quot; id=&quot;name&quot; value={this.props.name} /&gt;
-      &lt;/p&gt;
-    )
-  }
+<pre><code class="language-js">// your NameGreeter...
+
+function NameEditor({ name }) {
+  return (
+    &lt;p&gt;
+      &lt;label htmlFor=&quot;name&quot;&gt;Name: &lt;/label&gt;
+      &lt;input type=&quot;text&quot; id=&quot;name&quot; value={name} /&gt;
+    &lt;/p&gt;
+  )
 }
+
+// your App...
 </code></pre>
 <p>And change the render method of the <code>App</code> component to create a name editor:</p>
 <pre><code class="language-js">return (
   &lt;div&gt;
-    &lt;NameEditor name={this.state.name} /&gt;
-    &lt;NameGreeter name={this.state.name} /&gt;
+    &lt;NameEditor name={name} /&gt;
+    &lt;NameGreeter name={name} /&gt;
   &lt;/div&gt;
-)
+
 </code></pre>
 <p>When you run this, it will show you an input box with the current name, but if you try and change it then React will change it straight back again.</p>
 <p>Input and output in React works with <em>data binding</em>: react maintains the correspondence between items on the screen (such as the input field) and its own state, but by default this only works in one way: React makes sure that the components on the screen reflect React's own state.</p>
 <p>To make the edit box work, we have to first create a function on the <code>App</code> component that allows the state to be updated:</p>
-<pre><code class="language-js">class App extends React.Component {
-  constructor() {
-    super();
-    this.onNameChange = this.onNameChange.bind(this);
-  }
+<pre><code class="language-js">// add useState to the import list
+import React, { useState } from 'react';
 
-  onNameChange(newName) {
-        this.setState({name: newName})
+function App() {
+  // const name = &quot;David&quot;;
+  const [name, setName] = useState(&quot;David&quot;);
+
+  const onNameChange = (e) =&gt; {
+    setName(e.target.value);
   }
 
   // state and render method here, same as before
 }
 </code></pre>
-<p>The real work is happening in <code>this.setState</code>, we can't just do <code>this.state.name = newName</code> as that would not trigger React's updates. The <code>setState</code> function which is part of React, apart from setting the new state, also re-renders any component that needs to update itself.</p>
-<p>The constructor is just boilerplate code to correctly re-bind the <code>this</code> variable for <code>onNameChange</code>, you have to do this for every method you write in a React class. You also need to call the <code>super()</code> constructor explicitly at the start of the constructor, as this calls the <code>React.Component</code> constructor to set the component up correctly.</p>
+<p>The real work is happening in <code>setName</code>, we can't just do <code>name = newName</code> as that would not trigger React's updates. The <code>setName</code> function which is part of React, apart from setting the new state, also re-renders any component that needs to update itself.</p>
 <p>We also have to let the name editor know which function to call to process changes. Change the JSX line that creates it to</p>
-<pre><code class="language-html">&lt;NameEditor name={this.state.name} onNameChange={this.onNameChange} /&gt;
+<pre><code class="language-js">&lt;NameEditor name={name} onNameChange={onNameChange} /&gt;
 </code></pre>
 <p>We did not put brackets after the function name, as we don't want to call the function when the component is created or rendered, we just want to tell it &quot;here's a function that you can call later when you need it&quot;.</p>
-<p>Next, in the <code>NameEditor</code> class, we create a method to handle updates:</p>
-<pre><code class="language-js">constructor(props) {
-  super(props);
-  this.onNameChange = this.onNameChange.bind(this);
-}
-
-onNameChange(e) {
-  this.props.onNameChange(e.target.value);
+<p>Next, in the <code>NameEditor</code> class, we call <code>onNameChange</code> using the <code>onChange</code> attribute for the <code>&lt;input&gt;</code> element, which is defined in the HTML standard to handle updates and takes a JavaScript function that should be called whenever the input value changes:</p>
+<pre><code class="language-js">function NameEditor({ name, onNameChange }) {
+  return (
+    &lt;p&gt;
+      &lt;label htmlFor=&quot;name&quot;&gt;Name: &lt;/label&gt;
+      {/* Before */}
+      {/* &lt;input type=&quot;text&quot; id=&quot;name&quot; value={name}/&gt; */}
+      {/* After */}
+      &lt;input type=&quot;text&quot; id=&quot;name&quot; value={name} onChange={(e)=&gt;{onNameChange(e)}} /&gt;
+    &lt;/p&gt;
+  )
 }
 </code></pre>
-<p>If our component takes props, then we should pass them to the super constructor too.</p>
-<p>The parameter <code>e</code> is an element of type event, which is triggered by the input component when the user changes its value. The event class has a property <code>target</code> which refers to the element on the page that triggered it, and if that was an input box like it is here then we can read its <code>value</code>. This is what we pass, via <code>props</code>, back to the <code>App</code> component.</p>
-<p>Finally, change the line that creates the input box to</p>
-<pre><code class="language-html">&lt;input type=&quot;text&quot; id=&quot;name&quot; value={this.props.name} onChange={this.onNameChange} /&gt;
-</code></pre>
-<p>The <code>onChange</code> attribute of an <code>&lt;input&gt;</code> is defined in the HTML standard and takes a JavaScript function that should be called whenever the input value changes.</p>
+<p>The parameter <code>e</code> is an element of type event, which is triggered by the input component when the user changes its value. The event class has a property <code>target</code> which refers to the element on the page that triggered it, and if that was an input box like it is here then we can read its <code>value</code>. This is what we pass, via <code>name</code>, back to the <code>App</code> component.</p>
 <p>With all this in place, you should be able to run the app and edit the text box, and watch the greeting change as you do this.</p>
 <h2 id="sequence-of-events"><a class="header" href="#sequence-of-events">Sequence of Events</a></h2>
 <p>Make sure you understand what happens when you type in the input box. You can observe this yourself if you set breakpoints in the F12 debug tools:</p>
@@ -1851,9 +1841,9 @@ onNameChange(e) {
 <li>You type in the input box.</li>
 <li>The browser reacts by calling the input box's <code>onChange</code> function with one parameter, an <code>Event</code>. This function is <code>NameEditor.onNameChange</code>.</li>
 <li>Your <code>NameEditor.onNameChange</code> calls <code>App.onNameChange</code>.</li>
-<li><code>App.onNameChange</code> calls React's <code>setState</code>.</li>
-<li>In response to this, React calls <code>render()</code> on the <code>App</code>.</li>
-<li>This triggers further <code>render()</code> calls in both <code>NameGreeter</code> and <code>NameEditor</code>.</li>
+<li><code>App.onNameChange</code> calls React's <code>setName</code>.</li>
+<li>In response to this, React calls <code>retrn()</code> on the <code>App</code>.</li>
+<li>This triggers further <code>return()</code> calls in both <code>NameGreeter</code> and <code>NameEditor</code>.</li>
 </ol>
 <h2 id="build-the-app"><a class="header" href="#build-the-app">Build the app</a></h2>
 <p>When you have finished developing an app, run <code>npm run build</code>. This will create your app in <code>build/</code>, compiling the JSX to JavaScript and HTML files. You can open <code>build/index.html</code> in a web browser without a server running.</p>
