@@ -1,7 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import React, { useState } from 'react';
+import React from 'react';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
@@ -11,104 +11,128 @@ import Col from 'react-bootstrap/Col';
 import OverView from './OverView';
 import UnitView from './UnitView';
 
-function App() {
-  const [overview, setOverview] = useState("country");
-  const [overviewName, setOverviewName] = useState("Country");
-  const [overviewCode, setOverviewCode] = useState("E92000001");
-  const [overviewChildren, setOverviewChildren] = useState("regions");
-  const [detail, setDetail] = useState("");
-  const [detailName, setDetailName] = useState("");
-  const [detailCode, setDetailCode] = useState("");
-
-  function details() {
-    console.log("details for " + overview + " " + overviewCode);
-    setDetail(overview);
-    setDetailName(overviewName);
-    setDetailCode(overviewCode);
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      overview: "country",
+      overviewName: "Country",
+      overviewCode: "E92000001",
+      overviewChildren: "regions",
+      detail: "",
+      detailName: "",
+      detailCode: ""
+    }
+    this.navigate = this.navigate.bind(this);
+    this.details = this.details.bind(this);
   }
 
-  function navigate(code, isParent) {
+  details() {
+    console.log("details for " + this.state.overview + " " + this.state.overviewCode);
+    this.setState({
+      detail: this.state.overview,
+      detailName: this.state.overviewName,
+      detailCode: this.state.overviewCode
+    })
+  }
+
+  navigate(code, isParent) {
     // Called when we want to change the main view.
-    switch (overview) {
+    switch (this.state.overview) {
       case "country":
-        setOverview("region");
-        setOverviewName("Region");
-        setOverviewChildren("counties");
-        setOverviewCode(code);
-        setDetailCode("");
-        
+        // no parent option here
+        this.setState({
+          overview: "region",
+          overviewName: "Region",
+          overviewChildren: "counties",
+          overviewCode: code,
+          detailCode: ""
+        })
         break;
       case "region":
         if (isParent) {
-          setOverview("country");
-          setOverviewName("Country");
-          setOverviewChildren("regions");
-          setOverviewCode(code);
-          setDetailCode("");
+          this.setState({
+            overview: "country",
+            overviewName: "Country",
+            overviewChildren: "regions",
+            overviewCode: code,
+            detailCode: ""
+          })
         } else {
-          setOverview("county");
-          setOverviewName("County");
-          setOverviewChildren("wards");
-          setOverviewCode(code);
-          setDetailCode("");
+          this.setState({
+            overview: "county",
+            overviewName: "County",
+            overviewChildren: "wards",
+            overviewCode: code,
+            detailCode: ""
+          })
         }
         break;
       case "county":
         if (isParent) {
-          setOverview("region");
-          setOverviewName("Region");
-          setOverviewChildren("counties");
-          setOverviewCode(code);
-          setDetailCode("");
+          this.setState({
+            overview: "region",
+            overviewName: "Region",
+            overviewChildren: "counties",
+            overviewCode: code,
+            detailCode: ""
+          })
         } else {
-          setOverview("ward");
-          setOverviewName("Ward");
-          setOverviewChildren(undefined);
-          setOverviewCode(code);
-          setDetailCode("");
+          this.setState({
+            overview: "ward",
+            overviewName: "Ward",
+            overviewChildren: undefined,
+            overviewCode: code,
+            detailCode: ""
+          })
         }
         break;
       case "ward":
-        setOverview("county");
-        setOverviewName("County");
-        setOverviewChildren("wards");
-        setOverviewCode(code);
-        setDetailCode("");
+        // wards have no children
+        this.setState({
+          overview: "county",
+          overviewName: "County",
+          overviewChildren: "wards",
+          overviewCode: code,
+          detailCode: ""
+        })
         break;
       default:
           console.log("App.navigate")
     }
   }
 
-  return (
-    <div className="App">
-      <Navbar bg="primary" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">Census Explorer</Navbar.Brand>
+  render() {
+    return (
+      <div className="App">
+        <Navbar bg="primary" variant="dark">
+          <Container>
+            <Navbar.Brand href="#home">Census Explorer</Navbar.Brand>
+          </Container>
+        </Navbar>
+        <Container className="mt-2">
+          <Row>
+            <Col>
+              <OverView displayName = {this.state.overviewName}
+                        type = {this.state.overview}
+                        code = {this.state.overviewCode}
+                        children = {this.state.overviewChildren}
+                        callback={this.navigate}
+                        details={this.details}></OverView>
+            </Col>
+            <Col>
+              {
+                this.state.detailCode === "" ? "" :
+                <UnitView displayName={this.state.detailName} 
+                          type={this.state.detail} 
+                          code={this.state.detailCode}></UnitView>
+              }
+            </Col>
+          </Row>
         </Container>
-      </Navbar>
-      <Container className="mt-2">
-        <Row>
-          <Col>
-            <OverView displayName = {overviewName}
-                      type = {overview}
-                      code = {overviewCode}
-                      children = {overviewChildren}
-                      callback={navigate}
-                      details={details}></OverView>
-          </Col>
-          <Col>
-            {
-              detailCode === "" ? "" :
-              <UnitView displayName={detailName} 
-                        type={detail} 
-                        code={detailCode}></UnitView>
-            }
-          </Col>
-        </Row>
-      </Container>
-    </div>
-  );
+      </div>
+    )
+  }
 }
 
 export default App;
