@@ -1,6 +1,6 @@
 # Shell expansion
 
-This exercise is about studying shell expansion. You should run it on your alpine linux VM in vagrant, and you should have installed the `gcc` compiler.
+This exercise is about studying shell expansion. You should run it on your Debian VM in Vagrant.
 
 Create a C program `arguments.c` with the following contents. You can use `nano arguments.c` for this, for example.
 
@@ -49,7 +49,7 @@ Argument #1: [*]
 
 ## Files with spaces in their names
 
-The command `touch FILENAME` creates a file. Create a file with a space in its name by typing `touch "silly named file"`. What would happen if you left the quuotes off (you can try it, then do `ls`)?
+The command `touch FILENAME` creates a file. Create a file with a space in its name by typing `touch "silly named file"`. What would happen if you left the quotes off (you can try it, then do `ls`)?
 
 Start typing `ls sill` and then press TAB to autocomplete. Assuming you have no other files whose name starts with _sill_, what happens? Use this method to get the arguments program to print the following:
 

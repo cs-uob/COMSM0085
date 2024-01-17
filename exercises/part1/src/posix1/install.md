@@ -1,4 +1,4 @@
-# Installing vagrant and alpine linux
+# Installing Vagrant and Debian 
 
 [Vagrant](https://www.vagrantup.com/) is a program to manage virtual machines (VMs). Based on a configuration file called a `Vagrantfile`, it can download and configure disk images, which it calles boxes, and call other programs to run them. Vagrant does not run the VM by itself, so you will need another program like [virtualbox](https://www.virtualbox.org/) for that.
 
@@ -14,39 +14,35 @@ If you are on Linux, you can of course also install the programs from your distr
 
 ## Configuring a box
 
-Next, you are going to configure a virtual machine using [alpine linux](https://www.alpinelinux.org/), a minimal Linux distribution that we will be using in this unit. 
+Next, you are going to configure a virtual machine using [Debian linux](https://www.debian.org/), a Linux distribution that we will be using in this unit. 
 
   * Create an empty folder somewhere.
   * In that folder, create a file called Vagrantfile (capitalised, and with no extension) and add the following lines to it - or just download the file from [here](../resources/Vagrantfile):
 
 ```ruby
 Vagrant.configure("2") do |config|
-  config.vm.box = "generic/alpine317"
+  config.vm.box = "generic/debian12"
   config.vm.synced_folder ".", "/vagrant"
 
   config.vm.provision "shell", inline: <<-SHELL
-    apk add libc6-compat
+    echo "Post-provision installs go here"
   SHELL
 end
 ```
 
 This configuration file is actually a script in the ruby programming language, but you don't need to learn that to use vagrant. Let's look at what it does.
 
-  * `config.vm.box` selects the virtual machine image, or box in vagrant-speak, to use. You can see a list of available ones at https://app.vagrantup.com/boxes/search.
+  * `config.vm.box` selects the virtual machine image, or box in vagrant-speak, to use. You can see a list of available ones at <https://app.vagrantup.com/boxes/search>.
   * `config.vm.synced_folder` sets up a shared folder between the guest (virtual machine) and host (your machine).
-  * The `config.vm.provision` runs a provisioning command when the box is first downloaded and installed. These commands run as root on the virtual machine, and in this case we are using the `apk` package manager (we will talk about this later on) to install the packages `libc6-compat`.
+  * The `config.vm.provision` runs a provisioning command when the box is first downloaded and installed. These commands run as root on the virtual machine, and in this case we are using the `apt` package manager (we will talk about this later on) to install the packages `git`.
   * The `<<-SHELL` construction is called a "here document", and is a way in some programming languages of writing multi-line strings. It tells ruby to treat everything until the closing keyword SHELL (which is arbitrary) as a string, which can contain several lines.
-
-|||advanced
-Alpine linux uses the musl libc distribution, which is smaller than and has a few distinct differences from the normal GNU libc. To avoid these incompatibilities causing you hard-to-find problems when you are compiling C programs, we are installing `libc6-compat` that makes alpine compatible with the standard libc.
-|||
 
 ## Running vagrant
 
   * Open a terminal in the folder containing the Vagrantfile. If you are on windows, both the windows CMD and the windows subsystem for linux terminal will work equally well for this purpose.
   * Run the command `vagrant up`. This starts the virtual machine configured in the current folder, and if it has not been downloaded and provisioned yet (as is the case when you run `up` for the first time) then it does this for you as well.
   * When vagrant tells you the machine is running, run `vagrant ssh` to log in to your virtual machine. If it asks you for a password, use `vagrant`.
-  * You should now see the virtual machine prompt `alpine317:~$`. Try the command `ls /` and check that there is a folder called vagrant in the top-level folder, along with system ones with names like `usr` and `bin`.
+  * You should now see the virtual machine prompt `vagrant@debian12:~$`. Try the command `ls /` and check that there is a folder called vagrant in the top-level folder, along with system ones with names like `usr` and `bin`.
 
 There are two kinds of errors you might get during `vagrant up`:
 
@@ -57,11 +53,11 @@ There are two kinds of errors you might get during `vagrant up`:
 
 To exit the virtual machine, type `exit` which will get you back to the shell on the host machine. On the host, `vagrant halt` cleanly shuts down the virtual machine.
 
-Promise yourself that you will always do this before turning off your computer, if you have been using vagrant!
+Promise yourself that you will always do this before turning off your computer, if you have been using Vagrant!
 
 ## Running on a lab machine
 
-Vagrant is already installed on the lab machines in MVB 2.11, so you can remotely log in and launch a box from there. This will get you exactly the same alpine environment as if you run on your own machine, and everyone should try this out too. If for some reason you cannot run vagrant on your machine, then as long as you have an internet connection you should still be able to run it on the lab machines.
+Vagrant is already installed on the lab machines in MVB 2.11, so you can remotely log in and launch a box from there. This will get you exactly the same Debian environment as when you run it on your own machine, and everyone should try this out too. If for some reason you cannot run Vagrant on your machine, then as long as you have an internet connection you should still be able to run it on the lab machines.
 
 First, we connect to a lab machine: open a terminal and run the command `ssh lab` that you configured in the previous exercise on SSH.
 
@@ -95,4 +91,4 @@ This is not as much a problem as it seems because this is how virtual machines a
 
 However, this still leaves files that you create on the VM itself, such as the ones you will create for the exercises in this unit. The basic warning is that _any files in your home directory will be lost when the VM is rebuilt_. That is why we have set up a shared folder which you can access as `/vagrant` on the VM, which maps to the folder containing your Vagrantfile on the host machine. Because this is stored under your home folder on the lab machine, it lives on the network file store and so it is backed up and available from all lab machines.
 
-So whenever you log in to a VM on a lab machine to do some work, you should `cd /vagrant` and use that instead of your home folder for any files that you don't want to lose. If you are running vagrant on your own computer, then nothing will be deleted except if you give vagrant a command to rebuild the VM yourself.
+So whenever you log in to a VM on a lab machine to do some work, you should `cd /vagrant` and use that instead of your home folder for any files that you don't want to lose. If you are running vagrant on your own computer, then nothing in the VM will be deleted unless you give Vagrant a command to destroy or rebuild the VM yourself.

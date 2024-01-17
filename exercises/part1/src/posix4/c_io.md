@@ -104,7 +104,7 @@ Have you answered the questions in bold above before reading on?
   * Next, on your terminal, execute `stty -icanon`, which turns off the "icanon" setting. (The convention for `stty` is that an option name in an argument turns it on, except if prefixed with a minus which turns it off.)
   * Rerun the program (`./input1 /dev/stdin`) and see what happens now.
   * Turn "icanon" back on with `stty icanon`. 
-  * Research what `icanon` does, for example in `man stty` on a lab machine (the alpine version of the manual is less helpful) or online.
+  * Research what `icanon` does, for example in `man stty` on a lab machine or online.
   * **Why does BACKSPACE and `^U` work in your bash shell, even with icanon turned off?**
 
 Next, we are going to experiment with the terminal in fully raw mode:

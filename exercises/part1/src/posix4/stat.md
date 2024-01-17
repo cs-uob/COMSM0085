@@ -2,7 +2,7 @@
 
 In this exercise we will look under the hood of the `stat` system call, which returns information about an inode.
 
-_Note: for this exercise it's even more important than usual that you are using Alpine linux in the emulator, as you will get different results if you try it on Windows Subsystem for Linux or on a Mac for example._
+_Note: for this exercise it's even more important than usual that you are using Debian within Vagrant, as you will get different results if you try it on Windows Subsystem for Linux or on a Mac for example._
 
 A system call is a way for a linux user or program to interact with the kernel, and there are usually at least three ways of calling each one:
 

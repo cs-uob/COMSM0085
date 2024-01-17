@@ -17,18 +17,18 @@ All these commands actually take an optional extra filename as argument, in whic
 
 ## Word list exercises - pipes and regular expressions
 
-Most linux distributions come with a dictionary file `/usr/dict/words` that contains a list of English words in alphabetical order, for use in spell-checking programs. The list includes a selection of proper nouns, for example countries and cities. Alpine linux, true to its principles of being minimal, omits this file - but you can download one yourself with
+Most Linux distributions (including Debian) come with a dictionary file `/usr/share/dict/words` that contains a list of English words in alphabetical order, for use in spell-checking programs. The list includes a selection of proper nouns, for example countries and cities. If you want to look at it on a system that doesn't have it, you can download it with
 
     wget https://users.cs.duke.edu/~ola/ap/linuxwords -O words
 
 `wget` is one of two utilities for downloading files, the other being `curl`. Note that the option for output file name is a capital O, not a lowercase o or a zero.
 
-Find one-line commands, possibly with pipes, to print the following to your terminal. You can either start each command with `cat words | ...` or do it without cat by providing the words file as an argument to the first command in your pipeline.
+Find one-line commands, possibly with pipes, to print the following to your terminal. You can either start each command with `cat /usr/share/dict/words | ...` or do it without cat by providing the words file as an argument to the first command in your pipeline.
 
 _If English is not your native language, ignore the guessing part - it is not assessed._
 
-  * The first word in the file. _Can you guess what it will be, it is a city in Europe?_
-  * The last word in the file. _Can you guess this one, another city in Europe?_
+  * The first word in the file. _Can you guess what it will be?_
+  * The last word in the file. _Can you guess this one?_
   * The number of words in the words file - there is one word per line.
   * The 6171st word in the file. _Can you read my mind and guess this word directly?_
   * All words containing the letter Q, capitalised. (A regular expression containing a string of one or more letters matches all strings that contain the expression as a substring.)

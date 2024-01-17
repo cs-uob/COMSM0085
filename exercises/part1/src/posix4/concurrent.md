@@ -14,9 +14,9 @@ _In this diagram, green boxes are processes with standard input on the left and 
 
 This is not yet a fully concurrent system though, as data is only flowing in one direction: there are no loops.
 
-As a little example of something that does have a loop, we are going to use the `bc` calculator program, which reads a line from standard input, evaluates it as a formula, and writes the result to standard output:
+As a little example of something that does have a loop, we are going to use the `bc` calculator program, which (once installed) reads a line from standard input, evaluates it as a formula, and writes the result to standard output:
 
-    alpine$ bc
+    vagrant@debian12$ bc
     (you type ) 2+3
     (bc prints) 5
     (you type ) 1+1
@@ -115,13 +115,13 @@ escape=$(printf '\033')
 This might mess up the last line on your terminal a bit, but you can reset it with Control+L.
 The first command sets a shell variable to the ANSI escape character. The second line redirects standard error (`2>`) to a subprocess (`>(...)`) which calls the stream editor `sed` to replace each line with the line surrounded by `\e[32m` (set colour to green) and `\e[0m` (reset colour). This will make the standard error lines appear in green. 
 
-Incidentally, some versions of sed support the `\e` escape sequence directly, or at least the version `\x1b` that creates a character from its ASCII code in hexadecimal, but alpine's sed does not so you need the shell variable trick with a fall back to octal (033) notation!
+Incidentally, some versions of sed support the `\e` escape sequence directly, or at least the version `\x1b` that creates a character from its ASCII code in hexadecimal, but some versions do not, so you need the shell variable trick with a fall back to octal (033) notation!
 |||
 
 And now for the interesting part:
 
   - Make two named pipes (FIFOs) with `mkfifo up` and `mkfifo down`.
-  - You will need two terminals open for the following. Either ssh into your alpine machine a second time or, better still, use tmux (`Control+B, %` opens a second terminal beside the first one; you can use `Control+B, Left` and `Control+B, Right` to switch between them).
+  - You will need two terminals open for the following. Either ssh into your Debian box a second time or, better still, use tmux (`Control+B, %` opens a second terminal beside the first one; you can use `Control+B, Left` and `Control+B, Right` to switch between them).
   - Run the program with `./ipc1 > down < up` to redirect standard input and output to the pipes. This blocks (exercise: which statement is it currently blocking on?).
   - In the second terminal, run `bc < down > up`.
 
