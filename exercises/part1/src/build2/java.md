@@ -12,19 +12,31 @@ A Java Development Kit (JDK) contains the `javac` and `jar` tools as well as a J
 
 `maven` is a Java package manager and build tool. It is not part of the Java distribution, so you will need to install it separately.
 
-You can do this exercise either on Alpine, or on your own machine where you have probably already installed Java for the OOP/Algorithms unit, and you can use your favourite editor. The exercises should work exactly the same way in both cases, there is nothing POSIX-specific here.
+You can do this exercise either in your VM, or on your own machine where you have probably already installed Java for the OOP/Algorithms unit, and you can use your favourite editor. The exercises should work exactly the same way in both cases, there is nothing POSIX-specific here.
 
-## Installing on Alpine
+## Installing on Debian
 
-On Alpine, install the `openjdk17` and `maven` packages. Alpine's JDK does not end up on the `PATH`, presumably in case you want to have several different JDKs on the same machine, so you should run the following command and also add it to your `~/.profile`:
+On Debian, install the `openjdk-17-jdk` and `maven` packages. This
+should set things up so you're ready to go but if you have _multiple
+versions_ of Java installed you may need to set the `JAVA_HOME` and
+`PATH` variables to point to your install.
 
-    export PATH="$PATH:/usr/lib/jvm/java-17-openjdk/bin/"
+For example:
 
-This lets you run `javac`, although you could of course also run it by calling it with the full path to the file.
+```sh
+export JAVA_HOME='/usr/lib/jvm/java-17-openjdk'
+export PATH="${PATH}:${JAVA_HOME}/bin"
+```
+|||advanced
+Debian also has a special command called `update-alternatives` that
+can help manage alternative development environments for you.  Read
+the manual page!
+|||
 
 ## Installing on your own machine
 
-You have probably already installed the JDK following the instructions in the OOP/Algorithms unit; it should basically resolve to 
+Use whatever package manager your OS comes with.  If you can't and
+have to install it manually:
 
   - download the [OpenJDK](http://openjdk.java.net/) distribution
   - unzip it somewhere
@@ -37,13 +49,27 @@ Note: `JAVA_HOME` must be set correctly for maven to work.
 
 ## Running maven
 
-Open a shell (windows CMD is fine too) and type `mvn archetype:generate`. This lets you _generate an artifact from an archetype_, which is wizard-speak for create a new folder with a maven file.
+Open a shell and type `mvn archetype:generate`. This lets you _generate an artifact from an archetype_, which is maven-speak for create a new folder with a maven file.
 
-_If you get a "not found" error, then most likely the maven `bin` folder is not on your path. If you're on a POSIX system and have used your package manager, this should be set up automatically, but if you've downloaded and unzipped maven then you have to `export PATH="$PATH:..."` where you replace the three dots with the path to the folder, and preferably put that line in your `~/.profile` too. On Windows, search online for instructions how to set up the path variable, or you can drag-and-drop the `mvn.cmd` file from an Explorer window into a Windows CMD terminal and it should paste the full path, then press SPACE and enter the arguments you want to pass._
+_If you get a "not found" error, then most likely the maven `bin`
+ folder is not on your path. If you're on a POSIX system and have used
+ your package manager, this should be set up automatically, but if
+ you've downloaded and unzipped maven then you have to `export
+ PATH="$PATH:..."` where you replace the three dots with the path to
+ the folder, and preferably put that line in your `~/.profile` too._
+ 
+ 
+ |||advanced
+ On Windows, if you must user it, search online for instructions how
+ to set up the path variable, or you can drag-and-drop the `mvn.cmd`
+ file from an Explorer window into a Windows CMD terminal and it
+ should paste the full path, then press SPACE and enter the arguments
+ you want to pass.
+ |||
 
 The first time you run it, maven will download a lot of libraries.
 
-Maven will first show a list of all archetypes known to humankind (2885 at the time of counting) but you can just press ENTER to use the default, 1744 ("quickstart"). Maven now asks you for the version to use, press ENTER again.
+Maven will first show a list of all archetypes known to humankind (3046 at the time of counting) but you can just press ENTER to use the default, 2098 ("quickstart"). Maven now asks you for the version to use, press ENTER again.
 
 You now have to enter the triple of (groupId, artifactId, version) for your project - it doesn't really matter but I suggest the following:
 
@@ -229,3 +255,20 @@ public class Unit {
 
 _You will still need one single `setVariable` call, and in the template the syntax `[(${unit.name})]` should translate into a call to the getter._
 
+|||advanced
+More recent releases of Java have wonderful things called `records`
+that make your life *a lot* easier.  All that above code translates to just:
+
+```java
+public record Unit(String name, List<String> topics) {}
+```
+
+Unfortunately support for more recent Java releases is a bit spotty
+(and worse in the _real_ world).  You'll need to get rid of the
+`maven.compiler.target` and `maven.compiler.source` bits you added in
+your pom.xml and replace it with a new:
+
+```
+<maven.compiler.release>17</maven.compiler.release>
+```
+|||
