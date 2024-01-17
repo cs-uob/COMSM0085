@@ -10,6 +10,4 @@
   
 ## Exercises
 
-  - [Git, part 1](./git1.md)
-  - [Git, part 2](./git2.md)
-  - [Git, part 3](./git3.md)
+  - [Git](./git.md)
