@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,42 +61,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded affix "><a href="../overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">Week 6: The Web</li><li class="chapter-item expanded "><a href="../http/index.html"><strong aria-hidden="true">1.</strong> HTTP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../http/setup.html"><strong aria-hidden="true">1.1.</strong> Setup</a></li><li class="chapter-item expanded "><a href="../http/explore.html"><strong aria-hidden="true">1.2.</strong> Exploring HTTP</a></li><li class="chapter-item expanded "><a href="../http/research.html"><strong aria-hidden="true">1.3.</strong> Online research</a></li><li class="chapter-item expanded "><a href="../http/server.html"><strong aria-hidden="true">1.4.</strong> A server in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../html5/index.html"><strong aria-hidden="true">2.</strong> HTML5</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../html5/basic.html"><strong aria-hidden="true">2.1.</strong> Basic HTML5</a></li><li class="chapter-item expanded "><a href="../html5/templates.html"><strong aria-hidden="true">2.2.</strong> Templates</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 7: CSS</li><li class="chapter-item expanded "><a href="../css/index.html"><strong aria-hidden="true">3.</strong> CSS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../css/text.html"><strong aria-hidden="true">3.1.</strong> Styling Text</a></li><li class="chapter-item expanded "><a href="../css/framework.html"><strong aria-hidden="true">3.2.</strong> Frameworks</a></li></ol></li><li class="chapter-item expanded "><a href="../cssgrid/index.html"><strong aria-hidden="true">4.</strong> CSS grids</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cssgrid/intro.html"><strong aria-hidden="true">4.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../cssgrid/curriculum.html"><strong aria-hidden="true">4.2.</strong> Curriculum exercise</a></li><li class="chapter-item expanded "><a href="../cssgrid/trees.html"><strong aria-hidden="true">4.3.</strong> Trees exercise (responsive layout)</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 8: Javascript & Scraping</li><li class="chapter-item expanded "><a href="../js/index.html"><strong aria-hidden="true">5.</strong> JavaScript</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../js/single.html"><strong aria-hidden="true">5.1.</strong> A single-page app</a></li><li class="chapter-item expanded "><a href="../js/static.html"><strong aria-hidden="true">5.2.</strong> Static structure</a></li><li class="chapter-item expanded "><a href="../js/dynamic1.html"><strong aria-hidden="true">5.3.</strong> Dynamic structure, part 1</a></li><li class="chapter-item expanded "><a href="../js/dynamic2.html"><strong aria-hidden="true">5.4.</strong> Dynamic structure, part 2</a></li><li class="chapter-item expanded "><a href="../js/exercises.html"><strong aria-hidden="true">5.5.</strong> Further exercises</a></li></ol></li><li class="chapter-item expanded "><a href="../scrape/index.html"><strong aria-hidden="true">6.</strong> Web scraping</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../scrape/crawl.html"><strong aria-hidden="true">6.1.</strong> Crawling</a></li><li class="chapter-item expanded "><a href="../scrape/soup.html"><strong aria-hidden="true">6.2.</strong> BeautifulSoup</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 9: React & The Cloud</li><li class="chapter-item expanded "><a href="../react/index.html"><strong aria-hidden="true">7.</strong> React</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../react/installing.html"><strong aria-hidden="true">7.1.</strong> Installing React</a></li><li class="chapter-item expanded "><a href="../react/hello.html"><strong aria-hidden="true">7.2.</strong> Hello World in React</a></li><li class="chapter-item expanded "><a href="../react/character.html"><strong aria-hidden="true">7.3.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../cloud/cloud1.html"><strong aria-hidden="true">8.</strong> The Cloud</a></li><li class="chapter-item expanded affix "><li class="part-title">Week 10: A Complete Application</li><li class="chapter-item expanded "><a href="../app1/index.html"><strong aria-hidden="true">9.</strong> A complete application, part 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../app1/setup.html"><strong aria-hidden="true">9.1.</strong> Setting Things Up</a></li><li class="chapter-item expanded "><a href="../app1/walkthrough.html"><strong aria-hidden="true">9.2.</strong> Walkthrough</a></li><li class="chapter-item expanded "><a href="../app1/lifecycle.html"><strong aria-hidden="true">9.3.</strong> React Lifecycles</a></li><li class="chapter-item expanded "><a href="../app1/extent.html" class="active"><strong aria-hidden="true">9.4.</strong> The Extent Problem</a></li><li class="chapter-item expanded "><a href="../app1/ex.html"><strong aria-hidden="true">9.5.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../app2/index.html"><strong aria-hidden="true">10.</strong> A complete application, part 2</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -323,7 +352,7 @@ When hibernate creates a Region object and the parent / counties are not include
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../app1/ex.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../app1/ex.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -337,7 +366,7 @@ When hibernate creates a Region object and the parent / counties are not include
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../app1/ex.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../app1/ex.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
