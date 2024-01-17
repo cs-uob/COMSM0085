@@ -2,7 +2,7 @@
 
 ![OST banner](/assets/images/OST.jpg)
 
-Welcome to the website for COMSM0085 Overview of Software Tools, Teaching Block 2, 2023.
+Welcome to the website for COMSM0085 Overview of Software Tools, Teaching Block 2, 2024.
 
 Please see the following pages for more details:
 

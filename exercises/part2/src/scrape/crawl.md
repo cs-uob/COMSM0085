@@ -179,7 +179,7 @@ reading) and use `wget` to test all the links on the page. Are there any broken
 links?
  2. Tell `wget` to use a different user agent string in a request to your server running
 on localhost. Check what the request looks like to your server.
- 3. How would `wget -l 1 http://example.com` differ from `wget -p
+ 3. How would `wget -r -l 1 http://example.com` differ from `wget -p
     http://example.com`? _(Hint: think about external resources)_.  
  4. Look for 'Recursive Accept/Reject options' in the `wget` manpage. How would
     you get `wget` to crawl pages from multiple different domains?

@@ -12,7 +12,7 @@ value for clients.
 The topics we will cover in this unit are:
 
   - *Basic system administration.* This includes POSIX, Linux, and the command line. Using
-    Alpine linux, a minimalist system, you will learn everything from effective
+    Debian Linux, you will learn everything from effective
     use of the command line (including scripting) to installing packages and
     setting up and securely connecting to virtual machines.
   - *Version control with git.* This tool is standard enough in industry nowadays
@@ -25,7 +25,6 @@ The topics we will cover in this unit are:
     tables.
   - *Basics of the web.* HTML and CSS, and a bit of JavaScript.
   - *Server side.* HTTP, servers, request lifecycles and related topics.
-  - The *React* web application/user interface library.
 
 ## Related Pages (Just for Fun) -- by David Bernhard
 
