@@ -15,7 +15,7 @@ website was probably not a great idea, so we're having each of you run your own.
 ### Set up the server
 
 As with the HTTP exercises, it would be best to either carry out these steps directly on a lab machine
-or on your own machine (optionally from the Alpine Linux VM with ports forwarded). If you are using 
+or on your own machine (optionally from the Debian Linux VM with ports forwarded). If you are using 
 a lab machine via SSH instead then you'll need to open a second SSH session _to the same lab machine_ 
 in another terminal, to act as a client for the next parts of the exercise.
 However, we'll periodically invite you to check things in your browser, which is

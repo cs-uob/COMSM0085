@@ -17,13 +17,11 @@ Python library called BeautifulSoup.
 
 ## Setup
 
-First, you'll need to install `python3` and `py3-pip` if you didn't already
-install those packages as part of the Build Tools exercises in Part 1.
+First, you want to install the BeautifulSoup library, which you can achieve with
+`sudo apt install python3-bs4`. Python does have its own package manager, `pip`,
+but it would get in the way of our system-wide package management to use it here.
 
-Next, you want to install the BeautifulSoup library, which you can achieve with
-`sudo pip install bs4` (or just `pip install bs4` to use the user installation mode). 
-
-You can test that python is working by just typing `python` at the command line
+You can test that Python is working by just typing `python3` at the command line
 -- it should launch the interactive interpreter, which will prompt you for
 Python code with `>>>`. Type `from bs4 import BeautifulSoup`. If this completes
 then you've successfully imported the library. 
@@ -38,7 +36,7 @@ soup = BeautifulSoup(open(file, 'r'))
 ```
 
 _(You may need to change the 'file' line to reflect where the `cattax/index.html`
-file really is relative to where you launched `python`. Also, if you close the
+file really is relative to where you launched `python3`. Also, if you close the
 interpreter at any point remember you'll need to re-run the `import` line above
 to get the library)._
 
@@ -92,7 +90,7 @@ had multiple classes?
 
 Download [this python script](../resources/scrape.py) to the directory that
 contains your `cattax` folder (_not_ into `cattax` itself). On the command line,
-you should be able to run this script with `python scrape.py`. You'll see that
+you should be able to run this script with `python3 scrape.py`. You'll see that
 it prints out a series of lines related to all the files in `cattax`. 
 
 Open `scrape.py` in an editor and inspect what it is doing. The script imports
@@ -116,7 +114,7 @@ again to test that it works.
    scrape for later programmatic work. Rather than printing out information,
 create and update a [Python dict](https://realpython.com/python-dicts/) for all
 leaf nodes where the dictionary keys are the titles of a page and the values are 
-the corresponding content of the 'info' box. _Run your script with `python -i
+the corresponding content of the 'info' box. _Run your script with `python3 -i
 scrape.py` and it will execute your script and then place you in an interactive
 session immediately following your script's execution. You can then check that
 the dictionary's contents are what you expect by interacting with the dict
