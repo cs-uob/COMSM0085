@@ -1650,7 +1650,7 @@ public String mainPage() {
 <p><em>You can also access the web page from the terminal on your host machine with <code>wget localhost:8080 -q -O /dev/stdout</code> which should print &quot;Hello, Software Tools!&quot; on your terminal. If you just do <code>wget localhost:8080</code> it will save the output to a file with the default name <code>index.html</code>.</em></p>
 <p>The <code>@GetMapping</code> means, when a HTTP GET request comes in for a URL with the path in the annotation (such as a browser would send), then run this function. For example, accessing <code>localhost:8080/pages/index.html</code> would look for a mapping <code>/pages/index.html</code> where as the <code>/</code> mapping covers when you type no path at all. You can start to see that URL paths on the web are modelled on POSIX paths as you learnt in this unit, with forward slashes and a concept of a &quot;root folder&quot; <code>/</code> which is what gets returned when you type a website's name in your browser without a path on the end.</p>
 <p>You've seen that build tools like maven automate the process of downloading the libraries your project needs and compiling your project. The Spring Framework automates (as far as possible) the process of running these libraries when your application starts, and getting them all to work nicely together (there is a <em>lot</em> going on in the background from a web request arriving to your function being called to get the page contents).
-The obvious next step would be to use thymeleaf to render HTML templates to make proper pages. This is indeed something you'll learn about later in this unit and in your second-year software project next year, but there are a few more steps you'll need to know to do this, and I don't want to go into that today - that's quite enough material for one workshop.</p>
+The obvious next step would be to use thymeleaf to render HTML templates to make proper pages. This is indeed something you'll learn about later in this unit, but there are a few more steps you'll need to know to do this - and that's quite enough material for one workshop.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="build-tools-1"><a class="header" href="#build-tools-1">Build Tools 1</a></h1>
 <h2 id="videos-5"><a class="header" href="#videos-5">Videos</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
@@ -1663,7 +1663,7 @@ The obvious next step would be to use thymeleaf to render HTML templates to make
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="debugging-exercise"><a class="header" href="#debugging-exercise">Debugging exercise</a></h1>
 <p>Clone the repository <code>git@github.com:cs-uob/COMSM0085</code> if you have not done so already and open the folder <code>code/debugging</code>.</p>
-<p>There is a program <code>stackcalc.c</code> that attempts to implement the specification in <code>stackcalc.txt</code> for a RPN calculator, but it does not work correctly. For example, <code>1 2 +</code> should produce <code>3.0000</code> but produces <code>Error, operator on empty stack</code>. (Read the notes in the text file about how to compile the program with the required library.)</p>
+<p>There is a program <code>stackcalc.c</code> that attempts to implement the specification in <code>stackcalc.txt</code> for a Reverse Polish Notation calculator, but it does not work correctly. For example, <code>1 2 +</code> should produce <code>3.0000</code> but produces <code>Error, operator on empty stack</code>. (Read the notes in the text file about how to compile the program with the required library.)</p>
 <p>Your exercise is to debug and fix the program, making as few changes to the general structure as possible (so don't just rewrite the whole thing from scratch).</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="bonus-posix-activity"><a class="header" href="#bonus-posix-activity">Bonus POSIX Activity</a></h1>
 <p><em>This activity is optional, and non-examinable. We recommend that you watch the videos anyway.</em></p>
@@ -1692,7 +1692,6 @@ The obvious next step would be to use thymeleaf to render HTML templates to make
 <li>Use a command-line program provided by your distribution.</li>
 </ol>
 <h2 id="preparation"><a class="header" href="#preparation">Preparation</a></h2>
-<p>Install the <code>musl-dev</code> package, which provides the header files for the C library, as well as <code>gcc</code> if you have not installed that yet.</p>
 <p>Have a look at the manual page <code>man stat</code> for the <code>stat</code> system call. The abbreviated headers are:</p>
 <pre><code class="language-C">#include &lt;sys/stat.h&gt;
 
