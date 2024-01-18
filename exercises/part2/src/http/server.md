@@ -1,15 +1,10 @@
 # A server in Java
 
-From now on, we will be using the Java language and the spring boot framework to run real web servers, as you might do in a software engineering project.
+From now on, we will be using the Java language and the Spring Boot framework to run real web servers, as you might do in a software engineering project.
 
 ## Compile and run
 
-Make sure you have java and maven installed as we did earlier in the unit. On alpine, you need to do the following if you have not done so already:
-
-  - Install the packages `openjdk17` and `maven`.
-  - Add the line `export PATH="$PATH:/usr/lib/jvm/java-17-openjdk/bin/"` to your `~/.profile` file.
-  - Run `source ~/.profile`.
-
+Make sure you have java and maven installed as we did earlier in the unit. 
 Clone the repository `git@github.com:cs-uob/COMSM0085` if you have not done so
 already, and navigate to the folder `code/server01`. In this folder, run `mvn
 spring-boot:run` to compile and run the sample application. The first time you
