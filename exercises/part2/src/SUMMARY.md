@@ -39,6 +39,6 @@
   - [BeautifulSoup](./scrape/soup.md)
 
 # Week 10: Practical Encryption
-- Practical Encryption
-  - OpenSSL
-  - PGP
+- [Practical Encryption]()
+  - [OpenSSL]()
+  - [PGP]()
