@@ -12,8 +12,6 @@ A system call is a way for a linux user or program to interact with the kernel, 
 
 ## Preparation
 
-Install the `musl-dev` package, which provides the header files for the C library, as well as `gcc` if you have not installed that yet.
-
 Have a look at the manual page `man stat` for the `stat` system call. The abbreviated headers are:
 
 ```C
