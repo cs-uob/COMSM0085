@@ -40,5 +40,5 @@
 
 # Week 10: Practical Encryption
 - Practical Encryption
- - OpenSSL
- - PGP
+  - OpenSSL
+  - PGP
