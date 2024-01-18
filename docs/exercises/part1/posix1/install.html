@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Installing vagrant and alpine linux - Exercises</title>
+        <title>Installing Vagrant and Debian - Exercises</title>
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,42 +61,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">Week 1: Basics & Git</li><li class="chapter-item expanded "><a href="../posix1/index.html"><strong aria-hidden="true">1.</strong> POSIX Activity 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix1/ssh.html"><strong aria-hidden="true">1.1.</strong> Secure shell</a></li><li class="chapter-item expanded "><a href="../posix1/install.html" class="active"><strong aria-hidden="true">1.2.</strong> Installing vagrant and alpine linux</a></li><li class="chapter-item expanded "><a href="../posix1/admin.html"><strong aria-hidden="true">1.3.</strong> Alpine linux system administration</a></li><li class="chapter-item expanded "><a href="../posix1/shell.html"><strong aria-hidden="true">1.4.</strong> Shell expansion</a></li></ol></li><li class="chapter-item expanded "><a href="../git/index.html"><strong aria-hidden="true">2.</strong> Git</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../git/git1.html"><strong aria-hidden="true">2.1.</strong> Git, part 1</a></li><li class="chapter-item expanded "><a href="../git/git2.html"><strong aria-hidden="true">2.2.</strong> Git, part 2</a></li><li class="chapter-item expanded "><a href="../git/git3.html"><strong aria-hidden="true">2.3.</strong> Git, part 3</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 2: POSIX</li><li class="chapter-item expanded "><a href="../posix2/index.html"><strong aria-hidden="true">3.</strong> POSIX Activity 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix2/permissions.html"><strong aria-hidden="true">3.1.</strong> File permissions</a></li><li class="chapter-item expanded "><a href="../posix2/pipes.html"><strong aria-hidden="true">3.2.</strong> Pipes</a></li></ol></li><li class="chapter-item expanded "><a href="../posix3/index.html"><strong aria-hidden="true">4.</strong> POSIX Activity 3</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix3/script.html"><strong aria-hidden="true">4.1.</strong> shell scripting</a></li></ol></li><li class="chapter-item expanded "><a href="../posix4/index.html"><strong aria-hidden="true">5.</strong> BONUS: POSIX Activity 4</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix4/stat.html"><strong aria-hidden="true">5.1.</strong> inodes and system calls</a></li><li class="chapter-item expanded "><a href="../posix4/concurrent.html"><strong aria-hidden="true">5.2.</strong> Concurrent programming in POSIX</a></li><li class="chapter-item expanded "><a href="../posix4/cpipe.html"><strong aria-hidden="true">5.3.</strong> Pipes in C</a></li><li class="chapter-item expanded "><a href="../posix4/c_io.html"><strong aria-hidden="true">5.4.</strong> Input/Output in C</a></li><li class="chapter-item expanded "><a href="../posix4/posix_io.html"><strong aria-hidden="true">5.5.</strong> Input/Output in POSIX</a></li><li class="chapter-item expanded "><a href="../posix4/final.html"><strong aria-hidden="true">5.6.</strong> The final challenge</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 3: Build Tools</li><li class="chapter-item expanded "><a href="../build2/index.html"><strong aria-hidden="true">6.</strong> Build Tools</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../build2/c.html"><strong aria-hidden="true">6.1.</strong> C</a></li><li class="chapter-item expanded "><a href="../build2/python.html"><strong aria-hidden="true">6.2.</strong> Python</a></li><li class="chapter-item expanded "><a href="../build2/java.html"><strong aria-hidden="true">6.3.</strong> Java</a></li><li class="chapter-item expanded "><a href="../build2/spring.html"><strong aria-hidden="true">6.4.</strong> Spring</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 4: Introduction to Databases</li><li class="chapter-item expanded "><a href="../db1/sql-introduction.html"><strong aria-hidden="true">7.</strong> SQL introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db1/setup.html"><strong aria-hidden="true">7.1.</strong> Set up the database</a></li><li class="chapter-item expanded "><a href="../db1/er-diagram.html"><strong aria-hidden="true">7.2.</strong> ER diagram</a></li><li class="chapter-item expanded "><a href="../db1/er2.html"><strong aria-hidden="true">7.3.</strong> More modelling</a></li></ol></li><li class="chapter-item expanded "><a href="../db2/sql-beginners.html"><strong aria-hidden="true">8.</strong> SQL for beginners</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db2/explore-database.html"><strong aria-hidden="true">8.1.</strong> Explore the database</a></li><li class="chapter-item expanded "><a href="../db2/elections.html"><strong aria-hidden="true">8.2.</strong> Bristol elections</a></li><li class="chapter-item expanded "><a href="../db2/census.html"><strong aria-hidden="true">8.3.</strong> The UK census</a></li><li class="chapter-item expanded "><a href="../db2/normalforms.html"><strong aria-hidden="true">8.4.</strong> Normal forms</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 5: Intermediate Databases</li><li class="chapter-item expanded "><a href="../db3/sql-intermediate.html"><strong aria-hidden="true">9.</strong> Intermediate SQL</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db3/exercises.html"><strong aria-hidden="true">9.1.</strong> Exercises</a></li></ol></li><li class="chapter-item expanded "><a href="../db4/sql-java.html"><strong aria-hidden="true">10.</strong> SQL and Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db4/jdbc.html"><strong aria-hidden="true">10.1.</strong> JDBC</a></li><li class="chapter-item expanded "><a href="../db4/hibernate.html"><strong aria-hidden="true">10.2.</strong> Hibernate</a></li><li class="chapter-item expanded "><a href="../db4/sqlite.html"><strong aria-hidden="true">10.3.</strong> SQLite</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">Week 1: POSIX Systems</li><li class="chapter-item expanded "><a href="../posix1/index.html"><strong aria-hidden="true">1.</strong> System Administration</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix1/ssh.html"><strong aria-hidden="true">1.1.</strong> Secure shell</a></li><li class="chapter-item expanded "><a href="../posix1/install.html" class="active"><strong aria-hidden="true">1.2.</strong> Installing Vagrant and Debian</a></li><li class="chapter-item expanded "><a href="../posix1/admin.html"><strong aria-hidden="true">1.3.</strong> Debian system administration</a></li></ol></li><li class="chapter-item expanded "><a href="../posix2/index.html"><strong aria-hidden="true">2.</strong> The POSIX Shell</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix2/shell.html"><strong aria-hidden="true">2.1.</strong> Shell expansion</a></li><li class="chapter-item expanded "><a href="../posix2/pipes.html"><strong aria-hidden="true">2.2.</strong> Pipes</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 2: Version Control</li><li class="chapter-item expanded "><a href="../git/index.html"><strong aria-hidden="true">3.</strong> Git</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../git/git.html"><strong aria-hidden="true">3.1.</strong> Git</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 3: Shell Scripting & Build Tools</li><li class="chapter-item expanded "><a href="../posix3/index.html"><strong aria-hidden="true">4.</strong> Shell Scripting</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix3/permissions.html"><strong aria-hidden="true">4.1.</strong> File permissions</a></li><li class="chapter-item expanded "><a href="../posix3/script.html"><strong aria-hidden="true">4.2.</strong> Shell scripting</a></li></ol></li><li class="chapter-item expanded "><a href="../build2/index.html"><strong aria-hidden="true">5.</strong> Build Tools</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../build2/c.html"><strong aria-hidden="true">5.1.</strong> C</a></li><li class="chapter-item expanded "><a href="../build2/python.html"><strong aria-hidden="true">5.2.</strong> Python</a></li><li class="chapter-item expanded "><a href="../build2/java.html"><strong aria-hidden="true">5.3.</strong> Java</a></li><li class="chapter-item expanded "><a href="../build2/spring.html"><strong aria-hidden="true">5.4.</strong> Spring</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 4: Debugging</li><li class="chapter-item expanded "><a href="../build1/index.html"><strong aria-hidden="true">6.</strong> Debugging</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../build1/exercise.html"><strong aria-hidden="true">6.1.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../posix4/index.html"><strong aria-hidden="true">7.</strong> Bonus POSIX (unassessed)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix4/stat.html"><strong aria-hidden="true">7.1.</strong> inodes and system calls</a></li><li class="chapter-item expanded "><a href="../posix4/concurrent.html"><strong aria-hidden="true">7.2.</strong> Concurrent programming in POSIX</a></li><li class="chapter-item expanded "><a href="../posix4/cpipe.html"><strong aria-hidden="true">7.3.</strong> Pipes in C</a></li><li class="chapter-item expanded "><a href="../posix4/c_io.html"><strong aria-hidden="true">7.4.</strong> Input/Output in C</a></li><li class="chapter-item expanded "><a href="../posix4/posix_io.html"><strong aria-hidden="true">7.5.</strong> Input/Output in POSIX</a></li><li class="chapter-item expanded "><a href="../posix4/final.html"><strong aria-hidden="true">7.6.</strong> The final challenge</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 5: Databases</li><li class="chapter-item expanded "><a href="../db1/sql-introduction.html"><strong aria-hidden="true">8.</strong> SQL introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db1/setup.html"><strong aria-hidden="true">8.1.</strong> Set up the database</a></li><li class="chapter-item expanded "><a href="../db1/er-diagram.html"><strong aria-hidden="true">8.2.</strong> ER diagram</a></li><li class="chapter-item expanded "><a href="../db1/er2.html"><strong aria-hidden="true">8.3.</strong> More modelling</a></li><li class="chapter-item expanded "><a href="../db2/explore-database.html"><strong aria-hidden="true">8.4.</strong> Explore the database</a></li><li class="chapter-item expanded "><a href="../db2/elections.html"><strong aria-hidden="true">8.5.</strong> Bristol elections</a></li><li class="chapter-item expanded "><a href="../db2/census.html"><strong aria-hidden="true">8.6.</strong> The UK census</a></li><li class="chapter-item expanded "><a href="../db2/normalforms.html"><strong aria-hidden="true">8.7.</strong> Normal forms</a></li></ol></li><li class="chapter-item expanded "><a href="../db3/sql-intermediate.html"><strong aria-hidden="true">9.</strong> Intermediate SQL</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db3/exercises.html"><strong aria-hidden="true">9.1.</strong> Exercises</a></li></ol></li><li class="chapter-item expanded "><a href="../db4/sql-java.html"><strong aria-hidden="true">10.</strong> SQL and Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db4/jdbc.html"><strong aria-hidden="true">10.1.</strong> JDBC</a></li><li class="chapter-item expanded "><a href="../db4/hibernate.html"><strong aria-hidden="true">10.2.</strong> Hibernate</a></li><li class="chapter-item expanded "><a href="../db4/sqlite.html"><strong aria-hidden="true">10.3.</strong> SQLite</a></li></ol></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -144,7 +173,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="installing-vagrant-and-alpine-linux"><a class="header" href="#installing-vagrant-and-alpine-linux">Installing vagrant and alpine linux</a></h1>
+                        <h1 id="installing-vagrant-and-debian"><a class="header" href="#installing-vagrant-and-debian">Installing Vagrant and Debian</a></h1>
 <p><a href="https://www.vagrantup.com/">Vagrant</a> is a program to manage virtual machines (VMs). Based on a configuration file called a <code>Vagrantfile</code>, it can download and configure disk images, which it calles boxes, and call other programs to run them. Vagrant does not run the VM by itself, so you will need another program like <a href="https://www.virtualbox.org/">virtualbox</a> for that.</p>
 <h2 id="installing-on-your-own-machine"><a class="header" href="#installing-on-your-own-machine">Installing on your own machine</a></h2>
 <p>To use vagrant on your own machine (recommended), follow these steps:</p>
@@ -155,39 +184,33 @@
 </ul>
 <p>If you are on Linux, you can of course also install the programs from your distribution's repository. Vagrant's developers actually recommend against this because they claim that some distributions package outdated versions, but it is your choice.</p>
 <h2 id="configuring-a-box"><a class="header" href="#configuring-a-box">Configuring a box</a></h2>
-<p>Next, you are going to configure a virtual machine using <a href="https://www.alpinelinux.org/">alpine linux</a>, a minimal Linux distribution that we will be using in this unit. </p>
+<p>Next, you are going to configure a virtual machine using <a href="https://www.debian.org/">Debian linux</a>, a Linux distribution that we will be using in this unit. </p>
 <ul>
 <li>Create an empty folder somewhere.</li>
 <li>In that folder, create a file called Vagrantfile (capitalised, and with no extension) and add the following lines to it - or just download the file from <a href="../resources/Vagrantfile">here</a>:</li>
 </ul>
 <pre><code class="language-ruby">Vagrant.configure(&quot;2&quot;) do |config|
-  config.vm.box = &quot;generic/alpine317&quot;
+  config.vm.box = &quot;generic/debian12&quot;
   config.vm.synced_folder &quot;.&quot;, &quot;/vagrant&quot;
 
   config.vm.provision &quot;shell&quot;, inline: &lt;&lt;-SHELL
-    apk add libc6-compat
+    echo &quot;Post-provision installs go here&quot;
   SHELL
 end
 </code></pre>
 <p>This configuration file is actually a script in the ruby programming language, but you don't need to learn that to use vagrant. Let's look at what it does.</p>
 <ul>
-<li><code>config.vm.box</code> selects the virtual machine image, or box in vagrant-speak, to use. You can see a list of available ones at https://app.vagrantup.com/boxes/search.</li>
+<li><code>config.vm.box</code> selects the virtual machine image, or box in vagrant-speak, to use. You can see a list of available ones at <a href="https://app.vagrantup.com/boxes/search">https://app.vagrantup.com/boxes/search</a>.</li>
 <li><code>config.vm.synced_folder</code> sets up a shared folder between the guest (virtual machine) and host (your machine).</li>
-<li>The <code>config.vm.provision</code> runs a provisioning command when the box is first downloaded and installed. These commands run as root on the virtual machine, and in this case we are using the <code>apk</code> package manager (we will talk about this later on) to install the packages <code>libc6-compat</code>.</li>
+<li>The <code>config.vm.provision</code> runs a provisioning command when the box is first downloaded and installed. These commands run as root on the virtual machine, and in this case we are using the <code>apt</code> package manager (we will talk about this later on) to install the packages <code>git</code>.</li>
 <li>The <code>&lt;&lt;-SHELL</code> construction is called a &quot;here document&quot;, and is a way in some programming languages of writing multi-line strings. It tells ruby to treat everything until the closing keyword SHELL (which is arbitrary) as a string, which can contain several lines.</li>
 </ul>
-<div class="advanced container">
-<header><span class="advanced-title"></span></header>
-<div class="container-content">
-<p>Alpine linux uses the musl libc distribution, which is smaller than and has a few distinct differences from the normal GNU libc. To avoid these incompatibilities causing you hard-to-find problems when you are compiling C programs, we are installing <code>libc6-compat</code> that makes alpine compatible with the standard libc.</p>
-</div>
-</div>
 <h2 id="running-vagrant"><a class="header" href="#running-vagrant">Running vagrant</a></h2>
 <ul>
 <li>Open a terminal in the folder containing the Vagrantfile. If you are on windows, both the windows CMD and the windows subsystem for linux terminal will work equally well for this purpose.</li>
 <li>Run the command <code>vagrant up</code>. This starts the virtual machine configured in the current folder, and if it has not been downloaded and provisioned yet (as is the case when you run <code>up</code> for the first time) then it does this for you as well.</li>
 <li>When vagrant tells you the machine is running, run <code>vagrant ssh</code> to log in to your virtual machine. If it asks you for a password, use <code>vagrant</code>.</li>
-<li>You should now see the virtual machine prompt <code>alpine317:~$</code>. Try the command <code>ls /</code> and check that there is a folder called vagrant in the top-level folder, along with system ones with names like <code>usr</code> and <code>bin</code>.</li>
+<li>You should now see the virtual machine prompt <code>vagrant@debian12:~$</code>. Try the command <code>ls /</code> and check that there is a folder called vagrant in the top-level folder, along with system ones with names like <code>usr</code> and <code>bin</code>.</li>
 </ul>
 <p>There are two kinds of errors you might get during <code>vagrant up</code>:</p>
 <ul>
@@ -196,9 +219,9 @@ end
 </ul>
 <h2 id="shutting-down-cleanly"><a class="header" href="#shutting-down-cleanly">Shutting down cleanly</a></h2>
 <p>To exit the virtual machine, type <code>exit</code> which will get you back to the shell on the host machine. On the host, <code>vagrant halt</code> cleanly shuts down the virtual machine.</p>
-<p>Promise yourself that you will always do this before turning off your computer, if you have been using vagrant!</p>
+<p>Promise yourself that you will always do this before turning off your computer, if you have been using Vagrant!</p>
 <h2 id="running-on-a-lab-machine"><a class="header" href="#running-on-a-lab-machine">Running on a lab machine</a></h2>
-<p>Vagrant is already installed on the lab machines in MVB 2.11, so you can remotely log in and launch a box from there. This will get you exactly the same alpine environment as if you run on your own machine, and everyone should try this out too. If for some reason you cannot run vagrant on your machine, then as long as you have an internet connection you should still be able to run it on the lab machines.</p>
+<p>Vagrant is already installed on the lab machines in MVB 2.11, so you can remotely log in and launch a box from there. This will get you exactly the same Debian environment as when you run it on your own machine, and everyone should try this out too. If for some reason you cannot run Vagrant on your machine, then as long as you have an internet connection you should still be able to run it on the lab machines.</p>
 <p>First, we connect to a lab machine: open a terminal and run the command <code>ssh lab</code> that you configured in the previous exercise on SSH.</p>
 <p>On the lab machine, we need to create a folder and load a Vagrantfile as above, but let's download the Vagrantfile from the unit webpage instead of typing it out. Run the following shell commands (the third one starting <code>wget</code> must be all on one line, even if your web browser has added a line break):</p>
 <pre><code class="language-sh">mkdir softwaretools
@@ -223,7 +246,7 @@ wget https://raw.githubusercontent.com/cs-uob/COMSM0085/master/exercises/part1/s
 </ul>
 <p>This is not as much a problem as it seems because this is how virtual machines are meant to work: if one is not available, vagrant downloads and provisions it. For this reason, for any software you want installed on your VMs in the lab machines, you should write the install command into the provisioning script in the Vagrantfile so it will be re-installed the next time Vagrant has to set up the VM. We will learn how to do this soon.</p>
 <p>However, this still leaves files that you create on the VM itself, such as the ones you will create for the exercises in this unit. The basic warning is that <em>any files in your home directory will be lost when the VM is rebuilt</em>. That is why we have set up a shared folder which you can access as <code>/vagrant</code> on the VM, which maps to the folder containing your Vagrantfile on the host machine. Because this is stored under your home folder on the lab machine, it lives on the network file store and so it is backed up and available from all lab machines.</p>
-<p>So whenever you log in to a VM on a lab machine to do some work, you should <code>cd /vagrant</code> and use that instead of your home folder for any files that you don't want to lose. If you are running vagrant on your own computer, then nothing will be deleted except if you give vagrant a command to rebuild the VM yourself.</p>
+<p>So whenever you log in to a VM on a lab machine to do some work, you should <code>cd /vagrant</code> and use that instead of your home folder for any files that you don't want to lose. If you are running vagrant on your own computer, then nothing in the VM will be deleted unless you give Vagrant a command to destroy or rebuild the VM yourself.</p>
 
                     </main>
 
@@ -233,7 +256,7 @@ wget https://raw.githubusercontent.com/cs-uob/COMSM0085/master/exercises/part1/s
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../posix1/admin.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../posix1/admin.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -247,7 +270,7 @@ wget https://raw.githubusercontent.com/cs-uob/COMSM0085/master/exercises/part1/s
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../posix1/admin.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../posix1/admin.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

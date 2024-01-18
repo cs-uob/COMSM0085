@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,42 +61,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">Week 1: Basics & Git</li><li class="chapter-item expanded "><a href="../posix1/index.html"><strong aria-hidden="true">1.</strong> POSIX Activity 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix1/ssh.html" class="active"><strong aria-hidden="true">1.1.</strong> Secure shell</a></li><li class="chapter-item expanded "><a href="../posix1/install.html"><strong aria-hidden="true">1.2.</strong> Installing vagrant and alpine linux</a></li><li class="chapter-item expanded "><a href="../posix1/admin.html"><strong aria-hidden="true">1.3.</strong> Alpine linux system administration</a></li><li class="chapter-item expanded "><a href="../posix1/shell.html"><strong aria-hidden="true">1.4.</strong> Shell expansion</a></li></ol></li><li class="chapter-item expanded "><a href="../git/index.html"><strong aria-hidden="true">2.</strong> Git</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../git/git1.html"><strong aria-hidden="true">2.1.</strong> Git, part 1</a></li><li class="chapter-item expanded "><a href="../git/git2.html"><strong aria-hidden="true">2.2.</strong> Git, part 2</a></li><li class="chapter-item expanded "><a href="../git/git3.html"><strong aria-hidden="true">2.3.</strong> Git, part 3</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 2: POSIX</li><li class="chapter-item expanded "><a href="../posix2/index.html"><strong aria-hidden="true">3.</strong> POSIX Activity 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix2/permissions.html"><strong aria-hidden="true">3.1.</strong> File permissions</a></li><li class="chapter-item expanded "><a href="../posix2/pipes.html"><strong aria-hidden="true">3.2.</strong> Pipes</a></li></ol></li><li class="chapter-item expanded "><a href="../posix3/index.html"><strong aria-hidden="true">4.</strong> POSIX Activity 3</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix3/script.html"><strong aria-hidden="true">4.1.</strong> shell scripting</a></li></ol></li><li class="chapter-item expanded "><a href="../posix4/index.html"><strong aria-hidden="true">5.</strong> BONUS: POSIX Activity 4</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix4/stat.html"><strong aria-hidden="true">5.1.</strong> inodes and system calls</a></li><li class="chapter-item expanded "><a href="../posix4/concurrent.html"><strong aria-hidden="true">5.2.</strong> Concurrent programming in POSIX</a></li><li class="chapter-item expanded "><a href="../posix4/cpipe.html"><strong aria-hidden="true">5.3.</strong> Pipes in C</a></li><li class="chapter-item expanded "><a href="../posix4/c_io.html"><strong aria-hidden="true">5.4.</strong> Input/Output in C</a></li><li class="chapter-item expanded "><a href="../posix4/posix_io.html"><strong aria-hidden="true">5.5.</strong> Input/Output in POSIX</a></li><li class="chapter-item expanded "><a href="../posix4/final.html"><strong aria-hidden="true">5.6.</strong> The final challenge</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 3: Build Tools</li><li class="chapter-item expanded "><a href="../build2/index.html"><strong aria-hidden="true">6.</strong> Build Tools</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../build2/c.html"><strong aria-hidden="true">6.1.</strong> C</a></li><li class="chapter-item expanded "><a href="../build2/python.html"><strong aria-hidden="true">6.2.</strong> Python</a></li><li class="chapter-item expanded "><a href="../build2/java.html"><strong aria-hidden="true">6.3.</strong> Java</a></li><li class="chapter-item expanded "><a href="../build2/spring.html"><strong aria-hidden="true">6.4.</strong> Spring</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 4: Introduction to Databases</li><li class="chapter-item expanded "><a href="../db1/sql-introduction.html"><strong aria-hidden="true">7.</strong> SQL introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db1/setup.html"><strong aria-hidden="true">7.1.</strong> Set up the database</a></li><li class="chapter-item expanded "><a href="../db1/er-diagram.html"><strong aria-hidden="true">7.2.</strong> ER diagram</a></li><li class="chapter-item expanded "><a href="../db1/er2.html"><strong aria-hidden="true">7.3.</strong> More modelling</a></li></ol></li><li class="chapter-item expanded "><a href="../db2/sql-beginners.html"><strong aria-hidden="true">8.</strong> SQL for beginners</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db2/explore-database.html"><strong aria-hidden="true">8.1.</strong> Explore the database</a></li><li class="chapter-item expanded "><a href="../db2/elections.html"><strong aria-hidden="true">8.2.</strong> Bristol elections</a></li><li class="chapter-item expanded "><a href="../db2/census.html"><strong aria-hidden="true">8.3.</strong> The UK census</a></li><li class="chapter-item expanded "><a href="../db2/normalforms.html"><strong aria-hidden="true">8.4.</strong> Normal forms</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 5: Intermediate Databases</li><li class="chapter-item expanded "><a href="../db3/sql-intermediate.html"><strong aria-hidden="true">9.</strong> Intermediate SQL</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db3/exercises.html"><strong aria-hidden="true">9.1.</strong> Exercises</a></li></ol></li><li class="chapter-item expanded "><a href="../db4/sql-java.html"><strong aria-hidden="true">10.</strong> SQL and Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db4/jdbc.html"><strong aria-hidden="true">10.1.</strong> JDBC</a></li><li class="chapter-item expanded "><a href="../db4/hibernate.html"><strong aria-hidden="true">10.2.</strong> Hibernate</a></li><li class="chapter-item expanded "><a href="../db4/sqlite.html"><strong aria-hidden="true">10.3.</strong> SQLite</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">Week 1: POSIX Systems</li><li class="chapter-item expanded "><a href="../posix1/index.html"><strong aria-hidden="true">1.</strong> System Administration</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix1/ssh.html" class="active"><strong aria-hidden="true">1.1.</strong> Secure shell</a></li><li class="chapter-item expanded "><a href="../posix1/install.html"><strong aria-hidden="true">1.2.</strong> Installing Vagrant and Debian</a></li><li class="chapter-item expanded "><a href="../posix1/admin.html"><strong aria-hidden="true">1.3.</strong> Debian system administration</a></li></ol></li><li class="chapter-item expanded "><a href="../posix2/index.html"><strong aria-hidden="true">2.</strong> The POSIX Shell</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix2/shell.html"><strong aria-hidden="true">2.1.</strong> Shell expansion</a></li><li class="chapter-item expanded "><a href="../posix2/pipes.html"><strong aria-hidden="true">2.2.</strong> Pipes</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 2: Version Control</li><li class="chapter-item expanded "><a href="../git/index.html"><strong aria-hidden="true">3.</strong> Git</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../git/git.html"><strong aria-hidden="true">3.1.</strong> Git</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 3: Shell Scripting & Build Tools</li><li class="chapter-item expanded "><a href="../posix3/index.html"><strong aria-hidden="true">4.</strong> Shell Scripting</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix3/permissions.html"><strong aria-hidden="true">4.1.</strong> File permissions</a></li><li class="chapter-item expanded "><a href="../posix3/script.html"><strong aria-hidden="true">4.2.</strong> Shell scripting</a></li></ol></li><li class="chapter-item expanded "><a href="../build2/index.html"><strong aria-hidden="true">5.</strong> Build Tools</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../build2/c.html"><strong aria-hidden="true">5.1.</strong> C</a></li><li class="chapter-item expanded "><a href="../build2/python.html"><strong aria-hidden="true">5.2.</strong> Python</a></li><li class="chapter-item expanded "><a href="../build2/java.html"><strong aria-hidden="true">5.3.</strong> Java</a></li><li class="chapter-item expanded "><a href="../build2/spring.html"><strong aria-hidden="true">5.4.</strong> Spring</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 4: Debugging</li><li class="chapter-item expanded "><a href="../build1/index.html"><strong aria-hidden="true">6.</strong> Debugging</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../build1/exercise.html"><strong aria-hidden="true">6.1.</strong> Exercise</a></li></ol></li><li class="chapter-item expanded "><a href="../posix4/index.html"><strong aria-hidden="true">7.</strong> Bonus POSIX (unassessed)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../posix4/stat.html"><strong aria-hidden="true">7.1.</strong> inodes and system calls</a></li><li class="chapter-item expanded "><a href="../posix4/concurrent.html"><strong aria-hidden="true">7.2.</strong> Concurrent programming in POSIX</a></li><li class="chapter-item expanded "><a href="../posix4/cpipe.html"><strong aria-hidden="true">7.3.</strong> Pipes in C</a></li><li class="chapter-item expanded "><a href="../posix4/c_io.html"><strong aria-hidden="true">7.4.</strong> Input/Output in C</a></li><li class="chapter-item expanded "><a href="../posix4/posix_io.html"><strong aria-hidden="true">7.5.</strong> Input/Output in POSIX</a></li><li class="chapter-item expanded "><a href="../posix4/final.html"><strong aria-hidden="true">7.6.</strong> The final challenge</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 5: Databases</li><li class="chapter-item expanded "><a href="../db1/sql-introduction.html"><strong aria-hidden="true">8.</strong> SQL introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db1/setup.html"><strong aria-hidden="true">8.1.</strong> Set up the database</a></li><li class="chapter-item expanded "><a href="../db1/er-diagram.html"><strong aria-hidden="true">8.2.</strong> ER diagram</a></li><li class="chapter-item expanded "><a href="../db1/er2.html"><strong aria-hidden="true">8.3.</strong> More modelling</a></li><li class="chapter-item expanded "><a href="../db2/explore-database.html"><strong aria-hidden="true">8.4.</strong> Explore the database</a></li><li class="chapter-item expanded "><a href="../db2/elections.html"><strong aria-hidden="true">8.5.</strong> Bristol elections</a></li><li class="chapter-item expanded "><a href="../db2/census.html"><strong aria-hidden="true">8.6.</strong> The UK census</a></li><li class="chapter-item expanded "><a href="../db2/normalforms.html"><strong aria-hidden="true">8.7.</strong> Normal forms</a></li></ol></li><li class="chapter-item expanded "><a href="../db3/sql-intermediate.html"><strong aria-hidden="true">9.</strong> Intermediate SQL</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db3/exercises.html"><strong aria-hidden="true">9.1.</strong> Exercises</a></li></ol></li><li class="chapter-item expanded "><a href="../db4/sql-java.html"><strong aria-hidden="true">10.</strong> SQL and Java</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db4/jdbc.html"><strong aria-hidden="true">10.1.</strong> JDBC</a></li><li class="chapter-item expanded "><a href="../db4/hibernate.html"><strong aria-hidden="true">10.2.</strong> Hibernate</a></li><li class="chapter-item expanded "><a href="../db4/sqlite.html"><strong aria-hidden="true">10.3.</strong> SQLite</a></li></ol></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -145,7 +174,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="secure-shell"><a class="header" href="#secure-shell">Secure shell</a></h1>
-<p>Secure shell (SSH) is a protocol to allow you to remotely log in to another computer, such as a lab machine. Everyone I know of who uses SSH uses the free OpenSSH implementation, which is standard on every Linux distribution that I know of and is also available for Windows and Mac - and even for the mobile operating systems iOS and Android.</p>
+<p>Secure shell (SSH) is a protocol to allow you to remotely log in to another computer, such as a lab machine. Almost everyone who uses SSH uses the free OpenSSH implementation, which is standard on pretty much every Linux distribution and is also available for Windows and Mac - and even for the mobile operating systems iOS and Android.</p>
 <p>We will see in more detail how SSH manages connections later on, but for now imagine that it opens a network connection between your own machine, and a shell running on a different machine. When you type something, SSH encrypts this and sends it to the other machine which decrypts it and passes it to the shell (or any other program you're running); when the shell replies then SSH encrypts that and sends it back to you. For this to work, (Open)SSH is actually two programs:</p>
 <ul>
 <li><code>ssh</code> is the client, which you run on your machine to connect to another machine.</li>
@@ -210,13 +239,13 @@
 <li>On your own machine, make sure you are not connected to a lab machine or seis, then type the command <code>ssh-keygen -t ed25519</code>. (If you get an &quot;unknown key type&quot; error, then you are using an outdated version of OpenSSH and for security reasons you should upgrade immediately.) <em>Note: type <code>ed25519</code> directly, do not replace this with your username. It stands for the &quot;Edwards curve over the prime <code>2^255-19</code>&quot; cryptographic group, if you want to know.</em></li>
 <li>When it asks you where to save the file, just press ENTER to accept the default, but make a note of the path - normally it's a folder <code>.ssh</code> in your home directory.</li>
 <li>If it asks you &quot;Overwrite (y/n)&quot;, say no (n, then ENTER) as it means you already have a key for something else - either ssh directly or something that uses it, like github. Restart key generation but pick a different file name.</li>
-<li>When it asks you for a password, I recommend that you just press ENTER which doesn't set a password (good security, maximum convenience). If you do set a password, it will ask you to type it twice and then you will need the password and the key file to use this key (maximum security, less convenient).</li>
+<li>When it asks you for a password, we recommend that you just press ENTER which doesn't set a password (good security, maximum convenience). If you do set a password, it will ask you to type it twice and then you will need the password and the key file to use this key (maximum security, less convenient).</li>
 </ul>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
 <p>The <code>-t</code> parameter selects the cryptographic algorithm to use, in this case <code>ed25519</code>, which is modern, peer-reviewed, and generally considered one of the most secure public-key algorithms available. However some older ssh versions don't accept ed25519.</p>
-<p>If you ever need to use SSH keys to a machine that doesn't like ed25519, then use the key type &quot;rsa&quot; instead. I would personally avoid the alternatives &quot;dsa&quot; and &quot;ecdsa&quot; if at all possible as there is speculation among cryptographers that there may be a flaw in the design.</p>
+<p>If you ever need to use SSH keys to a machine that doesn't like ed25519, then use the key type &quot;rsa&quot; instead. We would recommend you avoid the alternatives &quot;dsa&quot; and &quot;ecdsa&quot; if at all possible as there is speculation among cryptographers that there may be a flaw in the design.</p>
 <p>For example, although seis supports ed25519, the old cs bastion host <code>snowy.cs.bris.ac.uk</code> still uses an older version of SSH, so you would need to generate a rsa key to connect to that.</p>
 </div>
 </div>
@@ -228,7 +257,7 @@
 <p>Note the permissions on these files in my example. The private key (first line) has a permissions line at the start of <code>(-)(rw-)(---)(---)</code> where I've added brackets to make clearer what is going on. The first bracket only applies to special file types (e.g. <code>d</code> for directory). Next, the owner permissions which are in this case read and write (the third one would be <code>x</code> if the file were an executable program). The last two brackets are the permissions for the group and for everyone else, and these are all off so no-one except yourself (and root) can read your key file. OpenSSH is picky about this and will refuse to use a private key that other people have access to.</p>
 <p>The public key permissions are <code>(-)(rw-)(r--)(r--)</code> which means that the owner can read and write, and the group and everyone else (assuming they have access to the folder) can read the public key, which is fine. It's a public key after all.</p>
 <p><code>known_hosts</code> is where SSH stores the public keys of computers you've already connected to: every time you answer yes to an &quot;Are you sure you want to connect?&quot; question when you connect to a new computer for the first time, it stores the result in this file and won't ask you again the next time. The file format is one key per line and you can edit the file yourself if you want to.</p>
-<h2 id="set-up-key-access-on-seis"><a class="header" href="#set-up-key-access-on-seis">Set up key access on seis</a></h2>
+<h2 id="set-up-key-access-on-seis"><a class="header" href="#set-up-key-access-on-seis">Set up key access on SEIS</a></h2>
 <p>First, we need to upload our public key to the <code>~/.ssh</code> directory on seis. Even before this, we need to make sure the directory exists though:</p>
 <ul>
 <li>Log in to seis with ssh and your password.</li>
@@ -279,7 +308,7 @@ chmod 600 authorized_keys
 <p>From now on, from you own machine, you should be able to get directly into a lab machine with the following command, which should not ask for your password at all:</p>
 <pre><code>ssh -A -J USERNAME@seis.bris.ac.uk USERNAME@rd-mvb-linuxlab.bristol.ac.uk
 </code></pre>
-<p><em>Unfortunately, <code>-J</code> will not work on a windows CMD terminal, although it should work on Windows Subsystem for Linux. Once we have set up a configuration file, there will be a way to work around this problem. Mac and Linux users should be fine though, as should anyone running these commands from an Alpine VM on their own machine, whatever their host OS.</em></p>
+<p><em>Unfortunately, <code>-J</code> will not work on a windows CMD terminal, although it should work on Windows Subsystem for Linux. Once we have set up a configuration file, there will be a way to work around this problem. Mac and Linux users should be fine though, as should anyone running these commands from a Linux VM on their own machine, whatever their host OS.</em></p>
 <h2 id="setting-up-a-configuration-file"><a class="header" href="#setting-up-a-configuration-file">Setting up a configuration file</a></h2>
 <p>You now have a log in command that works, but you still have to type a lot, and you need to type your username twice. We can improve this by using a configuration file.</p>
 <p>SSH reads two configuration files: one for all users at <code>/etc/ssh/ssh_config</code> (<code>/etc</code> is where POSIX programs typically store global settings) and a per-user one at <code>~/.ssh/config</code>. The site <a href="https://www.ssh.com/ssh/config/">https://www.ssh.com/ssh/config/</a> or just <code>man ssh_config | less</code> on a terminal contain the documentation (<code>man</code> means manual page, and <code>less</code> is a program that shows a file on page at a time and lets you scroll and search).</p>
@@ -301,8 +330,7 @@ Host lab
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
 <p>If you want to learn another useful skill as you go along, here is one way to edit files on the command line. Many linux distributions have an editor called <code>nano</code> built in which runs in the terminal, so <code>nano config</code> edits the file called config (creating it if it doesn't exist, when you save for the first time). It is fairly self-explanatory, the command Control+X quits as you can see on the command bar at the bottom of the screen in nano and if you quit with unsaved changes, it will ask you if you want to save.</p>
-<p>Nano is installed on seis and on the lab machines, so you can use it to edit a file remotely.</p>
-<p>However, nano is not installed by default on alpine linux which we will be using for a lot of this unit - you can install it yourself with <code>sudo apk add nano</code>. </p>
+<p>Nano is installed on SEIS and on the lab machines, and within the Debian distro you will install in Vagrant, so you can use it to edit a file remotely.</p>
 <p>And something for Windows users:</p>
 <p>If you are on Windows and are using OpenSSH through a CMD terminal, a bug in OpenSSH prevents the <code>-J</code> option from working. However, you can write your file like this instead:</p>
 <pre><code># ~/.ssh/config file for WINDOWS CMD users only
@@ -330,7 +358,7 @@ Host lab
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../posix1/install.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../posix1/install.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -344,7 +372,7 @@ Host lab
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../posix1/install.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../posix1/install.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
