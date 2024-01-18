@@ -13,3 +13,4 @@
 
   - [Shell expansion](./shell.md)
   - [Pipes](./pipes.md)
+  - [Regular expressions](./regex.md)

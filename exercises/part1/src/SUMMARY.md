@@ -10,6 +10,7 @@
 - [The POSIX Shell](./posix2/index.md)
   - [Shell expansion](./posix2/shell.md)
   - [Pipes](./posix2/pipes.md)
+  - [Regular expressions](./posix2/regex.md)
 
 # Week 2: Version Control
 - [Git](./git/index.md)
@@ -25,7 +26,6 @@
   - [Java](./build2/java.md)
   - [Spring](./build2/spring.md)
 
-
 # Week 4: Debugging
 - [Debugging](./build1/index.md)
   - [Exercise](./build1/exercise.md)
@@ -37,9 +37,7 @@
   - [Input/Output in POSIX](./posix4/posix_io.md)
   - [The final challenge](./posix4/final.md)
 
-
 # Week 5: Databases
-
 - [SQL introduction](./db1/sql-introduction.md)
   - [Set up the database](./db1/setup.md)
   - [ER diagram](./db1/er-diagram.md)

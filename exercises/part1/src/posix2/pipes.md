@@ -17,7 +17,7 @@ All these commands actually take an optional extra filename as argument, in whic
 
 ## Word list exercises - pipes and regular expressions
 
-Most Linux distributions (including Debian) come with a dictionary file `/usr/share/dict/words` that contains a list of English words in alphabetical order, for use in spell-checking programs. The list includes a selection of proper nouns, for example countries and cities. If you want to look at it on a system that doesn't have it, you can download it with
+Most Linux distributions (including Debian) come with a dictionary file `/usr/share/dict/words` that contains a list of English words in alphabetical order, for use in spell-checking programs. The list includes a selection of proper nouns, for example countries and cities. If you want to look at it on a system that doesn't have it, you can download it with:
 
     wget https://users.cs.duke.edu/~ola/ap/linuxwords -O words
 
@@ -33,16 +33,16 @@ _If English is not your native language, ignore the guessing part - it is not as
   * The 6171st word in the file. _Can you read my mind and guess this word directly?_
   * All words containing the letter Q, capitalised. (A regular expression containing a string of one or more letters matches all strings that contain the expression as a substring.)
   * All words starting with the letter X. The regular expression `X` would match an X anywhere in the word, but `^X` matches an X only at the start of the string.
-  * All words ending in j. (The expression `'j$'` matches a j only at the end of the string, but you have to single-quote it to stop the shell from interpreting the dollar sign). _Can you guess the word - it is a city in eastern Europe?_
+  * All words ending in j. (The expression `'j$'` matches a j only at the end of the string, but you have to single-quote it to stop the shell from interpreting the dollar sign). 
   * The number of words containing the letter Q, ignoring case (e.g. capitalised or not).
   * The first five words containing the letter sequence `cl`.
   * All words containing the sequence "kp", but not "ckp". _Can you guess any of these?_
   * The last 15 words of exactly two letters. The expression `.` (period) matches a single character, and `'^...$'` for example would match all strings of the format _exactly three characters between start and end of string_. You need to quote it because of the dollar sign.
   * All words from the first 100 words on the list, which contain the letter y.
   * The first five words that are among the last 100 words on the list, and contain the letter y (whether capitalised or not).
-  * All three-letter words with no vowels (aeiou).The regular expression `'[aeiou]'` matches any string that contains one of the bracketed characters; you need quotes to stop the shell from interpreting the brackets. Remember to exclude words with capitalised vowels as well. _There are 12 of these, can you guess them all before looking?_
-  * All words of exactly 7 letters, where the third one is an e and the word ends "-ded". _This kind of search is really useful for crosswords. There are 9 words of this form, can you guess them?_
+  * All three-letter words with no vowels (aeiou).The regular expression `'[aeiou]'` matches any string that contains one of the bracketed characters; you need quotes to stop the shell from interpreting the brackets. Remember to exclude words with capitalised vowels as well. _There are 343 of these._
+  * All words of exactly 7 letters, where the third one is an e and the word ends "-ded". _This kind of search is really useful for crosswords. There are 14 words of this form, can you guess them?_
 
 Bonus regular expression question:
 
-  * Find all words that start with a P (whether capitalised or not), and contain at least four instances of the letter a. Putting a `*` after something in a regular expression searches for _any number of repetitions of this, including 0_ so for example `'a*'` would find words with any number of the letter a, including 0 (which is not what you want here). You need single quotes to stop the shell from expanding the `*`. _Can you guess the words? There are essentially four of them, two demonyms (for some reason one of them has a plural in the list, the other doesn't), and two nouns which are not proper nouns._
+  * Find all words that start with a P (whether capitalised or not), and contain at least four instances of the letter a. Putting a `*` after something in a regular expression searches for _any number of repetitions of this, including 0_ so for example `'a*'` would find words with any number of the letter a, including 0 (which is not what you want here). You need single quotes to stop the shell from expanding the `*`. _Can you guess the words? There are 14 hits in the solution but essentially five words: two demonyms and three nouns which are not proper nouns, all with possessive and plural forms (bar one which is its own plural)._
