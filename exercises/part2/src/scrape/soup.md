@@ -105,7 +105,7 @@ works, asking a TA or lecturer for help if you aren't sure.
 ### Exercises
 
 1. Modify `scrape.py` so that it _also_ prints out the contents of the 'info'
-   paragrah in each page (this can be a second print statement). Run the script
+   paragraph in each page (this can be a second print statement). Run the script
 again to test that it works.
 2. Currently the script prints something for _every_ page. Modify it so it would
    only print something out for the leaf nodes -- those pages that don't have a
