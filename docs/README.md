@@ -12,9 +12,11 @@ Please see the following pages for more details:
   
 The unit materials are available at the following locations:
 
+  - [Lecture slides](lectures.md)
   - [Part 1, weeks 13-17](exercises/part1/)
   - [Part 2, weeks 19-23](exercises/part2/)
   
+
 <footer>
   <p> 
     "RETRO COMPUTER AND MICROSOFT WINDOWS 3.1" by ▓▒░ TORLEY ░▒▓ is licensed with CC BY-SA 2.0.'
