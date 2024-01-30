@@ -8,104 +8,124 @@ Although we will be using MariaDB, in some places the name MySQL will still appe
 
 ## Install the database
 
-Open the Alpine virtual machine and install the database with
+Open your VM and install the database with the appropriate commands.
+On Debian that is:
 
 ```sh
-$ sudo apk add mariadb mariadb-client
+$ sudo apt install mariadb-{server,client}
 ```
 
-The `mariadb` package contains the server that stores the data and lets clients log in. `mariadb-client` is a command-line client (with the command name `mysql`); later on we will also use a Java client to access a database from a Java application.
+|||advanced
+What's that funky squiggly bracket doing?  Bash expands it to
+`mariadb-server mariadb-client`.  Similarly if you typed: 
+`cc -o hello{,.c}` it would get expanded to `cc -o hello hello.c`.
+There are *loads* of shorthand tricks for typing stuff quicker in a
+shell: try and pick them up as you go!
 
-The database server is now installed, but we still need to create a database:
+**Question:** What does `echo {a,b,c}-{1,2,3}` print?  Try and guess
+before running it.
+|||
+
+The `mariadb-server` package contains the server that stores the data and lets clients log in. `mariadb-client` is a command-line client (with the command name `mysql`); later on we will also use a Java client to access a database from a Java application.
+
+The database server is now installed, but our system won't start it
+unless you ask it to.  On Debian the service manager is *SystemD*.  We
+can start the server running with:
 
 ```sh
-$ sudo /etc/init.d/mariadb setup
-```
-
-Files in `/etc/init.d` are service scripts; services are commands that can be started automatically when the machine starts and often run in the background - in this case the mariadb service runs the server so that clients can connect to it. We had to use the full path as the `/etc/init.d` folder is not normally in your PATH variable, as it's mostly used by the system rather than directly by users. We are manually calling the service's `setup` command to create the database - if you look inside the service script, you'll see that it calls the `mariadb_install_db` program to create a database in `/var/lib/mysql`. This path is not writable for normal users, so we need sudo on this command.
-
-If you read the output of this command, you will see a warning about security. This is important and we will come back to it.
-
-We now have a database, but the server is not running yet. We can start it for now with
-
-```sh
-$ sudo rc-service mariadb start
+$ sudo systemctl start mariadb
 ```
 
 Check that the service is running with
 
 ```sh
-$ rc-status
+$ sudo systemctl status mariadb
+$ sudo journalctl -u mariadb
 ```
 
-This should show `mariadb [ started ]` somewhere at the bottom under the "manual" runlevel. This means we've started the server, but it won't start automatically next time we restart the machine. Let's change that:
+Set it to run by default with:
 
 ```sh
-$ sudo rc-update add mariadb default
+$ sudo systemctl enable mariadb
 ```
 
-This adds the mariadb service to the "default" runlevel, which is for things that you want to start when the machine starts. For example, the ssh service is already here otherwise you would not be able to log in to the machine with `vagrant ssh` at all. Check with another `rc-status` that mariadb is still running, but now listed under "default".
+|||advanced
+Whilst Linux has *more or less* standardized on using SystemD as the
+service manager... it is unpopular in certain quarters.  Other systems
+exist!  Alpine Linux (which was the VM image we *used* to use) uses
+OpenRC.  The BSDs mostly do it with a hodge-podge of shellscripts.
+Macs use something called `launchctl`.
+
+The argument against SystemD is that it breaks compatibility with the
+POSIX OS standard and goes against _The UNIX Way_ (do one thing
+well); that the developer Lennart Poettering is a bit controversial
+(soft skills are important!);
+and quite frankly the overreach of the project is incredible.  As well
+as managing services it can also encrypt your home folder, manage WiFi
+connections, manage your log files and system name and much, much, more.
+
+The arguments for it are that it is fast, gets rid of a bunch of janky
+shell scripts, and standardizes things in a way that makes sense for
+Linux.  Linux distro's used to be much more diverse but nowadays the
+choice is mostly what package manager do you want to use and what
+desktop do you want by default.
+
+For now SystemD seems to be what we've settled on for Linux.  It's
+mostly fine once you learn it but do try a BSD system and see what it
+used to be like and if you prefer it!
+|||
 
 ## Security
 
-To log in to a database, you normally need a user account and an authentication factor (such as a password, or a private key). However, in the latest Alpine version, mysql user accounts are linked to system user accounts. Try out the following:
+To log in to a database, you normally need a user account and an
+authentication factor (such as a password, or a private key). However,
+in the latest version, mysql user accounts are linked to system user
+accounts. You should probably secure it though.  Running a
+public-facing database without security will end in databreaches and
+fines quicker than you can type `metasploit`.
 
-  - As `vagrant`, log in to the database with `mysql`. You should see the mysql prompt. Try `SHOW DATABASES;` including the semicolon at the end, and press ENTER. You should see two databases including a default one called `test`. Exit again with `exit` or Control+D.
-  - Try `sudo mysql` then `SHOW DATABASES;` again. You should now see more databases, including one called `mysql`. Next type `SELECT Host,User from mysql.user;`. Then log out again.
+The default set-up will allow anyone to log in and see some of the
+database, for example the `test` tables but this is not particularly
+secure. Most distributions come with a `mysql_secure_installation`
+script that sets up more secure access rights. Run it and set a
+password for the root user (otherwise it'll be the default root
+password or blank).
+    
+## Creating a database
 
-If you see three or four lines of result from the above which are _all_ prefaced with 'localhost' in the Host column, then you don't need to execute the script mentioned below (though the rest of this section is still worth reading to understand more about mysql database security), and indeed trying to execute the script will result in an error message (because you attempt to remove something that doesn't exist). 
+Right, you have a mysql server running! Lets connect it to a database!
+To create the database:
 
-The mysql command line tool tries to log you in to the database using the same user account as your current system one - it uses a system call to get the id and name of the user calling it - so when you run it as the system root user (with sudo), then you also get logged in to the database as the database root user, which is why you can see more databases. The `mysql` database contains tables with database configuration including user accounts and other settings.
-
-The default set-up will allow anyone to log in and see some of the database, for example the `test` tables. This is not particularly secure. Most distributions come with a `mysql_secure_installation` script that sets up more secure access rights. We are going to do a similar thing, but with a custom setup for our purposes.
-
-The setup file is located at the address given below. You can download it for example with `wget ADDRESS` in Alpine linux; `wget` is a download program. Place it in the same folder as your Vagrantfile (in `/vagrant`, if you're doing the download from within Alpine).
-
-```
-https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/secure-setup.sql
-```
-
-  - Run the command `sudo mysql -e 'source /vagrant/secure-setup.sql'` to run this script as the database root user.
-  - Now try a simple `mysql` again. This time, it should not let you log in.
-
-The `-e` option to mysql means "run the following command line argument as a script", as you know already from sed and several other tools; `source` means "load a file and run it" and the file in question is part of the lab package I have prepared for you.
-
-The secure-setup script is as follows:
-
-```sql
-DELETE FROM mysql.user WHERE User='';
-DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
-DROP DATABASE IF EXISTS test;
-DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
-FLUSH PRIVILEGES;
+```sh
+mysqladmin -u root -p create mydatabase
 ```
 
-The first two lines remove some default users: one with the empty username, and all versions of root that let you log in over the network. The only versions of root that still exist are now "localhost" (e.g. from the same machine), 127.0.0.1 (same thing but using IPV4 notation) and "::1" (same in IPv6). This means that now, if your VM is connected to the internet, you cannot log in as root remotely at all, which is the correct attitude to security. To administer a database, you should always first log in to the machine via ssh using a key file, then log in to the database from the machine itself.
+To connect to it:
 
-Next in the setup script, we remove the default test database and user.
+```sh
+mysql -u root -p mydatabase
+```
 
-Finally, `FLUSH PRIVILEGES` updates the in-memory cache of the users table, making your new permissions take effect.
-
-Note: what happens when you install the mariadb package (or install it from a ZIP file) depends on the distribution. For some distributions, installing the package automatically creates a database, and adds the server to the default runlevel. Alpine will not do any of these things for you - you have to configure it itself, which is a good opportunity to learn what's going on behind the scenes in other distributions. Most distributions will not, however, configure the security settings automatically - they typically leave the test database and let root login remotely. Wherever you install mariadb or mysql, please check this yourself - an unsecured database is something that hackers will be keeping an eye out for.
+That should drop you into a prompt!  Congratulations! You have a
+running database.
 
 ## Importing sample data
 
-I have prepared some sample data that we will be using in this and the following weeks.
+We have prepared some sample data that we will be using in this and the following weeks.
 
 First, download the following two files and place them in the same folder as your Vagrantfile. This folder is important as the `sample-data.sql` script contains hard-coded absolute paths starting in `/vagrant/` to import some of the data. You can download the files the same way as you did before with the secure setup file.
 
+```sh
+cd /vagrant
+wget https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/sample-data.sql
+wget https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/sampledata.tar
+tar -xvf sampledata.tar
 ```
-https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/sample-data.sql
-https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/sampledata.tar
-```
+This creates a folder sampledata with the files we need.
 
 If you are using a local copy of this repository, you can also find the files under `/code/databases`.
 
-The `tar` file is a _tape archive_: a file that contains further files and folders, as if it were a folder itself. Extract it by going to `/vagrant` in Alpine and run
-
-    tar -xvf sampledata.tar
-
-This creates a folder sampledata with the files we need.
+The `tar` file is a _tape archive_: a file that contains further files and folders, as if it were a folder itself. 
 
 |||advanced
 The options here are x=extract a file, v=verify (print the name of every processed file to standard output), f=the filename is in the following argument. You may sometimes see this command without the '-' for these options -- this works because `tar` supports an older convention where options are not prefixed with a dash, but to be safe you should stick to the modern convention (which it also understands).
@@ -116,10 +136,16 @@ To create a tar file yourself, the command would be `tar -cvf ARCHIVE.tar FILE1 
 Load the sample data with the following command:
 
 ```sh
-sudo mysql -e 'source /vagrant/sample-data.sql'
+mysql -u root -p -e 'source /vagrant/sample-data.sql'
 ```
 
 This pulls in some data in CSV files (have a look at the script if you want) and creates a default user "vagrant" who can log in to the database without a password, but can only read and not write the two sample databases "census" and "elections". There is another database called "data" which starts out empty, and "vagrant" can both read and write it.
+
+|||advanced
+It also seems to throw a bunch of errors and was left to us by the
+people who previously ran the unit.  It's on our list of jobs to fix,
+but it seems to work anyway?  YOLO.  Pull requests appreciated.
+|||
 
 You can now log in to the database and try the following:
 
@@ -135,19 +161,11 @@ You can open the SQL and CSV files under `/vagrant/sampledata` to compare with t
 
 ## On a lab machine
 
-On a lab machine, to save disk space your VMs may not remain between reboots - and because they are not hosted on the network file system, if you log in to a different machine next time, your changes will not be saved either but you will get the VM reinstalled from scratch. To make sure the database is ready whenever you need it, open the `Vagrantfile` in a text editor and make the following changes.
-
-  * On the line starting `apk add`, add the packages `mariadb` and `mariadb-client` to the end, separated by spaces.
-  * Download and save the three setup files (`sample-data.sql`, `secure-setup.sql` and `sampledata.tar`) in the same folder as your Vagrantfile (this is on the host machine, so it will not get deleted along with the VM). 
-  * Extract the tar file so that there is a folder `sampledata/` in the same folder as your Vagrantfile.
-  * Following the `apk add` lines for mariadb in your Vagrantfile, add the following lines (obviously, exclude the line for `secure-setup.sql` if you didn't need to do this above):
-
-```sh
-/etc/init.d/mariadb setup
-rc-update add mariadb default
-rc-service mariadb start
-mysql -e 'source /vagrant/secure-setup.sql'
-mysql -e 'source /vagrant/sample-data.sql'
-```
-
-This ensures that whenever vagrant recreates the VM, it installs the database for us. The commands are the same ones that we have done just now ourselves.
+On a lab machine, to save disk space your VMs may not remain between
+reboots - and because they are not hosted on the network file system,
+if you log in to a different machine next time, your changes will not
+be saved either but you will get the VM reinstalled from scratch. To
+make sure the database is ready whenever you need it, open the
+`Vagrantfile` in a text editor and add the setup commands to the
+provisioning script. The commands are the same ones that we have done just now
+manually.
