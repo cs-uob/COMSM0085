@@ -684,6 +684,11 @@ described for the fourth question but fail to match this expression. </li>
 <ul>
 <li><a href="git/./git.html">Git</a></li>
 </ul>
+<h2 id="reading"><a class="header" href="#reading">Reading</a></h2>
+<p>Optional (but recommended).</p>
+<ul>
+<li><a href="https://www.man7.org/linux/man-pages/man7/giteveryday.7.html"><code>man 7 giteveryday</code></a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="git"><a class="header" href="#git">Git</a></h1>
 <p>Git is the defacto standard version control system used throughout CS.
 It also lives up to its name as being a <em>pain</em> to use.  Take it
@@ -1338,11 +1343,11 @@ In the video for this activity you have only seen a very brief introduction.</p>
 <p>This should build an executable <code>sqlite3</code> that you can run (use <code>.q</code> to quit again).</p>
 <p><em>If you want to, you can now type <code>sudo make install</code> to copy the executable to <code>/usr/local/bin</code>.</em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="build-tools-python"><a class="header" href="#build-tools-python">Build tools: Python</a></h1>
-<p>Install Python and pip on Alpine with <code>sudo apk add python3 py3-pip</code>. You can now run it with <code>python3</code> and Control+D quits again.</p>
+<p>The Python programming language comes with a package manager called <code>pip</code>.  Find the package that provides it and install it (<strong>hint</strong>: how did we find a missing library in the C exercise?).</p>
 <p>We are going to practice installing the <a href="https://github.com/miyuchina/mistletoe">mistletoe</a> module, which renders markdown into HTML.</p>
 <ul>
 <li>In python, try the line <code>import mistletoe</code> and notice that you get <code>ModuleNotFoundError: No module named 'mistletoe'</code>. </li>
-<li>Quit python again and try <code>sudo pip3 install mistletoe</code>. You should get a success message (and possibly a warning, explained below).</li>
+<li>Quit python again (Control-D) and try <code>sudo pip3 install mistletoe</code>. You should get a success message (and possibly a warning, explained below).</li>
 <li>Open python again and repeat <code>import mistletoe</code>. This produces no output, so the module was loaded.</li>
 </ul>
 <p>Create a small sample markdown file as follows, called <code>hello.md</code> for example:</p>
@@ -1358,33 +1363,62 @@ with open('hello.md', 'r') as file:
 <p>This should print the markdown rendered to HTML, e.g.</p>
 <pre><code>&lt;h1&gt;Markdown Example&lt;/h1&gt;\n&lt;p&gt;Markdown is a &lt;em&gt;markup&lt;/em&gt; language.&lt;/p&gt;
 </code></pre>
-<style>
-div.container { padding: 0; background-color: #efefef; }
-div.advanced header { background-color: lightskyblue;   padding-left: 0.5ex; }
-span.advanced-title::before { content: "Advanced note" }
-div.container-content { padding: 1ex; }
-div.container-content :first-child { margin-top: 0; }
-div.container-content :last-child { margin-bottom: 0; }
-</style>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
-<p>Python version 3 came out in 2008 and has some syntax changes compared to Python 2; version 2 is now considered deprecated. On most systems, you simply use 'python' and 'pip' for the version 3 commands. Alpine is a bit of an exception here as it still calls the commands 'python3' and 'pip3', in case you are still using programs that require version 2.</p>
-<p>When a language comes with its own package manager, sometimes you have a choice between using the OS package manager (e.g. apk) and the language one (e.g. pip) to install modules. Generally speaking, the language one will contain the most up-to-date versions and you should use that unless you have a reason to do otherwise.</p>
-<p>At the time of writing for example, the Alpine repos contain pip version 19, but the python distribution itself contains version 21, so you get a warning when you are using the older one - complete with the command you should type to install the newer one, except that on Alpine you actually have to type <code class="language-plaintext">sudo pip3 install --upgrade pip</code>.</p>
-<p>
-You can in fact use pip without sudo, by passing the <code>--user</code> option which installs packages into a folder in your home directory (<code>~/.local</code>) instead of in /usr which requires root permissions. It is a matter of choice which one to use, except if you are on a machine without root rights (like a lab machine) where you have to use the user install option.
-</p>
+<p>Python version 3 came out in 2008 and has some syntax changes compared
+to Python 2 (<code>print &quot;hello world&quot;</code> became <code>print(&quot;hello world&quot;)</code>). Version 2 is now considered deprecated; but the transition
+was <em>long</em> and <em>extremely painful</em> because changing the syntax of a
+thing like the print statement leads to an awful lot of code breaking
+and an awful lot of people preferring not to fix their code and
+instead just keep an old version of Python installed.</p>
+<p>So whilst we were dealing with this it was typical for a system to
+have multiple versions of Python installed <code>python2</code> for the old one
+and <code>python3</code> for the newer on (and even then these were often
+symlinks to specific subversions like <code>python2.6</code>), and then <code>python</code>
+being a symlink for whatever your OS considered to be the &quot;supported&quot; version.</p>
+<p>Different OSs absolutely had different versions of Python (MacOS was
+particularly egregious for staying with Python 2 for far longer than
+necessary) and so a solution was needed, because this was just
+breaking things while OS designers bickered.</p>
+<p>The solution is that for <em>most</em> dependencies (except for compiled
+libraries) we generally use a programming language's own package
+manager and ignore what the OS provides.  For Python that means <code>pip</code>
+(occasionally called <code>pip3</code> or <code>pip2</code>).</p>
+<p>Sometimes you'll see things telling you to install a package with
+<code>sudo pip install</code> but don't do that! It will break things horribly
+eventually.  You can use pip without sudo, by passing the <code>--user</code>
+option which installs packages into a folder in your home directory
+(<code>~/.local</code>) instead of in <code>/usr</code> which normally requires root
+permissions.</p>
+<p>Sometimes you'll still need to install a package through the OSs
+package manager (<code>numpy</code> and <code>scipy</code> are common because they depend on
+an awful lot of C code and so are a pain to install with <code>pip</code> as you
+have to fix the library paths and dependencies manually) but in
+general try and avoid it.</p>
+<p>Python used to manage your OS should be run by the system designers;
+Python used for your dev work should be managed by you.  And never the
+twain shall meet.</p>
 </div>
 </div>
 <h2 id="scipy"><a class="header" href="#scipy">Scipy</a></h2>
-<p>In Maths B, we will be using <code>scipy</code> for statistics, so you may as well install that too. Unfortunately, <code>pip</code> will not help you here because scipy depends on a C library for fast linear algebra, and this doesn't exist for Alpine linux in the <code>pip</code> repositories. It does exist in the Alpine repos though, so <code>sudo apk add py3-scipy</code> will install it.</p>
+<p>We often use <code>scipy</code> for statistics, so you may as well install that too. Unfortunately, <code>pip</code> will not help you here because scipy depends on a C library for fast linear algebra. You could go and install all the dependencies (and you might have to do this if you need a specific version of it), but it turns out Debian has it all packaged up as a system package: Try searching for it with <code>apt search scipy</code>.</p>
 <p>The following commands show if it is correctly installed, by sampling 5 times from a Normal distribution with mean 200 and standard deviation 10:</p>
 <pre><code>from scipy.stats import norm
 norm(loc=200, scale=10).rvs(5)
 </code></pre>
 <p>This should print an array of five values that are not too far off 200 (to be precise, with about 95% confidence they will be between 180 and 220 - more on this in Maths B later on).</p>
-<p>You might want to install python and scipy on your host OS as well, as it's a really easy language to code in and you can use your favourite editor and even make graphical plots - you will probably learn about this in second year, and maybe again in third year if you take Machine Learning. In this case, if your host OS is Windows or Mac, I recommend that you install the <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> distribution (obviously the Python 3 version, not the Python 2 one) so that you can easily install scipy. This gets you two package managers: <code>conda install scipy</code> uses the conda one (which can handle the required C library) and <code>pip</code> for everything else. For Linux, you can install conda too, or just use the scipy packaged with your distribution.</p>
+<h2 id="avoiding-sudo"><a class="header" href="#avoiding-sudo">Avoiding sudo</a></h2>
+<p>If you need to install libraries you might be tempted to install them for all users by using <code>sudo pip</code> but this can lead to pain!  If you alter the system libraries and something in the system depends on a specific version of a library then it can lead to horrible breakage and things not working (in particular on OSs like Mac OS which tend to update libraries less often).</p>
+<p>Python comes with a mechanism called <a href="https://docs.python.org/3/library/venv.html">venv</a> which lets you create a virtual python install that is owned by a user: you can alter the libraries in that without <code>sudo</code> and without fear of mucking up your host system.  Read the docs and get used to using it---it'll save you a world of pain later!</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p><code>pip freeze | tee requirements.txt</code> will list all the packages your using and what version they are and save them in a file called <code>requirements.txt</code>.</p>
+<p><code>pip install -r requirements.txt</code> will install them again!</p>
+<p>This makes it <em>super easy</em> to ensure that someone looking at your code has all the right dependencies without having to reel off a list of <em>go install these libraries</em> (and will make anyone whoever has to mark your code happy and more inclined to give you marks).</p>
+</div>
+</div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="build-tools-java"><a class="header" href="#build-tools-java">Build tools: Java</a></h1>
 <p>In the Java world,</p>
 <ul>
@@ -2325,64 +2359,94 @@ ok = close(saved);   check(ok, &quot;closing duplicate&quot;);
 <p>In this unit, we will be using the free database MariaDB, which is a clone of MySQL and was written by the same author - Michael &quot;Monty&quot; Widenius, from Finland. The history behind the naming is that Monty first created MySQL (named after his daughter, My) which became the most popular open-source database. He sold MySQL to Sun, who were in turn bought by Oracle - who are famous for their commercial database software. As a result, Monty created a clone of MySQL called MariaDB (named after his other daughter). MySQL and MariaDB are compatible in many ways and most of what we learn on this unit will apply equally to both of them, although both Oracle (for MySQL) and the open-source community (for MariaDB) have added new features to their databases.</p>
 <p>Although we will be using MariaDB, in some places the name MySQL will still appear - most notably as the name of the command-line program that you use to access the database.</p>
 <h2 id="install-the-database"><a class="header" href="#install-the-database">Install the database</a></h2>
-<p>Open the Alpine virtual machine and install the database with</p>
-<pre><code class="language-sh">$ sudo apk add mariadb mariadb-client
+<p>Open your VM and install the database with the appropriate commands.
+On Debian that is:</p>
+<pre><code class="language-sh">$ sudo apt install mariadb-{server,client}
 </code></pre>
-<p>The <code>mariadb</code> package contains the server that stores the data and lets clients log in. <code>mariadb-client</code> is a command-line client (with the command name <code>mysql</code>); later on we will also use a Java client to access a database from a Java application.</p>
-<p>The database server is now installed, but we still need to create a database:</p>
-<pre><code class="language-sh">$ sudo /etc/init.d/mariadb setup
-</code></pre>
-<p>Files in <code>/etc/init.d</code> are service scripts; services are commands that can be started automatically when the machine starts and often run in the background - in this case the mariadb service runs the server so that clients can connect to it. We had to use the full path as the <code>/etc/init.d</code> folder is not normally in your PATH variable, as it's mostly used by the system rather than directly by users. We are manually calling the service's <code>setup</code> command to create the database - if you look inside the service script, you'll see that it calls the <code>mariadb_install_db</code> program to create a database in <code>/var/lib/mysql</code>. This path is not writable for normal users, so we need sudo on this command.</p>
-<p>If you read the output of this command, you will see a warning about security. This is important and we will come back to it.</p>
-<p>We now have a database, but the server is not running yet. We can start it for now with</p>
-<pre><code class="language-sh">$ sudo rc-service mariadb start
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>What's that funky squiggly bracket doing?  Bash expands it to
+<code>mariadb-server mariadb-client</code>.  Similarly if you typed: 
+<code>cc -o hello{,.c}</code> it would get expanded to <code>cc -o hello hello.c</code>.
+There are <em>loads</em> of shorthand tricks for typing stuff quicker in a
+shell: try and pick them up as you go!</p>
+<p><strong>Question:</strong> What does <code>echo {a,b,c}-{1,2,3}</code> print?  Try and guess
+before running it.</p>
+</div>
+</div>
+<p>The <code>mariadb-server</code> package contains the server that stores the data and lets clients log in. <code>mariadb-client</code> is a command-line client (with the command name <code>mysql</code>); later on we will also use a Java client to access a database from a Java application.</p>
+<p>The database server is now installed, but our system won't start it
+unless you ask it to.  On Debian the service manager is <em>SystemD</em>.  We
+can start the server running with:</p>
+<pre><code class="language-sh">$ sudo systemctl start mariadb
 </code></pre>
 <p>Check that the service is running with</p>
-<pre><code class="language-sh">$ rc-status
+<pre><code class="language-sh">$ sudo systemctl status mariadb
+$ sudo journalctl -u mariadb
 </code></pre>
-<p>This should show <code>mariadb [ started ]</code> somewhere at the bottom under the &quot;manual&quot; runlevel. This means we've started the server, but it won't start automatically next time we restart the machine. Let's change that:</p>
-<pre><code class="language-sh">$ sudo rc-update add mariadb default
+<p>Set it to run by default with:</p>
+<pre><code class="language-sh">$ sudo systemctl enable mariadb
 </code></pre>
-<p>This adds the mariadb service to the &quot;default&quot; runlevel, which is for things that you want to start when the machine starts. For example, the ssh service is already here otherwise you would not be able to log in to the machine with <code>vagrant ssh</code> at all. Check with another <code>rc-status</code> that mariadb is still running, but now listed under &quot;default&quot;.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>Whilst Linux has <em>more or less</em> standardized on using SystemD as the
+service manager... it is unpopular in certain quarters.  Other systems
+exist!  Alpine Linux (which was the VM image we <em>used</em> to use) uses
+OpenRC.  The BSDs mostly do it with a hodge-podge of shellscripts.
+Macs use something called <code>launchctl</code>.</p>
+<p>The argument against SystemD is that it breaks compatibility with the
+POSIX OS standard and goes against <em>The UNIX Way</em> (do one thing
+well); that the developer Lennart Poettering is a bit controversial
+(soft skills are important!);
+and quite frankly the overreach of the project is incredible.  As well
+as managing services it can also encrypt your home folder, manage WiFi
+connections, manage your log files and system name and much, much, more.</p>
+<p>The arguments for it are that it is fast, gets rid of a bunch of janky
+shell scripts, and standardizes things in a way that makes sense for
+Linux.  Linux distro's used to be much more diverse but nowadays the
+choice is mostly what package manager do you want to use and what
+desktop do you want by default.</p>
+<p>For now SystemD seems to be what we've settled on for Linux.  It's
+mostly fine once you learn it but do try a BSD system and see what it
+used to be like and if you prefer it!</p>
+</div>
+</div>
 <h2 id="security"><a class="header" href="#security">Security</a></h2>
-<p>To log in to a database, you normally need a user account and an authentication factor (such as a password, or a private key). However, in the latest Alpine version, mysql user accounts are linked to system user accounts. Try out the following:</p>
-<ul>
-<li>As <code>vagrant</code>, log in to the database with <code>mysql</code>. You should see the mysql prompt. Try <code>SHOW DATABASES;</code> including the semicolon at the end, and press ENTER. You should see two databases including a default one called <code>test</code>. Exit again with <code>exit</code> or Control+D.</li>
-<li>Try <code>sudo mysql</code> then <code>SHOW DATABASES;</code> again. You should now see more databases, including one called <code>mysql</code>. Next type <code>SELECT Host,User from mysql.user;</code>. Then log out again.</li>
-</ul>
-<p>If you see three or four lines of result from the above which are <em>all</em> prefaced with 'localhost' in the Host column, then you don't need to execute the script mentioned below (though the rest of this section is still worth reading to understand more about mysql database security), and indeed trying to execute the script will result in an error message (because you attempt to remove something that doesn't exist). </p>
-<p>The mysql command line tool tries to log you in to the database using the same user account as your current system one - it uses a system call to get the id and name of the user calling it - so when you run it as the system root user (with sudo), then you also get logged in to the database as the database root user, which is why you can see more databases. The <code>mysql</code> database contains tables with database configuration including user accounts and other settings.</p>
-<p>The default set-up will allow anyone to log in and see some of the database, for example the <code>test</code> tables. This is not particularly secure. Most distributions come with a <code>mysql_secure_installation</code> script that sets up more secure access rights. We are going to do a similar thing, but with a custom setup for our purposes.</p>
-<p>The setup file is located at the address given below. You can download it for example with <code>wget ADDRESS</code> in Alpine linux; <code>wget</code> is a download program. Place it in the same folder as your Vagrantfile (in <code>/vagrant</code>, if you're doing the download from within Alpine).</p>
-<pre><code>https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/secure-setup.sql
+<p>To log in to a database, you normally need a user account and an
+authentication factor (such as a password, or a private key). However,
+in the latest version, mysql user accounts are linked to system user
+accounts. You should probably secure it though.  Running a
+public-facing database without security will end in databreaches and
+fines quicker than you can type <code>metasploit</code>.</p>
+<p>The default set-up will allow anyone to log in and see some of the
+database, for example the <code>test</code> tables but this is not particularly
+secure. Most distributions come with a <code>mysql_secure_installation</code>
+script that sets up more secure access rights. Run it and set a
+password for the root user (otherwise it'll be the default root
+password or blank).</p>
+<h2 id="creating-a-database"><a class="header" href="#creating-a-database">Creating a database</a></h2>
+<p>Right, you have a mysql server running! Lets connect it to a database!
+To create the database:</p>
+<pre><code class="language-sh">mysqladmin -u root -p create mydatabase
 </code></pre>
-<ul>
-<li>Run the command <code>sudo mysql -e 'source /vagrant/secure-setup.sql'</code> to run this script as the database root user.</li>
-<li>Now try a simple <code>mysql</code> again. This time, it should not let you log in.</li>
-</ul>
-<p>The <code>-e</code> option to mysql means &quot;run the following command line argument as a script&quot;, as you know already from sed and several other tools; <code>source</code> means &quot;load a file and run it&quot; and the file in question is part of the lab package I have prepared for you.</p>
-<p>The secure-setup script is as follows:</p>
-<pre><code class="language-sql">DELETE FROM mysql.user WHERE User='';
-DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
-DROP DATABASE IF EXISTS test;
-DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
-FLUSH PRIVILEGES;
+<p>To connect to it:</p>
+<pre><code class="language-sh">mysql -u root -p mydatabase
 </code></pre>
-<p>The first two lines remove some default users: one with the empty username, and all versions of root that let you log in over the network. The only versions of root that still exist are now &quot;localhost&quot; (e.g. from the same machine), 127.0.0.1 (same thing but using IPV4 notation) and &quot;::1&quot; (same in IPv6). This means that now, if your VM is connected to the internet, you cannot log in as root remotely at all, which is the correct attitude to security. To administer a database, you should always first log in to the machine via ssh using a key file, then log in to the database from the machine itself.</p>
-<p>Next in the setup script, we remove the default test database and user.</p>
-<p>Finally, <code>FLUSH PRIVILEGES</code> updates the in-memory cache of the users table, making your new permissions take effect.</p>
-<p>Note: what happens when you install the mariadb package (or install it from a ZIP file) depends on the distribution. For some distributions, installing the package automatically creates a database, and adds the server to the default runlevel. Alpine will not do any of these things for you - you have to configure it itself, which is a good opportunity to learn what's going on behind the scenes in other distributions. Most distributions will not, however, configure the security settings automatically - they typically leave the test database and let root login remotely. Wherever you install mariadb or mysql, please check this yourself - an unsecured database is something that hackers will be keeping an eye out for.</p>
+<p>That should drop you into a prompt!  Congratulations! You have a
+running database.</p>
 <h2 id="importing-sample-data"><a class="header" href="#importing-sample-data">Importing sample data</a></h2>
-<p>I have prepared some sample data that we will be using in this and the following weeks.</p>
+<p>We have prepared some sample data that we will be using in this and the following weeks.</p>
 <p>First, download the following two files and place them in the same folder as your Vagrantfile. This folder is important as the <code>sample-data.sql</code> script contains hard-coded absolute paths starting in <code>/vagrant/</code> to import some of the data. You can download the files the same way as you did before with the secure setup file.</p>
-<pre><code>https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/sample-data.sql
-https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/sampledata.tar
-</code></pre>
-<p>If you are using a local copy of this repository, you can also find the files under <code>/code/databases</code>.</p>
-<p>The <code>tar</code> file is a <em>tape archive</em>: a file that contains further files and folders, as if it were a folder itself. Extract it by going to <code>/vagrant</code> in Alpine and run</p>
-<pre><code>tar -xvf sampledata.tar
+<pre><code class="language-sh">cd /vagrant
+wget https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/sample-data.sql
+wget https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/sampledata.tar
+tar -xvf sampledata.tar
 </code></pre>
 <p>This creates a folder sampledata with the files we need.</p>
+<p>If you are using a local copy of this repository, you can also find the files under <code>/code/databases</code>.</p>
+<p>The <code>tar</code> file is a <em>tape archive</em>: a file that contains further files and folders, as if it were a folder itself. </p>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
@@ -2391,9 +2455,17 @@ https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/sampled
 </div>
 </div>
 <p>Load the sample data with the following command:</p>
-<pre><code class="language-sh">sudo mysql -e 'source /vagrant/sample-data.sql'
+<pre><code class="language-sh">mysql -u root -p -e 'source /vagrant/sample-data.sql'
 </code></pre>
 <p>This pulls in some data in CSV files (have a look at the script if you want) and creates a default user &quot;vagrant&quot; who can log in to the database without a password, but can only read and not write the two sample databases &quot;census&quot; and &quot;elections&quot;. There is another database called &quot;data&quot; which starts out empty, and &quot;vagrant&quot; can both read and write it.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>It also seems to throw a bunch of errors and was left to us by the
+people who previously ran the unit.  It's on our list of jobs to fix,
+but it seems to work anyway?  YOLO.  Pull requests appreciated.</p>
+</div>
+</div>
 <p>You can now log in to the database and try the following:</p>
 <ul>
 <li><code>mysql</code> on its own logs you in, you now get the database prompt <code>MariaDB [(none)]&gt;</code> to show that you haven't loaded a particular database yet.</li>
@@ -2406,20 +2478,14 @@ https://raw.githubusercontent.com/cs-uob/COMSM0085/master/code/databases/sampled
 </ul>
 <p>You can open the SQL and CSV files under <code>/vagrant/sampledata</code> to compare with the output you get from MariaDB. Study this until it makes sense to you. The <code>setup.sql</code> files contain the database schemas and the <code>import.sql</code> ones pull in the sample data.</p>
 <h2 id="on-a-lab-machine"><a class="header" href="#on-a-lab-machine">On a lab machine</a></h2>
-<p>On a lab machine, to save disk space your VMs may not remain between reboots - and because they are not hosted on the network file system, if you log in to a different machine next time, your changes will not be saved either but you will get the VM reinstalled from scratch. To make sure the database is ready whenever you need it, open the <code>Vagrantfile</code> in a text editor and make the following changes.</p>
-<ul>
-<li>On the line starting <code>apk add</code>, add the packages <code>mariadb</code> and <code>mariadb-client</code> to the end, separated by spaces.</li>
-<li>Download and save the three setup files (<code>sample-data.sql</code>, <code>secure-setup.sql</code> and <code>sampledata.tar</code>) in the same folder as your Vagrantfile (this is on the host machine, so it will not get deleted along with the VM). </li>
-<li>Extract the tar file so that there is a folder <code>sampledata/</code> in the same folder as your Vagrantfile.</li>
-<li>Following the <code>apk add</code> lines for mariadb in your Vagrantfile, add the following lines (obviously, exclude the line for <code>secure-setup.sql</code> if you didn't need to do this above):</li>
-</ul>
-<pre><code class="language-sh">/etc/init.d/mariadb setup
-rc-update add mariadb default
-rc-service mariadb start
-mysql -e 'source /vagrant/secure-setup.sql'
-mysql -e 'source /vagrant/sample-data.sql'
-</code></pre>
-<p>This ensures that whenever vagrant recreates the VM, it installs the database for us. The commands are the same ones that we have done just now ourselves.</p>
+<p>On a lab machine, to save disk space your VMs may not remain between
+reboots - and because they are not hosted on the network file system,
+if you log in to a different machine next time, your changes will not
+be saved either but you will get the VM reinstalled from scratch. To
+make sure the database is ready whenever you need it, open the
+<code>Vagrantfile</code> in a text editor and add the setup commands to the
+provisioning script. The commands are the same ones that we have done just now
+manually.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="reading-an-er-diagram"><a class="header" href="#reading-an-er-diagram">Reading an ER diagram</a></h1>
 <p>Here is an ER diagram for a fictional university database:</p>
 <p><img src="db1/../resources/uni-diagram.png" alt="ER diagram" /></p>
@@ -2770,9 +2836,49 @@ JDBC (Java DataBase Connectivity) is a low-level, not particularly object-orient
 <p>When you try and open a connection, Java looks for a driver on your classpath that implements the addressing scheme (e.g. <code>mariadb</code>) that you have requested. This makes setting up the classpath a bit tricky, but we have maven to manage that for us.</p>
 <p>However, we need to understand a bit about networking and security to make sense of that URL.</p>
 <p>In a traditional database set-up, the database lives on its own machine (or cluster of machines) and applications connect to it over the network. To do this, by default, databases listen on TCP port 3306.</p>
-<p>For security reasons, a competent adminstrator will set things up so that there is a firewall preventing access to the database from any machines except those of applications (and possibly developers and administrators), the database machine will certainly not be available directly from the internet. Then, applications will also need a username and password to connect to the database. Since these passwords are used by applications, and do not need to be remembered by humans, there is absolutely no excuse for choosing weak ones: the absolute minimum is something with 128 bits of entropy. Computers have no problems remembering something this long! In this case you add the extra <code>pass=</code> argument to the connection string, and to prevent passwords being sent unencrypted over the network (even if it's your internal network) you can also set up TLS or a similar tunneling technology.</p>
-<p>On our Alpine machine, when we set up mariadb by default, the database server and client are both running on the same machine, so you can gain both security and performance by not using a network connection at all - instead when you type <code>mysql</code> it connects over a POSIX socket, another special type of file (type <code>s</code> in <code>ls -l</code>), in this case <code>/var/run/mysqld/mysqld.sock</code>. A POSIX socket is like a pair of pipes in that it allows bidirectional, concurrent communication between different processes, but with an API closer to that of a network (TCP) socket.</p>
-<p>The point of all this discussion is that for your alpine machine, your connection string will look like this (all on one line with no newlines):</p>
+<p>For security reasons, a competent adminstrator will set things up so that there
+is a firewall preventing access to the database from any machines except those
+of applications (and possibly developers and administrators), the database
+machine will certainly not be available directly from the internet. Then,
+applications will also need a username and password to connect to the database.
+Since these passwords are used by applications, and do not need to be remembered
+by humans, there is absolutely no excuse for choosing weak ones: the absolute
+minimum is something with 128 bits of entropy. Computers have no problems
+remembering something this long! In this case you add the extra <code>pass=</code> argument
+to the connection string, and to prevent passwords being sent unencrypted over
+the network (even if it's your internal network) you can also set up TLS or a
+similar tunneling technology.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>Learning how to secure things takes time but doing things like long
+passwords and encryption by default is only a start.  If you want to
+get clever you could muck about with behavioural checks so that if
+someone starts doing something they don't normally do it triggers
+logs.  How are you going to spot when your database has been attacked?
+How are you going to tell when its being attacked but hasn't yet been
+broken in to?  How are you going to get it back up and running before
+someone comes and yells at you?</p>
+<p>Whilst the clever stuff is all fun and good an <em>awful</em> lot of this
+ultimately boils down to good old fashioned sysadmining.  Backup
+everything regularly. Note what changes.  Get your logs off the
+machine ASAP before they can be tampered with.  Rotate your keys
+regularly because you can write a shellscript for it and whilst it
+make anything more secure it'll make a compliance person happy.</p>
+<p>For a more complete guide to managing a computer, see any of Michael W
+Lucas's books.</p>
+</div>
+</div>
+<p>On our VM, when you set up mariadb by default, the database server and client
+are both running on the same machine, so you can gain both security and
+performance by not using a network connection at all - instead when you type
+<code>mysql</code> it connects over a POSIX socket, another special type of file (type <code>s</code>
+in <code>ls -l</code>), in this case <code>/var/run/mysqld/mysqld.sock</code>. A POSIX socket is like
+a pair of pipes in that it allows bidirectional, concurrent communication
+between different processes, but with an API closer to that of a network (TCP)
+socket.</p>
+<p>The point of all this discussion is that for your VM, your connection string
+will look like this (all on one line with no newlines):</p>
 <pre><code>jdbc:mariadb://localhost:3306/DATABASE?user=USER&amp;localSocket=/var/run/mysqld/mysqld.sock
 </code></pre>
 <p>The <code>localSocket</code> option overrides the host/port at the start. For this to work, you need the mariadb driver and a library called JNA (Java Native Access) on your classpath, and of course your system needs to support sockets.</p>
@@ -2783,16 +2889,19 @@ JDBC (Java DataBase Connectivity) is a low-level, not particularly object-orient
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
-<p>You can configure this on your Alpine machine if you wanted to: the main mariadb configuration file is <code>/etc/my.cnf</code> which in our case just contains a statement to include all files in the <code>/etc/my.cnf.d/</code> folder; in there we have <code>mariadb-server.cnf</code> which contains the lines</p>
+<p>You can configure this on your VM if you wanted to: the main mariadb
+configuration file is <code>/etc/my.cnf</code> which in our case just contains a statement
+to include all files in the <code>/etc/my.cnf.d/</code> folder; in there we have
+<code>mariadb-server.cnf</code> which contains the lines</p>
 <pre><code>[mysqld]
 skip-networking
 </code></pre>
-<p>Remove the last line and restart the server (<code>rc-service mariadb restart</code>) and then your mariadb server (<code>mysqld</code>) will really be listening on port 3306.</p>
+<p>Remove the last line and restart the server (<code>systemctl restart mariadb</code>) and then your mariadb server (<code>mysqld</code>) will really be listening on port 3306.</p>
 <p>We didn't notice this with the console client <code>mysql</code> because that by default tries the socket first, and then port 3306 if the socket doesn't exist. However the JDBC driver will only try exactly the options you give, and if you don't tell it to use the socket, it will try port 3306 and throw and exception if nothing is listening there.</p>
 </div>
 </div>
 <h2 id="pom-file"><a class="header" href="#pom-file">POM file</a></h2>
-<p>Under <code>code/jdbc/</code> in this unit's repository you can find a minimal JDBC application that uses the <code>elections</code> database. Download this to your Alpine VM with <code>wget</code> (or get it from the unit repository, if you have cloned it there) and extract it to an otherwise empty folder (<code>tar xvf jdbc-example.tar</code>). It contains a file <code>pom.xml</code> and a file <code>src/main/java/org/example/Example.java</code>.</p>
+<p>Under <code>code/jdbc/</code> in this unit's repository you can find a minimal JDBC application that uses the <code>elections</code> database. Download this to your VM with <code>wget</code> (or get it from the unit repository, if you have cloned it there) and extract it to an otherwise empty folder (<code>tar -xvf jdbc-example.tar</code>). It contains a file <code>pom.xml</code> and a file <code>src/main/java/org/example/Example.java</code>.</p>
 <p>In the POM file, we note the following dependencies:</p>
 <pre><code class="language-xml">&lt;dependencies&gt;
     &lt;dependency&gt;

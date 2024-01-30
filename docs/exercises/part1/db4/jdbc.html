@@ -230,9 +230,49 @@ JDBC (Java DataBase Connectivity) is a low-level, not particularly object-orient
 <p>When you try and open a connection, Java looks for a driver on your classpath that implements the addressing scheme (e.g. <code>mariadb</code>) that you have requested. This makes setting up the classpath a bit tricky, but we have maven to manage that for us.</p>
 <p>However, we need to understand a bit about networking and security to make sense of that URL.</p>
 <p>In a traditional database set-up, the database lives on its own machine (or cluster of machines) and applications connect to it over the network. To do this, by default, databases listen on TCP port 3306.</p>
-<p>For security reasons, a competent adminstrator will set things up so that there is a firewall preventing access to the database from any machines except those of applications (and possibly developers and administrators), the database machine will certainly not be available directly from the internet. Then, applications will also need a username and password to connect to the database. Since these passwords are used by applications, and do not need to be remembered by humans, there is absolutely no excuse for choosing weak ones: the absolute minimum is something with 128 bits of entropy. Computers have no problems remembering something this long! In this case you add the extra <code>pass=</code> argument to the connection string, and to prevent passwords being sent unencrypted over the network (even if it's your internal network) you can also set up TLS or a similar tunneling technology.</p>
-<p>On our Alpine machine, when we set up mariadb by default, the database server and client are both running on the same machine, so you can gain both security and performance by not using a network connection at all - instead when you type <code>mysql</code> it connects over a POSIX socket, another special type of file (type <code>s</code> in <code>ls -l</code>), in this case <code>/var/run/mysqld/mysqld.sock</code>. A POSIX socket is like a pair of pipes in that it allows bidirectional, concurrent communication between different processes, but with an API closer to that of a network (TCP) socket.</p>
-<p>The point of all this discussion is that for your alpine machine, your connection string will look like this (all on one line with no newlines):</p>
+<p>For security reasons, a competent adminstrator will set things up so that there
+is a firewall preventing access to the database from any machines except those
+of applications (and possibly developers and administrators), the database
+machine will certainly not be available directly from the internet. Then,
+applications will also need a username and password to connect to the database.
+Since these passwords are used by applications, and do not need to be remembered
+by humans, there is absolutely no excuse for choosing weak ones: the absolute
+minimum is something with 128 bits of entropy. Computers have no problems
+remembering something this long! In this case you add the extra <code>pass=</code> argument
+to the connection string, and to prevent passwords being sent unencrypted over
+the network (even if it's your internal network) you can also set up TLS or a
+similar tunneling technology.</p>
+<div class="advanced container">
+<header><span class="advanced-title"></span></header>
+<div class="container-content">
+<p>Learning how to secure things takes time but doing things like long
+passwords and encryption by default is only a start.  If you want to
+get clever you could muck about with behavioural checks so that if
+someone starts doing something they don't normally do it triggers
+logs.  How are you going to spot when your database has been attacked?
+How are you going to tell when its being attacked but hasn't yet been
+broken in to?  How are you going to get it back up and running before
+someone comes and yells at you?</p>
+<p>Whilst the clever stuff is all fun and good an <em>awful</em> lot of this
+ultimately boils down to good old fashioned sysadmining.  Backup
+everything regularly. Note what changes.  Get your logs off the
+machine ASAP before they can be tampered with.  Rotate your keys
+regularly because you can write a shellscript for it and whilst it
+make anything more secure it'll make a compliance person happy.</p>
+<p>For a more complete guide to managing a computer, see any of Michael W
+Lucas's books.</p>
+</div>
+</div>
+<p>On our VM, when you set up mariadb by default, the database server and client
+are both running on the same machine, so you can gain both security and
+performance by not using a network connection at all - instead when you type
+<code>mysql</code> it connects over a POSIX socket, another special type of file (type <code>s</code>
+in <code>ls -l</code>), in this case <code>/var/run/mysqld/mysqld.sock</code>. A POSIX socket is like
+a pair of pipes in that it allows bidirectional, concurrent communication
+between different processes, but with an API closer to that of a network (TCP)
+socket.</p>
+<p>The point of all this discussion is that for your VM, your connection string
+will look like this (all on one line with no newlines):</p>
 <pre><code>jdbc:mariadb://localhost:3306/DATABASE?user=USER&amp;localSocket=/var/run/mysqld/mysqld.sock
 </code></pre>
 <p>The <code>localSocket</code> option overrides the host/port at the start. For this to work, you need the mariadb driver and a library called JNA (Java Native Access) on your classpath, and of course your system needs to support sockets.</p>
@@ -243,16 +283,19 @@ JDBC (Java DataBase Connectivity) is a low-level, not particularly object-orient
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
-<p>You can configure this on your Alpine machine if you wanted to: the main mariadb configuration file is <code>/etc/my.cnf</code> which in our case just contains a statement to include all files in the <code>/etc/my.cnf.d/</code> folder; in there we have <code>mariadb-server.cnf</code> which contains the lines</p>
+<p>You can configure this on your VM if you wanted to: the main mariadb
+configuration file is <code>/etc/my.cnf</code> which in our case just contains a statement
+to include all files in the <code>/etc/my.cnf.d/</code> folder; in there we have
+<code>mariadb-server.cnf</code> which contains the lines</p>
 <pre><code>[mysqld]
 skip-networking
 </code></pre>
-<p>Remove the last line and restart the server (<code>rc-service mariadb restart</code>) and then your mariadb server (<code>mysqld</code>) will really be listening on port 3306.</p>
+<p>Remove the last line and restart the server (<code>systemctl restart mariadb</code>) and then your mariadb server (<code>mysqld</code>) will really be listening on port 3306.</p>
 <p>We didn't notice this with the console client <code>mysql</code> because that by default tries the socket first, and then port 3306 if the socket doesn't exist. However the JDBC driver will only try exactly the options you give, and if you don't tell it to use the socket, it will try port 3306 and throw and exception if nothing is listening there.</p>
 </div>
 </div>
 <h2 id="pom-file"><a class="header" href="#pom-file">POM file</a></h2>
-<p>Under <code>code/jdbc/</code> in this unit's repository you can find a minimal JDBC application that uses the <code>elections</code> database. Download this to your Alpine VM with <code>wget</code> (or get it from the unit repository, if you have cloned it there) and extract it to an otherwise empty folder (<code>tar xvf jdbc-example.tar</code>). It contains a file <code>pom.xml</code> and a file <code>src/main/java/org/example/Example.java</code>.</p>
+<p>Under <code>code/jdbc/</code> in this unit's repository you can find a minimal JDBC application that uses the <code>elections</code> database. Download this to your VM with <code>wget</code> (or get it from the unit repository, if you have cloned it there) and extract it to an otherwise empty folder (<code>tar -xvf jdbc-example.tar</code>). It contains a file <code>pom.xml</code> and a file <code>src/main/java/org/example/Example.java</code>.</p>
 <p>In the POM file, we note the following dependencies:</p>
 <pre><code class="language-xml">&lt;dependencies&gt;
     &lt;dependency&gt;
