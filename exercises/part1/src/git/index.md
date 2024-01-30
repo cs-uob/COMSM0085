@@ -11,3 +11,9 @@
 ## Exercises
 
   - [Git](./git.md)
+
+## Reading
+
+Optional (but recommended).
+
+- [`man 7 giteveryday`](https://www.man7.org/linux/man-pages/man7/giteveryday.7.html)

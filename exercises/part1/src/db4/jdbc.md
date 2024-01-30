@@ -74,11 +74,52 @@ However, we need to understand a bit about networking and security to make sense
 
 In a traditional database set-up, the database lives on its own machine (or cluster of machines) and applications connect to it over the network. To do this, by default, databases listen on TCP port 3306.
 
-For security reasons, a competent adminstrator will set things up so that there is a firewall preventing access to the database from any machines except those of applications (and possibly developers and administrators), the database machine will certainly not be available directly from the internet. Then, applications will also need a username and password to connect to the database. Since these passwords are used by applications, and do not need to be remembered by humans, there is absolutely no excuse for choosing weak ones: the absolute minimum is something with 128 bits of entropy. Computers have no problems remembering something this long! In this case you add the extra `pass=` argument to the connection string, and to prevent passwords being sent unencrypted over the network (even if it's your internal network) you can also set up TLS or a similar tunneling technology.
+For security reasons, a competent adminstrator will set things up so that there
+is a firewall preventing access to the database from any machines except those
+of applications (and possibly developers and administrators), the database
+machine will certainly not be available directly from the internet. Then,
+applications will also need a username and password to connect to the database.
+Since these passwords are used by applications, and do not need to be remembered
+by humans, there is absolutely no excuse for choosing weak ones: the absolute
+minimum is something with 128 bits of entropy. Computers have no problems
+remembering something this long! In this case you add the extra `pass=` argument
+to the connection string, and to prevent passwords being sent unencrypted over
+the network (even if it's your internal network) you can also set up TLS or a
+similar tunneling technology.
 
-On our Alpine machine, when we set up mariadb by default, the database server and client are both running on the same machine, so you can gain both security and performance by not using a network connection at all - instead when you type `mysql` it connects over a POSIX socket, another special type of file (type `s` in `ls -l`), in this case `/var/run/mysqld/mysqld.sock`. A POSIX socket is like a pair of pipes in that it allows bidirectional, concurrent communication between different processes, but with an API closer to that of a network (TCP) socket.
+|||advanced
+Learning how to secure things takes time but doing things like long
+passwords and encryption by default is only a start.  If you want to
+get clever you could muck about with behavioural checks so that if
+someone starts doing something they don't normally do it triggers
+logs.  How are you going to spot when your database has been attacked?
+How are you going to tell when its being attacked but hasn't yet been
+broken in to?  How are you going to get it back up and running before
+someone comes and yells at you?
 
-The point of all this discussion is that for your alpine machine, your connection string will look like this (all on one line with no newlines):
+Whilst the clever stuff is all fun and good an *awful* lot of this
+ultimately boils down to good old fashioned sysadmining.  Backup
+everything regularly. Note what changes.  Get your logs off the
+machine ASAP before they can be tampered with.  Rotate your keys
+regularly because you can write a shellscript for it and whilst it
+make anything more secure it'll make a compliance person happy.
+
+For a more complete guide to managing a computer, see any of Michael W
+Lucas's books.
+|||
+
+On our VM, when you set up mariadb by default, the database server and client
+are both running on the same machine, so you can gain both security and
+performance by not using a network connection at all - instead when you type
+`mysql` it connects over a POSIX socket, another special type of file (type `s`
+in `ls -l`), in this case `/var/run/mysqld/mysqld.sock`. A POSIX socket is like
+a pair of pipes in that it allows bidirectional, concurrent communication
+between different processes, but with an API closer to that of a network (TCP)
+socket.
+
+
+The point of all this discussion is that for your VM, your connection string
+will look like this (all on one line with no newlines):
 
     jdbc:mariadb://localhost:3306/DATABASE?user=USER&localSocket=/var/run/mysqld/mysqld.sock
 
@@ -91,19 +132,22 @@ The more standard connection string for a TCP connection would look like this:
 Which really does connect to TCP port 3306 on localhost.
 
 |||advanced
-You can configure this on your Alpine machine if you wanted to: the main mariadb configuration file is `/etc/my.cnf` which in our case just contains a statement to include all files in the `/etc/my.cnf.d/` folder; in there we have `mariadb-server.cnf` which contains the lines
+You can configure this on your VM if you wanted to: the main mariadb
+configuration file is `/etc/my.cnf` which in our case just contains a statement
+to include all files in the `/etc/my.cnf.d/` folder; in there we have
+`mariadb-server.cnf` which contains the lines
 
     [mysqld]
     skip-networking
 
-Remove the last line and restart the server (`rc-service mariadb restart`) and then your mariadb server (`mysqld`) will really be listening on port 3306.
+Remove the last line and restart the server (`systemctl restart mariadb`) and then your mariadb server (`mysqld`) will really be listening on port 3306.
 
 We didn't notice this with the console client `mysql` because that by default tries the socket first, and then port 3306 if the socket doesn't exist. However the JDBC driver will only try exactly the options you give, and if you don't tell it to use the socket, it will try port 3306 and throw and exception if nothing is listening there.
 |||
 
 ## POM file
 
-Under `code/jdbc/` in this unit's repository you can find a minimal JDBC application that uses the `elections` database. Download this to your Alpine VM with `wget` (or get it from the unit repository, if you have cloned it there) and extract it to an otherwise empty folder (`tar xvf jdbc-example.tar`). It contains a file `pom.xml` and a file `src/main/java/org/example/Example.java`.
+Under `code/jdbc/` in this unit's repository you can find a minimal JDBC application that uses the `elections` database. Download this to your VM with `wget` (or get it from the unit repository, if you have cloned it there) and extract it to an otherwise empty folder (`tar -xvf jdbc-example.tar`). It contains a file `pom.xml` and a file `src/main/java/org/example/Example.java`.
 
 In the POM file, we note the following dependencies:
 
