@@ -2,7 +2,7 @@
 
 In this exercise you will practice the traditional way of building C projects from source. We are going to use the sqlite database as an example project to build.
 
-Download the source file [https://sqlite.org/2021/sqlite-autoconf-3340100.tar.gz](https://sqlite.org/2021/sqlite-autoconf-3340100.tar.gz) into your Alpine VM with `wget` or similar and extract it with `tar zxvf FILENAME`. This creates a subfolder, do a `cd` into it.
+Download the source file [https://sqlite.org/2021/sqlite-autoconf-3340100.tar.gz](https://sqlite.org/2021/sqlite-autoconf-3340100.tar.gz) into your VM with `wget` or similar and extract it with `tar -zxvf FILENAME`. This creates a subfolder, do a `cd` into it.
 
 You can see a file called `INSTALL` which you can open in a text editor to find the standard instructions:
 
@@ -32,7 +32,7 @@ The configure script is basically a collection of tests for every single bug and
 
 ## Make
 
-Type `make` to build sqlite. If it's not installed, `sudo apk add make` will fix that.
+Type `make` to build sqlite. If it's not installed, `sudo apt install make` will fix that.
 
 Some of the compiler commands might take a while to run. While they're running, note the number of configuration variables (everything passed with a `-D`) involved; some of them turn on/off features (for example readline support is off if it can't find the header files for it on your system) and some of them set options specific to the operating system and compiler, for example `-DHAVE_STRING_H` defines whether `string.h` exists on your system.
 
@@ -50,3 +50,11 @@ The last command run by the makefile is
 This should build an executable `sqlite3` that you can run (use `.q` to quit again).
 
 _If you want to, you can now type `sudo make install` to copy the executable to `/usr/local/bin`._
+
+|||advanced
+What do you do if it says it can't find a `.h` file, or can't link it to a library file (a `.so`)? C predates modern languages with package managers, so it probably means you haven't installed a library the code depends on.  Luckily `apt-file` can be really helpful here:  run `apt-file search <name of file>` to find out which package provides the file you're missing and install it.
+
+I was trying to build a package that was complaining it couldn't find a library `libffi.so`: what package might have provided it?
+
+Try not to panic if the software you're building won't build cleanly!  Read the error message and fix the bug.  Normally installing a library, or altering a path in the source code is enough to fix it.  Being able to fix simple bugs yourself is what makes Linux (and other OSs) really powerful!
+|||
