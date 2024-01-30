@@ -1,11 +1,11 @@
 # Build tools: Python
 
-Install Python and pip on Alpine with `sudo apk add python3 py3-pip`. You can now run it with `python3` and Control+D quits again.
+The Python programming language comes with a package manager called `pip`.  Find the package that provides it and install it (**hint**: how did we find a missing library in the C exercise?).
 
 We are going to practice installing the [mistletoe](https://github.com/miyuchina/mistletoe) module, which renders markdown into HTML.
 
   - In python, try the line `import mistletoe` and notice that you get `ModuleNotFoundError: No module named 'mistletoe'`. 
-  - Quit python again and try `sudo pip3 install mistletoe`. You should get a success message (and possibly a warning, explained below).
+  - Quit python again (Control-D) and try `sudo pip3 install mistletoe`. You should get a success message (and possibly a warning, explained below).
   - Open python again and repeat `import mistletoe`. This produces no output, so the module was loaded.
 
 Create a small sample markdown file as follows, called `hello.md` for example:
@@ -25,29 +25,52 @@ This should print the markdown rendered to HTML, e.g.
     <h1>Markdown Example</h1>\n<p>Markdown is a <em>markup</em> language.</p>
 
 
-<style>
-div.container { padding: 0; background-color: #efefef; }
-div.advanced header { background-color: lightskyblue;   padding-left: 0.5ex; }
-span.advanced-title::before { content: "Advanced note" }
-div.container-content { padding: 1ex; }
-div.container-content :first-child { margin-top: 0; }
-div.container-content :last-child { margin-bottom: 0; }
-</style>
-<div class="advanced container">
-<header><span class="advanced-title"></span></header>
-<div class="container-content">
-<p>Python version 3 came out in 2008 and has some syntax changes compared to Python 2; version 2 is now considered deprecated. On most systems, you simply use 'python' and 'pip' for the version 3 commands. Alpine is a bit of an exception here as it still calls the commands 'python3' and 'pip3', in case you are still using programs that require version 2.</p>
-<p>When a language comes with its own package manager, sometimes you have a choice between using the OS package manager (e.g. apk) and the language one (e.g. pip) to install modules. Generally speaking, the language one will contain the most up-to-date versions and you should use that unless you have a reason to do otherwise.</p>
-<p>At the time of writing for example, the Alpine repos contain pip version 19, but the python distribution itself contains version 21, so you get a warning when you are using the older one - complete with the command you should type to install the newer one, except that on Alpine you actually have to type <code class="language-plaintext">sudo pip3 install --upgrade pip</code>.</p>
-<p>
-You can in fact use pip without sudo, by passing the <code>--user</code> option which installs packages into a folder in your home directory (<code>~/.local</code>) instead of in /usr which requires root permissions. It is a matter of choice which one to use, except if you are on a machine without root rights (like a lab machine) where you have to use the user install option.
-</p>
-</div>
-</div>
+|||advanced
+Python version 3 came out in 2008 and has some syntax changes compared
+to Python 2 (`print "hello world"` became `print("hello
+world")`). Version 2 is now considered deprecated; but the transition
+was *long* and *extremely painful* because changing the syntax of a
+thing like the print statement leads to an awful lot of code breaking
+and an awful lot of people preferring not to fix their code and
+instead just keep an old version of Python installed.
+
+So whilst we were dealing with this it was typical for a system to
+have multiple versions of Python installed `python2` for the old one
+and `python3` for the newer on (and even then these were often
+symlinks to specific subversions like `python2.6`), and then `python`
+being a symlink for whatever your OS considered to be the "supported" version.
+
+Different OSs absolutely had different versions of Python (MacOS was
+particularly egregious for staying with Python 2 for far longer than
+necessary) and so a solution was needed, because this was just
+breaking things while OS designers bickered.
+
+The solution is that for *most* dependencies (except for compiled
+libraries) we generally use a programming language's own package
+manager and ignore what the OS provides.  For Python that means `pip`
+(occasionally called `pip3` or `pip2`).
+
+Sometimes you'll see things telling you to install a package with
+`sudo pip install` but don't do that! It will break things horribly
+eventually.  You can use pip without sudo, by passing the `--user`
+option which installs packages into a folder in your home directory
+(`~/.local`) instead of in `/usr` which normally requires root
+permissions.
+
+Sometimes you'll still need to install a package through the OSs
+package manager (`numpy` and `scipy` are common because they depend on
+an awful lot of C code and so are a pain to install with `pip` as you
+have to fix the library paths and dependencies manually) but in
+general try and avoid it.
+
+Python used to manage your OS should be run by the system designers;
+Python used for your dev work should be managed by you.  And never the
+twain shall meet.
+|||
 
 ## Scipy
 
-In Maths B, we will be using `scipy` for statistics, so you may as well install that too. Unfortunately, `pip` will not help you here because scipy depends on a C library for fast linear algebra, and this doesn't exist for Alpine linux in the `pip` repositories. It does exist in the Alpine repos though, so `sudo apk add py3-scipy` will install it.
+We often use `scipy` for statistics, so you may as well install that too. Unfortunately, `pip` will not help you here because scipy depends on a C library for fast linear algebra. You could go and install all the dependencies (and you might have to do this if you need a specific version of it), but it turns out Debian has it all packaged up as a system package: Try searching for it with `apt search scipy`.
 
 The following commands show if it is correctly installed, by sampling 5 times from a Normal distribution with mean 200 and standard deviation 10:
 
@@ -56,5 +79,16 @@ The following commands show if it is correctly installed, by sampling 5 times fr
 
 This should print an array of five values that are not too far off 200 (to be precise, with about 95% confidence they will be between 180 and 220 - more on this in Maths B later on).
 
-You might want to install python and scipy on your host OS as well, as it's a really easy language to code in and you can use your favourite editor and even make graphical plots - you will probably learn about this in second year, and maybe again in third year if you take Machine Learning. In this case, if your host OS is Windows or Mac, I recommend that you install the [miniconda](https://docs.conda.io/en/latest/miniconda.html) distribution (obviously the Python 3 version, not the Python 2 one) so that you can easily install scipy. This gets you two package managers: `conda install scipy` uses the conda one (which can handle the required C library) and `pip` for everything else. For Linux, you can install conda too, or just use the scipy packaged with your distribution.
+## Avoiding sudo
 
+If you need to install libraries you might be tempted to install them for all users by using `sudo pip` but this can lead to pain!  If you alter the system libraries and something in the system depends on a specific version of a library then it can lead to horrible breakage and things not working (in particular on OSs like Mac OS which tend to update libraries less often).
+
+Python comes with a mechanism called [venv](https://docs.python.org/3/library/venv.html) which lets you create a virtual python install that is owned by a user: you can alter the libraries in that without `sudo` and without fear of mucking up your host system.  Read the docs and get used to using it---it'll save you a world of pain later!
+
+|||advanced
+`pip freeze | tee requirements.txt` will list all the packages your using and what version they are and save them in a file called `requirements.txt`.
+
+`pip install -r requirements.txt` will install them again!
+
+This makes it *super easy* to ensure that someone looking at your code has all the right dependencies without having to reel off a list of _go install these libraries_ (and will make anyone whoever has to mark your code happy and more inclined to give you marks).
+|||
