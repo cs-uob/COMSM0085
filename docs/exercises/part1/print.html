@@ -225,7 +225,7 @@ database.</p>
 <ul>
 <li>If it asks for a password, then the ssh client is working, and a ssh server is running on your current machine. The password would be your user account password, but we don't actually want to log in again so cancel with Control+C.</li>
 <li>If it succeeds without a password, then the client is working and a ssh server is running on your machine and either you do not have a password, or you already have a key set up. Type <code>exit</code> and press ENTER to get back to your previous shell.</li>
-<li>If it shows &quot;connection refused&quot;, then you have the ssh client correctly working but no server running on your own machine. This is not a problem, as we're trying to log in to the lab machines, so we need a client on our machine and a server on the lab machine.</li>
+<li>If it shows "connection refused", then you have the ssh client correctly working but no server running on your own machine. This is not a problem, as we're trying to log in to the lab machines, so we need a client on our machine and a server on the lab machine.</li>
 <li>If it shows an error that ssh is not found, then you don't have (Open)SSH installed which is very unusual except on windows CMD - in which case please switch to using the windows subsystem for linux.</li>
 </ul>
 </li>
@@ -241,23 +241,23 @@ database.</p>
 <li>On your terminal, type <code>ssh USERNAME@seis.bris.ac.uk</code> where you replace USERNAME with your university username, e.g. <code>aa20123</code>. Obviously, you will need a working internet connection for this.</li>
 <li>If it asks you whether you are sure, type <code>yes</code> and press ENTER. SSH will only do this the first time you connect to a machine that you have never used before.</li>
 <li>When prompted, enter your university password and press ENTER.</li>
-<li>You should now see the prompt on seis, which looks something like <code>-bash-4.2$</code>. Try the command <code>uname -a</code> to print information about the system (uname on its own prints the operating system name, <code>-a</code> shows &quot;all&quot; information). The reply line should start <code>Linux seis-shell</code>, which is the operating system and host name.</li>
+<li>You should now see the prompt on seis, which looks something like <code>-bash-4.2$</code>. Try the command <code>uname -a</code> to print information about the system (uname on its own prints the operating system name, <code>-a</code> shows "all" information). The reply line should start <code>Linux seis-shell</code>, which is the operating system and host name.</li>
 <li>On the seis prompt, type <code>ssh rd-mvb-linuxlab.bristol.ac.uk</code>. This might take a few seconds; say yes if it asks you if you're sure, then enter your password again when prompted. We didn't have to give a username again because you are already logged in to seis with your university username (<code>whoami</code> shows this) and when you ssh without giving a username, it uses the one you are currently logged in as.</li>
-<li>You should now be connected to a lab machine, with a prompt of the form <code>USERNAME@it######:~$</code>. </li>
+<li>You should now be connected to a lab machine, with a prompt of the form <code>USERNAME@it######:~$</code>.</li>
 <li>Try <code>whoami</code> and <code>uname -a</code> to check who you are logged in as, and where; also try <code>hostname</code> which just prints the machine name.</li>
 <li>Type <code>exit</code> twice to get back to your own machine. (Once gets you back to seis, twice closes the ssh connection completely.)</li>
 </ul>
 <p>Connecting to one machine through another machine (in this case seis) as a proxy is such a common use case that ssh in fact has an option for it. Note however that this will not normally work from a windows CMD terminal, although it does work on Windows Subsystem for Linux (and on Mac and Linux).</p>
 <pre><code>ssh -J USERNAME@seis.bris.ac.uk USERNAME@rd-mvb-linuxlab.bristol.ac.uk
 </code></pre>
-<p>The <code>-J</code> for &quot;jump through this host&quot; even accepts a comma-separated list of hosts if you need to connect through more than one. However, you need to repeat your username for every machine.</p>
+<p>The <code>-J</code> for "jump through this host" even accepts a comma-separated list of hosts if you need to connect through more than one. However, you need to repeat your username for every machine.</p>
 <p>You now know how to log in to a lab machine, but in both methods you had to type your password twice - let's make that easier. The answer is not to store your password in a file, but to use keys instead.</p>
 <h2 id="setting-up-ssh-keys"><a class="header" href="#setting-up-ssh-keys">Setting up ssh keys</a></h2>
-<p>When you connect to a machine, the client on your computer and the daemon on the machine you're logging in to run a cryptographic protocol to exchange keys and set up a shared secret key for the session, so that what one side encrypts the other side can decrypt again. It also authenticates you to the server using one of several methods. </p>
+<p>When you connect to a machine, the client on your computer and the daemon on the machine you're logging in to run a cryptographic protocol to exchange keys and set up a shared secret key for the session, so that what one side encrypts the other side can decrypt again. It also authenticates you to the server using one of several methods.</p>
 <p>You might have heard from a security source that there are three main authentication factors: something you know (password or PIN), something you have (physical key, digital key, ID card, passport) and something you are (biometrics). An authentication method that requires two of these is called two-factor authentication and this is considered good security practice. For ssh, this means:</p>
 <ul>
-<li>You can log in with a username and password, that is &quot;something you know&quot;. This is the default, but not the most secure.</li>
-<li>You can log in with a (digital) key, that is &quot;something you have&quot;. This is more secure, as long as your key (which is just a file) doesn't get into the wrong hands, and also the most convenient as you can log into a lab machine or copy files without having to type your password.</li>
+<li>You can log in with a username and password, that is "something you know". This is the default, but not the most secure.</li>
+<li>You can log in with a (digital) key, that is "something you have". This is more secure, as long as your key (which is just a file) doesn't get into the wrong hands, and also the most convenient as you can log into a lab machine or copy files without having to type your password.</li>
 <li>You can log in with a key file that is itself protected with a password. This gets you two-factor authentication.</li>
 </ul>
 <p>The keys that SSH uses implement digital signatures. Each key comes as a pair of files:</p>
@@ -267,16 +267,16 @@ database.</p>
 </ul>
 <p>Let's create a key pair:</p>
 <ul>
-<li>On your own machine, make sure you are not connected to a lab machine or seis, then type the command <code>ssh-keygen -t ed25519</code>. (If you get an &quot;unknown key type&quot; error, then you are using an outdated version of OpenSSH and for security reasons you should upgrade immediately.) <em>Note: type <code>ed25519</code> directly, do not replace this with your username. It stands for the &quot;Edwards curve over the prime <code>2^255-19</code>&quot; cryptographic group, if you want to know.</em></li>
+<li>On your own machine, make sure you are not connected to a lab machine or seis, then type the command <code>ssh-keygen -t ed25519</code>. (If you get an "unknown key type" error, then you are using an outdated version of OpenSSH and for security reasons you should upgrade immediately.) <em>Note: type <code>ed25519</code> directly, do not replace this with your username. It stands for the "Edwards curve over the prime <code>2^255-19</code>" cryptographic group, if you want to know.</em></li>
 <li>When it asks you where to save the file, just press ENTER to accept the default, but make a note of the path - normally it's a folder <code>.ssh</code> in your home directory.</li>
-<li>If it asks you &quot;Overwrite (y/n)&quot;, say no (n, then ENTER) as it means you already have a key for something else - either ssh directly or something that uses it, like github. Restart key generation but pick a different file name.</li>
+<li>If it asks you "Overwrite (y/n)", say no (n, then ENTER) as it means you already have a key for something else - either ssh directly or something that uses it, like github. Restart key generation but pick a different file name.</li>
 <li>When it asks you for a password, we recommend that you just press ENTER which doesn't set a password (good security, maximum convenience). If you do set a password, it will ask you to type it twice and then you will need the password and the key file to use this key (maximum security, less convenient).</li>
 </ul>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
 <p>The <code>-t</code> parameter selects the cryptographic algorithm to use, in this case <code>ed25519</code>, which is modern, peer-reviewed, and generally considered one of the most secure public-key algorithms available. However some older ssh versions don't accept ed25519.</p>
-<p>If you ever need to use SSH keys to a machine that doesn't like ed25519, then use the key type &quot;rsa&quot; instead. We would recommend you avoid the alternatives &quot;dsa&quot; and &quot;ecdsa&quot; if at all possible as there is speculation among cryptographers that there may be a flaw in the design.</p>
+<p>If you ever need to use SSH keys to a machine that doesn't like ed25519, then use the key type "rsa" instead. We would recommend you avoid the alternatives "dsa" and "ecdsa" if at all possible as there is speculation among cryptographers that there may be a flaw in the design.</p>
 <p>For example, although seis supports ed25519, the old cs bastion host <code>snowy.cs.bris.ac.uk</code> still uses an older version of SSH, so you would need to generate a rsa key to connect to that.</p>
 </div>
 </div>
@@ -287,7 +287,7 @@ database.</p>
 </code></pre>
 <p>Note the permissions on these files in my example. The private key (first line) has a permissions line at the start of <code>(-)(rw-)(---)(---)</code> where I've added brackets to make clearer what is going on. The first bracket only applies to special file types (e.g. <code>d</code> for directory). Next, the owner permissions which are in this case read and write (the third one would be <code>x</code> if the file were an executable program). The last two brackets are the permissions for the group and for everyone else, and these are all off so no-one except yourself (and root) can read your key file. OpenSSH is picky about this and will refuse to use a private key that other people have access to.</p>
 <p>The public key permissions are <code>(-)(rw-)(r--)(r--)</code> which means that the owner can read and write, and the group and everyone else (assuming they have access to the folder) can read the public key, which is fine. It's a public key after all.</p>
-<p><code>known_hosts</code> is where SSH stores the public keys of computers you've already connected to: every time you answer yes to an &quot;Are you sure you want to connect?&quot; question when you connect to a new computer for the first time, it stores the result in this file and won't ask you again the next time. The file format is one key per line and you can edit the file yourself if you want to.</p>
+<p><code>known_hosts</code> is where SSH stores the public keys of computers you've already connected to: every time you answer yes to an "Are you sure you want to connect?" question when you connect to a new computer for the first time, it stores the result in this file and won't ask you again the next time. The file format is one key per line and you can edit the file yourself if you want to.</p>
 <h2 id="set-up-key-access-on-seis"><a class="header" href="#set-up-key-access-on-seis">Set up key access on SEIS</a></h2>
 <p>First, we need to upload our public key to the <code>~/.ssh</code> directory on seis. Even before this, we need to make sure the directory exists though:</p>
 <ul>
@@ -296,7 +296,7 @@ database.</p>
 <li>Log out of seis again with <code>exit</code>.</li>
 </ul>
 <p>The command for copying a file is <code>scp</code> for secure copy, which works like <code>cp</code> but allows you to include remote hosts and does the copy over SSH. Run this from your own machine:</p>
-<pre><code>scp ~/.ssh/id_ed25519.pub &quot;USERNAME@seis.bris.ac.uk:~/.ssh/&quot;
+<pre><code>scp ~/.ssh/id_ed25519.pub "USERNAME@seis.bris.ac.uk:~/.ssh/"
 </code></pre>
 <p>Obviously, replace USERNAME with your university username. This will ask for your password again. Note two things here: first, to set up access on seis, we are uploading the public key - not the private key! - and secondly, that we put double quotes around the destination. This is because the <code>~</code> character meaning home directory is handled by our shell, but we don't want our local shell to expand it, instead we want the shell on seis launched by scp to expand it to our home directory on that machine.</p>
 <p>The general syntax of scp is <code>scp source destination</code> and source or destination  may be of the form <code>[USERNAME@]HOSTNAME:PATH</code> - if it contains a colon (<code>:</code>), then it refers to a file on a different machine.</p>
@@ -306,7 +306,7 @@ cat id_ed25519.pub &gt;&gt; authorized_keys
 chmod 600 authorized_keys
 </code></pre>
 <p>SSH will accept a public key if it is listed in the file <code>authorized_keys</code> in the user's <code>.ssh</code> folder, the format is one line per key. Instead of just copying <code>id_ed25519.pub</code> to <code>authorized_keys</code>, which would overwrite the latter file if it already existed, we use the construction <code>cat SOURCE &gt;&gt; DEST</code> to have our shell append the source file to the destination. <em>Note: it's <strong>authorized</strong>, the American spelling -- if you use the British spelling here OpenSSH won't know to read that file.</em></p>
-<p>However, if the authorised keys file didn't exist already, then it has now been created with default permissions and SSH won't accept that for security reasons. <code>chmod</code> means change permissions (also known as &quot;mod bits&quot;) and 600 is the bit pattern we want in base 8, because that is how permissions work for historical reasons. Permissions are a bitfield of 9 bits, the first three are read/write/execute for the owner, the next three the same for the group, and then for everyone else. If you <code>ls -l</code> you will see this in a slightly more human-readable format, namely <code>rw-------</code> where a minus means that a bit is turned off.</p>
+<p>However, if the authorised keys file didn't exist already, then it has now been created with default permissions and SSH won't accept that for security reasons. <code>chmod</code> means change permissions (also known as "mod bits") and 600 is the bit pattern we want in base 8, because that is how permissions work for historical reasons. Permissions are a bitfield of 9 bits, the first three are read/write/execute for the owner, the next three the same for the group, and then for everyone else. If you <code>ls -l</code> you will see this in a slightly more human-readable format, namely <code>rw-------</code> where a minus means that a bit is turned off.</p>
 <p>Now type <code>exit</code> to get back to your own machine, and then <code>ssh USERNAME@seis.bris.ac.uk</code> to log back in to seis. It should log you in without asking for a password, and you have now set up key-based SSH authentication for seis.</p>
 <p><em>Note: if you set a password on your SSH key earlier, then it will ask you for a password, and it will expect the key password not your uni password. You know not to ever reuse your uni password for anything else, right?</em></p>
 <p>If for some reason something doesn't work with ssh, the first thing to try is to add the <code>-v</code> switch enable debugging information (you can even do <code>-vv</code> or <code>-vvv</code> to see even more detail, but we don't need that). If there is a problem with the permissions on your private key file for example, then you will see SSH complain in the debugging information.</p>
@@ -325,7 +325,7 @@ chmod 600 authorized_keys
 <ul>
 <li>Log in to seis with <code>ssh USERNAME@seis.bris.ac.uk</code>. You should not need a password anymore.</li>
 <li>Log in to the lab machines with <code>ssh rd-mvb-linuxlab.bristol.ac.uk</code> and enter your password. Check that the <code>~/.ssh</code> folder exists and create it if it doesn't, as you did before on seis, then <code>exit</code> again to seis.</li>
-<li>Copy your public key file from seis to the lab machines with <code>scp ~/.ssh/id_ed25519.pub &quot;rd-mvb-linuxlab.bristol.ac.uk:~/.ssh/&quot;</code>. This will ask for your password again.</li>
+<li>Copy your public key file from seis to the lab machines with <code>scp ~/.ssh/id_ed25519.pub "rd-mvb-linuxlab.bristol.ac.uk:~/.ssh/"</code>. This will ask for your password again.</li>
 <li>Log in to a lab machine with <code>ssh rd-mvb-linuxlab.bristol.ac.uk</code> and enter your password one last time. On the lab machine, install the public key with the following:</li>
 </ul>
 <pre><code>cd .ssh
@@ -391,17 +391,17 @@ Host lab
 </ul>
 <p>If you are on Linux, you can of course also install the programs from your distribution's repository. Vagrant's developers actually recommend against this because they claim that some distributions package outdated versions, but it is your choice.</p>
 <h2 id="configuring-a-box"><a class="header" href="#configuring-a-box">Configuring a box</a></h2>
-<p>Next, you are going to configure a virtual machine using <a href="https://www.debian.org/">Debian linux</a>, a Linux distribution that we will be using in this unit. </p>
+<p>Next, you are going to configure a virtual machine using <a href="https://www.debian.org/">Debian linux</a>, a Linux distribution that we will be using in this unit.</p>
 <ul>
 <li>Create an empty folder somewhere.</li>
 <li>In that folder, create a file called Vagrantfile (capitalised, and with no extension) and add the following lines to it - or just download the file from <a href="posix1/../resources/Vagrantfile">here</a>:</li>
 </ul>
-<pre><code class="language-ruby">Vagrant.configure(&quot;2&quot;) do |config|
-  config.vm.box = &quot;generic/debian12&quot;
-  config.vm.synced_folder &quot;.&quot;, &quot;/vagrant&quot;
+<pre><code class="language-ruby">Vagrant.configure("2") do |config|
+  config.vm.box = "generic/debian12"
+  config.vm.synced_folder ".", "/vagrant"
 
-  config.vm.provision &quot;shell&quot;, inline: &lt;&lt;-SHELL
-    echo &quot;Post-provision installs go here&quot;
+  config.vm.provision "shell", inline: &lt;&lt;-SHELL
+    echo "Post-provision installs go here"
   SHELL
 end
 </code></pre>
@@ -410,7 +410,7 @@ end
 <li><code>config.vm.box</code> selects the virtual machine image, or box in vagrant-speak, to use. You can see a list of available ones at <a href="https://app.vagrantup.com/boxes/search">https://app.vagrantup.com/boxes/search</a>.</li>
 <li><code>config.vm.synced_folder</code> sets up a shared folder between the guest (virtual machine) and host (your machine).</li>
 <li>The <code>config.vm.provision</code> runs a provisioning command when the box is first downloaded and installed. These commands run as root on the virtual machine, and in this case we are using the <code>apt</code> package manager (we will talk about this later on) to install the packages <code>git</code>.</li>
-<li>The <code>&lt;&lt;-SHELL</code> construction is called a &quot;here document&quot;, and is a way in some programming languages of writing multi-line strings. It tells ruby to treat everything until the closing keyword SHELL (which is arbitrary) as a string, which can contain several lines.</li>
+<li>The <code>&lt;&lt;-SHELL</code> construction is called a "here document", and is a way in some programming languages of writing multi-line strings. It tells ruby to treat everything until the closing keyword SHELL (which is arbitrary) as a string, which can contain several lines.</li>
 </ul>
 <h2 id="running-vagrant"><a class="header" href="#running-vagrant">Running vagrant</a></h2>
 <ul>
@@ -466,9 +466,9 @@ wget https://raw.githubusercontent.com/cs-uob/COMSM0085/master/exercises/part1/s
 <li><code>/usr/local/bin</code> was for binaries installed by a local administrator, for example for a department within an organisation.</li>
 </ul>
 <p>In any case, <code>/usr</code> and its subfolders are for normally read-only data, such as programs and configuration files but not temporary data or log files. It contains subfolders like <code>/usr/bin</code> or <code>/usr/lib</code> that duplicate folders in the root directory. Debian's way of cleaning this mess up is to make its <code>/bin</code> just a link to <code>/usr/bin</code> and putting everything in there, but in some distributions there are real differences between the folders.</p>
-<p>If you have colours turned on (which is the default) you will see some files are green, but others are blue - this indicates the file type, green is an executable program, blue is a link to another file. Have a look with <code>ls -l /bin</code>: the very first character of each line indicates the file type, the main ones being <code>-</code> for normal file, <code>d</code> for directory and <code>l</code> for a so-called <em>soft link</em>. You can see where each link links to at the end of this listing. For example, <code>slogin</code> links to <code>ssh</code>. Other links point at files stored elsewhere in the filesystem -- you'll see a lot of references to <code>/etc/alternatives/</code>. </p>
+<p>If you have colours turned on (which is the default) you will see some files are green, but others are blue - this indicates the file type, green is an executable program, blue is a link to another file. Have a look with <code>ls -l /bin</code>: the very first character of each line indicates the file type, the main ones being <code>-</code> for normal file, <code>d</code> for directory and <code>l</code> for a so-called <em>soft link</em>. You can see where each link links to at the end of this listing. For example, <code>slogin</code> links to <code>ssh</code>. Other links point at files stored elsewhere in the filesystem -- you'll see a lot of references to <code>/etc/alternatives/</code>.</p>
 <p><code>/etc</code> stores system-wide configuration files and typically only root (the administrator account) can change things in here. For example, system-wide SSH configuration lives in <code>/etc/ssh</code>.</p>
-<p><code>/lib</code> contains dynamic libraries - windows calls these <code>.dll</code> files, POSIX uses <code>.so</code>. For example, <code>/lib/x86_64-linux-gnu/libc.so.6</code> is the C library, which allows C programs to use functions like <code>printf</code>. </p>
+<p><code>/lib</code> contains dynamic libraries - windows calls these <code>.dll</code> files, POSIX uses <code>.so</code>. For example, <code>/lib/x86_64-linux-gnu/libc.so.6</code> is the C library, which allows C programs to use functions like <code>printf</code>.</p>
 <p><code>/home</code> is the folder containing users' home directories, for example the default user vagrant gets <code>/home/vagrant</code>. The exception is root, the administrator account, who gets <code>/root</code>.</p>
 <p><code>/sbin</code> (system binaries) is another collection of programs, typically ones that only system administrators will use. For example, <code>fdisk</code> creates or deletes partitions on a disk and lots of programs with <code>fs</code> in their name deal with managing file systems. <code>/sbin/halt</code>, run as root (or another user that you have allowed to do this), shuts down the system; there is also <code>/sbin/reboot</code>.</p>
 <p><code>/tmp</code> is a temporary filesystem that may be stored in RAM instead of on disk (but swapped out if necessary), and that does not have to survive rebooting the machine.</p>
@@ -477,10 +477,10 @@ wget https://raw.githubusercontent.com/cs-uob/COMSM0085/master/exercises/part1/s
 <p>The <code>/vagrant</code> folder is not part of the FHS, but is our convention for a shared folder with the host on Vagrant virtual machines.</p>
 <h2 id="package-managers"><a class="header" href="#package-managers">Package managers</a></h2>
 <p>Linux has had package managers and repositories since the days when it was distributed on floppy disks. A repository is a collection of software that you can install, and can be hosted anywhere - floppy disk, CD-ROM, DVD or nowadays on the internet. A package manager is software that installs packages from a repository - so far, this sounds just like an <em>app store</em> but a package manager can do more. For one thing, you can ask to install different versions of a particular package if you need to. But the main point of a package manager is that packages can have dependencies on other packages, and when you install one then it installs the dependencies automatically.</p>
-<p>To illustrate this, we're going to go on a tour of one kind of software with which you'll want to get very familiar: text editors that work in the console. Text editing is fundamental to a lot of system administration tasks as well as programming, and people often find that a familiar editor becomes a favourite tool. </p>
-<p>Two console-based text editors are already installed in Debian: <code>nano</code> and <code>vim</code>. </p>
+<p>To illustrate this, we're going to go on a tour of one kind of software with which you'll want to get very familiar: text editors that work in the console. Text editing is fundamental to a lot of system administration tasks as well as programming, and people often find that a familiar editor becomes a favourite tool.</p>
+<p>Two console-based text editors are already installed in Debian: <code>nano</code> and <code>vim</code>.</p>
 <p><code>nano</code> is a basic text editor that works in the console, and is installed in most Linux distributions including the ones on seis and the lab machines, so you can use it to edit files remotely.  You can type <code>nano FILENAME</code> to edit a file. The keyboard shortcuts are at the bottom of the screen, the main one you need is Control+X to exit (it will ask if you want to save, if you have unsaved changes). Nano is considered fairly friendly as console editors go.</p>
-<p><code>vim</code> is the 1991 improved version of the even older (1976) <code>vi</code> editor (which is also installed). It is a modal editor with a steep learning curve, but its extremely powerful editing grammar and widespread availability mean it regularly appears towards the top of lists of favourite text editors. If you want to get started with vim, I suggest you start by typing <code>vimtutor</code> at the commandline -- this opens vim with a file that guides you through basic vim usage. </p>
+<p><code>vim</code> is the 1991 improved version of the even older (1976) <code>vi</code> editor (which is also installed). It is a modal editor with a steep learning curve, but its extremely powerful editing grammar and widespread availability mean it regularly appears towards the top of lists of favourite text editors. If you want to get started with vim, I suggest you start by typing <code>vimtutor</code> at the commandline -- this opens vim with a file that guides you through basic vim usage.</p>
 <p>Another console-based editor dating from the mid-70s is <code>emacs</code>, <code>vi</code>'s traditional Lisp-based rival. However, emacs is not installed by default: type <code>emacs</code> at the console and you will get <code>emacs: command not found</code>. You can install it with the command</p>
 <pre><code>sudo apt install emacs-nox
 </code></pre>
@@ -489,9 +489,9 @@ wget https://raw.githubusercontent.com/cs-uob/COMSM0085/master/exercises/part1/s
 <li><code>apt</code> is the Debian package manager.</li>
 <li><code>install PACKAGE</code> adds a package, which means download and install it and all its dependencies (you'll see a list of these to confirm you want to install them -- you do).</li>
 </ul>
-<p>We're installing <code>emacs-nox</code> because this is the version of emacs packaged for use from the console. If you tried to install just <code>emacs</code> then the package manager would identify that you need a graphical display manager to run emacs' GUI mode and install a lot more dependencies to enable that, which we don't need. </p>
+<p>We're installing <code>emacs-nox</code> because this is the version of emacs packaged for use from the console. If you tried to install just <code>emacs</code> then the package manager would identify that you need a graphical display manager to run emacs' GUI mode and install a lot more dependencies to enable that, which we don't need.</p>
 <p>Now that emacs is installed, you can launch it with <code>emacs</code>, and from there you should see some introductory instructions, including how to access an emacs tutorial which will teach you how to use it. (If you want to exit emacs, Control-X followed by Control-C should do it).</p>
-<p>Other popular editors include </p>
+<p>Other popular editors include</p>
 <ul>
 <li><code>mcedit</code>, a file editor which comes as part of the 'midnight commander' package, which you can install with <code>sudo apt install mc</code>. Launch the editor with <code>mcedit filename</code> and test it out (Alt-0 to exit).</li>
 <li><code>tilde</code>, an editor with a GUI-esque menu system controlled through Alt-letter sequences. Install with <code>sudo apt install tilde</code>.</li>
@@ -501,7 +501,7 @@ wget https://raw.githubusercontent.com/cs-uob/COMSM0085/master/exercises/part1/s
 <p>I suggest that you try out some of these editors, and figure out how you prefer to edit files. Some of these tools might require time investment to learn, but doing this early in your CS career could be a good decision.</p>
 <p>Whichever editor you end up deciding to use, you probably won't need to keep all the alternatives installed. You can leave <code>nano</code> and <code>vim</code> installed, but for the other editors you've tried out above and decided you don't like, you can (and should) remove them from the system with <code>sudo apt remove PACKAGE</code>.</p>
 <h2 id="update-and-upgrade"><a class="header" href="#update-and-upgrade">Update and upgrade</a></h2>
-<p>The repositories that you are using are recorded in <code>/etc/apt/sources.list</code>, have a look at this file with <code>cat</code> or <code>nano</code> to see where they are, then look up the sites in your browser. There are folders for different Debian versions and package index files for different architectures. </p>
+<p>The repositories that you are using are recorded in <code>/etc/apt/sources.list</code>, have a look at this file with <code>cat</code> or <code>nano</code> to see where they are, then look up the sites in your browser. There are folders for different Debian versions and package index files for different architectures.</p>
 <p>Two commands a system adminstrator should run regularly for security reasons:</p>
 <ul>
 <li><code>sudo apt update</code> fetches the new package list from the repository. This way, apt can tell you if any packages have been updated to new versions since you last checked.</li>
@@ -536,12 +536,12 @@ wget https://raw.githubusercontent.com/cs-uob/COMSM0085/master/exercises/part1/s
 
 int main(int argc, char** argv) {
   for(int i=0; i &lt; argc; i++) {
-    printf(&quot;Argument #%i: [%s]\n&quot;, i, argv[i]);
+    printf("Argument #%i: [%s]\n", i, argv[i]);
   }
   return 0;
 }
 </code></pre>
-<p>Compile this with <code>gcc -Wall arguments.c -o arguments</code>. </p>
+<p>Compile this with <code>gcc -Wall arguments.c -o arguments</code>.</p>
 <h2 id="whitespace"><a class="header" href="#whitespace">Whitespace</a></h2>
 <p>The program prints all its arguments, one per line. The program gets its arguments from the program that started it - in this case the shell.
 Try running the program with the following commands:</p>
@@ -551,22 +551,22 @@ Try running the program with the following commands:</p>
 </code></pre>
 <p>Now that you are familiar with what the program does, try the following:</p>
 <pre><code>./arguments one       two
-./arguments &quot;one two&quot;
-./arguments &quot;one      two&quot;
+./arguments "one two"
+./arguments "one      two"
 </code></pre>
 <p>How, based on these examples, does the shell handle whitespace in the line you type?</p>
 <h2 id="pattern-matching"><a class="header" href="#pattern-matching">Pattern matching</a></h2>
 <p>Try the following:</p>
 <ul>
 <li><code>./arguments *</code> in the folder that contains the arguments program, and its source code arguments.c.</li>
-<li>Make an empty subfolder with <code>mkdir empty</code>, switch to it with <code>cd empty</code> and then run <code>../arguments *</code>. Since you are now in the subfolder, we need two dots at the start to say &quot;run the program arguments in the folder <em>above</em>&quot;. What happens?</li>
+<li>Make an empty subfolder with <code>mkdir empty</code>, switch to it with <code>cd empty</code> and then run <code>../arguments *</code>. Since you are now in the subfolder, we need two dots at the start to say "run the program arguments in the folder <em>above</em>". What happens?</li>
 <li>Go back to the folder with the program by running <code>cd ..</code> and then do <code>ls</code> to check you're back in the right folder. In this folder, find three different ways to get the program to produce the following output:</li>
 </ul>
 <pre><code>Argument #0: [./arguments]
 Argument #1: [*] 
 </code></pre>
 <h2 id="files-with-spaces-in-their-names"><a class="header" href="#files-with-spaces-in-their-names">Files with spaces in their names</a></h2>
-<p>The command <code>touch FILENAME</code> creates a file. Create a file with a space in its name by typing <code>touch &quot;silly named file&quot;</code>. What would happen if you left the quotes off (you can try it, then do <code>ls</code>)?</p>
+<p>The command <code>touch FILENAME</code> creates a file. Create a file with a space in its name by typing <code>touch "silly named file"</code>. What would happen if you left the quotes off (you can try it, then do <code>ls</code>)?</p>
 <p>Start typing <code>ls sill</code> and then press TAB to autocomplete. Assuming you have no other files whose name starts with <em>sill</em>, what happens? Use this method to get the arguments program to print the following:</p>
 <pre><code>Argument #0: [./arguments]
 Argument #1: [Hello world!] 
@@ -579,18 +579,18 @@ gcc -Wall $p.c -o $p
 </code></pre>
 <p>which expands to <code>gcc -Wall arguments.c -o arguments</code>. If you want to use a variable inside a word, you can use curly braces: <code>${a}b</code> means the value of the variable <code>a</code> followed by the letter b, whereas <code>$ab</code> would mean the value of the variable <code>ab</code>.</p>
 <p>It is good practice to double-quote variables used like this, because if you tried for example to compile a program called <code>silly name.c</code> with a space in its name, then</p>
-<pre><code>program=&quot;silly name&quot;
+<pre><code>program="silly name"
 gcc -Wall $program.c -o $program
 </code></pre>
 <p>would expand to</p>
 <pre><code>gcc -Wall silly name.c -o silly name
 </code></pre>
 <p>and this would confuse your compiler because you are telling it to compile three source files called <code>silly</code>, <code>name.c</code> and <code>name</code> to a program called <code>silly</code>. Correct would be:</p>
-<pre><code>program=&quot;silly name&quot;
-gcc -Wall &quot;$program.c&quot; -o &quot;$program&quot;
+<pre><code>program="silly name"
+gcc -Wall "$program.c" -o "$program"
 </code></pre>
 <p>which expands to</p>
-<pre><code>gcc -Wall &quot;silly name.c&quot; -o &quot;silly name&quot;
+<pre><code>gcc -Wall "silly name.c" -o "silly name"
 </code></pre>
 <p>which does what you want - if you indeed want a program with a space in its name!</p>
 <p>There is no harm in double-quoting a shell variable every time you want to use it, and this is good practice as it still works if the variable is set to a value that contains spaces.</p>
@@ -599,7 +599,7 @@ gcc -Wall &quot;$program.c&quot; -o &quot;$program&quot;
 </code></pre>
 <p>would translate as: set the variable <code>program</code> to the value <code>silly</code>, then execute the program <code>name</code>. Variable assignments only apply to the first argument following them, although you can assign more than one variable.</p>
 <p>Note that this does not work as expected either:</p>
-<pre><code>file=arguments gcc -Wall &quot;$file.c&quot; -o &quot;$file&quot;
+<pre><code>file=arguments gcc -Wall "$file.c" -o "$file"
 </code></pre>
 <p>The problem here is that the shell first reads the line and substitutes in the value of <code>$file</code> (unset variables expand to the empty string by default) before starting to execute the command, so you are reading the variable's value before writing it. Leaving off the quotes doesn't help: you need to set the variable on a separate line.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="pipes"><a class="header" href="#pipes">Pipes</a></h1>
@@ -630,23 +630,23 @@ gcc -Wall &quot;$program.c&quot; -o &quot;$program&quot;
 <li>The 6171st word in the file. <em>Can you read my mind and guess this word directly?</em></li>
 <li>All words containing the letter Q, capitalised. (A regular expression containing a string of one or more letters matches all strings that contain the expression as a substring.)</li>
 <li>All words starting with the letter X. The regular expression <code>X</code> would match an X anywhere in the word, but <code>^X</code> matches an X only at the start of the string.</li>
-<li>All words ending in j. (The expression <code>'j$'</code> matches a j only at the end of the string, but you have to single-quote it to stop the shell from interpreting the dollar sign). </li>
+<li>All words ending in j. (The expression <code>'j$'</code> matches a j only at the end of the string, but you have to single-quote it to stop the shell from interpreting the dollar sign).</li>
 <li>The number of words containing the letter Q, ignoring case (e.g. capitalised or not).</li>
 <li>The first five words containing the letter sequence <code>cl</code>.</li>
-<li>All words containing the sequence &quot;kp&quot;, but not &quot;ckp&quot;. <em>Can you guess any of these?</em></li>
+<li>All words containing the sequence "kp", but not "ckp". <em>Can you guess any of these?</em></li>
 <li>The last 15 words of exactly two letters. The expression <code>.</code> (period) matches a single character, and <code>'^...$'</code> for example would match all strings of the format <em>exactly three characters between start and end of string</em>. You need to quote it because of the dollar sign.</li>
 <li>All words from the first 100 words on the list, which contain the letter y.</li>
 <li>The first five words that are among the last 100 words on the list, and contain the letter y (whether capitalised or not).</li>
 <li>All three-letter words with no vowels (aeiou).The regular expression <code>'[aeiou]'</code> matches any string that contains one of the bracketed characters; you need quotes to stop the shell from interpreting the brackets. Remember to exclude words with capitalised vowels as well. <em>There are 343 of these.</em></li>
-<li>All words of exactly 7 letters, where the third one is an e and the word ends &quot;-ded&quot;. <em>This kind of search is really useful for crosswords. There are 14 words of this form, can you guess them?</em></li>
+<li>All words of exactly 7 letters, where the third one is an e and the word ends "-ded". <em>This kind of search is really useful for crosswords. There are 14 words of this form, can you guess them?</em></li>
 </ul>
 <p>Bonus regular expression question:</p>
 <ul>
 <li>Find all words that start with a P (whether capitalised or not), and contain at least four instances of the letter a. Putting a <code>*</code> after something in a regular expression searches for <em>any number of repetitions of this, including 0</em> so for example <code>'a*'</code> would find words with any number of the letter a, including 0 (which is not what you want here). You need single quotes to stop the shell from expanding the <code>*</code>. <em>Can you guess the words? There are 14 hits in the solution but essentially five words: two demonyms and three nouns which are not proper nouns, all with possessive and plural forms (bar one which is its own plural).</em></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="regular-expressions"><a class="header" href="#regular-expressions">Regular expressions</a></h1>
-<p>For this exercise you'll want to refer often to a manual for <code>grep</code>. 
-You can access one on the commandline by invoking <code>man grep</code>. 
+<p>For this exercise you'll want to refer often to a manual for <code>grep</code>.
+You can access one on the commandline by invoking <code>man grep</code>.
 You've already tackled some problems involving regular expressions in a previous
 exercise. Here are some more advanced questions that will require you to
 understand more about <code>grep</code>, its options, and how regular expression syntax
@@ -657,7 +657,7 @@ only one line.</li>
 <li>You'll have seen beforehand that you can count the results of a search with
 <code>grep PATTERN FILE | wc -l</code>. However, <code>grep</code> also has a <code>-c</code> option which
 counts matches. Can you find the situation where the <code>wc -l</code> approach and the
-<code>-c</code> approach produce different results? Can you explain why? </li>
+<code>-c</code> approach produce different results? Can you explain why?</li>
 <li>Some words have different spelling between British English and American
 English. For example, 'encyclopaedia' is valid in British English but not
 American. Can you write a regular expression that would match both of these
@@ -670,7 +670,7 @@ a regular expression that would match such sequences?</li>
 postcode validator regex is known to be
 <code>^(([A-Z]{1,2}[0-9][A-Z0-9]?|ASCN|STHL|TDCU|BBND|[BFS]IQQ|PCRN|TKCA) ?[0-9][A-Z]{2}|BFPO ?[0-9]{1,4}|(KY[0-9]|MSR|VG|AI)[ -]?[0-9]{4}|[A-Z]{2} ?[0-9]{2}|GE ?CX|GIR ?0A{2}|SAN ?TA1)$</code>. Try breaking apart this monster to
 understand what is being tested, and find an example that would match the schema
-described for the fourth question but fail to match this expression. </li>
+described for the fourth question but fail to match this expression.</li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="activity-git"><a class="header" href="#activity-git">Activity: Git</a></h1>
 <h2 id="videos-2"><a class="header" href="#videos-2">Videos</a></h2>
@@ -698,11 +698,11 @@ Windows) but we'd still recommend completing it in a virtual machine
 (mostly because we can test the lab in a virtual machine...).</p>
 <p>If you'd like a <code>Vagrantfile</code> to base your work on you can use the
 following:</p>
-<pre><code class="language-ruby">Vagrant.configure(&quot;2&quot;) do |config|
-  config.vm.box = &quot;generic/debian12&quot;
-  config.vm.synced_folder &quot;.&quot;, &quot;/vagrant&quot;
+<pre><code class="language-ruby">Vagrant.configure("2") do |config|
+  config.vm.box = "generic/debian12"
+  config.vm.synced_folder ".", "/vagrant"
 
-  config.vm.provision &quot;shell&quot;, inline: &lt;&lt;-SHELL
+  config.vm.provision "shell", inline: &lt;&lt;-SHELL
     apt-get update -y
     apt-get install -y git git-man apt-file
     apt-file update
@@ -727,13 +727,13 @@ with the <code>man</code> command.</p>
 <p>Git is all about tracking changes to source code.  That means it needs
 to know <em>who</em> made <em>what</em> changes.</p>
 <p>Run the following two lines to set up git correctly. You only need to do this once when you install git, but not every time you create a new repository.</p>
-<pre><code>git config --global user.name &quot;YOURNAME&quot;
-git config --global user.email &quot;YOUREMAIL&quot;
+<pre><code>git config --global user.name "YOURNAME"
+git config --global user.email "YOUREMAIL"
 </code></pre>
 <p>The name and email address aren't actually sent anywhere or
 checked... they're just listed with alongside the changes you make to
 the code so if somethings wrong later programmers know who to blame
-(see <code>man git-blame</code>). You can put anything you like here (git will happily accept <code>-</code> as your email address, and it does not send you email). </p>
+(see <code>man git-blame</code>). You can put anything you like here (git will happily accept <code>-</code> as your email address, and it does not send you email).</p>
 <p>This alters the <em>global</em> git configuration (the settings applied to
 <em>every</em> git repository you work on), but you can also make these
 changes on a repository by repository basis.  Just drop the <code>--global</code>
@@ -753,8 +753,8 @@ obviously.  Normally vagrant will run these provision blocks as the
 system administrator <code>root</code>, but you can run it as the normal
 <code>vagrant</code> user by adding the <code>privileged: false</code> keyword.</p>
 <pre><code class="language-ruby">config.vm.provision :shell, privileged: false, inline: &lt;&lt;-SHELL
-    git config --global user.name &quot;YOURNAME&quot;
-    git config --global user.email &quot;YOUREMAIL&quot;
+    git config --global user.name "YOURNAME"
+    git config --global user.email "YOUREMAIL"
 SHELL
 </code></pre>
 <p>If you start getting errors about the git command not being installed:
@@ -775,7 +775,7 @@ git init
 #include &lt;stdio.h&gt;
 
 int main() {
-    puts(&quot;Hi&quot;);
+    puts("Hi");
     return 0;
 }
 </code></pre>
@@ -805,7 +805,7 @@ their final year...)</p>
 </div>
 </div>
 <p>Do a <code>git status</code> and you will see <code>main.c</code> in red under <em>untracked files</em> - this is a new file that git does not know about yet. Do <code>git add main.c</code> followed by another <code>git status</code> and the file is now green under <em>files to be committed</em>.</p>
-<p>Commit the file with <code>git commit -m &quot;first file&quot;</code> or something like that - you need double quotes if you want spaces in your commit message. Try <code>git status</code> again and you should see <em>nothing to commit, working tree clean</em> which means git is up to date with your files. Try <code>git log</code> and you will see that there is now one commit in the log.</p>
+<p>Commit the file with <code>git commit -m "first file"</code> or something like that - you need double quotes if you want spaces in your commit message. Try <code>git status</code> again and you should see <em>nothing to commit, working tree clean</em> which means git is up to date with your files. Try <code>git log</code> and you will see that there is now one commit in the log.</p>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
@@ -853,7 +853,7 @@ development libraries  Hint: <code>man apt-file</code>.)</p>
 <li><code>git revert HASH</code> adds a new commit that returns the files to the state they were before the commit with the given hash. This is safe to use during team development, as it's just adding a new commit. If you have commits A, B and do <code>git revert B</code> then you get a new commit C so anyone else using the repository sees a sequence of commits A, B, C; but the state of the files in C is the same as in A.</li>
 <li><code>git reset HASH</code> undoes commits by moving the HEAD pointer back to the commit with the given hash, but leaves the working copy alone (you can use the <code>--hard</code> option to change the files as well). This will break things if you have shared your newer commits with other developers, but it's safe to use to undo changes that you haven't pushed yet (we'll learn about this next time). The effect is as if the commits which you've reset had never happened.</li>
 </ul>
-<p>Note: if you want to revert a commit because you accidentally commited a file with secret information, and you've already pushed the commit, then you also have to look up online how to &quot;force push&quot; your changes to erase all traces of the file on github (or other online providers). If the secret file contained any passwords, even if you reverted the commit immediately, then you should consider the passwords compromised and change them at once.</p>
+<p>Note: if you want to revert a commit because you accidentally commited a file with secret information, and you've already pushed the commit, then you also have to look up online how to "force push" your changes to erase all traces of the file on github (or other online providers). If the secret file contained any passwords, even if you reverted the commit immediately, then you should consider the passwords compromised and change them at once.</p>
 </div>
 </div>
 <h1 id="part-2-git-forges"><a class="header" href="#part-2-git-forges">Part 2: Git forges</a></h1>
@@ -898,7 +898,7 @@ it while it's under the hacker's control, that does not leak your
 private key; it feels a bit icky.  Generating keys is easy and it is
 barely any more work to have separate keys per server and per machine
 you use.</p>
-<p>However, reusing public keys can be a privacy problem, because every service that you use the same public key (or e-mail address, or phone number etc.) can potentially work with the others to know that you are the same individual. It is no problem to use different keypairs for different services, in which case you probably want a block in your <code>~/.ssh/config</code> file with something like </p>
+<p>However, reusing public keys can be a privacy problem, because every service that you use the same public key (or e-mail address, or phone number etc.) can potentially work with the others to know that you are the same individual. It is no problem to use different keypairs for different services, in which case you probably want a block in your <code>~/.ssh/config</code> file with something like</p>
 <pre><code>Host github.com
     User git
     IdentityFile ~/.ssh/github.com.key.or.whatever.you.called it.
@@ -911,8 +911,8 @@ you use.</p>
 <p>The name of the main branch changes: it used to be called <code>master</code>.
 You may see the default branch named as either <code>master</code> or <code>main</code>, or  something else entirely. So long as you are consistent, the name of the
 default branch doesn't matter at all (and you can configure it if you have a
-preference), and you just need to know that in these exercises we will use <code>main</code> 
-to refer to the default branch and you should substitute that for your own default 
+preference), and you just need to know that in these exercises we will use <code>main</code>
+to refer to the default branch and you should substitute that for your own default
 branch name if it is different.</p>
 <h2 id="create-a-repository"><a class="header" href="#create-a-repository">Create a repository</a></h2>
 <p>On the main page, you should see an empty <em>Repositories</em> bar on the left, with a new button. Use that to create a repository, on the next page give it a name and tick the <em>Add a README file</em> box.</p>
@@ -924,7 +924,7 @@ branch name if it is different.</p>
 </ul>
 <p>Click the SSH tab and copy the URL there - it should be something like <code>git@github.com:USERNAME/REPONAME.git</code>.</p>
 <p>On the command line, run the command <code>git clone git@github.com:USERNAME/REPONAME.git</code> where you replace USERNAME and REPONAME with the parts from the SSH tab of your repository. Git clones your repository and puts the content in a subfolder named after the repository name - you can change this by providing a different folder name as an extra command-line argument to <code>git clone</code>, or you can just move or rename the folder later on.</p>
-<p><em>Note: certain OS/ISP/DNS combinations might get you &quot;resource temporarily unavailable&quot; when you try and access github via ssh. The problem is that the actual address is <code>ssh.github.com</code> and not all set-ups correctly pass on the redirection when you try and connect to github directly. If you are experiencing this error, you can either use <code>ssh.github.com</code> in place of <code>github.com</code>, or add an entry in your <code>~/.ssh/config</code> file as follows (if you have to create this file first, make sure it is not writable by anyone except yourself or ssh will refuse to accept it):</em></p>
+<p><em>Note: certain OS/ISP/DNS combinations might get you "resource temporarily unavailable" when you try and access github via ssh. The problem is that the actual address is <code>ssh.github.com</code> and not all set-ups correctly pass on the redirection when you try and connect to github directly. If you are experiencing this error, you can either use <code>ssh.github.com</code> in place of <code>github.com</code>, or add an entry in your <code>~/.ssh/config</code> file as follows (if you have to create this file first, make sure it is not writable by anyone except yourself or ssh will refuse to accept it):</em></p>
 <pre><code>Host github.com
   Hostname ssh.github.com
   Port 22
@@ -941,7 +941,7 @@ branch name if it is different.</p>
   Local ref configured for 'git push':
     main pushes to main (up to date)
 </code></pre>
-<p>The bits about <code>main</code> are to do with branches, which we will discuss in another activity in more detail. </p>
+<p>The bits about <code>main</code> are to do with branches, which we will discuss in another activity in more detail.</p>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
@@ -956,9 +956,9 @@ git clone remote user1
 mkdir user2
 git clone remote user2
 </code></pre>
-<p>This gets you a remote and two &quot;users&quot; in different folders to play with. The remote was set up with <code>--bare</code> so that it does not contain a working copy, but acts as a pure repository.</p>
-<p>You can now <code>cd user1</code> to simulate user 1 doing work, and can fetch/push/pull as described below. (Ignore warnings about &quot;upstream&quot;, they will go away once you have committed a file to the repository.) Then you can <code>cd ../user2</code> to switch to a second working copy, which you can pretend is another user on another machine.</p>
-<p>If you want to adjust the user names for the commits, then running <code>git config user.name &quot;YOURNAME&quot;</code> and <code>git config user.email &quot;YOUREMAIL&quot;</code> without the <code>--global</code> option from last time changes the settings just for one repository.</p>
+<p>This gets you a remote and two "users" in different folders to play with. The remote was set up with <code>--bare</code> so that it does not contain a working copy, but acts as a pure repository.</p>
+<p>You can now <code>cd user1</code> to simulate user 1 doing work, and can fetch/push/pull as described below. (Ignore warnings about "upstream", they will go away once you have committed a file to the repository.) Then you can <code>cd ../user2</code> to switch to a second working copy, which you can pretend is another user on another machine.</p>
+<p>If you want to adjust the user names for the commits, then running <code>git config user.name "YOURNAME"</code> and <code>git config user.email "YOUREMAIL"</code> without the <code>--global</code> option from last time changes the settings just for one repository.</p>
 </div>
 </div>
 <p>Do a <code>git status</code> and note that a new line appears compared to last activity:</p>
@@ -969,7 +969,7 @@ git clone remote user2
 <li>Up to date: there have been no commits on your local or the remote repository since you last synchronised.</li>
 <li>Ahead of remote: you have made commits locally that you have not yet pushed to the remote.</li>
 <li>Behind remote: someone else, or you on a different computer, have made commits to the remote that you do not have on this computer yet.</li>
-<li>Diverged from remote: both your computer and the remote have had different commits since the last time you synchronised. </li>
+<li>Diverged from remote: both your computer and the remote have had different commits since the last time you synchronised.</li>
 </ul>
 <h2 id="practice-the-push-workflow"><a class="header" href="#practice-the-push-workflow">Practice the push workflow</a></h2>
 <p>For this exercise, you should work in pairs or larger groups.  Need
@@ -999,7 +999,7 @@ someone to work with?  Ask the person you're sitting next to.</p>
 </ol>
 <p>You can now code as a team, as long as only one person at a time is working - clearly not ideal.</p>
 <h2 id="resolve-a-fake-conflict-part-one"><a class="header" href="#resolve-a-fake-conflict-part-one">Resolve a fake conflict, part one</a></h2>
-<p>Produce a &quot;fake&quot; conflict as follows:</p>
+<p>Produce a "fake" conflict as follows:</p>
 <ol>
 <li>Two team members make sure they are <code>up to date</code> with their working copies (do a <code>git pull</code>, then <code>git status</code>). This represents you both starting coding in the morning.</li>
 <li>One member adds or changes one file, then commits this change and pushes it by running the whole push workflow (fetch, status - check you're ahead, push).</li>
@@ -1051,7 +1051,7 @@ Created by NAME1.
 <li><code>git commit</code>. You could give a message directly, but a commit without a <code>-m</code> drops you into your editor and you'll see that git is suggesting <code>Merge branch main ...</code> as a default message here. It is conventional to leave this message as it is, just exit your editor without any changes.</li>
 <li>Run another push workflow: <code>git fetch</code>, <code>git status</code> and notice you are now <code>ahead by 2 commits</code>: the first one was the work you did, the second is the merge commit. You're ahead, so finish the workflow with <code>git push</code>.</li>
 </ul>
-<p>Your commit graph looks the same as for the last merge that you did. </p>
+<p>Your commit graph looks the same as for the last merge that you did.</p>
 <p>If you look at the repository's page on Github (<code>https://github.com/USERNAME/REPONAME</code>, where <code>USERNAME</code> is the name of the user who created the repository), then you can click on <em>Insights</em> in the top bar then <em>Network</em> on the left menu to see the commit history for the repository as a graph. Hovering over a commit node shows the committer, the message and the commit hash - and clicking on a node takes you to a page where you can see which changes were made in this commit.</p>
 <p>On the main Github page for the repository, you can also click the clock icon with a number in the top right (on a wide enough screen it also shows the word <em>commits</em>) to go to a page showing all the commits on your repository in chronological order.</p>
 <h1 id="working-with-others"><a class="header" href="#working-with-others">Working with others</a></h1>
@@ -1068,7 +1068,7 @@ Created by NAME1.
 What they need to do is</p>
 <pre><code>git push --set-upstream origin develop
 </code></pre>
-<p>This adds an &quot;upstream&quot; entry on the local develop branch to say that it is linked to the copy of your repository called <code>origin</code>, which is the default name for the one you cloned the repository from.</p>
+<p>This adds an "upstream" entry on the local develop branch to say that it is linked to the copy of your repository called <code>origin</code>, which is the default name for the one you cloned the repository from.</p>
 <p>You can check this with <code>git remote show origin</code>, which should display among other things:</p>
 <pre><code>Remote branches:
   develop tracked
@@ -1108,7 +1108,7 @@ Switched to a new branch 'develop'
 </ol>
 <p>If no-one else has changed <code>develop</code> since you started your branch, or if you have only changed files that no-one else has changed, then the merge might succeed on the first attempt. It's still a good idea to check that the project is in a good state (for example, compile it again) just in case, and fix anything that's broken on the develop branch.</p>
 <p>If the merge fails with a conflict, then you need to manually edit all the conflicted files (git will tell you which ones these are, do <code>git status</code> if you need a reminder) and <code>git commit</code> again.</p>
-<p>The workflow for merging and resolving conflicts is essentially the same as the one from the last session, but since everyone is developing on a separate branch, the only time when you have to deal with a possible merge conflict is when you are merging your changes into develop - your own branches are &quot;private&quot; and you don't have to worry about hitting a conflict if you quickly want to commit and push your changes as the last thing you do before going home at the end of a long day's work.</p>
+<p>The workflow for merging and resolving conflicts is essentially the same as the one from the last session, but since everyone is developing on a separate branch, the only time when you have to deal with a possible merge conflict is when you are merging your changes into develop - your own branches are "private" and you don't have to worry about hitting a conflict if you quickly want to commit and push your changes as the last thing you do before going home at the end of a long day's work.</p>
 <h2 id="pull-requests"><a class="header" href="#pull-requests">Pull requests</a></h2>
 <p>Pull requests are not a feature of the git software itself, but of the online providers. They let a team discuss and review a commit before merging it into a shared branch such as develop or main. Depending on the provider, branches can also be protected or assigned owners so that only the branch owner or developers with the right permissions can commit on certain branches.</p>
 <p>The procedure for merging with a pull request on github, which you should try out:</p>
@@ -1185,8 +1185,8 @@ Switched to a new branch 'develop'
 <p>Create a file in your home directory, e.g. <code>nano readme.txt</code> then add some content.</p>
 <p>Check, by using <code>su USERNAME</code> to log in as the different users, that:</p>
 <ul>
-<li><code>nigel</code> can view Brian's home directory but not create files there; </li>
-<li><code>nigel</code> can view but not edit Brian's readme file; </li>
+<li><code>nigel</code> can view Brian's home directory but not create files there;</li>
+<li><code>nigel</code> can view but not edit Brian's readme file;</li>
 <li><code>vagrant</code> cannot list files in or enter Brian's home directory at all. What happens when you try?</li>
 </ul>
 <p><em>Of course, vagrant can use sudo to get around all these restrictions. Permissions do not protect you from anyone who can become root.</em></p>
@@ -1202,26 +1202,26 @@ Switched to a new branch 'develop'
 <pre><code class="language-C">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
-const char *filename =&quot;/home/brian/messages.txt&quot;;
+const char *filename ="/home/brian/messages.txt";
 
 int main(int argc, char **argv) {
   if (argc != 2) {
-    puts(&quot;Usage: message-brian MESSAGE&quot;);
+    puts("Usage: message-brian MESSAGE");
     return 1;
   }
-  FILE *file = fopen(filename, &quot;a&quot;);
+  FILE *file = fopen(filename, "a");
   if (file == NULL) {
-    puts(&quot;Error opening file&quot;);
+    puts("Error opening file");
     return 2;
   }
   int r = fputs(argv[1], file);
   if (r == EOF) {
-    puts(&quot;Error writing message&quot;);
+    puts("Error writing message");
     return 2;
   }
   r = fputc('\n', file);
   if (r == EOF) {
-    puts(&quot;Error writing newline&quot;);
+    puts("Error writing newline");
     return 2;
   }
   fclose(file);
@@ -1232,8 +1232,8 @@ int main(int argc, char **argv) {
 <pre><code>-rwxr-xr-x    1 brian     brian         19984 Oct 28 13:26 message-brian
 </code></pre>
 <p>These are the default permissions for a newly created executable file; note that gcc has set the three <code>+x</code> bits for you. Still as Brian, run <code>chmod u+s message-brian</code> and check the file again: you should now see <code>-rwsr-xr-x</code> for the file permissions. The <code>s</code> is the setuid bit.</p>
-<p>As Nigel (<code>su nigel</code>), go into Brian's home directory and run <code>./message-brian &quot;Hi from Nigel!&quot;</code>. The quotes are needed here because the program accepts only a single argument.</p>
-<p>Now run <code>ls -l</code> and notice that a <code>messages.txt</code> has appeared with owner and group <code>brian</code>. Check the contents with <code>cat messages.txt</code>. Although Nigel cannot create and edit files in Brian's home directory himself (he can't edit <code>messages.txt</code> for example, although he can read it), the program <code>message-brian</code> ran as Brian, which let it create the file. Nigel can send another message like this (<code>./message-brian &quot;Hi again!&quot;</code>), which gets appended to the file: try this out.</p>
+<p>As Nigel (<code>su nigel</code>), go into Brian's home directory and run <code>./message-brian "Hi from Nigel!"</code>. The quotes are needed here because the program accepts only a single argument.</p>
+<p>Now run <code>ls -l</code> and notice that a <code>messages.txt</code> has appeared with owner and group <code>brian</code>. Check the contents with <code>cat messages.txt</code>. Although Nigel cannot create and edit files in Brian's home directory himself (he can't edit <code>messages.txt</code> for example, although he can read it), the program <code>message-brian</code> ran as Brian, which let it create the file. Nigel can send another message like this (<code>./message-brian "Hi again!"</code>), which gets appended to the file: try this out.</p>
 <p>This shows how setuid programs can be used to allow other users to selectively perform specific tasks under a different user account.</p>
 <p><strong>Warning</strong>: writing your own setuid programs is extremely dangerous if you don't know the basics of secure coding and hacking C programs, because a bug in such a program could let someone take over your user account. The absolute minimum you should know is the contents of our security units up to and including 4th year.</p>
 <p>A general task for a security analyst might be finding all files with the setuid bit set on a system. You can try this yourself, but return to a vagrant shell first so that you're allowed to use sudo:</p>
@@ -1288,7 +1288,7 @@ In the video for this activity you have only seen a very brief introduction.</p>
 <li><code>set -u</code> means referencing an undefined variable is an error. This is good practice for lots of reasons.</li>
 <li><code>set -o pipefail</code> changes how pipes work: normally, the return value of a pipe is that of the <em>last</em> command in the pipe. With the <code>pipefail</code> option, if any command in the pipeline fails (non-zero return) then the pipeline returns that command's exit code.</li>
 </ul>
-<p>A couple of notes on <code>set -u</code>: if you write something like <code>rm -rf $FOLDER/</code> and <code>$FOLDER</code> isn't set, then you don't accidentally end up deleting the whole system! Of course, most <code>rm</code> implementations will refuse to delete <code>/</code> without the <code>--no-preserve-root</code> option, and you should not have that trailing slash in the first place. There was a <a href="https://drj11.wordpress.com/2015/01/20/steaming/">bug in a beta version of Steam for linux</a> where it tried to do <code>rm -rf &quot;$STEAMROOT/&quot;*</code> to delete all files in a folder (which explains the slash), but the variable in some cases got set to the <em>empty string</em>, which <code>-u</code> would not protect against. This was an installer script, so it ran as root which made things even worse.</p>
+<p>A couple of notes on <code>set -u</code>: if you write something like <code>rm -rf $FOLDER/</code> and <code>$FOLDER</code> isn't set, then you don't accidentally end up deleting the whole system! Of course, most <code>rm</code> implementations will refuse to delete <code>/</code> without the <code>--no-preserve-root</code> option, and you should not have that trailing slash in the first place. There was a <a href="https://drj11.wordpress.com/2015/01/20/steaming/">bug in a beta version of Steam for linux</a> where it tried to do <code>rm -rf "$STEAMROOT/"*</code> to delete all files in a folder (which explains the slash), but the variable in some cases got set to the <em>empty string</em>, which <code>-u</code> would not protect against. This was an installer script, so it ran as root which made things even worse.</p>
 <p><strong>Exercise</strong>: think of an example in a shell script where <code>pipefail</code> makes a difference, that is where the last command in a pipe could succeed even if a previous one fails. As a counter-example, <code>cat FILE | grep STRING</code> would fail even without <code>pipefail</code> if the file does not exist, because grep would immediately get end-of-file on standard input.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="build-tools-2"><a class="header" href="#build-tools-2">Build Tools 2</a></h1>
 <h2 id="videos-4"><a class="header" href="#videos-4">Videos</a></h2>
@@ -1326,7 +1326,7 @@ In the video for this activity you have only seen a very brief introduction.</p>
 <blockquote>
 <p><code># Use test -z because SunOS4 sh mishandles braces in ${var-val}.</code></p>
 <p><code># It thinks the first close brace ends the variable substitution.</code></p>
-<p><code>test -z &quot;$INSTALL_PROGRAM&quot; &amp;&amp; INSTALL_PROGRAM='${INSTALL}'</code></p>
+<p><code>test -z "$INSTALL_PROGRAM" &amp;&amp; INSTALL_PROGRAM='${INSTALL}'</code></p>
 </blockquote>
 <h2 id="make"><a class="header" href="#make">Make</a></h2>
 <p>Type <code>make</code> to build sqlite. If it's not installed, <code>sudo apt install make</code> will fix that.</p>
@@ -1354,7 +1354,7 @@ In the video for this activity you have only seen a very brief introduction.</p>
 <p>The Python programming language comes with a package manager called <code>pip</code>.  Find the package that provides it and install it (<strong>hint</strong>: how did we find a missing library in the C exercise?).</p>
 <p>We are going to practice installing the <a href="https://github.com/miyuchina/mistletoe">mistletoe</a> module, which renders markdown into HTML.</p>
 <ul>
-<li>In python, try the line <code>import mistletoe</code> and notice that you get <code>ModuleNotFoundError: No module named 'mistletoe'</code>. </li>
+<li>In python, try the line <code>import mistletoe</code> and notice that you get <code>ModuleNotFoundError: No module named 'mistletoe'</code>.</li>
 <li>Quit python again (Control-D) and try <code>sudo pip3 install mistletoe</code>. You should get a success message (and possibly a warning, explained below).</li>
 <li>Open python again and repeat <code>import mistletoe</code>. This produces no output, so the module was loaded.</li>
 </ul>
@@ -1375,7 +1375,7 @@ with open('hello.md', 'r') as file:
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
 <p>Python version 3 came out in 2008 and has some syntax changes compared
-to Python 2 (<code>print &quot;hello world&quot;</code> became <code>print(&quot;hello world&quot;)</code>). Version 2 is now considered deprecated; but the transition
+to Python 2 (<code>print "hello world"</code> became <code>print("hello world")</code>). Version 2 is now considered deprecated; but the transition
 was <em>long</em> and <em>extremely painful</em> because changing the syntax of a
 thing like the print statement leads to an awful lot of code breaking
 and an awful lot of people preferring not to fix their code and
@@ -1384,7 +1384,7 @@ instead just keep an old version of Python installed.</p>
 have multiple versions of Python installed <code>python2</code> for the old one
 and <code>python3</code> for the newer on (and even then these were often
 symlinks to specific subversions like <code>python2.6</code>), and then <code>python</code>
-being a symlink for whatever your OS considered to be the &quot;supported&quot; version.</p>
+being a symlink for whatever your OS considered to be the "supported" version.</p>
 <p>Different OSs absolutely had different versions of Python (MacOS was
 particularly egregious for staying with Python 2 for far longer than
 necessary) and so a solution was needed, because this was just
@@ -1445,7 +1445,7 @@ versions</em> of Java installed you may need to set the <code>JAVA_HOME</code> a
 <code>PATH</code> variables to point to your install.</p>
 <p>For example:</p>
 <pre><code class="language-sh">export JAVA_HOME='/usr/lib/jvm/java-17-openjdk'
-export PATH=&quot;${PATH}:${JAVA_HOME}/bin&quot;
+export PATH="${PATH}:${JAVA_HOME}/bin"
 </code></pre>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
@@ -1468,10 +1468,10 @@ have to install it manually:</p>
 <p>Note: <code>JAVA_HOME</code> must be set correctly for maven to work.</p>
 <h2 id="running-maven"><a class="header" href="#running-maven">Running maven</a></h2>
 <p>Open a shell and type <code>mvn archetype:generate</code>. This lets you <em>generate an artifact from an archetype</em>, which is maven-speak for create a new folder with a maven file.</p>
-<p><em>If you get a &quot;not found&quot; error, then most likely the maven <code>bin</code>
+<p><em>If you get a "not found" error, then most likely the maven <code>bin</code>
 folder is not on your path. If you're on a POSIX system and have used
 your package manager, this should be set up automatically, but if
-you've downloaded and unzipped maven then you have to <code>export PATH=&quot;$PATH:...&quot;</code> where you replace the three dots with the path to
+you've downloaded and unzipped maven then you have to <code>export   PATH="$PATH:..."</code> where you replace the three dots with the path to
 the folder, and preferably put that line in your <code>~/.profile</code> too.</em></p>
 <p>|||advanced
 On Windows, if you must user it, search online for instructions how
@@ -1481,7 +1481,7 @@ should paste the full path, then press SPACE and enter the arguments
 you want to pass.
 |||</p>
 <p>The first time you run it, maven will download a lot of libraries.</p>
-<p>Maven will first show a list of all archetypes known to humankind (3046 at the time of counting) but you can just press ENTER to use the default, 2098 (&quot;quickstart&quot;). Maven now asks you for the version to use, press ENTER again.</p>
+<p>Maven will first show a list of all archetypes known to humankind (3046 at the time of counting) but you can just press ENTER to use the default, 2098 ("quickstart"). Maven now asks you for the version to use, press ENTER again.</p>
 <p>You now have to enter the triple of (groupId, artifactId, version) for your project - it doesn't really matter but I suggest the following:</p>
 <pre><code>groupId: org.example
 artifactId: project
@@ -1504,7 +1504,7 @@ version: 0.1
 ./src/test/java/org/example/AppTest.java
 ./pom.xml
 </code></pre>
-<p>This is the standard maven folder structure. Your java sources live under <code>src/main/java</code>, and the default package name is <code>org.example</code> or whatever you put as your groupId so the main file is currently <code>src/main/java/org/example/App.java</code>. Since it's common to develop Java from inside an IDE or an editor with &quot;folding&quot; for paths (such as VS code), this folder structure is not a problem, although it's a bit clunky on the terminal.</p>
+<p>This is the standard maven folder structure. Your java sources live under <code>src/main/java</code>, and the default package name is <code>org.example</code> or whatever you put as your groupId so the main file is currently <code>src/main/java/org/example/App.java</code>. Since it's common to develop Java from inside an IDE or an editor with "folding" for paths (such as VS code), this folder structure is not a problem, although it's a bit clunky on the terminal.</p>
 <h2 id="the-pom-file"><a class="header" href="#the-pom-file">The POM file</a></h2>
 <p>Have a look at <code>pom.xml</code> in an editor. The important parts you need to know about are:</p>
 <p>The artifact's identifier (group id, artifact id, version):</p>
@@ -1529,7 +1529,7 @@ version: 0.1
     &lt;/dependency&gt;
 &lt;/dependencies&gt;
 </code></pre>
-<p>The <code>&lt;plugins&gt;</code> section contains the plugins that maven uses to compile and build your project. This section isn't mandatory, but it's included to &quot;lock&quot; the plugins to a particular version so that if a new version of a plugin is released, that doesn't change how your build works.</p>
+<p>The <code>&lt;plugins&gt;</code> section contains the plugins that maven uses to compile and build your project. This section isn't mandatory, but it's included to "lock" the plugins to a particular version so that if a new version of a plugin is released, that doesn't change how your build works.</p>
 <p>The one thing you should add here is the <code>exec-maven-plugin</code> as follows, so that you can actually run your project:</p>
 <pre><code class="language-xml">&lt;plugin&gt;
     &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
@@ -1543,7 +1543,7 @@ version: 0.1
 <p>The important line is the <code>mainClass</code> which you set to the full name (with path components) of your class with the <code>main()</code> function.</p>
 <h2 id="compile-run-and-develop"><a class="header" href="#compile-run-and-develop">Compile, run and develop</a></h2>
 <p><code>mvn compile</code> compiles the project. The very first time you do this, it will download a lot of plugins, after that it will be pretty fast. Like <code>make</code>, it only compiles files that have changed since the last run, but if this ever gets out of sync (for example because you cancelled a compile halfway through) then <code>mvn clean</code> will remove all compiled files so the next compile will rebuild everything.</p>
-<p>The <code>App.java</code> file contains a basic &quot;Hello World!&quot; program (have a look at this file). You can run the compiled project with <code>mvn exec:java</code> if you've set up the plugin as above. After you've run it the first time and it's downloaded all the files it needs, lines coming from maven itself will start with <code>[INFO]</code> or <code>[ERROR]</code> or similar, so lines without any prefix like that are printed by your program itself. You should see the hello world message on your screen.</p>
+<p>The <code>App.java</code> file contains a basic "Hello World!" program (have a look at this file). You can run the compiled project with <code>mvn exec:java</code> if you've set up the plugin as above. After you've run it the first time and it's downloaded all the files it needs, lines coming from maven itself will start with <code>[INFO]</code> or <code>[ERROR]</code> or similar, so lines without any prefix like that are printed by your program itself. You should see the hello world message on your screen.</p>
 <p>The development workflow is now as follows: you make your edits, then run <code>mvn compile test exec:java</code> to recompile, run your tests, then run the program. (Like <code>make</code>, you can put more than one target on a command, separated by spaces.)</p>
 <p><code>mvn test</code> runs the tests in <code>src/test/java</code>. There is an example test already created for you (have a look).</p>
 <p><code>mvn package</code> creates a jar file of your project in the <code>target/</code> folder.</p>
@@ -1554,17 +1554,17 @@ version: 0.1
 <pre><code>Hello, ${name}!
 </code></pre>
 <p>which you can later render with a particular name value. This is one of the standard ways of creating web applications, for example to display someone's profile page you would write a page template that takes care of the layout, styles, links etc. but uses template variables for the fields (name, email, photo etc.) which you render when someone accesses the profile page for a particular person. You will see this in more detail in your SPE project next year.</p>
-<p>To use Thymeleaf or any other library, you first have to add it to your pom file. Go to <a href="https://mvnrepository.org">mvnrepository.org</a> and search for Thymeleaf, then find the latest stable (&quot;release&quot;) version. There is a box where you can copy the <code>&lt;dependency&gt;</code> block to paste in your pom file. The next <code>mvn compile</code> will download thymeleaf and all its dependencies.</p>
+<p>To use Thymeleaf or any other library, you first have to add it to your pom file. Go to <a href="https://mvnrepository.org">mvnrepository.org</a> and search for Thymeleaf, then find the latest stable ("release") version. There is a box where you can copy the <code>&lt;dependency&gt;</code> block to paste in your pom file. The next <code>mvn compile</code> will download thymeleaf and all its dependencies.</p>
 <p>Next, make a template file called <code>unit</code> in the folder <code>src/main/resources/templates</code> (you will have to create the folder first), and put the following lines in it:</p>
 <pre><code>Unit: [(${name})]
 
 In this unit, you will learn about:
 
-[# th:each=&quot;topic: ${topics}&quot;]
+[# th:each="topic: ${topics}"]
   - [(${topic})]
 [/]
 </code></pre>
-<p>This is thymeleaf &quot;text&quot; syntax, where the first line renders the value of a variable and the third-from-last line is the template equivalent of a 'for' loop that renders its contents once for each element in a list (or other collection data structure).</p>
+<p>This is thymeleaf "text" syntax, where the first line renders the value of a variable and the third-from-last line is the template equivalent of a 'for' loop that renders its contents once for each element in a list (or other collection data structure).</p>
 <p>Thymeleaf needs to know where to find its template files, and in this example we are going to demonstrate loading resources from the classpath because that is the correct way to work with resources in a java application (there are special considerations for web applications, but they usually end up using the classpath in the end anyway).</p>
 <p>In your Java source file, you can now do the following. First, the imports you will need:</p>
 <pre><code class="language-java">import java.util.List;
@@ -1578,16 +1578,16 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 <p>And the code:</p>
 <pre><code class="language-java">ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
 resolver.setTemplateMode(TemplateMode.TEXT);
-resolver.setPrefix(&quot;templates/&quot;);
+resolver.setPrefix("templates/");
 
 TemplateEngine engine = new TemplateEngine();
 engine.setTemplateResolver(resolver);
 
 Context c = new Context();
-c.setVariable(&quot;name&quot;, &quot;Software Tools&quot;);
-List&lt;String&gt; topics = Arrays.asList(&quot;Linux&quot;, &quot;Git&quot;, &quot;Maven&quot;);
-c.setVariable(&quot;topics&quot;, topics);
-String greeting = engine.process(&quot;unit&quot;, c);
+c.setVariable("name", "Software Tools");
+List&lt;String&gt; topics = Arrays.asList("Linux", "Git", "Maven");
+c.setVariable("topics", topics);
+String greeting = engine.process("unit", c);
 
 System.out.println(greeting);
 </code></pre>
@@ -1602,9 +1602,9 @@ In this unit, you will learn about:
 </code></pre>
 <p>Let's look at how the code works.</p>
 <ol>
-<li>A template resolver is a class that finds a template when you give it a name (here: &quot;unit&quot;). In this case we use a resolver that loads off the classpath, so we just have to put the template files somewhere under <code>src/main/resources</code>; we tell it that we want the template files treated as text (e.g. not HTML), and that the template files are in a subfolder called <code>templates</code>.</li>
-<li>The template engine is the class that does the work of rendering the template, once the resolver has found the source file. </li>
-<li>To render a template, you need a template name for the resolver to look up, and a context - an object on which you can set key/value parameters. In this case we're setting the key &quot;name&quot; to &quot;Software Tools&quot; and the key &quot;topics&quot; to a list of three topics. The names and types of keys obviously have to match what's in the template file.</li>
+<li>A template resolver is a class that finds a template when you give it a name (here: "unit"). In this case we use a resolver that loads off the classpath, so we just have to put the template files somewhere under <code>src/main/resources</code>; we tell it that we want the template files treated as text (e.g. not HTML), and that the template files are in a subfolder called <code>templates</code>.</li>
+<li>The template engine is the class that does the work of rendering the template, once the resolver has found the source file.</li>
+<li>To render a template, you need a template name for the resolver to look up, and a context - an object on which you can set key/value parameters. In this case we're setting the key "name" to "Software Tools" and the key "topics" to a list of three topics. The names and types of keys obviously have to match what's in the template file.</li>
 </ol>
 <p><em>Exercise: rewrite this example to be a bit more object-oriented by creating a unit class:</em></p>
 <pre><code class="language-java">public class Unit {
@@ -1653,19 +1653,19 @@ for HTTPS in production; 8000 or 8080 while in development). If you
 are following these exercises on your host OS, you can skip this
 preparation. If you are in a VM on vagrant, then although you can quickly get an application to work on port 8080 inside the VM, you need one extra step to make it accessible from your browser outside the VM.</p>
 <p>Add the line</p>
-<pre><code>config.vm.network &quot;forwarded_port&quot;, guest: 8080, host: 8080
+<pre><code>config.vm.network "forwarded_port", guest: 8080, host: 8080
 </code></pre>
 <p>to your Vagrantfile just below the <code>config.vm.box</code> line, then restart the VM by logging out and doing <code>vagrant halt</code> then <code>vagrant up</code>. Your firewall may pop up a warning and ask you to approve this.</p>
 <p>Now, while the VM is running, any connection to port 8080 on your host OS will be sent to the VM (this also means that if you're doing web development on the host, you can't use port 8080 for anything else while the VM is up - if you need port 8080, just pick another port number for the <code>guest</code> part).</p>
 <h2 id="spring-set-up"><a class="header" href="#spring-set-up">Spring set-up</a></h2>
 <p>Spring wants to make setting up a project as easy as possible, so go to <a href="https://start.spring.io/">start.spring.io</a> and you get a graphical interface to create a spring/maven project.</p>
 <ul>
-<li>Pick &quot;Maven Project&quot; and &quot;Java language&quot;.</li>
+<li>Pick "Maven Project" and "Java language".</li>
 <li>Enter a group id and artifact id (you can use <code>org.example</code> and <code>project</code>).</li>
-<li>Make sure &quot;packaging&quot; is on JAR and &quot;Java&quot; (version) is on 17 (or
+<li>Make sure "packaging" is on JAR and "Java" (version) is on 17 (or
 whatever you have installed).</li>
-<li>Under <em>Dependencies</em> on the right, click &quot;Add Dependencies&quot; and add &quot;Spring Web&quot;.</li>
-<li>Click &quot;Generate&quot; at the bottom, this downloads a ZIP of a project (complete with pom.xml file and folders) that you can unzip either on the host or in the VM.</li>
+<li>Under <em>Dependencies</em> on the right, click "Add Dependencies" and add "Spring Web".</li>
+<li>Click "Generate" at the bottom, this downloads a ZIP of a project (complete with pom.xml file and folders) that you can unzip either on the host or in the VM.</li>
 </ul>
 <p>To unzip the file in the VM, place it in the same folder as your
 Vagrantfile on the host, then inside the VM it will appear in the
@@ -1676,22 +1676,22 @@ not already installed.</p>
 </code></pre>
 <p>which will recompile if necessary, and then run the application. Once it's running, you can go to <a href="http://localhost:8080">localhost:8080</a> in a browser on your host OS (whether the Spring application is running on the host, or inside the VM as long as you've set up the port forwarding as described above). You will see an error message as there's no pages yet, but the application is running. Stop it with Control+C.</p>
 <h2 id="development"><a class="header" href="#development">Development</a></h2>
-<p>Open the source file under <code>src/main/java/...</code>. I called mine &quot;project&quot; so the class is <code>ProjectApplication</code>, but the name doesn't matter.</p>
+<p>Open the source file under <code>src/main/java/...</code>. I called mine "project" so the class is <code>ProjectApplication</code>, but the name doesn't matter.</p>
 <ul>
 <li>Add the <code>@RestController</code> annotation to the application class.</li>
 <li>Create a method as follows:</li>
 </ul>
-<pre><code class="language-java">@GetMapping(&quot;/&quot;)
+<pre><code class="language-java">@GetMapping("/")
 public String mainPage() {
-    return &quot;Hello, Software Tools!\n&quot;;    
+    return "Hello, Software Tools!\n";    
 }
 </code></pre>
 <ul>
 <li>Add the imports for the two annotations you've just used; they're both in the package <code>org.springframework.web.bind.annotation</code>.</li>
 </ul>
 <p>Now you can re-run the project with maven, go to <code>localhost:8080</code> on your browser and you should see the message. Congratulations - you've built your first Java/Maven/Spring web application!</p>
-<p><em>You can also access the web page from the terminal on your host machine with <code>wget localhost:8080 -q -O /dev/stdout</code> which should print &quot;Hello, Software Tools!&quot; on your terminal. If you just do <code>wget localhost:8080</code> it will save the output to a file with the default name <code>index.html</code>.</em></p>
-<p>The <code>@GetMapping</code> means, when a HTTP GET request comes in for a URL with the path in the annotation (such as a browser would send), then run this function. For example, accessing <code>localhost:8080/pages/index.html</code> would look for a mapping <code>/pages/index.html</code> where as the <code>/</code> mapping covers when you type no path at all. You can start to see that URL paths on the web are modelled on POSIX paths as you learnt in this unit, with forward slashes and a concept of a &quot;root folder&quot; <code>/</code> which is what gets returned when you type a website's name in your browser without a path on the end.</p>
+<p><em>You can also access the web page from the terminal on your host machine with <code>wget localhost:8080 -q -O /dev/stdout</code> which should print "Hello, Software Tools!" on your terminal. If you just do <code>wget localhost:8080</code> it will save the output to a file with the default name <code>index.html</code>.</em></p>
+<p>The <code>@GetMapping</code> means, when a HTTP GET request comes in for a URL with the path in the annotation (such as a browser would send), then run this function. For example, accessing <code>localhost:8080/pages/index.html</code> would look for a mapping <code>/pages/index.html</code> where as the <code>/</code> mapping covers when you type no path at all. You can start to see that URL paths on the web are modelled on POSIX paths as you learnt in this unit, with forward slashes and a concept of a "root folder" <code>/</code> which is what gets returned when you type a website's name in your browser without a path on the end.</p>
 <p>You've seen that build tools like maven automate the process of downloading the libraries your project needs and compiling your project. The Spring Framework automates (as far as possible) the process of running these libraries when your application starts, and getting them all to work nicely together (there is a <em>lot</em> going on in the background from a web request arriving to your function being called to get the page contents).
 The obvious next step would be to use thymeleaf to render HTML templates to make proper pages. This is indeed something you'll learn about later in this unit, but there are a few more steps you'll need to know to do this - and that's quite enough material for one workshop.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="build-tools-1"><a class="header" href="#build-tools-1">Build Tools 1</a></h1>
@@ -1746,7 +1746,7 @@ int lstat(const char *pathname, struct stat *statbuf);
 <p><code>fstat</code> takes an open file descriptor instead of a file name: this is fine for getting the inode information (in the kernel, a file descriptor contains an inode number) but you will not be able to get a file name back from this - remember, <em>files don't have names; names have files</em>.</p>
 <p>Later in the manual page, it explains the <code>struct stat</code> contents. Let's have a look at the sources directly though:</p>
 <ul>
-<li><code>nano /usr/include/sys/stat.h</code> shows you the header file and the function definitions, including the bitmasks for the mode bits e.g. <code>#define S_IRUSR 0400</code> is the &quot;user can read&quot; bit and the file type bits e.g. <code>#define S_IFDIR 0040000</code>. Note, in C, numbers with a leading 0 are octal!</li>
+<li><code>nano /usr/include/sys/stat.h</code> shows you the header file and the function definitions, including the bitmasks for the mode bits e.g. <code>#define S_IRUSR 0400</code> is the "user can read" bit and the file type bits e.g. <code>#define S_IFDIR 0040000</code>. Note, in C, numbers with a leading 0 are octal!</li>
 <li>The definition of the <code>struct stat</code> is in another file included from <code>sys/stat.h</code>, namely <code>bits/stat.h</code>; open that in your editor too and have a look at it.</li>
 <li>The types of the fields in the structure (<code>dev_t</code>) etc. are yet in another file - <code>bits/alltypes.h</code> if you're curious - but eventually they get defined as <code>long</code>, through intermediate definitions of <code>_Int64</code> etc. Basically, on a 64-bit machine, most of these fields are 64 bits.</li>
 </ul>
@@ -1754,7 +1754,7 @@ int lstat(const char *pathname, struct stat *statbuf);
 <pre><code class="language-C">#include &lt;sys/stat.h&gt;
 #include &lt;stdio.h&gt;
 int main() {
-    printf(&quot;Size: %lu bytes\n&quot;, sizeof(struct stat));
+    printf("Size: %lu bytes\n", sizeof(struct stat));
     return 0;
 }
 </code></pre>
@@ -1773,7 +1773,7 @@ _start:
     mov $0,  %rdi
     syscall
 
-str: .asciz &quot;/dev/stdin&quot;
+str: .asciz "/dev/stdin"
 
 .section .data
 buf: .skip 144
@@ -1811,20 +1811,20 @@ buf: .skip 144
 
 int main() {
     struct stat buf;
-    char *str = &quot;/dev/stdin&quot;;
+    char *str = "/dev/stdin";
     int r = lstat(str, &amp;buf);
     if (r != 0) {
-        puts(&quot;An error occurred.&quot;);
+        puts("An error occurred.");
         return 1;
     }
-    printf(&quot;The inode number is %lu.\n&quot;, buf.st_ino);
-    if (S_ISDIR(buf.st_mode)) { puts(&quot;It's a directory.&quot;);}
-    if (S_ISCHR(buf.st_mode)) { puts(&quot;It's a character device.&quot;);}
-    if (S_ISBLK(buf.st_mode)) { puts(&quot;It's a block device.&quot;);}
-    if (S_ISREG(buf.st_mode)) { puts(&quot;It's a regular file.&quot;);}
-    if (S_ISFIFO(buf.st_mode)) { puts(&quot;It's a FIFO.&quot;);}
-    if (S_ISLNK(buf.st_mode)) { puts(&quot;It's a soft link.&quot;);}
-    if (S_ISSOCK(buf.st_mode)) { puts(&quot;It's a socket.&quot;);}
+    printf("The inode number is %lu.\n", buf.st_ino);
+    if (S_ISDIR(buf.st_mode)) { puts("It's a directory.");}
+    if (S_ISCHR(buf.st_mode)) { puts("It's a character device.");}
+    if (S_ISBLK(buf.st_mode)) { puts("It's a block device.");}
+    if (S_ISREG(buf.st_mode)) { puts("It's a regular file.");}
+    if (S_ISFIFO(buf.st_mode)) { puts("It's a FIFO.");}
+    if (S_ISLNK(buf.st_mode)) { puts("It's a soft link.");}
+    if (S_ISSOCK(buf.st_mode)) { puts("It's a socket.");}
 
     return 0;
 }
@@ -1868,18 +1868,18 @@ ssize_t readlink(const char *pathname, char *buf, size_t bufsiz)
 <p>Clone the busybox repository with <code>git clone git://busybox.net/busybox.git</code> (if that doesn't work for some reason, try the https version). Inside the cloned folder, the source file is <code>coreutils/stat.c</code> - open that and have a look:</p>
 <ul>
 <li>The comments at the start are read by a custom build tool. The <code>//applet</code> line (currently line 38) says to build a command called <code>stat</code>.</li>
-<li><code>file_type</code> (line 123 at the time of writing) is the code for turning mode bits into strings, note there are lots of <code>#ifdef</code>s depending on what options you compile busybox with. Also, if you <code>stat</code> a file that does not match any known type, you get the string &quot;weird file&quot;.</li>
-<li>Most of the source file is the kind of &quot;plumbing&quot; that you need in any real C program. The interesting part is <code>do_stat</code> (line 588 at the time of writing):</li>
+<li><code>file_type</code> (line 123 at the time of writing) is the code for turning mode bits into strings, note there are lots of <code>#ifdef</code>s depending on what options you compile busybox with. Also, if you <code>stat</code> a file that does not match any known type, you get the string "weird file".</li>
+<li>Most of the source file is the kind of "plumbing" that you need in any real C program. The interesting part is <code>do_stat</code> (line 588 at the time of writing):</li>
 </ul>
-<p>First, it allocates a <code>struct stat</code> buffer like we did before. </p>
+<p>First, it allocates a <code>struct stat</code> buffer like we did before.</p>
 <p>The key line is currently line 605 and following:</p>
 <pre><code class="language-C">if ((option_mask32 &amp; OPT_DEREFERENCE ? stat : lstat) (filename, &amp;statbuf) != 0) {
-    bb_perror_msg(&quot;can't stat '%s'&quot;, filename);
+    bb_perror_msg("can't stat '%s'", filename);
     return 0;
 }
 </code></pre>
 <p>Based on the value of <code>OPT_DEREFERENCE</code> (the <code>-L</code> command line flag), we call either the <code>stat</code> or <code>lstat</code> system call wrapper in the C library, and complain and exit if we don't get a success return value - remember, in case of errors, <code>struct stat statbuf</code> could be corrupted so we shouldn't look at it.</p>
-<p>The rest of the function is basically setting up one giant <code>printf</code> statement to output the results in the correct format. Note here that the <code>struct stat</code> still doesn't know anything about the file's name, as that's not in the inode, but the command-line program does because you gave the name as an argument. </p>
+<p>The rest of the function is basically setting up one giant <code>printf</code> statement to output the results in the correct format. Note here that the <code>struct stat</code> still doesn't know anything about the file's name, as that's not in the inode, but the command-line program does because you gave the name as an argument.</p>
 <p>If the file is a soft link, then we call a version of readlink - currently <code>xmalloc_readlink_or_warn</code> in line 713 - to display the link target. This function is implemented in <code>libbb/xreadlink.c</code> where it currently delegates to <code>xmalloc_readlink</code> on line 20, which calls <code>readlink</code> in a loop with increasing buffer sizes until it finds one that is big enough for the target - have a look at how this is implemented.</p>
 <p>The main function for this utility is <code>stat_main</code>, currently on line 757. All this does is parse the command line arguments with <code>getopt32</code>, call the <code>do_stat</code> function in a loop for each command line argument (lines 787 and following in the current version) and then return success if all files were successfully processed, otherwise failure.</p>
 <p>If nothing else, the learning point of this activity is that system programming in C and calling syscalls directly is a lot more involved than you may think! Please don't be that kind of programmer who <a href="https://rachelbythebay.com/w/2014/08/19/fork/">ignores system call error values, and makes terrible things happen</a>.</p>
@@ -1891,7 +1891,7 @@ ssize_t readlink(const char *pathname, char *buf, size_t bufsiz)
 <li>If one process writes to a pipe, then this blocks the process until another process reads from it.</li>
 <li>If one process reads from a pipe and another process writes to it (it does not matter who goes first) then the data is transferred from the reader to the writer, and both processes continue.</li>
 </ul>
-<p>For example, when you use a command like <code>cat logfile | grep Error | wc -l</code> to count the number of lines containing the word &quot;Error&quot;, then there are three processes (not counting the terminal) and two pipes involved:</p>
+<p>For example, when you use a command like <code>cat logfile | grep Error | wc -l</code> to count the number of lines containing the word "Error", then there are three processes (not counting the terminal) and two pipes involved:</p>
 <p><img src="posix4/../resources/pipe1.png" alt="pipe diagram" /></p>
 <p><em>In this diagram, green boxes are processes with standard input on the left and standard output (top) and standard error (bottom) on the right. The little squares all represent file descriptors; a pipe has two of them, one each for reading and writing.</em></p>
 <p>This is not yet a fully concurrent system though, as data is only flowing in one direction: there are no loops.</p>
@@ -1908,7 +1908,7 @@ ssize_t readlink(const char *pathname, char *buf, size_t bufsiz)
 <p><em>Here the terminal's right file descriptor is the one that the terminal reads, and the left one is where the terminal writes your keyboard input. But there's still a human in the loop here.</em></p>
 <p>We are going to write a program that can talk to <code>bc</code>. This means we have two processes, our program and <code>bc</code>, and they need to communicate with each other. We will use pipes for this, giving the following diagram where we call the pipes <em>up</em> and <em>down</em>:</p>
 <p><img src="posix4/../resources/pipe3.png" alt="pipe digram for a program controlling bc" /></p>
-<p><em>In this diagram, data flows through pipes from left to right, but logically the &quot;down&quot; pipe is for data flowing from our program downwards to bc, and the &quot;up&quot; pipe is for data flowing back up again. Standard error is not shown (it still goes to the terminal).</em></p>
+<p><em>In this diagram, data flows through pipes from left to right, but logically the "down" pipe is for data flowing from our program downwards to bc, and the "up" pipe is for data flowing back up again. Standard error is not shown (it still goes to the terminal).</em></p>
 <p>The <code>bc</code> program does not need to know about any of this: it still reads expressions from its standard input, evaluates them, and writes them to standard output.</p>
 <p>Notice that when we used a pipe character <code>|</code> in the shell, it automatically set up the pipes for us so each pipe had one reader and one writer. When we set the pipes up ourselves, we will have to take care of this ourselves too.</p>
 <h2 id="the-first-program"><a class="header" href="#the-first-program">The first program</a></h2>
@@ -1921,15 +1921,15 @@ ssize_t readlink(const char *pathname, char *buf, size_t bufsiz)
 
 void check(int ok, char *where) {
   if (ok &lt; 0) {
-    fprintf(stderr, &quot;Error in %s: %s\n&quot;, where, strerror(errno));
+    fprintf(stderr, "Error in %s: %s\n", where, strerror(errno));
     exit(1);
   }
 }
 
 int evaluate(char *buffer, int len) {
-  fprintf(stderr, &quot;&gt; %s&quot;, buffer);
+  fprintf(stderr, "&gt; %s", buffer);
 
-  int ok = printf(&quot;%s&quot;, buffer);
+  int ok = printf("%s", buffer);
   if (ok &lt; 0) {
     return -1;
   }
@@ -1937,7 +1937,7 @@ int evaluate(char *buffer, int len) {
   if (p == NULL) {
     return -1;
   }
-  fprintf(stderr, &quot;&lt; %s&quot;, buffer);
+  fprintf(stderr, "&lt; %s", buffer);
   return 0;
 }
 
@@ -1948,17 +1948,17 @@ int main() {
   setbuf(stdout, NULL);
   setbuf(stdin, NULL);
 
-  strcpy(buffer, &quot;1+2\n&quot;);
+  strcpy(buffer, "1+2\n");
 
   ok = evaluate(buffer, sizeof(buffer));
-  check(ok, &quot;I/O&quot;);
+  check(ok, "I/O");
   
   for (int i = 3; i &lt;= 10; i++) {
-    sprintf(buffer + strlen(buffer) - 1, &quot;+%u\n&quot;, i);
+    sprintf(buffer + strlen(buffer) - 1, "+%u\n", i);
     ok = evaluate(buffer, sizeof(buffer));
-    check(ok, &quot;I/O&quot;);
+    check(ok, "I/O");
   }
-  fprintf(stderr, &quot;The result is %s&quot;, buffer);
+  fprintf(stderr, "The result is %s", buffer);
   return 0;
 }
 </code></pre>
@@ -1975,10 +1975,10 @@ int main() {
 <div class="container-content">
 <p>You could also use another trick to disambiguate standard output/error (for programs that don't, like this one, indicate which is which: the lines starting <code>&gt;</code> or <code>&lt;</code> are standard error).</p>
 <pre><code class="language-sh">escape=$(printf '\033')
-./ipc 2&gt; &gt;(sed -e &quot;s/\(.*\)/${escape}[32m\1${escape}[0m/&quot;)
+./ipc 2&gt; &gt;(sed -e "s/\(.*\)/${escape}[32m\1${escape}[0m/")
 </code></pre>
 <p>This might mess up the last line on your terminal a bit, but you can reset it with Control+L.
-The first command sets a shell variable to the ANSI escape character. The second line redirects standard error (<code>2&gt;</code>) to a subprocess (<code>&gt;(...)</code>) which calls the stream editor <code>sed</code> to replace each line with the line surrounded by <code>\e[32m</code> (set colour to green) and <code>\e[0m</code> (reset colour). This will make the standard error lines appear in green. </p>
+The first command sets a shell variable to the ANSI escape character. The second line redirects standard error (<code>2&gt;</code>) to a subprocess (<code>&gt;(...)</code>) which calls the stream editor <code>sed</code> to replace each line with the line surrounded by <code>\e[32m</code> (set colour to green) and <code>\e[0m</code> (reset colour). This will make the standard error lines appear in green.</p>
 <p>Incidentally, some versions of sed support the <code>\e</code> escape sequence directly, or at least the version <code>\x1b</code> that creates a character from its ASCII code in hexadecimal, but some versions do not, so you need the shell variable trick with a fall back to octal (033) notation!</p>
 </div>
 </div>
@@ -2001,7 +2001,7 @@ The first command sets a shell variable to the ANSI escape character. The second
 &lt; 55
 The result is 55
 </code></pre>
-<p>Note that the program printed the &quot;The result is ...&quot; line to standard error too, otherwise you would not see it here.</p>
+<p>Note that the program printed the "The result is ..." line to standard error too, otherwise you would not see it here.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="pipes-in-c"><a class="header" href="#pipes-in-c">Pipes in C</a></h2>
 <h2 id="types-of-inter-process-communication"><a class="header" href="#types-of-inter-process-communication">Types of inter-process communication</a></h2>
 <p>You can use any of the following for one process to talk to another:</p>
@@ -2028,8 +2028,8 @@ The result is 55
 #include &lt;errno.h&gt;
 #include &lt;string.h&gt;
 
-char* command = &quot;/bin/echo&quot;;
-char* argv[] = {&quot;echo&quot;, &quot;Hello&quot;, NULL};
+char* command = "/bin/echo";
+char* argv[] = {"echo", "Hello", NULL};
 char* envp[] = {NULL};
 /* both argv and envp must be NULL-terminated arrays,
    also argv[0] has to be the program name (busybox cares about this)
@@ -2038,7 +2038,7 @@ char* envp[] = {NULL};
 int main() {
     int ok = fork();
     if (ok &lt; 0) {
-        printf(&quot;fork() failed: %s\n&quot;, strerror(errno));
+        printf("fork() failed: %s\n", strerror(errno));
         return 1;
     }
     /* ok, fork succeeded and the following code will now be running TWICE */
@@ -2046,14 +2046,14 @@ int main() {
         /* This is the child process */
         ok = execve(command, argv, envp);
         if (ok &lt; 0) {
-            printf(&quot;execve() failed: %s\n&quot;, strerror(errno));
+            printf("execve() failed: %s\n", strerror(errno));
             return 1;
         }
         /* we will never get here as if execve succeeded, we're gone */
     }
     
     /* if we got here, then we're the parent process */
-    printf(&quot;Launched a child process, it has pid %u.\n&quot;, ok);
+    printf("Launched a child process, it has pid %u.\n", ok);
     
     return 0;
 }
@@ -2073,7 +2073,7 @@ fd Writer(Pipe p) { return p[1]; }
 
 void check(int ok, char *where) {
   if (ok &lt; 0) {
-    fprintf(stderr, &quot;Error in %s: %s\n&quot;, where, strerror(errno));
+    fprintf(stderr, "Error in %s: %s\n", where, strerror(errno));
     exit(1);
   }
 }
@@ -2081,10 +2081,10 @@ void check(int ok, char *where) {
 int main() {
   int ok;
   Pipe p;
-  ok = pipe(p);           check(ok, &quot;opening pipe&quot;);
-  ok = close(Reader(p));  check(ok, &quot;closing reader&quot;);
+  ok = pipe(p);           check(ok, "opening pipe");
+  ok = close(Reader(p));  check(ok, "closing reader");
   /* here we can write to p */
-  ok = close(Writer(p));  check(ok, &quot;closing writer&quot;);
+  ok = close(Writer(p));  check(ok, "closing writer");
   return 0;
 }
 </code></pre>
@@ -2096,22 +2096,22 @@ int main() {
 <li>In main, we declare a variable of type <code>Pipe</code> and open it with <code>pipe()</code>. Like all POSIX functions this returns a negative number in case of errors, and we have to check for this: it's not safe to use the pipe if it was not opened correctly. The pipe does not need a name as it's local to our program, but you can print the value of the integers if you like, it should be something like (3, 4) as 0-2 are already in use for standard input, output and error.</li>
 <li>In this example we want to use a pipe for writing to, so we close the reading end first. This is important when sharing a pipe between two processes: only one process should have each end open. (There are scenarios where you might want both ends of a pipe open in the same process, but they are more advanced than what we are doing here.)</li>
 <li>In the line where the comment is, we can write to the pipe - you will see how soon.</li>
-<li>Finally, before returning, we close the writing end of the pipe to ensure the process on the other end knows we're done: if we don't do this, they could get a &quot;broken pipe&quot; (EPIPE) error.</li>
+<li>Finally, before returning, we close the writing end of the pipe to ensure the process on the other end knows we're done: if we don't do this, they could get a "broken pipe" (EPIPE) error.</li>
 </ul>
 <p>We still need to learn how to write to a file descriptor, though. And this pipe won't do anything useful until we can connect something to the other end.</p>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
 <p>If you look at the pattern for checking return values</p>
-<pre><code>ok = pipe(p); check(ok, &quot;create pipe&quot;);
+<pre><code>ok = pipe(p); check(ok, "create pipe");
 </code></pre>
 <p>you might be wondering why we don't just combine it into one:</p>
-<pre><code>check(pipe(p), &quot;create pipe&quot;);
+<pre><code>check(pipe(p), "create pipe");
 </code></pre>
 <p>This is absolutely fine except if we want to debug the function being called, as it makes using the debugger's step features more complicated (more on this in future weeks of this unit). It's just a personal preference of mine not to combine the two.</p>
 <p>Of course, if you want to use line-based features of debuggers like breakpoints a lot, you might even want to put the check on a separate line.</p>
-<p>You might have wondered if the problem with the all-in-one pattern is that it &quot;swallows&quot; the return value. That is not a problem: we could adapt <code>check</code> to return its first parameter as the return value if it's not an error, then where you do need the value you can do things like</p>
-<pre><code class="language-C">int pid = check(fork(), &quot;trying to fork&quot;);
+<p>You might have wondered if the problem with the all-in-one pattern is that it "swallows" the return value. That is not a problem: we could adapt <code>check</code> to return its first parameter as the return value if it's not an error, then where you do need the value you can do things like</p>
+<pre><code class="language-C">int pid = check(fork(), "trying to fork");
 if (pid &gt; 0 ) { /* parent */ }
 else { /* child */ }
 </code></pre>
@@ -2119,7 +2119,7 @@ else { /* child */ }
 <pre><code class="language-C">#define check(ok, where) _check(ok, where, __FILE__, __LINE__)
 int _check(int ok, char *where, char *file, int line) {
   if (ok &lt; 0) {
-    fprintf(stderr, &quot;Error at %s on line %i while %s: %s\n&quot;, 
+    fprintf(stderr, "Error at %s on line %i while %s: %s\n", 
             file, line, where, strerror(errno));
     exit(1);
   }
@@ -2134,7 +2134,7 @@ int _check(int ok, char *where, char *file, int line) {
 <h2 id="reminder-c-file-handling"><a class="header" href="#reminder-c-file-handling">Reminder: C file handling</a></h2>
 <p>You should already be familiar with the following C functions from <code>&lt;stdio.h&gt;</code>, though you can look up details with <code>man 3 FUNCNAME</code> on a lab machine:</p>
 <ul>
-<li><code>FILE *fopen(const char *path, const char *mode)</code> opens a file, returning a file handle if successful and NULL otherwise. On some systems, it makes a difference whether you read a file in text mode (<code>r</code>) or binary mode (<code>rb</code>), the difference being that the former activates an extra &quot;line discipline&quot; in the C library. For example on Windows, text mode translates a lone <code>\n</code> character to <code>\r\n</code>. <em>On POSIX systems, there is no difference between text and binary mode.</em> </li>
+<li><code>FILE *fopen(const char *path, const char *mode)</code> opens a file, returning a file handle if successful and NULL otherwise. On some systems, it makes a difference whether you read a file in text mode (<code>r</code>) or binary mode (<code>rb</code>), the difference being that the former activates an extra "line discipline" in the C library. For example on Windows, text mode translates a lone <code>\n</code> character to <code>\r\n</code>. <em>On POSIX systems, there is no difference between text and binary mode.</em></li>
 <li><code>int fclose(FILE *file)</code> closes a file, and flushes any pending writes. It returns 0 on success and nonzero in case of errors.</li>
 <li><code>int fflush(FILE *file)</code> flushes a file: for output, it makes sure any buffered characters are written out. For input, it throws away any unread input in the c library input buffer. It returns 0 on success and nonzero in case of errors. <code>fflush(NULL)</code> flushes all open files.</li>
 <li><code>int feof(FILE *file)</code> returns nonzero if the file in question has reached end-of-file, and zero otherwise. This is the only correct way to test for an end-of file condition.</li>
@@ -2145,7 +2145,7 @@ int _check(int ok, char *where, char *file, int line) {
 <p>A number of utility functions build upon these:</p>
 <ul>
 <li><code>int fprintf(FILE *stream, const char *format, ...)</code> writes formatted output to a file, usually by calling <code>fwrite</code> behind the scenes. <code>printf</code> is a shortcut for <code>fprintf(stdout, ...)</code>. These functions to not print a newline unless you ask for one. It returns the number of characters written, or a negative number if an error occurred.</li>
-<li><code>int fputs(const char *string, FILE *file)</code> writes a zero-terminated string to the file, not including the zero terminator. <code>puts</code> is a shortcut that writes to <code>stdout</code> <em>and</em> adds a newline at the end. </li>
+<li><code>int fputs(const char *string, FILE *file)</code> writes a zero-terminated string to the file, not including the zero terminator. <code>puts</code> is a shortcut that writes to <code>stdout</code> <em>and</em> adds a newline at the end.</li>
 <li><code>int fputc(int c, FILE *file)</code> writes a single character (<code>c</code> is cast to an <code>unsigned char</code> first) and <code>putchar</code> is a shortcut for writing to <code>stdout</code> (but does not add a newline, unlike <code>puts</code>).</li>
 <li><code>int fgetc(FILE *file)</code> reads a single character from a file (but returns it as an int, however it's safe to cast to char). <code>getchar</code> is a shortcut that reads from standard input.</li>
 <li><code>char *fgets(char *buffer, int size, FILE *file)</code> reads up to <code>size-1</code> bytes into the buffer, stopping early if it finds a null byte, newline or end-of-file character. It then adds a zero-terminator to the string. If it stopped early because of a newline, the newline is included in the buffer; if it stopped due to an end-of-file then this is not included. Older versions of C included a <code>gets</code> version that reads from standard input and does not take a size argument; this is insecure as it can produce a buffer overflow and it should never be used. <code>fgets</code> is safe if the length of the buffer is at least <code>size</code> bytes. It returns a pointer to buffer on success and NULL if an error occurred. End-of-file counts as an error for this purpose if no characters could be read at all.</li>
@@ -2168,40 +2168,40 @@ int _check(int ok, char *where, char *file, int line) {
 // prints text and the current errno value, then returns code.
 int error(int ret, char* text) {
   int e = errno;
-  printf(&quot;Error %s: %s (code %i).\n&quot;, text, strerror(e), e);
+  printf("Error %s: %s (code %i).\n", text, strerror(e), e);
   return ret;
 }
 
 int main(int argc, char **argv) {
-    if (argc &lt; 2) { printf(&quot;Use: %s FILENAME\n&quot;, argv[0]); return 1; }
-    printf(&quot;Opening [%s]\n&quot;, argv[1]);
-    FILE *file = fopen(argv[1], &quot;r&quot;);
-    if (file == NULL) { return error(2, &quot;opening file&quot;); }
+    if (argc &lt; 2) { printf("Use: %s FILENAME\n", argv[0]); return 1; }
+    printf("Opening [%s]\n", argv[1]);
+    FILE *file = fopen(argv[1], "r");
+    if (file == NULL) { return error(2, "opening file"); }
     
     char c, d;
     size_t result = fread(&amp;c, 1, 1, file);
     if (result &lt; 1) { 
       if (ferror(file)) {
-        return error(2, &quot;reading first character&quot;);
+        return error(2, "reading first character");
       } else {
-        puts(&quot;No first character - end of file?&quot;);
+        puts("No first character - end of file?");
         return 2;
       }
     }
-    printf(&quot;Read character: [%c].\n&quot;, c);
+    printf("Read character: [%c].\n", c);
     result = fread(&amp;d, 1, 1, file);
     if (result &lt; 1) { 
       if (ferror(file)) {
-        return error(2, &quot;reading second character&quot;); 
+        return error(2, "reading second character"); 
       } else {
-        puts(&quot;No second character - end of file?&quot;);
+        puts("No second character - end of file?");
         return 2;
       }
     }
-    printf(&quot;Read another character: [%c].\n&quot;, d);
+    printf("Read another character: [%c].\n", d);
     
     int e = fclose(file);
-    if (e) { return error(2, &quot;closing file.&quot;); }
+    if (e) { return error(2, "closing file."); }
     return 0;
 }
 </code></pre>
@@ -2217,24 +2217,24 @@ Note that we print the first character before reading the second, as this will b
 <ul>
 <li>Make a file <code>file</code> containing some characters such as <code>abc</code> and run <code>./input1 file</code>. Convince yourself that the program prints the first two characters (first two bytes, to be precise).</li>
 <li>Next, run <code>./input1 /dev/stdin</code>, to make it read from standard input. Notice that it blocks.
-Type a few characters such as <code>abc</code> and notice that the program prints nothing, until you press ENTER at which point both the &quot;Read character&quot; and &quot;Read another character&quot; output appears at once. <strong>What is the reason for this?</strong></li>
-<li>Restart the program, and when it is waiting for input, type <code>ab[BACKSPACE]c[ENTER]</code>. <strong>Explain what you see.</strong> </li>
+Type a few characters such as <code>abc</code> and notice that the program prints nothing, until you press ENTER at which point both the "Read character" and "Read another character" output appears at once. <strong>What is the reason for this?</strong></li>
+<li>Restart the program, and when it is waiting for input, type <code>ab[BACKSPACE]c[ENTER]</code>. <strong>Explain what you see.</strong></li>
 <li>What happens if you enter only one character and then press ENTER? What if you press ENTER and haven't typed anything at all?</li>
 <li>If you want, verify that using fgetc / getchar produces the same behaviour on standard input: the program does not proceed past the first read command until you press ENTER. You can even try debugging with gdb to make sure.</li>
 <li>Insert the line <code>setbuf(file, NULL);</code> just after the <code>fopen</code> line to make sure it's not the C library buffering.</li>
 </ul>
 <p>Have you answered the questions in bold above before reading on?</p>
 <ul>
-<li>Next, on your terminal, execute <code>stty -icanon</code>, which turns off the &quot;icanon&quot; setting. (The convention for <code>stty</code> is that an option name in an argument turns it on, except if prefixed with a minus which turns it off.)</li>
+<li>Next, on your terminal, execute <code>stty -icanon</code>, which turns off the "icanon" setting. (The convention for <code>stty</code> is that an option name in an argument turns it on, except if prefixed with a minus which turns it off.)</li>
 <li>Rerun the program (<code>./input1 /dev/stdin</code>) and see what happens now.</li>
-<li>Turn &quot;icanon&quot; back on with <code>stty icanon</code>. </li>
+<li>Turn "icanon" back on with <code>stty icanon</code>.</li>
 <li>Research what <code>icanon</code> does, for example in <code>man stty</code> on a lab machine or online.</li>
 <li><strong>Why does BACKSPACE and <code>^U</code> work in your bash shell, even with icanon turned off?</strong></li>
 </ul>
 <p>Next, we are going to experiment with the terminal in fully raw mode:</p>
 <ul>
 <li><code>stty -g</code> prints the current terminal setting in a format that you can save and load again. Take a look, then store them with the shell command <code>state=$(stty -g)</code>.</li>
-<li>Execute <code>stty raw</code>, then run your program again. <strong>The terminal looks a bit &quot;messed up&quot; - can you tell what is happening?</strong> Try another command like <code>ls</code> in raw mode too if that helps.</li>
+<li>Execute <code>stty raw</code>, then run your program again. <strong>The terminal looks a bit "messed up" - can you tell what is happening?</strong> Try another command like <code>ls</code> in raw mode too if that helps.</li>
 <li>Restore your terminal settings with <code>stty $state</code>, reading them back from the variable where you stored them. You can then reset the window with <code>^L</code>.</li>
 </ul>
 <p>There is an important warning here if you are ever benchmarking a program that produces (standard) output - the total running time will be the sum of the program's running time and the connected terminal's running time to process the output. For example, printing a sequence of newline characters is typically slower than printing a sequence of 'a's, even if both programs are doing <code>putc</code> in a loop, because the terminal has extra work to do on each newline.</p>
@@ -2253,22 +2253,22 @@ int main() {
     r = fread(&amp;c, 1, 1, stdin);
     if (r &lt; 1) break; // bail out on error or eof
     if (c == 'Q') break;
-    printf(&quot;(%02X) &quot;, c);
+    printf("(%02X) ", c);
   }
   return 0;
 }
 </code></pre>
 <ul>
-<li>What do you expect to happen if you run this in a &quot;normal&quot; terminal and type a few characters?</li>
+<li>What do you expect to happen if you run this in a "normal" terminal and type a few characters?</li>
 <li>Run it in a terminal with icanon turned off and type a few characters. Notice that you can still cancel it with <code>^C</code>.</li>
 <li>Run it in a terminal in raw mode and type a few characters. What happens now when you press <code>^C</code>?</li>
 </ul>
 <p>Luckily, we built in another way to quit the program with Q!</p>
 <ul>
-<li>In raw mode, try a few &quot;special&quot; keys such as ENTER, ESC, the arrow keys, function keys (F1, F2) etc.</li>
+<li>In raw mode, try a few "special" keys such as ENTER, ESC, the arrow keys, function keys (F1, F2) etc.</li>
 <li>We turned off buffering for standard <em>output</em>. Why is this important - what happens otherwise and who is doing the buffering?</li>
 </ul>
-<p>What actually happens when you press Control-C in a terminal in &quot;cooked&quot; mode is it sends the signal <code>SIGINT</code> (interrupt) to the connected program - the default behaviour for this signal is to terminate the program. Putting the terminal in raw mode just passes the control code for Control-C on to the program, though it would still quit if you sent it a SIGINT another way (e.g. with the <code>kill</code> command from another terminal). However, you could also write a signal handler in your own program that reacts to SIGINT and does something else, for example just ignores the signal.</p>
+<p>What actually happens when you press Control-C in a terminal in "cooked" mode is it sends the signal <code>SIGINT</code> (interrupt) to the connected program - the default behaviour for this signal is to terminate the program. Putting the terminal in raw mode just passes the control code for Control-C on to the program, though it would still quit if you sent it a SIGINT another way (e.g. with the <code>kill</code> command from another terminal). However, you could also write a signal handler in your own program that reacts to SIGINT and does something else, for example just ignores the signal.</p>
 <p>When you type say an <code>a</code>, even in raw mode, the character appears on your screen even though there's no print command for it. This is the terminal echo; you can turn even this off with <code>stty -echo</code> but you are now typing blind! You can still start your program with <code>./input2</code> followed by ENTER, and it will still print the hex codes of everything you type from then on until you press Q but it will no longer show you the characters themselves. If you saved the terminal state before, then typing <code>stty $state</code> and ENTER will get you your echo back.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="inputoutput-in-posix"><a class="header" href="#inputoutput-in-posix">Input/output in POSIX</a></h1>
 <p>Both the C library and the POSIX standard library contain file I/O functions. Usually, the C library ones build on the POSIX ones if you are on a POSIX system.</p>
@@ -2332,11 +2332,11 @@ int main() {
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
 <p>One way of using <code>dup2</code> is to redirect your own standard output to a file, then any calls to <code>printf</code> or other functions from then on should end up in the file. If you later on want to restore the original standard output, you can first call <code>int dup(int fd)</code> which makes a copy of the file descriptor - for example, if a file is open on file descriptor 3, then</p>
-<pre><code class="language-C">saved = dup(1);      check(saved, &quot;duplicating standard output&quot;);
-ok = dup2(3, 1);     check(ok, &quot;redirecting standard output&quot;);
+<pre><code class="language-C">saved = dup(1);      check(saved, "duplicating standard output");
+ok = dup2(3, 1);     check(ok, "redirecting standard output");
 /* any printf etc here will go to the file on fd 3 */
-ok = dup2(saved, 1); check(ok, &quot;restoring standard output&quot;);
-ok = close(saved);   check(ok, &quot;closing duplicate&quot;);
+ok = dup2(saved, 1); check(ok, "restoring standard output");
+ok = close(saved);   check(ok, "closing duplicate");
 </code></pre>
 <p>shows how you can restore the original standard output by making a copy. If no other file descriptors are open, then <code>saved</code> will likely have a value of 4, as file descriptors are just numbers to communicate with the kernel and the kernel usually gives you the next consecutive unused one when you open or duplicate a file descriptor.</p>
 </div>
@@ -2364,7 +2364,7 @@ ok = close(saved);   check(ok, &quot;closing duplicate&quot;);
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="set-up-the-database"><a class="header" href="#set-up-the-database">Set up the database</a></h1>
 <h2 id="history"><a class="header" href="#history">History</a></h2>
-<p>In this unit, we will be using the free database MariaDB, which is a clone of MySQL and was written by the same author - Michael &quot;Monty&quot; Widenius, from Finland. The history behind the naming is that Monty first created MySQL (named after his daughter, My) which became the most popular open-source database. He sold MySQL to Sun, who were in turn bought by Oracle - who are famous for their commercial database software. As a result, Monty created a clone of MySQL called MariaDB (named after his other daughter). MySQL and MariaDB are compatible in many ways and most of what we learn on this unit will apply equally to both of them, although both Oracle (for MySQL) and the open-source community (for MariaDB) have added new features to their databases.</p>
+<p>In this unit, we will be using the free database MariaDB, which is a clone of MySQL and was written by the same author - Michael "Monty" Widenius, from Finland. The history behind the naming is that Monty first created MySQL (named after his daughter, My) which became the most popular open-source database. He sold MySQL to Sun, who were in turn bought by Oracle - who are famous for their commercial database software. As a result, Monty created a clone of MySQL called MariaDB (named after his other daughter). MySQL and MariaDB are compatible in many ways and most of what we learn on this unit will apply equally to both of them, although both Oracle (for MySQL) and the open-source community (for MariaDB) have added new features to their databases.</p>
 <p>Although we will be using MariaDB, in some places the name MySQL will still appear - most notably as the name of the command-line program that you use to access the database.</p>
 <h2 id="install-the-database"><a class="header" href="#install-the-database">Install the database</a></h2>
 <p>Open your VM and install the database with the appropriate commands.
@@ -2375,7 +2375,7 @@ On Debian that is:</p>
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
 <p>What's that funky squiggly bracket doing?  Bash expands it to
-<code>mariadb-server mariadb-client</code>.  Similarly if you typed: 
+<code>mariadb-server mariadb-client</code>.  Similarly if you typed:
 <code>cc -o hello{,.c}</code> it would get expanded to <code>cc -o hello hello.c</code>.
 There are <em>loads</em> of shorthand tricks for typing stuff quicker in a
 shell: try and pick them up as you go!</p>
@@ -2454,7 +2454,7 @@ tar -xvf sampledata.tar
 </code></pre>
 <p>This creates a folder sampledata with the files we need.</p>
 <p>If you are using a local copy of this repository, you can also find the files under <code>/code/databases</code>.</p>
-<p>The <code>tar</code> file is a <em>tape archive</em>: a file that contains further files and folders, as if it were a folder itself. </p>
+<p>The <code>tar</code> file is a <em>tape archive</em>: a file that contains further files and folders, as if it were a folder itself.</p>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
@@ -2465,7 +2465,7 @@ tar -xvf sampledata.tar
 <p>Load the sample data with the following command:</p>
 <pre><code class="language-sh">mysql -u root -p -e 'source /vagrant/sample-data.sql'
 </code></pre>
-<p>This pulls in some data in CSV files (have a look at the script if you want) and creates a default user &quot;vagrant&quot; who can log in to the database without a password, but can only read and not write the two sample databases &quot;census&quot; and &quot;elections&quot;. There is another database called &quot;data&quot; which starts out empty, and &quot;vagrant&quot; can both read and write it.</p>
+<p>This pulls in some data in CSV files (have a look at the script if you want) and creates a default user "vagrant" who can log in to the database without a password, but can only read and not write the two sample databases "census" and "elections". There is another database called "data" which starts out empty, and "vagrant" can both read and write it.</p>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
@@ -2497,12 +2497,12 @@ manually.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="reading-an-er-diagram"><a class="header" href="#reading-an-er-diagram">Reading an ER diagram</a></h1>
 <p>Here is an ER diagram for a fictional university database:</p>
 <p><img src="db1/../resources/uni-diagram.png" alt="ER diagram" /></p>
-<p>The foreign key columns are not included in the tables - in this diagram, they are implied by the relationships, e.g. the <code>Unit.director</code> column comes from the &quot;directs&quot; relationship.</p>
+<p>The foreign key columns are not included in the tables - in this diagram, they are implied by the relationships, e.g. the <code>Unit.director</code> column comes from the "directs" relationship.</p>
 <p>Looking at the diagram and the table schemas, answer the following questions for yourself:</p>
 <ul>
 <li>Which relationships are mandatory or optional? (For example, must every unit have at least one student enrolled?)</li>
 <li>Which relationships are one-one, one-many or many-many?</li>
-<li>How do the above affect the placement of foreign keys? For example, why is the foreign key for &quot;lecturer belongs to research group&quot; on the Lecturer table?</li>
+<li>How do the above affect the placement of foreign keys? For example, why is the foreign key for "lecturer belongs to research group" on the Lecturer table?</li>
 </ul>
 <h1 id="drawing-an-er-diagram"><a class="header" href="#drawing-an-er-diagram">Drawing an ER diagram</a></h1>
 <p>Draw an ER diagram for the following scenario.</p>
@@ -2511,11 +2511,11 @@ manually.</p>
 <p>The committee consists of some of the members, each of which has a unique committee role. We assume that committee roles do not change during the year and that each committee role must be filled every year.</p>
 <p>An event has a date, a name, a location, an optional description and an organiser who must be a society member (not necessarily a committee member). An event is attended by a set of members. There is never more than one event at the same location on the same date but event names are not unique.</p>
 </blockquote>
-<p>You can draw the diagram with pen and paper or you can use a free modelling tool like <a href="https://draw.io">draw.io</a>. </p>
+<p>You can draw the diagram with pen and paper or you can use a free modelling tool like <a href="https://draw.io">draw.io</a>.</p>
 <ul>
-<li>For draw.io, open the &quot;Entity Relation&quot; section in the menu on the left and use the &quot;Table&quot; (first item) object for tables. Clicking on it adds a table to your diagram.</li>
+<li>For draw.io, open the "Entity Relation" section in the menu on the left and use the "Table" (first item) object for tables. Clicking on it adds a table to your diagram.</li>
 <li>To add a row to a table, select an existing row and press Control-D (duplicate item). To delete a row, press the delete key.</li>
-<li>To add a relationship, select a table by clicking its header and drag one of the blue triangles that appear round the edges onto another table. You can change the type of a relationship in the details panel on the right (the &quot;line start&quot; and &quot;line end&quot; boxes).</li>
+<li>To add a relationship, select a table by clicking its header and drag one of the blue triangles that appear round the edges onto another table. You can change the type of a relationship in the details panel on the right (the "line start" and "line end" boxes).</li>
 <li>File/Save as lets you download your diagram in an XML-based format, which you can open and edit later. File/Export as lets you download it as an image.</li>
 </ul>
 <h1 id="implementing-a-schema"><a class="header" href="#implementing-a-schema">Implementing a Schema</a></h1>
@@ -2536,7 +2536,7 @@ manually.</p>
 <p>Using what you have learnt so far about relational modelling, think about and discuss in groups how you would model a university database to store student's academic progress, such as units enrolled on and completed, marks obtained etc. based on your understanding of how the University of Bristol works. For example, a unit can have different assessments with different weights. You will of course also need a <code>Students</code> table, and you can make the model more involved if you like by including that different students are on different degree programmes, and that sometimes students have to resit units.</p>
 <p>You should end up with a more detailed version of the model briefly shown at the top of the previous page - if you have the time you can make both an ER diagram and a create/drop script.</p>
 <p>This is also a good point to mention another fact of how marks and credit points work: exam boards. At the end of each academic year around May, your unit directors all report their marks for each student to an exam board, which sits and decides on final marks and awarding credit. For example, an exam board can moderate the marks for a unit. This is why you do not get your exam marks until a long time after the exam has happened, even if it's a multiple choice exam that can be marked automatically: the marks still have to go through an exam board. (There is another, smaller exam board around the start of Teaching Block 2 so you don't have to wait until summer for your January exam marks to be released.)
-If you want to model this in your schema, the idea here is that a student has two marks associated with each unit: the &quot;actual mark&quot; (the input to the exam board) and the &quot;agreed mark&quot; (the one that comes out of the board and goes on your transcript). Of course, for most students most of the time, the two are the same. Your schema will need to store &quot;agreed marks&quot; explicitly, but there are ways of doing the model that does not store the &quot;actual mark&quot; directly. Think about how you could recompute it from other information in the database - we will of course learn how to do this in SQL in a later activity.</p>
+If you want to model this in your schema, the idea here is that a student has two marks associated with each unit: the "actual mark" (the input to the exam board) and the "agreed mark" (the one that comes out of the board and goes on your transcript). Of course, for most students most of the time, the two are the same. Your schema will need to store "agreed marks" explicitly, but there are ways of doing the model that does not store the "actual mark" directly. Think about how you could recompute it from other information in the database - we will of course learn how to do this in SQL in a later activity.</p>
 <p>The key idea in relational modelling is not to store information more than once if you can avoid it. If you have stored in several places that Fred is taking Introduction to Programming, and then Fred switches his units, you don't want to end up with a situation where this change is only reflected in some parts of the database.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="explore-the-database"><a class="header" href="#explore-the-database">Explore the database</a></h1>
 <p>Open the virtual machine and type <code>mysql</code>. Assuming you have installed the database correctly as in the previous activity, you should see the prompt <code>MariaDB [(none)]&gt;</code> which shows that you are connected to a database server but you have not selected a database yet.</p>
@@ -2635,10 +2635,10 @@ INNER JOIN Ward ON Candidate.ward = Ward.id
 <li>List the name, party and number of votes obtained for the winner only in the Knowle ward. <em>(Hint: apart from changing the ward name, you only need one small modification to the statement from the last question. You may assume no ties.)</em></li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="the-2011-uk-census"><a class="header" href="#the-2011-uk-census">The 2011 UK Census</a></h1>
-<p>In 2011, the UK took a census of all households. We will look at the data for one particular question: &quot;KS608 Occupation&quot;.</p>
+<p>In 2011, the UK took a census of all households. We will look at the data for one particular question: "KS608 Occupation".</p>
 <h2 id="background-uk-geography"><a class="header" href="#background-uk-geography">Background: UK Geography</a></h2>
 <p>The United Kingdom of Great Britain and Northern Ireland (UK) is a country that contains the individual countries England, Wales, Scotland (at the time of writing) and Northern Ireland (but not the Republic of Ireland). The census data for this question comes from the Office of National Statistics (ONS) which is for England and Wales only. Scotland and Northern Ireland have separate statistical offices.</p>
-<p>England itself can be divided into 9 regions: </p>
+<p>England itself can be divided into 9 regions:</p>
 <ul>
 <li>The North West</li>
 <li>Yorkshire and The Humber</li>
@@ -2650,9 +2650,9 @@ INNER JOIN Ward ON Candidate.ward = Ward.id
 <li>The South East</li>
 <li>London</li>
 </ul>
-<p>The UK used to be further divided into counties but these are much less important nowadays. In fact there is a mix of counties, unitary authorities and boroughs - 152 in total. These are all called &quot;county-level units&quot; (CLUs).</p>
+<p>The UK used to be further divided into counties but these are much less important nowadays. In fact there is a mix of counties, unitary authorities and boroughs - 152 in total. These are all called "county-level units" (CLUs).</p>
 <p>The smallest relevant unit for political and statistical purposes is the electoral ward, often simply called ward. Wards elect their own councillors (as we have seen) and national statistics are available at a ward level. There were 8570 wards at the time of the 2011 census. For example, the City of Bristol unitary authority contained 35 wards, of which the University of Bristol was in the Cabot ward.</p>
-<p>Each statistical unit (ward, county, unitary authority etc.) is assigned a 9-character code by the ONS of the form <code>Xaabbbbbb</code> where X is E for England and W for Wales. The first two digits <code>aa</code> identify the type of unit: 05 is a ward, 06 a unitary authority; in England only E12 is a region, E08 is a borough (metropolitan), E09 is a borough of London and E10 is a county. The last 6 digits identify the individual unit. Finally, the codes for all of England and Wales are E92000001 and W92000004. </p>
+<p>Each statistical unit (ward, county, unitary authority etc.) is assigned a 9-character code by the ONS of the form <code>Xaabbbbbb</code> where X is E for England and W for Wales. The first two digits <code>aa</code> identify the type of unit: 05 is a ward, 06 a unitary authority; in England only E12 is a region, E08 is a borough (metropolitan), E09 is a borough of London and E10 is a county. The last 6 digits identify the individual unit. Finally, the codes for all of England and Wales are E92000001 and W92000004.</p>
 <p>An interactive online map of the statistical units of the UK is available online at <a href="http://ukdataexplorer.com/census/">UK data explorer</a> or <a href="https://datashine.org.uk">DataShine</a>. All census data for individual questions is publicly available. (The most interesting data - correlations between questions - is not all openly available due to privacy issues. Researchers can apply to the ONS to get access to particular data sets.)</p>
 <h2 id="data-format"><a class="header" href="#data-format">Data format</a></h2>
 <p>The <code>census</code> database has the following schema.</p>
@@ -2670,11 +2670,11 @@ INNER JOIN Ward ON Candidate.ward = Ward.id
 | E05000001 |     1 |      1 |   54 |
 +-----------+-------+--------+------+
 </code></pre>
-<p>This row records that in ward <code>E05000001</code> (Aldersgate), 54 women (gender=1) said that they worked as &quot;Managers, directors and senior officials&quot; (occId=1).</p>
+<p>This row records that in ward <code>E05000001</code> (Aldersgate), 54 women (gender=1) said that they worked as "Managers, directors and senior officials" (occId=1).</p>
 <p>Note how (in the ER diagram) the primary key of the Statistic table is a composite of three columns (wardId, occId, gender). This is exactly what you would expect in a table that has one data value per ward, occupation class and gender.</p>
 <h2 id="exercises-9"><a class="header" href="#exercises-9">Exercises</a></h2>
 <ol>
-<li>The university of Bristol is situated in the <code>Cabot</code> ward (ward names are not always distinct, but this one is). Find the names and codes of the CLU, region and country containing the Cabot ward (CLU = county level unit = &quot;row in County table&quot;).</li>
+<li>The university of Bristol is situated in the <code>Cabot</code> ward (ward names are not always distinct, but this one is). Find the names and codes of the CLU, region and country containing the Cabot ward (CLU = county level unit = "row in County table").</li>
 <li>If you used multiple SQL queries for the last question, do it in one single query now. (In other words, find a join strategy for the tables you need.)</li>
 <li>Find the number of women in occupation class 1 (managers etc.) in the Cabot ward. You may use ward code for Cabot that you found in the first query and the occupation id 1 directly - you do not need any JOINs for this query.</li>
 <li>For the Stoke Bishop ward (E05002003), list the 9 occupation class names and the number of men in each occupation. Your table should have two columns called <code>name</code> and <code>number</code>. You can use the provided ward code, you do not need to join on the ward name.</li>
@@ -2684,19 +2684,19 @@ INNER JOIN Ward ON Candidate.ward = Ward.id
 <ul>
 <li>Find all ward names that are not unique, and print them in alphabetical order (only once each).</li>
 </ul>
-<p><em>There are 400 distinct such names in total (for example, there are 21 wards called 'Abbey') so your query will produce quite a long table. Your query might also take a while to execute, there are faster ways to do this but not with the material we've learnt so far. The table starts &quot;Abbey, Alexandra, All Saints&quot; and ends &quot;Worsley, Wyke, Yarborough&quot;.</em></p>
+<p><em>There are 400 distinct such names in total (for example, there are 21 wards called 'Abbey') so your query will produce quite a long table. Your query might also take a while to execute, there are faster ways to do this but not with the material we've learnt so far. The table starts "Abbey, Alexandra, All Saints" and ends "Worsley, Wyke, Yarborough".</em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="normal-forms"><a class="header" href="#normal-forms">Normal Forms</a></h1>
 <p>For this exercise, you may want to work in groups. There are two schemas, for both of which you have to decide which normal form(s) they are in, and how you would change the schemas to be in 3NF (BCNF if possible).</p>
 <p>The standard way of doing this is:</p>
 <ol>
-<li>Identify the candidate key(s) in every table. </li>
-<li>From this, deduce the key and non-key attributes in every table. </li>
+<li>Identify the candidate key(s) in every table.</li>
+<li>From this, deduce the key and non-key attributes in every table.</li>
 <li>Find the functional dependencies (FDs) in each table.</li>
 <li>Determine which normal forms from (1NF, 2NF, 3NF, BCNF) the schema does or does not satisfy.</li>
 <li>If the schema is not in BCNF, normalise it as far as possible by splitting tables using Heath's Theorem on the FDs that are causing the problem.</li>
 </ol>
 <h2 id="schema-1"><a class="header" href="#schema-1">Schema 1</a></h2>
-<p>A school's database looks like this (it was set up by someone more used to spreadsheets): </p>
+<p>A school's database looks like this (it was set up by someone more used to spreadsheets):</p>
 <div class="table-wrapper"><table><thead><tr><th>stuId</th><th>name</th><th>gender</th><th>unit</th><th>grade</th></tr></thead><tbody>
 <tr><td>101</td><td>Fred</td><td>M</td><td>Mathematics</td><td>75</td></tr>
 <tr><td>101</td><td>Fred</td><td>M</td><td>German</td><td>65</td></tr>
@@ -2706,7 +2706,7 @@ INNER JOIN Ward ON Candidate.ward = Ward.id
 <tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
 </tbody></table>
 </div>
-<p>stuId is a student id that is unique per student. Students' names are not required to be unique, i.e. you can have two 'Fred's in the school. Gender is one of {M, F, X}. For each student and each unit they take, there is one row containing among other things the student name, unit name and the grade (0-100) that the student got on this unit. In the example above, we can see that Fred took three units (Mathematics, German and English). No two units have the same name but a unit name can appear several times in the database since many students can take the same unit. The first row of the example tells us that there is a student called Fred with id 101, who is male, and took the Mathematics unit and got a grade of 75 on it. </p>
+<p>stuId is a student id that is unique per student. Students' names are not required to be unique, i.e. you can have two 'Fred's in the school. Gender is one of {M, F, X}. For each student and each unit they take, there is one row containing among other things the student name, unit name and the grade (0-100) that the student got on this unit. In the example above, we can see that Fred took three units (Mathematics, German and English). No two units have the same name but a unit name can appear several times in the database since many students can take the same unit. The first row of the example tells us that there is a student called Fred with id 101, who is male, and took the Mathematics unit and got a grade of 75 on it.</p>
 <h2 id="schema-2"><a class="header" href="#schema-2">Schema 2</a></h2>
 <p>The CIA world factbook contains geographical, political and military information about the world. Here is part of one table listing principal cities from 2015:</p>
 <div class="table-wrapper"><table><thead><tr><th>*city</th><th>country</th><th style="text-align: right">pop</th><th style="text-align: right">co_pop</th><th>capital</th></tr></thead><tbody>
@@ -2719,7 +2719,7 @@ INNER JOIN Ward ON Candidate.ward = Ward.id
 <tr><td>...</td><td>...</td><td style="text-align: right">...</td><td style="text-align: right">...</td><td>...</td></tr>
 </tbody></table>
 </div>
-<p>We will assume for this exercise that city names are globally unique and therefore the &quot;City&quot; column has been chosen as the primary key for this table. The &quot;pop&quot; column lists the city's population and the &quot;co_pop&quot; lists the population of the country in which the city is located (with abbreviations K = 1000, M=1000000). The &quot;capital&quot; column is a Boolean yes/no value that is set to &quot;yes&quot; for exactly one city in each country. (While the capital is included in the table for every country however small, non-captial cities are only included if they are of international significance.)</p>
+<p>We will assume for this exercise that city names are globally unique and therefore the "City" column has been chosen as the primary key for this table. The "pop" column lists the city's population and the "co_pop" lists the population of the country in which the city is located (with abbreviations K = 1000, M=1000000). The "capital" column is a Boolean yes/no value that is set to "yes" for exactly one city in each country. (While the capital is included in the table for every country however small, non-captial cities are only included if they are of international significance.)</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="intermediate-sql"><a class="header" href="#intermediate-sql">Intermediate SQL</a></h1>
 <p>This is the third of four activities to teach you about relational databases and SQL.</p>
 <h2 id="videos-8"><a class="header" href="#videos-8">Videos</a></h2>
@@ -2736,7 +2736,7 @@ INNER JOIN Ward ON Candidate.ward = Ward.id
 <div style="break-before: page; page-break-before: always;"></div><h1 id="census-and-elections-exercises"><a class="header" href="#census-and-elections-exercises">Census and elections exercises</a></h1>
 <p>Here are some more advanced exercises based on the census and elections schemas from the last activity.</p>
 <p>Your answer to each question should be a single SQL query, that is one semicolon at the end. JOINs, subqueries, WITH clauses etc. are allowed of course.
-Where an identifier is given in the question you may use it, e.g. when I say &quot;the Cabot ward (E05001979)&quot; you can use the ward id directly and do not need to join on the ward table to look up the name, but if I say &quot;the Green party&quot; then you do need to join on the party table to look up the name instead of hard-coding the party id.</p>
+Where an identifier is given in the question you may use it, e.g. when I say "the Cabot ward (E05001979)" you can use the ward id directly and do not need to join on the ward table to look up the name, but if I say "the Green party" then you do need to join on the party table to look up the name instead of hard-coding the party id.</p>
 <h2 id="elections"><a class="header" href="#elections">Elections</a></h2>
 <p><img src="db3/../resources/elections.png" alt="elections ER diagram" /></p>
 <ol>
@@ -2753,10 +2753,10 @@ Where an identifier is given in the question you may use it, e.g. when I say &qu
 <ol>
 <li>How many <em>women</em> work in sales and customer service occupations and live in the Cabot ward of Bristol (E05001979)?</li>
 <li>How many <em>people</em> work in sales and customer service occupations and live in the Cabot ward of Bristol (E05001979)?</li>
-<li>How many people work in caring, leisure and other service occupations (occupation class 6) in all of the City of Bristol CLU (E06000023)? </li>
+<li>How many people work in caring, leisure and other service occupations (occupation class 6) in all of the City of Bristol CLU (E06000023)?</li>
 <li>In the Cabot ward (E05001979), produce a table listing the names of the 9 occupation classes and the number of people in each of the classes in this ward.</li>
 <li>Find the working population, ward name and CLU name for the smallest ward (by working population) in the 2011 census.</li>
-<li>The same as the last question, but now produce a table with two rows, one for the smallest and one for the largest ward. There's no quicker way than repeating the last query twice, the question is how to stick the two &quot;copies&quot; together.</li>
+<li>The same as the last question, but now produce a table with two rows, one for the smallest and one for the largest ward. There's no quicker way than repeating the last query twice, the question is how to stick the two "copies" together.</li>
 <li>Find the average size of a ward's working population in the London (E12000007) region.</li>
 <li>The same as the last question but now for every region - your query should produce a table with one row per region. The intention here is <em>not</em> to repeat the above query 9 times.</li>
 <li>Produce a table that lists, for each of the 9 regions of England, the percentage of people in managerial (class 1) occupations who are women.</li>
@@ -2817,7 +2817,7 @@ JDBC (Java DataBase Connectivity) is a low-level, not particularly object-orient
     // do things with r here
 }
 </code></pre>
-<p>As long as the resource implements <code>AutoCloseable</code> (it's a syntax error to use this pattern otherwise), this pattern guarantees that </p>
+<p>As long as the resource implements <code>AutoCloseable</code> (it's a syntax error to use this pattern otherwise), this pattern guarantees that</p>
 <ol>
 <li>If the initialisation statement (in the round brackets) fails, either by returning null or throwing an exception, then the block will never be executed.</li>
 <li>If the initialisation succeeds, then when the block exits, <code>r.close()</code> will be called exactly once, whether the block reached its end, exited early (e.g. return statement) or threw an exception.</li>
@@ -2838,7 +2838,7 @@ JDBC (Java DataBase Connectivity) is a low-level, not particularly object-orient
     // handle exception, for example by wrapping in RuntimeException
 }
 </code></pre>
-<p>The connection string is a string containing a URL such as </p>
+<p>The connection string is a string containing a URL such as</p>
 <pre><code>jdbc:mariadb://localhost:3306/DATABASE?user=USER&amp;localSocket=/var/run/mysqld/mysqld.sock
 </code></pre>
 <p>When you try and open a connection, Java looks for a driver on your classpath that implements the addressing scheme (e.g. <code>mariadb</code>) that you have requested. This makes setting up the classpath a bit tricky, but we have maven to manage that for us.</p>
@@ -2939,13 +2939,13 @@ skip-networking
 <h2 id="sql-from-java"><a class="header" href="#sql-from-java">SQL from Java</a></h2>
 <p>In the <code>Example.java</code> class, we can see an example of JDBC in action:</p>
 <pre><code class="language-java">private void readData(Connection c) {
-    String SQL = &quot;SELECT id, name FROM Party&quot;;
+    String SQL = "SELECT id, name FROM Party";
     try (PreparedStatement s = c.prepareStatement(SQL)) {
         ResultSet r = s.executeQuery();
         while (r.next()) {
-            int id = r.getInt(&quot;id&quot;);
-            String name = r.getString(&quot;name&quot;);
-            System.out.println(&quot;Party #&quot; + id + &quot; is: &quot; + name);
+            int id = r.getInt("id");
+            String name = r.getString("name");
+            System.out.println("Party #" + id + " is: " + name);
         }
     } catch (SQLException e) {
         throw new RuntimeException(e);
@@ -2955,7 +2955,7 @@ skip-networking
 <ul>
 <li>The SQL command goes in a string. If we wanted to add parameters for a prepared statement, we put question marks here.</li>
 <li>We create a <code>PreparedStatement</code> in another try-with-resources block: we need to close statements as soon as we are done with them, but it's ok for a program to keep the database connection open for as long as it runs.</li>
-<li>In this case, we have no parameters to pass, so we execute the query to get a <code>ResultSet</code>, a &quot;cursor&quot; (a kind of iterator) on the results. (A <code>ResultSet</code> is also a resource, but it closes automatically when its statement closes, so we don't have to handle this ourselves.)</li>
+<li>In this case, we have no parameters to pass, so we execute the query to get a <code>ResultSet</code>, a "cursor" (a kind of iterator) on the results. (A <code>ResultSet</code> is also a resource, but it closes automatically when its statement closes, so we don't have to handle this ourselves.)</li>
 <li>We iterate over the rows of the result and do something with them, in this case printing to standard output.</li>
 <li>All these operations can throw an <code>SQLException</code>, so we catch it at the end, and because this is just a small example program, we handle it by throwing an exception to terminate the whole program.</li>
 </ul>
@@ -2995,21 +2995,21 @@ So you have to fall back to some more C-like patterns for using the database.</p
 </code></pre>
 <p>The <code>do-while</code> loop lets us write a block that is called exactly once for every row, while still letting us do something special with the first row without needing an ugly <code>boolean isFirstRow</code> flag or something like that.</p>
 <p>Inside a result set, as long as we're sure we're on a row, we can read values from columns by declaring their name and type:</p>
-<pre><code class="language-java">int id = r.getInt(&quot;id&quot;);
+<pre><code class="language-java">int id = r.getInt("id");
 </code></pre>
 <p>This tells JDBC that there is a column named <code>id</code> of type <code>int</code>, and to get its value. (You get an exception if the name or type are wrong.) Other methods include <code>getString</code>, <code>getDouble</code> etc.</p>
 <p>For this reason, in your SQL statement, you want to be clear about the names and order of the colums you're fetching:</p>
 <ul>
-<li>If a column is something more complicated than a field, then give it an alias, e.g. <code>SELECT COUNT(1) AS c</code> then you can do <code>getInt(&quot;c&quot;)</code>.</li>
+<li>If a column is something more complicated than a field, then give it an alias, e.g. <code>SELECT COUNT(1) AS c</code> then you can do <code>getInt("c")</code>.</li>
 <li>Never do <code>SELECT *</code> from JDBC, always list exactly the columns you need. This both fixes the order you get them in, and is more efficient if you don't need all of them.</li>
 </ul>
 <h2 id="exercise-1"><a class="header" href="#exercise-1">Exercise 1</a></h2>
-<p>Modify the example program so it takes a party ID as a parameter, and displays only that party's name, or the string &quot;No party with this ID.&quot; if there isn't one in the database.</p>
+<p>Modify the example program so it takes a party ID as a parameter, and displays only that party's name, or the string "No party with this ID." if there isn't one in the database.</p>
 <p>To do this you will have to change the following:</p>
 <ul>
 <li><code>main</code> reads a parameter off <code>args</code>, or prints an error message if you didn't pass an argument.</li>
 <li><code>main</code> passes the parameter as an extra int argument to <code>readData</code>.</li>
-<li>Set the parameter as a question mark in the prepared statement, and then bind the parameter to the statement. </li>
+<li>Set the parameter as a question mark in the prepared statement, and then bind the parameter to the statement.</li>
 </ul>
 <p>The command for binding a parameter is <code>s.setInt(pos, value)</code> where <code>pos</code> is the index of the parameter (question mark) in the string, <em>starting the count at 1 not 0</em>. So you simply want <code>s.setInt(1, value)</code>. Of course there are also <code>setString</code> etc. and these methods on the statement take a second parameter of the appropriate type.</p>
 <p>The easiest way to run your command with a parameter is to build a jar with dependencies and then to call <code>java -cp JARFILE MAINCLASS PARAMETERS</code>, any further command line parameters to Java after the main class get passed as arguments to this class.</p>
@@ -3076,27 +3076,27 @@ public class Candidate {
 &lt;/dependency&gt;
 </code></pre>
 <p>Hibernate's configuration lives in <code>src/main/resources/hibernate.cfg.xml</code>. Hibernate uses a <em>Session Factory</em> to create sessions, in which you can make queries:</p>
-<pre><code class="language-xml">&lt;?xml version = &quot;1.0&quot; encoding = &quot;utf-8&quot;?&gt;
+<pre><code class="language-xml">&lt;?xml version = "1.0" encoding = "utf-8"?&gt;
 &lt;!DOCTYPE hibernate-configuration SYSTEM 
-&quot;http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd&quot;&gt;
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"&gt;
 &lt;hibernate-configuration&gt;
   &lt;session-factory&gt;
     
     &lt;!-- These properties set up the database connection. --&gt;
-    &lt;property name=&quot;dialect&quot;&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt;
-    &lt;property name=&quot;connection.url&quot;&gt;jdbc:mariadb://localhost/elections?localSocket=/var/run/mysqld/mysqld.sock&lt;/property&gt;
-    &lt;property name=&quot;connection.username&quot;&gt;vagrant&lt;/property&gt;
+    &lt;property name="dialect"&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt;
+    &lt;property name="connection.url"&gt;jdbc:mariadb://localhost/elections?localSocket=/var/run/mysqld/mysqld.sock&lt;/property&gt;
+    &lt;property name="connection.username"&gt;vagrant&lt;/property&gt;
     
     &lt;!-- Don't use this in production, use a connection pool instead. --&gt;
-    &lt;property name=&quot;current_session_context_class&quot;&gt;thread&lt;/property&gt;
+    &lt;property name="current_session_context_class"&gt;thread&lt;/property&gt;
 
     &lt;!-- Display generated SQL on the console. --&gt;
-    &lt;property name=&quot;show_sql&quot;&gt;true&lt;/property&gt;
+    &lt;property name="show_sql"&gt;true&lt;/property&gt;
 
     &lt;!-- The classes to map to database tables. --&gt;
-    &lt;mapping class=&quot;org.example.Candidate&quot; /&gt;
-    &lt;mapping class=&quot;org.example.Party&quot; /&gt;
-    &lt;mapping class=&quot;org.example.Ward&quot; /&gt;
+    &lt;mapping class="org.example.Candidate" /&gt;
+    &lt;mapping class="org.example.Party" /&gt;
+    &lt;mapping class="org.example.Ward" /&gt;
     
   &lt;/session-factory&gt;
 &lt;/hibernate-configuration&gt;
@@ -3128,12 +3128,12 @@ public class Party {
 }
 </code></pre>
 <ul>
-<li><code>@Entity</code> means this is something that maps to a table in the database. By default, Hibernate guesses the table name from the class name, but you could change this with a parameter e.g. <code>@Entity(name=&quot;Parties&quot;)</code>.</li>
+<li><code>@Entity</code> means this is something that maps to a table in the database. By default, Hibernate guesses the table name from the class name, but you could change this with a parameter e.g. <code>@Entity(name="Parties")</code>.</li>
 <li><code>@Id</code> indicates the primary key.</li>
 </ul>
 <p>The candidate class is a bit more interesting as it has foreign keys:</p>
 <pre><code class="language-java">@ManyToOne 
-@JoinColumn(name = &quot;party&quot;)
+@JoinColumn(name = "party")
 private Party party;
 </code></pre>
 <ul>
@@ -3166,7 +3166,7 @@ public class Example implements AutoCloseable {
     try (Example example = new Example()) {
         example.run();
     }
-  System.out.println(&quot;Done.&quot;);
+  System.out.println("Done.");
   System.exit(0);
 }
 </code></pre>
@@ -3179,15 +3179,15 @@ public class Example implements AutoCloseable {
 <p>We then have three examples of using Hibernate.</p>
 <h3 id="loading-an-entity-by-id"><a class="header" href="#loading-an-entity-by-id">Loading an entity by ID</a></h3>
 <pre><code class="language-java">Party p1 = session.get(Party.class, 1);
-System.out.println(&quot;    The party with id=1 is: &quot; + p1.getName());
+System.out.println("    The party with id=1 is: " + p1.getName());
 </code></pre>
 <p>To fetch an instance by id, we just call <code>get</code> on the session with the class we want and the id. Passing the class both tells Hibernate which table to load from, and it tells the compiler what type of object to return - the way Java generics work, this lets us assign the result to a <code>Party</code> variable directly without having to do a cast.</p>
 <h3 id="loading-with-a-query"><a class="header" href="#loading-with-a-query">Loading with a query</a></h3>
-<pre><code class="language-java">TypedQuery&lt;Ward&gt; query = session.createQuery(&quot;FROM Ward&quot;, Ward.class);
+<pre><code class="language-java">TypedQuery&lt;Ward&gt; query = session.createQuery("FROM Ward", Ward.class);
 List&lt;Ward&gt; wards = query.getResultList();
-System.out.println(&quot;  Wards:&quot;);
+System.out.println("  Wards:");
 for (Ward ward : wards) {
-    System.out.println(&quot;    &quot; + ward.getName());
+    System.out.println("    " + ward.getName());
 }
 </code></pre>
 <p>A <code>TypedQuery</code> object takes a string in HQL, Hibernate's own query language (based on SQL) and the class of the object to return - this is so that the Java compiler can figure out the return type. <code>getResultList</code> returns all results as a list.</p>
@@ -3206,12 +3206,12 @@ for (Ward ward : wards) {
 </div>
 <h3 id="queries-with-joins-and-parameters"><a class="header" href="#queries-with-joins-and-parameters">Queries with joins and parameters</a></h3>
 <p>For a more involved example, we look at the following:</p>
-<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery(&quot;FROM Candidate c WHERE c.party.name = :name&quot;, Candidate.class);
-q.setParameter(&quot;name&quot;, &quot;Labour&quot;);
+<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery("FROM Candidate c WHERE c.party.name = :name", Candidate.class);
+q.setParameter("name", "Labour");
 List&lt;Candidate&gt; candidates = q.getResultList();
-System.out.println(&quot;  Labour Candidates:&quot;);
+System.out.println("  Labour Candidates:");
 for (Candidate c : candidates) {
-    System.out.println(&quot;    &quot; + c.getName() + &quot; (&quot; + c.getWard().getName() + &quot;)&quot;);
+    System.out.println("    " + c.getName() + " (" + c.getWard().getName() + ")");
 }
 </code></pre>
 <p>HQL, like SQL, allows a WHERE clause to filter results. It also allows prepared statements, but goes one better than JDBC in that parameters can have names. You declare a parameter with a colon in the query string (<code>:name</code>) and then use <code>setParameter(name, value)</code> to bind it - this method is written so that it can take a value of any type, presumably with a combination of overloading for int/float types and <code>Object</code> for everything else.</p>
@@ -3256,12 +3256,12 @@ select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name a
 </code></pre>
 <p>Hibernate is firing off one query per ward! This is called the N+1 problem, because one HQL query that returns N results ends up producing N+1 SQL queries, which is horribly inefficient expecialy for large N.</p>
 <p>Looking at the loop structure:</p>
-<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery(&quot;FROM Candidate c WHERE c.party.name = :name&quot;, Candidate.class);
-q.setParameter(&quot;name&quot;, &quot;Labour&quot;);
+<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery("FROM Candidate c WHERE c.party.name = :name", Candidate.class);
+q.setParameter("name", "Labour");
 List&lt;Candidate&gt; candidates = q.getResultList();
-System.out.println(&quot;  Labour Candidates:&quot;);
+System.out.println("  Labour Candidates:");
 for (Candidate c : candidates) {
-    System.out.println(&quot;    &quot; + c.getName() + &quot; (&quot; + c.getWard().getName() + &quot;)&quot;);
+    System.out.println("    " + c.getName() + " (" + c.getWard().getName() + ")");
 }
 </code></pre>
 <p>From the query itself, it is not clear to Hibernate whether ward names will be needed or not, so Hibernate does not JOIN them by default which would be more efficient if you don't actually need them. In the for loop at the bottom however, you do access the names, so on every pass through the loop, Hibernate is forced to run a new query to get the name of the relevant ward.</p>
@@ -3273,9 +3273,9 @@ for (Candidate c : candidates) {
 </div>
 </div>
 <p>The solution here is to tell Hibernate at query time that you'll need the wards:</p>
-<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery(&quot;FROM Candidate c JOIN FETCH c.ward WHERE c.party.name = :name&quot;, Candidate.class);
+<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery("FROM Candidate c JOIN FETCH c.ward WHERE c.party.name = :name", Candidate.class);
 </code></pre>
-<p>This is HQL for &quot;I'm going to use the wards, so please do a JOIN to load them too&quot;. And Hibernate now uses a single query for the Candidates again:</p>
+<p>This is HQL for "I'm going to use the wards, so please do a JOIN to load them too". And Hibernate now uses a single query for the Candidates again:</p>
 <pre><code class="language-SQL">select party0_.id as id1_1_0_, party0_.name as name2_1_0_ from Party party0_ where party0_.id=?
 
 select candidate0_.id as id1_0_0_, ward1_.id as id1_2_1_, candidate0_.name as name2_0_0_,
@@ -3300,7 +3300,7 @@ where candidate0_.party=party2_.id and party2_.name=?
 <h2 id="exercise-2-1"><a class="header" href="#exercise-2-1">Exercise 2</a></h2>
 <p>What you have learnt so far will allow you to navigate upwards in the hierarchy, e.g. given a ward you can find its associated county. This exercise is about the other way round: given a county object, you want to find all wards in it.</p>
 <p>To do this, add the following property to your County class:</p>
-<pre><code class="language-java">@OneToMany(mappedBy = &quot;county&quot;)
+<pre><code class="language-java">@OneToMany(mappedBy = "county")
 private List&lt;Ward&gt; wards;
 </code></pre>
 <p>The argument to <code>mappedBy</code> must be the field name of the field in the Ward class that contains the county reference - you might have called it <code>parent</code> or something else in your class.</p>
@@ -3309,18 +3309,18 @@ private List&lt;Ward&gt; wards;
 <p>Write a query that loads the City of Bristol county (E06000023) and prints a list of all its ward names with a Java for loop starting from the county object. Make sure you write your HQL query so that you don't cause an N+1 problem here.</p>
 <p>This example also helps to explain why we don't make everything eager fetched by default: if you did that with bidirectional associations, then loading any object at all would load the entire database into memory!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sqlite"><a class="header" href="#sqlite">SQLite</a></h1>
-<p><a href="https://sqlite.org/index.html">SQLite</a> is a really good tool for &quot;just getting stuff done&quot;, especially when you hit the limits of Microsoft Excel (or other spreadsheet software).</p>
+<p><a href="https://sqlite.org/index.html">SQLite</a> is a really good tool for "just getting stuff done", especially when you hit the limits of Microsoft Excel (or other spreadsheet software).</p>
 <p>According to <a href="https://sqlite.org/index.html">its authors</a>, SQLite is used in some form in every single Windows 10, Mac, Android and iOS device as well as built into the Firefox, Chrome (including Edge) and Safari browsers: the browsers store their browsing history and cookies in SQLite-format databases and you can manually edit these with the command line tool if you like.</p>
 <p>Currently in version 3.34.1, the command-line program is called <code>sqlite3</code> and exists for all major operating systems, you should be able to download it as a single file executable, put in in any folder you like and just run it. On Alpine, you can install the <code>sqlite</code> package with <code>apk</code>.</p>
-<p>SQLite is an embedded database, which means there is no separate server process. Databases are simply files. When you run the command line tool, the tool fulfils both the client and server roles at once; when you use SQLite from a program, the SQLite driver also acts as the &quot;server&quot;.</p>
+<p>SQLite is an embedded database, which means there is no separate server process. Databases are simply files. When you run the command line tool, the tool fulfils both the client and server roles at once; when you use SQLite from a program, the SQLite driver also acts as the "server".</p>
 <h2 id="census-exercise"><a class="header" href="#census-exercise">Census exercise</a></h2>
-<p>You will need the census files from databases activity 1: make a folder with the <code>setup.sql</code> file and the census csv files. </p>
+<p>You will need the census files from databases activity 1: make a folder with the <code>setup.sql</code> file and the census csv files.</p>
 <p>Download or install sqlite and run <code>sqlite3 census.db</code> to create a database file.</p>
 <p>To create the tables, the command <code>.read setup.sql</code> reads and executes the commands in a file (similar to <code>source</code> on the shell). SQLite system commands start with a dot and do not take a semicolon at the end - see <code>.help</code> for a list. (Don't run the <code>import.sql</code> file, that's MariaDB-specific.)</p>
 <p>Use <code>.tables</code> to show the tables and check that they have been created. With <code>.schema Ward</code> for example you can show the create statement for a single table.</p>
 <p>The source data is in simple CSV files, for example if (back on the shell) you did a <code>head -n 5 County.csv</code> you would see this:</p>
-<pre><code>E09000001,&quot;City of London&quot;,E12000007,E92000001
-E09000002,&quot;Barking and Dagenham&quot;,E12000007,E92000001
+<pre><code>E09000001,"City of London",E12000007,E92000001
+E09000002,"Barking and Dagenham",E12000007,E92000001
 E09000003,Barnet,E12000007,E92000001
 E09000004,Bexley,E12000007,E92000001
 E09000005,Brent,E12000007,E92000001
@@ -3380,7 +3380,7 @@ with sqlite3.connect('FILENAME') as connection:
 <p>See <a href="https://docs.python.org/3/library/sqlite3.html">the Python sqlite documentation</a> for more information.</p>
 <p>One important warning here: if you write any data to the database, you have to call <code>connection.commit()</code> afterwards otherwise the data will not actually be written to disk.</p>
 <h2 id="sqlite-from-c"><a class="header" href="#sqlite-from-c">SQLite from C</a></h2>
-<p>The final exercise here is to write a C program, following the instructions in the slides, that reads your SQLite <code>census.db</code>, iterates over the regions table and prints &quot;Region NAME is code CODE&quot;, where NAME/CODE are replaced with the region's name and code.</p>
+<p>The final exercise here is to write a C program, following the instructions in the slides, that reads your SQLite <code>census.db</code>, iterates over the regions table and prints "Region NAME is code CODE", where NAME/CODE are replaced with the region's name and code.</p>
 <p>Of course you need to handle potential errors from the <code>sqlite3_</code> functions: it's only safe to continue if they return <code>SQLITE_OK</code>.</p>
 <p>You will need to install the <code>sqlite-dev</code> package which contains the <code>sqlite3.h</code> header file, and link against the library with <code>-lsqlite3</code> in your <code>gcc</code> command.</p>
 <p>If you are using <code>sqlite3_exec</code> with a callback function, the callback must return 0 on success and nonzero if it encountered an error, which will in turn cause <code>sqlite_exec</code> to return an error too.</p>

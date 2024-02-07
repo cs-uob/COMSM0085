@@ -177,7 +177,7 @@
 <h2 id="reminder-c-file-handling"><a class="header" href="#reminder-c-file-handling">Reminder: C file handling</a></h2>
 <p>You should already be familiar with the following C functions from <code>&lt;stdio.h&gt;</code>, though you can look up details with <code>man 3 FUNCNAME</code> on a lab machine:</p>
 <ul>
-<li><code>FILE *fopen(const char *path, const char *mode)</code> opens a file, returning a file handle if successful and NULL otherwise. On some systems, it makes a difference whether you read a file in text mode (<code>r</code>) or binary mode (<code>rb</code>), the difference being that the former activates an extra &quot;line discipline&quot; in the C library. For example on Windows, text mode translates a lone <code>\n</code> character to <code>\r\n</code>. <em>On POSIX systems, there is no difference between text and binary mode.</em> </li>
+<li><code>FILE *fopen(const char *path, const char *mode)</code> opens a file, returning a file handle if successful and NULL otherwise. On some systems, it makes a difference whether you read a file in text mode (<code>r</code>) or binary mode (<code>rb</code>), the difference being that the former activates an extra "line discipline" in the C library. For example on Windows, text mode translates a lone <code>\n</code> character to <code>\r\n</code>. <em>On POSIX systems, there is no difference between text and binary mode.</em></li>
 <li><code>int fclose(FILE *file)</code> closes a file, and flushes any pending writes. It returns 0 on success and nonzero in case of errors.</li>
 <li><code>int fflush(FILE *file)</code> flushes a file: for output, it makes sure any buffered characters are written out. For input, it throws away any unread input in the c library input buffer. It returns 0 on success and nonzero in case of errors. <code>fflush(NULL)</code> flushes all open files.</li>
 <li><code>int feof(FILE *file)</code> returns nonzero if the file in question has reached end-of-file, and zero otherwise. This is the only correct way to test for an end-of file condition.</li>
@@ -188,7 +188,7 @@
 <p>A number of utility functions build upon these:</p>
 <ul>
 <li><code>int fprintf(FILE *stream, const char *format, ...)</code> writes formatted output to a file, usually by calling <code>fwrite</code> behind the scenes. <code>printf</code> is a shortcut for <code>fprintf(stdout, ...)</code>. These functions to not print a newline unless you ask for one. It returns the number of characters written, or a negative number if an error occurred.</li>
-<li><code>int fputs(const char *string, FILE *file)</code> writes a zero-terminated string to the file, not including the zero terminator. <code>puts</code> is a shortcut that writes to <code>stdout</code> <em>and</em> adds a newline at the end. </li>
+<li><code>int fputs(const char *string, FILE *file)</code> writes a zero-terminated string to the file, not including the zero terminator. <code>puts</code> is a shortcut that writes to <code>stdout</code> <em>and</em> adds a newline at the end.</li>
 <li><code>int fputc(int c, FILE *file)</code> writes a single character (<code>c</code> is cast to an <code>unsigned char</code> first) and <code>putchar</code> is a shortcut for writing to <code>stdout</code> (but does not add a newline, unlike <code>puts</code>).</li>
 <li><code>int fgetc(FILE *file)</code> reads a single character from a file (but returns it as an int, however it's safe to cast to char). <code>getchar</code> is a shortcut that reads from standard input.</li>
 <li><code>char *fgets(char *buffer, int size, FILE *file)</code> reads up to <code>size-1</code> bytes into the buffer, stopping early if it finds a null byte, newline or end-of-file character. It then adds a zero-terminator to the string. If it stopped early because of a newline, the newline is included in the buffer; if it stopped due to an end-of-file then this is not included. Older versions of C included a <code>gets</code> version that reads from standard input and does not take a size argument; this is insecure as it can produce a buffer overflow and it should never be used. <code>fgets</code> is safe if the length of the buffer is at least <code>size</code> bytes. It returns a pointer to buffer on success and NULL if an error occurred. End-of-file counts as an error for this purpose if no characters could be read at all.</li>
@@ -211,40 +211,40 @@
 // prints text and the current errno value, then returns code.
 int error(int ret, char* text) {
   int e = errno;
-  printf(&quot;Error %s: %s (code %i).\n&quot;, text, strerror(e), e);
+  printf("Error %s: %s (code %i).\n", text, strerror(e), e);
   return ret;
 }
 
 int main(int argc, char **argv) {
-    if (argc &lt; 2) { printf(&quot;Use: %s FILENAME\n&quot;, argv[0]); return 1; }
-    printf(&quot;Opening [%s]\n&quot;, argv[1]);
-    FILE *file = fopen(argv[1], &quot;r&quot;);
-    if (file == NULL) { return error(2, &quot;opening file&quot;); }
+    if (argc &lt; 2) { printf("Use: %s FILENAME\n", argv[0]); return 1; }
+    printf("Opening [%s]\n", argv[1]);
+    FILE *file = fopen(argv[1], "r");
+    if (file == NULL) { return error(2, "opening file"); }
     
     char c, d;
     size_t result = fread(&amp;c, 1, 1, file);
     if (result &lt; 1) { 
       if (ferror(file)) {
-        return error(2, &quot;reading first character&quot;);
+        return error(2, "reading first character");
       } else {
-        puts(&quot;No first character - end of file?&quot;);
+        puts("No first character - end of file?");
         return 2;
       }
     }
-    printf(&quot;Read character: [%c].\n&quot;, c);
+    printf("Read character: [%c].\n", c);
     result = fread(&amp;d, 1, 1, file);
     if (result &lt; 1) { 
       if (ferror(file)) {
-        return error(2, &quot;reading second character&quot;); 
+        return error(2, "reading second character"); 
       } else {
-        puts(&quot;No second character - end of file?&quot;);
+        puts("No second character - end of file?");
         return 2;
       }
     }
-    printf(&quot;Read another character: [%c].\n&quot;, d);
+    printf("Read another character: [%c].\n", d);
     
     int e = fclose(file);
-    if (e) { return error(2, &quot;closing file.&quot;); }
+    if (e) { return error(2, "closing file."); }
     return 0;
 }
 </code></pre>
@@ -260,24 +260,24 @@ Note that we print the first character before reading the second, as this will b
 <ul>
 <li>Make a file <code>file</code> containing some characters such as <code>abc</code> and run <code>./input1 file</code>. Convince yourself that the program prints the first two characters (first two bytes, to be precise).</li>
 <li>Next, run <code>./input1 /dev/stdin</code>, to make it read from standard input. Notice that it blocks.
-Type a few characters such as <code>abc</code> and notice that the program prints nothing, until you press ENTER at which point both the &quot;Read character&quot; and &quot;Read another character&quot; output appears at once. <strong>What is the reason for this?</strong></li>
-<li>Restart the program, and when it is waiting for input, type <code>ab[BACKSPACE]c[ENTER]</code>. <strong>Explain what you see.</strong> </li>
+Type a few characters such as <code>abc</code> and notice that the program prints nothing, until you press ENTER at which point both the "Read character" and "Read another character" output appears at once. <strong>What is the reason for this?</strong></li>
+<li>Restart the program, and when it is waiting for input, type <code>ab[BACKSPACE]c[ENTER]</code>. <strong>Explain what you see.</strong></li>
 <li>What happens if you enter only one character and then press ENTER? What if you press ENTER and haven't typed anything at all?</li>
 <li>If you want, verify that using fgetc / getchar produces the same behaviour on standard input: the program does not proceed past the first read command until you press ENTER. You can even try debugging with gdb to make sure.</li>
 <li>Insert the line <code>setbuf(file, NULL);</code> just after the <code>fopen</code> line to make sure it's not the C library buffering.</li>
 </ul>
 <p>Have you answered the questions in bold above before reading on?</p>
 <ul>
-<li>Next, on your terminal, execute <code>stty -icanon</code>, which turns off the &quot;icanon&quot; setting. (The convention for <code>stty</code> is that an option name in an argument turns it on, except if prefixed with a minus which turns it off.)</li>
+<li>Next, on your terminal, execute <code>stty -icanon</code>, which turns off the "icanon" setting. (The convention for <code>stty</code> is that an option name in an argument turns it on, except if prefixed with a minus which turns it off.)</li>
 <li>Rerun the program (<code>./input1 /dev/stdin</code>) and see what happens now.</li>
-<li>Turn &quot;icanon&quot; back on with <code>stty icanon</code>. </li>
+<li>Turn "icanon" back on with <code>stty icanon</code>.</li>
 <li>Research what <code>icanon</code> does, for example in <code>man stty</code> on a lab machine or online.</li>
 <li><strong>Why does BACKSPACE and <code>^U</code> work in your bash shell, even with icanon turned off?</strong></li>
 </ul>
 <p>Next, we are going to experiment with the terminal in fully raw mode:</p>
 <ul>
 <li><code>stty -g</code> prints the current terminal setting in a format that you can save and load again. Take a look, then store them with the shell command <code>state=$(stty -g)</code>.</li>
-<li>Execute <code>stty raw</code>, then run your program again. <strong>The terminal looks a bit &quot;messed up&quot; - can you tell what is happening?</strong> Try another command like <code>ls</code> in raw mode too if that helps.</li>
+<li>Execute <code>stty raw</code>, then run your program again. <strong>The terminal looks a bit "messed up" - can you tell what is happening?</strong> Try another command like <code>ls</code> in raw mode too if that helps.</li>
 <li>Restore your terminal settings with <code>stty $state</code>, reading them back from the variable where you stored them. You can then reset the window with <code>^L</code>.</li>
 </ul>
 <p>There is an important warning here if you are ever benchmarking a program that produces (standard) output - the total running time will be the sum of the program's running time and the connected terminal's running time to process the output. For example, printing a sequence of newline characters is typically slower than printing a sequence of 'a's, even if both programs are doing <code>putc</code> in a loop, because the terminal has extra work to do on each newline.</p>
@@ -296,22 +296,22 @@ int main() {
     r = fread(&amp;c, 1, 1, stdin);
     if (r &lt; 1) break; // bail out on error or eof
     if (c == 'Q') break;
-    printf(&quot;(%02X) &quot;, c);
+    printf("(%02X) ", c);
   }
   return 0;
 }
 </code></pre>
 <ul>
-<li>What do you expect to happen if you run this in a &quot;normal&quot; terminal and type a few characters?</li>
+<li>What do you expect to happen if you run this in a "normal" terminal and type a few characters?</li>
 <li>Run it in a terminal with icanon turned off and type a few characters. Notice that you can still cancel it with <code>^C</code>.</li>
 <li>Run it in a terminal in raw mode and type a few characters. What happens now when you press <code>^C</code>?</li>
 </ul>
 <p>Luckily, we built in another way to quit the program with Q!</p>
 <ul>
-<li>In raw mode, try a few &quot;special&quot; keys such as ENTER, ESC, the arrow keys, function keys (F1, F2) etc.</li>
+<li>In raw mode, try a few "special" keys such as ENTER, ESC, the arrow keys, function keys (F1, F2) etc.</li>
 <li>We turned off buffering for standard <em>output</em>. Why is this important - what happens otherwise and who is doing the buffering?</li>
 </ul>
-<p>What actually happens when you press Control-C in a terminal in &quot;cooked&quot; mode is it sends the signal <code>SIGINT</code> (interrupt) to the connected program - the default behaviour for this signal is to terminate the program. Putting the terminal in raw mode just passes the control code for Control-C on to the program, though it would still quit if you sent it a SIGINT another way (e.g. with the <code>kill</code> command from another terminal). However, you could also write a signal handler in your own program that reacts to SIGINT and does something else, for example just ignores the signal.</p>
+<p>What actually happens when you press Control-C in a terminal in "cooked" mode is it sends the signal <code>SIGINT</code> (interrupt) to the connected program - the default behaviour for this signal is to terminate the program. Putting the terminal in raw mode just passes the control code for Control-C on to the program, though it would still quit if you sent it a SIGINT another way (e.g. with the <code>kill</code> command from another terminal). However, you could also write a signal handler in your own program that reacts to SIGINT and does something else, for example just ignores the signal.</p>
 <p>When you type say an <code>a</code>, even in raw mode, the character appears on your screen even though there's no print command for it. This is the terminal echo; you can turn even this off with <code>stty -echo</code> but you are now typing blind! You can still start your program with <code>./input2</code> followed by ENTER, and it will still print the hex codes of everything you type from then on until you press Q but it will no longer show you the characters themselves. If you saved the terminal state before, then typing <code>stty $state</code> and ENTER will get you your echo back.</p>
 
                     </main>

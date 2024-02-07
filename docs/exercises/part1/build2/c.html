@@ -195,7 +195,7 @@
 <blockquote>
 <p><code># Use test -z because SunOS4 sh mishandles braces in ${var-val}.</code></p>
 <p><code># It thinks the first close brace ends the variable substitution.</code></p>
-<p><code>test -z &quot;$INSTALL_PROGRAM&quot; &amp;&amp; INSTALL_PROGRAM='${INSTALL}'</code></p>
+<p><code>test -z "$INSTALL_PROGRAM" &amp;&amp; INSTALL_PROGRAM='${INSTALL}'</code></p>
 </blockquote>
 <h2 id="make"><a class="header" href="#make">Make</a></h2>
 <p>Type <code>make</code> to build sqlite. If it's not installed, <code>sudo apt install make</code> will fix that.</p>

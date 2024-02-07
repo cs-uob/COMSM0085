@@ -187,27 +187,27 @@
 &lt;/dependency&gt;
 </code></pre>
 <p>Hibernate's configuration lives in <code>src/main/resources/hibernate.cfg.xml</code>. Hibernate uses a <em>Session Factory</em> to create sessions, in which you can make queries:</p>
-<pre><code class="language-xml">&lt;?xml version = &quot;1.0&quot; encoding = &quot;utf-8&quot;?&gt;
+<pre><code class="language-xml">&lt;?xml version = "1.0" encoding = "utf-8"?&gt;
 &lt;!DOCTYPE hibernate-configuration SYSTEM 
-&quot;http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd&quot;&gt;
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"&gt;
 &lt;hibernate-configuration&gt;
   &lt;session-factory&gt;
     
     &lt;!-- These properties set up the database connection. --&gt;
-    &lt;property name=&quot;dialect&quot;&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt;
-    &lt;property name=&quot;connection.url&quot;&gt;jdbc:mariadb://localhost/elections?localSocket=/var/run/mysqld/mysqld.sock&lt;/property&gt;
-    &lt;property name=&quot;connection.username&quot;&gt;vagrant&lt;/property&gt;
+    &lt;property name="dialect"&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt;
+    &lt;property name="connection.url"&gt;jdbc:mariadb://localhost/elections?localSocket=/var/run/mysqld/mysqld.sock&lt;/property&gt;
+    &lt;property name="connection.username"&gt;vagrant&lt;/property&gt;
     
     &lt;!-- Don't use this in production, use a connection pool instead. --&gt;
-    &lt;property name=&quot;current_session_context_class&quot;&gt;thread&lt;/property&gt;
+    &lt;property name="current_session_context_class"&gt;thread&lt;/property&gt;
 
     &lt;!-- Display generated SQL on the console. --&gt;
-    &lt;property name=&quot;show_sql&quot;&gt;true&lt;/property&gt;
+    &lt;property name="show_sql"&gt;true&lt;/property&gt;
 
     &lt;!-- The classes to map to database tables. --&gt;
-    &lt;mapping class=&quot;org.example.Candidate&quot; /&gt;
-    &lt;mapping class=&quot;org.example.Party&quot; /&gt;
-    &lt;mapping class=&quot;org.example.Ward&quot; /&gt;
+    &lt;mapping class="org.example.Candidate" /&gt;
+    &lt;mapping class="org.example.Party" /&gt;
+    &lt;mapping class="org.example.Ward" /&gt;
     
   &lt;/session-factory&gt;
 &lt;/hibernate-configuration&gt;
@@ -239,12 +239,12 @@ public class Party {
 }
 </code></pre>
 <ul>
-<li><code>@Entity</code> means this is something that maps to a table in the database. By default, Hibernate guesses the table name from the class name, but you could change this with a parameter e.g. <code>@Entity(name=&quot;Parties&quot;)</code>.</li>
+<li><code>@Entity</code> means this is something that maps to a table in the database. By default, Hibernate guesses the table name from the class name, but you could change this with a parameter e.g. <code>@Entity(name="Parties")</code>.</li>
 <li><code>@Id</code> indicates the primary key.</li>
 </ul>
 <p>The candidate class is a bit more interesting as it has foreign keys:</p>
 <pre><code class="language-java">@ManyToOne 
-@JoinColumn(name = &quot;party&quot;)
+@JoinColumn(name = "party")
 private Party party;
 </code></pre>
 <ul>
@@ -277,7 +277,7 @@ public class Example implements AutoCloseable {
     try (Example example = new Example()) {
         example.run();
     }
-  System.out.println(&quot;Done.&quot;);
+  System.out.println("Done.");
   System.exit(0);
 }
 </code></pre>
@@ -290,15 +290,15 @@ public class Example implements AutoCloseable {
 <p>We then have three examples of using Hibernate.</p>
 <h3 id="loading-an-entity-by-id"><a class="header" href="#loading-an-entity-by-id">Loading an entity by ID</a></h3>
 <pre><code class="language-java">Party p1 = session.get(Party.class, 1);
-System.out.println(&quot;    The party with id=1 is: &quot; + p1.getName());
+System.out.println("    The party with id=1 is: " + p1.getName());
 </code></pre>
 <p>To fetch an instance by id, we just call <code>get</code> on the session with the class we want and the id. Passing the class both tells Hibernate which table to load from, and it tells the compiler what type of object to return - the way Java generics work, this lets us assign the result to a <code>Party</code> variable directly without having to do a cast.</p>
 <h3 id="loading-with-a-query"><a class="header" href="#loading-with-a-query">Loading with a query</a></h3>
-<pre><code class="language-java">TypedQuery&lt;Ward&gt; query = session.createQuery(&quot;FROM Ward&quot;, Ward.class);
+<pre><code class="language-java">TypedQuery&lt;Ward&gt; query = session.createQuery("FROM Ward", Ward.class);
 List&lt;Ward&gt; wards = query.getResultList();
-System.out.println(&quot;  Wards:&quot;);
+System.out.println("  Wards:");
 for (Ward ward : wards) {
-    System.out.println(&quot;    &quot; + ward.getName());
+    System.out.println("    " + ward.getName());
 }
 </code></pre>
 <p>A <code>TypedQuery</code> object takes a string in HQL, Hibernate's own query language (based on SQL) and the class of the object to return - this is so that the Java compiler can figure out the return type. <code>getResultList</code> returns all results as a list.</p>
@@ -317,12 +317,12 @@ for (Ward ward : wards) {
 </div>
 <h3 id="queries-with-joins-and-parameters"><a class="header" href="#queries-with-joins-and-parameters">Queries with joins and parameters</a></h3>
 <p>For a more involved example, we look at the following:</p>
-<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery(&quot;FROM Candidate c WHERE c.party.name = :name&quot;, Candidate.class);
-q.setParameter(&quot;name&quot;, &quot;Labour&quot;);
+<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery("FROM Candidate c WHERE c.party.name = :name", Candidate.class);
+q.setParameter("name", "Labour");
 List&lt;Candidate&gt; candidates = q.getResultList();
-System.out.println(&quot;  Labour Candidates:&quot;);
+System.out.println("  Labour Candidates:");
 for (Candidate c : candidates) {
-    System.out.println(&quot;    &quot; + c.getName() + &quot; (&quot; + c.getWard().getName() + &quot;)&quot;);
+    System.out.println("    " + c.getName() + " (" + c.getWard().getName() + ")");
 }
 </code></pre>
 <p>HQL, like SQL, allows a WHERE clause to filter results. It also allows prepared statements, but goes one better than JDBC in that parameters can have names. You declare a parameter with a colon in the query string (<code>:name</code>) and then use <code>setParameter(name, value)</code> to bind it - this method is written so that it can take a value of any type, presumably with a combination of overloading for int/float types and <code>Object</code> for everything else.</p>
@@ -367,12 +367,12 @@ select ward0_.id as id1_2_0_, ward0_.electorate as electora2_2_0_, ward0_.name a
 </code></pre>
 <p>Hibernate is firing off one query per ward! This is called the N+1 problem, because one HQL query that returns N results ends up producing N+1 SQL queries, which is horribly inefficient expecialy for large N.</p>
 <p>Looking at the loop structure:</p>
-<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery(&quot;FROM Candidate c WHERE c.party.name = :name&quot;, Candidate.class);
-q.setParameter(&quot;name&quot;, &quot;Labour&quot;);
+<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery("FROM Candidate c WHERE c.party.name = :name", Candidate.class);
+q.setParameter("name", "Labour");
 List&lt;Candidate&gt; candidates = q.getResultList();
-System.out.println(&quot;  Labour Candidates:&quot;);
+System.out.println("  Labour Candidates:");
 for (Candidate c : candidates) {
-    System.out.println(&quot;    &quot; + c.getName() + &quot; (&quot; + c.getWard().getName() + &quot;)&quot;);
+    System.out.println("    " + c.getName() + " (" + c.getWard().getName() + ")");
 }
 </code></pre>
 <p>From the query itself, it is not clear to Hibernate whether ward names will be needed or not, so Hibernate does not JOIN them by default which would be more efficient if you don't actually need them. In the for loop at the bottom however, you do access the names, so on every pass through the loop, Hibernate is forced to run a new query to get the name of the relevant ward.</p>
@@ -384,9 +384,9 @@ for (Candidate c : candidates) {
 </div>
 </div>
 <p>The solution here is to tell Hibernate at query time that you'll need the wards:</p>
-<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery(&quot;FROM Candidate c JOIN FETCH c.ward WHERE c.party.name = :name&quot;, Candidate.class);
+<pre><code class="language-java">TypedQuery&lt;Candidate&gt; q = session.createQuery("FROM Candidate c JOIN FETCH c.ward WHERE c.party.name = :name", Candidate.class);
 </code></pre>
-<p>This is HQL for &quot;I'm going to use the wards, so please do a JOIN to load them too&quot;. And Hibernate now uses a single query for the Candidates again:</p>
+<p>This is HQL for "I'm going to use the wards, so please do a JOIN to load them too". And Hibernate now uses a single query for the Candidates again:</p>
 <pre><code class="language-SQL">select party0_.id as id1_1_0_, party0_.name as name2_1_0_ from Party party0_ where party0_.id=?
 
 select candidate0_.id as id1_0_0_, ward1_.id as id1_2_1_, candidate0_.name as name2_0_0_,
@@ -411,7 +411,7 @@ where candidate0_.party=party2_.id and party2_.name=?
 <h2 id="exercise-2"><a class="header" href="#exercise-2">Exercise 2</a></h2>
 <p>What you have learnt so far will allow you to navigate upwards in the hierarchy, e.g. given a ward you can find its associated county. This exercise is about the other way round: given a county object, you want to find all wards in it.</p>
 <p>To do this, add the following property to your County class:</p>
-<pre><code class="language-java">@OneToMany(mappedBy = &quot;county&quot;)
+<pre><code class="language-java">@OneToMany(mappedBy = "county")
 private List&lt;Ward&gt; wards;
 </code></pre>
 <p>The argument to <code>mappedBy</code> must be the field name of the field in the Ward class that contains the county reference - you might have called it <code>parent</code> or something else in your class.</p>

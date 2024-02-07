@@ -200,7 +200,7 @@ in common web transactions.</p>
 <h2 id="reading"><a class="header" href="#reading">Reading</a></h2>
 <ul>
 <li><a href="https://www.rfc-editor.org/rfc/rfc7230">RFC 7230</a> - this is a comprehensive
-outline of the protocol for HTTP, but you can focus on sections 2.1, 2.2, 2.7 and 3. </li>
+outline of the protocol for HTTP, but you can focus on sections 2.1, 2.2, 2.7 and 3.</li>
 </ul>
 <h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
 <ul>
@@ -222,35 +222,35 @@ outline of the protocol for HTTP, but you can focus on sections 2.1, 2.2, 2.7 an
 <p>Proceed directly to <a href="http/explore.html">exploring HTTP</a>.</p>
 <h2 id="lab-machine-with-vagrant"><a class="header" href="#lab-machine-with-vagrant">Lab machine, with Vagrant</a></h2>
 <p>If you want to run a server inside a Vagrant VM and connect to it with a browser directly on the lab machine (outside the VM), then you will need to tell Vagrant which ports within the VM to make available outside the VM. Open your Vagrantfile and add the line</p>
-<pre><code>config.vm.network &quot;forwarded_port&quot;, guest: 8000, host: 8000
+<pre><code>config.vm.network "forwarded_port", guest: 8000, host: 8000
 </code></pre>
 <p>in the main block (just before the <code>config.vm.provision</code> line will do), then restart your VM if it is already running. This tells Vagrant to open a server on port 8000 on the host (the lab machine), and forward any traffic it receives to port 8000 on the VM.</p>
 <p>You can now start the VM, run a server inside the VM, and connect to it from the browser on the lab machine.</p>
 <p>Proceed to <a href="http/explore.html">exploring HTTP</a> and run the server (the <code>nc</code> command) inside the VM, but use the browser on the lab machine directly. Note that the <code>http-response</code> file mentioned on that page needs to go in the correct folder inside the VM, where you started the server.</p>
 <h2 id="your-own-machine-without-vagrant"><a class="header" href="#your-own-machine-without-vagrant">Your own machine, without Vagrant</a></h2>
 <p>If you have a system that supports the <code>nc</code> and <code>wget</code> commands (Mac OS, Linux or WSL should all offer the option to install them) then you can proceed directly to <a href="http/explore.html">exploring HTTP</a>.</p>
-<p>You might get one or more firewall warning pop-ups, which you will have to &quot;allow&quot;.</p>
+<p>You might get one or more firewall warning pop-ups, which you will have to "allow".</p>
 <h2 id="your-own-machine-with-vagrant"><a class="header" href="#your-own-machine-with-vagrant">Your own machine, with Vagrant</a></h2>
-<p>Configure vagrant as in the section &quot;Lab machine, with Vagrant&quot; above, that is add the line</p>
-<pre><code>config.vm.network &quot;forwarded_port&quot;, guest: 8000, host: 8000
+<p>Configure vagrant as in the section "Lab machine, with Vagrant" above, that is add the line</p>
+<pre><code>config.vm.network "forwarded_port", guest: 8000, host: 8000
 </code></pre>
 <p>to the Vagrantfile and restart Vagrant. You can now run servers in the VM and clients (such as your favourite browser) on your own machine.</p>
-<p>You might get firewall warning pop-ups, which you will have to &quot;allow&quot;.</p>
+<p>You might get firewall warning pop-ups, which you will have to "allow".</p>
 <p>Proceed to <a href="http/explore.html">exploring HTTP</a>. If you don't have <code>wget</code> on your own machine, you can open a second terminal and log in to the VM from there, then run both <code>wget</code> and the server inside the VM that way - then later on, when you're using a browser instead of <code>wget</code> for the client, you can just open the browser on your own machine.</p>
 <h2 id="over-ssh"><a class="header" href="#over-ssh">Over SSH</a></h2>
 <p>For security reasons, you will not be able to run a web server on a lab machine (whether in a VM or not) and connect to it from your local web browser. If you have no other option than to use a remote connection, you should use <a href="https://wiki.x2go.org/doku.php/download:start">x2go</a> to connect to a lab machine with a graphical user interface, and run both the server and browser through that. This software uses ssh internally so you need to connect to <code>rd-mvb-linuxlab.bristol.ac.uk</code> using <code>seis.bris.ac.uk</code> as the proxy server.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="exploring-http"><a class="header" href="#exploring-http">Exploring HTTP</a></h1>
 <h2 id="before-you-start"><a class="header" href="#before-you-start">Before you start</a></h2>
 <p>To avoid an annoying problem, before we run our own server we are going to check that no-one else is already using the TCP port we want.</p>
-<p>Run the command </p>
+<p>Run the command</p>
 <pre><code>wget localhost:8000
 </code></pre>
-<p>on the machine where you want to run the <em>server</em>. It should time out after a couple of seconds (or instantly) with &quot;failed&quot; and some error message.</p>
-<p>If it succeeds (shows &quot;Connected&quot; or &quot;200 OK&quot; anywhere), then someone or something else is using port 8000.</p>
+<p>on the machine where you want to run the <em>server</em>. It should time out after a couple of seconds (or instantly) with "failed" and some error message.</p>
+<p>If it succeeds (shows "Connected" or "200 OK" anywhere), then someone or something else is using port 8000.</p>
 <p>Next, run</p>
 <pre><code>netstat -tan
 </code></pre>
-<p>and check that there is no line with the value &quot;8000&quot; under Local Address and a state of LISTEN or ESTABLISHED. If you get a lot of lines, <code>netstat -tan | grep 8000</code> will help. It does not matter if 8000 appears in the Foreign Address column, but there must be no-one using port 8000 under Local Address.</p>
+<p>and check that there is no line with the value "8000" under Local Address and a state of LISTEN or ESTABLISHED. If you get a lot of lines, <code>netstat -tan | grep 8000</code> will help. It does not matter if 8000 appears in the Foreign Address column, but there must be no-one using port 8000 under Local Address.</p>
 <p><code>netstat</code> should work on every OS including Windows (Microsoft has written their own version), but <code>wget</code> doesn't exist by default on Windows machines although it can be downloaded for free.</p>
 <p>If either <code>wget</code> or <code>netstat</code> suggests port 8000 is in use,</p>
 <ul>
@@ -263,7 +263,7 @@ outline of the protocol for HTTP, but you can focus on sections 2.1, 2.2, 2.7 an
 <p>Open a terminal on the machine where you want to run the server, and download the file <a href="http/../resources/http-response">http-response</a> to the folder where your terminal is open (for example with <code>wget</code>). Then run the command</p>
 <pre><code>nc -l -p 8000 &lt; http-response
 </code></pre>
-<p>This calls the tool <code>nc</code> (&quot;network cat&quot;) and tells it to listen on TCP port 8000 (<code>-l -p 8000</code>), e.g. to run a server there. When a client connects, <code>nc</code> will by default read from its standard input and write this to the client, so we use a shell redirect to make it read from a file instead. The file contains some standard HTTP:</p>
+<p>This calls the tool <code>nc</code> ("network cat") and tells it to listen on TCP port 8000 (<code>-l -p 8000</code>), e.g. to run a server there. When a client connects, <code>nc</code> will by default read from its standard input and write this to the client, so we use a shell redirect to make it read from a file instead. The file contains some standard HTTP:</p>
 <pre><code>HTTP/1.1 200 OK
 Content-type: text/plain
 Content-length: 18
@@ -279,11 +279,11 @@ Hello over HTTP!
 <h2 id="connecting-with-a-web-browser"><a class="header" href="#connecting-with-a-web-browser">Connecting with a web browser</a></h2>
 <p>Run <code>nc -l -p 8000 &lt; http-response</code> again on your server machine (kill the old one with <code>Control+C</code> first if it hasn't terminated already).</p>
 <p>Open a web browser on your client machine (e.g. your own PC/laptop, or a lab machine). If you're using chrome/edge or firefox, open the debug tools (<code>F12</code>) and go to the network tab before you open the page.</p>
-<p>Navigate to <code>localhost:8000</code>. You should see the line &quot;Hello over HTTP!&quot; and <code>nc</code> will print the HTTP request from your browser. You can then close it with <code>Control+C</code> if it doesn't terminate by itself. In your browser's debug tools, on the network tab you should see a file <code>localhost</code>, click this and then select <em>Headers</em> in the details that appear.</p>
+<p>Navigate to <code>localhost:8000</code>. You should see the line "Hello over HTTP!" and <code>nc</code> will print the HTTP request from your browser. You can then close it with <code>Control+C</code> if it doesn't terminate by itself. In your browser's debug tools, on the network tab you should see a file <code>localhost</code>, click this and then select <em>Headers</em> in the details that appear.</p>
 <p>This details page shows you the HTTP request details, including the response code (<code>200 OK</code> in this case) and all the headers sent in both directions. This screen is one of the first places you should look at when something web-based that you've coded is not working correctly or at all, as HTTP is normally the lowest layer you need to care about.</p>
 <p>In particular, the <code>Content-type</code> header is a common source of mistakes: if you want to serve e.g. a script or a stylesheet but you don't set the correct type header, your browser may download the file just fine but won't do anything with it. Similarly, whether you send <code>text/plain</code> or <code>text/html</code> determines whether the browser will interpret a file you navigate to as HTML or not.</p>
 <h2 id="a-web-server-in-c"><a class="header" href="#a-web-server-in-c">A web server in C</a></h2>
-<p>On your server machine, clone the repository <code>https://github.com/emikulic/darkhttpd</code> which contains a single-file web server in just under 3000 lines of C. You do not need to understand this code in detail, but it can be educational to try to understand some of what it does internally. </p>
+<p>On your server machine, clone the repository <code>https://github.com/emikulic/darkhttpd</code> which contains a single-file web server in just under 3000 lines of C. You do not need to understand this code in detail, but it can be educational to try to understand some of what it does internally.</p>
 <p>Compile the program either with <code>make</code> or simply <code>gcc darkhttpd.c -o darkhttpd</code>. The server's job is to serve files within a folder, so make a subfolder called <code>web</code> and then run it with <code>./darkhttpd web --port 8000</code>. You can stop it again at the end of the exercise with <code>Control+C</code>.</p>
 <p>You can now experiment with the following:</p>
 <ul>
@@ -292,26 +292,26 @@ Hello over HTTP!
 <li>Observe the HTTP headers in your browser's developer tools, and the server logs printed in the server terminal.</li>
 </ul>
 <p>This particular server is written so that if you try and access a folder instead of a file, for example just <code>localhost:8000</code> which has the implicit path <code>/</code> which maps to the <code>web</code> folder, then it shows a list of files in this folder as clickable links.</p>
-<p>Pay particular attention to how the <code>Content-type</code> header is sent depending on the file extension. From the browser's point of view, that header is what counts: if you send a file with <code>.html</code> extension but set <code>Content-type: text/plain</code>, the browser would not interpret it as HTML. This makes it possible to serve URLs with no &quot;extension&quot; at all like <code>/students</code> for a database application, and still have the browser understand what to do.</p>
+<p>Pay particular attention to how the <code>Content-type</code> header is sent depending on the file extension. From the browser's point of view, that header is what counts: if you send a file with <code>.html</code> extension but set <code>Content-type: text/plain</code>, the browser would not interpret it as HTML. This makes it possible to serve URLs with no "extension" at all like <code>/students</code> for a database application, and still have the browser understand what to do.</p>
 <p>From the server's point of view, this server (like most other servers that simply serve files from a folder) has chosen to use a file's extension to determine what <code>Content-type</code> to send; this is implemented in the <code>default_extension_map</code> starting at line 320 of the source file.</p>
 <p>You can try this out for yourself if you want: make a HTML file called <code>one.html5</code> in the web directory and access it with the browser. (<code>.html5</code> is not an official extension, it's something I just made up. The correct one to use for proper websites is <code>.html</code>.) The server won't send a <code>Content-type</code> header at all, since it doesn't know this extension, so the browser will either display it as a plain text file or download the file instead of showing it.</p>
-<p>Edit the map in the source file and change the entry for <code>text/html</code> to read <code>&quot; html htm html5&quot;</code>, keeping the space at the start of the string. Recompile the server.</p>
+<p>Edit the map in the source file and change the entry for <code>text/html</code> to read <code>" html htm html5"</code>, keeping the space at the start of the string. Recompile the server.</p>
 <p>Rename the file to <code>two.html5</code> (I'll explain why in a second) and restart the server and try and open the file in the browser. This time, the file will display as a HTML page.</p>
 <p>Why did you have to rename the file? Because the browser will otherwise try and be clever if it thinks you're trying to access a file that you've just downloaded already. The server sends a <code>Last-modified</code> header, and if the browser notices you're asking for a file you have just downloaded, with the same timestamp as the HTTP header indicates, then your browser might ignore the rest of the request and not see that another header has changed. Changing the file name forces the browser to look again, as it thinks it's a different file now. Deleting the downloaded file, or editing the file on the server, would both have the same effect.</p>
-<p>There is a moral here: if you're doing web development, and you are trying to find out why a change you made isn't showing in the browser (even if you refresh the page), it might be a cache problem. On the network tab of the developer tools window, there should be a checkbox to &quot;disable cache&quot; which you might want to turn on in this case and reload the page again, to exclude the cache as the possible source of the problem.</p>
+<p>There is a moral here: if you're doing web development, and you are trying to find out why a change you made isn't showing in the browser (even if you refresh the page), it might be a cache problem. On the network tab of the developer tools window, there should be a checkbox to "disable cache" which you might want to turn on in this case and reload the page again, to exclude the cache as the possible source of the problem.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="httpurl-research-exercises"><a class="header" href="#httpurl-research-exercises">HTTP/URL research exercises</a></h1>
 <p>Research online what the following are and what they do:</p>
 <ul>
 <li>The <em>fragment</em> part of a URL.</li>
 <li>The <code>Accept</code> header sent by the HTTP client.</li>
 <li>The <code>User-agent</code> header sent by the HTTP client. What does your browser send?</li>
-<li>How do you encode a path that contains a space in an URL? Which other characters are &quot;special&quot; and need to be treated this way in paths?</li>
+<li>How do you encode a path that contains a space in an URL? Which other characters are "special" and need to be treated this way in paths?</li>
 <li>Which web server is the University of Bristol using for <code>www.bristol.ac.uk</code>, according to the headers? Read up online on this server and the organisation of the same name that maintains it.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="a-server-in-java"><a class="header" href="#a-server-in-java">A server in Java</a></h1>
 <p>From now on, we will be using the Java language and the Spring Boot framework to run real web servers, as you might do in a software engineering project.</p>
 <h2 id="compile-and-run"><a class="header" href="#compile-and-run">Compile and run</a></h2>
-<p>Make sure you have java and maven installed as we did earlier in the unit. 
+<p>Make sure you have java and maven installed as we did earlier in the unit.
 Clone the repository <code>git@github.com:cs-uob/COMSM0085</code> if you have not done so
 already, and navigate to the folder <code>code/server01</code>. In this folder, run <code>mvn spring-boot:run</code> to compile and run the sample application. The first time you
 do this, it might download lots of files.</p>
@@ -337,7 +337,7 @@ do this, it might download lots of files.</p>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="html5"><a class="header" href="#html5">HTML5</a></h1>
 <p>HTML5, officially introduced in 2014, is the modern markup language for writing websites.</p>
-<p>It gets rid of a lot of historical annoyances and inconsistencies from previous versions of HTML and XML and contains a lot of new standard tags and attributes for features that individual sites had built with JavaScript or Adobe Flash in the past. For example, HTML5 has a <code>&lt;video&gt;</code> tag for a consistent way to include videos that work across different platforms and without plug-ins, and a standard way of writing a date picker or &quot;calendar&quot; widget.</p>
+<p>It gets rid of a lot of historical annoyances and inconsistencies from previous versions of HTML and XML and contains a lot of new standard tags and attributes for features that individual sites had built with JavaScript or Adobe Flash in the past. For example, HTML5 has a <code>&lt;video&gt;</code> tag for a consistent way to include videos that work across different platforms and without plug-ins, and a standard way of writing a date picker or "calendar" widget.</p>
 <h2 id="videos-1"><a class="header" href="#videos-1">Videos</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
 <tr><td><a href="https://web.microsoftstream.com/video/60b286e4-2a48-457c-b564-fec86ee2169d">HTML5</a></td><td style="text-align: right">16 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/Ea3-DaFYa9RItnmSRhVGPXIBGAS_PHaWAKGgeuay7Zf1kg?e=0rxeGt">slides</a></td></tr>
@@ -349,7 +349,7 @@ do this, it might download lots of files.</p>
 <p>These pages are pitched at a lower level of technical expertise than CS students, so you should get through them very quickly. Many of them also contain interactive examples to try out. If your future career involves web development, you will be consulting documentation like the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN HTML reference guide</a> a lot - for example, to read through all the attributes you can put on a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">form tag</a>.</p>
 <p>Please read the following pages for this workshop, as well as watching the videos.</p>
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started">MDN: Getting Started with HTML</a> The very basics, and the HTML5 page template. </li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started">MDN: Getting Started with HTML</a> The very basics, and the HTML5 page template.</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals">MDN: HTML Text Fundamentals</a> A recap of paragraphs, headings, styling, semantic tags.</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks">MDN: Creating Hyperlinks</a> All about the <code>&lt;a&gt;</code> tag.</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure">MDN: Document and website structure</a> HTML5 semantic tags for structure.</li>
@@ -362,7 +362,7 @@ do this, it might download lots of files.</p>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="basic-html5"><a class="header" href="#basic-html5">Basic HTML5</a></h1>
 <p>For your first exercise, create a page called <code>index.html</code> and add the HTML5 template code to it.</p>
-<p>The name <code>index.html</code> is a convention: most web servers, if you give an URL that looks like a &quot;folder&quot; e.g. <code>example.com/pages</code> (or <code>example.com/pages/</code> with slash on the end) will serve the file <code>index.html</code> from within that folder, if there is one.</p>
+<p>The name <code>index.html</code> is a convention: most web servers, if you give an URL that looks like a "folder" e.g. <code>example.com/pages</code> (or <code>example.com/pages/</code> with slash on the end) will serve the file <code>index.html</code> from within that folder, if there is one.</p>
 <h2 id="create-a-page"><a class="header" href="#create-a-page">Create a page</a></h2>
 <p>Create content in your page to make it look like the following, then open it in your browser. All body text, but not the bullet list, is contained in paragraph tags.</p>
 <div style="background:#fff; border: 1px solid #1d1b1e; box-shadow: 0px 0px 10px #333; width: 100%; height: 490px; border-radius: 5px;">
@@ -384,40 +384,40 @@ do this, it might download lots of files.</p>
 <p>You can check the sample solution <a href="html5/../resources/examplepage.html">here</a> but you might have a different, equally valid solution.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="templating"><a class="header" href="#templating">Templating</a></h1>
 <p>The bread and butter of many developer jobs is building web applications that let people interact with data in a database. In a university for example, such an application might let students see the units they are enrolled in, their teaching and exam timetables, and their grades. Academics would be able to add new grades, and staff in the timetabling office would be able to create and edit timetables.</p>
-<p>In such an application, pages need to be somewhat dynamic: the &quot;student profile&quot; page will show data for the particular student that you are looking at. Rather than generating these HTML pages &quot;manually&quot;, for example by pasting strings together, it is much cleaner and usually more efficient to use a templating library. You could define one &quot;student profile page&quot; template, and then when a student requests their profile page, the server uses the template to create the page with this student's data. Creating a particular page from a template and some data is called <em>rendering</em> the page.</p>
+<p>In such an application, pages need to be somewhat dynamic: the "student profile" page will show data for the particular student that you are looking at. Rather than generating these HTML pages "manually", for example by pasting strings together, it is much cleaner and usually more efficient to use a templating library. You could define one "student profile page" template, and then when a student requests their profile page, the server uses the template to create the page with this student's data. Creating a particular page from a template and some data is called <em>rendering</em> the page.</p>
 <p>This workshop's example application is <code>code/server02</code> in the unit git repository. You build it with <code>mvn spring-boot:run</code> like the previous one, then access <code>localhost:8000</code>.</p>
-<p>The application is a very minimal university database with students, units and grades. The <code>Database</code> interface in the <code>model</code> folder, together with the Student and Unit classes, form the data model - you can search for all students or all units in the database. In a real database of course, you would be able to search for an individual student by ID as well. </p>
+<p>The application is a very minimal university database with students, units and grades. The <code>Database</code> interface in the <code>model</code> folder, together with the Student and Unit classes, form the data model - you can search for all students or all units in the database. In a real database of course, you would be able to search for an individual student by ID as well.</p>
 <p>The file <code>Templates.java</code> sets up the <a href="https://www.thymeleaf.org/">thymeleaf</a> template engine. The <code>@Component</code> annotation tells spring to manage this class; other classes that need templates can request it by declaring a field of the right class with <code>@Autowired</code>, as you can see in <code>Controller.java</code>.</p>
 <p>The main page is served up as before as a HTML file from the classpath in <code>src/main/resources/web</code>.</p>
-<p>Have a look at the process when <code>/units</code> is requested. </p>
+<p>Have a look at the process when <code>/units</code> is requested.</p>
 <ul>
 <li>First, the method <code>unitsPage</code> accesses the database and loads the list of units.</li>
 <li>Next, it creates a <code>Context</code>, a thymeleaf object that lets you pass values to a template. Here we add one value with key <code>units</code>, containing the list of units.</li>
 <li>Finally, we render the template with the context and return this. If a method in a spring controller returns a string, then the string is assumed to contain a HTML page and spring correctly sets the HTTP status code and headers.</li>
 </ul>
 <p>The template itself is in <code>src/main/resources/units.html</code>. Anything with a <code>th:</code> prefix is rendered by thymeleaf:</p>
-<pre><code class="language-html">&lt;ul th:each=&quot;unit : ${units}&quot;&gt;
+<pre><code class="language-html">&lt;ul th:each="unit : ${units}"&gt;
     &lt;li&gt;
-        &lt;a th:href=&quot;'/unit/' + ${unit.code}&quot; th:text=&quot;${unit.code}&quot;&gt;&lt;/a&gt;
-        &lt;span th:text=&quot;${unit.title}&quot;&gt;&lt;/span&gt;
+        &lt;a th:href="'/unit/' + ${unit.code}" th:text="${unit.code}"&gt;&lt;/a&gt;
+        &lt;span th:text="${unit.title}"&gt;&lt;/span&gt;
     &lt;/li&gt;
 &lt;/ul&gt;
 </code></pre>
 <p>The <code>th:each</code> attribute is the equivalent of a for loop in Java, in this case <code>for (Unit unit : units)</code> - in thymeleaf, unlike plain Java, you do not need to give the loop variable a type but you do need to use the <code>${...}</code> syntax whenever you are accessing a variable from the context. The <code>th:each</code> attribute renders its own tag once (in this case <code>&lt;ul&gt;</code>) and then renders everything inside the tag once per pass through the loop, so you get one <code>&lt;li&gt;</code> item per unit.</p>
-<p>To create an attribute, you put <code>th:</code> in front of the attribute name, so the <code>th:href</code> creates the <code>href</code> attribute of a link (check the result in your browser). Thymeleaf attribute syntax is that you need to put single quotes around strings, <code>+</code> like in Java to stick strings together, and <code>${...}</code> around variables. </p>
+<p>To create an attribute, you put <code>th:</code> in front of the attribute name, so the <code>th:href</code> creates the <code>href</code> attribute of a link (check the result in your browser). Thymeleaf attribute syntax is that you need to put single quotes around strings, <code>+</code> like in Java to stick strings together, and <code>${...}</code> around variables.</p>
 <p>The syntax <code>${instance.attribute}</code> loads an attribute from an instance of a Java class by calling its getter. In this case <code>${unit.code}</code> ends up calling <code>.getCode()</code> on the unit instance rather than accessing the field directly.</p>
 <p>The <code>th:text</code> attribute is special and creates the body of a tag. For example, the span tag here creates a <code>&lt;span&gt;</code> whose body (between the opening and closing tags) contains the unit's title. Thymeleaf, unlike some other templating systems, doesn't let you include variables everywhere - some template engines let you just write <code>${variable}</code> anywhere in the HTML page, but thymeleaf only lets you do that in an attribute of a tag so if you simply want some text, you need to make a placeholder tag (<code>span</code> is a good choice here) and put the variable in its <code>th:text</code> attribute.</p>
 <p>If you click on a unit, you get to the details page for that unit (that
 currently doesn't have any more detail than the code and title). When you send a
 HTTP request for <code>/unit/UNITCODE</code>, for example <code>/unit/COMSM0085</code>, this is
-handled by the <code>unitDetailPage</code> method. </p>
+handled by the <code>unitDetailPage</code> method.</p>
 <p>Note that the <code>@GetMapping</code> contains a pattern <code>/unit/{code}</code> with a parameter to match all URLs of this form, and the parameter is passed to the method as a parameter that is annotated with <code>@PathVariable</code> to tell spring how to deal with it, namely to fill its value from the path of the HTTP request.</p>
-<p>The method first finds the unit in the database and returns a 404 error page if there is no unit with that code. (In a real database, there would be a &quot;find unit by code&quot; method, you would not have to load all units just to find one of them.)</p>
+<p>The method first finds the unit in the database and returns a 404 error page if there is no unit with that code. (In a real database, there would be a "find unit by code" method, you would not have to load all units just to find one of them.)</p>
 <p>After this, we call thymeleaf on the <code>unit.html</code> template (this is the one without 's' in its name) to render the unit page.</p>
 <h2 id="exercises-3"><a class="header" href="#exercises-3">Exercises</a></h2>
-<p><strong>Basic exercise:</strong> Rewrite the units list page to show the units in a table instead of a list. The table should have one row per unit and three columns: the first column should be the unit code, the second should be the unit title, and the third column should contain a link with text &quot;details&quot; that takes you to the details page for the unit. Also make a header row in the table with headings 'code', 'title' and 'link'. (This is purely a HTML and templating exercise, you do not need to change any Java code for this.)</p>
+<p><strong>Basic exercise:</strong> Rewrite the units list page to show the units in a table instead of a list. The table should have one row per unit and three columns: the first column should be the unit code, the second should be the unit title, and the third column should contain a link with text "details" that takes you to the details page for the unit. Also make a header row in the table with headings 'code', 'title' and 'link'. (This is purely a HTML and templating exercise, you do not need to change any Java code for this.)</p>
 <p><strong>Intermediate exercise:</strong> Implement controller methods and templates for listing all students and viewing an individual student's details, analogous to the ones for units (you can choose whether you make a list or a table for the students - there are currently only two). You only need to show a student's id and name for now, not the grades. Note that the id is an integer, not a string. You can copy-paste the Unit controller code and templates and make the necessary changes to show students instead, but make sure you understand what the bits do that you're changing. The student class is in the <code>src/main/java/softwaretools/server02/model</code> folder.</p>
-<p><strong>Intermediate exercise:</strong> The student class contains a method <code>getGrades()</code> that returns a list of pairs (unit, grade). The unit is a unit object, and the grade is an integer. On your student details page, make a table listing the titles and codes of all the units the student has taken, and the grades they got. </p>
+<p><strong>Intermediate exercise:</strong> The student class contains a method <code>getGrades()</code> that returns a list of pairs (unit, grade). The unit is a unit object, and the grade is an integer. On your student details page, make a table listing the titles and codes of all the units the student has taken, and the grades they got.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="css"><a class="header" href="#css">CSS</a></h1>
 <p>CSS, or Cascading Style Sheets, allows you to set what your page looks like, separately from creating the content.</p>
 <p><em>Not to be confused with <a href="https://cssbristol.co.uk/">CSS Bristol</a>.</em></p>
@@ -430,7 +430,7 @@ handled by the <code>unitDetailPage</code> method. </p>
 <h2 id="mdn-1"><a class="header" href="#mdn-1">MDN</a></h2>
 <p>For this workshop, please read the following pages:</p>
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps">CSS first steps</a> including the 5 subpages linked under &quot;Guides&quot; - they are all meant for beginners so you should be able to get through them quickly.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps">CSS first steps</a> including the 5 subpages linked under "Guides" - they are all meant for beginners so you should be able to get through them quickly.</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors">CSS selectors</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model">The box model</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units">Values and units</a></li>
@@ -467,7 +467,7 @@ handled by the <code>unitDetailPage</code> method. </p>
 <div class="container-content">
 <p>Tricks like this - which you can code as a browser extension if you want to - might be particularly helpful for visually impaired or dyslexic students so you can force any website to use fonts and styles that work for you.</p>
 <p>If you are designing for dyslexic people other than yourself, the best you can do is give them a way to configure the fonts and colours themselves (for example with a menu that lets you change them via JavaScript) - different dyslexic people might have different preferences that work for them, for example one person may prefer serif fonts to sans-serif or the other way round, there is no one best design for everyone.</p>
-<p>There are statistical trends which mean that &quot;use sans serif fonts&quot; is good advice if you have to pick one font (for example for printed material) but one of the advantages of the web is that you do not have to choose one font in advance, you can let different users select different preferences.</p>
+<p>There are statistical trends which mean that "use sans serif fonts" is good advice if you have to pick one font (for example for printed material) but one of the advantages of the web is that you do not have to choose one font in advance, you can let different users select different preferences.</p>
 </div>
 </div>
 <h2 id="starting-from-scratch"><a class="header" href="#starting-from-scratch">Starting from Scratch</a></h2>
@@ -477,16 +477,16 @@ handled by the <code>unitDetailPage</code> method. </p>
 <p>Headings are meant to stand out among the paragraphs, and the extra white space around them (padding or margin) is as important as the larger font size and bold font. You could try leaving headings the same size as the body font but still <code>font-weight: bold</code> and use just padding to make them stand out. (Since a heading relates to the text after it not the text before it, it is good design to have a greater margin/padding above the heading than below it.)</p>
 <p>The default body font size is <code>font-size: 16px</code>. If you want to make the headings larger, you should not set an absolute value (such as 24px) but one relative to the default size. Since the default size comes from the <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> elements, you have two ways to do this: either with a percentage e.g. <code>h1 { font-size: 150%; }</code> which makes headings 1.5 times as big as the paragraph font, or using the <code>em/rem</code> units (setting a font size in ems refers to the em size of the parent unit).</p>
 <p>In the browser, open the developer tools and type the following in the console and press ENTER:</p>
-<pre><code class="language-js">document.body.style.fontSize=&quot;24px&quot;;
+<pre><code class="language-js">document.body.style.fontSize="24px";
 </code></pre>
 <p>(Since this is JavaScript, the property is called <code>fontSize</code> not <code>font-size</code> as dashes are not allowed in identifiers.)</p>
-<p>This increases the body text size from 16px to 24px (if you have manually set a different size in your stylesheet, you might need to set it to <code>&quot;24px !important&quot;</code> to override this). If you had set your headings to fixed sizes like 18px, then headings would now be smaller than the body text - if you have correctly used relative sizing, then headings will now still be 1.5 times as big as the body fonts or whichever multiple you set them to be. That is the right way to do it.</p>
+<p>This increases the body text size from 16px to 24px (if you have manually set a different size in your stylesheet, you might need to set it to <code>"24px !important"</code> to override this). If you had set your headings to fixed sizes like 18px, then headings would now be smaller than the body text - if you have correctly used relative sizing, then headings will now still be 1.5 times as big as the body fonts or whichever multiple you set them to be. That is the right way to do it.</p>
 <h2 id="vertical-rhythm"><a class="header" href="#vertical-rhythm">Vertical Rhythm</a></h2>
 <p>Here is another design principle worth knowing about. Look at this image, part of a screenshot of one way to style the text on the page:</p>
 <p><img src="css/rhythm1.png" alt="text in vertical rhythm layout" /></p>
 <p>The principle here is that we imagine a grid with 20px high lines, and lay out everything according to that. Under <a href="css/../resources/baseline.png">resources/baseline.png</a> there is an image 1px wide and 20px high with the last pixel coloured pink. Download that image to the folder with the HTML file and set</p>
 <pre><code class="language-css">body {
-    background-image: url(&quot;baseline.png&quot;);
+    background-image: url("baseline.png");
 }
 </code></pre>
 <p>This will make the image repeat horizontally and vertically, and you can now see the design behind this approach:</p>
@@ -497,7 +497,7 @@ handled by the <code>unitDetailPage</code> method. </p>
 <li>The aim is that all paragraphs have their baselines on the grid, even if there are other elements (headlings, lists) earlier in the document.</li>
 <li>This means that the total height of headings must be an exact multiple of the grid size; you can assume that the text in a heading does not require more than one line.</li>
 <li>You should set all sizes, including margins and padding, in terms of relative units (either ems/rems or percentages).</li>
-<li>The base font size here is the default 16px. Start with the max-width and line-height from the first example, and modify the line height if necessary for your font to get the lines of paragraph text the right distance apart. </li>
+<li>The base font size here is the default 16px. Start with the max-width and line-height from the first example, and modify the line height if necessary for your font to get the lines of paragraph text the right distance apart.</li>
 <li>The paragraphs themselves have a margin at the bottom (the empty line after the first paragraph) that also appears between paragraphs of text (not shown in the image) when one <code>&lt;p&gt;</code> tag follows another. You might also need to give them a small top padding to get the text on the lines, not between them.</li>
 <li>The shading around the headings is <code>background-color: rgba(0, 0, 255, 0.25);</code> to be semitransparent and let the lines show through, to see that while the heading text itself doesn't have to sit on a grid line, the total height of a heading including padding does respect the grid. However this shading is just to motivate the layout: if you want an actual coloured background, then you should set a <code>padding-left: 0.5em;</code> or something on the headings to make the text not start just on the edge of a coloured box. This improves readability.</li>
 <li>You will also need to style the <code>&lt;ul&gt;</code> list to have some spacing before and after, and to keep everything on the grid lines. You get the bullets back with the following code - or one of many other options <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style">listed on MDN</a>:</li>
@@ -514,12 +514,12 @@ handled by the <code>unitDetailPage</code> method. </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="using-a-css-framework"><a class="header" href="#using-a-css-framework">Using a CSS Framework</a></h1>
 <p>Now that you know some CSS, you could write your own framework - one or more stylesheet files that implement your idea of good design. In this exercise we will look at some examples.</p>
 <h2 id="milligram"><a class="header" href="#milligram">Milligram</a></h2>
-<p><a href="https://milligram.io">Milligram</a> is, in its own words, a &quot;minimalist CSS framework&quot;.</p>
+<p><a href="https://milligram.io">Milligram</a> is, in its own words, a "minimalist CSS framework".</p>
 <p>Download the <a href="css/../resources/page1.html">page1.html</a> file and open it in the browser: it contains some text and a sign-up form for a CSS conference.</p>
 <p>Add the following to the page head:</p>
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css&quot;&gt;
+<pre><code class="language-html">&lt;link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"&gt;
 
 </code></pre>
 <ul>
@@ -529,11 +529,11 @@ handled by the <code>unitDetailPage</code> method. </p>
 </ul>
 <p>Milligram chooses to style the whole page by default, but you can customise this further. One of their features is a <em>container</em> that gives its content a fixed maximum width.</p>
 <ul>
-<li>Add <code>class=&quot;container&quot;</code> to the <code>&lt;main&gt;</code> element, save and reload. See how the page behaves when you make the window wider and narrower. The page will always have some left/right padding, but the form adapts to the window size.</li>
+<li>Add <code>class="container"</code> to the <code>&lt;main&gt;</code> element, save and reload. See how the page behaves when you make the window wider and narrower. The page will always have some left/right padding, but the form adapts to the window size.</li>
 <li>In the developer tools, activate mobile mode a.k.a. <em>toggle device emulation</em>, on chrome/edge this is the second icon from the left in the top left of the developer panel. The text looks much too small now!</li>
 <li>This is due to a number of factors including higher pixel density on mobile screens. Milligram can handle mobile devices, but it needs the following line in the header:</li>
 </ul>
-<pre><code class="language-html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+<pre><code class="language-html">&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
 </code></pre>
 <p>This line, which is often (but not always) good practice to include in a HTML5 page anyway, tells a mobile browser (or a device pretending to be one) to adopt sensible defaults including larger fonts depending on the pixel density and no horizontal scrollbars. You can read more about this <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag">on MDN</a>.</p>
 <p>On <a href="https://milligram.io/#typography">the milligram documentation page</a> you can read more about the elements that Milligram styles for you, and how you can customise this (e.g. buttons).</p>
@@ -548,7 +548,7 @@ handled by the <code>unitDetailPage</code> method. </p>
 <h2 id="bulma"><a class="header" href="#bulma">Bulma</a></h2>
 <p><a href="https://bulma.io">Bulma</a> is a larger but still fairly lightweight CSS framework. Unlike Milligram, it only styles parts of the page you tell it to (but it sets a default font), and it has some more components to build things like menus or panels.</p>
 <p>Start with <a href="css/../resources/page2.html">page2.html</a>, have a look at the raw page and then add the following to the header (the viewport tag is already there):</p>
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.css&quot;&gt;
+<pre><code class="language-html">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.css"&gt;
 </code></pre>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
@@ -559,11 +559,11 @@ handled by the <code>unitDetailPage</code> method. </p>
 </div>
 <p>Bulma works with custom class names. For example, we are going to make the first heading into a banner that spans the whole page width - called a <em>hero</em> in web design circles. Bulma has classes for this.</p>
 <ul>
-<li>First, add <code>class=&quot;title&quot;</code> to the h1 heading, save and reload the page.</li>
+<li>First, add <code>class="title"</code> to the h1 heading, save and reload the page.</li>
 </ul>
-<p>This tells bulma to style it as a title/heading element. On the <a href="https://bulma.io/documentation/elements/title/">title element page</a> you can see that the correct way to get a top-level heading is with the classes <code>&quot;title is-1&quot;</code>, whereas a <code>&quot;title is-2&quot;</code> would be a second-level heading (slightly smaller font):</p>
-<pre><code class="language-html">&lt;h1 class=&quot;title is-1&quot;&gt;Title 1&lt;/h1&gt;
-&lt;h2 class=&quot;title is-2&quot;&gt;Title 2&lt;/h2&gt;
+<p>This tells bulma to style it as a title/heading element. On the <a href="https://bulma.io/documentation/elements/title/">title element page</a> you can see that the correct way to get a top-level heading is with the classes <code>"title is-1"</code>, whereas a <code>"title is-2"</code> would be a second-level heading (slightly smaller font):</p>
+<pre><code class="language-html">&lt;h1 class="title is-1"&gt;Title 1&lt;/h1&gt;
+&lt;h2 class="title is-2"&gt;Title 2&lt;/h2&gt;
 </code></pre>
 <p>This looks like you are saying the same thing twice, and you are, but it lets you keep the structure and the styling separate - tag names give structure, class names give styling. Note that this method is a convention by the bulma designers, which other designers might not agree with, not part of the HTML/CSS standard.</p>
 <p>Now to the hero part. According to the bulma documentation for the <a href="https://bulma.io/documentation/layout/hero/">hero component</a>, we need a container with class <code>hero</code> and a direct child with class <code>hero-body</code>, so</p>
@@ -579,9 +579,9 @@ handled by the <code>unitDetailPage</code> method. </p>
 <li>Add a <code>div</code> inside main that wraps all the content inside, and give it class <code>container</code>. Reload again and observe the change.</li>
 <li>Notice that the first h2 heading text touches the bottom of the hero area, which is not good design - text needs space between it and edges of coloured areas. Create a section tag as the direct child of the container, and give it class <code>section</code> so your code should look like this:</li>
 </ul>
-<pre><code class="language-html">&lt;main class=&quot;content&quot;&gt;
-    &lt;div class=&quot;container&quot;&gt;
-        &lt;section class=&quot;section&quot;&gt;
+<pre><code class="language-html">&lt;main class="content"&gt;
+    &lt;div class="container"&gt;
+        &lt;section class="section"&gt;
             ... content ...
 </code></pre>
 <p>For the next exercise, style the form.</p>
@@ -618,7 +618,7 @@ handled by the <code>unitDetailPage</code> method. </p>
 <p>To create a CSS grid, you place a container element (usually a <code>&lt;div&gt;</code>) and style it <code>display: grid</code>. All its direct children will now be laid out in a grid, and you can configure the general layout on the parent element:</p>
 <ul>
 <li><code>grid-template-columns</code> defines the number and widths of the columns.</li>
-<li><code>gap</code> (which should have been called <code>grid-gap</code>, but is not) defines the gap between different grid cells. </li>
+<li><code>gap</code> (which should have been called <code>grid-gap</code>, but is not) defines the gap between different grid cells.</li>
 <li>For a gap around the outside of the grid, give the container a margin (or padding).</li>
 </ul>
 <p>On the child elements, you can set the placement rules for each one and the browser will build the grid accordingly:</p>
@@ -641,10 +641,10 @@ handled by the <code>unitDetailPage</code> method. </p>
 <p>You can see that it references a stylesheet file <code>curriculum.css</code> in the same folder, so create that file.</p>
 <p>Your task is to write a stylesheet to make the curriculum look like this (for this exercise, we do not care about responsive layout):</p>
 <p><img src="cssgrid/curriculum.png" alt="image of the curriculum" /></p>
-<p><em>(If you are a MEng student, mentally replace &quot;individual project&quot; with &quot;group project&quot; in 3rd year and then 4th year should follow the same layout as 3rd year, but you don't have to edit this in the file for this exercise.)</em></p>
+<p><em>(If you are a MEng student, mentally replace "individual project" with "group project" in 3rd year and then 4th year should follow the same layout as 3rd year, but you don't have to edit this in the file for this exercise.)</em></p>
 <p>The units are coded like this in the file:</p>
 <pre><code>&lt;main&gt;
-    &lt;div class=&quot;unit y1-tb1 cp20&quot;&gt;
+    &lt;div class="unit y1-tb1 cp20"&gt;
         &lt;b&gt;COMS10014&lt;/b&gt;
         &lt;p&gt;Mathematics A&lt;/p&gt;
     &lt;/div&gt;
@@ -654,7 +654,7 @@ handled by the <code>unitDetailPage</code> method. </p>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
-<p>Our class names are purely semantic - they describe attributes of the units (academic year, teaching block, credit points), not how they should be displayed. There is some debate among web developers and designers just how far you should take this separation; we are being absolutely purist for this exercise, but even bootstrap, one of the most widely used web libraries, has classes like <code>.col-4</code> to make something four columns wide. In practice the answer to how you separate concerns between HTML and CSS is really a case of &quot;it depends&quot;.</p>
+<p>Our class names are purely semantic - they describe attributes of the units (academic year, teaching block, credit points), not how they should be displayed. There is some debate among web developers and designers just how far you should take this separation; we are being absolutely purist for this exercise, but even bootstrap, one of the most widely used web libraries, has classes like <code>.col-4</code> to make something four columns wide. In practice the answer to how you separate concerns between HTML and CSS is really a case of "it depends".</p>
 </div>
 </div>
 <p>Some general styles that you can apply in your <code>curriculum.css</code>:</p>
@@ -678,7 +678,7 @@ handled by the <code>unitDetailPage</code> method. </p>
     padding: 5px;
 }
 </code></pre>
-<p>This sets the colour scheme (derived from the official University of Bristol one), and some sensible padding/margins. The <code>&lt;p&gt;</code> elements already come with a default margin that we don't want to change here, but note that we applied the background colour for the text boxes to the <code>&lt;div class=&quot;unit&quot;&gt;</code> element itself, not the <code>&lt;p&gt;</code> elements otherwise the margin of the <code>&lt;p&gt;</code> elements would not be coloured in. The 5px paddinjg that we declared everywhere creates some space between the text and the edge of the boxes, which makes the text easier to read. </p>
+<p>This sets the colour scheme (derived from the official University of Bristol one), and some sensible padding/margins. The <code>&lt;p&gt;</code> elements already come with a default margin that we don't want to change here, but note that we applied the background colour for the text boxes to the <code>&lt;div class="unit"&gt;</code> element itself, not the <code>&lt;p&gt;</code> elements otherwise the margin of the <code>&lt;p&gt;</code> elements would not be coloured in. The 5px paddinjg that we declared everywhere creates some space between the text and the edge of the boxes, which makes the text easier to read.</p>
 <p>We used <code>&lt;b&gt;</code> tags for the title bars that are normally inline elements, but we redefined them to be block elements here (this is allowed) so they span the whole width of their grid cell.</p>
 <h2 id="exercise"><a class="header" href="#exercise">Exercise</a></h2>
 <ul>
@@ -691,7 +691,7 @@ handled by the <code>unitDetailPage</code> method. </p>
 </ul>
 <p>Extra challenge:</p>
 <ul>
-<li>Notice that the gap between the academic years is twice as large as that within years (e.g. the vertical space between COMS10013 and COMS20007 is twice that between COMS10014 and COMS10013). </li>
+<li>Notice that the gap between the academic years is twice as large as that within years (e.g. the vertical space between COMS10013 and COMS20007 is twice that between COMS10014 and COMS10013).</li>
 <li>This can be achieved by leaving an empty grid row between the years, thus doubling the grid gap. That is, Year 1 lives in rows 1 and 2; row 3 is empty; Year 2 lives in rows 4 and 5 and so on - the empty row 3 has a height of 0 and no elements, but there are two gaps between rows 2 and 3, and 3 and 4, that separate the Year 1 from Year 2 units.</li>
 <li>Alternatively, you could add extra margin (why not padding?) to the bottom of all TB2/TB4 units to achieve the same effect.</li>
 </ul>
@@ -703,21 +703,21 @@ handled by the <code>unitDetailPage</code> method. </p>
 <p><img src="cssgrid/./trees-wide.png" alt="4 column layout above 600px" /></p>
 <p>(The image for Lawson's Cypress is one single PNG like the others, there is nothing special to do here to fit in two images side by side.)</p>
 <p><em>The small-leaved lime (Tilia Cordata) featured here is believed to be over 2000 years old, making it one of the oldest trees in Britain.</em></p>
-<p>From 400px to 600px, the page should show all trees except the &quot;featured&quot; ones in two columns:</p>
+<p>From 400px to 600px, the page should show all trees except the "featured" ones in two columns:</p>
 <p><img src="cssgrid/./trees-medium.png" alt="2 column layout above 400px" /></p>
 <p>And below 400px width, all trees should be shown in a single column layout, whether featured or not.</p>
 <p>Each tree is defined in the HTML file with an element like this:</p>
-<pre><code class="language-html">&lt;div class=&quot;card&quot;&gt;
-    &lt;img class=&quot;card-image&quot; src=&quot;images/cedrus_atlantica.jpg&quot; alt=&quot;Cedrus Atlantica&quot;/&gt;
-    &lt;span class=&quot;latin-name&quot;&gt;Cedrus Atlantica&lt;/span&gt;
-    &lt;span class=&quot;common-name&quot;&gt;Atlas Cedar&lt;/span&gt;
+<pre><code class="language-html">&lt;div class="card"&gt;
+    &lt;img class="card-image" src="images/cedrus_atlantica.jpg" alt="Cedrus Atlantica"/&gt;
+    &lt;span class="latin-name"&gt;Cedrus Atlantica&lt;/span&gt;
+    &lt;span class="common-name"&gt;Atlas Cedar&lt;/span&gt;
 &lt;/div&gt;
 </code></pre>
-<p>The two &quot;featured&quot; trees at the start also have class <code>featured</code> on their card element.</p>
+<p>The two "featured" trees at the start also have class <code>featured</code> on their card element.</p>
 <h2 id="exercise-1"><a class="header" href="#exercise-1">Exercise</a></h2>
 <p>General non-grid-related CSS that you can just paste in:</p>
 <pre><code class="language-css">body {
-    font-family: &quot;Open Sans&quot;, sans-serif;
+    font-family: "Open Sans", sans-serif;
     margin: 0;
 }
 
@@ -761,12 +761,12 @@ header {
 <li>Between 400px and 600px, the grid should only be two columns wide, trees still take up 2x2 space if featured and 1x1 otherwise.</li>
 <li>Below 400px, make a grid with only one column, and all trees take up 1x1 space. Note that you do not need to do anything for this as this is the default - just make sure that your other grid rules such as making featured trees 2x2 only apply on larger screens.</li>
 </ul>
-<p>Test this out by making your browser window wider and narrower. You cannot normally make a chrome/edge window narrower than 400px, but there are two workarounds. With the F12 developer tools open, you can position them to the right of the window and then drag the divider to make the actual page width as narrow as you want, or you can switch to &quot;mobile&quot; mode (second icon in top left of developer tools, usually) and manually set a page size or select one from a dropdown list of common phone models.</p>
+<p>Test this out by making your browser window wider and narrower. You cannot normally make a chrome/edge window narrower than 400px, but there are two workarounds. With the F12 developer tools open, you can position them to the right of the window and then drag the divider to make the actual page width as narrow as you want, or you can switch to "mobile" mode (second icon in top left of developer tools, usually) and manually set a page size or select one from a dropdown list of common phone models.</p>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
 <p>In practice, one would use a layout like this to make the individual grid elements clickable (such as news stories, or in this case links to a more detailed page about the tree).</p>
-<p>One way to do this would be to use <code>&lt;a class=&quot;card&quot; href=&quot;...&quot;&gt;</code> elements instead of <code>&lt;div&gt;</code> ones, and set them manually to <code>display:block</code>. This has the advantage that the entire card, including the image, becomes clickable. An <code>&lt;a&gt;</code> tag can contain arbitrary content, not just text.</p>
+<p>One way to do this would be to use <code>&lt;a class="card" href="..."&gt;</code> elements instead of <code>&lt;div&gt;</code> ones, and set them manually to <code>display:block</code>. This has the advantage that the entire card, including the image, becomes clickable. An <code>&lt;a&gt;</code> tag can contain arbitrary content, not just text.</p>
 </div>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="javascript"><a class="header" href="#javascript">JavaScript</a></h1>
@@ -803,7 +803,7 @@ talk</a> by Gary Bernhardt (2012).</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain">MDN: Inheritance and the prototype chain</a>. This is a guide to the protoyping-style object-orientation of JavaScript.</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop">MDN: The event loop</a>. This explains the concurrency model of JavaScript, as well as the way asynchronous code and promises arehandled.</li>
 <li><a href="https://sourceacademy.org/sicpjs/">Structure and Interpretation of Computer Programs, JS edition</a> (2022). This is a classic programming book that has been recently rewritten in JavaScript.</li>
-<li>Boris Cherny, &quot;<a href="https://bris.on.worldcat.org/oclc/1099253345">Programming TypeScript</a>&quot; (2019). This is a book-length introduction to TypeScript, a typed extension to JavaScript which is also supported by React.</li>
+<li>Boris Cherny, "<a href="https://bris.on.worldcat.org/oclc/1099253345">Programming TypeScript</a>" (2019). This is a book-length introduction to TypeScript, a typed extension to JavaScript which is also supported by React.</li>
 </ul>
 <h2 id="exercises-6"><a class="header" href="#exercises-6">Exercises</a></h2>
 <ul>
@@ -851,21 +851,21 @@ styled by <code>style.css</code>.</p>
 <p>The main html file <code>app.html</code> is surprisingly unassuming: it contains almost
 nothing of substance! In fact, we can quote the complete file here:</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
+&lt;html lang="en"&gt;
   &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;meta charset="utf-8" /&gt;
     &lt;title&gt;The City of Bristol&lt;/title&gt;
-    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; /&gt;
-    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"&gt;
+    &lt;link rel="stylesheet" href="style.css" /&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;header&gt;&lt;h1&gt;The City of Bristol&lt;/h1&gt;&lt;/header&gt;
-    &lt;nav id=&quot;nav&quot;&gt;
-      &lt;div class=&quot;initial&quot;&gt;Initialising...&lt;/div&gt;
+    &lt;nav id="nav"&gt;
+      &lt;div class="initial"&gt;Initialising...&lt;/div&gt;
     &lt;/nav&gt;
-    &lt;main id=&quot;dataPane&quot;&gt;
-      &lt;div class=&quot;initial&quot;&gt;Please select one of the wards on the left to view more data about it.&lt;/div&gt;
+    &lt;main id="dataPane"&gt;
+      &lt;div class="initial"&gt;Please select one of the wards on the left to view more data about it.&lt;/div&gt;
     &lt;/main&gt;
     &lt;footer&gt;created by G. A. Kavvos&lt;/footer&gt;
   &lt;/body&gt;
@@ -883,7 +883,7 @@ will be retrieved from the same location as the page that is being loaded.</li>
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
 <p>If you look at introductory content on JavaScript on the internet, you will find many examples where JavaScript is included in a so-called <em>inline</em> style. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#examples">For example</a>, you might see code of the form</p>
-<pre><code class="language-javascript">&lt;script&gt;alert(&quot;Hello World!&quot;);&lt;/script&gt;
+<pre><code class="language-javascript">&lt;script&gt;alert("Hello World!");&lt;/script&gt;
 </code></pre>
 <p>which embeds a fragment of JavaScript directly in the HTML file, instead of
 putting it in a separate <code>.js</code> file, and including it using an <code>src=</code> attribute
@@ -894,12 +894,12 @@ like we did above.</p>
 <ul>
 <li>The <code>&lt;body&gt;</code> describes a document with four sections:
 <ul>
-<li>There is a <code>&lt;header&gt;</code> with a big heading reading &quot;The City of Bristol&quot;.</li>
+<li>There is a <code>&lt;header&gt;</code> with a big heading reading "The City of Bristol".</li>
 <li>There is a <code>&lt;nav&gt;</code> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav">navigation
 section</a>,
 with a single <code>&lt;div&gt;</code> (i.e. a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div">generic block
 container</a>)
-with placeholder text saying &quot;Initialising...&quot;.</li>
+with placeholder text saying "Initialising...".</li>
 <li>Then then there is a <code>&lt;main&gt;</code> section, which contains a single <code>&lt;div&gt;</code> with
 some instructions for using the app.</li>
 <li>Finally, there is a <code>&lt;footer&gt;</code> with the author's name in it.</li>
@@ -936,7 +936,7 @@ body {
   grid-template-columns: 200px 1fr;
 }
 </code></pre>
-<p>which tell the browser to </p>
+<p>which tell the browser to</p>
 <ul>
 <li>use the Libre Baskerville font (loaded in the <code>&lt;head&gt;</code>) throughout the entire document, and</li>
 <li>lay out the <code>&lt;body&gt;</code> of the document using CSS grids.</li>
@@ -946,7 +946,7 @@ comes first, it becomes the first <code>200px</code> column, and the <code>&lt;m
 becomes the <code>1fr</code> column.</p>
 <p>The <code>style.css</code> file also sets many other details, such as margins, colours, etc.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="dynamic-structure-part-1"><a class="header" href="#dynamic-structure-part-1">Dynamic structure, part 1</a></h2>
-<p>When you point your browser at <code>app.html</code>, the &quot;Initialising...&quot; string appears
+<p>When you point your browser at <code>app.html</code>, the "Initialising..." string appears
 in the left of the screen (the <code>&lt;nav&gt;</code>) only for a fraction of a second. This is
 the time it takes to load and execute the code in <code>script.js</code>, which provides
 the dynamic behaviour of the app.</p>
@@ -980,35 +980,35 @@ on any Linux machine we may run</p>
 (<code>json_pp</code>), and display it in scrollable format (<code>less</code>). The result looks a
 lot like this:</p>
 <pre><code class="language-javascript">{
-   &quot;links&quot; : ...,
-   &quot;records&quot; : [
+   "links" : ...,
+   "records" : [
       {
-         &quot;links&quot; : ...,
-         &quot;record&quot; : {
-            &quot;fields&quot; : {
-               &quot;name&quot; : &quot;Eastville&quot;,
-               &quot;ward_id&quot; : &quot;E05010897&quot;
+         "links" : ...,
+         "record" : {
+            "fields" : {
+               "name" : "Eastville",
+               "ward_id" : "E05010897"
             },
-            &quot;id&quot; : &quot;996b607b4c31e6aca6a7614bd02ea18a4c14c525&quot;,
-            &quot;size&quot; : 40500,
-            &quot;timestamp&quot; : &quot;2020-09-03T10:02:58.597Z&quot;
+            "id" : "996b607b4c31e6aca6a7614bd02ea18a4c14c525",
+            "size" : 40500,
+            "timestamp" : "2020-09-03T10:02:58.597Z"
          }
       },
       {
-         &quot;links&quot; : ...,
-         &quot;record&quot; : {
-            &quot;fields&quot; : {
-               &quot;name&quot; : &quot;Southville&quot;,
-               &quot;ward_id&quot; : &quot;E05010914&quot;
+         "links" : ...,
+         "record" : {
+            "fields" : {
+               "name" : "Southville",
+               "ward_id" : "E05010914"
             },
-            &quot;id&quot; : &quot;bc2f85ccc34ca606a2fe6473491b5fc50fd4e0d1&quot;,
-            &quot;size&quot; : 25544,
-            &quot;timestamp&quot; : &quot;2020-09-03T10:02:58.597Z&quot;
+            "id" : "bc2f85ccc34ca606a2fe6473491b5fc50fd4e0d1",
+            "size" : 25544,
+            "timestamp" : "2020-09-03T10:02:58.597Z"
          }
       },
       ...
    ],
-   &quot;total_count&quot; : 34
+   "total_count" : 34
 }
 </code></pre>
 <p>I have abbreviated the <code>links</code> fields, which add a lot of noise to the output.
@@ -1059,13 +1059,13 @@ passed in two query parameters:</p>
 
   wards.records.forEach(w =&gt; {
       const [id, name] = [w.record.fields.ward_id, w.record.fields.name];
-      const b = document.createElement(&quot;button&quot;);
+      const b = document.createElement("button");
       b.textContent = name;
       b.onclick = displayData(id, name);
       buttons.appendChild(b);
   });
   
-  let nav = document.getElementById(&quot;nav&quot;);
+  let nav = document.getElementById("nav");
   nav.textContent = '';
   nav.append(buttons);
 }
@@ -1104,7 +1104,7 @@ these buttons and their names into the app. This developer could well be right.<
 <p><em>Exercises.</em></p>
 <ol>
 <li>Modify the code above so that each button is on a separate line.</li>
-<li>Modify the code above so that buttons appear in alphabetical order. </li>
+<li>Modify the code above so that buttons appear in alphabetical order.</li>
 <li>The line
 <pre><code class="language-javascript">b.onclick = displayData(id, name);
 </code></pre>
@@ -1147,7 +1147,7 @@ its enclosing function (i.e. <code>id</code> and <code>name</code>). We sometime
 function</a>.
 Thus, <code>displayData</code> will return... a newly defined, anonymous function!
 Recall that in the previous part of the script, <code>displayData</code> was used only
-in one line, namely 
+in one line, namely
 <pre><code class="language-javascript">   b.onclick = displayData(id, name);
 </code></pre>
 <code>b</code> is a button, and its <code>onclick</code> property is a function that will be run
@@ -1173,7 +1173,7 @@ parameters.</li>
         
         let population = buildPopulation(data.records);
 
-        let dataPane = document.getElementById(&quot;dataPane&quot;);
+        let dataPane = document.getElementById("dataPane");
         dataPane.textContent = '';
         dataPane.append(heading, population);
       })
@@ -1203,7 +1203,7 @@ modern versions of JavaScript provide a neat way of doing this, namely <a href="
 literals</a>.
 Instead of enclosing the URL string in single quotes as before, we now enclose
 it in backticks. Then, we can use any JavaScript expression <code>e</code> that evaluates
-to a string by writing <code>${e}</code> directly in the URL string. Thus, </p>
+to a string by writing <code>${e}</code> directly in the URL string. Thus,</p>
 <pre><code class="language-javascript">`https://opendata.bristol.gov.uk/api/v2/catalog/datasets/population-estimates-time-series-ward/records?limit=20&amp;select=mid_year,population_estimate&amp;refine=ward_2016_code:${id}`
 </code></pre>
 <p>evaluates to the correct string at runtime.</p>
@@ -1264,7 +1264,7 @@ table.</p>
 the requested data.</p>
 <h3 id="exercises-7"><a class="header" href="#exercises-7">Exercises</a></h3>
 <p><em>Exercise (easy)</em>. Make the app present only population estimates after the year
-2015. </p>
+2015.</p>
 <p>This may be achieved in two ways:</p>
 <ul>
 <li>by changing the REST API call; or</li>
@@ -1374,7 +1374,7 @@ created using the following code fragment:</p>
 <p>The expressions in the body correspond to the actual tree structure of the row.
 As a result, they are much more readable.</p>
 <p><em>Exercise</em>. Rewrite the application using the functions defined above (and
-similar ones). Try to make it as succinct and readable as possible. </p>
+similar ones). Try to make it as succinct and readable as possible.</p>
 <p>For example, my version of the complete application (with life expectancy) runs
 to 114 lines, and that is without making much of an effort to be succint. This
 is only 2 lines shorter than my previous version, but one must remember that
@@ -1414,21 +1414,21 @@ exactly this sort of problem.</p>
 <h2 id="your-first-react-app"><a class="header" href="#your-first-react-app">Your first React app</a></h2>
 <ul>
 <li>Create a new react app with <code>npx create-react-app FOLDERNAME</code>. You cannot call the folder <code>react</code> itself, so please choose a different name. Downloading and preparing everything for the first time might take a while.</li>
-<li>By default, react uses port 3000 for its server. If you want another port, like 8000, edit <code>package.json</code> and edit the line </li>
+<li>By default, react uses port 3000 for its server. If you want another port, like 8000, edit <code>package.json</code> and edit the line</li>
 </ul>
-<pre><code>&quot;start&quot;: &quot;react-scripts start&quot;,`
+<pre><code>"start": "react-scripts start",`
 </code></pre>
 <p>to read as follows</p>
-<pre><code>&quot;start&quot;: &quot;PORT=8000 react-scripts start&quot;,
+<pre><code>"start": "PORT=8000 react-scripts start",
 </code></pre>
 <ul>
-<li>Start the react app with <code>npm start</code> inside the folder with the <code>package.json</code> and open your browser on <code>localhost:8000</code> or whichever port you are using (the default is 3000). You should see a message &quot;Edit <code>src/App.js</code> and save to reload.&quot; in your browser.</li>
+<li>Start the react app with <code>npm start</code> inside the folder with the <code>package.json</code> and open your browser on <code>localhost:8000</code> or whichever port you are using (the default is 3000). You should see a message "Edit <code>src/App.js</code> and save to reload." in your browser.</li>
 </ul>
 <h2 id="explore-the-code"><a class="header" href="#explore-the-code">Explore the Code</a></h2>
 <p>Have a look at the structure of the project files:</p>
 <ul>
 <li><code>package.json</code> is the configuration file (like the <code>pom.xml</code> for Java/maven).</li>
-<li>The page being served is <code>public/index.html</code> although the server replaces <code>%PUBLIC_URL%</code> itself (in development this just becomes the empty string). Note the contents of the page are essentially <code>&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</code>, but if you look at the source in the browser (Control+U) you will see that react has added a line at the end of the body pulling in the JavaScript files. If you look with the developer tools (F12) you will see that the content of the app has been added as a child of the root div.</li>
+<li>The page being served is <code>public/index.html</code> although the server replaces <code>%PUBLIC_URL%</code> itself (in development this just becomes the empty string). Note the contents of the page are essentially <code>&lt;div id="root"&gt;&lt;/div&gt;</code>, but if you look at the source in the browser (Control+U) you will see that react has added a line at the end of the body pulling in the JavaScript files. If you look with the developer tools (F12) you will see that the content of the app has been added as a child of the root div.</li>
 <li>The code lives in <code>src/</code>, mainly in <code>src/App.js</code>. The default code uses a function style component rather than a class style one, but the elements you see in the JSX code here (the HTML-embedded-in-JavaScript) are the ones that you saw in your browser inside the root div.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="hello-world-in-react"><a class="header" href="#hello-world-in-react">Hello World in React</a></h1>
@@ -1439,7 +1439,7 @@ exactly this sort of problem.</p>
 <ul>
 <li>The app component manages some state, namely a person's name.</li>
 <li>The input component lets you enter and change your name.</li>
-<li>The output compoment displays &quot;Hello, NAME&quot;.</li>
+<li>The output compoment displays "Hello, NAME".</li>
 </ul>
 <h2 id="a-basic-app"><a class="header" href="#a-basic-app">A basic app</a></h2>
 <p>First, strip out the sample code so your <code>App.js</code> file looks like this:</p>
@@ -1476,12 +1476,12 @@ class App extends React.Component {
 
 export default App;
 </code></pre>
-<p>Check that this now displays <code>Hello, David!</code>. </p>
+<p>Check that this now displays <code>Hello, David!</code>.</p>
 <h2 id="pass-state-between-components"><a class="header" href="#pass-state-between-components">Pass state between Components</a></h2>
 <p>Let's make a separate component to display the name - add this class before the <code>export default</code> line:</p>
 <pre><code class="language-js">class NameGreeter extends React.Component {
   render() {
-    if (this.props.name === &quot;&quot;) {
+    if (this.props.name === "") {
       return (
         &lt;p&gt;Hello!&lt;/p&gt;
       )
@@ -1493,7 +1493,7 @@ export default App;
   }
 }
 </code></pre>
-<p>This component expects one property (the react version of a &quot;parameter&quot;) called <code>name</code> and displays either a generic greeting or a greeting with a name.</p>
+<p>This component expects one property (the react version of a "parameter") called <code>name</code> and displays either a generic greeting or a greeting with a name.</p>
 <p>Change the render method for the App class to this:</p>
 <pre><code class="language-js">render() {
   return (
@@ -1519,15 +1519,15 @@ return (
 )
 </code></pre>
 <h2 id="change-state"><a class="header" href="#change-state">Change State</a></h2>
-<p>We are going to make a <code>NameEditor</code> component with an input field to change the name. 
+<p>We are going to make a <code>NameEditor</code> component with an input field to change the name.
 However, the name <em>belongs</em> to the app component: this is the <em>state lifting</em> pattern in React, where if more than one component wants to 'share' some state, then you make a common parent component to hold the state. Any changing of the state has to happen on the parent component that 'owns' it, so we have to create functions to pass it around correctly.</p>
 <p>First, create a new component like this:</p>
 <pre><code class="language-js">class NameEditor extends React.Component {
   render() {
     return (
       &lt;p&gt;
-        &lt;label for=&quot;name&quot;&gt;Name: &lt;/label&gt;
-        &lt;input type=&quot;text&quot; id=&quot;name&quot; value={this.props.name} /&gt;
+        &lt;label for="name"&gt;Name: &lt;/label&gt;
+        &lt;input type="text" id="name" value={this.props.name} /&gt;
       &lt;/p&gt;
     )
   }
@@ -1562,7 +1562,7 @@ However, the name <em>belongs</em> to the app component: this is the <em>state l
 <p>We also have to let the name editor know which function to call to process changes. Change the JSX line that creates it to</p>
 <pre><code class="language-html">&lt;NameEditor name={this.state.name} onNameChange={this.onNameChange} /&gt;
 </code></pre>
-<p>We did not put brackets after the function name, as we don't want to call the function when the component is created or rendered, we just want to tell it &quot;here's a function that you can call later when you need it&quot;.</p>
+<p>We did not put brackets after the function name, as we don't want to call the function when the component is created or rendered, we just want to tell it "here's a function that you can call later when you need it".</p>
 <p>Next, in the <code>NameEditor</code> class, we create a method to handle updates:</p>
 <pre><code class="language-js">constructor(props) {
   super(props);
@@ -1576,7 +1576,7 @@ onNameChange(e) {
 <p>If our component takes props, then we should pass them to the super constructor too.</p>
 <p>The parameter <code>e</code> is an element of type event, which is triggered by the input component when the user changes its value. The event class has a property <code>target</code> which refers to the element on the page that triggered it, and if that was an input box like it is here then we can read its <code>value</code>. This is what we pass, via <code>props</code>, back to the <code>App</code> component.</p>
 <p>Finally, change the line that creates the input box to</p>
-<pre><code class="language-html">&lt;input type=&quot;text&quot; id=&quot;name&quot; value={this.props.name} onChange={this.onNameChange} /&gt;
+<pre><code class="language-html">&lt;input type="text" id="name" value={this.props.name} onChange={this.onNameChange} /&gt;
 </code></pre>
 <p>The <code>onChange</code> attribute of an <code>&lt;input&gt;</code> is defined in the HTML standard and takes a JavaScript function that should be called whenever the input value changes.</p>
 <p>With all this in place, you should be able to run the app and edit the text box, and watch the greeting change as you do this.</p>
@@ -1595,12 +1595,12 @@ onNameChange(e) {
 <h2 id="read-all-about-it"><a class="header" href="#read-all-about-it">Read all about it</a></h2>
 <p>We have essentially, with a different example, done step 10 of the <a href="https://reactjs.org/docs/lifting-state-up.html">official React tutorial</a>. After the workshop, you may want to read this page again.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="character-design-exercise"><a class="header" href="#character-design-exercise">Character design exercise</a></h1>
-<p>The final React exercise today is to write a &quot;character design&quot; React app. Functionality is your first priority, before design: it's ok to lay out everything in simple paragraphs one above the other.</p>
+<p>The final React exercise today is to write a "character design" React app. Functionality is your first priority, before design: it's ok to lay out everything in simple paragraphs one above the other.</p>
 <p>The constraints are:</p>
 <ul>
 <li>There are four stats, called <em>Charisma, Prowess, Agility</em> and <em>Strength</em>.</li>
 <li>You have 4 stat points to spend in total, but you may not spend more than 2 points on the same stat.</li>
-<li>You should make a reusable &quot;stat editor&quot; component that displays the points allocated to a stat and has +/- buttons to change these, and displays the name of the stat.</li>
+<li>You should make a reusable "stat editor" component that displays the points allocated to a stat and has +/- buttons to change these, and displays the name of the stat.</li>
 <li>The buttons must be enabled when you are allowed to increase/decrease the stat in question, and disabled otherwise.</li>
 <li>You should also make a separate component that displays the number of stat points remaining to spend (this was not in the example in the lectures).</li>
 </ul>
@@ -1632,12 +1632,12 @@ decided that getting ~200 students to test out web-crawling on a particular live
 website was probably not a great idea, so we're having each of you run your own.</p>
 <h3 id="set-up-the-server"><a class="header" href="#set-up-the-server">Set up the server</a></h3>
 <p>As with the HTTP exercises, it would be best to either carry out these steps directly on a lab machine
-or on your own machine (optionally from the Debian Linux VM with ports forwarded). If you are using 
-a lab machine via SSH instead then you'll need to open a second SSH session <em>to the same lab machine</em> 
+or on your own machine (optionally from the Debian Linux VM with ports forwarded). If you are using
+a lab machine via SSH instead then you'll need to open a second SSH session <em>to the same lab machine</em>
 in another terminal, to act as a client for the next parts of the exercise.
 However, we'll periodically invite you to check things in your browser, which is
 a lot simpler if you're not trying to use a remote machine.</p>
-<p>First, download the <a href="scrape/../resources/cattax.tar.gz">webpages to be served by the webserver</a>. 
+<p>First, download the <a href="scrape/../resources/cattax.tar.gz">webpages to be served by the webserver</a>.
 If you like you can even do this using <code>wget</code>:</p>
 <pre><code class="language-bash">wget https://cs-uob.github.io/COMSM0085/exercises/part2/resources/cattax.tar.gz
 </code></pre>
@@ -1646,7 +1646,7 @@ folder you downloaded it to. This will create a folder <code>cattax</code> which
 webpages and resources.</p>
 <p>Next, use the <code>darkhttpd</code> server from a previous week's exercises to
 serve the content of the <code>cattax</code> folder on <code>localhost:8080</code>. <em>(Refer to the
-HTTP week's exercise instructions if you have forgotten how to do this)</em>. </p>
+HTTP week's exercise instructions if you have forgotten how to do this)</em>.</p>
 <p>You can check that this is working in a browser (unless you are connecting via
 SSH) by navigating to <code>localhost:8080/index.html</code> -- you should see a webpage
 talking about <strong>Felidae</strong>. You'll need to leave this server running -- the
@@ -1690,7 +1690,7 @@ following, and <strong>read the output</strong>.</p>
 directory named <code>localhost:8080</code> to store all the files in. This is helpful
 organisation if you're ever using <code>wget</code> to download pages from multiple
 different websites -- it stores them under directories named after the domain
-you requested them from. </p>
+you requested them from.</p>
 <p>If you read the output carefully you'll notice that as well as the <code>index.html</code>
 we requested directly, <code>wget</code> has also downloaded the <code>catstyle.css</code> file
 referenced in that page, and another file called <code>robots.txt</code> that you didn't
@@ -1700,7 +1700,7 @@ a website they are or aren't allowed to visit. When you use <code>wget</code> to
 webpage or website it will check the site's <code>robots.txt</code> to understand which
 resources it may not be allowed to download. You can read more about how these
 files are written
-<a href="https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt">here</a>. </p>
+<a href="https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt">here</a>.</p>
 <p>Open the <code>index.html</code> file from the new <code>localhost:8080</code> folder that was
 created, and you should see that it looks just like the version you got in your
 browser by navigating to the URI <code>localhost:8080/index.html</code>. <em>(There are some
@@ -1774,7 +1774,7 @@ to construct webpages so that they present structured information (e.g., the
 contents of a database). The presumption has generally been that you are
 designing webpages for (usually visual) consumption by a human using a standard
 web browser, or at most writing Javascript functions that will help a human use
-a webpage in particular way. </p>
+a webpage in particular way.</p>
 <p>However, there are situations where you may need to write code that interacts
 with webpages in an automated fashion -- perhaps to extract some data from webpages
 that isn't available in a more machine-friendly format. This <em>scraping</em> of
@@ -1789,10 +1789,10 @@ but it would get in the way of our system-wide package management to use it here
 <p>You can test that Python is working by just typing <code>python3</code> at the command line
 -- it should launch the interactive interpreter, which will prompt you for
 Python code with <code>&gt;&gt;&gt;</code>. Type <code>from bs4 import BeautifulSoup</code>. If this completes
-then you've successfully imported the library. </p>
+then you've successfully imported the library.</p>
 <h2 id="interacting-with-soup"><a class="header" href="#interacting-with-soup">Interacting with Soup</a></h2>
 <p>Next, enter something like the following:</p>
-<pre><code class="language-python">file = &quot;cattax/index.html&quot;
+<pre><code class="language-python">file = "cattax/index.html"
 soup = BeautifulSoup(open(file, 'r'))
 </code></pre>
 <p><em>(You may need to change the 'file' line to reflect where the <code>cattax/index.html</code>
@@ -1803,7 +1803,7 @@ to get the library).</em></p>
 for interacting with HTML (and XML) documents and accessing their contents. To
 start with, just type <code>soup</code> in your interpreter. Python will print out the
 basic textual representation of the object, which is just the source of the
-<code>index.html</code> page. Next, let's attempt one of the commonest use-cases for scraping. </p>
+<code>index.html</code> page. Next, let's attempt one of the commonest use-cases for scraping.</p>
 <pre><code class="language-python">soup.get_text()
 </code></pre>
 <p>You should see a string containing the textual content of the webpage. If you
@@ -1826,10 +1826,10 @@ all of the 'children' elements inside the head. By knowing the structure of the
 document you can thus navigate to certain elements programmatically. This
 doesn't just relate to the tags, either: you can also access the value of
 attributes. <code>soup.head.meta['charset']</code> would access the <code>charset</code> attribute of
-the meta tag in the head of the document. </p>
+the meta tag in the head of the document.</p>
 <h3 id="exercises-10"><a class="header" href="#exercises-10">Exercises</a></h3>
 <ol>
-<li>Take a look at some other examples from <a href="https://beautiful-soup-4.readthedocs.io/en/latest/#navigating-the-tree">the BeautifulSoup documentation</a>, in particular regarding the use of the <code>.find_all()</code> method. </li>
+<li>Take a look at some other examples from <a href="https://beautiful-soup-4.readthedocs.io/en/latest/#navigating-the-tree">the BeautifulSoup documentation</a>, in particular regarding the use of the <code>.find_all()</code> method.</li>
 <li>Use your interpreter to access a list of all the <code>&lt;strong&gt;</code> elements in the
 webpage, and figure out how to print out just the text contained within them.</li>
 <li>How would you use <code>.find_all()</code> to find all <code>&lt;div&gt;</code> elements with a
@@ -1840,7 +1840,7 @@ had multiple classes?</li>
 <p>Download <a href="scrape/../resources/scrape.py">this python script</a> to the directory that
 contains your <code>cattax</code> folder (<em>not</em> into <code>cattax</code> itself). On the command line,
 you should be able to run this script with <code>python3 scrape.py</code>. You'll see that
-it prints out a series of lines related to all the files in <code>cattax</code>. </p>
+it prints out a series of lines related to all the files in <code>cattax</code>.</p>
 <p>Open <code>scrape.py</code> in an editor and inspect what it is doing. The script imports
 two libraries, one is BeautifulSoup and the other is <code>os</code>, which allows the
 script to use certain operating system functions. <code>os.listdir</code> is then used to list the
@@ -1860,7 +1860,7 @@ only print something out for the leaf nodes -- those pages that don't have a
 <li>Printing things out can be useful, but often we want to store values we
 scrape for later programmatic work. Rather than printing out information,
 create and update a <a href="https://realpython.com/python-dicts/">Python dict</a> for all
-leaf nodes where the dictionary keys are the titles of a page and the values are 
+leaf nodes where the dictionary keys are the titles of a page and the values are
 the corresponding content of the 'info' box. <em>Run your script with <code>python3 -i scrape.py</code> and it will execute your script and then place you in an interactive
 session immediately following your script's execution. You can then check that
 the dictionary's contents are what you expect by interacting with the dict
@@ -1871,7 +1871,7 @@ object in your interpreter.</em></li>
 risks, depending upon how you go about it and what you do with the results.
 Guidelines you should follow include:</p>
 <ul>
-<li>Always respect the <a href="https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt">robots.txt</a> presented by a site. Resources denied to crawlers may be protected for a legal or ethical reason. </li>
+<li>Always respect the <a href="https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt">robots.txt</a> presented by a site. Resources denied to crawlers may be protected for a legal or ethical reason.</li>
 <li>Always look for an API first. If a site will provide you with a JSON endpoint
 to query for the structured data you want, it is both easier and more polite
 to use that API instead of scraping the same data from webpages designed for
@@ -1899,7 +1899,7 @@ programmatically and if you need to interact with a website's API.</p>
 content like that you learned about in the Javascript exercises. Scraping
 dynamic sites gets trickier, as your scraper needs to have a browser-like
 context to execute Javascript within, and often might need to pretend to
-interact with the page. Systems like <a href="https://www.selenium.dev/documentation/">Selenium</a> 
+interact with the page. Systems like <a href="https://www.selenium.dev/documentation/">Selenium</a>
 are designed for cases like this.</p>
 
                     </main>

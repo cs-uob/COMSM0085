@@ -178,10 +178,10 @@
 <p>You can see that it references a stylesheet file <code>curriculum.css</code> in the same folder, so create that file.</p>
 <p>Your task is to write a stylesheet to make the curriculum look like this (for this exercise, we do not care about responsive layout):</p>
 <p><img src="curriculum.png" alt="image of the curriculum" /></p>
-<p><em>(If you are a MEng student, mentally replace &quot;individual project&quot; with &quot;group project&quot; in 3rd year and then 4th year should follow the same layout as 3rd year, but you don't have to edit this in the file for this exercise.)</em></p>
+<p><em>(If you are a MEng student, mentally replace "individual project" with "group project" in 3rd year and then 4th year should follow the same layout as 3rd year, but you don't have to edit this in the file for this exercise.)</em></p>
 <p>The units are coded like this in the file:</p>
 <pre><code>&lt;main&gt;
-    &lt;div class=&quot;unit y1-tb1 cp20&quot;&gt;
+    &lt;div class="unit y1-tb1 cp20"&gt;
         &lt;b&gt;COMS10014&lt;/b&gt;
         &lt;p&gt;Mathematics A&lt;/p&gt;
     &lt;/div&gt;
@@ -191,7 +191,7 @@
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
-<p>Our class names are purely semantic - they describe attributes of the units (academic year, teaching block, credit points), not how they should be displayed. There is some debate among web developers and designers just how far you should take this separation; we are being absolutely purist for this exercise, but even bootstrap, one of the most widely used web libraries, has classes like <code>.col-4</code> to make something four columns wide. In practice the answer to how you separate concerns between HTML and CSS is really a case of &quot;it depends&quot;.</p>
+<p>Our class names are purely semantic - they describe attributes of the units (academic year, teaching block, credit points), not how they should be displayed. There is some debate among web developers and designers just how far you should take this separation; we are being absolutely purist for this exercise, but even bootstrap, one of the most widely used web libraries, has classes like <code>.col-4</code> to make something four columns wide. In practice the answer to how you separate concerns between HTML and CSS is really a case of "it depends".</p>
 </div>
 </div>
 <p>Some general styles that you can apply in your <code>curriculum.css</code>:</p>
@@ -215,7 +215,7 @@
     padding: 5px;
 }
 </code></pre>
-<p>This sets the colour scheme (derived from the official University of Bristol one), and some sensible padding/margins. The <code>&lt;p&gt;</code> elements already come with a default margin that we don't want to change here, but note that we applied the background colour for the text boxes to the <code>&lt;div class=&quot;unit&quot;&gt;</code> element itself, not the <code>&lt;p&gt;</code> elements otherwise the margin of the <code>&lt;p&gt;</code> elements would not be coloured in. The 5px paddinjg that we declared everywhere creates some space between the text and the edge of the boxes, which makes the text easier to read. </p>
+<p>This sets the colour scheme (derived from the official University of Bristol one), and some sensible padding/margins. The <code>&lt;p&gt;</code> elements already come with a default margin that we don't want to change here, but note that we applied the background colour for the text boxes to the <code>&lt;div class="unit"&gt;</code> element itself, not the <code>&lt;p&gt;</code> elements otherwise the margin of the <code>&lt;p&gt;</code> elements would not be coloured in. The 5px paddinjg that we declared everywhere creates some space between the text and the edge of the boxes, which makes the text easier to read.</p>
 <p>We used <code>&lt;b&gt;</code> tags for the title bars that are normally inline elements, but we redefined them to be block elements here (this is allowed) so they span the whole width of their grid cell.</p>
 <h2 id="exercise"><a class="header" href="#exercise">Exercise</a></h2>
 <ul>
@@ -228,7 +228,7 @@
 </ul>
 <p>Extra challenge:</p>
 <ul>
-<li>Notice that the gap between the academic years is twice as large as that within years (e.g. the vertical space between COMS10013 and COMS20007 is twice that between COMS10014 and COMS10013). </li>
+<li>Notice that the gap between the academic years is twice as large as that within years (e.g. the vertical space between COMS10013 and COMS20007 is twice that between COMS10014 and COMS10013).</li>
 <li>This can be achieved by leaving an empty grid row between the years, thus doubling the grid gap. That is, Year 1 lives in rows 1 and 2; row 3 is empty; Year 2 lives in rows 4 and 5 and so on - the empty row 3 has a height of 0 and no elements, but there are two gaps between rows 2 and 3, and 3 and 4, that separate the Year 1 from Year 2 units.</li>
 <li>Alternatively, you could add extra margin (why not padding?) to the bottom of all TB2/TB4 units to achieve the same effect.</li>
 </ul>

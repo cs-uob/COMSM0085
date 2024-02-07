@@ -174,18 +174,18 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="sqlite"><a class="header" href="#sqlite">SQLite</a></h1>
-<p><a href="https://sqlite.org/index.html">SQLite</a> is a really good tool for &quot;just getting stuff done&quot;, especially when you hit the limits of Microsoft Excel (or other spreadsheet software).</p>
+<p><a href="https://sqlite.org/index.html">SQLite</a> is a really good tool for "just getting stuff done", especially when you hit the limits of Microsoft Excel (or other spreadsheet software).</p>
 <p>According to <a href="https://sqlite.org/index.html">its authors</a>, SQLite is used in some form in every single Windows 10, Mac, Android and iOS device as well as built into the Firefox, Chrome (including Edge) and Safari browsers: the browsers store their browsing history and cookies in SQLite-format databases and you can manually edit these with the command line tool if you like.</p>
 <p>Currently in version 3.34.1, the command-line program is called <code>sqlite3</code> and exists for all major operating systems, you should be able to download it as a single file executable, put in in any folder you like and just run it. On Alpine, you can install the <code>sqlite</code> package with <code>apk</code>.</p>
-<p>SQLite is an embedded database, which means there is no separate server process. Databases are simply files. When you run the command line tool, the tool fulfils both the client and server roles at once; when you use SQLite from a program, the SQLite driver also acts as the &quot;server&quot;.</p>
+<p>SQLite is an embedded database, which means there is no separate server process. Databases are simply files. When you run the command line tool, the tool fulfils both the client and server roles at once; when you use SQLite from a program, the SQLite driver also acts as the "server".</p>
 <h2 id="census-exercise"><a class="header" href="#census-exercise">Census exercise</a></h2>
-<p>You will need the census files from databases activity 1: make a folder with the <code>setup.sql</code> file and the census csv files. </p>
+<p>You will need the census files from databases activity 1: make a folder with the <code>setup.sql</code> file and the census csv files.</p>
 <p>Download or install sqlite and run <code>sqlite3 census.db</code> to create a database file.</p>
 <p>To create the tables, the command <code>.read setup.sql</code> reads and executes the commands in a file (similar to <code>source</code> on the shell). SQLite system commands start with a dot and do not take a semicolon at the end - see <code>.help</code> for a list. (Don't run the <code>import.sql</code> file, that's MariaDB-specific.)</p>
 <p>Use <code>.tables</code> to show the tables and check that they have been created. With <code>.schema Ward</code> for example you can show the create statement for a single table.</p>
 <p>The source data is in simple CSV files, for example if (back on the shell) you did a <code>head -n 5 County.csv</code> you would see this:</p>
-<pre><code>E09000001,&quot;City of London&quot;,E12000007,E92000001
-E09000002,&quot;Barking and Dagenham&quot;,E12000007,E92000001
+<pre><code>E09000001,"City of London",E12000007,E92000001
+E09000002,"Barking and Dagenham",E12000007,E92000001
 E09000003,Barnet,E12000007,E92000001
 E09000004,Bexley,E12000007,E92000001
 E09000005,Brent,E12000007,E92000001
@@ -245,7 +245,7 @@ with sqlite3.connect('FILENAME') as connection:
 <p>See <a href="https://docs.python.org/3/library/sqlite3.html">the Python sqlite documentation</a> for more information.</p>
 <p>One important warning here: if you write any data to the database, you have to call <code>connection.commit()</code> afterwards otherwise the data will not actually be written to disk.</p>
 <h2 id="sqlite-from-c"><a class="header" href="#sqlite-from-c">SQLite from C</a></h2>
-<p>The final exercise here is to write a C program, following the instructions in the slides, that reads your SQLite <code>census.db</code>, iterates over the regions table and prints &quot;Region NAME is code CODE&quot;, where NAME/CODE are replaced with the region's name and code.</p>
+<p>The final exercise here is to write a C program, following the instructions in the slides, that reads your SQLite <code>census.db</code>, iterates over the regions table and prints "Region NAME is code CODE", where NAME/CODE are replaced with the region's name and code.</p>
 <p>Of course you need to handle potential errors from the <code>sqlite3_</code> functions: it's only safe to continue if they return <code>SQLITE_OK</code>.</p>
 <p>You will need to install the <code>sqlite-dev</code> package which contains the <code>sqlite3.h</code> header file, and link against the library with <code>-lsqlite3</code> in your <code>gcc</code> command.</p>
 <p>If you are using <code>sqlite3_exec</code> with a callback function, the callback must return 0 on success and nonzero if it encountered an error, which will in turn cause <code>sqlite_exec</code> to return an error too.</p>

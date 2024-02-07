@@ -180,7 +180,7 @@
 <li>If one process writes to a pipe, then this blocks the process until another process reads from it.</li>
 <li>If one process reads from a pipe and another process writes to it (it does not matter who goes first) then the data is transferred from the reader to the writer, and both processes continue.</li>
 </ul>
-<p>For example, when you use a command like <code>cat logfile | grep Error | wc -l</code> to count the number of lines containing the word &quot;Error&quot;, then there are three processes (not counting the terminal) and two pipes involved:</p>
+<p>For example, when you use a command like <code>cat logfile | grep Error | wc -l</code> to count the number of lines containing the word "Error", then there are three processes (not counting the terminal) and two pipes involved:</p>
 <p><img src="../resources/pipe1.png" alt="pipe diagram" /></p>
 <p><em>In this diagram, green boxes are processes with standard input on the left and standard output (top) and standard error (bottom) on the right. The little squares all represent file descriptors; a pipe has two of them, one each for reading and writing.</em></p>
 <p>This is not yet a fully concurrent system though, as data is only flowing in one direction: there are no loops.</p>
@@ -197,7 +197,7 @@
 <p><em>Here the terminal's right file descriptor is the one that the terminal reads, and the left one is where the terminal writes your keyboard input. But there's still a human in the loop here.</em></p>
 <p>We are going to write a program that can talk to <code>bc</code>. This means we have two processes, our program and <code>bc</code>, and they need to communicate with each other. We will use pipes for this, giving the following diagram where we call the pipes <em>up</em> and <em>down</em>:</p>
 <p><img src="../resources/pipe3.png" alt="pipe digram for a program controlling bc" /></p>
-<p><em>In this diagram, data flows through pipes from left to right, but logically the &quot;down&quot; pipe is for data flowing from our program downwards to bc, and the &quot;up&quot; pipe is for data flowing back up again. Standard error is not shown (it still goes to the terminal).</em></p>
+<p><em>In this diagram, data flows through pipes from left to right, but logically the "down" pipe is for data flowing from our program downwards to bc, and the "up" pipe is for data flowing back up again. Standard error is not shown (it still goes to the terminal).</em></p>
 <p>The <code>bc</code> program does not need to know about any of this: it still reads expressions from its standard input, evaluates them, and writes them to standard output.</p>
 <p>Notice that when we used a pipe character <code>|</code> in the shell, it automatically set up the pipes for us so each pipe had one reader and one writer. When we set the pipes up ourselves, we will have to take care of this ourselves too.</p>
 <h2 id="the-first-program"><a class="header" href="#the-first-program">The first program</a></h2>
@@ -210,15 +210,15 @@
 
 void check(int ok, char *where) {
   if (ok &lt; 0) {
-    fprintf(stderr, &quot;Error in %s: %s\n&quot;, where, strerror(errno));
+    fprintf(stderr, "Error in %s: %s\n", where, strerror(errno));
     exit(1);
   }
 }
 
 int evaluate(char *buffer, int len) {
-  fprintf(stderr, &quot;&gt; %s&quot;, buffer);
+  fprintf(stderr, "&gt; %s", buffer);
 
-  int ok = printf(&quot;%s&quot;, buffer);
+  int ok = printf("%s", buffer);
   if (ok &lt; 0) {
     return -1;
   }
@@ -226,7 +226,7 @@ int evaluate(char *buffer, int len) {
   if (p == NULL) {
     return -1;
   }
-  fprintf(stderr, &quot;&lt; %s&quot;, buffer);
+  fprintf(stderr, "&lt; %s", buffer);
   return 0;
 }
 
@@ -237,17 +237,17 @@ int main() {
   setbuf(stdout, NULL);
   setbuf(stdin, NULL);
 
-  strcpy(buffer, &quot;1+2\n&quot;);
+  strcpy(buffer, "1+2\n");
 
   ok = evaluate(buffer, sizeof(buffer));
-  check(ok, &quot;I/O&quot;);
+  check(ok, "I/O");
   
   for (int i = 3; i &lt;= 10; i++) {
-    sprintf(buffer + strlen(buffer) - 1, &quot;+%u\n&quot;, i);
+    sprintf(buffer + strlen(buffer) - 1, "+%u\n", i);
     ok = evaluate(buffer, sizeof(buffer));
-    check(ok, &quot;I/O&quot;);
+    check(ok, "I/O");
   }
-  fprintf(stderr, &quot;The result is %s&quot;, buffer);
+  fprintf(stderr, "The result is %s", buffer);
   return 0;
 }
 </code></pre>
@@ -264,10 +264,10 @@ int main() {
 <div class="container-content">
 <p>You could also use another trick to disambiguate standard output/error (for programs that don't, like this one, indicate which is which: the lines starting <code>&gt;</code> or <code>&lt;</code> are standard error).</p>
 <pre><code class="language-sh">escape=$(printf '\033')
-./ipc 2&gt; &gt;(sed -e &quot;s/\(.*\)/${escape}[32m\1${escape}[0m/&quot;)
+./ipc 2&gt; &gt;(sed -e "s/\(.*\)/${escape}[32m\1${escape}[0m/")
 </code></pre>
 <p>This might mess up the last line on your terminal a bit, but you can reset it with Control+L.
-The first command sets a shell variable to the ANSI escape character. The second line redirects standard error (<code>2&gt;</code>) to a subprocess (<code>&gt;(...)</code>) which calls the stream editor <code>sed</code> to replace each line with the line surrounded by <code>\e[32m</code> (set colour to green) and <code>\e[0m</code> (reset colour). This will make the standard error lines appear in green. </p>
+The first command sets a shell variable to the ANSI escape character. The second line redirects standard error (<code>2&gt;</code>) to a subprocess (<code>&gt;(...)</code>) which calls the stream editor <code>sed</code> to replace each line with the line surrounded by <code>\e[32m</code> (set colour to green) and <code>\e[0m</code> (reset colour). This will make the standard error lines appear in green.</p>
 <p>Incidentally, some versions of sed support the <code>\e</code> escape sequence directly, or at least the version <code>\x1b</code> that creates a character from its ASCII code in hexadecimal, but some versions do not, so you need the shell variable trick with a fall back to octal (033) notation!</p>
 </div>
 </div>
@@ -290,7 +290,7 @@ The first command sets a shell variable to the ANSI escape character. The second
 &lt; 55
 The result is 55
 </code></pre>
-<p>Note that the program printed the &quot;The result is ...&quot; line to standard error too, otherwise you would not see it here.</p>
+<p>Note that the program printed the "The result is ..." line to standard error too, otherwise you would not see it here.</p>
 
                     </main>
 

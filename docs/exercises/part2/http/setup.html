@@ -181,20 +181,20 @@
 <p>Proceed directly to <a href="explore.html">exploring HTTP</a>.</p>
 <h2 id="lab-machine-with-vagrant"><a class="header" href="#lab-machine-with-vagrant">Lab machine, with Vagrant</a></h2>
 <p>If you want to run a server inside a Vagrant VM and connect to it with a browser directly on the lab machine (outside the VM), then you will need to tell Vagrant which ports within the VM to make available outside the VM. Open your Vagrantfile and add the line</p>
-<pre><code>config.vm.network &quot;forwarded_port&quot;, guest: 8000, host: 8000
+<pre><code>config.vm.network "forwarded_port", guest: 8000, host: 8000
 </code></pre>
 <p>in the main block (just before the <code>config.vm.provision</code> line will do), then restart your VM if it is already running. This tells Vagrant to open a server on port 8000 on the host (the lab machine), and forward any traffic it receives to port 8000 on the VM.</p>
 <p>You can now start the VM, run a server inside the VM, and connect to it from the browser on the lab machine.</p>
 <p>Proceed to <a href="explore.html">exploring HTTP</a> and run the server (the <code>nc</code> command) inside the VM, but use the browser on the lab machine directly. Note that the <code>http-response</code> file mentioned on that page needs to go in the correct folder inside the VM, where you started the server.</p>
 <h2 id="your-own-machine-without-vagrant"><a class="header" href="#your-own-machine-without-vagrant">Your own machine, without Vagrant</a></h2>
 <p>If you have a system that supports the <code>nc</code> and <code>wget</code> commands (Mac OS, Linux or WSL should all offer the option to install them) then you can proceed directly to <a href="explore.html">exploring HTTP</a>.</p>
-<p>You might get one or more firewall warning pop-ups, which you will have to &quot;allow&quot;.</p>
+<p>You might get one or more firewall warning pop-ups, which you will have to "allow".</p>
 <h2 id="your-own-machine-with-vagrant"><a class="header" href="#your-own-machine-with-vagrant">Your own machine, with Vagrant</a></h2>
-<p>Configure vagrant as in the section &quot;Lab machine, with Vagrant&quot; above, that is add the line</p>
-<pre><code>config.vm.network &quot;forwarded_port&quot;, guest: 8000, host: 8000
+<p>Configure vagrant as in the section "Lab machine, with Vagrant" above, that is add the line</p>
+<pre><code>config.vm.network "forwarded_port", guest: 8000, host: 8000
 </code></pre>
 <p>to the Vagrantfile and restart Vagrant. You can now run servers in the VM and clients (such as your favourite browser) on your own machine.</p>
-<p>You might get firewall warning pop-ups, which you will have to &quot;allow&quot;.</p>
+<p>You might get firewall warning pop-ups, which you will have to "allow".</p>
 <p>Proceed to <a href="explore.html">exploring HTTP</a>. If you don't have <code>wget</code> on your own machine, you can open a second terminal and log in to the VM from there, then run both <code>wget</code> and the server inside the VM that way - then later on, when you're using a browser instead of <code>wget</code> for the client, you can just open the browser on your own machine.</p>
 <h2 id="over-ssh"><a class="header" href="#over-ssh">Over SSH</a></h2>
 <p>For security reasons, you will not be able to run a web server on a lab machine (whether in a VM or not) and connect to it from your local web browser. If you have no other option than to use a remote connection, you should use <a href="https://wiki.x2go.org/doku.php/download:start">x2go</a> to connect to a lab machine with a graphical user interface, and run both the server and browser through that. This software uses ssh internally so you need to connect to <code>rd-mvb-linuxlab.bristol.ac.uk</code> using <code>seis.bris.ac.uk</code> as the proxy server.</p>

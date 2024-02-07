@@ -175,7 +175,7 @@
                     <main>
                         <h1 id="set-up-the-database"><a class="header" href="#set-up-the-database">Set up the database</a></h1>
 <h2 id="history"><a class="header" href="#history">History</a></h2>
-<p>In this unit, we will be using the free database MariaDB, which is a clone of MySQL and was written by the same author - Michael &quot;Monty&quot; Widenius, from Finland. The history behind the naming is that Monty first created MySQL (named after his daughter, My) which became the most popular open-source database. He sold MySQL to Sun, who were in turn bought by Oracle - who are famous for their commercial database software. As a result, Monty created a clone of MySQL called MariaDB (named after his other daughter). MySQL and MariaDB are compatible in many ways and most of what we learn on this unit will apply equally to both of them, although both Oracle (for MySQL) and the open-source community (for MariaDB) have added new features to their databases.</p>
+<p>In this unit, we will be using the free database MariaDB, which is a clone of MySQL and was written by the same author - Michael "Monty" Widenius, from Finland. The history behind the naming is that Monty first created MySQL (named after his daughter, My) which became the most popular open-source database. He sold MySQL to Sun, who were in turn bought by Oracle - who are famous for their commercial database software. As a result, Monty created a clone of MySQL called MariaDB (named after his other daughter). MySQL and MariaDB are compatible in many ways and most of what we learn on this unit will apply equally to both of them, although both Oracle (for MySQL) and the open-source community (for MariaDB) have added new features to their databases.</p>
 <p>Although we will be using MariaDB, in some places the name MySQL will still appear - most notably as the name of the command-line program that you use to access the database.</p>
 <h2 id="install-the-database"><a class="header" href="#install-the-database">Install the database</a></h2>
 <p>Open your VM and install the database with the appropriate commands.
@@ -186,7 +186,7 @@ On Debian that is:</p>
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
 <p>What's that funky squiggly bracket doing?  Bash expands it to
-<code>mariadb-server mariadb-client</code>.  Similarly if you typed: 
+<code>mariadb-server mariadb-client</code>.  Similarly if you typed:
 <code>cc -o hello{,.c}</code> it would get expanded to <code>cc -o hello hello.c</code>.
 There are <em>loads</em> of shorthand tricks for typing stuff quicker in a
 shell: try and pick them up as you go!</p>
@@ -265,7 +265,7 @@ tar -xvf sampledata.tar
 </code></pre>
 <p>This creates a folder sampledata with the files we need.</p>
 <p>If you are using a local copy of this repository, you can also find the files under <code>/code/databases</code>.</p>
-<p>The <code>tar</code> file is a <em>tape archive</em>: a file that contains further files and folders, as if it were a folder itself. </p>
+<p>The <code>tar</code> file is a <em>tape archive</em>: a file that contains further files and folders, as if it were a folder itself.</p>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
@@ -276,7 +276,7 @@ tar -xvf sampledata.tar
 <p>Load the sample data with the following command:</p>
 <pre><code class="language-sh">mysql -u root -p -e 'source /vagrant/sample-data.sql'
 </code></pre>
-<p>This pulls in some data in CSV files (have a look at the script if you want) and creates a default user &quot;vagrant&quot; who can log in to the database without a password, but can only read and not write the two sample databases &quot;census&quot; and &quot;elections&quot;. There is another database called &quot;data&quot; which starts out empty, and &quot;vagrant&quot; can both read and write it.</p>
+<p>This pulls in some data in CSV files (have a look at the script if you want) and creates a default user "vagrant" who can log in to the database without a password, but can only read and not write the two sample databases "census" and "elections". There is another database called "data" which starts out empty, and "vagrant" can both read and write it.</p>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">

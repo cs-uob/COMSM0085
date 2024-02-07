@@ -194,7 +194,7 @@ int lstat(const char *pathname, struct stat *statbuf);
 <p><code>fstat</code> takes an open file descriptor instead of a file name: this is fine for getting the inode information (in the kernel, a file descriptor contains an inode number) but you will not be able to get a file name back from this - remember, <em>files don't have names; names have files</em>.</p>
 <p>Later in the manual page, it explains the <code>struct stat</code> contents. Let's have a look at the sources directly though:</p>
 <ul>
-<li><code>nano /usr/include/sys/stat.h</code> shows you the header file and the function definitions, including the bitmasks for the mode bits e.g. <code>#define S_IRUSR 0400</code> is the &quot;user can read&quot; bit and the file type bits e.g. <code>#define S_IFDIR 0040000</code>. Note, in C, numbers with a leading 0 are octal!</li>
+<li><code>nano /usr/include/sys/stat.h</code> shows you the header file and the function definitions, including the bitmasks for the mode bits e.g. <code>#define S_IRUSR 0400</code> is the "user can read" bit and the file type bits e.g. <code>#define S_IFDIR 0040000</code>. Note, in C, numbers with a leading 0 are octal!</li>
 <li>The definition of the <code>struct stat</code> is in another file included from <code>sys/stat.h</code>, namely <code>bits/stat.h</code>; open that in your editor too and have a look at it.</li>
 <li>The types of the fields in the structure (<code>dev_t</code>) etc. are yet in another file - <code>bits/alltypes.h</code> if you're curious - but eventually they get defined as <code>long</code>, through intermediate definitions of <code>_Int64</code> etc. Basically, on a 64-bit machine, most of these fields are 64 bits.</li>
 </ul>
@@ -202,7 +202,7 @@ int lstat(const char *pathname, struct stat *statbuf);
 <pre><code class="language-C">#include &lt;sys/stat.h&gt;
 #include &lt;stdio.h&gt;
 int main() {
-    printf(&quot;Size: %lu bytes\n&quot;, sizeof(struct stat));
+    printf("Size: %lu bytes\n", sizeof(struct stat));
     return 0;
 }
 </code></pre>
@@ -221,7 +221,7 @@ _start:
     mov $0,  %rdi
     syscall
 
-str: .asciz &quot;/dev/stdin&quot;
+str: .asciz "/dev/stdin"
 
 .section .data
 buf: .skip 144
@@ -259,20 +259,20 @@ buf: .skip 144
 
 int main() {
     struct stat buf;
-    char *str = &quot;/dev/stdin&quot;;
+    char *str = "/dev/stdin";
     int r = lstat(str, &amp;buf);
     if (r != 0) {
-        puts(&quot;An error occurred.&quot;);
+        puts("An error occurred.");
         return 1;
     }
-    printf(&quot;The inode number is %lu.\n&quot;, buf.st_ino);
-    if (S_ISDIR(buf.st_mode)) { puts(&quot;It's a directory.&quot;);}
-    if (S_ISCHR(buf.st_mode)) { puts(&quot;It's a character device.&quot;);}
-    if (S_ISBLK(buf.st_mode)) { puts(&quot;It's a block device.&quot;);}
-    if (S_ISREG(buf.st_mode)) { puts(&quot;It's a regular file.&quot;);}
-    if (S_ISFIFO(buf.st_mode)) { puts(&quot;It's a FIFO.&quot;);}
-    if (S_ISLNK(buf.st_mode)) { puts(&quot;It's a soft link.&quot;);}
-    if (S_ISSOCK(buf.st_mode)) { puts(&quot;It's a socket.&quot;);}
+    printf("The inode number is %lu.\n", buf.st_ino);
+    if (S_ISDIR(buf.st_mode)) { puts("It's a directory.");}
+    if (S_ISCHR(buf.st_mode)) { puts("It's a character device.");}
+    if (S_ISBLK(buf.st_mode)) { puts("It's a block device.");}
+    if (S_ISREG(buf.st_mode)) { puts("It's a regular file.");}
+    if (S_ISFIFO(buf.st_mode)) { puts("It's a FIFO.");}
+    if (S_ISLNK(buf.st_mode)) { puts("It's a soft link.");}
+    if (S_ISSOCK(buf.st_mode)) { puts("It's a socket.");}
 
     return 0;
 }
@@ -316,18 +316,18 @@ ssize_t readlink(const char *pathname, char *buf, size_t bufsiz)
 <p>Clone the busybox repository with <code>git clone git://busybox.net/busybox.git</code> (if that doesn't work for some reason, try the https version). Inside the cloned folder, the source file is <code>coreutils/stat.c</code> - open that and have a look:</p>
 <ul>
 <li>The comments at the start are read by a custom build tool. The <code>//applet</code> line (currently line 38) says to build a command called <code>stat</code>.</li>
-<li><code>file_type</code> (line 123 at the time of writing) is the code for turning mode bits into strings, note there are lots of <code>#ifdef</code>s depending on what options you compile busybox with. Also, if you <code>stat</code> a file that does not match any known type, you get the string &quot;weird file&quot;.</li>
-<li>Most of the source file is the kind of &quot;plumbing&quot; that you need in any real C program. The interesting part is <code>do_stat</code> (line 588 at the time of writing):</li>
+<li><code>file_type</code> (line 123 at the time of writing) is the code for turning mode bits into strings, note there are lots of <code>#ifdef</code>s depending on what options you compile busybox with. Also, if you <code>stat</code> a file that does not match any known type, you get the string "weird file".</li>
+<li>Most of the source file is the kind of "plumbing" that you need in any real C program. The interesting part is <code>do_stat</code> (line 588 at the time of writing):</li>
 </ul>
-<p>First, it allocates a <code>struct stat</code> buffer like we did before. </p>
+<p>First, it allocates a <code>struct stat</code> buffer like we did before.</p>
 <p>The key line is currently line 605 and following:</p>
 <pre><code class="language-C">if ((option_mask32 &amp; OPT_DEREFERENCE ? stat : lstat) (filename, &amp;statbuf) != 0) {
-    bb_perror_msg(&quot;can't stat '%s'&quot;, filename);
+    bb_perror_msg("can't stat '%s'", filename);
     return 0;
 }
 </code></pre>
 <p>Based on the value of <code>OPT_DEREFERENCE</code> (the <code>-L</code> command line flag), we call either the <code>stat</code> or <code>lstat</code> system call wrapper in the C library, and complain and exit if we don't get a success return value - remember, in case of errors, <code>struct stat statbuf</code> could be corrupted so we shouldn't look at it.</p>
-<p>The rest of the function is basically setting up one giant <code>printf</code> statement to output the results in the correct format. Note here that the <code>struct stat</code> still doesn't know anything about the file's name, as that's not in the inode, but the command-line program does because you gave the name as an argument. </p>
+<p>The rest of the function is basically setting up one giant <code>printf</code> statement to output the results in the correct format. Note here that the <code>struct stat</code> still doesn't know anything about the file's name, as that's not in the inode, but the command-line program does because you gave the name as an argument.</p>
 <p>If the file is a soft link, then we call a version of readlink - currently <code>xmalloc_readlink_or_warn</code> in line 713 - to display the link target. This function is implemented in <code>libbb/xreadlink.c</code> where it currently delegates to <code>xmalloc_readlink</code> on line 20, which calls <code>readlink</code> in a loop with increasing buffer sizes until it finds one that is big enough for the target - have a look at how this is implemented.</p>
 <p>The main function for this utility is <code>stat_main</code>, currently on line 757. All this does is parse the command line arguments with <code>getopt32</code>, call the <code>do_stat</code> function in a loop for each command line argument (lines 787 and following in the current version) and then return success if all files were successfully processed, otherwise failure.</p>
 <p>If nothing else, the learning point of this activity is that system programming in C and calling syscalls directly is a lot more involved than you may think! Please don't be that kind of programmer who <a href="https://rachelbythebay.com/w/2014/08/19/fork/">ignores system call error values, and makes terrible things happen</a>.</p>

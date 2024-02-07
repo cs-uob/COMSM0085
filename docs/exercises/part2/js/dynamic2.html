@@ -202,7 +202,7 @@ its enclosing function (i.e. <code>id</code> and <code>name</code>). We sometime
 function</a>.
 Thus, <code>displayData</code> will return... a newly defined, anonymous function!
 Recall that in the previous part of the script, <code>displayData</code> was used only
-in one line, namely 
+in one line, namely
 <pre><code class="language-javascript">   b.onclick = displayData(id, name);
 </code></pre>
 <code>b</code> is a button, and its <code>onclick</code> property is a function that will be run
@@ -228,7 +228,7 @@ parameters.</li>
         
         let population = buildPopulation(data.records);
 
-        let dataPane = document.getElementById(&quot;dataPane&quot;);
+        let dataPane = document.getElementById("dataPane");
         dataPane.textContent = '';
         dataPane.append(heading, population);
       })
@@ -258,7 +258,7 @@ modern versions of JavaScript provide a neat way of doing this, namely <a href="
 literals</a>.
 Instead of enclosing the URL string in single quotes as before, we now enclose
 it in backticks. Then, we can use any JavaScript expression <code>e</code> that evaluates
-to a string by writing <code>${e}</code> directly in the URL string. Thus, </p>
+to a string by writing <code>${e}</code> directly in the URL string. Thus,</p>
 <pre><code class="language-javascript">`https://opendata.bristol.gov.uk/api/v2/catalog/datasets/population-estimates-time-series-ward/records?limit=20&amp;select=mid_year,population_estimate&amp;refine=ward_2016_code:${id}`
 </code></pre>
 <p>evaluates to the correct string at runtime.</p>
@@ -319,7 +319,7 @@ table.</p>
 the requested data.</p>
 <h3 id="exercises"><a class="header" href="#exercises">Exercises</a></h3>
 <p><em>Exercise (easy)</em>. Make the app present only population estimates after the year
-2015. </p>
+2015.</p>
 <p>This may be achieved in two ways:</p>
 <ul>
 <li>by changing the REST API call; or</li>

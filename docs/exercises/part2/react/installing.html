@@ -183,21 +183,21 @@
 <h2 id="your-first-react-app"><a class="header" href="#your-first-react-app">Your first React app</a></h2>
 <ul>
 <li>Create a new react app with <code>npx create-react-app FOLDERNAME</code>. You cannot call the folder <code>react</code> itself, so please choose a different name. Downloading and preparing everything for the first time might take a while.</li>
-<li>By default, react uses port 3000 for its server. If you want another port, like 8000, edit <code>package.json</code> and edit the line </li>
+<li>By default, react uses port 3000 for its server. If you want another port, like 8000, edit <code>package.json</code> and edit the line</li>
 </ul>
-<pre><code>&quot;start&quot;: &quot;react-scripts start&quot;,`
+<pre><code>"start": "react-scripts start",`
 </code></pre>
 <p>to read as follows</p>
-<pre><code>&quot;start&quot;: &quot;PORT=8000 react-scripts start&quot;,
+<pre><code>"start": "PORT=8000 react-scripts start",
 </code></pre>
 <ul>
-<li>Start the react app with <code>npm start</code> inside the folder with the <code>package.json</code> and open your browser on <code>localhost:8000</code> or whichever port you are using (the default is 3000). You should see a message &quot;Edit <code>src/App.js</code> and save to reload.&quot; in your browser.</li>
+<li>Start the react app with <code>npm start</code> inside the folder with the <code>package.json</code> and open your browser on <code>localhost:8000</code> or whichever port you are using (the default is 3000). You should see a message "Edit <code>src/App.js</code> and save to reload." in your browser.</li>
 </ul>
 <h2 id="explore-the-code"><a class="header" href="#explore-the-code">Explore the Code</a></h2>
 <p>Have a look at the structure of the project files:</p>
 <ul>
 <li><code>package.json</code> is the configuration file (like the <code>pom.xml</code> for Java/maven).</li>
-<li>The page being served is <code>public/index.html</code> although the server replaces <code>%PUBLIC_URL%</code> itself (in development this just becomes the empty string). Note the contents of the page are essentially <code>&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</code>, but if you look at the source in the browser (Control+U) you will see that react has added a line at the end of the body pulling in the JavaScript files. If you look with the developer tools (F12) you will see that the content of the app has been added as a child of the root div.</li>
+<li>The page being served is <code>public/index.html</code> although the server replaces <code>%PUBLIC_URL%</code> itself (in development this just becomes the empty string). Note the contents of the page are essentially <code>&lt;div id="root"&gt;&lt;/div&gt;</code>, but if you look at the source in the browser (Control+U) you will see that react has added a line at the end of the body pulling in the JavaScript files. If you look with the developer tools (F12) you will see that the content of the app has been added as a child of the root div.</li>
 <li>The code lives in <code>src/</code>, mainly in <code>src/App.js</code>. The default code uses a function style component rather than a class style one, but the elements you see in the JSX code here (the HTML-embedded-in-JavaScript) are the ones that you saw in your browser inside the root div.</li>
 </ul>
 

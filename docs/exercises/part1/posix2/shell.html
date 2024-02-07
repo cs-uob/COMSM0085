@@ -180,12 +180,12 @@
 
 int main(int argc, char** argv) {
   for(int i=0; i &lt; argc; i++) {
-    printf(&quot;Argument #%i: [%s]\n&quot;, i, argv[i]);
+    printf("Argument #%i: [%s]\n", i, argv[i]);
   }
   return 0;
 }
 </code></pre>
-<p>Compile this with <code>gcc -Wall arguments.c -o arguments</code>. </p>
+<p>Compile this with <code>gcc -Wall arguments.c -o arguments</code>.</p>
 <h2 id="whitespace"><a class="header" href="#whitespace">Whitespace</a></h2>
 <p>The program prints all its arguments, one per line. The program gets its arguments from the program that started it - in this case the shell.
 Try running the program with the following commands:</p>
@@ -195,22 +195,22 @@ Try running the program with the following commands:</p>
 </code></pre>
 <p>Now that you are familiar with what the program does, try the following:</p>
 <pre><code>./arguments one       two
-./arguments &quot;one two&quot;
-./arguments &quot;one      two&quot;
+./arguments "one two"
+./arguments "one      two"
 </code></pre>
 <p>How, based on these examples, does the shell handle whitespace in the line you type?</p>
 <h2 id="pattern-matching"><a class="header" href="#pattern-matching">Pattern matching</a></h2>
 <p>Try the following:</p>
 <ul>
 <li><code>./arguments *</code> in the folder that contains the arguments program, and its source code arguments.c.</li>
-<li>Make an empty subfolder with <code>mkdir empty</code>, switch to it with <code>cd empty</code> and then run <code>../arguments *</code>. Since you are now in the subfolder, we need two dots at the start to say &quot;run the program arguments in the folder <em>above</em>&quot;. What happens?</li>
+<li>Make an empty subfolder with <code>mkdir empty</code>, switch to it with <code>cd empty</code> and then run <code>../arguments *</code>. Since you are now in the subfolder, we need two dots at the start to say "run the program arguments in the folder <em>above</em>". What happens?</li>
 <li>Go back to the folder with the program by running <code>cd ..</code> and then do <code>ls</code> to check you're back in the right folder. In this folder, find three different ways to get the program to produce the following output:</li>
 </ul>
 <pre><code>Argument #0: [./arguments]
 Argument #1: [*] 
 </code></pre>
 <h2 id="files-with-spaces-in-their-names"><a class="header" href="#files-with-spaces-in-their-names">Files with spaces in their names</a></h2>
-<p>The command <code>touch FILENAME</code> creates a file. Create a file with a space in its name by typing <code>touch &quot;silly named file&quot;</code>. What would happen if you left the quotes off (you can try it, then do <code>ls</code>)?</p>
+<p>The command <code>touch FILENAME</code> creates a file. Create a file with a space in its name by typing <code>touch "silly named file"</code>. What would happen if you left the quotes off (you can try it, then do <code>ls</code>)?</p>
 <p>Start typing <code>ls sill</code> and then press TAB to autocomplete. Assuming you have no other files whose name starts with <em>sill</em>, what happens? Use this method to get the arguments program to print the following:</p>
 <pre><code>Argument #0: [./arguments]
 Argument #1: [Hello world!] 
@@ -223,18 +223,18 @@ gcc -Wall $p.c -o $p
 </code></pre>
 <p>which expands to <code>gcc -Wall arguments.c -o arguments</code>. If you want to use a variable inside a word, you can use curly braces: <code>${a}b</code> means the value of the variable <code>a</code> followed by the letter b, whereas <code>$ab</code> would mean the value of the variable <code>ab</code>.</p>
 <p>It is good practice to double-quote variables used like this, because if you tried for example to compile a program called <code>silly name.c</code> with a space in its name, then</p>
-<pre><code>program=&quot;silly name&quot;
+<pre><code>program="silly name"
 gcc -Wall $program.c -o $program
 </code></pre>
 <p>would expand to</p>
 <pre><code>gcc -Wall silly name.c -o silly name
 </code></pre>
 <p>and this would confuse your compiler because you are telling it to compile three source files called <code>silly</code>, <code>name.c</code> and <code>name</code> to a program called <code>silly</code>. Correct would be:</p>
-<pre><code>program=&quot;silly name&quot;
-gcc -Wall &quot;$program.c&quot; -o &quot;$program&quot;
+<pre><code>program="silly name"
+gcc -Wall "$program.c" -o "$program"
 </code></pre>
 <p>which expands to</p>
-<pre><code>gcc -Wall &quot;silly name.c&quot; -o &quot;silly name&quot;
+<pre><code>gcc -Wall "silly name.c" -o "silly name"
 </code></pre>
 <p>which does what you want - if you indeed want a program with a space in its name!</p>
 <p>There is no harm in double-quoting a shell variable every time you want to use it, and this is good practice as it still works if the variable is set to a value that contains spaces.</p>
@@ -243,7 +243,7 @@ gcc -Wall &quot;$program.c&quot; -o &quot;$program&quot;
 </code></pre>
 <p>would translate as: set the variable <code>program</code> to the value <code>silly</code>, then execute the program <code>name</code>. Variable assignments only apply to the first argument following them, although you can assign more than one variable.</p>
 <p>Note that this does not work as expected either:</p>
-<pre><code>file=arguments gcc -Wall &quot;$file.c&quot; -o &quot;$file&quot;
+<pre><code>file=arguments gcc -Wall "$file.c" -o "$file"
 </code></pre>
 <p>The problem here is that the shell first reads the line and substitutes in the value of <code>$file</code> (unset variables expand to the empty string by default) before starting to execute the command, so you are reading the variable's value before writing it. Leaving off the quotes doesn't help: you need to set the variable on a separate line.</p>
 

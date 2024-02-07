@@ -194,7 +194,7 @@
 <ul>
 <li>If it asks for a password, then the ssh client is working, and a ssh server is running on your current machine. The password would be your user account password, but we don't actually want to log in again so cancel with Control+C.</li>
 <li>If it succeeds without a password, then the client is working and a ssh server is running on your machine and either you do not have a password, or you already have a key set up. Type <code>exit</code> and press ENTER to get back to your previous shell.</li>
-<li>If it shows &quot;connection refused&quot;, then you have the ssh client correctly working but no server running on your own machine. This is not a problem, as we're trying to log in to the lab machines, so we need a client on our machine and a server on the lab machine.</li>
+<li>If it shows "connection refused", then you have the ssh client correctly working but no server running on your own machine. This is not a problem, as we're trying to log in to the lab machines, so we need a client on our machine and a server on the lab machine.</li>
 <li>If it shows an error that ssh is not found, then you don't have (Open)SSH installed which is very unusual except on windows CMD - in which case please switch to using the windows subsystem for linux.</li>
 </ul>
 </li>
@@ -210,23 +210,23 @@
 <li>On your terminal, type <code>ssh USERNAME@seis.bris.ac.uk</code> where you replace USERNAME with your university username, e.g. <code>aa20123</code>. Obviously, you will need a working internet connection for this.</li>
 <li>If it asks you whether you are sure, type <code>yes</code> and press ENTER. SSH will only do this the first time you connect to a machine that you have never used before.</li>
 <li>When prompted, enter your university password and press ENTER.</li>
-<li>You should now see the prompt on seis, which looks something like <code>-bash-4.2$</code>. Try the command <code>uname -a</code> to print information about the system (uname on its own prints the operating system name, <code>-a</code> shows &quot;all&quot; information). The reply line should start <code>Linux seis-shell</code>, which is the operating system and host name.</li>
+<li>You should now see the prompt on seis, which looks something like <code>-bash-4.2$</code>. Try the command <code>uname -a</code> to print information about the system (uname on its own prints the operating system name, <code>-a</code> shows "all" information). The reply line should start <code>Linux seis-shell</code>, which is the operating system and host name.</li>
 <li>On the seis prompt, type <code>ssh rd-mvb-linuxlab.bristol.ac.uk</code>. This might take a few seconds; say yes if it asks you if you're sure, then enter your password again when prompted. We didn't have to give a username again because you are already logged in to seis with your university username (<code>whoami</code> shows this) and when you ssh without giving a username, it uses the one you are currently logged in as.</li>
-<li>You should now be connected to a lab machine, with a prompt of the form <code>USERNAME@it######:~$</code>. </li>
+<li>You should now be connected to a lab machine, with a prompt of the form <code>USERNAME@it######:~$</code>.</li>
 <li>Try <code>whoami</code> and <code>uname -a</code> to check who you are logged in as, and where; also try <code>hostname</code> which just prints the machine name.</li>
 <li>Type <code>exit</code> twice to get back to your own machine. (Once gets you back to seis, twice closes the ssh connection completely.)</li>
 </ul>
 <p>Connecting to one machine through another machine (in this case seis) as a proxy is such a common use case that ssh in fact has an option for it. Note however that this will not normally work from a windows CMD terminal, although it does work on Windows Subsystem for Linux (and on Mac and Linux).</p>
 <pre><code>ssh -J USERNAME@seis.bris.ac.uk USERNAME@rd-mvb-linuxlab.bristol.ac.uk
 </code></pre>
-<p>The <code>-J</code> for &quot;jump through this host&quot; even accepts a comma-separated list of hosts if you need to connect through more than one. However, you need to repeat your username for every machine.</p>
+<p>The <code>-J</code> for "jump through this host" even accepts a comma-separated list of hosts if you need to connect through more than one. However, you need to repeat your username for every machine.</p>
 <p>You now know how to log in to a lab machine, but in both methods you had to type your password twice - let's make that easier. The answer is not to store your password in a file, but to use keys instead.</p>
 <h2 id="setting-up-ssh-keys"><a class="header" href="#setting-up-ssh-keys">Setting up ssh keys</a></h2>
-<p>When you connect to a machine, the client on your computer and the daemon on the machine you're logging in to run a cryptographic protocol to exchange keys and set up a shared secret key for the session, so that what one side encrypts the other side can decrypt again. It also authenticates you to the server using one of several methods. </p>
+<p>When you connect to a machine, the client on your computer and the daemon on the machine you're logging in to run a cryptographic protocol to exchange keys and set up a shared secret key for the session, so that what one side encrypts the other side can decrypt again. It also authenticates you to the server using one of several methods.</p>
 <p>You might have heard from a security source that there are three main authentication factors: something you know (password or PIN), something you have (physical key, digital key, ID card, passport) and something you are (biometrics). An authentication method that requires two of these is called two-factor authentication and this is considered good security practice. For ssh, this means:</p>
 <ul>
-<li>You can log in with a username and password, that is &quot;something you know&quot;. This is the default, but not the most secure.</li>
-<li>You can log in with a (digital) key, that is &quot;something you have&quot;. This is more secure, as long as your key (which is just a file) doesn't get into the wrong hands, and also the most convenient as you can log into a lab machine or copy files without having to type your password.</li>
+<li>You can log in with a username and password, that is "something you know". This is the default, but not the most secure.</li>
+<li>You can log in with a (digital) key, that is "something you have". This is more secure, as long as your key (which is just a file) doesn't get into the wrong hands, and also the most convenient as you can log into a lab machine or copy files without having to type your password.</li>
 <li>You can log in with a key file that is itself protected with a password. This gets you two-factor authentication.</li>
 </ul>
 <p>The keys that SSH uses implement digital signatures. Each key comes as a pair of files:</p>
@@ -236,16 +236,16 @@
 </ul>
 <p>Let's create a key pair:</p>
 <ul>
-<li>On your own machine, make sure you are not connected to a lab machine or seis, then type the command <code>ssh-keygen -t ed25519</code>. (If you get an &quot;unknown key type&quot; error, then you are using an outdated version of OpenSSH and for security reasons you should upgrade immediately.) <em>Note: type <code>ed25519</code> directly, do not replace this with your username. It stands for the &quot;Edwards curve over the prime <code>2^255-19</code>&quot; cryptographic group, if you want to know.</em></li>
+<li>On your own machine, make sure you are not connected to a lab machine or seis, then type the command <code>ssh-keygen -t ed25519</code>. (If you get an "unknown key type" error, then you are using an outdated version of OpenSSH and for security reasons you should upgrade immediately.) <em>Note: type <code>ed25519</code> directly, do not replace this with your username. It stands for the "Edwards curve over the prime <code>2^255-19</code>" cryptographic group, if you want to know.</em></li>
 <li>When it asks you where to save the file, just press ENTER to accept the default, but make a note of the path - normally it's a folder <code>.ssh</code> in your home directory.</li>
-<li>If it asks you &quot;Overwrite (y/n)&quot;, say no (n, then ENTER) as it means you already have a key for something else - either ssh directly or something that uses it, like github. Restart key generation but pick a different file name.</li>
+<li>If it asks you "Overwrite (y/n)", say no (n, then ENTER) as it means you already have a key for something else - either ssh directly or something that uses it, like github. Restart key generation but pick a different file name.</li>
 <li>When it asks you for a password, we recommend that you just press ENTER which doesn't set a password (good security, maximum convenience). If you do set a password, it will ask you to type it twice and then you will need the password and the key file to use this key (maximum security, less convenient).</li>
 </ul>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
 <p>The <code>-t</code> parameter selects the cryptographic algorithm to use, in this case <code>ed25519</code>, which is modern, peer-reviewed, and generally considered one of the most secure public-key algorithms available. However some older ssh versions don't accept ed25519.</p>
-<p>If you ever need to use SSH keys to a machine that doesn't like ed25519, then use the key type &quot;rsa&quot; instead. We would recommend you avoid the alternatives &quot;dsa&quot; and &quot;ecdsa&quot; if at all possible as there is speculation among cryptographers that there may be a flaw in the design.</p>
+<p>If you ever need to use SSH keys to a machine that doesn't like ed25519, then use the key type "rsa" instead. We would recommend you avoid the alternatives "dsa" and "ecdsa" if at all possible as there is speculation among cryptographers that there may be a flaw in the design.</p>
 <p>For example, although seis supports ed25519, the old cs bastion host <code>snowy.cs.bris.ac.uk</code> still uses an older version of SSH, so you would need to generate a rsa key to connect to that.</p>
 </div>
 </div>
@@ -256,7 +256,7 @@
 </code></pre>
 <p>Note the permissions on these files in my example. The private key (first line) has a permissions line at the start of <code>(-)(rw-)(---)(---)</code> where I've added brackets to make clearer what is going on. The first bracket only applies to special file types (e.g. <code>d</code> for directory). Next, the owner permissions which are in this case read and write (the third one would be <code>x</code> if the file were an executable program). The last two brackets are the permissions for the group and for everyone else, and these are all off so no-one except yourself (and root) can read your key file. OpenSSH is picky about this and will refuse to use a private key that other people have access to.</p>
 <p>The public key permissions are <code>(-)(rw-)(r--)(r--)</code> which means that the owner can read and write, and the group and everyone else (assuming they have access to the folder) can read the public key, which is fine. It's a public key after all.</p>
-<p><code>known_hosts</code> is where SSH stores the public keys of computers you've already connected to: every time you answer yes to an &quot;Are you sure you want to connect?&quot; question when you connect to a new computer for the first time, it stores the result in this file and won't ask you again the next time. The file format is one key per line and you can edit the file yourself if you want to.</p>
+<p><code>known_hosts</code> is where SSH stores the public keys of computers you've already connected to: every time you answer yes to an "Are you sure you want to connect?" question when you connect to a new computer for the first time, it stores the result in this file and won't ask you again the next time. The file format is one key per line and you can edit the file yourself if you want to.</p>
 <h2 id="set-up-key-access-on-seis"><a class="header" href="#set-up-key-access-on-seis">Set up key access on SEIS</a></h2>
 <p>First, we need to upload our public key to the <code>~/.ssh</code> directory on seis. Even before this, we need to make sure the directory exists though:</p>
 <ul>
@@ -265,7 +265,7 @@
 <li>Log out of seis again with <code>exit</code>.</li>
 </ul>
 <p>The command for copying a file is <code>scp</code> for secure copy, which works like <code>cp</code> but allows you to include remote hosts and does the copy over SSH. Run this from your own machine:</p>
-<pre><code>scp ~/.ssh/id_ed25519.pub &quot;USERNAME@seis.bris.ac.uk:~/.ssh/&quot;
+<pre><code>scp ~/.ssh/id_ed25519.pub "USERNAME@seis.bris.ac.uk:~/.ssh/"
 </code></pre>
 <p>Obviously, replace USERNAME with your university username. This will ask for your password again. Note two things here: first, to set up access on seis, we are uploading the public key - not the private key! - and secondly, that we put double quotes around the destination. This is because the <code>~</code> character meaning home directory is handled by our shell, but we don't want our local shell to expand it, instead we want the shell on seis launched by scp to expand it to our home directory on that machine.</p>
 <p>The general syntax of scp is <code>scp source destination</code> and source or destination  may be of the form <code>[USERNAME@]HOSTNAME:PATH</code> - if it contains a colon (<code>:</code>), then it refers to a file on a different machine.</p>
@@ -275,7 +275,7 @@ cat id_ed25519.pub &gt;&gt; authorized_keys
 chmod 600 authorized_keys
 </code></pre>
 <p>SSH will accept a public key if it is listed in the file <code>authorized_keys</code> in the user's <code>.ssh</code> folder, the format is one line per key. Instead of just copying <code>id_ed25519.pub</code> to <code>authorized_keys</code>, which would overwrite the latter file if it already existed, we use the construction <code>cat SOURCE &gt;&gt; DEST</code> to have our shell append the source file to the destination. <em>Note: it's <strong>authorized</strong>, the American spelling -- if you use the British spelling here OpenSSH won't know to read that file.</em></p>
-<p>However, if the authorised keys file didn't exist already, then it has now been created with default permissions and SSH won't accept that for security reasons. <code>chmod</code> means change permissions (also known as &quot;mod bits&quot;) and 600 is the bit pattern we want in base 8, because that is how permissions work for historical reasons. Permissions are a bitfield of 9 bits, the first three are read/write/execute for the owner, the next three the same for the group, and then for everyone else. If you <code>ls -l</code> you will see this in a slightly more human-readable format, namely <code>rw-------</code> where a minus means that a bit is turned off.</p>
+<p>However, if the authorised keys file didn't exist already, then it has now been created with default permissions and SSH won't accept that for security reasons. <code>chmod</code> means change permissions (also known as "mod bits") and 600 is the bit pattern we want in base 8, because that is how permissions work for historical reasons. Permissions are a bitfield of 9 bits, the first three are read/write/execute for the owner, the next three the same for the group, and then for everyone else. If you <code>ls -l</code> you will see this in a slightly more human-readable format, namely <code>rw-------</code> where a minus means that a bit is turned off.</p>
 <p>Now type <code>exit</code> to get back to your own machine, and then <code>ssh USERNAME@seis.bris.ac.uk</code> to log back in to seis. It should log you in without asking for a password, and you have now set up key-based SSH authentication for seis.</p>
 <p><em>Note: if you set a password on your SSH key earlier, then it will ask you for a password, and it will expect the key password not your uni password. You know not to ever reuse your uni password for anything else, right?</em></p>
 <p>If for some reason something doesn't work with ssh, the first thing to try is to add the <code>-v</code> switch enable debugging information (you can even do <code>-vv</code> or <code>-vvv</code> to see even more detail, but we don't need that). If there is a problem with the permissions on your private key file for example, then you will see SSH complain in the debugging information.</p>
@@ -294,7 +294,7 @@ chmod 600 authorized_keys
 <ul>
 <li>Log in to seis with <code>ssh USERNAME@seis.bris.ac.uk</code>. You should not need a password anymore.</li>
 <li>Log in to the lab machines with <code>ssh rd-mvb-linuxlab.bristol.ac.uk</code> and enter your password. Check that the <code>~/.ssh</code> folder exists and create it if it doesn't, as you did before on seis, then <code>exit</code> again to seis.</li>
-<li>Copy your public key file from seis to the lab machines with <code>scp ~/.ssh/id_ed25519.pub &quot;rd-mvb-linuxlab.bristol.ac.uk:~/.ssh/&quot;</code>. This will ask for your password again.</li>
+<li>Copy your public key file from seis to the lab machines with <code>scp ~/.ssh/id_ed25519.pub "rd-mvb-linuxlab.bristol.ac.uk:~/.ssh/"</code>. This will ask for your password again.</li>
 <li>Log in to a lab machine with <code>ssh rd-mvb-linuxlab.bristol.ac.uk</code> and enter your password one last time. On the lab machine, install the public key with the following:</li>
 </ul>
 <pre><code>cd .ssh
