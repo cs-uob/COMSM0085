@@ -190,8 +190,8 @@
 <p>Create a file in your home directory, e.g. <code>nano readme.txt</code> then add some content.</p>
 <p>Check, by using <code>su USERNAME</code> to log in as the different users, that:</p>
 <ul>
-<li><code>nigel</code> can view Brian's home directory but not create files there; </li>
-<li><code>nigel</code> can view but not edit Brian's readme file; </li>
+<li><code>nigel</code> can view Brian's home directory but not create files there;</li>
+<li><code>nigel</code> can view but not edit Brian's readme file;</li>
 <li><code>vagrant</code> cannot list files in or enter Brian's home directory at all. What happens when you try?</li>
 </ul>
 <p><em>Of course, vagrant can use sudo to get around all these restrictions. Permissions do not protect you from anyone who can become root.</em></p>
@@ -207,26 +207,26 @@
 <pre><code class="language-C">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
-const char *filename =&quot;/home/brian/messages.txt&quot;;
+const char *filename ="/home/brian/messages.txt";
 
 int main(int argc, char **argv) {
   if (argc != 2) {
-    puts(&quot;Usage: message-brian MESSAGE&quot;);
+    puts("Usage: message-brian MESSAGE");
     return 1;
   }
-  FILE *file = fopen(filename, &quot;a&quot;);
+  FILE *file = fopen(filename, "a");
   if (file == NULL) {
-    puts(&quot;Error opening file&quot;);
+    puts("Error opening file");
     return 2;
   }
   int r = fputs(argv[1], file);
   if (r == EOF) {
-    puts(&quot;Error writing message&quot;);
+    puts("Error writing message");
     return 2;
   }
   r = fputc('\n', file);
   if (r == EOF) {
-    puts(&quot;Error writing newline&quot;);
+    puts("Error writing newline");
     return 2;
   }
   fclose(file);
@@ -237,8 +237,8 @@ int main(int argc, char **argv) {
 <pre><code>-rwxr-xr-x    1 brian     brian         19984 Oct 28 13:26 message-brian
 </code></pre>
 <p>These are the default permissions for a newly created executable file; note that gcc has set the three <code>+x</code> bits for you. Still as Brian, run <code>chmod u+s message-brian</code> and check the file again: you should now see <code>-rwsr-xr-x</code> for the file permissions. The <code>s</code> is the setuid bit.</p>
-<p>As Nigel (<code>su nigel</code>), go into Brian's home directory and run <code>./message-brian &quot;Hi from Nigel!&quot;</code>. The quotes are needed here because the program accepts only a single argument.</p>
-<p>Now run <code>ls -l</code> and notice that a <code>messages.txt</code> has appeared with owner and group <code>brian</code>. Check the contents with <code>cat messages.txt</code>. Although Nigel cannot create and edit files in Brian's home directory himself (he can't edit <code>messages.txt</code> for example, although he can read it), the program <code>message-brian</code> ran as Brian, which let it create the file. Nigel can send another message like this (<code>./message-brian &quot;Hi again!&quot;</code>), which gets appended to the file: try this out.</p>
+<p>As Nigel (<code>su nigel</code>), go into Brian's home directory and run <code>./message-brian "Hi from Nigel!"</code>. The quotes are needed here because the program accepts only a single argument.</p>
+<p>Now run <code>ls -l</code> and notice that a <code>messages.txt</code> has appeared with owner and group <code>brian</code>. Check the contents with <code>cat messages.txt</code>. Although Nigel cannot create and edit files in Brian's home directory himself (he can't edit <code>messages.txt</code> for example, although he can read it), the program <code>message-brian</code> ran as Brian, which let it create the file. Nigel can send another message like this (<code>./message-brian "Hi again!"</code>), which gets appended to the file: try this out.</p>
 <p>This shows how setuid programs can be used to allow other users to selectively perform specific tasks under a different user account.</p>
 <p><strong>Warning</strong>: writing your own setuid programs is extremely dangerous if you don't know the basics of secure coding and hacking C programs, because a bug in such a program could let someone take over your user account. The absolute minimum you should know is the contents of our security units up to and including 4th year.</p>
 <p>A general task for a security analyst might be finding all files with the setuid bit set on a system. You can try this yourself, but return to a vagrant shell first so that you're allowed to use sudo:</p>

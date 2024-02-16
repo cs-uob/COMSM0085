@@ -181,21 +181,21 @@
 <p><img src="./trees-wide.png" alt="4 column layout above 600px" /></p>
 <p>(The image for Lawson's Cypress is one single PNG like the others, there is nothing special to do here to fit in two images side by side.)</p>
 <p><em>The small-leaved lime (Tilia Cordata) featured here is believed to be over 2000 years old, making it one of the oldest trees in Britain.</em></p>
-<p>From 400px to 600px, the page should show all trees except the &quot;featured&quot; ones in two columns:</p>
+<p>From 400px to 600px, the page should show all trees except the "featured" ones in two columns:</p>
 <p><img src="./trees-medium.png" alt="2 column layout above 400px" /></p>
 <p>And below 400px width, all trees should be shown in a single column layout, whether featured or not.</p>
 <p>Each tree is defined in the HTML file with an element like this:</p>
-<pre><code class="language-html">&lt;div class=&quot;card&quot;&gt;
-    &lt;img class=&quot;card-image&quot; src=&quot;images/cedrus_atlantica.jpg&quot; alt=&quot;Cedrus Atlantica&quot;/&gt;
-    &lt;span class=&quot;latin-name&quot;&gt;Cedrus Atlantica&lt;/span&gt;
-    &lt;span class=&quot;common-name&quot;&gt;Atlas Cedar&lt;/span&gt;
+<pre><code class="language-html">&lt;div class="card"&gt;
+    &lt;img class="card-image" src="images/cedrus_atlantica.jpg" alt="Cedrus Atlantica"/&gt;
+    &lt;span class="latin-name"&gt;Cedrus Atlantica&lt;/span&gt;
+    &lt;span class="common-name"&gt;Atlas Cedar&lt;/span&gt;
 &lt;/div&gt;
 </code></pre>
-<p>The two &quot;featured&quot; trees at the start also have class <code>featured</code> on their card element.</p>
+<p>The two "featured" trees at the start also have class <code>featured</code> on their card element.</p>
 <h2 id="exercise"><a class="header" href="#exercise">Exercise</a></h2>
 <p>General non-grid-related CSS that you can just paste in:</p>
 <pre><code class="language-css">body {
-    font-family: &quot;Open Sans&quot;, sans-serif;
+    font-family: "Open Sans", sans-serif;
     margin: 0;
 }
 
@@ -239,12 +239,12 @@ header {
 <li>Between 400px and 600px, the grid should only be two columns wide, trees still take up 2x2 space if featured and 1x1 otherwise.</li>
 <li>Below 400px, make a grid with only one column, and all trees take up 1x1 space. Note that you do not need to do anything for this as this is the default - just make sure that your other grid rules such as making featured trees 2x2 only apply on larger screens.</li>
 </ul>
-<p>Test this out by making your browser window wider and narrower. You cannot normally make a chrome/edge window narrower than 400px, but there are two workarounds. With the F12 developer tools open, you can position them to the right of the window and then drag the divider to make the actual page width as narrow as you want, or you can switch to &quot;mobile&quot; mode (second icon in top left of developer tools, usually) and manually set a page size or select one from a dropdown list of common phone models.</p>
+<p>Test this out by making your browser window wider and narrower. You cannot normally make a chrome/edge window narrower than 400px, but there are two workarounds. With the F12 developer tools open, you can position them to the right of the window and then drag the divider to make the actual page width as narrow as you want, or you can switch to "mobile" mode (second icon in top left of developer tools, usually) and manually set a page size or select one from a dropdown list of common phone models.</p>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
 <p>In practice, one would use a layout like this to make the individual grid elements clickable (such as news stories, or in this case links to a more detailed page about the tree).</p>
-<p>One way to do this would be to use <code>&lt;a class=&quot;card&quot; href=&quot;...&quot;&gt;</code> elements instead of <code>&lt;div&gt;</code> ones, and set them manually to <code>display:block</code>. This has the advantage that the entire card, including the image, becomes clickable. An <code>&lt;a&gt;</code> tag can contain arbitrary content, not just text.</p>
+<p>One way to do this would be to use <code>&lt;a class="card" href="..."&gt;</code> elements instead of <code>&lt;div&gt;</code> ones, and set them manually to <code>display:block</code>. This has the advantage that the entire card, including the image, becomes clickable. An <code>&lt;a&gt;</code> tag can contain arbitrary content, not just text.</p>
 </div>
 </div>
 

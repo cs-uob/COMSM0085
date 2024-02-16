@@ -176,12 +176,12 @@
                         <h1 id="using-a-css-framework"><a class="header" href="#using-a-css-framework">Using a CSS Framework</a></h1>
 <p>Now that you know some CSS, you could write your own framework - one or more stylesheet files that implement your idea of good design. In this exercise we will look at some examples.</p>
 <h2 id="milligram"><a class="header" href="#milligram">Milligram</a></h2>
-<p><a href="https://milligram.io">Milligram</a> is, in its own words, a &quot;minimalist CSS framework&quot;.</p>
+<p><a href="https://milligram.io">Milligram</a> is, in its own words, a "minimalist CSS framework".</p>
 <p>Download the <a href="../resources/page1.html">page1.html</a> file and open it in the browser: it contains some text and a sign-up form for a CSS conference.</p>
 <p>Add the following to the page head:</p>
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css&quot;&gt;
+<pre><code class="language-html">&lt;link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"&gt;
 
 </code></pre>
 <ul>
@@ -191,11 +191,11 @@
 </ul>
 <p>Milligram chooses to style the whole page by default, but you can customise this further. One of their features is a <em>container</em> that gives its content a fixed maximum width.</p>
 <ul>
-<li>Add <code>class=&quot;container&quot;</code> to the <code>&lt;main&gt;</code> element, save and reload. See how the page behaves when you make the window wider and narrower. The page will always have some left/right padding, but the form adapts to the window size.</li>
+<li>Add <code>class="container"</code> to the <code>&lt;main&gt;</code> element, save and reload. See how the page behaves when you make the window wider and narrower. The page will always have some left/right padding, but the form adapts to the window size.</li>
 <li>In the developer tools, activate mobile mode a.k.a. <em>toggle device emulation</em>, on chrome/edge this is the second icon from the left in the top left of the developer panel. The text looks much too small now!</li>
 <li>This is due to a number of factors including higher pixel density on mobile screens. Milligram can handle mobile devices, but it needs the following line in the header:</li>
 </ul>
-<pre><code class="language-html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+<pre><code class="language-html">&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
 </code></pre>
 <p>This line, which is often (but not always) good practice to include in a HTML5 page anyway, tells a mobile browser (or a device pretending to be one) to adopt sensible defaults including larger fonts depending on the pixel density and no horizontal scrollbars. You can read more about this <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag">on MDN</a>.</p>
 <p>On <a href="https://milligram.io/#typography">the milligram documentation page</a> you can read more about the elements that Milligram styles for you, and how you can customise this (e.g. buttons).</p>
@@ -210,7 +210,7 @@
 <h2 id="bulma"><a class="header" href="#bulma">Bulma</a></h2>
 <p><a href="https://bulma.io">Bulma</a> is a larger but still fairly lightweight CSS framework. Unlike Milligram, it only styles parts of the page you tell it to (but it sets a default font), and it has some more components to build things like menus or panels.</p>
 <p>Start with <a href="../resources/page2.html">page2.html</a>, have a look at the raw page and then add the following to the header (the viewport tag is already there):</p>
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.css&quot;&gt;
+<pre><code class="language-html">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.css"&gt;
 </code></pre>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
@@ -221,11 +221,11 @@
 </div>
 <p>Bulma works with custom class names. For example, we are going to make the first heading into a banner that spans the whole page width - called a <em>hero</em> in web design circles. Bulma has classes for this.</p>
 <ul>
-<li>First, add <code>class=&quot;title&quot;</code> to the h1 heading, save and reload the page.</li>
+<li>First, add <code>class="title"</code> to the h1 heading, save and reload the page.</li>
 </ul>
-<p>This tells bulma to style it as a title/heading element. On the <a href="https://bulma.io/documentation/elements/title/">title element page</a> you can see that the correct way to get a top-level heading is with the classes <code>&quot;title is-1&quot;</code>, whereas a <code>&quot;title is-2&quot;</code> would be a second-level heading (slightly smaller font):</p>
-<pre><code class="language-html">&lt;h1 class=&quot;title is-1&quot;&gt;Title 1&lt;/h1&gt;
-&lt;h2 class=&quot;title is-2&quot;&gt;Title 2&lt;/h2&gt;
+<p>This tells bulma to style it as a title/heading element. On the <a href="https://bulma.io/documentation/elements/title/">title element page</a> you can see that the correct way to get a top-level heading is with the classes <code>"title is-1"</code>, whereas a <code>"title is-2"</code> would be a second-level heading (slightly smaller font):</p>
+<pre><code class="language-html">&lt;h1 class="title is-1"&gt;Title 1&lt;/h1&gt;
+&lt;h2 class="title is-2"&gt;Title 2&lt;/h2&gt;
 </code></pre>
 <p>This looks like you are saying the same thing twice, and you are, but it lets you keep the structure and the styling separate - tag names give structure, class names give styling. Note that this method is a convention by the bulma designers, which other designers might not agree with, not part of the HTML/CSS standard.</p>
 <p>Now to the hero part. According to the bulma documentation for the <a href="https://bulma.io/documentation/layout/hero/">hero component</a>, we need a container with class <code>hero</code> and a direct child with class <code>hero-body</code>, so</p>
@@ -241,9 +241,9 @@
 <li>Add a <code>div</code> inside main that wraps all the content inside, and give it class <code>container</code>. Reload again and observe the change.</li>
 <li>Notice that the first h2 heading text touches the bottom of the hero area, which is not good design - text needs space between it and edges of coloured areas. Create a section tag as the direct child of the container, and give it class <code>section</code> so your code should look like this:</li>
 </ul>
-<pre><code class="language-html">&lt;main class=&quot;content&quot;&gt;
-    &lt;div class=&quot;container&quot;&gt;
-        &lt;section class=&quot;section&quot;&gt;
+<pre><code class="language-html">&lt;main class="content"&gt;
+    &lt;div class="container"&gt;
+        &lt;section class="section"&gt;
             ... content ...
 </code></pre>
 <p>For the next exercise, style the form.</p>

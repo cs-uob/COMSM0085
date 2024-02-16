@@ -200,7 +200,7 @@
 <div class="container-content">
 <p>Tricks like this - which you can code as a browser extension if you want to - might be particularly helpful for visually impaired or dyslexic students so you can force any website to use fonts and styles that work for you.</p>
 <p>If you are designing for dyslexic people other than yourself, the best you can do is give them a way to configure the fonts and colours themselves (for example with a menu that lets you change them via JavaScript) - different dyslexic people might have different preferences that work for them, for example one person may prefer serif fonts to sans-serif or the other way round, there is no one best design for everyone.</p>
-<p>There are statistical trends which mean that &quot;use sans serif fonts&quot; is good advice if you have to pick one font (for example for printed material) but one of the advantages of the web is that you do not have to choose one font in advance, you can let different users select different preferences.</p>
+<p>There are statistical trends which mean that "use sans serif fonts" is good advice if you have to pick one font (for example for printed material) but one of the advantages of the web is that you do not have to choose one font in advance, you can let different users select different preferences.</p>
 </div>
 </div>
 <h2 id="starting-from-scratch"><a class="header" href="#starting-from-scratch">Starting from Scratch</a></h2>
@@ -210,16 +210,16 @@
 <p>Headings are meant to stand out among the paragraphs, and the extra white space around them (padding or margin) is as important as the larger font size and bold font. You could try leaving headings the same size as the body font but still <code>font-weight: bold</code> and use just padding to make them stand out. (Since a heading relates to the text after it not the text before it, it is good design to have a greater margin/padding above the heading than below it.)</p>
 <p>The default body font size is <code>font-size: 16px</code>. If you want to make the headings larger, you should not set an absolute value (such as 24px) but one relative to the default size. Since the default size comes from the <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> elements, you have two ways to do this: either with a percentage e.g. <code>h1 { font-size: 150%; }</code> which makes headings 1.5 times as big as the paragraph font, or using the <code>em/rem</code> units (setting a font size in ems refers to the em size of the parent unit).</p>
 <p>In the browser, open the developer tools and type the following in the console and press ENTER:</p>
-<pre><code class="language-js">document.body.style.fontSize=&quot;24px&quot;;
+<pre><code class="language-js">document.body.style.fontSize="24px";
 </code></pre>
 <p>(Since this is JavaScript, the property is called <code>fontSize</code> not <code>font-size</code> as dashes are not allowed in identifiers.)</p>
-<p>This increases the body text size from 16px to 24px (if you have manually set a different size in your stylesheet, you might need to set it to <code>&quot;24px !important&quot;</code> to override this). If you had set your headings to fixed sizes like 18px, then headings would now be smaller than the body text - if you have correctly used relative sizing, then headings will now still be 1.5 times as big as the body fonts or whichever multiple you set them to be. That is the right way to do it.</p>
+<p>This increases the body text size from 16px to 24px (if you have manually set a different size in your stylesheet, you might need to set it to <code>"24px !important"</code> to override this). If you had set your headings to fixed sizes like 18px, then headings would now be smaller than the body text - if you have correctly used relative sizing, then headings will now still be 1.5 times as big as the body fonts or whichever multiple you set them to be. That is the right way to do it.</p>
 <h2 id="vertical-rhythm"><a class="header" href="#vertical-rhythm">Vertical Rhythm</a></h2>
 <p>Here is another design principle worth knowing about. Look at this image, part of a screenshot of one way to style the text on the page:</p>
 <p><img src="rhythm1.png" alt="text in vertical rhythm layout" /></p>
 <p>The principle here is that we imagine a grid with 20px high lines, and lay out everything according to that. Under <a href="../resources/baseline.png">resources/baseline.png</a> there is an image 1px wide and 20px high with the last pixel coloured pink. Download that image to the folder with the HTML file and set</p>
 <pre><code class="language-css">body {
-    background-image: url(&quot;baseline.png&quot;);
+    background-image: url("baseline.png");
 }
 </code></pre>
 <p>This will make the image repeat horizontally and vertically, and you can now see the design behind this approach:</p>
@@ -230,7 +230,7 @@
 <li>The aim is that all paragraphs have their baselines on the grid, even if there are other elements (headlings, lists) earlier in the document.</li>
 <li>This means that the total height of headings must be an exact multiple of the grid size; you can assume that the text in a heading does not require more than one line.</li>
 <li>You should set all sizes, including margins and padding, in terms of relative units (either ems/rems or percentages).</li>
-<li>The base font size here is the default 16px. Start with the max-width and line-height from the first example, and modify the line height if necessary for your font to get the lines of paragraph text the right distance apart. </li>
+<li>The base font size here is the default 16px. Start with the max-width and line-height from the first example, and modify the line height if necessary for your font to get the lines of paragraph text the right distance apart.</li>
 <li>The paragraphs themselves have a margin at the bottom (the empty line after the first paragraph) that also appears between paragraphs of text (not shown in the image) when one <code>&lt;p&gt;</code> tag follows another. You might also need to give them a small top padding to get the text on the lines, not between them.</li>
 <li>The shading around the headings is <code>background-color: rgba(0, 0, 255, 0.25);</code> to be semitransparent and let the lines show through, to see that while the heading text itself doesn't have to sit on a grid line, the total height of a heading including padding does respect the grid. However this shading is just to motivate the layout: if you want an actual coloured background, then you should set a <code>padding-left: 0.5em;</code> or something on the headings to make the text not start just on the edge of a coloured box. This improves readability.</li>
 <li>You will also need to style the <code>&lt;ul&gt;</code> list to have some spacing before and after, and to keep everything on the grid lines. You get the bullets back with the following code - or one of many other options <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style">listed on MDN</a>:</li>

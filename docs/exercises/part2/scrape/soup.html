@@ -179,7 +179,7 @@ to construct webpages so that they present structured information (e.g., the
 contents of a database). The presumption has generally been that you are
 designing webpages for (usually visual) consumption by a human using a standard
 web browser, or at most writing Javascript functions that will help a human use
-a webpage in particular way. </p>
+a webpage in particular way.</p>
 <p>However, there are situations where you may need to write code that interacts
 with webpages in an automated fashion -- perhaps to extract some data from webpages
 that isn't available in a more machine-friendly format. This <em>scraping</em> of
@@ -194,10 +194,10 @@ but it would get in the way of our system-wide package management to use it here
 <p>You can test that Python is working by just typing <code>python3</code> at the command line
 -- it should launch the interactive interpreter, which will prompt you for
 Python code with <code>&gt;&gt;&gt;</code>. Type <code>from bs4 import BeautifulSoup</code>. If this completes
-then you've successfully imported the library. </p>
+then you've successfully imported the library.</p>
 <h2 id="interacting-with-soup"><a class="header" href="#interacting-with-soup">Interacting with Soup</a></h2>
 <p>Next, enter something like the following:</p>
-<pre><code class="language-python">file = &quot;cattax/index.html&quot;
+<pre><code class="language-python">file = "cattax/index.html"
 soup = BeautifulSoup(open(file, 'r'))
 </code></pre>
 <p><em>(You may need to change the 'file' line to reflect where the <code>cattax/index.html</code>
@@ -208,7 +208,7 @@ to get the library).</em></p>
 for interacting with HTML (and XML) documents and accessing their contents. To
 start with, just type <code>soup</code> in your interpreter. Python will print out the
 basic textual representation of the object, which is just the source of the
-<code>index.html</code> page. Next, let's attempt one of the commonest use-cases for scraping. </p>
+<code>index.html</code> page. Next, let's attempt one of the commonest use-cases for scraping.</p>
 <pre><code class="language-python">soup.get_text()
 </code></pre>
 <p>You should see a string containing the textual content of the webpage. If you
@@ -231,10 +231,10 @@ all of the 'children' elements inside the head. By knowing the structure of the
 document you can thus navigate to certain elements programmatically. This
 doesn't just relate to the tags, either: you can also access the value of
 attributes. <code>soup.head.meta['charset']</code> would access the <code>charset</code> attribute of
-the meta tag in the head of the document. </p>
+the meta tag in the head of the document.</p>
 <h3 id="exercises"><a class="header" href="#exercises">Exercises</a></h3>
 <ol>
-<li>Take a look at some other examples from <a href="https://beautiful-soup-4.readthedocs.io/en/latest/#navigating-the-tree">the BeautifulSoup documentation</a>, in particular regarding the use of the <code>.find_all()</code> method. </li>
+<li>Take a look at some other examples from <a href="https://beautiful-soup-4.readthedocs.io/en/latest/#navigating-the-tree">the BeautifulSoup documentation</a>, in particular regarding the use of the <code>.find_all()</code> method.</li>
 <li>Use your interpreter to access a list of all the <code>&lt;strong&gt;</code> elements in the
 webpage, and figure out how to print out just the text contained within them.</li>
 <li>How would you use <code>.find_all()</code> to find all <code>&lt;div&gt;</code> elements with a
@@ -245,7 +245,7 @@ had multiple classes?</li>
 <p>Download <a href="../resources/scrape.py">this python script</a> to the directory that
 contains your <code>cattax</code> folder (<em>not</em> into <code>cattax</code> itself). On the command line,
 you should be able to run this script with <code>python3 scrape.py</code>. You'll see that
-it prints out a series of lines related to all the files in <code>cattax</code>. </p>
+it prints out a series of lines related to all the files in <code>cattax</code>.</p>
 <p>Open <code>scrape.py</code> in an editor and inspect what it is doing. The script imports
 two libraries, one is BeautifulSoup and the other is <code>os</code>, which allows the
 script to use certain operating system functions. <code>os.listdir</code> is then used to list the
@@ -265,7 +265,7 @@ only print something out for the leaf nodes -- those pages that don't have a
 <li>Printing things out can be useful, but often we want to store values we
 scrape for later programmatic work. Rather than printing out information,
 create and update a <a href="https://realpython.com/python-dicts/">Python dict</a> for all
-leaf nodes where the dictionary keys are the titles of a page and the values are 
+leaf nodes where the dictionary keys are the titles of a page and the values are
 the corresponding content of the 'info' box. <em>Run your script with <code>python3 -i scrape.py</code> and it will execute your script and then place you in an interactive
 session immediately following your script's execution. You can then check that
 the dictionary's contents are what you expect by interacting with the dict
@@ -276,7 +276,7 @@ object in your interpreter.</em></li>
 risks, depending upon how you go about it and what you do with the results.
 Guidelines you should follow include:</p>
 <ul>
-<li>Always respect the <a href="https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt">robots.txt</a> presented by a site. Resources denied to crawlers may be protected for a legal or ethical reason. </li>
+<li>Always respect the <a href="https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt">robots.txt</a> presented by a site. Resources denied to crawlers may be protected for a legal or ethical reason.</li>
 <li>Always look for an API first. If a site will provide you with a JSON endpoint
 to query for the structured data you want, it is both easier and more polite
 to use that API instead of scraping the same data from webpages designed for
@@ -304,7 +304,7 @@ programmatically and if you need to interact with a website's API.</p>
 content like that you learned about in the Javascript exercises. Scraping
 dynamic sites gets trickier, as your scraper needs to have a browser-like
 context to execute Javascript within, and often might need to pretend to
-interact with the page. Systems like <a href="https://www.selenium.dev/documentation/">Selenium</a> 
+interact with the page. Systems like <a href="https://www.selenium.dev/documentation/">Selenium</a>
 are designed for cases like this.</p>
 
                     </main>

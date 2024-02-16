@@ -186,12 +186,12 @@ decided that getting ~200 students to test out web-crawling on a particular live
 website was probably not a great idea, so we're having each of you run your own.</p>
 <h3 id="set-up-the-server"><a class="header" href="#set-up-the-server">Set up the server</a></h3>
 <p>As with the HTTP exercises, it would be best to either carry out these steps directly on a lab machine
-or on your own machine (optionally from the Debian Linux VM with ports forwarded). If you are using 
-a lab machine via SSH instead then you'll need to open a second SSH session <em>to the same lab machine</em> 
+or on your own machine (optionally from the Debian Linux VM with ports forwarded). If you are using
+a lab machine via SSH instead then you'll need to open a second SSH session <em>to the same lab machine</em>
 in another terminal, to act as a client for the next parts of the exercise.
 However, we'll periodically invite you to check things in your browser, which is
 a lot simpler if you're not trying to use a remote machine.</p>
-<p>First, download the <a href="../resources/cattax.tar.gz">webpages to be served by the webserver</a>. 
+<p>First, download the <a href="../resources/cattax.tar.gz">webpages to be served by the webserver</a>.
 If you like you can even do this using <code>wget</code>:</p>
 <pre><code class="language-bash">wget https://cs-uob.github.io/COMSM0085/exercises/part2/resources/cattax.tar.gz
 </code></pre>
@@ -200,7 +200,7 @@ folder you downloaded it to. This will create a folder <code>cattax</code> which
 webpages and resources.</p>
 <p>Next, use the <code>darkhttpd</code> server from a previous week's exercises to
 serve the content of the <code>cattax</code> folder on <code>localhost:8080</code>. <em>(Refer to the
-HTTP week's exercise instructions if you have forgotten how to do this)</em>. </p>
+HTTP week's exercise instructions if you have forgotten how to do this)</em>.</p>
 <p>You can check that this is working in a browser (unless you are connecting via
 SSH) by navigating to <code>localhost:8080/index.html</code> -- you should see a webpage
 talking about <strong>Felidae</strong>. You'll need to leave this server running -- the
@@ -244,7 +244,7 @@ following, and <strong>read the output</strong>.</p>
 directory named <code>localhost:8080</code> to store all the files in. This is helpful
 organisation if you're ever using <code>wget</code> to download pages from multiple
 different websites -- it stores them under directories named after the domain
-you requested them from. </p>
+you requested them from.</p>
 <p>If you read the output carefully you'll notice that as well as the <code>index.html</code>
 we requested directly, <code>wget</code> has also downloaded the <code>catstyle.css</code> file
 referenced in that page, and another file called <code>robots.txt</code> that you didn't
@@ -254,7 +254,7 @@ a website they are or aren't allowed to visit. When you use <code>wget</code> to
 webpage or website it will check the site's <code>robots.txt</code> to understand which
 resources it may not be allowed to download. You can read more about how these
 files are written
-<a href="https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt">here</a>. </p>
+<a href="https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt">here</a>.</p>
 <p>Open the <code>index.html</code> file from the new <code>localhost:8080</code> folder that was
 created, and you should see that it looks just like the version you got in your
 browser by navigating to the URI <code>localhost:8080/index.html</code>. <em>(There are some

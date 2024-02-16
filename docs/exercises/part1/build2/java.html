@@ -191,7 +191,7 @@ versions</em> of Java installed you may need to set the <code>JAVA_HOME</code> a
 <code>PATH</code> variables to point to your install.</p>
 <p>For example:</p>
 <pre><code class="language-sh">export JAVA_HOME='/usr/lib/jvm/java-17-openjdk'
-export PATH=&quot;${PATH}:${JAVA_HOME}/bin&quot;
+export PATH="${PATH}:${JAVA_HOME}/bin"
 </code></pre>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
@@ -214,10 +214,10 @@ have to install it manually:</p>
 <p>Note: <code>JAVA_HOME</code> must be set correctly for maven to work.</p>
 <h2 id="running-maven"><a class="header" href="#running-maven">Running maven</a></h2>
 <p>Open a shell and type <code>mvn archetype:generate</code>. This lets you <em>generate an artifact from an archetype</em>, which is maven-speak for create a new folder with a maven file.</p>
-<p><em>If you get a &quot;not found&quot; error, then most likely the maven <code>bin</code>
+<p><em>If you get a "not found" error, then most likely the maven <code>bin</code>
 folder is not on your path. If you're on a POSIX system and have used
 your package manager, this should be set up automatically, but if
-you've downloaded and unzipped maven then you have to <code>export PATH=&quot;$PATH:...&quot;</code> where you replace the three dots with the path to
+you've downloaded and unzipped maven then you have to <code>export   PATH="$PATH:..."</code> where you replace the three dots with the path to
 the folder, and preferably put that line in your <code>~/.profile</code> too.</em></p>
 <p>|||advanced
 On Windows, if you must user it, search online for instructions how
@@ -227,7 +227,7 @@ should paste the full path, then press SPACE and enter the arguments
 you want to pass.
 |||</p>
 <p>The first time you run it, maven will download a lot of libraries.</p>
-<p>Maven will first show a list of all archetypes known to humankind (3046 at the time of counting) but you can just press ENTER to use the default, 2098 (&quot;quickstart&quot;). Maven now asks you for the version to use, press ENTER again.</p>
+<p>Maven will first show a list of all archetypes known to humankind (3046 at the time of counting) but you can just press ENTER to use the default, 2098 ("quickstart"). Maven now asks you for the version to use, press ENTER again.</p>
 <p>You now have to enter the triple of (groupId, artifactId, version) for your project - it doesn't really matter but I suggest the following:</p>
 <pre><code>groupId: org.example
 artifactId: project
@@ -250,7 +250,7 @@ version: 0.1
 ./src/test/java/org/example/AppTest.java
 ./pom.xml
 </code></pre>
-<p>This is the standard maven folder structure. Your java sources live under <code>src/main/java</code>, and the default package name is <code>org.example</code> or whatever you put as your groupId so the main file is currently <code>src/main/java/org/example/App.java</code>. Since it's common to develop Java from inside an IDE or an editor with &quot;folding&quot; for paths (such as VS code), this folder structure is not a problem, although it's a bit clunky on the terminal.</p>
+<p>This is the standard maven folder structure. Your java sources live under <code>src/main/java</code>, and the default package name is <code>org.example</code> or whatever you put as your groupId so the main file is currently <code>src/main/java/org/example/App.java</code>. Since it's common to develop Java from inside an IDE or an editor with "folding" for paths (such as VS code), this folder structure is not a problem, although it's a bit clunky on the terminal.</p>
 <h2 id="the-pom-file"><a class="header" href="#the-pom-file">The POM file</a></h2>
 <p>Have a look at <code>pom.xml</code> in an editor. The important parts you need to know about are:</p>
 <p>The artifact's identifier (group id, artifact id, version):</p>
@@ -275,7 +275,7 @@ version: 0.1
     &lt;/dependency&gt;
 &lt;/dependencies&gt;
 </code></pre>
-<p>The <code>&lt;plugins&gt;</code> section contains the plugins that maven uses to compile and build your project. This section isn't mandatory, but it's included to &quot;lock&quot; the plugins to a particular version so that if a new version of a plugin is released, that doesn't change how your build works.</p>
+<p>The <code>&lt;plugins&gt;</code> section contains the plugins that maven uses to compile and build your project. This section isn't mandatory, but it's included to "lock" the plugins to a particular version so that if a new version of a plugin is released, that doesn't change how your build works.</p>
 <p>The one thing you should add here is the <code>exec-maven-plugin</code> as follows, so that you can actually run your project:</p>
 <pre><code class="language-xml">&lt;plugin&gt;
     &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
@@ -289,7 +289,7 @@ version: 0.1
 <p>The important line is the <code>mainClass</code> which you set to the full name (with path components) of your class with the <code>main()</code> function.</p>
 <h2 id="compile-run-and-develop"><a class="header" href="#compile-run-and-develop">Compile, run and develop</a></h2>
 <p><code>mvn compile</code> compiles the project. The very first time you do this, it will download a lot of plugins, after that it will be pretty fast. Like <code>make</code>, it only compiles files that have changed since the last run, but if this ever gets out of sync (for example because you cancelled a compile halfway through) then <code>mvn clean</code> will remove all compiled files so the next compile will rebuild everything.</p>
-<p>The <code>App.java</code> file contains a basic &quot;Hello World!&quot; program (have a look at this file). You can run the compiled project with <code>mvn exec:java</code> if you've set up the plugin as above. After you've run it the first time and it's downloaded all the files it needs, lines coming from maven itself will start with <code>[INFO]</code> or <code>[ERROR]</code> or similar, so lines without any prefix like that are printed by your program itself. You should see the hello world message on your screen.</p>
+<p>The <code>App.java</code> file contains a basic "Hello World!" program (have a look at this file). You can run the compiled project with <code>mvn exec:java</code> if you've set up the plugin as above. After you've run it the first time and it's downloaded all the files it needs, lines coming from maven itself will start with <code>[INFO]</code> or <code>[ERROR]</code> or similar, so lines without any prefix like that are printed by your program itself. You should see the hello world message on your screen.</p>
 <p>The development workflow is now as follows: you make your edits, then run <code>mvn compile test exec:java</code> to recompile, run your tests, then run the program. (Like <code>make</code>, you can put more than one target on a command, separated by spaces.)</p>
 <p><code>mvn test</code> runs the tests in <code>src/test/java</code>. There is an example test already created for you (have a look).</p>
 <p><code>mvn package</code> creates a jar file of your project in the <code>target/</code> folder.</p>
@@ -300,17 +300,17 @@ version: 0.1
 <pre><code>Hello, ${name}!
 </code></pre>
 <p>which you can later render with a particular name value. This is one of the standard ways of creating web applications, for example to display someone's profile page you would write a page template that takes care of the layout, styles, links etc. but uses template variables for the fields (name, email, photo etc.) which you render when someone accesses the profile page for a particular person. You will see this in more detail in your SPE project next year.</p>
-<p>To use Thymeleaf or any other library, you first have to add it to your pom file. Go to <a href="https://mvnrepository.org">mvnrepository.org</a> and search for Thymeleaf, then find the latest stable (&quot;release&quot;) version. There is a box where you can copy the <code>&lt;dependency&gt;</code> block to paste in your pom file. The next <code>mvn compile</code> will download thymeleaf and all its dependencies.</p>
+<p>To use Thymeleaf or any other library, you first have to add it to your pom file. Go to <a href="https://mvnrepository.org">mvnrepository.org</a> and search for Thymeleaf, then find the latest stable ("release") version. There is a box where you can copy the <code>&lt;dependency&gt;</code> block to paste in your pom file. The next <code>mvn compile</code> will download thymeleaf and all its dependencies.</p>
 <p>Next, make a template file called <code>unit</code> in the folder <code>src/main/resources/templates</code> (you will have to create the folder first), and put the following lines in it:</p>
 <pre><code>Unit: [(${name})]
 
 In this unit, you will learn about:
 
-[# th:each=&quot;topic: ${topics}&quot;]
+[# th:each="topic: ${topics}"]
   - [(${topic})]
 [/]
 </code></pre>
-<p>This is thymeleaf &quot;text&quot; syntax, where the first line renders the value of a variable and the third-from-last line is the template equivalent of a 'for' loop that renders its contents once for each element in a list (or other collection data structure).</p>
+<p>This is thymeleaf "text" syntax, where the first line renders the value of a variable and the third-from-last line is the template equivalent of a 'for' loop that renders its contents once for each element in a list (or other collection data structure).</p>
 <p>Thymeleaf needs to know where to find its template files, and in this example we are going to demonstrate loading resources from the classpath because that is the correct way to work with resources in a java application (there are special considerations for web applications, but they usually end up using the classpath in the end anyway).</p>
 <p>In your Java source file, you can now do the following. First, the imports you will need:</p>
 <pre><code class="language-java">import java.util.List;
@@ -324,16 +324,16 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 <p>And the code:</p>
 <pre><code class="language-java">ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
 resolver.setTemplateMode(TemplateMode.TEXT);
-resolver.setPrefix(&quot;templates/&quot;);
+resolver.setPrefix("templates/");
 
 TemplateEngine engine = new TemplateEngine();
 engine.setTemplateResolver(resolver);
 
 Context c = new Context();
-c.setVariable(&quot;name&quot;, &quot;Software Tools&quot;);
-List&lt;String&gt; topics = Arrays.asList(&quot;Linux&quot;, &quot;Git&quot;, &quot;Maven&quot;);
-c.setVariable(&quot;topics&quot;, topics);
-String greeting = engine.process(&quot;unit&quot;, c);
+c.setVariable("name", "Software Tools");
+List&lt;String&gt; topics = Arrays.asList("Linux", "Git", "Maven");
+c.setVariable("topics", topics);
+String greeting = engine.process("unit", c);
 
 System.out.println(greeting);
 </code></pre>
@@ -348,9 +348,9 @@ In this unit, you will learn about:
 </code></pre>
 <p>Let's look at how the code works.</p>
 <ol>
-<li>A template resolver is a class that finds a template when you give it a name (here: &quot;unit&quot;). In this case we use a resolver that loads off the classpath, so we just have to put the template files somewhere under <code>src/main/resources</code>; we tell it that we want the template files treated as text (e.g. not HTML), and that the template files are in a subfolder called <code>templates</code>.</li>
-<li>The template engine is the class that does the work of rendering the template, once the resolver has found the source file. </li>
-<li>To render a template, you need a template name for the resolver to look up, and a context - an object on which you can set key/value parameters. In this case we're setting the key &quot;name&quot; to &quot;Software Tools&quot; and the key &quot;topics&quot; to a list of three topics. The names and types of keys obviously have to match what's in the template file.</li>
+<li>A template resolver is a class that finds a template when you give it a name (here: "unit"). In this case we use a resolver that loads off the classpath, so we just have to put the template files somewhere under <code>src/main/resources</code>; we tell it that we want the template files treated as text (e.g. not HTML), and that the template files are in a subfolder called <code>templates</code>.</li>
+<li>The template engine is the class that does the work of rendering the template, once the resolver has found the source file.</li>
+<li>To render a template, you need a template name for the resolver to look up, and a context - an object on which you can set key/value parameters. In this case we're setting the key "name" to "Software Tools" and the key "topics" to a list of three topics. The names and types of keys obviously have to match what's in the template file.</li>
 </ol>
 <p><em>Exercise: rewrite this example to be a bit more object-oriented by creating a unit class:</em></p>
 <pre><code class="language-java">public class Unit {

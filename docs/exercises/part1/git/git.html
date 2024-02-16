@@ -182,11 +182,11 @@ Windows) but we'd still recommend completing it in a virtual machine
 (mostly because we can test the lab in a virtual machine...).</p>
 <p>If you'd like a <code>Vagrantfile</code> to base your work on you can use the
 following:</p>
-<pre><code class="language-ruby">Vagrant.configure(&quot;2&quot;) do |config|
-  config.vm.box = &quot;generic/debian12&quot;
-  config.vm.synced_folder &quot;.&quot;, &quot;/vagrant&quot;
+<pre><code class="language-ruby">Vagrant.configure("2") do |config|
+  config.vm.box = "generic/debian12"
+  config.vm.synced_folder ".", "/vagrant"
 
-  config.vm.provision &quot;shell&quot;, inline: &lt;&lt;-SHELL
+  config.vm.provision "shell", inline: &lt;&lt;-SHELL
     apt-get update -y
     apt-get install -y git git-man apt-file
     apt-file update
@@ -211,13 +211,13 @@ with the <code>man</code> command.</p>
 <p>Git is all about tracking changes to source code.  That means it needs
 to know <em>who</em> made <em>what</em> changes.</p>
 <p>Run the following two lines to set up git correctly. You only need to do this once when you install git, but not every time you create a new repository.</p>
-<pre><code>git config --global user.name &quot;YOURNAME&quot;
-git config --global user.email &quot;YOUREMAIL&quot;
+<pre><code>git config --global user.name "YOURNAME"
+git config --global user.email "YOUREMAIL"
 </code></pre>
 <p>The name and email address aren't actually sent anywhere or
 checked... they're just listed with alongside the changes you make to
 the code so if somethings wrong later programmers know who to blame
-(see <code>man git-blame</code>). You can put anything you like here (git will happily accept <code>-</code> as your email address, and it does not send you email). </p>
+(see <code>man git-blame</code>). You can put anything you like here (git will happily accept <code>-</code> as your email address, and it does not send you email).</p>
 <p>This alters the <em>global</em> git configuration (the settings applied to
 <em>every</em> git repository you work on), but you can also make these
 changes on a repository by repository basis.  Just drop the <code>--global</code>
@@ -237,8 +237,8 @@ obviously.  Normally vagrant will run these provision blocks as the
 system administrator <code>root</code>, but you can run it as the normal
 <code>vagrant</code> user by adding the <code>privileged: false</code> keyword.</p>
 <pre><code class="language-ruby">config.vm.provision :shell, privileged: false, inline: &lt;&lt;-SHELL
-    git config --global user.name &quot;YOURNAME&quot;
-    git config --global user.email &quot;YOUREMAIL&quot;
+    git config --global user.name "YOURNAME"
+    git config --global user.email "YOUREMAIL"
 SHELL
 </code></pre>
 <p>If you start getting errors about the git command not being installed:
@@ -259,7 +259,7 @@ git init
 #include &lt;stdio.h&gt;
 
 int main() {
-    puts(&quot;Hi&quot;);
+    puts("Hi");
     return 0;
 }
 </code></pre>
@@ -289,7 +289,7 @@ their final year...)</p>
 </div>
 </div>
 <p>Do a <code>git status</code> and you will see <code>main.c</code> in red under <em>untracked files</em> - this is a new file that git does not know about yet. Do <code>git add main.c</code> followed by another <code>git status</code> and the file is now green under <em>files to be committed</em>.</p>
-<p>Commit the file with <code>git commit -m &quot;first file&quot;</code> or something like that - you need double quotes if you want spaces in your commit message. Try <code>git status</code> again and you should see <em>nothing to commit, working tree clean</em> which means git is up to date with your files. Try <code>git log</code> and you will see that there is now one commit in the log.</p>
+<p>Commit the file with <code>git commit -m "first file"</code> or something like that - you need double quotes if you want spaces in your commit message. Try <code>git status</code> again and you should see <em>nothing to commit, working tree clean</em> which means git is up to date with your files. Try <code>git log</code> and you will see that there is now one commit in the log.</p>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
@@ -337,7 +337,7 @@ development libraries  Hint: <code>man apt-file</code>.)</p>
 <li><code>git revert HASH</code> adds a new commit that returns the files to the state they were before the commit with the given hash. This is safe to use during team development, as it's just adding a new commit. If you have commits A, B and do <code>git revert B</code> then you get a new commit C so anyone else using the repository sees a sequence of commits A, B, C; but the state of the files in C is the same as in A.</li>
 <li><code>git reset HASH</code> undoes commits by moving the HEAD pointer back to the commit with the given hash, but leaves the working copy alone (you can use the <code>--hard</code> option to change the files as well). This will break things if you have shared your newer commits with other developers, but it's safe to use to undo changes that you haven't pushed yet (we'll learn about this next time). The effect is as if the commits which you've reset had never happened.</li>
 </ul>
-<p>Note: if you want to revert a commit because you accidentally commited a file with secret information, and you've already pushed the commit, then you also have to look up online how to &quot;force push&quot; your changes to erase all traces of the file on github (or other online providers). If the secret file contained any passwords, even if you reverted the commit immediately, then you should consider the passwords compromised and change them at once.</p>
+<p>Note: if you want to revert a commit because you accidentally commited a file with secret information, and you've already pushed the commit, then you also have to look up online how to "force push" your changes to erase all traces of the file on github (or other online providers). If the secret file contained any passwords, even if you reverted the commit immediately, then you should consider the passwords compromised and change them at once.</p>
 </div>
 </div>
 <h1 id="part-2-git-forges"><a class="header" href="#part-2-git-forges">Part 2: Git forges</a></h1>
@@ -382,7 +382,7 @@ it while it's under the hacker's control, that does not leak your
 private key; it feels a bit icky.  Generating keys is easy and it is
 barely any more work to have separate keys per server and per machine
 you use.</p>
-<p>However, reusing public keys can be a privacy problem, because every service that you use the same public key (or e-mail address, or phone number etc.) can potentially work with the others to know that you are the same individual. It is no problem to use different keypairs for different services, in which case you probably want a block in your <code>~/.ssh/config</code> file with something like </p>
+<p>However, reusing public keys can be a privacy problem, because every service that you use the same public key (or e-mail address, or phone number etc.) can potentially work with the others to know that you are the same individual. It is no problem to use different keypairs for different services, in which case you probably want a block in your <code>~/.ssh/config</code> file with something like</p>
 <pre><code>Host github.com
     User git
     IdentityFile ~/.ssh/github.com.key.or.whatever.you.called it.
@@ -395,8 +395,8 @@ you use.</p>
 <p>The name of the main branch changes: it used to be called <code>master</code>.
 You may see the default branch named as either <code>master</code> or <code>main</code>, or  something else entirely. So long as you are consistent, the name of the
 default branch doesn't matter at all (and you can configure it if you have a
-preference), and you just need to know that in these exercises we will use <code>main</code> 
-to refer to the default branch and you should substitute that for your own default 
+preference), and you just need to know that in these exercises we will use <code>main</code>
+to refer to the default branch and you should substitute that for your own default
 branch name if it is different.</p>
 <h2 id="create-a-repository"><a class="header" href="#create-a-repository">Create a repository</a></h2>
 <p>On the main page, you should see an empty <em>Repositories</em> bar on the left, with a new button. Use that to create a repository, on the next page give it a name and tick the <em>Add a README file</em> box.</p>
@@ -408,7 +408,7 @@ branch name if it is different.</p>
 </ul>
 <p>Click the SSH tab and copy the URL there - it should be something like <code>git@github.com:USERNAME/REPONAME.git</code>.</p>
 <p>On the command line, run the command <code>git clone git@github.com:USERNAME/REPONAME.git</code> where you replace USERNAME and REPONAME with the parts from the SSH tab of your repository. Git clones your repository and puts the content in a subfolder named after the repository name - you can change this by providing a different folder name as an extra command-line argument to <code>git clone</code>, or you can just move or rename the folder later on.</p>
-<p><em>Note: certain OS/ISP/DNS combinations might get you &quot;resource temporarily unavailable&quot; when you try and access github via ssh. The problem is that the actual address is <code>ssh.github.com</code> and not all set-ups correctly pass on the redirection when you try and connect to github directly. If you are experiencing this error, you can either use <code>ssh.github.com</code> in place of <code>github.com</code>, or add an entry in your <code>~/.ssh/config</code> file as follows (if you have to create this file first, make sure it is not writable by anyone except yourself or ssh will refuse to accept it):</em></p>
+<p><em>Note: certain OS/ISP/DNS combinations might get you "resource temporarily unavailable" when you try and access github via ssh. The problem is that the actual address is <code>ssh.github.com</code> and not all set-ups correctly pass on the redirection when you try and connect to github directly. If you are experiencing this error, you can either use <code>ssh.github.com</code> in place of <code>github.com</code>, or add an entry in your <code>~/.ssh/config</code> file as follows (if you have to create this file first, make sure it is not writable by anyone except yourself or ssh will refuse to accept it):</em></p>
 <pre><code>Host github.com
   Hostname ssh.github.com
   Port 22
@@ -425,7 +425,7 @@ branch name if it is different.</p>
   Local ref configured for 'git push':
     main pushes to main (up to date)
 </code></pre>
-<p>The bits about <code>main</code> are to do with branches, which we will discuss in another activity in more detail. </p>
+<p>The bits about <code>main</code> are to do with branches, which we will discuss in another activity in more detail.</p>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
@@ -440,9 +440,9 @@ git clone remote user1
 mkdir user2
 git clone remote user2
 </code></pre>
-<p>This gets you a remote and two &quot;users&quot; in different folders to play with. The remote was set up with <code>--bare</code> so that it does not contain a working copy, but acts as a pure repository.</p>
-<p>You can now <code>cd user1</code> to simulate user 1 doing work, and can fetch/push/pull as described below. (Ignore warnings about &quot;upstream&quot;, they will go away once you have committed a file to the repository.) Then you can <code>cd ../user2</code> to switch to a second working copy, which you can pretend is another user on another machine.</p>
-<p>If you want to adjust the user names for the commits, then running <code>git config user.name &quot;YOURNAME&quot;</code> and <code>git config user.email &quot;YOUREMAIL&quot;</code> without the <code>--global</code> option from last time changes the settings just for one repository.</p>
+<p>This gets you a remote and two "users" in different folders to play with. The remote was set up with <code>--bare</code> so that it does not contain a working copy, but acts as a pure repository.</p>
+<p>You can now <code>cd user1</code> to simulate user 1 doing work, and can fetch/push/pull as described below. (Ignore warnings about "upstream", they will go away once you have committed a file to the repository.) Then you can <code>cd ../user2</code> to switch to a second working copy, which you can pretend is another user on another machine.</p>
+<p>If you want to adjust the user names for the commits, then running <code>git config user.name "YOURNAME"</code> and <code>git config user.email "YOUREMAIL"</code> without the <code>--global</code> option from last time changes the settings just for one repository.</p>
 </div>
 </div>
 <p>Do a <code>git status</code> and note that a new line appears compared to last activity:</p>
@@ -453,7 +453,7 @@ git clone remote user2
 <li>Up to date: there have been no commits on your local or the remote repository since you last synchronised.</li>
 <li>Ahead of remote: you have made commits locally that you have not yet pushed to the remote.</li>
 <li>Behind remote: someone else, or you on a different computer, have made commits to the remote that you do not have on this computer yet.</li>
-<li>Diverged from remote: both your computer and the remote have had different commits since the last time you synchronised. </li>
+<li>Diverged from remote: both your computer and the remote have had different commits since the last time you synchronised.</li>
 </ul>
 <h2 id="practice-the-push-workflow"><a class="header" href="#practice-the-push-workflow">Practice the push workflow</a></h2>
 <p>For this exercise, you should work in pairs or larger groups.  Need
@@ -483,7 +483,7 @@ someone to work with?  Ask the person you're sitting next to.</p>
 </ol>
 <p>You can now code as a team, as long as only one person at a time is working - clearly not ideal.</p>
 <h2 id="resolve-a-fake-conflict-part-one"><a class="header" href="#resolve-a-fake-conflict-part-one">Resolve a fake conflict, part one</a></h2>
-<p>Produce a &quot;fake&quot; conflict as follows:</p>
+<p>Produce a "fake" conflict as follows:</p>
 <ol>
 <li>Two team members make sure they are <code>up to date</code> with their working copies (do a <code>git pull</code>, then <code>git status</code>). This represents you both starting coding in the morning.</li>
 <li>One member adds or changes one file, then commits this change and pushes it by running the whole push workflow (fetch, status - check you're ahead, push).</li>
@@ -535,7 +535,7 @@ Created by NAME1.
 <li><code>git commit</code>. You could give a message directly, but a commit without a <code>-m</code> drops you into your editor and you'll see that git is suggesting <code>Merge branch main ...</code> as a default message here. It is conventional to leave this message as it is, just exit your editor without any changes.</li>
 <li>Run another push workflow: <code>git fetch</code>, <code>git status</code> and notice you are now <code>ahead by 2 commits</code>: the first one was the work you did, the second is the merge commit. You're ahead, so finish the workflow with <code>git push</code>.</li>
 </ul>
-<p>Your commit graph looks the same as for the last merge that you did. </p>
+<p>Your commit graph looks the same as for the last merge that you did.</p>
 <p>If you look at the repository's page on Github (<code>https://github.com/USERNAME/REPONAME</code>, where <code>USERNAME</code> is the name of the user who created the repository), then you can click on <em>Insights</em> in the top bar then <em>Network</em> on the left menu to see the commit history for the repository as a graph. Hovering over a commit node shows the committer, the message and the commit hash - and clicking on a node takes you to a page where you can see which changes were made in this commit.</p>
 <p>On the main Github page for the repository, you can also click the clock icon with a number in the top right (on a wide enough screen it also shows the word <em>commits</em>) to go to a page showing all the commits on your repository in chronological order.</p>
 <h1 id="working-with-others"><a class="header" href="#working-with-others">Working with others</a></h1>
@@ -552,7 +552,7 @@ Created by NAME1.
 What they need to do is</p>
 <pre><code>git push --set-upstream origin develop
 </code></pre>
-<p>This adds an &quot;upstream&quot; entry on the local develop branch to say that it is linked to the copy of your repository called <code>origin</code>, which is the default name for the one you cloned the repository from.</p>
+<p>This adds an "upstream" entry on the local develop branch to say that it is linked to the copy of your repository called <code>origin</code>, which is the default name for the one you cloned the repository from.</p>
 <p>You can check this with <code>git remote show origin</code>, which should display among other things:</p>
 <pre><code>Remote branches:
   develop tracked
@@ -592,7 +592,7 @@ Switched to a new branch 'develop'
 </ol>
 <p>If no-one else has changed <code>develop</code> since you started your branch, or if you have only changed files that no-one else has changed, then the merge might succeed on the first attempt. It's still a good idea to check that the project is in a good state (for example, compile it again) just in case, and fix anything that's broken on the develop branch.</p>
 <p>If the merge fails with a conflict, then you need to manually edit all the conflicted files (git will tell you which ones these are, do <code>git status</code> if you need a reminder) and <code>git commit</code> again.</p>
-<p>The workflow for merging and resolving conflicts is essentially the same as the one from the last session, but since everyone is developing on a separate branch, the only time when you have to deal with a possible merge conflict is when you are merging your changes into develop - your own branches are &quot;private&quot; and you don't have to worry about hitting a conflict if you quickly want to commit and push your changes as the last thing you do before going home at the end of a long day's work.</p>
+<p>The workflow for merging and resolving conflicts is essentially the same as the one from the last session, but since everyone is developing on a separate branch, the only time when you have to deal with a possible merge conflict is when you are merging your changes into develop - your own branches are "private" and you don't have to worry about hitting a conflict if you quickly want to commit and push your changes as the last thing you do before going home at the end of a long day's work.</p>
 <h2 id="pull-requests"><a class="header" href="#pull-requests">Pull requests</a></h2>
 <p>Pull requests are not a feature of the git software itself, but of the online providers. They let a team discuss and review a commit before merging it into a shared branch such as develop or main. Depending on the provider, branches can also be protected or assigned owners so that only the branch owner or developers with the right permissions can commit on certain branches.</p>
 <p>The procedure for merging with a pull request on github, which you should try out:</p>

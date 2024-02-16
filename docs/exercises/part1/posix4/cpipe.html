@@ -199,8 +199,8 @@
 #include &lt;errno.h&gt;
 #include &lt;string.h&gt;
 
-char* command = &quot;/bin/echo&quot;;
-char* argv[] = {&quot;echo&quot;, &quot;Hello&quot;, NULL};
+char* command = "/bin/echo";
+char* argv[] = {"echo", "Hello", NULL};
 char* envp[] = {NULL};
 /* both argv and envp must be NULL-terminated arrays,
    also argv[0] has to be the program name (busybox cares about this)
@@ -209,7 +209,7 @@ char* envp[] = {NULL};
 int main() {
     int ok = fork();
     if (ok &lt; 0) {
-        printf(&quot;fork() failed: %s\n&quot;, strerror(errno));
+        printf("fork() failed: %s\n", strerror(errno));
         return 1;
     }
     /* ok, fork succeeded and the following code will now be running TWICE */
@@ -217,14 +217,14 @@ int main() {
         /* This is the child process */
         ok = execve(command, argv, envp);
         if (ok &lt; 0) {
-            printf(&quot;execve() failed: %s\n&quot;, strerror(errno));
+            printf("execve() failed: %s\n", strerror(errno));
             return 1;
         }
         /* we will never get here as if execve succeeded, we're gone */
     }
     
     /* if we got here, then we're the parent process */
-    printf(&quot;Launched a child process, it has pid %u.\n&quot;, ok);
+    printf("Launched a child process, it has pid %u.\n", ok);
     
     return 0;
 }
@@ -244,7 +244,7 @@ fd Writer(Pipe p) { return p[1]; }
 
 void check(int ok, char *where) {
   if (ok &lt; 0) {
-    fprintf(stderr, &quot;Error in %s: %s\n&quot;, where, strerror(errno));
+    fprintf(stderr, "Error in %s: %s\n", where, strerror(errno));
     exit(1);
   }
 }
@@ -252,10 +252,10 @@ void check(int ok, char *where) {
 int main() {
   int ok;
   Pipe p;
-  ok = pipe(p);           check(ok, &quot;opening pipe&quot;);
-  ok = close(Reader(p));  check(ok, &quot;closing reader&quot;);
+  ok = pipe(p);           check(ok, "opening pipe");
+  ok = close(Reader(p));  check(ok, "closing reader");
   /* here we can write to p */
-  ok = close(Writer(p));  check(ok, &quot;closing writer&quot;);
+  ok = close(Writer(p));  check(ok, "closing writer");
   return 0;
 }
 </code></pre>
@@ -267,22 +267,22 @@ int main() {
 <li>In main, we declare a variable of type <code>Pipe</code> and open it with <code>pipe()</code>. Like all POSIX functions this returns a negative number in case of errors, and we have to check for this: it's not safe to use the pipe if it was not opened correctly. The pipe does not need a name as it's local to our program, but you can print the value of the integers if you like, it should be something like (3, 4) as 0-2 are already in use for standard input, output and error.</li>
 <li>In this example we want to use a pipe for writing to, so we close the reading end first. This is important when sharing a pipe between two processes: only one process should have each end open. (There are scenarios where you might want both ends of a pipe open in the same process, but they are more advanced than what we are doing here.)</li>
 <li>In the line where the comment is, we can write to the pipe - you will see how soon.</li>
-<li>Finally, before returning, we close the writing end of the pipe to ensure the process on the other end knows we're done: if we don't do this, they could get a &quot;broken pipe&quot; (EPIPE) error.</li>
+<li>Finally, before returning, we close the writing end of the pipe to ensure the process on the other end knows we're done: if we don't do this, they could get a "broken pipe" (EPIPE) error.</li>
 </ul>
 <p>We still need to learn how to write to a file descriptor, though. And this pipe won't do anything useful until we can connect something to the other end.</p>
 <div class="advanced container">
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
 <p>If you look at the pattern for checking return values</p>
-<pre><code>ok = pipe(p); check(ok, &quot;create pipe&quot;);
+<pre><code>ok = pipe(p); check(ok, "create pipe");
 </code></pre>
 <p>you might be wondering why we don't just combine it into one:</p>
-<pre><code>check(pipe(p), &quot;create pipe&quot;);
+<pre><code>check(pipe(p), "create pipe");
 </code></pre>
 <p>This is absolutely fine except if we want to debug the function being called, as it makes using the debugger's step features more complicated (more on this in future weeks of this unit). It's just a personal preference of mine not to combine the two.</p>
 <p>Of course, if you want to use line-based features of debuggers like breakpoints a lot, you might even want to put the check on a separate line.</p>
-<p>You might have wondered if the problem with the all-in-one pattern is that it &quot;swallows&quot; the return value. That is not a problem: we could adapt <code>check</code> to return its first parameter as the return value if it's not an error, then where you do need the value you can do things like</p>
-<pre><code class="language-C">int pid = check(fork(), &quot;trying to fork&quot;);
+<p>You might have wondered if the problem with the all-in-one pattern is that it "swallows" the return value. That is not a problem: we could adapt <code>check</code> to return its first parameter as the return value if it's not an error, then where you do need the value you can do things like</p>
+<pre><code class="language-C">int pid = check(fork(), "trying to fork");
 if (pid &gt; 0 ) { /* parent */ }
 else { /* child */ }
 </code></pre>
@@ -290,7 +290,7 @@ else { /* child */ }
 <pre><code class="language-C">#define check(ok, where) _check(ok, where, __FILE__, __LINE__)
 int _check(int ok, char *where, char *file, int line) {
   if (ok &lt; 0) {
-    fprintf(stderr, &quot;Error at %s on line %i while %s: %s\n&quot;, 
+    fprintf(stderr, "Error at %s on line %i while %s: %s\n", 
             file, line, where, strerror(errno));
     exit(1);
   }

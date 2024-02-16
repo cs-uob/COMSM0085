@@ -174,7 +174,7 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="dynamic-structure-part-1"><a class="header" href="#dynamic-structure-part-1">Dynamic structure, part 1</a></h2>
-<p>When you point your browser at <code>app.html</code>, the &quot;Initialising...&quot; string appears
+<p>When you point your browser at <code>app.html</code>, the "Initialising..." string appears
 in the left of the screen (the <code>&lt;nav&gt;</code>) only for a fraction of a second. This is
 the time it takes to load and execute the code in <code>script.js</code>, which provides
 the dynamic behaviour of the app.</p>
@@ -208,35 +208,35 @@ on any Linux machine we may run</p>
 (<code>json_pp</code>), and display it in scrollable format (<code>less</code>). The result looks a
 lot like this:</p>
 <pre><code class="language-javascript">{
-   &quot;links&quot; : ...,
-   &quot;records&quot; : [
+   "links" : ...,
+   "records" : [
       {
-         &quot;links&quot; : ...,
-         &quot;record&quot; : {
-            &quot;fields&quot; : {
-               &quot;name&quot; : &quot;Eastville&quot;,
-               &quot;ward_id&quot; : &quot;E05010897&quot;
+         "links" : ...,
+         "record" : {
+            "fields" : {
+               "name" : "Eastville",
+               "ward_id" : "E05010897"
             },
-            &quot;id&quot; : &quot;996b607b4c31e6aca6a7614bd02ea18a4c14c525&quot;,
-            &quot;size&quot; : 40500,
-            &quot;timestamp&quot; : &quot;2020-09-03T10:02:58.597Z&quot;
+            "id" : "996b607b4c31e6aca6a7614bd02ea18a4c14c525",
+            "size" : 40500,
+            "timestamp" : "2020-09-03T10:02:58.597Z"
          }
       },
       {
-         &quot;links&quot; : ...,
-         &quot;record&quot; : {
-            &quot;fields&quot; : {
-               &quot;name&quot; : &quot;Southville&quot;,
-               &quot;ward_id&quot; : &quot;E05010914&quot;
+         "links" : ...,
+         "record" : {
+            "fields" : {
+               "name" : "Southville",
+               "ward_id" : "E05010914"
             },
-            &quot;id&quot; : &quot;bc2f85ccc34ca606a2fe6473491b5fc50fd4e0d1&quot;,
-            &quot;size&quot; : 25544,
-            &quot;timestamp&quot; : &quot;2020-09-03T10:02:58.597Z&quot;
+            "id" : "bc2f85ccc34ca606a2fe6473491b5fc50fd4e0d1",
+            "size" : 25544,
+            "timestamp" : "2020-09-03T10:02:58.597Z"
          }
       },
       ...
    ],
-   &quot;total_count&quot; : 34
+   "total_count" : 34
 }
 </code></pre>
 <p>I have abbreviated the <code>links</code> fields, which add a lot of noise to the output.
@@ -287,13 +287,13 @@ passed in two query parameters:</p>
 
   wards.records.forEach(w =&gt; {
       const [id, name] = [w.record.fields.ward_id, w.record.fields.name];
-      const b = document.createElement(&quot;button&quot;);
+      const b = document.createElement("button");
       b.textContent = name;
       b.onclick = displayData(id, name);
       buttons.appendChild(b);
   });
   
-  let nav = document.getElementById(&quot;nav&quot;);
+  let nav = document.getElementById("nav");
   nav.textContent = '';
   nav.append(buttons);
 }
@@ -332,7 +332,7 @@ these buttons and their names into the app. This developer could well be right.<
 <p><em>Exercises.</em></p>
 <ol>
 <li>Modify the code above so that each button is on a separate line.</li>
-<li>Modify the code above so that buttons appear in alphabetical order. </li>
+<li>Modify the code above so that buttons appear in alphabetical order.</li>
 <li>The line
 <pre><code class="language-javascript">b.onclick = displayData(id, name);
 </code></pre>

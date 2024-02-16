@@ -184,17 +184,17 @@
 </ul>
 <p>If you are on Linux, you can of course also install the programs from your distribution's repository. Vagrant's developers actually recommend against this because they claim that some distributions package outdated versions, but it is your choice.</p>
 <h2 id="configuring-a-box"><a class="header" href="#configuring-a-box">Configuring a box</a></h2>
-<p>Next, you are going to configure a virtual machine using <a href="https://www.debian.org/">Debian linux</a>, a Linux distribution that we will be using in this unit. </p>
+<p>Next, you are going to configure a virtual machine using <a href="https://www.debian.org/">Debian linux</a>, a Linux distribution that we will be using in this unit.</p>
 <ul>
 <li>Create an empty folder somewhere.</li>
 <li>In that folder, create a file called Vagrantfile (capitalised, and with no extension) and add the following lines to it - or just download the file from <a href="../resources/Vagrantfile">here</a>:</li>
 </ul>
-<pre><code class="language-ruby">Vagrant.configure(&quot;2&quot;) do |config|
-  config.vm.box = &quot;generic/debian12&quot;
-  config.vm.synced_folder &quot;.&quot;, &quot;/vagrant&quot;
+<pre><code class="language-ruby">Vagrant.configure("2") do |config|
+  config.vm.box = "generic/debian12"
+  config.vm.synced_folder ".", "/vagrant"
 
-  config.vm.provision &quot;shell&quot;, inline: &lt;&lt;-SHELL
-    echo &quot;Post-provision installs go here&quot;
+  config.vm.provision "shell", inline: &lt;&lt;-SHELL
+    echo "Post-provision installs go here"
   SHELL
 end
 </code></pre>
@@ -203,7 +203,7 @@ end
 <li><code>config.vm.box</code> selects the virtual machine image, or box in vagrant-speak, to use. You can see a list of available ones at <a href="https://app.vagrantup.com/boxes/search">https://app.vagrantup.com/boxes/search</a>.</li>
 <li><code>config.vm.synced_folder</code> sets up a shared folder between the guest (virtual machine) and host (your machine).</li>
 <li>The <code>config.vm.provision</code> runs a provisioning command when the box is first downloaded and installed. These commands run as root on the virtual machine, and in this case we are using the <code>apt</code> package manager (we will talk about this later on) to install the packages <code>git</code>.</li>
-<li>The <code>&lt;&lt;-SHELL</code> construction is called a &quot;here document&quot;, and is a way in some programming languages of writing multi-line strings. It tells ruby to treat everything until the closing keyword SHELL (which is arbitrary) as a string, which can contain several lines.</li>
+<li>The <code>&lt;&lt;-SHELL</code> construction is called a "here document", and is a way in some programming languages of writing multi-line strings. It tells ruby to treat everything until the closing keyword SHELL (which is arbitrary) as a string, which can contain several lines.</li>
 </ul>
 <h2 id="running-vagrant"><a class="header" href="#running-vagrant">Running vagrant</a></h2>
 <ul>

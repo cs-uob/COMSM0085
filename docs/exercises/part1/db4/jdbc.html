@@ -203,7 +203,7 @@ JDBC (Java DataBase Connectivity) is a low-level, not particularly object-orient
     // do things with r here
 }
 </code></pre>
-<p>As long as the resource implements <code>AutoCloseable</code> (it's a syntax error to use this pattern otherwise), this pattern guarantees that </p>
+<p>As long as the resource implements <code>AutoCloseable</code> (it's a syntax error to use this pattern otherwise), this pattern guarantees that</p>
 <ol>
 <li>If the initialisation statement (in the round brackets) fails, either by returning null or throwing an exception, then the block will never be executed.</li>
 <li>If the initialisation succeeds, then when the block exits, <code>r.close()</code> will be called exactly once, whether the block reached its end, exited early (e.g. return statement) or threw an exception.</li>
@@ -224,7 +224,7 @@ JDBC (Java DataBase Connectivity) is a low-level, not particularly object-orient
     // handle exception, for example by wrapping in RuntimeException
 }
 </code></pre>
-<p>The connection string is a string containing a URL such as </p>
+<p>The connection string is a string containing a URL such as</p>
 <pre><code>jdbc:mariadb://localhost:3306/DATABASE?user=USER&amp;localSocket=/var/run/mysqld/mysqld.sock
 </code></pre>
 <p>When you try and open a connection, Java looks for a driver on your classpath that implements the addressing scheme (e.g. <code>mariadb</code>) that you have requested. This makes setting up the classpath a bit tricky, but we have maven to manage that for us.</p>
@@ -325,13 +325,13 @@ skip-networking
 <h2 id="sql-from-java"><a class="header" href="#sql-from-java">SQL from Java</a></h2>
 <p>In the <code>Example.java</code> class, we can see an example of JDBC in action:</p>
 <pre><code class="language-java">private void readData(Connection c) {
-    String SQL = &quot;SELECT id, name FROM Party&quot;;
+    String SQL = "SELECT id, name FROM Party";
     try (PreparedStatement s = c.prepareStatement(SQL)) {
         ResultSet r = s.executeQuery();
         while (r.next()) {
-            int id = r.getInt(&quot;id&quot;);
-            String name = r.getString(&quot;name&quot;);
-            System.out.println(&quot;Party #&quot; + id + &quot; is: &quot; + name);
+            int id = r.getInt("id");
+            String name = r.getString("name");
+            System.out.println("Party #" + id + " is: " + name);
         }
     } catch (SQLException e) {
         throw new RuntimeException(e);
@@ -341,7 +341,7 @@ skip-networking
 <ul>
 <li>The SQL command goes in a string. If we wanted to add parameters for a prepared statement, we put question marks here.</li>
 <li>We create a <code>PreparedStatement</code> in another try-with-resources block: we need to close statements as soon as we are done with them, but it's ok for a program to keep the database connection open for as long as it runs.</li>
-<li>In this case, we have no parameters to pass, so we execute the query to get a <code>ResultSet</code>, a &quot;cursor&quot; (a kind of iterator) on the results. (A <code>ResultSet</code> is also a resource, but it closes automatically when its statement closes, so we don't have to handle this ourselves.)</li>
+<li>In this case, we have no parameters to pass, so we execute the query to get a <code>ResultSet</code>, a "cursor" (a kind of iterator) on the results. (A <code>ResultSet</code> is also a resource, but it closes automatically when its statement closes, so we don't have to handle this ourselves.)</li>
 <li>We iterate over the rows of the result and do something with them, in this case printing to standard output.</li>
 <li>All these operations can throw an <code>SQLException</code>, so we catch it at the end, and because this is just a small example program, we handle it by throwing an exception to terminate the whole program.</li>
 </ul>
@@ -381,21 +381,21 @@ So you have to fall back to some more C-like patterns for using the database.</p
 </code></pre>
 <p>The <code>do-while</code> loop lets us write a block that is called exactly once for every row, while still letting us do something special with the first row without needing an ugly <code>boolean isFirstRow</code> flag or something like that.</p>
 <p>Inside a result set, as long as we're sure we're on a row, we can read values from columns by declaring their name and type:</p>
-<pre><code class="language-java">int id = r.getInt(&quot;id&quot;);
+<pre><code class="language-java">int id = r.getInt("id");
 </code></pre>
 <p>This tells JDBC that there is a column named <code>id</code> of type <code>int</code>, and to get its value. (You get an exception if the name or type are wrong.) Other methods include <code>getString</code>, <code>getDouble</code> etc.</p>
 <p>For this reason, in your SQL statement, you want to be clear about the names and order of the colums you're fetching:</p>
 <ul>
-<li>If a column is something more complicated than a field, then give it an alias, e.g. <code>SELECT COUNT(1) AS c</code> then you can do <code>getInt(&quot;c&quot;)</code>.</li>
+<li>If a column is something more complicated than a field, then give it an alias, e.g. <code>SELECT COUNT(1) AS c</code> then you can do <code>getInt("c")</code>.</li>
 <li>Never do <code>SELECT *</code> from JDBC, always list exactly the columns you need. This both fixes the order you get them in, and is more efficient if you don't need all of them.</li>
 </ul>
 <h2 id="exercise-1"><a class="header" href="#exercise-1">Exercise 1</a></h2>
-<p>Modify the example program so it takes a party ID as a parameter, and displays only that party's name, or the string &quot;No party with this ID.&quot; if there isn't one in the database.</p>
+<p>Modify the example program so it takes a party ID as a parameter, and displays only that party's name, or the string "No party with this ID." if there isn't one in the database.</p>
 <p>To do this you will have to change the following:</p>
 <ul>
 <li><code>main</code> reads a parameter off <code>args</code>, or prints an error message if you didn't pass an argument.</li>
 <li><code>main</code> passes the parameter as an extra int argument to <code>readData</code>.</li>
-<li>Set the parameter as a question mark in the prepared statement, and then bind the parameter to the statement. </li>
+<li>Set the parameter as a question mark in the prepared statement, and then bind the parameter to the statement.</li>
 </ul>
 <p>The command for binding a parameter is <code>s.setInt(pos, value)</code> where <code>pos</code> is the index of the parameter (question mark) in the string, <em>starting the count at 1 not 0</em>. So you simply want <code>s.setInt(1, value)</code>. Of course there are also <code>setString</code> etc. and these methods on the statement take a second parameter of the appropriate type.</p>
 <p>The easiest way to run your command with a parameter is to build a jar with dependencies and then to call <code>java -cp JARFILE MAINCLASS PARAMETERS</code>, any further command line parameters to Java after the main class get passed as arguments to this class.</p>

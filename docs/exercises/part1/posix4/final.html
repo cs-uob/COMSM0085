@@ -194,11 +194,11 @@
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
 <p>One way of using <code>dup2</code> is to redirect your own standard output to a file, then any calls to <code>printf</code> or other functions from then on should end up in the file. If you later on want to restore the original standard output, you can first call <code>int dup(int fd)</code> which makes a copy of the file descriptor - for example, if a file is open on file descriptor 3, then</p>
-<pre><code class="language-C">saved = dup(1);      check(saved, &quot;duplicating standard output&quot;);
-ok = dup2(3, 1);     check(ok, &quot;redirecting standard output&quot;);
+<pre><code class="language-C">saved = dup(1);      check(saved, "duplicating standard output");
+ok = dup2(3, 1);     check(ok, "redirecting standard output");
 /* any printf etc here will go to the file on fd 3 */
-ok = dup2(saved, 1); check(ok, &quot;restoring standard output&quot;);
-ok = close(saved);   check(ok, &quot;closing duplicate&quot;);
+ok = dup2(saved, 1); check(ok, "restoring standard output");
+ok = close(saved);   check(ok, "closing duplicate");
 </code></pre>
 <p>shows how you can restore the original standard output by making a copy. If no other file descriptors are open, then <code>saved</code> will likely have a value of 4, as file descriptors are just numbers to communicate with the kernel and the kernel usually gives you the next consecutive unused one when you open or duplicate a file descriptor.</p>
 </div>

@@ -180,21 +180,21 @@ styled by <code>style.css</code>.</p>
 <p>The main html file <code>app.html</code> is surprisingly unassuming: it contains almost
 nothing of substance! In fact, we can quote the complete file here:</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
+&lt;html lang="en"&gt;
   &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;meta charset="utf-8" /&gt;
     &lt;title&gt;The City of Bristol&lt;/title&gt;
-    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; /&gt;
-    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"&gt;
+    &lt;link rel="stylesheet" href="style.css" /&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;header&gt;&lt;h1&gt;The City of Bristol&lt;/h1&gt;&lt;/header&gt;
-    &lt;nav id=&quot;nav&quot;&gt;
-      &lt;div class=&quot;initial&quot;&gt;Initialising...&lt;/div&gt;
+    &lt;nav id="nav"&gt;
+      &lt;div class="initial"&gt;Initialising...&lt;/div&gt;
     &lt;/nav&gt;
-    &lt;main id=&quot;dataPane&quot;&gt;
-      &lt;div class=&quot;initial&quot;&gt;Please select one of the wards on the left to view more data about it.&lt;/div&gt;
+    &lt;main id="dataPane"&gt;
+      &lt;div class="initial"&gt;Please select one of the wards on the left to view more data about it.&lt;/div&gt;
     &lt;/main&gt;
     &lt;footer&gt;created by G. A. Kavvos&lt;/footer&gt;
   &lt;/body&gt;
@@ -212,7 +212,7 @@ will be retrieved from the same location as the page that is being loaded.</li>
 <header><span class="advanced-title"></span></header>
 <div class="container-content">
 <p>If you look at introductory content on JavaScript on the internet, you will find many examples where JavaScript is included in a so-called <em>inline</em> style. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#examples">For example</a>, you might see code of the form</p>
-<pre><code class="language-javascript">&lt;script&gt;alert(&quot;Hello World!&quot;);&lt;/script&gt;
+<pre><code class="language-javascript">&lt;script&gt;alert("Hello World!");&lt;/script&gt;
 </code></pre>
 <p>which embeds a fragment of JavaScript directly in the HTML file, instead of
 putting it in a separate <code>.js</code> file, and including it using an <code>src=</code> attribute
@@ -223,12 +223,12 @@ like we did above.</p>
 <ul>
 <li>The <code>&lt;body&gt;</code> describes a document with four sections:
 <ul>
-<li>There is a <code>&lt;header&gt;</code> with a big heading reading &quot;The City of Bristol&quot;.</li>
+<li>There is a <code>&lt;header&gt;</code> with a big heading reading "The City of Bristol".</li>
 <li>There is a <code>&lt;nav&gt;</code> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav">navigation
 section</a>,
 with a single <code>&lt;div&gt;</code> (i.e. a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div">generic block
 container</a>)
-with placeholder text saying &quot;Initialising...&quot;.</li>
+with placeholder text saying "Initialising...".</li>
 <li>Then then there is a <code>&lt;main&gt;</code> section, which contains a single <code>&lt;div&gt;</code> with
 some instructions for using the app.</li>
 <li>Finally, there is a <code>&lt;footer&gt;</code> with the author's name in it.</li>
@@ -265,7 +265,7 @@ body {
   grid-template-columns: 200px 1fr;
 }
 </code></pre>
-<p>which tell the browser to </p>
+<p>which tell the browser to</p>
 <ul>
 <li>use the Libre Baskerville font (loaded in the <code>&lt;head&gt;</code>) throughout the entire document, and</li>
 <li>lay out the <code>&lt;body&gt;</code> of the document using CSS grids.</li>
