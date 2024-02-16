@@ -17,7 +17,7 @@ on the stack.
 Terminate the program by closing standard input (e.g. Control+D on a fresh line on the
 terminal.)
 
-Compile with "-l readline". You might need to "sudo apk add readline-dev" first.
+Compile with "-l readline". You might need to "sudo apt-get install libreadline-dev" first.
 
 For example,
 
