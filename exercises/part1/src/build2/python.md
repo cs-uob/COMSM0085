@@ -5,7 +5,7 @@ The Python programming language comes with a package manager called `pip`.  Find
 We are going to practice installing the [mistletoe](https://github.com/miyuchina/mistletoe) module, which renders markdown into HTML.
 
   - In python, try the line `import mistletoe` and notice that you get `ModuleNotFoundError: No module named 'mistletoe'`. 
-  - Quit python again (Control-D) and try `sudo pip3 install mistletoe`. You should get a success message (and possibly a warning, explained below).
+  - Quit python again (Control-D) and try `pip3 install --user mistletoe`. You should get a success message (and possibly a warning, explained below).
   - Open python again and repeat `import mistletoe`. This produces no output, so the module was loaded.
 
 Create a small sample markdown file as follows, called `hello.md` for example:
