@@ -8,7 +8,7 @@ The videos for this activity are:
 
 | Video | Length | Slides |
 |-------|-------:|--------|
-| [JDBC](https://web.microsoftstream.com/video/9c046863-65f4-44a2-91bb-0bf1023c78b4) | 25 minutes | [Slides](https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EZqSbPzVyMBOjLk7wVVV4ecBdFIGcv74B7VzLqKrpT0InQ?e=aRgoAl) |
+| [JDBC](https://web.microsoftstream.com/video/9c046863-65f4-44a2-91bb-0bf1023c78b4) | 25 minutes | [slides](https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EZqSbPzVyMBOjLk7wVVV4ecBcg_JSPIYMPT2AkTC0npttw?e=HlOAmI) |
 
 ## Exercises
 
