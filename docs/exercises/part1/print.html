@@ -1174,7 +1174,7 @@ Switched to a new branch 'develop'
 <p>Create a new user with <code>sudo adduser NAME</code> - I'm going to be using <code>brian</code> as an example name in these notes. When it asks for a password, you can just use <code>brian</code> or something; it will complain about the password being too short but it will create the user anyway. You can skip the GECOS information asking for a full name and phone number---it's just to help an admin contact you if needed.</p>
 <p>Check the user and group files with <code>tail /etc/passwd</code> and <code>tail /etc/group</code> to check that the new user has been created - <code>tail</code> displays the last 10 lines of a file by default; <code>tail -n N FILE</code> would display the last N lines. Your new user <code>brian</code> (or whatever you called them) should appear in both files. Also check with <code>ls -l /home</code> that the home directory for Brian exists and is set to the correct user and group.</p>
 <p>Time to change user: <code>su brian</code> and enter the password. Notice that the prompt has changed to <code>brian@debian12:/home/vagrant$</code> (at least if you started off in that folder). So the user has changed, and because <code>/home/vagrant</code> is no longer the current user's home directory, it gets written out in full. Run <code>cd</code> to go home followed by <code>pwd</code> and check that you are now in <code>/home/brian</code> or whatever you called your new user.</p>
-<p>Next, create a user <code>nigel</code> (or some other name) add both your two new users, but not <code>vagrant</code>, to the group <code>users</code> (which already exists) using the command <code>sudo addgroup USERNAME GROUPNAME</code>, where group and username are changed accordingly. Note: <code>brian</code> cannot use sudo, so you have to exit his terminal to get back to one running as vagrant for this.</p>
+<p>Next, create a user <code>nigel</code> (or some other name) add both your two new users, but not <code>vagrant</code>, to the group <code>users</code> (which already exists) using the command <code>sudo usermod -aG GROUPNAME USERNAME</code>, where group and username are changed accordingly. Note: <code>brian</code> cannot use sudo, so you have to exit his terminal to get back to one running as vagrant for this.</p>
 <h2 id="explore-file-permissions"><a class="header" href="#explore-file-permissions">Explore file permissions</a></h2>
 <p>As user <code>brian</code> (or whatever you called your first new user), set up your home directory using what you learnt in the videos so that</p>
 <ul>
@@ -1355,7 +1355,7 @@ In the video for this activity you have only seen a very brief introduction.</p>
 <p>We are going to practice installing the <a href="https://github.com/miyuchina/mistletoe">mistletoe</a> module, which renders markdown into HTML.</p>
 <ul>
 <li>In python, try the line <code>import mistletoe</code> and notice that you get <code>ModuleNotFoundError: No module named 'mistletoe'</code>.</li>
-<li>Quit python again (Control-D) and try <code>sudo pip3 install mistletoe</code>. You should get a success message (and possibly a warning, explained below).</li>
+<li>Quit python again (Control-D) and try <code>pip3 install --user mistletoe</code>. You should get a success message (and possibly a warning, explained below).</li>
 <li>Open python again and repeat <code>import mistletoe</code>. This produces no output, so the module was loaded.</li>
 </ul>
 <p>Create a small sample markdown file as follows, called <code>hello.md</code> for example:</p>
@@ -2725,7 +2725,7 @@ INNER JOIN Ward ON Candidate.ward = Ward.id
 <h2 id="videos-8"><a class="header" href="#videos-8">Videos</a></h2>
 <p>The videos for this activity are:</p>
 <div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
-<tr><td><a href="https://web.microsoftstream.com/video/455af5a1-bcca-4378-a0e1-6b52891b20a4">Intermediate SQL</a></td><td style="text-align: right">22 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EWv9-8AjCwpBpO0V9einLsEBczmpJKUD3UsrFBzYbe_i8A?e=i3TGr0">Slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/455af5a1-bcca-4378-a0e1-6b52891b20a4">Intermediate SQL</a></td><td style="text-align: right">22 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EWv9-8AjCwpBpO0V9einLsEBSugn1YIDSV_18mknho_Vvw?e=WYFsU8">slides</a></td></tr>
 </tbody></table>
 </div>
 <h2 id="exercises-10"><a class="header" href="#exercises-10">Exercises</a></h2>
@@ -2777,7 +2777,7 @@ Where an identifier is given in the question you may use it, e.g. when I say "th
 <h2 id="videos-9"><a class="header" href="#videos-9">Videos</a></h2>
 <p>The videos for this activity are:</p>
 <div class="table-wrapper"><table><thead><tr><th>Video</th><th style="text-align: right">Length</th><th>Slides</th></tr></thead><tbody>
-<tr><td><a href="https://web.microsoftstream.com/video/9c046863-65f4-44a2-91bb-0bf1023c78b4">JDBC</a></td><td style="text-align: right">25 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EZqSbPzVyMBOjLk7wVVV4ecBdFIGcv74B7VzLqKrpT0InQ?e=aRgoAl">Slides</a></td></tr>
+<tr><td><a href="https://web.microsoftstream.com/video/9c046863-65f4-44a2-91bb-0bf1023c78b4">JDBC</a></td><td style="text-align: right">25 minutes</td><td><a href="https://uob-my.sharepoint.com/:b:/g/personal/me17847_bristol_ac_uk/EZqSbPzVyMBOjLk7wVVV4ecBcg_JSPIYMPT2AkTC0npttw?e=HlOAmI">slides</a></td></tr>
 </tbody></table>
 </div>
 <h2 id="exercises-11"><a class="header" href="#exercises-11">Exercises</a></h2>
