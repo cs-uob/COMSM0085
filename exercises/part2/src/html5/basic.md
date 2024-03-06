@@ -2,6 +2,20 @@
 
 For your first exercise, create a page called `index.html` and add the HTML5 template code to it.
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+   <meta charset="utf-8" />
+   <title>A web page</title>
+ </head>
+ <body>
+    <h1>An example web-page</h1>
+    <p>A paragraph of text here, perhaps with <a href='./another_page/'>a link</a></p>
+ </body>
+</html>
+```
+
 The name `index.html` is a convention: most web servers, if you give an URL that looks like a "folder" e.g. `example.com/pages` (or `example.com/pages/` with slash on the end) will serve the file `index.html` from within that folder, if there is one.
 
 ## Create a page
