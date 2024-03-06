@@ -178,7 +178,7 @@
 <p>We are going to practice installing the <a href="https://github.com/miyuchina/mistletoe">mistletoe</a> module, which renders markdown into HTML.</p>
 <ul>
 <li>In python, try the line <code>import mistletoe</code> and notice that you get <code>ModuleNotFoundError: No module named 'mistletoe'</code>.</li>
-<li>Quit python again (Control-D) and try <code>sudo pip3 install mistletoe</code>. You should get a success message (and possibly a warning, explained below).</li>
+<li>Quit python again (Control-D) and try <code>pip3 install --user mistletoe</code>. You should get a success message (and possibly a warning, explained below).</li>
 <li>Open python again and repeat <code>import mistletoe</code>. This produces no output, so the module was loaded.</li>
 </ul>
 <p>Create a small sample markdown file as follows, called <code>hello.md</code> for example:</p>
