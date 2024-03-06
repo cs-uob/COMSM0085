@@ -6,3 +6,4 @@
 + [03: Shellscripting and Build Tools](slides/03-shell.pdf)
 + [04: Debugging](slides/04-debugging.pdf)
 + [05: Databases](slides/05-sql.pdf)
++ [06: HTTP & HTML](slides/06-web.md)
