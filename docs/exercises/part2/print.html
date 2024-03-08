@@ -293,7 +293,7 @@ Hello over HTTP!
 </ul>
 <p>This particular server is written so that if you try and access a folder instead of a file, for example just <code>localhost:8000</code> which has the implicit path <code>/</code> which maps to the <code>web</code> folder, then it shows a list of files in this folder as clickable links.</p>
 <p>Pay particular attention to how the <code>Content-type</code> header is sent depending on the file extension. From the browser's point of view, that header is what counts: if you send a file with <code>.html</code> extension but set <code>Content-type: text/plain</code>, the browser would not interpret it as HTML. This makes it possible to serve URLs with no "extension" at all like <code>/students</code> for a database application, and still have the browser understand what to do.</p>
-<p>From the server's point of view, this server (like most other servers that simply serve files from a folder) has chosen to use a file's extension to determine what <code>Content-type</code> to send; this is implemented in the <code>default_extension_map</code> starting at line 320 of the source file.</p>
+<p>From the server's point of view, this server (like most other servers that simply serve files from a folder) has chosen to use a file's extension to determine what <code>Content-type</code> to send; this is implemented in the <code>default_extension_map</code> starting at line 333 of the source file.</p>
 <p>You can try this out for yourself if you want: make a HTML file called <code>one.html5</code> in the web directory and access it with the browser. (<code>.html5</code> is not an official extension, it's something I just made up. The correct one to use for proper websites is <code>.html</code>.) The server won't send a <code>Content-type</code> header at all, since it doesn't know this extension, so the browser will either display it as a plain text file or download the file instead of showing it.</p>
 <p>Edit the map in the source file and change the entry for <code>text/html</code> to read <code>" html htm html5"</code>, keeping the space at the start of the string. Recompile the server.</p>
 <p>Rename the file to <code>two.html5</code> (I'll explain why in a second) and restart the server and try and open the file in the browser. This time, the file will display as a HTML page.</p>
@@ -362,6 +362,18 @@ do this, it might download lots of files.</p>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="basic-html5"><a class="header" href="#basic-html5">Basic HTML5</a></h1>
 <p>For your first exercise, create a page called <code>index.html</code> and add the HTML5 template code to it.</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+ &lt;head&gt; 
+   &lt;meta charset="utf-8" /&gt;
+   &lt;title&gt;A web page&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+    &lt;h1&gt;An example web-page&lt;/h1&gt;
+    &lt;p&gt;A paragraph of text here, perhaps with &lt;a href='./another_page/'&gt;a link&lt;/a&gt;&lt;/p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
 <p>The name <code>index.html</code> is a convention: most web servers, if you give an URL that looks like a "folder" e.g. <code>example.com/pages</code> (or <code>example.com/pages/</code> with slash on the end) will serve the file <code>index.html</code> from within that folder, if there is one.</p>
 <h2 id="create-a-page"><a class="header" href="#create-a-page">Create a page</a></h2>
 <p>Create content in your page to make it look like the following, then open it in your browser. All body text, but not the bullet list, is contained in paragraph tags.</p>
