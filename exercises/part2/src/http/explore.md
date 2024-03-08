@@ -39,6 +39,12 @@ Open a terminal on the machine where you want to run the server, and download th
 nc -l -p 8000 < http-response
 ```
 
+Or if you are on a Mac:
+
+```
+nc -l 8000 < http-response
+```
+
 This calls the tool `nc` ("network cat") and tells it to listen on TCP port 8000 (`-l -p 8000`), e.g. to run a server there. When a client connects, `nc` will by default read from its standard input and write this to the client, so we use a shell redirect to make it read from a file instead. The file contains some standard HTTP:
 
     HTTP/1.1 200 OK
