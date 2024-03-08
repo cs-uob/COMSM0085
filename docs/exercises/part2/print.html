@@ -263,6 +263,9 @@ outline of the protocol for HTTP, but you can focus on sections 2.1, 2.2, 2.7 an
 <p>Open a terminal on the machine where you want to run the server, and download the file <a href="http/../resources/http-response">http-response</a> to the folder where your terminal is open (for example with <code>wget</code>). Then run the command</p>
 <pre><code>nc -l -p 8000 &lt; http-response
 </code></pre>
+<p>Or if you are on a Mac:</p>
+<pre><code>nc -l 8000 &lt; http-response
+</code></pre>
 <p>This calls the tool <code>nc</code> ("network cat") and tells it to listen on TCP port 8000 (<code>-l -p 8000</code>), e.g. to run a server there. When a client connects, <code>nc</code> will by default read from its standard input and write this to the client, so we use a shell redirect to make it read from a file instead. The file contains some standard HTTP:</p>
 <pre><code>HTTP/1.1 200 OK
 Content-type: text/plain
