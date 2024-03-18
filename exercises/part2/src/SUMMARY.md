@@ -28,10 +28,6 @@
   - [Dynamic structure, part 1](./js/dynamic1.md)
   - [Dynamic structure, part 2](./js/dynamic2.md)
   - [Further exercises](./js/exercises.md)
-- [React](./react/index.md)
-  - [Installing React](./react/installing.md)
-  - [Hello World in React](./react/hello.md)
-  - [Exercise](./react/character.md)
 
 # Week 9: Web Scraping
 - [Web scraping](./scrape/index.md)
