@@ -8,3 +8,4 @@
 + [05: Databases](slides/05-sql.pdf)
 + [06: HTTP & HTML](slides/06-web.md)
 + [07: CSS](slides/07-css.md)
++ [08: JavaScript](slides/08-JavaScript.pdf)
