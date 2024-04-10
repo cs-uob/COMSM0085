@@ -22,12 +22,7 @@
   - [Trees exercise (responsive layout)](./cssgrid/trees.md)
 
 # Week 8: Javascript
-- [JavaScript](./js/index.md)
-  - [A single-page app](./js/single.md)
-  - [Static structure](./js/static.md)
-  - [Dynamic structure, part 1](./js/dynamic1.md)
-  - [Dynamic structure, part 2](./js/dynamic2.md)
-  - [Further exercises](./js/exercises.md)
+- [JavaScript](./js/MyCoolApp.md)
 
 # Week 9: Web Scraping
 - [Web scraping](./scrape/index.md)

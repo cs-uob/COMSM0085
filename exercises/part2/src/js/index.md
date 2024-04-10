@@ -44,8 +44,5 @@ The following references go significantly beyond the curriculum.
 
 ## Exercises
 
- - [A single-page app](./single.md)
- - [Static structure](./static.md)
- - [Dynamic structure, part 1](./dynamic1.md)
- - [Dynamic structure, part 2](./dynamic2.md)
- - [Further exercises](./exercises.md)
+- [My Cool App](./MyCoolApp.md)
+
