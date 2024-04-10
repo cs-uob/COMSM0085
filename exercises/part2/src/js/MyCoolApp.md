@@ -59,8 +59,7 @@ app](https://www.themoviedb.org/settings/api/new/form?type=developer):
   test against
   
 Once the application is created it will give an *API Key* and an
-*API Read Access Token* on the [API
-page]<https://www.themoviedb.org/settings/api>: *make a note of these!*
+*API Read Access Token* on the [API page](https://www.themoviedb.org/settings/api): *make a note of these!*
 
 This API is well-documented, and we can find all relevant information about how to make calls and use API methods in the following link: <https://developer.themoviedb.org/reference/intro/getting-started>
 
