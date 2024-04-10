@@ -22,7 +22,8 @@
   - [Trees exercise (responsive layout)](./cssgrid/trees.md)
 
 # Week 8: Javascript
-- [JavaScript](./js/MyCoolApp.md)
+- [JavaScript](./js/index.md)
+    - [My Cool App](./js/MyCoolApp.md)
 
 # Week 9: Web Scraping
 - [Web scraping](./scrape/index.md)
