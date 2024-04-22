@@ -9,3 +9,4 @@
 + [06: HTTP & HTML](slides/06-web.md)
 + [07: CSS](slides/07-css.md)
 + [08: JavaScript](slides/08-JavaScript.pdf) [(PPTX with videos)](slides/08-JavaScript.pptx)
++ [09: Web scraping](slides/09-webscraping.md)
