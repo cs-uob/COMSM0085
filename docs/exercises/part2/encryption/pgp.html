@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>PGP - Exercises</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">Week 6: The Web</li><li class="chapter-item expanded "><a href="../http/index.html"><strong aria-hidden="true">1.</strong> HTTP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../http/setup.html"><strong aria-hidden="true">1.1.</strong> Setup</a></li><li class="chapter-item expanded "><a href="../http/explore.html"><strong aria-hidden="true">1.2.</strong> Exploring HTTP</a></li><li class="chapter-item expanded "><a href="../http/research.html"><strong aria-hidden="true">1.3.</strong> Online research</a></li><li class="chapter-item expanded "><a href="../http/server.html"><strong aria-hidden="true">1.4.</strong> A server in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../html5/index.html"><strong aria-hidden="true">2.</strong> HTML5</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../html5/basic.html"><strong aria-hidden="true">2.1.</strong> Basic HTML5</a></li><li class="chapter-item expanded "><a href="../html5/templates.html"><strong aria-hidden="true">2.2.</strong> Templates</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 7: CSS</li><li class="chapter-item expanded "><a href="../css/index.html"><strong aria-hidden="true">3.</strong> CSS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../css/text.html"><strong aria-hidden="true">3.1.</strong> Styling Text</a></li><li class="chapter-item expanded "><a href="../css/framework.html"><strong aria-hidden="true">3.2.</strong> Frameworks</a></li></ol></li><li class="chapter-item expanded "><a href="../cssgrid/index.html"><strong aria-hidden="true">4.</strong> CSS grids</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cssgrid/intro.html"><strong aria-hidden="true">4.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../cssgrid/curriculum.html"><strong aria-hidden="true">4.2.</strong> Curriculum exercise</a></li><li class="chapter-item expanded "><a href="../cssgrid/trees.html"><strong aria-hidden="true">4.3.</strong> Trees exercise (responsive layout)</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 8: Javascript</li><li class="chapter-item expanded "><a href="../js/index.html"><strong aria-hidden="true">5.</strong> JavaScript</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../js/MyCoolApp.html"><strong aria-hidden="true">5.1.</strong> My Cool App</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 9: Web Scraping</li><li class="chapter-item expanded "><a href="../scrape/index.html"><strong aria-hidden="true">6.</strong> Web scraping</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../scrape/crawl.html"><strong aria-hidden="true">6.1.</strong> Crawling</a></li><li class="chapter-item expanded "><a href="../scrape/soup.html"><strong aria-hidden="true">6.2.</strong> BeautifulSoup</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 10: Practical Encryption</li><li class="chapter-item expanded "><a href="../encryption/index.html"><strong aria-hidden="true">7.</strong> Practical Encryption</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../encryption/openssl.html"><strong aria-hidden="true">7.1.</strong> OpenSSL</a></li><li class="chapter-item expanded "><a href="../encryption/pgp.html" class="active"><strong aria-hidden="true">7.2.</strong> PGP</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Exercises</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction-to-pgp-encryption"><a class="header" href="#introduction-to-pgp-encryption">Introduction to PGP encryption</a></h1>
+<p>This hands-on lab session aims to introduce you to PGP (Pretty Good Privacy), widely used encryption software for securing email communication and data files. Through practical exercises, you will learn how to generate PGP key pairs, encrypt and decrypt messages, sign and verify files, and exchange encrypted emails. This lab will provide all the essential skills for using PGP for secure communication and data protection.</p>
+<h2 id="objectives"><a class="header" href="#objectives">Objectives:</a></h2>
+<ul>
+<li>Understand the principles of PGP encryption and digital signatures.</li>
+<li>Generate PGP key pairs for encryption and signing.</li>
+<li>Encrypt and decrypt messages using PGP.</li>
+<li>Sign and verify files using PGP digital signatures.</li>
+<li>Exchange encrypted messages with classmates.</li>
+</ul>
+<h2 id="generating-pgp-key-pairs-to-begin-gpg-tool-to-encrypt-all-the-communication-we-want"><a class="header" href="#generating-pgp-key-pairs-to-begin-gpg-tool-to-encrypt-all-the-communication-we-want">Generating PGP Key Pairs to begin GPG tool to encrypt all the communication we want.</a></h2>
+<p>Use your VM to install <code>gnupg</code> with the appropriate command (if not already installed). On Debian that is:</p>
+<pre><code class="language-bash">sudo apt-get install gnupg
+</code></pre>
+<p>First, create a keypair with the command:</p>
+<pre><code class="language-bash">gpg --generate-key
+</code></pre>
+<p><em>Tip: Don’t forget the passphrase, use a strong one!</em></p>
+<p>You can send your public key by exporting it through the GPG application:</p>
+<pre><code class="language-bash">$ gpg --output ~/mypub.key --armor --export youremail@mail.com
+</code></pre>
+<p>You can send the key by email or any method of your choice.</p>
+<h2 id="how-to-import-locally-foreign-public-keys"><a class="header" href="#how-to-import-locally-foreign-public-keys">How to import locally foreign public keys</a></h2>
+<p>We need to accept other users' public keys if we want to communicate with them. When you receive others' public keys, import them using the <code>import</code> parameter.</p>
+<p><em>Tip: There are other options to share your public key, such as using a public key server. Here's how to verify other keys.</em></p>
+<p>While it's generally safe to distribute your public keys, caution should be exercised when obtaining keys from other users. Therefore, it's crucial to verify the identity of others before importing their keys and initiating communication. A quick method to accomplish this is by comparing the fingerprints derived from those keys. Use the following command:</p>
+<pre><code class="language-bash">$ gpg --fingerprint youremail@mail.com
+</code></pre>
+<p>This will result in a more concise string of numbers, making it easier to compare. We can then verify this string either with the individual themselves or with another party who has access to the person in question.</p>
+<h2 id="now-sign-the-keys"><a class="header" href="#now-sign-the-keys">Now sign the keys</a></h2>
+<p>By signing each other's keys, we essentially indicate trust in the keys we possess and confirm the identity of the individual associated with that key.</p>
+<pre><code class="language-bash">$ gpg --sign-key youremail@mail.com
+</code></pre>
+<p>To ensure that the person whose key you're signing benefits from your trusted relationship, send them back the signed key. You can accomplish this by typing:</p>
+<pre><code class="language-bash">$ gpg --output ~/signed.key --export --armor youremail@mail.com
+</code></pre>
+<p>Upon receiving this newly signed key, they can import it, incorporating the signing information you've generated into their GPG database. They can achieve this by using the <code>import</code> parameter.</p>
+<p>Now that you have established a secure channel to communicate with trusted ends, you can send and receive encrypted messages with each other!</p>
+<p>After sharing your key with the other party, you can now send and receive encrypted messages. You can encrypt your messages with the following command:</p>
+<pre><code class="language-bash">$ gpg --encrypt --sign --armor -r other_person@mail.com file_name
+</code></pre>
+<p>This command encrypts the message and signs it with your private key to ensure that the message originates from you. The output will be an encrypted file with the extension <code>.asc</code>. You can use the <code>cat</code> command to view the file.</p>
+<p>Keep in mind that this message will be encrypted using the recipient's public key, making it unreadable to you (Unless you somehow obtain the recipient's private key!).</p>
+<p><em>Tip: You can modify the command above to generate a message only you can read, using your private key. Think about how.</em></p>
+<h2 id="decrypt-received-messages"><a class="header" href="#decrypt-received-messages">Decrypt received messages</a></h2>
+<p>Upon message receipt, you would be able to read with the <code>gpg</code> command and the <code>decrypt</code> parameter.</p>
+<p><em>Tip: In case you have a raw stream text message, paste the message after typing <code>gpg</code> with no arguments. Then press <code>CTRL+D</code> to end the message.</em></p>
+<p>If you've completed all the above steps correctly, you can now communicate securely with different individuals. You can send your public key to multiple recipients and import multiple keys as well. This is an essential step to keep your messages private and protect your sensitive information from eavesdropping attacks.</p>
+<h2 id="import-other-peoples-public-keys-from-a-public-key-server"><a class="header" href="#import-other-peoples-public-keys-from-a-public-key-server">Import other people's public keys from a public key server</a></h2>
+<p>An alternative method to share your GPG keys is through a public keyserver. Anyone can upload a key to a public server, making it accessible to others who may need to communicate securely with you.</p>
+<p>Export your public key using:</p>
+<pre><code class="language-bash">$ gpg --armor --export email
+</code></pre>
+<p>Send your public key to a public server using the <code>--send-key</code> parameter. By default, your key is sent to <a href="https://keys.openpgp.org/">https://keys.openpgp.org/</a>, or you can specify a different key server using the <code>--keyserver</code> option.</p>
+<p>Before importing a user's key, verify its validity with the command <code>gpg --list-sigs user_id</code> where the <code>user_id</code> is for example the email address you want to communicate with. To find a key on a public keyserver, use the <code>--search</code> parameter.</p>
+<p>Import the key you want with the <code>--import</code> parameter. You can once again verify the sender's identity using the  <code>--fingerprint</code> parameter and checking its validity via a second channel. Then, similarly, sign the key obtained from the public key server.</p>
+<h3 id="here-you-can-find-some-key-ids-of-people-you-may-certainly-know"><a class="header" href="#here-you-can-find-some-key-ids-of-people-you-may-certainly-know">Here you can find some key IDs of people you may certainly know:</a></h3>
+<ul>
+<li><strong>413109AF27CBFBF9</strong>,</li>
+<li><strong>9A88F479F6D1BBBA</strong>,</li>
+<li><strong>1C29680110FA7E87</strong></li>
+</ul>
+<p>These keys are on the <a href="http://keyserver.ubuntu.com//">http://keyserver.ubuntu.com//</a> public keyserver.</p>
+<ul>
+<li>Use the <code>gpg</code> command with the <code>--search</code> parameter to find out, for each key, the associated email address or User ID (username).</li>
+<li>Use the <code>gpg</code> command with the <code>--recv-keys</code> parameter if you decide to import a key into your keyring.</li>
+<li>Use the <code>gpg</code> command with the <code>--fingerprint</code> option to verify the authenticity of the keys.</li>
+<li>Now, can you try searching based on the email addresses?</li>
+<li>Can you find Joseph's old expired key?</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../encryption/openssl.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../encryption/openssl.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
