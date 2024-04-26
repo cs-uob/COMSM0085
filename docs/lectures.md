@@ -10,3 +10,4 @@
 + [07: CSS](slides/07-css.md)
 + [08: JavaScript](slides/08-JavaScript.pdf) [(PPTX with videos)](slides/08-JavaScript.pptx)
 + [09: Web scraping](slides/09-webscraping.md)
++ [10: Encryption](slides/10-encryption.pdf)
