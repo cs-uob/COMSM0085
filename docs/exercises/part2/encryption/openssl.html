@@ -1,0 +1,363 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>OpenSSL - Exercises</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../overview.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">Week 6: The Web</li><li class="chapter-item expanded "><a href="../http/index.html"><strong aria-hidden="true">1.</strong> HTTP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../http/setup.html"><strong aria-hidden="true">1.1.</strong> Setup</a></li><li class="chapter-item expanded "><a href="../http/explore.html"><strong aria-hidden="true">1.2.</strong> Exploring HTTP</a></li><li class="chapter-item expanded "><a href="../http/research.html"><strong aria-hidden="true">1.3.</strong> Online research</a></li><li class="chapter-item expanded "><a href="../http/server.html"><strong aria-hidden="true">1.4.</strong> A server in Java</a></li></ol></li><li class="chapter-item expanded "><a href="../html5/index.html"><strong aria-hidden="true">2.</strong> HTML5</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../html5/basic.html"><strong aria-hidden="true">2.1.</strong> Basic HTML5</a></li><li class="chapter-item expanded "><a href="../html5/templates.html"><strong aria-hidden="true">2.2.</strong> Templates</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 7: CSS</li><li class="chapter-item expanded "><a href="../css/index.html"><strong aria-hidden="true">3.</strong> CSS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../css/text.html"><strong aria-hidden="true">3.1.</strong> Styling Text</a></li><li class="chapter-item expanded "><a href="../css/framework.html"><strong aria-hidden="true">3.2.</strong> Frameworks</a></li></ol></li><li class="chapter-item expanded "><a href="../cssgrid/index.html"><strong aria-hidden="true">4.</strong> CSS grids</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cssgrid/intro.html"><strong aria-hidden="true">4.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../cssgrid/curriculum.html"><strong aria-hidden="true">4.2.</strong> Curriculum exercise</a></li><li class="chapter-item expanded "><a href="../cssgrid/trees.html"><strong aria-hidden="true">4.3.</strong> Trees exercise (responsive layout)</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 8: Javascript</li><li class="chapter-item expanded "><a href="../js/index.html"><strong aria-hidden="true">5.</strong> JavaScript</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../js/MyCoolApp.html"><strong aria-hidden="true">5.1.</strong> My Cool App</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 9: Web Scraping</li><li class="chapter-item expanded "><a href="../scrape/index.html"><strong aria-hidden="true">6.</strong> Web scraping</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../scrape/crawl.html"><strong aria-hidden="true">6.1.</strong> Crawling</a></li><li class="chapter-item expanded "><a href="../scrape/soup.html"><strong aria-hidden="true">6.2.</strong> BeautifulSoup</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Week 10: Practical Encryption</li><li class="chapter-item expanded "><a href="../encryption/index.html"><strong aria-hidden="true">7.</strong> Practical Encryption</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../encryption/openssl.html" class="active"><strong aria-hidden="true">7.1.</strong> OpenSSL</a></li><li class="chapter-item expanded "><a href="../encryption/pgp.html"><strong aria-hidden="true">7.2.</strong> PGP</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Exercises</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction-to-openssl-a-hands-on-lab-using-openssl-and-encryption"><a class="header" href="#introduction-to-openssl-a-hands-on-lab-using-openssl-and-encryption">Introduction to OpenSSL: A Hands-On Lab using OpenSSL and encryption</a></h1>
+<p>OpenSSL is a widely used open-source software library that provides cryptographic functions and protocols to secure communications over computer networks. In this lab, we will gain hands-on experience with OpenSSL by performing cryptographic operations. The goal of this lab is to learn how to generate cryptographic keys, create digital certificates, and perform encryption and decryption operations.</p>
+<h1 id="objectives"><a class="header" href="#objectives">Objectives:</a></h1>
+<ul>
+<li>Understand the purpose and role of SSL Certificate Authorities in web security.</li>
+<li>Create a root Certificate Authority (CA) for local development.</li>
+<li>Generate SSL certificates for localhost domains.</li>
+<li>Configure web servers to use the self-signed SSL certificates for HTTPS.</li>
+<li>Test the secure communication with HTTPS-enabled web servers.</li>
+</ul>
+<h3 id="first-we-install-the-openssl-tool"><a class="header" href="#first-we-install-the-openssl-tool">First we install the OpenSSL tool</a></h3>
+<p>Use your VM to install <code>openssl</code> with the appropriate command. On Debian that is:</p>
+<pre><code class="language-.sh">$ sudo apt install openssl 
+</code></pre>
+<p>Alternatively, you could build from the source <a href="https://www.openssl.org/source/">https://www.openssl.org/source/</a> after obtaining and extracting it:</p>
+<pre><code class="language-.sh">$ ./config
+$ make
+$ make test # This step is optional.
+$ sudo make install
+</code></pre>
+<p>Remember that you can add the <code>apt install</code> line to your Vagrantfile to use OpenSSL on Vagrant.</p>
+<h1 id="use-openssl-to-encrypt-files-with-symmetric-encryption"><a class="header" href="#use-openssl-to-encrypt-files-with-symmetric-encryption">Use OpenSSL to encrypt files with symmetric encryption</a></h1>
+<p>Create a text file called <code>mytext.txt</code> and write a message you want to send inside it.
+Then, encrypt this file with a symmetric AES 256 key using OpenSSL:</p>
+<pre><code class="language-bash"> openssl aes256 -in mytext.txt -out mytext.enc
+</code></pre>
+<p>You'll be asked for a passphrase to create the key. The output will be named <code>mytext.enc</code>. Be sure not to forget your passphrase.</p>
+<h4 id="what-is-the-difference-between-your-unencrypted-file-and-the-encrypted-one-try-and-read-an-ecrypted-file"><a class="header" href="#what-is-the-difference-between-your-unencrypted-file-and-the-encrypted-one-try-and-read-an-ecrypted-file">What is the difference between your unencrypted file and the encrypted one? Try and read an ecrypted file.</a></h4>
+<p>Alternatively, you can encode the encrypted file with <code>base64</code>. This option creates a file with ASCII characters instead of a pure binary stream, making it suitable for sending via email. To do this, encrypt again specifying base64 instead of AES 256, and also passing the <code>-a</code> flag.</p>
+<h4 id="is-the-file-size-larger-than-before-if-so-why"><a class="header" href="#is-the-file-size-larger-than-before-if-so-why">Is the file size larger than before? If so, why?</a></h4>
+<p>Now, you can send your encrypted sensitive information to the recipient.</p>
+<h2 id="how-to-decrypt-using-openssl"><a class="header" href="#how-to-decrypt-using-openssl">How to decrypt using OpenSSL</a></h2>
+<p>Use email or another method to swap encrypted files with someone. Utilize the <code>-d</code> parameter to decrypt the file, whether it's a binary stream or consists only of ASCII characters. You'll need to use the same passphrase for this as was used to encrypt the file.</p>
+<h4 id="once-decrypted-can-you-read-the-correct-message"><a class="header" href="#once-decrypted-can-you-read-the-correct-message">Once decrypted, can you read the correct message?</a></h4>
+<h1 id="use-openssl-to-encrypt-files-with-asymmetric-encryption"><a class="header" href="#use-openssl-to-encrypt-files-with-asymmetric-encryption">Use OpenSSL to encrypt files with asymmetric encryption</a></h1>
+<p>Asymmetric encryption uses two sets of keys, called a key pair. A public key that can be freely distributed with the entity you want to communicate with, and a private key that is never shared.</p>
+<h2 id="generate-key-pairs"><a class="header" href="#generate-key-pairs">Generate key pairs</a></h2>
+<p>Using the <code>openssl</code> man pages, figure out how to use <code>genrsa</code> to generate a 1024-bit public-private key pair.</p>
+<h2 id="distribute-the-public-key"><a class="header" href="#distribute-the-public-key">Distribute the public key</a></h2>
+<p>The public key is meant to be shared with others. Extract your public key with the OpenSSL tool into a <code>.pem</code> file using the <code>-pubout</code> parameter.</p>
+<h2 id="exchange-your-public-keys"><a class="header" href="#exchange-your-public-keys">Exchange your public keys</a></h2>
+<p>Exchange public keys with someoone else. Next, create an encrypted message using the OpenSSL <code>-encrypt</code> command. You will need the following to formulate the command:</p>
+<ul>
+<li>Name of the file</li>
+<li>Other's person public key to encrypt</li>
+<li>The name of the output file</li>
+</ul>
+<h4 id="try-and-view-the-file-what-is-the-format"><a class="header" href="#try-and-view-the-file-what-is-the-format">Try and view the file, what is the format?</a></h4>
+<p>Send the file to the other party using your preferred method. The other person can decrypt the file and read the message using the private key and the parameter <code>-decrypt</code>. The recipient can write a response, encrypt it with your public key and send it back.</p>
+<h2 id="why-do-we-need-https"><a class="header" href="#why-do-we-need-https">Why do we need HTTPS?</a></h2>
+<p>Websites with HTTPS provide assurance to customers that their connections are secure. HTTPS, or Hypertext Transfer Protocol Secure, is a protected version of HTTP, the protocol used for data transmission between your browser and the website you're accessing. Prioritizing the safeguarding of users' privacy and data security is crucial for instilling trust in people connected to the web services we develop online</p>
+<h2 id="why-will-we-use-https-locally"><a class="header" href="#why-will-we-use-https-locally">Why will we use HTTPS locally?</a></h2>
+<p>We need to create a development environment that closely resembles production. This practice helps to avoid future issues when deploying your web apps or websites online.</p>
+<h1 id="configure-and-utilize-nginx-with-https-for-creating-a-localhost-web-app-and-sign-a-certificate-request-with-openssl"><a class="header" href="#configure-and-utilize-nginx-with-https-for-creating-a-localhost-web-app-and-sign-a-certificate-request-with-openssl">Configure and utilize Nginx with HTTPS for creating a localhost web app and sign a certificate request with OpenSSL.</a></h1>
+<p>A certificate signing request (CSR) consists of three entities: the public key, the system that triggers the request, and the signature of the request. The private key will be used to encrypt the certificate. We will use OpenSSL for that.</p>
+<p>To create a private key with OpenSSL, we first create a directory and generate the key inside it:</p>
+<pre><code class="language-.sh">$ mkdir ~/store-csr
+</code></pre>
+<p>Then, we generate the RSA private key (keep note of the passphrase). Use OpenSSL with the <code>genrsa</code> command and the <code>-aes256 parameter</code> for a private key with size 2048. Next, generate a root certificate with OpenSSL using the <code>req</code> command and parameters <code>-x509</code> for a digital signature and <code>-sha256</code> for a hash function. Finally, make it valid for 30 days.</p>
+<p>Then, we will make a request for the server we will use later, and we want to authenticate, for example:</p>
+<pre><code class="language-.sh">$ openssl genrsa -out cert.key 2048
+</code></pre>
+<p>As we can see from the output, we generated an RSA private key of 2048 bits. The <code>genrsa</code> command is used to generate RSA private key files, with the default value being 512 bits. You can specify different key sizes. Investigate the command options with <code>-help</code>.</p>
+<p>Now, with the private key, we will create the CSR using the OpenSSL tool. Fill out the fields in a similar way as above, without leaving any value blank. We use the private key to create a certificate signing request as follows:</p>
+<pre><code class="language-.sh">$ openssl req -new -key cert.key -out cert.csr
+</code></pre>
+<h2 id="create-the-configuration-file"><a class="header" href="#create-the-configuration-file">Create the Configuration File</a></h2>
+<p>We create a configuration file named <code>openssl.cnf</code> in the current folder using any text editor of your choice:</p>
+<pre><code class="language-conf">[#]Extensions to add to a certificate request
+
+basicConstraints       = CA:FALSE
+
+authorityKeyIdentifier = keyid:always, issuer:always
+
+keyUsage               = nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment
+
+subjectAltName         = @alt_names
+
+[ alt_names ]
+
+DNS.1 = your hostname
+</code></pre>
+<hr />
+<p>Sign the certificate request and enter the passphrase. Verify the correctness of the certificate as follows:</p>
+<pre><code class="language-bash">$ ~/store-csr$ openssl verify -CAfile rootCert.pem -verify_hostname your hostname cert.crt
+</code></pre>
+<p>Add the certificate to the browser to avoid receiving warnings about untrusted certificates. For the Mozilla browser, follow these steps:</p>
+<ul>
+<li>Go to Preferences -&gt; Privacy -&gt; View Certificates.</li>
+<li>Import the rootCert.pem file.</li>
+<li>Click "Next" and then select "Trust this CA to identify websites."</li>
+<li>These steps will ensure that the root certificate is trusted by the browser for identifying websites.</li>
+</ul>
+<p><em>Tip: if you want to name or re-name your machine use: <code>sudo hostnamectl set-hostname [new-hostname]</code> and check with <code>hostnamectl</code></em></p>
+<p>Move the certificate and key into the folders:</p>
+<pre><code class="language-bash">$ ~/store-csr$ sudo cp cert.crt /etc/ssl/certs/
+$ sudo cp cert.key /etc/ssl/private/
+</code></pre>
+<h2 id="nginx-configuration"><a class="header" href="#nginx-configuration">Nginx Configuration</a></h2>
+<p>Install Nginx:</p>
+<pre><code class="language-bash">$ sudo apt install nginx
+</code></pre>
+<p>Create a configuration file inside <code>/etc/nginx/sites-available</code>. For example, create a file <code>yourhostname.conf</code>:</p>
+<pre><code class="language-bash">/etc/nginx/sites-available$ sudo nano myhostname.conf
+</code></pre>
+<pre><code class="language-conf">server {
+    client_max_body_size 100M;
+    server_name yourhostname;
+    listen 443 ssl;
+    ssl_certificate /etc/ssl/certs/cert.crt;
+    ssl_certificate_key /etc/ssl/private/cert.key;
+
+    location / {
+        proxy_pass http://yourhostname:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_read_timeout 60;
+        proxy_connect_timeout 60;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+</code></pre>
+<p>Edit your <code>bash /etc/hosts </code> file and add the line <code>bash 127.0.0.1 “yourhostname” </code> using <code>sudo</code>.</p>
+<p>Restart the server:</p>
+<pre><code class="language-bash">sudo systemctl restart nginx.service
+</code></pre>
+<p><em>Tip: If you encounter any error check with <code>sudo tail -f /var/log/nginx/error.log</code></em></p>
+<p>Create a symbolic link between the sites from nginx and your configuration file:</p>
+<pre><code class="language-bash">sudo ln -s /etc/nginx/sites-available/yourhostname.conf /etc/nginx/sites-enabled/
+</code></pre>
+<p>If everything is configured correctly, you should have access to your local website with your self-signed certificate, i.e., <a href="https://my-hostname/">https://my-hostname/</a>. This is a good way to test your web application locally before publishing it. Now you have created a local development environment to test your apps using HTTPS.</p>
+<h1 id="how-to-use-openssl-to-test-an-ssl-connections"><a class="header" href="#how-to-use-openssl-to-test-an-ssl-connections">How to use OpenSSL to test an SSL connections</a></h1>
+<p>The OpenSSL tool includes many utilities. We can use one of them to verify a secure connection to a server. To do so, we will use the <code>s_client</code> utility to establish client-to-server communication. Therefore, we can determine whether a port is open, if the server is configured to support SSL, and when the certificate expires.</p>
+<p>In the terminal, use <code>s_client</code> against a webserver with HTTPS.</p>
+<h4 id="what-are-the-differences-compared-to-other-tools-such-as-netcat-or-telnet"><a class="header" href="#what-are-the-differences-compared-to-other-tools-such-as-netcat-or-telnet">What are the differences compared to other tools such as netcat or telnet?</a></h4>
+<p>Try running the command again with the <code>-crlf</code> and <code>-brief flags</code>. What is the difference?"</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../encryption/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../encryption/pgp.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../encryption/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../encryption/pgp.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
